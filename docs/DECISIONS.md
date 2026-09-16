@@ -18,10 +18,10 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 
 | # | Question | Blocks | Notes |
 |---|---|---|---|
-| O-15 | Does Laborism's mechanism actually depend on a blockchain, and how? | SFT examples about it | The book says "blockchain" 34 times. Not safe to infer from word counts. Ten minutes of Eric's time. |
 | O-10 | Disclosure text for the three chains | release | Chains settled in D-36. Still needs Eric's holdings disclosure and the published cost comparison. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
 | O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
+| O-16 | Include Rand's *Anthem*, or just note her absence as a copyright constraint? | corpus, low stakes | Only *Anthem* is public domain; the major novels are not. See LABORISM_AND_THE_CANON.md |
 | O-3 | Data-retention posture on OpenRouter | confidential work only | Review <https://openrouter.ai/settings/privacy> if anything sensitive is ever sent. |
 | O-6 | Enable the aixbt crypto MCP? | only if needed | Verified working 2026-09-16; public tools need no key. Costs context every session. See `MCP_AIXBT.md`. |
 
@@ -100,8 +100,69 @@ than reproduced.
 
 Reading it produced a significant correction to D-10; see `docs/LABORISM_AND_THE_CANON.md` and D-37.
 
-### D-37 — The domain corpus must carry BOTH traditions
-**2026-09-16.** Amends D-10 on evidence from the book.
+### D-40 — Quilibrium joins as a documented mirror
+**2026-09-16, Eric's call.** He rates the project and its founder highly. Under D-14's rule, extra
+networks are welcome as **mirrors with published costs**, never as dependencies, and the canonical
+three stay three.
+
+**What it gets:** a full copy of the release, its cost and reliability measured and published
+alongside Arweave's, and a row in the disclosure. First-hand comparison data on decentralised
+storage is exactly the material Eric's day job can use, and it costs the release nothing because
+nothing depends on it.
+
+**What it does not get:** the canonical storage slot. That stays Arweave (D-36) on track record.
+If Quilibrium measures better, that is a finding worth publishing, and the canonical path can move
+in a later release.
+
+Eric should state his holdings in it like any other, per D-14.
+
+### D-39 — Laborism's blockchain mechanisms (closes O-15)
+**2026-09-16, from Eric.** Four distinct roles, not a vague gesture:
+
+1. **Tokenized federal balance sheet** backing the dollar with real assets — bitcoin, gold,
+   diamonds, real estate.
+2. **Asymmetric transparency:** all federal business on-chain so citizens can see what the
+   government does, while the government cannot see what citizens do. Needs zero-knowledge proofs,
+   trusted execution, or homomorphic encryption.
+3. **Bespoke AI training**, distributed, "in a Braintrust kind of way."
+4. **Expenditure tracking** to reduce graft, corruption and theft by making federal spending
+   auditable by anyone.
+
+**Point 2 is Pagouro's own threat model at the scale of a state.** The model runs on your machine
+and your questions never leave it; the weights, the ledger and the release hash are public and
+checkable by anyone. Transparency aimed at the powerful, privacy aimed at the individual. The book
+and the artifact argue the same thing in different registers, and that was not designed — both were
+built on the same instinct. Use it in the release writing.
+
+### D-38 — SUPERSEDES D-37: the classical liberal canon was right after all
+**2026-09-16.** D-37 claimed Eric's book argued against the Austrian and classical liberal tradition
+and proposed rebuilding the domain corpus around Marx, Veblen and Proudhon. **That was wrong.**
+
+**The error:** I counted words. Marx appeared sixty times, the Austrians zero, so I read the book as
+arguing from the Marxist side. Sixty mentions of Marx were sixty *rejections* of Marx. Frequency
+tells you what a book discusses, not where it stands, and a chapter titled *Marxism Fails Because
+Some People Do Have Capital* should have settled it without a word count.
+
+**What Laborism actually holds:** capitalism has failed *some people*, not everyone. If it works for
+you, pay your taxes and the state leaves you alone — "180 degrees from collectivism." Assistance is
+**in kind**, never cash, and conditioned on a **work** criterion and an **advancement** criterion.
+
+**Therefore D-10 stands**, with Eric's additions: **John Locke** explicitly, and Ayn Rand where
+legally possible.
+
+**The Rand constraint, recorded because it is real:** she died in 1982 and *Atlas Shrugged* and
+*The Fountainhead* remain firmly in copyright for decades. They cannot enter this corpus. The one
+exception is ***Anthem*** (1938), public domain in the US through non-renewal and available on
+Project Gutenberg — short, and the purest statement of her individualist case. The same rule that
+excludes Eric's own book excludes the rest of hers.
+
+Henry George may still earn a place on the tax-mechanism parallel, but as an addition to the liberal
+canon rather than a replacement for it. Marx stays available only so the model can argue the
+position it rejects, per D-11's both-directions requirement.
+
+### D-37 — ~~The domain corpus must carry BOTH traditions~~ **SUPERSEDED BY D-38**
+**2026-09-16.** Kept as a record of an error, not as guidance. The analysis below inferred the
+book's position from word frequency and got it backwards. Do not act on this entry.
 
 D-10 specified the classical liberal and Austrian canon, inferred from "capitalism, freedom,
 self-sovereignty." Eric's own book mentions Hayek, Mises, Rothbard and Friedman **zero times** in

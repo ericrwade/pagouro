@@ -1,109 +1,117 @@
-# Eric's book, and a correction to the domain corpus
+# American Laborism, and what it means for the corpus
 
-Written 2026-09-16 after reading *America vs. Americans: How Capitalism Has Failed a Capitalist
-Nation and What We Can Do about It* (Eric Wade, 2024, 282 pages).
+Written 2026-09-16 from *America vs. Americans* (Eric Wade, 2024), then **substantially corrected
+the same day** after Eric read the first version. The error and the correction are both kept,
+because this project does not quietly revise its own record.
 
-## Status of the book itself
+---
 
-**Excluded from the corpus**, on two independent grounds, both Eric's call:
+## ⚠ First: I got this wrong, and how
 
-1. Published 2024, so it fails the pre-generative-AI cutoff (D-34). He applied his own rule to his
-   own book, which is the correct instinct and worth recording.
-2. The copyright page reserves all rights to the publisher.
+My first pass counted words. Hayek, Mises, Rothbard and Friedman appeared zero times across 449,000
+characters; Marx appeared sixty times; the chapter titles said capitalism had failed. I concluded
+the book argued *against* the classical liberal tradition and proposed rebuilding the domain corpus
+around Marx, Veblen and Proudhon.
 
-It is used here only as a **reading guide**: a private document that shapes what goes into the
-corpus, without any of its text entering it.
+That was wrong, and the method was the problem. **Sixty mentions of Marx were sixty rejections of
+Marx.** Frequency told me what the book discusses, not where it stands, and I treated the first as
+evidence of the second. A chapter titled *Marxism Fails Because Some People Do Have Capital* should
+have been enough on its own.
 
-## ⚠ The correction: the corpus was pointed at the wrong tradition
+Eric's correction, in his words:
 
-D-10 specified the domain corpus as the classical liberal and Austrian canon — Smith, Bastiat,
-Mill, Locke, Hume, Tocqueville, the Austrians. That was inferred from "capitalism, freedom,
-self-sovereignty, gold, fiat, debt, ownership," and it was **a reasonable inference that turns out
-to be wrong about this author.**
+> *"What I thought I was saying is that capitalism has failed — some people. The book says if
+> capitalism is working for you, then pay your taxes and we will leave you alone. That is 180
+> degrees from collectivism."*
 
-Word counts across the book's 449,000 characters:
+Had this shipped, the model would have been trained on the wrong half of the argument and would
+have sounded nothing like its author.
 
-| Term | Count |
+## What American Laborism actually is
+
+| Element | Position |
 |---|---|
-| labor | 747 |
-| Laborism | 424 |
-| tax | 384 |
-| capitalism / capitalist | 125 |
-| Marx | 60 |
-| Marxism | 39 |
-| blockchain | 34 |
-| Smith | 9 |
-| **Hayek, Mises, Rothbard, Friedman** | **0 each** |
+| Capitalism | Has failed **some people**, not everyone. Not rejected. |
+| If it works for you | Pay your taxes, and the state leaves you alone |
+| Assistance | **In kind, never cash.** Hungry, get food. |
+| Conditions | Federal assistance requires a **work** criterion **and** an **advancement** (education) criterion |
+| Relation to Marxism | Explicitly rejected. Some people do hold capital, and that is fine. |
+| Relation to collectivism | "180 degrees from it" |
 
-Not one mention of the Austrian school in an entire book about economic systems. Marx appears sixty
-times — engaged with and rejected, but engaged with seriously. Smith nine times.
+The load-bearing idea: a floor under people, delivered in kind and conditioned on work and
+advancement, sitting on top of an otherwise intact property-and-markets order. Eric's own summary of
+where Ayn Rand would land on it: *"She'd likely hate American Laborism but it keeps people from
+starving."*
 
-The thesis, in Eric's own words from the preface:
+## The corpus: D-10 stands
 
-> *"American Laborism isn't just a replacement for capitalism. It's an upgrade. Every human has the
-> right to live a life of dignity… I've made a great living under capitalism… but it has failed
-> us."*
+Eric, directly: *"Smith, Bastiat, Mises, Hayek, Rothbard — the Austrian and classical liberal canon
+— that is perfect for ownership, currency, philosophy. Throw John Locke in there. Ayn Rand."*
 
-Chapter titles make the position explicit: *Capitalism Failed Because Not Everyone Has Capital*;
-*Marxism Fails Because Some People Do Have Capital*; *Why Labor Is Better — for Everyone — Than
-Capital*.
+So the original specification was right and my proposed replacement was not. **D-10 stands; D-37 is
+superseded by D-38.**
 
-**Had we built the corpus as specified, we would have produced a model steeped in exactly the
-tradition its owner's own book argues against.** It would have answered questions about capital and
-labor like a Mises Institute pamphlet, and Eric would have found it alien.
+Confirmed for the domain slice, all public domain:
 
-## The fix, which is better than either single tradition
+- **Smith**, *The Wealth of Nations* and *Theory of Moral Sentiments*
+- **Locke**, *Second Treatise* — explicitly added by Eric, and the source of the property argument
+- **Bastiat**, *The Law*, *Economic Sophisms*
+- **Mill**, **Hume**, **Ricardo**, **Tocqueville**
+- **The Austrians** where openly licensed. Mises Institute publishes much of Mises and Rothbard
+  under Creative Commons; verify per work rather than assuming the whole catalogue.
+- **Founding documents**, the Federalist Papers, the Constitution
 
-**Include both traditions. Let the SFT carry the position.**
+### The Ayn Rand problem, which is a real constraint
 
-This is not a compromise; it follows directly from two decisions already made.
+Rand died in 1982 and her major works are firmly in copyright. *Atlas Shrugged* (1957) and *The
+Fountainhead* (1943) will not enter the public domain for decades. They cannot be in this corpus and
+no amount of wanting changes that.
 
-- **D-9** already says the ethos belongs in fine-tuning, not pretraining. Pretraining supplies
-  breadth and reasoning; a few thousand curated examples supply the view. The corpus was never
-  supposed to be the argument.
-- **D-11's deflection set** already requires the model to argue each contested position in *both*
-  directions, scoring a refusal to argue either side as failure. A model that has read only one
-  tradition cannot do that. It would fail our own test.
+**One exception, and it is a good one:** *Anthem* (1938) is public domain in the United States
+because its copyright was not renewed. It is on Project Gutenberg. It is short, and it is the purest
+statement of the individualist case she ever wrote.
 
-A model that has read both Mises and Marx can reason about the disagreement. One that has read
-either alone is a partisan, and a partisan that does not know it is exactly the failure mode this
-project exists to avoid.
+So: *Anthem* goes in. The rest is a licensed work like any other, and the same rule that excludes
+Eric's own book excludes hers.
 
-## Revised domain corpus
+## Laborism's blockchain mechanisms
 
-Keep everything in D-10, and add the tradition the book actually argues within. All public domain.
+Eric's answer to O-15, which is more specific than the word count suggested. Four distinct roles:
 
-| Addition | Why | Status |
-|---|---|---|
-| **Henry George, *Progress and Poverty*** (1879) | Poverty amid progress, addressed through a tax system. The closest historical parallel to Laborism's structure that exists. | PD |
-| **Marx, *Capital* and the earlier writings** | Engaged with sixty times. The model must know the argument it is rejecting. | PD |
-| **Ricardo**, on the labour theory of value | The origin of the labour-value line both traditions descend from | PD |
-| **Veblen**, *The Theory of the Leisure Class* | Institutional critique of capital ownership | PD |
-| **Proudhon**, *What Is Property?* | Property as a contested question rather than an axiom | PD |
-| **Smith**, *Wealth of Nations* | Already planned; Eric cites him and the labour chapters matter | PD |
-| Progressive-era US economic and tax documents | Laborism is fundamentally a tax proposal | PD, US government |
+1. **A tokenized federal balance sheet backing the currency.** American federal net worth —
+   bitcoin, gold, diamonds, real estate — tokenized so that assets back the dollar.
+2. **Asymmetric transparency.** All federal business on a chain, so *citizens can see what the
+   government does, while the government cannot see what citizens do.* Requires zero-knowledge
+   proofs, trusted execution, or fully homomorphic encryption.
+3. **Bespoke AI training**, distributed, "in a Braintrust kind of way."
+4. **Expenditure tracking**, to reduce scams, graft, corruption and theft by making federal spending
+   auditable by anyone.
 
-And retain the liberal and Austrian material already specified, wherever it is openly licensed.
-The point is coverage of the argument, not endorsement of a side.
+### Point 2 is the one worth noticing
 
-## Laborism's own concepts, for the SFT set
+*Citizens can see the government; the government cannot see citizens.*
 
-These come from the book and belong in fine-tuning, written fresh rather than quoted:
+That is Pagouro's own threat model stated at the scale of a state. The model runs on your machine
+and your questions never leave it, while the weights, the corpus ledger and the release hash are
+public and checkable by anyone. Transparency pointed at the powerful, privacy pointed at the
+individual.
 
-- Capitalism fails because capital ownership is not universal, not because capital is wrong.
-- Marxism fails from the opposite direction: some people do hold capital, and that is not fixable
-  by abolition.
-- Labour as the universal human input, and therefore the fairer basis for a system.
-- Laborism expressed as a tax mechanism rather than an ownership seizure.
-- Its application across education, defence procurement, healthcare, and foreign affairs.
-- A blockchain role, mentioned thirty-four times, which needs Eric's clarification before anything
-  is written about it.
+The book and the artifact are arguing the same thing in different registers. That is a genuinely
+strong line for the release writing, and it was not designed — it fell out of both being built on
+the same instinct.
 
-**None of this is quoted.** The SFT examples state the positions in fresh language, which is what
-makes them derived ideas rather than reproduced text.
+## For the SFT set
 
-## Open question for Eric
+These positions get stated in fresh language, never quoted:
 
-The book uses "blockchain" thirty-four times. Whether Laborism's mechanism actually depends on a
-chain, and how, is not something to infer from word counts. Worth ten minutes of his time before
-any SFT example touches it.
+- Capitalism failing *some* people is not capitalism failing.
+- In-kind assistance over cash transfers, and why the distinction matters.
+- Work and advancement conditions as the mechanism that distinguishes this from a welfare state.
+- Why this is not Marxism: some people hold capital, and that is not the problem to solve.
+- Asymmetric transparency as a design principle for institutions.
+- Assets backing currency, and what tokenization does and does not solve.
+
+## Still open
+
+Whether *Anthem* alone is worth including for Rand, or whether her absence should simply be noted in
+the ledger as a copyright constraint. Eric's call, low stakes either way.
