@@ -54,6 +54,26 @@ is not evidence.
 loss continued at 4.80 instead of jumping back to 9.0, optimizer state restored intact. Repeat this
 proof before any rented-GPU run, where a silent resume failure costs real money.
 
+### D-25 — DeepSeek is the default, not the critical path
+**2026-09-16.** Eric reports DeepSeek is heavily congested and "grindingly slow" (two of three top
+trending stories on his X feed). This changes nothing structural and blocks nothing today.
+
+**Why it does not bite yet:** nothing in the build depends on DeepSeek. Claude Code is doing the
+engineering, and DeepSeek's only assigned job is synthetic SFT data, which is already blocked on
+O-7 (teacher licensing). Two smoke calls are its entire use so far.
+
+**Where it would bite:** the SFT stage, once O-7 clears. Generating thousands of examples through a
+congested endpoint is a wall-clock problem, not a cost problem.
+
+**Fallbacks, in order,** should congestion persist when that stage arrives:
+1. `deepseek/deepseek-v4-flash` — same family, roughly a third the input price, likely less loaded.
+2. `nvidia/nemotron-3.5-lightning` — Eric already finds the Nemotrons acceptable (D-4).
+3. Run open weights locally for generation. Slower per token but unlimited, unthrottled, and it
+   sidesteps O-7 entirely, since the open-weights licence governs rather than an API's terms.
+
+Option 3 deserves attention when O-7 is resolved: it may be both the licence answer and the
+congestion answer at once.
+
 ### D-24 — The public demo is browser-local, hosted on the Bosgame N95
 **2026-09-16.** Eric has an always-on Bosgame E3 Neo (Intel N95, 4 cores, 6W TDP, 16 GB DDR4,
 512 GB SSD, Ubuntu) and proposed hosting Pagouro on it as a public website in ONLINE mode, with a
