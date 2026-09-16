@@ -90,5 +90,48 @@ and decide with measurements from the small runs.
 
 1. Is the 32 GB upgradeable, or is it soldered? Changes the local training ceiling permanently.
 2. Where is the 2 TB external drive? Needed before milestone 3.
-3. Mining: the brief notes this box is sometimes used for mining and that training and mining
-   cannot share it. Confirm it is idle before any long run.
+3. Mining: see Finding 6. Confirmed, measured, and it is worse than the brief implies.
+
+---
+
+## ⚠ Finding 6 — this box was mining, and it invalidated the first benchmarks
+
+Discovered mid-milestone when CPU training measured absurdly slow. `midstate.exe` (Midstate /
+MDS, in the user's `midstate\bin` folder) was running with **2,519,748 accumulated CPU-seconds**,
+about 29 days of CPU time, holding the machine at **99% load**.
+
+The brief predicted exactly this: "training and mining cannot share the machine." Worth recording
+how badly, because the failure looked like a broken toolchain rather than a busy one.
+
+| Condition | ms/step | tokens/sec |
+|---|---|---|
+| Miner running | 29,131 | 141 |
+| Miner stopped | 951 | **4,308** |
+
+**A 30x difference.** Before stopping it I had already begun diagnosing PyTorch threading and
+matmul kernels, because 141 tok/s looks exactly like a misconfigured build. Raw matmul measured
+192 GFLOP/s even under load, which was the clue that the hardware was fine and something else was
+eating it.
+
+**Rule for this project:** confirm the machine is idle before recording any timing number, and say
+so in the writeup. Published tokens-per-second figures are a headline metric (brief section 9) and
+a contaminated one is worse than none.
+
+**Stopping and restarting.** The vendor ships `STOP-MINING.bat` and `START-MINING.bat` in the
+`midstate` folder. The stop script could not kill the process from a non-interactive shell
+("Input redirection is not supported"), so a forced process stop did it. Restart mining with
+`START-MINING.bat` whenever the box is not training.
+
+## Measured baseline (idle machine, 2026-09-16)
+
+| Measurement | Value |
+|---|---|
+| Raw fp32 matmul, 2048x2048 | 192 GFLOP/s |
+| Raw fp32 matmul, 1024x1024 | 28.5 GFLOP/s (small matrices are overhead-bound) |
+| Training, 12.6M params, batch 16 x 256 | 951 ms/step, ~4,300 tok/s |
+| PyTorch threads / interop | 16 / 16, on 32 logical CPUs |
+| PyTorch build | 2.14.0+cpu, MKL and MKLDNN available |
+
+At ~4,300 tok/s, CPU training moves roughly 15M tokens per hour. Fine for milestone 1 and for the
+ablation study's small runs, and it confirms the plan's shape: develop here, rent for anything
+real.

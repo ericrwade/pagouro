@@ -44,3 +44,6 @@ llama.cpp/
 
 # Eric's private working files - decide per file before committing
 My_Claude_Conversation.txt
+
+# Third-party binaries: downloaded, never committed (git history is permanent)
+tools/llamacpp/

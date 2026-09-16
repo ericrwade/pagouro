@@ -1,0 +1,24 @@
+{
+  "project": "Pagouro",
+  "description": "Every source in the training corpus, with licence and hash. Anyone can check these numbers; anyone could rebuild the corpus from them.",
+  "sources": [
+    {
+      "slug": "fineweb-edu-sample-10BT",
+      "name": "HuggingFaceFW/fineweb-edu",
+      "config": "sample-10BT",
+      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu",
+      "license": "ODC-By 1.0",
+      "retrieved": "2026-09-16",
+      "retrieved_utc": "2026-09-16T16:58:45+00:00",
+      "documents": 20000,
+      "characters": 95300108,
+      "bytes": 95808129,
+      "estimated_tokens": 23825027,
+      "mixture_share": null,
+      "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
+      "sha256_processed": "afd9e36a1d543aeea688368fc08a1bbc0399e412e83bc3de691dad78a5e562fe",
+      "file": "data/raw/fineweb-edu-sample-10BT.txt",
+      "milestone": "M1 pipeline check"
+    }
+  ]
+}
