@@ -472,7 +472,44 @@ rather than of the question, because at twelve million parameters the answer wou
 
 Four things went wrong today and all four were caught. That ratio will not hold.
 
+### Closing: the pilot finds a fifth
+
+The ablation finished after the rest was written, and it justified its own existence twice over.
+
+Two arms: one trained on educational web text, one with fifteen percent of that text replaced by
+code. Everything else held identical — same tokenizer, same seed, same schedule, same step count.
+
+Arm B came out **0.156 worse** on validation loss. Perplexity 198.7 against 170.0, a 17% gap.
+
+The obvious write-up sits right there: *adding code hurt the model*. Two clean curves, a clear
+separation, a tidy conclusion. It would have been completely believable and completely wrong.
+
+Because the two arms were scored on **different validation sets**. The tokenizer holds out a slice
+from whichever corpus it is handed, so arm A was graded on prose and arm B on prose-plus-code. Code
+is harder to predict than prose. Arm B was sitting a harder exam. Its *lower training* loss —
+4.979 against 5.079 — points the same way: code fits easily in-distribution and generalises worse
+across.
+
+That flaw was anticipated and written down before the numbers arrived, which is the only reason it
+did not become a finding.
+
+The second one was not anticipated. The corpora were matched by **character count**, because that
+was the obvious unit when the files were being cut. But code tokenizes more densely than prose —
+3.587 characters per token against 3.804 — so the same number of characters gave arm B six percent
+more tokens. A quiet asymmetry in the one thing the experiment was supposed to hold constant.
+
+It surfaced only because the chars-per-token figure happened to be printed next to both arms and
+the two numbers did not match. Nothing else would have shown it.
+
+The rule that came out is general and worth more than the experiment: **match corpora on tokens,
+never on bytes or characters.** Any slice that tokenizes at a different rate — code, mathematics,
+non-English text, markup — breaks a byte-matched comparison, and breaks it invisibly.
+
+A weekend of otherwise idle CPU, two confounds caught before the real study spends money on runs
+where the answer would count. That is what a pilot is for, and it is the first time today that
+something going wrong was entirely the point.
+
 ---
 
-*The log continues. Next: the ablation result, a decision on the share-alike question, and the long
-unglamorous middle where projects like this usually die.*
+*The log continues. Next: a decision on the share-alike question, the gated-dataset problem, and the
+long unglamorous middle where projects like this usually die.*

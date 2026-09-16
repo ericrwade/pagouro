@@ -47,6 +47,7 @@ Fix anything it flags before starting work.
 ```
 STATUS AS OF 2026-09-16 (end of unattended window)
   Milestones:     M1 complete (pipeline). M2 complete (evals frozen + baselined).
+                  M4 pilot done - methodology fixed before it cost anything (D-29).
   Repo:           13 commits, local only. NOT pushed - no remote created yet.
   BASELINES:      small instruct models bluff on ~53% of unanswerable questions
                   while answering 87-93% of answerable ones. Premise confirmed.

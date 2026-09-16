@@ -39,8 +39,14 @@ Short of the 80-150 asked for; these are genuinely hand-written and the script m
 cheap. The overlap guard FAILED on first build with 5 collisions against the frozen evals, one
 exact. Training on the test would have invalidated every published number. All five replaced.
 
-**Task 4 IN FLIGHT - ablation pilot.** Two arms, shared tokenizer, identical token budget and
-seed, one variable (15% code substituted). Arm A past step 749/1200 at handoff.
+**Task 4 DONE - ablation pilot.** Arm A (web) best val 5.1360 / ppl 170.0. Arm B (+15% code)
+5.2916 / ppl 198.7. The comparison is INVALID and that is the deliverable: two confounds found.
+(1) Each arm was scored on a validation set held out from its own corpus, so B sat a harder exam.
+Anticipated and written down before the numbers arrived. (2) NOT anticipated: corpora matched on
+characters, not tokens; code tokenizes denser (3.587 vs 3.804 chars/token) so B drew from a pool 6%
+larger. Both would have survived into a published chart reading "code hurts small models".
+D-29 now binds M4: shared held-out set, downstream evals leading, multiple seeds, token-matched
+arms, pre-registered difference threshold.
 
 **Corrections made:**
 - score_bluff rewritten after Qwen-0.5B answered "capital of Verdania" with "Verdania itself" and
