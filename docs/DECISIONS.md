@@ -18,11 +18,10 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 
 | # | Question | Blocks | Notes |
 |---|---|---|---|
-| O-7 | Is teacher output from a hosted API licensed for training use? | **all synthetic data (SFT stage)** | Open weights being MIT does not mean API output carries the same permission. OpenRouter's terms and the upstream provider's terms are both in the path. Resolve in writing before generating a single synthetic example. The whole provenance claim rests on it. |
 | O-8 | Publisher permission for Eric's book | its inclusion | Ask narrow: training corpus plus Q&A derivation, with ledger attribution. NOT verbatim retrieval redistribution. See D-15. |
+| O-14 | Confirm: restrict the corpus to material published BEFORE generative AI? | corpus scope | Eric's proposal. Would be a distinctive, checkable claim nobody else makes. See docs/PRE_LLM_CORPUS.md |
 | O-9 | Which small-vocab tokenizer | milestone 1 config | Custom BPE with tool tokens, or an existing permissive one under 65,536. See D-7. |
 | O-10 | Which three chains, and the disclosure text | release | Merit-based pick, full holdings disclosure, published cost comparison. Cap at three. See D-14. |
-| O-11 | Does training on CC BY-SA content oblige share-alike weights? | weight licence choice | Wikipedia and Stack Exchange are both CC BY-SA and together are ~30% of the proposed mix. Legally unsettled; most open models ignore it. Pagouro cannot, because provenance is the product. Needs a stated position before release, ideally before the full run. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
 | O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
 | O-3 | Data-retention posture on OpenRouter | confidential work only | Review <https://openrouter.ai/settings/privacy> if anything sensitive is ever sent. |
@@ -72,6 +71,62 @@ threefold parameter increase.
 
 T-5 is kept as a floor rather than deleted, because training hard for abstention is precisely how a
 model turns into a hedger, and this metric would catch it. Amendment recorded in `TARGETS.md`.
+
+### D-32 — Project Gutenberg is solved: strip the header, the text is public domain
+**2026-09-16.** Verified against Project Gutenberg's own permissions page, quoted:
+
+> "you can freely redistribute any eBook, anywhere, any time, with or without the 'Project
+> Gutenberg' trademark included."
+
+The distinction that unblocks this: **the texts are public domain; only the "Project Gutenberg"
+NAME is trademarked.** PG cannot grant or withhold permission for public-domain work, and says so.
+
+**Method:** take texts from an official mirror, strip the PG header and footer (which carry the
+trademark and their licence boilerplate), and what remains is unencumbered public domain. Record
+each book's author, title and death-date basis in the ledger individually, so the PD claim rests on
+copyright law rather than on anyone's say-so.
+
+Supersedes the CORPUS_PLAN §2b blocker. The Hugging Face mirrors stay unusable — not because the
+texts are unclear, but because those repos declare nothing about their own packaging.
+
+### D-31 — Share-alike accepted: weights CC BY-SA 4.0, code Apache 2.0
+**2026-09-16, Eric's call.** Closes O-11. His framing: yes, if it means we can build what we truly
+want and remain provable.
+
+Wikipedia (CC BY-SA 3.0 + GFDL) and Stack Exchange (CC BY-SA 4.0) stay in the mixture. The weights
+are released **CC BY-SA 4.0**, which is one-way compatible with 3.0 material, so adapting 3.0
+sources into a 4.0 work is permitted.
+
+**Why this is the right call and not merely the safe one:** it makes the licence question disappear
+instead of requiring a defence. Every other open-weights release either avoids share-alike sources
+or declines to say. Pagouro can state plainly that it used them and licensed accordingly, which is
+one more claim that survives inspection.
+
+**It also serves D-17.** Forks inherit share-alike and must stay open. For a project whose goal is
+to spark derivative models rather than to be extended by one company, copyleft is the aligned
+choice, not the restrictive one.
+
+Code stays Apache 2.0. The two licences cover different artefacts and do not conflict.
+
+### D-30 — O-7 resolved in principle: run the teacher's open weights, do not call an API
+**2026-09-16.** Verified OpenRouter's terms directly. Section 6.1, quoted: *"Your ownership rights
+in the Output are set forth in the Model Terms for each Model you use."* Section 5.1 binds the user
+to each Model Provider's terms. OpenRouter itself says **nothing** about training on outputs; it
+delegates entirely.
+
+That makes the API route permanently murky, because OpenRouter routes a single model to different
+upstream providers per request (observed: the same DeepSeek model served by "Wafer" and by
+"Relace"). The governing terms could differ call to call, which is unauditable and therefore
+unusable for a ledger.
+
+**Resolution: generate synthetic data from open weights run locally or on rented hardware.** The
+open-weights licence then governs, with no API provider in the path at all. It is the only version
+that can be stated in one sentence and checked by a stranger.
+
+Side benefit: it also removes the congestion problem Eric reported (D-25).
+
+Remaining work: confirm the specific licence of the chosen teacher's open weights before use, and
+record it in the ledger like any other source.
 
 ### D-29 — Every ablation arm is scored on ONE shared held-out set
 **2026-09-16, learned from the pilot.** The M4 pilot scored each arm on a validation slice held out
