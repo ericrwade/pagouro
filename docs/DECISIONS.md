@@ -18,9 +18,8 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 
 | # | Question | Blocks | Notes |
 |---|---|---|---|
-| O-8 | Publisher permission for Eric's book | its inclusion | Ask narrow: training corpus plus Q&A derivation, with ledger attribution. NOT verbatim retrieval redistribution. See D-15. |
-| O-14 | Confirm: restrict the corpus to material published BEFORE generative AI? | corpus scope | Eric's proposal. Would be a distinctive, checkable claim nobody else makes. See docs/PRE_LLM_CORPUS.md |
-| O-10 | Which three chains, and the disclosure text | release | Merit-based pick, full holdings disclosure, published cost comparison. Cap at three. See D-14. |
+| O-15 | Does Laborism's mechanism actually depend on a blockchain, and how? | SFT examples about it | The book says "blockchain" 34 times. Not safe to infer from word counts. Ten minutes of Eric's time. |
+| O-10 | Disclosure text for the three chains | release | Chains settled in D-36. Still needs Eric's holdings disclosure and the published cost comparison. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
 | O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
 | O-3 | Data-retention posture on OpenRouter | confidential work only | Review <https://openrouter.ai/settings/privacy> if anything sensitive is ever sent. |
@@ -70,6 +69,80 @@ threefold parameter increase.
 
 T-5 is kept as a floor rather than deleted, because training hard for abstention is precisely how a
 model turns into a hedger, and this metric would catch it. Amendment recorded in `TARGETS.md`.
+
+### D-36 — The three chains: Bitcoin, Arweave, Solana. Not Ethereum.
+**2026-09-16.** Eric asked whether it should be BTC, ETH and SOL. Two of those, plus a third that
+does the job Ethereum cannot.
+
+| Job | Chain | Why |
+|---|---|---|
+| Timestamp anchor | **Bitcoin** | Most credibly neutral and most durable. OpenTimestamps is free; an Ordinal inscription puts the manifesto text itself on-chain at real fee cost. |
+| Permanent storage | **Arweave** | Pay once, stored permanently. Single-digit dollars for a ~700 MB model. Purpose-built for exactly this. |
+| Payment rail | **Solana** | Fractions of a cent, fast, and USDC on it means "$10" means ten dollars with no conversion dance. Eric's own earlier call. |
+
+**Ethereum has no job here.** Storage on it is prohibitively expensive, Bitcoin is the better
+anchor, and Solana is the better rail. Including it anyway would be a portfolio tour, which D-14
+forbids by name. If Eric wants it, the question to answer first is: which of the three jobs does it
+do better than the incumbent?
+
+Quilibrium, Internet Computer and NEAR remain available as **documented mirrors** with published
+costs, per D-14. Mirrors are additive and carry no dependency. The canonical path stays three.
+
+### D-35 — Eric's book: excluded from the corpus, used as a reading guide
+**2026-09-16, Eric's call.** Two independent grounds: published 2024 so it fails D-34's cutoff, and
+the copyright page reserves all rights to the publisher. He applied his own rule to his own book
+without being asked, which is the right instinct and worth recording.
+
+**What happens instead:** the manuscript is read privately as a curation guide. It shapes which
+public-domain sources enter the corpus and which positions the SFT set teaches. **None of its text
+enters anything.** Ideas are restated in fresh language, which is what makes them derived rather
+than reproduced.
+
+Reading it produced a significant correction to D-10; see `docs/LABORISM_AND_THE_CANON.md` and D-37.
+
+### D-37 — The domain corpus must carry BOTH traditions
+**2026-09-16.** Amends D-10 on evidence from the book.
+
+D-10 specified the classical liberal and Austrian canon, inferred from "capitalism, freedom,
+self-sovereignty." Eric's own book mentions Hayek, Mises, Rothbard and Friedman **zero times** in
+449,000 characters, cites Marx sixty times, and argues that capitalism has failed.
+
+Building the corpus as specified would have produced a model steeped in exactly the tradition its
+owner's book argues against.
+
+**The fix follows from decisions already made rather than overturning them.** D-9 puts the ethos in
+fine-tuning, not pretraining. D-11's deflection set already requires arguing each position in both
+directions and scores a one-sided refusal as failure — a model that has read one tradition would
+fail our own test.
+
+So: keep the liberal canon, add the labour and political-economy tradition (Henry George, Marx,
+Ricardo, Veblen, Proudhon, progressive-era US tax documents — all public domain), and let the SFT
+carry Eric's actual positions.
+
+A model that has read both can reason about the disagreement. One that has read either alone is a
+partisan that does not know it, which is the failure mode this project exists to avoid.
+
+### D-34 — LOCKED: the corpus contains only material from before generative AI
+**2026-09-16, Eric's call: "write up the 'before generative AI' and enshrine that."** Closes O-14.
+
+**Cutoff: 1 January 2022**, before generative AI became widely available.
+
+**The claim we make:** every source was collected or published before 1 January 2022. Dump dates
+and publication dates are recorded per source in the ledger.
+
+**The claim we do NOT make:** that the corpus is provably free of machine-generated text. A crawl
+date is when a page was fetched, not written. Overstating this would be exactly the unearned claim
+`THREAT_MODEL.md` forbids elsewhere, and the precision is what makes it worth saying.
+
+**Why it is a headline property and not a footnote:** no frontier lab can make this claim. They all
+trained on post-2022 web data and none can say what fraction is machine-generated. It is a second
+structural advantage alongside the ledger, and it costs almost nothing, since the domain canon is
+mostly pre-1950 anyway.
+
+**Implementation:** select Common Crawl dumps by date rather than filtering after the fact; filter
+Stack Exchange by post date and Wikipedia by revision date; add `published_before` and
+`collected_before` to every ledger row; extend `fetch_data.py` to refuse any source lacking a date
+basis, exactly as it already refuses one lacking a licence.
 
 ### D-33 — Tokenizer: custom BPE, ~32k vocab, digits split individually
 **2026-09-16.** Closes O-9. Answers Eric's question, "what gives best reasoning and fewest
