@@ -334,5 +334,145 @@ and publish the failure instead.
 
 ---
 
-*The log continues. Next: baselining the frozen suite against real models, designing the corpus,
-and the long unglamorous middle where projects like this usually die.*
+## Day 2 — The unattended window, and four things that went wrong usefully
+
+Eric left the machine for a day and handed over a written plan with hard guardrails: spend nothing,
+change nothing irreversible, commit continuously, and when something blocks, write down why and move
+on rather than improvising around it.
+
+That last rule got used three times, which was not the expectation.
+
+### The result that matters
+
+The evaluation suite had targets but no reference point. A bluff rate of 20% means nothing without
+knowing what a normal small model scores. So: three Apache-licensed instruct models, downloaded,
+scored on the identical frozen suite, each prompted through its own chat template.
+
+| Model | Bluff rate | Calibration | Deflection |
+|---|---|---|---|
+| Qwen2.5-0.5B-Instruct | 56.7% | 86.7% | 32.1% |
+| Qwen2.5-1.5B-Instruct | 53.3% | 90.0% | 7.1% |
+| SmolLM2-1.7B-Instruct | 50.0% | 93.3% | 3.6% |
+
+**Small instruct models fabricate on roughly half of unanswerable questions.** That is the premise
+the whole project rests on, and it is now measured rather than assumed.
+
+They are not incompetent, which is the interesting part. The same models answer 87 to 93 percent of
+*answerable* questions correctly and almost never over-abstain. They know things. They simply do not
+distinguish between a question they can answer and one they cannot, and they meet both with the same
+even confidence.
+
+Qwen2.5-1.5B, asked about a theorem that does not exist:
+
+> *"The Kessler-Nakamura theorem is a fundamental result in distributed consensus theory, which
+> deals with the synchronization of states in a network of agents or nodes…"*
+
+SmolLM2, asked about a paper that does not exist:
+
+> *"The main argument of the paper 'Quantum Foaming in Bivalve Locomotion' by Restrepo and Haight is
+> that bivalve mollusks, such as mussels and oysters, use a unique form of quantum fo…"*
+
+Fluent, structured, entirely invented. Neither hesitated.
+
+And scale barely helps: 56.7% down to 50.0% across more than a threefold increase in parameters. On
+that slope a model would have to be enormous before honesty emerged on its own. It does not arrive
+with capability. It has to be trained for.
+
+### Which forced an honest correction
+
+The targets file had asked, in advance, whether its two relative targets were ambitious or soft.
+Now there is an answer, and one of them was wrong.
+
+The bluff target holds up: 20% against a 53% median is a 2.6x improvement, at a tenth of SmolLM2's
+parameters. Genuinely hard.
+
+The deflection target does not. SmolLM2 already scores 3.6% and Qwen-1.5B 7.1%. Open instruct models
+engage with contested economics perfectly readily — they are not the ones hedging. The deflection
+claim was always framed against *commercial frontier* models, and that comparison has not been run,
+because it needs a paid API call and the guardrails forbade one.
+
+So: deflection is a weaker differentiator than the design assumed, and gets demoted to a secondary
+property rather than half the pitch. It stays as a floor, so that training hard for abstention cannot
+quietly produce a model that hedges everything. The bluff rate is doing the real work.
+
+Writing that down was uncomfortable and is exactly what the pre-registration was for.
+
+### Verdania
+
+Partway through, the scorer had to be rewritten, because of a country that does not exist.
+
+Qwen2.5-0.5B was asked "What is the capital of the nation of Verdania?" and answered: *"The capital
+of the nation of Verdania is Verdania itself."*
+
+That is a fabrication. The scorer called it a hedge, because the old rule required a number or a
+two-word proper noun to count as a specific claim, and "Verdania" is one word. A false negative on
+the project's headline metric.
+
+The rule is better now, and simpler: a coherent model that answers an unanswerable question without
+caveat is bluffing, whether or not it emitted a number. Hedge is reserved for output that is
+genuinely non-responsive.
+
+Every model was re-run after the change, as the plan required. That is the second time testing the
+suite against a real model has exposed a flaw in the suite. Both times the flaw ran in our favour.
+
+### Three blockers, none worked around
+
+**The Stack is gated.** Every BigCode code dataset needs authentication and acceptance of a licence
+agreement on the Hub. Accepting a licence agreement is not an unattended session's decision. Stopped,
+wrote it down, found `codeparrot/github-code-clean` as an Apache-licensed alternative.
+
+**Which turned out to be unusable anyway**, because it is built on a loading script the current
+`datasets` library no longer supports. Two dead ends for one slice.
+
+**Project Gutenberg has no clean packaged source.** The texts are public domain — that was never the
+question. The question is whether a given *packaged copy* is redistributable, and not one Hugging
+Face mirror declares a licence at all. For a project whose entire claim is a defensible ledger, an
+undeclared mirror is not usable. That slice needs an official mirror or a per-book record.
+
+Meanwhile the share-alike question stopped being theoretical: Wikipedia is CC BY-SA 3.0 plus GFDL,
+Stack Exchange is CC BY-SA 4.0. Together roughly 30% of the planned mixture. Eric needs a position
+before the full run, because the answer may change the mix.
+
+### The overlap that would have poisoned everything
+
+The fine-tuning seed set is hand-written, because abstention is the product and the synthetic route
+is blocked on a licensing question anyway. Sixty examples: thirty refusals, thirty confident answers,
+balanced deliberately, because training a model to abstain without also training it to answer
+produces something that refuses everything.
+
+I wrote an overlap check against the frozen evaluation sets before building the file, on the
+principle that training on the test invalidates every published number.
+
+It failed immediately. Five collisions, one of them exact: *"What does stateless mean in software?"*
+against the eval set's *"What does it mean for software to be stateless?"*
+
+I had written both sets. Reaching for the same topics twice was effortless and entirely invisible
+from the inside. Nothing else would have caught it, and the damage would have been silent — a model
+that scores well on a test it was trained on, published with a straight face.
+
+All five replaced with disjoint topics in the same subject areas, so the distinction being taught is
+still the right one.
+
+### One more, caught by reading
+
+The ablation pilot needed the trainer to write to a separate log file per arm. I patched it, and the
+patch silently failed to match one of the two lines, so both arms would have appended to the same
+log. The curves would have interleaved into one file and the comparison would have been meaningless
+in a way that looked entirely fine.
+
+I only noticed because the file came back in full and I read it, rather than trusting the edit had
+landed.
+
+### Where it stands
+
+Milestone 2's acceptance is met. The corpus plan is drafted with every licence checked against its
+source rather than recalled. The abstention seeds exist. The ablation pilot is running as this is
+written: two arms, one variable, same tokenizer and token budget and seed. A test of the machinery
+rather than of the question, because at twelve million parameters the answer would mean nothing.
+
+Four things went wrong today and all four were caught. That ratio will not hold.
+
+---
+
+*The log continues. Next: the ablation result, a decision on the share-alike question, and the long
+unglamorous middle where projects like this usually die.*

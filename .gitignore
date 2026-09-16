@@ -50,3 +50,6 @@ tools/llamacpp/
 
 # Baseline models: downloaded, not committed
 data/baselines/
+
+# Ablation pilot working data
+data/ablation/

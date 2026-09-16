@@ -83,6 +83,11 @@ def main() -> int:
     ap.add_argument("--threads", type=int, default=0, help="0 = torch default")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--seed", type=int, default=1337)
+    # Paths are arguments so the ablation pilot can run isolated arms without
+    # clobbering the main run's data, checkpoint or log.
+    ap.add_argument("--data-dir", default=DATA_DIR)
+    ap.add_argument("--ckpt", default=os.path.join(CKPT_DIR, "latest.pt"))
+    ap.add_argument("--log", default=LOG_PATH)
     a = ap.parse_args()
 
     if a.threads:
@@ -90,16 +95,17 @@ def main() -> int:
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     os.makedirs(CKPT_DIR, exist_ok=True)
-    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+    os.makedirs(os.path.dirname(a.log) or ".", exist_ok=True)
+    os.makedirs(os.path.dirname(a.ckpt) or ".", exist_ok=True)
 
-    meta_path = os.path.join(DATA_DIR, "meta.json")
+    meta_path = os.path.join(a.data_dir, "meta.json")
     if not os.path.exists(meta_path):
         raise SystemExit("no tokenized data. Run scripts/tokenize_corpus.py first.")
     with io.open(meta_path, encoding="utf-8") as f:
         meta = json.load(f)
 
-    train_data = np.memmap(os.path.join(DATA_DIR, "train.bin"), dtype=np.uint16, mode="r")
-    val_data = np.memmap(os.path.join(DATA_DIR, "val.bin"), dtype=np.uint16, mode="r")
+    train_data = np.memmap(os.path.join(a.data_dir, "train.bin"), dtype=np.uint16, mode="r")
+    val_data = np.memmap(os.path.join(a.data_dir, "val.bin"), dtype=np.uint16, mode="r")
 
     cfg = ModelConfig(
         vocab_size=meta["vocab_size"], dim=a.dim, n_layers=a.layers,
@@ -116,7 +122,7 @@ def main() -> int:
     )
 
     start_step = 0
-    ckpt_path = os.path.join(CKPT_DIR, "latest.pt")
+    ckpt_path = a.ckpt
     if a.resume:
         if not os.path.exists(ckpt_path):
             raise SystemExit(f"--resume given but no checkpoint at {ckpt_path}")
@@ -134,9 +140,9 @@ def main() -> int:
     print(f"tokens avail : {meta['train_tokens']:,} train / {meta['val_tokens']:,} val")
     print(f"tokens/step  : {a.batch_size * a.seq_len:,}")
     print(f"steps        : {start_step} -> {a.max_steps}")
-    print(f"log          : {os.path.relpath(LOG_PATH, ROOT)}\n")
+    print(f"log          : {os.path.relpath(a.log, ROOT)}\n")
 
-    log = io.open(LOG_PATH, "a", encoding="utf-8", newline="\n")
+    log = io.open(a.log, "a", encoding="utf-8", newline="\n")
     model.train()
     t0 = time.time()
     tokens_seen = start_step * a.batch_size * a.seq_len

@@ -29,6 +29,10 @@ LEDGER = os.path.join(ROOT, "corpus.json")
 # Known licences, recorded explicitly so nothing enters the corpus unlabelled.
 KNOWN_LICENCES = {
     "HuggingFaceFW/fineweb-edu": ("ODC-By 1.0", "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu"),
+    # Verified 2026-09-16: Apache-2.0 and NOT gated, unlike the BigCode/The Stack
+    # family which requires accepting terms on the Hub. See docs/CORPUS_PLAN.md 2a.
+    "codeparrot/github-code-clean": ("Apache-2.0", "https://huggingface.co/datasets/codeparrot/github-code-clean"),
+    "allenai/dolma": ("ODC-By 1.0", "https://huggingface.co/datasets/allenai/dolma"),
 }
 
 
