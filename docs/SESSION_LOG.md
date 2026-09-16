@@ -13,6 +13,27 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-16 (evening) — MILESTONE 1 COMPLETE
+**Model:** Opus 5 (1M context)
+**Goal:** Execute milestone 1: end-to-end pipeline at toy scale in a fresh git repo.
+**Did:** Environment detection, Python 3.12 + venv + PyTorch 2.14 CPU, own Llama-style
+transformer, 8,192-vocab BPE with chat and tool tokens, FineWeb-Edu slice with ledger row,
+uint16 tokenization, training with checkpoint/resume/logging, own GGUF exporter, verifier,
+quantization, README. Three commits.
+**Results:** 12.6M params, 24.5M-token corpus, 2,200 steps, val perplexity ~8,800 -> 133.7.
+GGUF 63.2 MB f32 / 17.0 MB Q8_0. Generation 2,868 tok/s on CPU.
+**Verified, not assumed:**
+- GGUF export faithful: PyTorch and llama.cpp decoded identically, 94/94 characters.
+- Resume: killed at step 2100, resumed, loss continued at 4.80.
+- Chat template round-trips, embedded in the GGUF.
+- Tokenizer round-trips including unicode.
+**Findings:** (1) This EVO-X2 has 31.6 GB RAM, not the large unified pool the brief assumed.
+(2) The box was MINING at 99% CPU; training measured 30x slow and looked like a broken
+toolchain. Eric flagged it. (3) 2 TB external drive not attached. (4) ROCm absent, Vulkan
+present. (5) llama.cpp's converter moved; we own the export now.
+**Open / next:** M2, freeze the eval suite. Blocking elsewhere: O-7 teacher licence,
+O-9 tokenizer for the real run, O-11 share-alike weights question.
+
 ## 2026-09-16 (later) — Design session: direction locked
 **Model:** Opus 5 (1M context)
 **Goal:** Read the design transcript and the brief, then sharpen the project's direction with Eric.

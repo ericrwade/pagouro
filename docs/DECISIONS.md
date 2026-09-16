@@ -31,6 +31,34 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 
 ## LOCKED — plan
 
+### D-21 — Own the GGUF export; verify it against PyTorch every time
+**2026-09-16, milestone 1.** We write GGUF ourselves via the official `gguf` library rather than
+using llama.cpp's `convert_hf_to_gguf.py`.
+
+**Why:** that script now imports from a `conversion` package whose layout moves between releases;
+fetching it at a pinned tag produced a 312-line stub with unresolvable imports. This step must
+never break, and the project is meant to still build in ten years.
+
+**The subtle part, recorded so nobody rediscovers it:** our attention uses the rotate-half RoPE
+convention (the same as Hugging Face Llama). llama.cpp's `llama` architecture expects the
+interleaved convention. Q and K projections must be permuted on export. Get it wrong and the model
+loads, runs, and emits confident gibberish.
+
+**Therefore `scripts/verify_gguf.py` is mandatory after every export.** It greedily decodes the
+same prompt in both engines and compares. At M1 they matched on 94 of 94 characters. "It converted"
+is not evidence.
+
+### D-22 — Resume is proven by killing a run, never assumed
+**2026-09-16, milestone 1.** Demonstrated: killed training at step 2100, restarted with `--resume`,
+loss continued at 4.80 instead of jumping back to 9.0, optimizer state restored intact. Repeat this
+proof before any rented-GPU run, where a silent resume failure costs real money.
+
+### D-23 — Never record a timing number on a busy machine
+**2026-09-16, milestone 1.** The box was mining. Training measured 141 tok/s; idle it measured
+4,308. A 30x error that looks exactly like a broken toolchain, not a busy one. Published
+tokens-per-second is a headline metric, so every timing figure must state that the machine was idle
+and be re-measured if it was not. See `ENVIRONMENT.md` Finding 6.
+
 ### D-20 — "Generation 0x" — drizzle, do not hammer
 **2026-09-16.** Eric has been trying to coin **Generation 0x** since 2017: people born after
 Bitcoin's genesis block, 3 January 2009. He would like it woven into the project. His framing:

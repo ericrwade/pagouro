@@ -114,6 +114,17 @@ def main() -> int:
     w.add_add_bos_token(False)
     w.add_add_eos_token(False)
 
+    # The chat template must travel inside the GGUF, not just in tokenizer_config.json.
+    # llama.cpp reads it from here; without it the app has to hardcode the format and
+    # the two can silently drift apart.
+    tok_cfg = os.path.join(os.path.dirname(a.tokenizer), "tokenizer_config.json")
+    if os.path.exists(tok_cfg):
+        with io.open(tok_cfg, encoding="utf-8") as f:
+            tmpl = json.load(f).get("chat_template")
+        if tmpl:
+            w.add_chat_template(tmpl)
+            print("  chat template : embedded")
+
     # ---- tensors ----
     def put(name: str, t: torch.Tensor):
         w.add_tensor(name, t.to(torch.float32).numpy().astype(np.float32))
