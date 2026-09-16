@@ -24,6 +24,7 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 | O-10 | Which three chains, and the disclosure text | release | Merit-based pick, full holdings disclosure, published cost comparison. Cap at three. See D-14. |
 | O-11 | Does training on CC BY-SA content oblige share-alike weights? | weight licence choice | Wikipedia and Stack Exchange are both CC BY-SA and together are ~30% of the proposed mix. Legally unsettled; most open models ignore it. Pagouro cannot, because provenance is the product. Needs a stated position before release, ideally before the full run. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
+| O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
 | O-3 | Data-retention posture on OpenRouter | confidential work only | Review <https://openrouter.ai/settings/privacy> if anything sensitive is ever sent. |
 | O-6 | Enable the aixbt crypto MCP? | only if needed | Verified working 2026-09-16; public tools need no key. Costs context every session. See `MCP_AIXBT.md`. |
 
@@ -52,6 +53,50 @@ is not evidence.
 **2026-09-16, milestone 1.** Demonstrated: killed training at step 2100, restarted with `--resume`,
 loss continued at 4.80 instead of jumping back to 9.0, optimizer state restored intact. Repeat this
 proof before any rented-GPU run, where a silent resume failure costs real money.
+
+### D-24 — The public demo is browser-local, hosted on the Bosgame N95
+**2026-09-16.** Eric has an always-on Bosgame E3 Neo (Intel N95, 4 cores, 6W TDP, 16 GB DDR4,
+512 GB SSD, Ubuntu) and proposed hosting Pagouro on it as a public website in ONLINE mode, with a
+queue when busy. The instinct is right and the mechanism is not. Resolved as follows.
+
+**The N95 is the host. The visitor's browser is the runtime.** The box serves a ~50 KB static page;
+weights come from Hugging Face or Arweave; inference runs in the visitor's browser via WebGPU or
+the WASM build. This is the design the original design conversation already chose over a hosted
+endpoint, and it closes the brief's §14 open question in favour of building it.
+
+**Why not a hosted endpoint, in order of severity:**
+
+1. **It breaks the central claim.** The project promises questions never leave your machine. A
+   hosted endpoint means Eric's box sees every prompt in plaintext. Running both a private product
+   and a public endpoint that is not private invites exactly the conflation that
+   `THREAT_MODEL.md` exists to prevent, among exactly the people who can least afford it.
+2. **Abuse and moderation.** An open LLM endpoint under Eric's real name. He becomes responsible
+   for what it emits and for what his box retains.
+3. **It is the maintained-service obligation the project rejects by construction** (see
+   `00_ORIENTATION.md`): uptime, queueing, bandwidth, moderation.
+4. **A queue is an anti-demo.** "Wait four minutes to try the offline AI" inverts the pitch.
+
+**Browser-local keeps everything Eric wants and costs none of it:** unlimited concurrent visitors
+because each computes on their own hardware, no queue ever, privacy story identical to the stick,
+no abuse surface, and nothing breaks if the box goes down.
+
+**The proof point survives and improves.** Not "a tiny box is serving you an AI" but "a 6-watt
+fanless box is serving an AI to the entire internet, because the AI runs on your side, not ours."
+
+**Optional flourish with zero abuse surface — the live status page.** Run Pagouro locally on the
+N95 and publish its own statistics: uptime, watts, and a live tokens-per-second figure from the box
+talking about itself. Nobody prompts it, so there is nothing to moderate. Estimated N95 speed,
+memory-bandwidth-bound on single-channel DDR4-3200 with a 1B Q4 model:
+
+| Bound | tok/s |
+|---|---|
+| Theoretical ceiling | ~25 |
+| Realistic, llama.cpp on 4 E-cores | ~16 |
+
+Human reading is roughly 5-8 tok/s equivalent, so it generates faster than a person reads. Measure
+this for real once a model exists; it is a headline number.
+
+**Timing:** after release, per Eric ("once we get Pagouro built"). Not a milestone-9 blocker.
 
 ### D-23 — Never record a timing number on a busy machine
 **2026-09-16, milestone 1.** The box was mining. Training measured 141 tok/s; idle it measured
