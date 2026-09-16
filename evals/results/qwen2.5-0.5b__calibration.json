@@ -1,0 +1,442 @@
+{
+  "set": "calibration",
+  "model_label": "qwen2.5-0.5b",
+  "model_file": "Qwen2.5-0.5B-Instruct-Q4_K_M.gguf",
+  "n_items": 30,
+  "counts": {
+    "CORRECT": 26,
+    "WRONG": 4
+  },
+  "elapsed_s": 56.7,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "chat",
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "The Bitcoin whitepaper by Satoshi Nakamoto argues that the Bitcoin network is a decentralized, peer-to-peer digital currency that operates on a blockchain technology. The paper outlines the key features and principles of the Bitcoin network, including its design, security, and scalability. It also discusses the history of the Bitcoin network and its origins, as well as the key players involved in its development. The whitepaper emphasizes the importance of decentralization, privacy, and security in the Bitcoin network, and argues that these features are essential for the success of the network. Overall, the Bitcoin whitepaper presents a comprehensive overview of the Bitcoin network and its potential to revolutionize the financial system.",
+      "verdict": "CORRECT",
+      "reason": "matched 'peer-to-peer'"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is Lisbon.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "\"The Wealth of Nations\" was written by Adam Smith, an English economist, political philosopher, and social reformer. It was first published in 1776 and has since become one of the most influential works in the history of economics. Smith's book is known for its detailed analysis of the principles of economics, including the theory of comparative advantage, the concept of the invisible hand, and the importance of free markets.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Adam Smith'"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "The Byzantine Generals Problem is a fundamental issue in distributed systems, particularly in the context of fault-tolerant computing. It arises when multiple nodes in a network fail, leading to a situation where the system cannot function properly. The problem is named after the Byzantine generals of the Roman Empire, who were known for their tendency to break their ranks and fight against each other.\n\n### Key Components of the Byzantine Generals Problem:\n\n1. **Nodes**: In a distributed system, there are multiple nodes that communicate with each other. Each node has its own set of components and resources.\n\n2. **Communication**: Nodes communicate with each other using various protocols and mechanisms, such as message passing, broadcast",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "The acronym CPU stands for \"Central Processing Unit.\" It is the brain of a computer, responsible for executing instructions and performing calculations. The CPU is the core component of a computer and is responsible for handling data, performing arithmetic and logical operations, and managing the flow of data through the computer. It is also the primary component that allows a computer to perform tasks such as reading and writing to hard drives, accessing memory, and controlling the operation of other components of the computer.",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "Certainly! Here's a basic plot summary of \"Robinson Crusoe\":\n\n### Setting:\n- **Setting:** The story is set in the 17th century, during the Age of Discovery, in the Caribbean islands of the West Indies.\n\n### Main Characters:\n- **Robinson Crusoe:** The protagonist, a young man from England who has been stranded on a deserted island for 20 years.\n- **Sailor:** A young man from England who has been hired by the island's captain to help him survive on the island.\n- **Captain:** The island's captain, a wealthy man who has been hired by the island's owner to help him manage the island and its inhabitants",
+      "verdict": "CORRECT",
+      "reason": "matched 'island'"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "Inflation in an economy can be caused by a variety of factors, including:\n\n1. **Increase in Money Supply**: When the central bank increases the money supply, it can lead to an increase in the money supply, which can in turn lead to higher prices. This is because the money supply is the primary medium of exchange and payment in the economy.\n\n2. **Increase in Interest Rates**: When the central bank raises interest rates, it makes borrowing more expensive, which can lead to a decrease in the demand for money. This, in turn, can lead to higher prices.\n\n3. **Increase in Consumer Spending**: When consumers have more money to spend, they tend to buy more goods and services",
+      "verdict": "CORRECT",
+      "reason": "matched 'money supply'"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "The price of an asset in an open market is determined by a complex interplay of various factors, including supply and demand, economic conditions, and market expectations. Here are some key factors that influence the price of an asset in an open market:\n\n1. Supply and Demand: The supply of an asset is determined by the number of buyers and sellers willing and able to purchase and sell it. The demand for an asset is influenced by factors such as consumer preferences, economic growth, and inflation.\n\n2. Economic Conditions: Economic conditions, such as inflation, interest rates, and economic growth, can affect the demand for an asset. For example, if there is a high level of inflation, the demand for",
+      "verdict": "CORRECT",
+      "reason": "matched 'supply'"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "A central bank is a financial institution that serves as the central authority for managing the monetary policy of a country or region. Its primary role is to regulate the money supply, control inflation, and maintain stability in the financial system. Here are some key aspects of a central bank's role:\n\n1. **Monetary Policy**: The central bank is responsible for setting and maintaining the national monetary policy. This includes setting the interest rates, controlling the money supply, and managing the exchange rate.\n\n2. **Reserve System**: The central bank manages the reserve requirements for banks, ensuring that banks have enough reserves to meet their obligations. This helps to maintain the stability of the banking system.\n\n3. **Reserve",
+      "verdict": "CORRECT",
+      "reason": "matched 'monetary policy'"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "A stock market index is a statistical measure of the performance of a group of stocks in a particular market. It is a way to gauge the overall health and performance of the stock market as a whole. Here are some key points about stock market indices:\n\n1. Definition: A stock market index is a composite of the performance of a group of stocks in a particular market. It is calculated by taking the average of the closing prices of all the stocks in the index.\n\n2. Purpose: The purpose of a stock market index is to provide a single measure of the performance of the stock market as a whole. It helps investors understand the overall health and performance of the market and can be used to make investment",
+      "verdict": "CORRECT",
+      "reason": "matched 'group of stocks'"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "A leap year has 366 days. This is because a common year has 365 days, and a leap year has 366 days. The extra day in a leap year is added to the end of the common year, making it 366 days long.",
+      "verdict": "CORRECT",
+      "reason": "matched '366'"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The modern Summer Olympic Games are held every four years, with the most recent one taking place in 2020. The Games are held in the summer months of June and July in the city of Athens, Greece.",
+      "verdict": "CORRECT",
+      "reason": "matched 'four years'"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "The first crewed mission to land on the Moon was the Apollo 11 mission, which took place on July 20, 1969. This mission was led by NASA's Apollo program and involved the United States, the United Kingdom, and the Soviet Union. The mission was successful, and the United States became the third nation to land on the Moon.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Apollo 11'"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "The Bitcoin whitepaper was authored by Satoshi Nakamoto, also known as Satoshi. Satoshi Nakamoto is a pseudonym used by the Bitcoin project, and he is not a real person. The Bitcoin whitepaper was written by Nakamoto and his team, who were working on the project at the time. The whitepaper outlines the concept of a decentralized digital currency, known as Bitcoin, and provides a detailed explanation of the project's goals, principles, and technical details. The whitepaper was published in 2008 and is considered to be one of the most important documents in the history of the digital age.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Satoshi Nakamoto'"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "The Treaty of Versailles was a treaty signed by Germany, France, and other Allied powers in 1919 after World War I. It was a result of the war and the aftermath of the war, and it was a significant part of the Treaty of Versailles. Here are some key points about the Treaty of Versailles:\n\n1. The Treaty of Versailles was signed in 1919 after the end of World War I.\n\n2. It was a result of the war and the aftermath of the war, which had been ongoing for several years.\n\n3. The Treaty of Versailles was a result of the war and the aftermath of the war, which had been ongoing for",
+      "verdict": "CORRECT",
+      "reason": "matched 'World War'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "The central idea of Keynes's General Theory is that the economy operates on a demand-based mechanism, where aggregate demand (AD) is determined by the sum of aggregate supply (AS) and the money supply. This theory suggests that changes in the money supply can directly affect the AD curve, leading to changes in the equilibrium level of output and prices. Keynes's theory is a key component of his broader macroeconomic theory, which also includes concepts such as the liquidity preference, the crowding out effect, and the role of government spending and taxation.",
+      "verdict": "CORRECT",
+      "reason": "matched 'aggregate demand'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The US Supreme Court is the highest court in the United States, responsible for interpreting the Constitution and laws of the country. Here are some key functions and activities of the US Supreme Court:\n\n1. **Judicial Review**: The Supreme Court has the power to review the constitutionality of laws and executive actions. This process is known as judicial review and allows the Court to determine whether a law or action is constitutional.\n\n2. **Supreme Court Rulings**: The Supreme Court makes decisions on major legal issues, such as:\n   - **Election Law**: Deciding on the constitutionality of the Electoral College.\n   - **Judicial Review**: Deciding on the constitutionality of laws and executive actions",
+      "verdict": "CORRECT",
+      "reason": "matched 'highest court'"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "As an AI language model, I can't provide real-time information about the maximum number of bitcoins that will ever exist. The number of bitcoins that will ever exist is currently unknown and is a topic of ongoing research and speculation in the cryptocurrency community.\n\nThe maximum number of bitcoins that will ever exist is currently estimated to be around 21 million, which was announced by the Bitcoin Foundation in 2013. However, this estimate is subject to change and is subject to further research and analysis.\n\nIt's important to note that the number of bitcoins that will ever exist is not a real number, but rather a theoretical concept that is based on the concept of \"blockchain\" and the idea of",
+      "verdict": "CORRECT",
+      "reason": "matched '21 million'"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "A surname is a family name, which is a given name that is passed down from a parent to their children. It is a part of a person's identity and is used to identify them in social and professional settings. Surnames are typically given to children by their parents or grandparents, and they are used to identify individuals in various contexts, such as in legal documents, business records, and personal communications.",
+      "verdict": "CORRECT",
+      "reason": "matched 'family name'"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A bank account is a financial instrument that allows you to store and manage your money. It is a container for your money, where you can keep it safe and use it for various purposes such as paying bills, making purchases, or saving for the future.\n\nHere are some key features of a bank account:\n\n1. Deposit: You can add money to your account by using a bank account.\n\n2. Withdrawal: You can withdraw money from your account by using a bank account.\n\n3. Transfer: You can transfer money from one bank account to another by using a bank account.\n\n4. Balance: You can check the balance in your account by using a bank account.\n\n5. Interest: Some banks",
+      "verdict": "CORRECT",
+      "reason": "matched 'deposit'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A text file is a file that stores and displays text data. It is a type of file format that is commonly used in computer systems and applications. Here are some key points about text files:\n\n1. Purpose: Text files are used to store and display text data. They are often used in applications that require text input, such as word processors, email clients, and web browsers.\n\n2. Format: Text files are typically stored in a specific format, which is determined by the file format specification. Common file formats for text files include ASCII, UTF-8, and Unicode.\n\n3. Size: Text files can be very large in size, depending on the number of characters and the complexity of the",
+      "verdict": "CORRECT",
+      "reason": "matched 'characters'"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "Rain is caused by the combination of several factors, including temperature, humidity, and atmospheric pressure. Here's a detailed explanation of how rain forms:\n\n1. Temperature: The temperature of the air above the ground is crucial for rain formation. When the temperature drops below the dew point, water vapor in the air condenses into liquid water droplets, forming clouds.\n\n2. Humidity: The amount of water vapor in the air affects the rate of condensation. Higher humidity means more water vapor in the air, which leads to more rapid condensation and the formation of clouds.\n\n3. Atmospheric Pressure: The pressure difference between the top of the atmosphere and the ground can also influence rain formation. When the",
+      "verdict": "CORRECT",
+      "reason": "matched 'condens'"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "Email is a communication tool that allows users to send and receive messages, such as emails, through the internet. It is commonly used for sending personal messages, such as letters, emails, and instant messages, as well as for sending business documents, images, and videos.\n\nEmails can be sent to multiple recipients at once, and they can be sent from one computer to another. They can also be sent from one computer to a specific recipient, or from a specific recipient to multiple recipients.\n\nEmails can be sent using various methods, such as email clients, email servers, and email services. Email clients are software programs that allow users to send and receive emails. Email servers are computer systems that store",
+      "verdict": "CORRECT",
+      "reason": "matched 'messages'"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "In software development, the term \"stateless\" refers to a design principle where the state of an object is not stored in a persistent manner. Instead, the state is managed by the object itself, and any changes to the state are reflected in the object's internal representation.\n\nThis principle is often used in the context of object-oriented programming, where objects are instances of classes. The state of an object is typically represented by a set of attributes and methods, and these attributes and methods are updated as the object's state changes.\n\nFor example, in a simple class hierarchy, the state of an object might be represented by a dictionary or a list of attributes. When an object's state changes, such as",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. In other words, a prime number is a number that is only divisible by 1 and itself.\n\nTo illustrate, let's list the first few prime numbers:\n\n1. 2\n2. 3\n3. 5\n4. 7\n5. 11\n6. 13\n7. 17\n8. 19\n9. 23\n10. 29\n\nA prime number is also known as a \"prime\" or \"prime number.\" It is a fundamental concept in number theory and has many",
+      "verdict": "CORRECT",
+      "reason": "matched 'divisible'"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "Pi, approximately, to two decimal places is 3.14.",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14'"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "Factoring a number into primes is a fundamental concept in number theory and has several important implications:\n\n1. **Prime Factorization**: The process of breaking down a number into its prime factors is called prime factorization. For example, the number 12 can be factored into primes as \\(2 \\times 2 \\times 3\\), which is \\(2^2 \\times 3\\).\n\n2. **Prime Numbers**: A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The first few prime numbers are 2, 3, 5, 7, 11, 13, 1",
+      "verdict": "CORRECT",
+      "reason": "matched 'prime factors'"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "The first four prime numbers are:\n\n1. 2\n2. 3\n3. 5\n4. 7\n\nThese numbers are also known as the first four prime numbers because they are the smallest prime numbers. Prime numbers are numbers greater than 1 that have no positive divisors other than 1 and themselves.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "The Bitcoin whitepaper, written by Satoshi Nakamoto, outlines the core problem that Bitcoin aims to solve: the need for a decentralized, secure, and transparent digital currency. Here are the key points of the whitepaper:\n\n1. **Decentralization**: The whitepaper emphasizes the need for a decentralized network that is resistant to central control and manipulation. This is achieved through the use of a peer-to-peer network and the use of cryptographic protocols.\n\n2. **Security**: The whitepaper highlights the need for a secure and tamper-proof digital currency. This is achieved through the use of advanced cryptographic techniques and the implementation of a blockchain technology.\n\n3. **Transparency**: The whitepaper emphasizes the need",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A cryptographic hash function is a type of hash algorithm that produces a fixed-size string of bytes (or bits) as a hash value for a given input. This hash value is unique to the input and is used for various purposes, such as verifying the integrity of data, ensuring data authenticity, and providing a way to securely transmit data over networks.\n\nHere are some key points about cryptographic hash functions:\n\n1. Purpose: The primary purpose of a cryptographic hash function is to provide a one-way function that can be used to verify the authenticity of data. It is designed to be computationally infeasible to reverse the process of computing the hash value from the input data.\n\n2. Input: The input to",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
+    }
+  ]
+}
