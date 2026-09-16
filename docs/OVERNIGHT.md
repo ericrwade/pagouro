@@ -3,6 +3,31 @@
 Written 2026-09-16 for a ~24 hour window with Eric away from the machine. A session picking this
 up should read `START_HERE.md` and `docs/DECISIONS.md` first, then work this list top to bottom.
 
+## Run this on a cheap model
+
+**Switch to Sonnet before starting.** `/model sonnet`.
+
+Eric is on a $20 Claude plan. An unattended run on Opus with a 1M context window will exhaust the
+usage limit in a couple of hours and get very little done for the money. None of the four tasks
+below needs Opus:
+
+| Task | What it actually demands | Model |
+|---|---|---|
+| 1. Baselines | download, run a script, tabulate | Sonnet, or Haiku |
+| 2. Corpus design | careful reading and licence verification | Sonnet |
+| 3. SFT seeds | high-volume writing with judgement | Sonnet |
+| 4. Ablation pilot | mechanical | Sonnet, or Haiku |
+
+The design thinking this project needed is finished and written into `DECISIONS.md`. Escalate to a
+stronger model only for a genuine fork, and say so in the log when you do.
+
+**Also turn on `autoContinueAtUsageLimit`.** When the plan's limit is reached, the session waits for
+the reset and resumes instead of stopping dead. Over a 24-hour window that turns one usage window
+into several. Without it the run simply ends whenever the limit lands.
+
+This matters less than it sounds, because the guardrails already require committing continuously.
+Whenever the session stops, nothing is lost and the next one resumes from the last commit.
+
 ## Hard guardrails — these are not negotiable while unattended
 
 1. **Spend no money. Zero.** No paid API calls, no GPU rental, no purchases, no subscriptions.
@@ -81,6 +106,8 @@ tree clean and committed.
 If the machine will sit idle afterwards, restart the miner.
 
 ## The prompt to start this
+
+First `/model sonnet`, then:
 
 > Work `docs/OVERNIGHT.md` top to bottom under its guardrails. Spend no money, change nothing
 > irreversible, commit continuously. When a task blocks, write down why and move to the next one.
