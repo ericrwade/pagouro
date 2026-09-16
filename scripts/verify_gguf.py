@@ -27,7 +27,9 @@ import torch
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-LLAMA_CLI = os.path.join(ROOT, "tools", "llamacpp", "llama-cli.exe")
+# llama-cli is conversational in recent builds; llama-completion does raw continuation.
+LLAMA_CLI = os.path.join(ROOT, "tools", "llamacpp", "llama-completion.exe")
+ANSI = re.compile("\x1b\[[0-9;]*m")   # escape sequence, never a literal ESC byte
 
 
 def torch_greedy(ckpt_path: str, tokenizer_path: str, prompt: str, n: int):
@@ -56,12 +58,12 @@ def llamacpp_greedy(gguf_path: str, prompt: str, n: int):
     cmd = [
         LLAMA_CLI, "-m", gguf_path, "-p", prompt, "-n", str(n),
         "--temp", "0", "--top-k", "1", "--seed", "1",
-        "-no-cnv", "--no-warmup", "-ngl", "0", "--simple-io",
+        "--no-warmup", "-ngl", "0",
     ]
     res = subprocess.run(cmd, capture_output=True, text=True, timeout=300,
                          encoding="utf-8", errors="replace")
-    txt = res.stdout or ""
-    # llama-cli echoes the prompt then the continuation.
+    txt = ANSI.sub("", res.stdout or "")   # the binary colourises the echoed prompt
+    # It echoes the prompt, then the continuation.
     idx = txt.find(prompt)
     cont = txt[idx + len(prompt):] if idx >= 0 else txt
     cont = re.split(r"\n\s*\[end of text\]|\nllama_perf|\n> ", cont)[0]
