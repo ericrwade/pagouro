@@ -47,3 +47,6 @@ My_Claude_Conversation.txt
 
 # Third-party binaries: downloaded, never committed (git history is permanent)
 tools/llamacpp/
+
+# Baseline models: downloaded, not committed
+data/baselines/
