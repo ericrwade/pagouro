@@ -238,6 +238,8 @@ def report() -> int:
             continue
         with io.open(os.path.join(RESULTS_DIR, fn), encoding="utf-8") as f:
             r = json.load(f)
+        if "model_label" not in r or "set" not in r:
+            continue          # e.g. offline_audit.json lives here too
         rows.setdefault(r["model_label"], {})[r["set"]] = r
     print(f"\n{'MODEL':<22} {'BLUFF (lower better)':<34} {'CALIBRATION':<34} DEFLECTION")
     print("-" * 118)
