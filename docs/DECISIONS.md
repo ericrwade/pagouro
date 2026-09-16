@@ -73,6 +73,25 @@ threefold parameter increase.
 T-5 is kept as a floor rather than deleted, because training hard for abstention is precisely how a
 model turns into a hedger, and this metric would catch it. Amendment recorded in `TARGETS.md`.
 
+### D-29 — Every ablation arm is scored on ONE shared held-out set
+**2026-09-16, learned from the pilot.** The M4 pilot scored each arm on a validation slice held out
+from *its own* corpus, so arm A was judged on prose and arm B on prose-plus-code. The perplexities
+are not comparable, and any difference confounds "did the slice help reasoning" with "is that slice
+easier to predict than prose" — where the second effect is almost certainly the larger one.
+
+**Binding for M4:**
+1. One shared validation set, drawn from a source used by **no** training arm. Every arm scored on
+   identical text.
+2. Lead with the frozen suite, not perplexity. It is shared across models by construction, which
+   sidesteps the problem entirely. Perplexity is a secondary sanity check.
+3. Multiple seeds per arm. At small scale, seed variance can exceed the effect being measured.
+4. Pre-register what counts as a real difference before seeing any curve, the way `TARGETS.md` does
+   for the suite.
+
+**Why this is worth a decision entry:** the flawed comparison would have produced two descending
+curves, one slightly lower, and a confident caption. Nothing about the output would have looked
+wrong. See `docs/ABLATION_PILOT.md`.
+
 ### D-28 — Never accept a licence agreement on Eric's behalf
 **2026-09-16.** The BigCode family, including The Stack, is gated behind an agreement on the Hub.
 An unattended session stopped rather than working around it.
