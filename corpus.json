@@ -19,6 +19,30 @@
       "sha256_processed": "afd9e36a1d543aeea688368fc08a1bbc0399e412e83bc3de691dad78a5e562fe",
       "file": "data/raw/fineweb-edu-sample-10BT.txt",
       "milestone": "M1 pipeline check"
+    },
+    {
+      "slug": "gutenberg-anthem",
+      "name": "Anthem — Ayn Rand",
+      "source": "Project Gutenberg",
+      "gutenberg_id": 1250,
+      "url": "https://www.gutenberg.org/ebooks/1250",
+      "license": "Public domain",
+      "public_domain_basis": "First published 1938; US copyright not renewed, so the work entered the public domain in the United States. Verify jurisdiction before redistributing outside the US.",
+      "first_published": "1938",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-16",
+      "retrieved_utc": "2026-09-16T23:52:49+00:00",
+      "characters": 110186,
+      "estimated_tokens": 27546,
+      "cleaning": "Project Gutenberg header and footer removed; lines mentioning the PG trademark dropped. Only the trademark is restricted; the text is public domain (D-32).",
+      "cleaning_detail": {
+        "header_bytes_removed": 850,
+        "footer_bytes_removed": 18789,
+        "trademark_mentions_in_body": 0
+      },
+      "sha256_processed": "dbd711c710a45677d2d0a35be147c323ecb80e4d1df21893f93626be5f9e87f7",
+      "file": "data/raw/gutenberg/anthem.txt",
+      "slice": "domain canon"
     }
   ]
 }

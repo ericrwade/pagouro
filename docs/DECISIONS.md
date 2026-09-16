@@ -21,7 +21,6 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 | O-10 | Disclosure text for the three chains | release | Chains settled in D-36. Still needs Eric's holdings disclosure and the published cost comparison. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
 | O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
-| O-16 | Include Rand's *Anthem*, or just note her absence as a copyright constraint? | corpus, low stakes | Only *Anthem* is public domain; the major novels are not. See LABORISM_AND_THE_CANON.md |
 | O-3 | Data-retention posture on OpenRouter | confidential work only | Review <https://openrouter.ai/settings/privacy> if anything sensitive is ever sent. |
 | O-6 | Enable the aixbt crypto MCP? | only if needed | Verified working 2026-09-16; public tools need no key. Costs context every session. See `MCP_AIXBT.md`. |
 
@@ -99,6 +98,46 @@ enters anything.** Ideas are restated in fresh language, which is what makes the
 than reproduced.
 
 Reading it produced a significant correction to D-10; see `docs/LABORISM_AND_THE_CANON.md` and D-37.
+
+### D-41 — Anthem is in; the Gutenberg method is proven
+**2026-09-16, Eric's call.** Ayn Rand's *Anthem* (1938) ingested as the first book in the domain
+canon. 110,186 characters, ~27,500 tokens.
+
+First real use of D-32's method: fetched from Gutenberg, header and footer stripped, zero remaining
+trademark mentions, and a ledger row that records **why** it is public domain — US copyright not
+renewed — rather than citing Gutenberg as the authority. "It was on Gutenberg" is a citation of
+someone else's conclusion, not a legal basis.
+
+`scripts/fetch_gutenberg.py` also enforces D-34: it refuses any work first published in 2022 or
+later.
+
+Her major novels remain in copyright and stay out. The same rule that excludes Eric's own book
+excludes *Atlas Shrugged*.
+
+### D-42 — Arweave keeps the canonical storage slot; Quilibrium ships as a first-class mirror
+**2026-09-16.** Assessed against Quilibrium's own documentation; see `docs/QSTORAGE_VS_ARWEAVE.md`.
+
+**Not a quality judgement — a category one.** QStorage describes itself as "an S3-compatible
+decentralized object storage service… with built-in encryption and censorship resistance." Every
+word of that is good and none of it is a permanence claim.
+
+The requirement is unusual: a stranger fetches a 700 MB file in ten years and checks it against a
+Bitcoin-anchored hash. Nobody will be renewing a subscription, because the project promises no
+maintenance. That is a permanence requirement, not a storage one.
+
+Three blockers, all currently unpublished in the docs: **the permanence model**, **pricing**, and
+**a durability guarantee**. A claim that cannot be quantified cannot enter a ledger whose value is
+that a stranger can check it. Separately, built-in encryption is a feature mismatch — the release is
+public by design, and a decade-surviving key would be a new single point of failure in a design
+built to remove them.
+
+**The mirror role is real, not a consolation.** In the threat model that matters most — someone in a
+hostile network fetching Pagouro from wherever they can reach — more independent mirrors is the most
+valuable property after the anchored hash, and censorship resistance is exactly where Quilibrium is
+aimed. The mirror inherits the hash, so it is verifiable regardless of host.
+
+Revisit if permanence and pricing terms are published. Switching on measured evidence would be a
+better story than choosing on affinity now.
 
 ### D-40 — Quilibrium joins as a documented mirror
 **2026-09-16, Eric's call.** He rates the project and its founder highly. Under D-14's rule, extra
