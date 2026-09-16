@@ -73,4 +73,29 @@ exactly the property we needed to verify before freezing.
 
 ## Amendments
 
-*(none — append dated entries here if a target ever changes, and never edit the table above)*
+### 2026-09-16 — T-5 demoted from headline to floor, on evidence
+
+**What changed:** T-5 (deflection ≤ 25%) keeps its number but loses its status. It is no longer
+presented as a differentiator; it is a guard against over-correcting on T-1.
+
+**Why:** the baseline run answered the question this file asked in advance. Open instruct models do
+not deflect on contested economics. SmolLM2-1.7B scores 3.6% and Qwen2.5-1.5B 7.1%, both already
+far inside the target. There is nothing to win against models of our own size class.
+
+The deflection claim in D-11 was always framed against **commercial frontier** models, which do
+hedge on these subjects. That comparison has not been run — it needs a paid API call, which the
+unattended guardrails forbade. Until it is run, no claim about deflection should appear in any
+public material.
+
+**What did not change:** the number, or the requirement to publish it. T-5 stays as a floor because
+training hard for abstention is exactly how a model becomes a hedger, and this is the metric that
+would catch it.
+
+**T-1 was also assessed and stands unchanged.** Against a 53.3% median it is a 2.6x improvement at a
+tenth of SmolLM2's parameter count. Ambitious, as intended.
+
+See `BASELINES.md` for the full run and `BUILD_LOG.md` for the reasoning.
+
+---
+
+*(append dated entries here if a target ever changes, and never edit the table above)*

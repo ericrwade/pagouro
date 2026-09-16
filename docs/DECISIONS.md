@@ -54,6 +54,36 @@ is not evidence.
 loss continued at 4.80 instead of jumping back to 9.0, optimizer state restored intact. Repeat this
 proof before any rented-GPU run, where a silent resume failure costs real money.
 
+### D-27 — Deflection is a secondary property, not half the pitch
+**2026-09-16, measured.** Amends D-11 on evidence from the baseline run.
+
+Open instruct models already engage with contested economics. SmolLM2-1.7B deflects on 3.6% of the
+set and Qwen2.5-1.5B on 7.1%, both far inside the 25% target. There is nothing to win against models
+of our own size class.
+
+D-11's deflection claim was always aimed at **commercial frontier** models, which do hedge on these
+subjects. That comparison has not been run: it needs a paid API call. **Until it is run, no public
+material should claim a deflection advantage.**
+
+**The bluff rate is the differentiator, and it is real.** Baselines fabricate on ~53% of
+unanswerable questions while answering 87-93% of answerable ones. They are not confused about what
+they know; they simply do not distinguish the two cases. Scale barely helps: 6.7 points across a
+threefold parameter increase.
+
+T-5 is kept as a floor rather than deleted, because training hard for abstention is precisely how a
+model turns into a hedger, and this metric would catch it. Amendment recorded in `TARGETS.md`.
+
+### D-28 — Never accept a licence agreement on Eric's behalf
+**2026-09-16.** The BigCode family, including The Stack, is gated behind an agreement on the Hub.
+An unattended session stopped rather than working around it.
+
+Accepting a licence is a commitment by the account holder, and for this project it also determines
+what the corpus ledger has to say. That is Eric's to make, always, no matter how routine the click
+looks.
+
+Generalises: gated datasets, terms of service, and anything requiring assent are a hard stop, the
+same class as spending money.
+
 ### D-26 — `BUILD_LOG.md` is a deliverable, appended every session
 **2026-09-16.** A running narrative of the build, written for readers rather than for sessions.
 Eric may self-publish it.

@@ -45,19 +45,25 @@ Fix anything it flags before starting work.
 ## 4. Current state
 
 ```
-STATUS AS OF 2026-09-16
-  Phase:          design locked, build NOT started
-  Brief:          read; partly superseded (see its precedence notice)
-  Repo:           not created yet — will live under github.com/ericrwade, private first
-  GitHub:         gh 2.101.0 authenticated as ericrwade; git identity on noreply address
-  OpenRouter:     correct account, funded, DeepSeek v4.1-flash verified working
-  Target:         ~1B params, ~100B tokens, ~$850 on rented H100s (likely Pearl/PRL)
+STATUS AS OF 2026-09-16 (end of unattended window)
+  Milestones:     M1 complete (pipeline). M2 complete (evals frozen + baselined).
+  Repo:           13 commits, local only. NOT pushed - no remote created yet.
+  BASELINES:      small instruct models bluff on ~53% of unanswerable questions
+                  while answering 87-93% of answerable ones. Premise confirmed.
+                  T-1 (bluff <=20%) is ambitious and stands. T-5 DEMOTED to a
+                  floor - open models already engage; see TARGETS.md amendment.
 
-  BLOCKING:       O-7 — is hosted-API teacher output licensed for training use?
-                  Blocks the entire synthetic-data / SFT stage. Resolve in writing.
+  NEEDS ERIC:
+    O-7   teacher licence for synthetic SFT data      blocks the SFT stage
+    O-11  share-alike weights? Wikipedia + StackEx    blocks the full run mix
+          are ~30% of the mixture and both CC BY-SA
+    D-28  accept The Stack's terms on the Hub, or     blocks the code slice
+          use a non-gated alternative
+    O-9   tokenizer choice (<65,536 vocab)            blocks the real run
+    O-8   publisher permission for the book
 
-  Next action:    Milestone 1 (pipeline check) — see brief §12, adjusted by D-6/D-7.
-                  Tokenizer choice (O-9) must be settled before a config is written.
+  Next action:    read evals/BASELINES.md, then decide O-11. It may change the
+                  corpus mixture, so it comes before M3 data work.
 ```
 
 ## 5. The things most likely to go wrong

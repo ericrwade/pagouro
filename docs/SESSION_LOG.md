@@ -13,6 +13,45 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-16 (unattended window) — M2 baselined, corpus planned, SFT seeded
+**Model:** Opus 5 (1M context). NOTE: the plan says run this on Sonnet; Eric started it on Opus.
+**Goal:** Work docs/OVERNIGHT.md top to bottom under its guardrails.
+**Guardrails held:** no money spent, nothing irreversible, ~2.5 GB downloaded of a 5 GB budget,
+committed after every task, stopped at blockers rather than improvising.
+
+**Task 1 DONE - baselines (M2 acceptance now met).** Three Apache-2.0 instruct models scored on
+the frozen suite via their own chat templates, idle machine:
+  Qwen2.5-0.5B  bluff 56.7% | calib 86.7% | deflect 32.1%
+  Qwen2.5-1.5B  bluff 53.3% | calib 90.0% | deflect  7.1%
+  SmolLM2-1.7B  bluff 50.0% | calib 93.3% | deflect  3.6%
+Premise confirmed: they fabricate on ~half of unanswerable questions while answering 87-93% of
+answerable ones. Scale barely helps. Wrote evals/BASELINES.md.
+
+**Task 2 DONE (design only) - docs/CORPUS_PLAN.md.** Every licence checked at source.
+  CLEAR: FineWeb-Edu, Dolma (both ODC-By).
+  BLOCKED: all BigCode/The Stack (gated, needs Eric to accept terms - D-28);
+           codeparrot/github-code-clean (Apache but built on a loading script the current
+           datasets library dropped); Project Gutenberg (no mirror declares a licence).
+  O-11 now concrete: Wikipedia CC BY-SA 3.0+GFDL, Stack Exchange CC BY-SA 4.0, ~30% of the mix.
+
+**Task 3 DONE - sft/abstention_seed.jsonl, 60 hand-written examples (30/30 balanced).**
+Short of the 80-150 asked for; these are genuinely hand-written and the script makes expansion
+cheap. The overlap guard FAILED on first build with 5 collisions against the frozen evals, one
+exact. Training on the test would have invalidated every published number. All five replaced.
+
+**Task 4 IN FLIGHT - ablation pilot.** Two arms, shared tokenizer, identical token budget and
+seed, one variable (15% code substituted). Arm A past step 749/1200 at handoff.
+
+**Corrections made:**
+- score_bluff rewritten after Qwen-0.5B answered "capital of Verdania" with "Verdania itself" and
+  scored HEDGE. All models re-run after the fix.
+- train.py --log patch silently missed one reference; both ablation arms would have written to one
+  file. Caught by reading the file back.
+- T-5 demoted to a floor (D-27) with a dated amendment in TARGETS.md. Not edited in place.
+
+**Open / next:** Eric decides O-11 (may change the mixture, so it precedes M3), D-28 (The Stack
+terms), O-7, O-9, O-8. Then finish the ablation write-up and start M3.
+
 ## 2026-09-16 (evening) — MILESTONE 1 COMPLETE
 **Model:** Opus 5 (1M context)
 **Goal:** Execute milestone 1: end-to-end pipeline at toy scale in a fresh git repo.
