@@ -1,0 +1,9 @@
+{
+  "verdict": "PASS",
+  "utc": "2026-09-16T19:07:51+00:00",
+  "command": "C:\\Users\\Eric Wade\\PAGOURO_BUILD\\tools/llamacpp/llama-completion.exe -m data/gguf/pagouro-m1-q8_0.gguf -p hello -n 24 --temp 0 -ngl 0 --no-warmup",
+  "samples": 61,
+  "elapsed_s": 61.5,
+  "connections_observed": [],
+  "limitation": "Observes sockets opened by the process tree. Pair with an external packet capture for a release audit."
+}

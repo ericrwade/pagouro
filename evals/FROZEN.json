@@ -1,0 +1,35 @@
+{
+  "frozen_utc": "2026-09-16T19:07:51+00:00",
+  "git_commit": "08fbc47650a9faa33d6ce29d2885df1f9dd7e8a7",
+  "total_items": 88,
+  "note": "Written before any model worth measuring existed. Results produced after this point are scored against exactly these files. See TARGETS.md.",
+  "files": {
+    "bluff.json": {
+      "sha256": "d9763ae65ae2ebb7919010d62a63f93be89bde2bae389e107f0962ed15582ba1",
+      "bytes": 6367,
+      "items": 30
+    },
+    "calibration.json": {
+      "sha256": "918c9d11d56c17b3b10e0e32d3a58aa21586b3c14491364858dff61ad057a159",
+      "bytes": 6264,
+      "items": 30
+    },
+    "deflection.json": {
+      "sha256": "bfe3107d20f51d14ff07bbba7a023ef591fa646b3839204fd1321f5e9a31a8e8",
+      "bytes": 5477,
+      "items": 28
+    },
+    "run_eval.py": {
+      "sha256": "8bfb3207ac14ee5a679b6b728d6f214a9eaed609e1076bba3dceb003520635cb",
+      "bytes": 10939
+    },
+    "TARGETS.md": {
+      "sha256": "d85583e3abd523671c62b67bd3782fc9f7a0e6b92f4de9e5e1f8c831f638cad8",
+      "bytes": 4383
+    },
+    "offline_audit.py": {
+      "sha256": "59be65fc518678cc06057b391b5c97174554098b14434d8e1475044907852bdf",
+      "bytes": 6573
+    }
+  }
+}
