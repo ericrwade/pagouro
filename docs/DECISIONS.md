@@ -87,10 +87,16 @@ easier to predict than prose" — where the second effect is almost certainly th
 3. Multiple seeds per arm. At small scale, seed variance can exceed the effect being measured.
 4. Pre-register what counts as a real difference before seeing any curve, the way `TARGETS.md` does
    for the suite.
+5. **Match arms on TOKEN count, never on bytes or characters.** The pilot matched on characters;
+   code tokenizes more densely than prose, so arm B ended up with 6% more tokens from the same
+   character budget. Any slice with a different tokenization rate — code, maths, non-English,
+   markup — breaks a byte-matched comparison invisibly.
 
-**Why this is worth a decision entry:** the flawed comparison would have produced two descending
-curves, one slightly lower, and a confident caption. Nothing about the output would have looked
-wrong. See `docs/ABLATION_PILOT.md`.
+**Why this is worth a decision entry:** the flawed comparison DID produce exactly that. Arm B
+scored 0.156 worse on validation loss, which a naive write-up would report as "adding 15% code
+raised perplexity by 17%, so code hurts small models." That conclusion is unsupported and entirely
+believable. The pilot cost a weekend of CPU and caught two invisible confounds before M4 spends
+money on runs where the answer would count. See `docs/ABLATION_PILOT.md`.
 
 ### D-28 — Never accept a licence agreement on Eric's behalf
 **2026-09-16.** The BigCode family, including The Stack, is gated behind an agreement on the Hub.

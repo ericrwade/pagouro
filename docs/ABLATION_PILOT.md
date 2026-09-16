@@ -82,10 +82,52 @@ silently failed to patch one of two references, so both arms would have appended
 The curves would have interleaved into a single log and the comparison would have been nonsense that
 looked fine. Caught by reading the file back rather than trusting the edit had applied.
 
+## Second flaw, found only when the numbers arrived: matched on the wrong unit
+
+The corpora were matched by **character count**. They should have been matched by **token count**.
+
+| Arm | Tokens | Chars per token |
+|---|---|---|
+| A, web only | 25,063,815 | 3.804 |
+| B, +15% code | 26,577,403 | 3.587 |
+
+Code tokenizes more densely than prose, so the same number of characters produced **6% more tokens**
+in arm B. Both arms trained for the same number of steps and therefore saw the same number of tokens
+*during* training, but drew them from differently sized pools, so arm A repeated its data slightly
+more often.
+
+The effect here is small. The lesson is not: **match corpora on tokens, never on bytes or
+characters.** Any slice that tokenizes at a different rate — code, mathematics, non-English, markup
+— breaks a byte-matched comparison, and it breaks it invisibly.
+
+This one was not anticipated. It surfaced only because the tokenizer's chars-per-token figure was
+printed next to the arms and the two numbers did not match. Had that not been on screen, nothing
+would have flagged it.
+
 ## Numbers
 
-Recorded for completeness. **Do not cite these.** See the flaw above: the arms were scored on
-different validation sets, so the comparison is invalid by construction.
+Recorded for completeness. **Do not cite these.** Both flaws above apply.
 
-*(Filled in when both arms complete; see `runs/ablation_a_web.jsonl` and `runs/ablation_b_code.jsonl`
-for the raw curves.)*
+| Arm | Final train loss | Best val loss | Val perplexity |
+|---|---|---|---|
+| A, web only | 5.0791 | 5.1360 | 170.0 |
+| B, +15% code | 4.9786 | **5.2916** | 198.7 |
+
+Validation curves, every 250 steps:
+
+```
+A  6.077  5.586  5.347  5.198  5.136
+B  6.267  5.751  5.437  5.337  5.292
+```
+
+Arm B looks worse by 0.156 in validation loss. **This does not mean code hurt the model.** It is
+exactly the confound predicted above: B's validation set contains code, code is harder to predict
+than prose, and so B is being graded on a harder exam. The lower *training* loss in arm B (4.979
+against 5.079) points the same way — code is easier to fit in-distribution and harder to generalise
+across.
+
+A naive write-up would have reported "adding 15% code raised perplexity by 17%, so code hurts small
+models." That conclusion is unsupported by this experiment and would have been completely
+believable.
+
+Raw curves: `runs/ablation_a_web.jsonl`, `runs/ablation_b_code.jsonl`.
