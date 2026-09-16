@@ -1,0 +1,9 @@
+# Shell scripts must keep LF or they break on Linux and macOS.
+*.sh text eol=lf
+*.py text eol=lf
+# Default: normalize text in the repo, let checkout decide locally.
+* text=auto
+# Binary
+*.gguf binary
+*.bin binary
+*.safetensors binary

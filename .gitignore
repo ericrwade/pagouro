@@ -1,0 +1,46 @@
+# Secrets — never commit
+API_KEYS*.txt
+*API_KEY*
+*_KEYS_*.txt
+*.secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+.pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Local scratch
+scratch/
+*.local
+
+# Build artifacts and large data
+data/
+checkpoints/
+runs/
+*.gguf
+*.safetensors
+llama.cpp/
+
+# Eric's private working files - decide per file before committing
+My_Claude_Conversation.txt
