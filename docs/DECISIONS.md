@@ -20,7 +20,6 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 |---|---|---|---|
 | O-8 | Publisher permission for Eric's book | its inclusion | Ask narrow: training corpus plus Q&A derivation, with ledger attribution. NOT verbatim retrieval redistribution. See D-15. |
 | O-14 | Confirm: restrict the corpus to material published BEFORE generative AI? | corpus scope | Eric's proposal. Would be a distinctive, checkable claim nobody else makes. See docs/PRE_LLM_CORPUS.md |
-| O-9 | Which small-vocab tokenizer | milestone 1 config | Custom BPE with tool tokens, or an existing permissive one under 65,536. See D-7. |
 | O-10 | Which three chains, and the disclosure text | release | Merit-based pick, full holdings disclosure, published cost comparison. Cap at three. See D-14. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
 | O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
@@ -71,6 +70,39 @@ threefold parameter increase.
 
 T-5 is kept as a floor rather than deleted, because training hard for abstention is precisely how a
 model turns into a hedger, and this metric would catch it. Amendment recorded in `TARGETS.md`.
+
+### D-33 — Tokenizer: custom BPE, ~32k vocab, digits split individually
+**2026-09-16.** Closes O-9. Answers Eric's question, "what gives best reasoning and fewest
+hallucinations?" — with the honest caveat that those are two different questions and the tokenizer
+only answers one of them.
+
+**Specification:**
+
+| Property | Value | Why |
+|---|---|---|
+| Vocabulary | ~32,768 | Under the uint16 ceiling (D-7); at 1B params the embedding table is ~7% of the model rather than 39% |
+| Digits | **each digit its own token** | The one tokenizer choice with a measurable effect on reasoning |
+| Byte-level fallback | yes | No unknown token can ever appear; every input is representable |
+| Whitespace | preserved, code-friendly | Indentation is semantic in the code slice |
+| Reserved | chat turns and tool calls, from day one | Retrofitting these later would invalidate the corpus |
+
+**On reasoning — digit splitting is the real answer.** A tokenizer that merges "1234" into one or
+two tokens forces the model to memorise arithmetic on arbitrary chunks. Splitting every digit gives
+a consistent positional representation and measurably improves arithmetic and numerical reasoning.
+It costs a few tokens of sequence length on numbers and nothing anywhere else.
+
+**On hallucination — the tokenizer does not help, and claiming otherwise would be dishonest.**
+Abstention is a behaviour, learned in fine-tuning from the abstention examples and enforced by the
+frozen suite. No vocabulary choice makes a model know what it does not know.
+
+The one indirect contribution: a vocabulary this size leaves ~93% of the parameter budget for the
+transformer rather than the embedding table, and capability helps everything downstream including
+the ability to learn abstention reliably.
+
+**Why train our own rather than adopt one:** every off-the-shelf candidate is either too large
+(Qwen at ~152k), lacks digit splitting, or lacks tool tokens. Training a BPE is an afternoon and is
+already implemented in `scripts/train_tokenizer.py`. The cost is giving up logit distillation from a
+vocabulary-matched teacher; synthetic-data distillation, the larger lever, is unaffected.
 
 ### D-32 — Project Gutenberg is solved: strip the header, the text is public domain
 **2026-09-16.** Verified against Project Gutenberg's own permissions page, quoted:
