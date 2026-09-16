@@ -40,6 +40,11 @@ until Eric says otherwise.
   row. When rights are unclear the answer is no. The entire differentiator is that the claim holds
   up under inspection, and one unlicensed source destroys it.
 - **Log decisions as they happen**, in `docs/DECISIONS.md`, not at the end of the session.
+- **Append to `BUILD_LOG.md` at the end of every session.** It is the narrative story of the build,
+  written for readers rather than for sessions, and Eric may self-publish it. Append only, oldest
+  first, never revise an earlier entry. **Keep the mistakes in, especially your own** — a build log
+  that records only the parts that worked is marketing, and this project's whole pitch is that its
+  claims survive inspection. Numbers must be measured, not remembered.
 
 ## Inherited rules from the global CLAUDE.md that bite hardest here
 

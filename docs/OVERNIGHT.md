@@ -100,7 +100,8 @@ Shake out M4's methodology cheaply before it costs anything.
 ## End of window
 
 Write a session entry in `docs/SESSION_LOG.md` covering what was done, what was verified, what
-failed, and the single next action. Update the status block in `START_HERE.md`. Leave the working
+failed, and the single next action. **Then append a narrative entry to `BUILD_LOG.md`** — the
+readable story of the window, including anything that went wrong. Update the status block in `START_HERE.md`. Leave the working
 tree clean and committed.
 
 If the machine will sit idle afterwards, restart the miner.

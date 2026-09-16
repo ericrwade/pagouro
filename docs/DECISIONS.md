@@ -54,6 +54,25 @@ is not evidence.
 loss continued at 4.80 instead of jumping back to 9.0, optimizer state restored intact. Repeat this
 proof before any rented-GPU run, where a silent resume failure costs real money.
 
+### D-26 — `BUILD_LOG.md` is a deliverable, appended every session
+**2026-09-16.** A running narrative of the build, written for readers rather than for sessions.
+Eric may self-publish it.
+
+**Why it matters more than it looks:** the design conversation concluded that "the build log is the
+product" — that a researcher who builds a verifiable open model and documents the whole thing is
+doing what researchers usually only write about, and that the log is the most likely path to a real
+audience. It is also the natural home for the first-hand measurements nobody else has: what the
+rented GPU actually cost, what Arweave actually charged, whether Strix Halo was viable.
+
+**Rules, enforced:**
+- **Append only, oldest first.** Never revise an earlier entry; corrections are later entries.
+- **The mistakes stay in, especially the AI's own.** A log recording only successes is marketing,
+  and the project's entire pitch is that its claims survive inspection.
+- **Numbers are measured, not remembered**, and the commit that produced them is in the repo.
+
+Appending is now part of the end-of-session ritual in `CLAUDE.md`, `START_HERE.md` and
+`OVERNIGHT.md`.
+
 ### D-25 — DeepSeek is the default, not the critical path
 **2026-09-16.** Eric reports DeepSeek is heavily congested and "grindingly slow" (two of three top
 trending stories on his X feed). This changes nothing structural and blocks nothing today.

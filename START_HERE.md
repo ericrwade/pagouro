@@ -72,6 +72,7 @@ STATUS AS OF 2026-09-16
 ## 6. End-of-session ritual
 
 1. Append an entry to `docs/SESSION_LOG.md` (template at the top of that file).
-2. Update the status block in section 4 above.
-3. Add any new settled choices to `docs/DECISIONS.md`, with the reasoning.
-4. Commit and push if a repo exists. Confirm `.env` is not in the diff.
+2. Append a narrative entry to `BUILD_LOG.md` — the story, for readers. Mistakes included.
+3. Update the status block in section 4 above.
+4. Add any new settled choices to `docs/DECISIONS.md`, with the reasoning.
+5. Commit and push if a repo exists. Confirm `.env` is not in the diff.
