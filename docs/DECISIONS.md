@@ -816,3 +816,39 @@ prompt off. Verified against the exact prompt that failed.
 characters a model may legitimately emit (curly quotes, em dashes). `tutor.py` and `run_eval.py`
 both reconfigure stdout to UTF-8 with a safe fallback, so a display limitation can never crash a
 live session again.
+
+### D-46 — Real pretrain OOM'd at seq_len=1024/batch=12; config reduced, pipeline hardened with fail-fast checks
+**2026-09-16, session 2.** The first real pretrain run was killed by the OS ("system is running low
+on memory") around step 80 of a planned 3000. `master_pipeline.sh` had no `set -e`, so every
+downstream stage ran anyway against missing files and silently produced a "complete"-looking
+package -- llama-cli.exe, DLLs, docs, a working `PAGOURO.bat` -- with no model file inside it, and
+copied that broken package over the USB drive. Caught only because the assembled state was
+inspected before trusting the "PIPELINE COMPLETE" line; the USB briefly held a launcher that would
+have crashed on the first double-click.
+
+**Root cause, isolated by bisecting on seq_len alone with everything else held fixed:** not a
+memory leak. At `dim=512, layers=14, heads=8, vocab=32768, seq_len=1024, batch=12`, the
+non-checkpointed backward pass must retain all 14 layers' attention score matrices plus a
+32768-wide logits tensor simultaneously; measured peak was 13GB+ and still climbing when killed at
+~10-15 steps in isolation. The identical loop at `seq_len=256` stayed flat around 2GB over 80
+steps with zero growth trend -- confirming the memory scales with seq_len² (attention) rather than
+leaking per-step, since a true leak would have shown growth at the small seq_len too, just slower.
+
+**Fix:** `seq_len` 1024 -> 512, `batch_size` 12 -> 8 for both the pretrain and anneal stages,
+verified stable (flat ~2.6-2.8GB RSS, no growth trend) over a 120-step isolated run before
+relaunching the real pipeline. Step counts scaled up (pretrain 3000 -> 9000, anneal +350 -> +1050)
+to cover the same total token budget the original plan did, since throughput measured about the
+same either way (~880-1000 tok/s) -- this model's cost at this size is not attention-dominated, so
+the fix traded peak memory for step count at roughly no wall-clock cost, not a speed-for-safety
+compromise. `master_pipeline.sh` also got `set -e` and an explicit `require <file>` check after
+every stage that produces a file a later stage depends on, so a future failure anywhere in the
+chain halts the run instead of cascading through fake success.
+
+**Also worth naming:** immediately after relaunch, `Get-CimInstance Win32_Process` showed what
+looked like two concurrent training processes on identical command lines -- alarming, since two
+writers on the same checkpoint file would corrupt it. Investigation showed this is normal: the
+venv's `python.exe` is a launcher shim (0 CPU, 0 RSS, 1 thread) that re-execs the base Python 3.12
+interpreter as its actual child (all the CPU, all the memory, 45 threads). Worth a false-alarm
+entry precisely because the failure mode it would have caused -- silent checkpoint corruption --
+is the same *class* of danger as this entry's main bug, and the check that ruled it out (comparing
+CPU-seconds and RSS between the two PIDs, not just seeing two PIDs) is the reusable lesson.

@@ -783,5 +783,73 @@ and won't be pretended at here before it is. That is what tomorrow is for.
 
 ---
 
+### The night it actually crashed
+
+It did not make it to morning quietly. Some hours into what was meant to be an unattended run, the
+operating system killed the whole thing outright, with a message amounting to: this machine is
+running low on memory. That is a plain, honest failure, and the story of finding it is worth
+telling in full, because the failure that came after it — the one that almost went unnoticed — is
+the more important of the two.
+
+The training script itself was innocent of anything dramatic. It had gotten only about eighty
+steps into a run of three thousand when it was killed, with no checkpoint yet saved to show for it.
+The first instinct was to suspect a leak — memory quietly climbing, never released, the classic
+shape of a bug. A careful, isolated test seemed to confirm it: the exact same loop, fed synthetic
+random data instead of the real tokenized corpus, sat rock steady around two gigabytes for as long
+as it ran. Feed it the real data instead, and memory rocketed past thirteen gigabytes within the
+first handful of steps. That looked, for a while, like proof that something in the data-loading
+path itself was broken.
+
+It wasn't. The actual variable was sequence length, not data source, and the isolated test had
+simply never controlled for it. Run the identical loop at a shorter sequence length — with the real
+data, nothing swapped out — and memory sat flat for a hundred and twenty steps straight, no growth
+at all. The honest arithmetic makes the reason obvious in hindsight: attention's memory cost grows
+with the square of how much context a model looks at, multiplied across every layer, multiplied
+again by a thirty-thousand-word vocabulary's worth of output at the very end. At the sequence
+length this run had been configured for, that arithmetic alone was enough to demand more memory
+than the machine could safely give it. Nothing was leaking. The run was simply asking for more
+than it could have, once, per step, and the failure looked exactly like a leak because it happened
+fast. The fix was to ask for less at a time — a shorter sequence length, a smaller batch — and take
+more steps to see the same amount of text overall, which measurement showed costs nothing in wall
+time, because at this model's size the cost was never really dominated by that sequence length in
+the first place.
+
+That would have been the whole story, except for what had happened underneath it while it was
+being diagnosed. The script that runs every stage of this build back to back had no instruction
+telling it to stop when a stage failed. So when the pretraining stage was killed, every stage after
+it ran anyway — against files that were never produced, one after another, for six stages straight
+— and each one failed quietly enough that the script kept going regardless, right up to printing
+the words "PIPELINE COMPLETE" and copying the result onto the USB drive sitting in this machine.
+What actually landed on that drive was a folder that looked entirely legitimate: a working
+launcher, the runtime it needs, a manifesto, a licence folder, a readme — and no model inside it at
+all. Someone who trusted the folder's name and the word "complete" would have plugged in the drive,
+double-clicked the one file meant to make this simple, and watched it fail immediately, with no
+way to tell from the outside why.
+
+That is worse than the crash that caused it. A crash is visible. A confidently labeled folder that
+does not work is a lie the build told by accident, and it very nearly reached Eric's hands before
+anyone checked. It was caught, deleted, and the orchestrating script now stops itself the instant
+anything it depends on goes missing, rather than pressing forward on faith. Between the two
+failures found this same night, this is the one worth remembering longer: a system that fails
+loudly is a system you can trust to tell you when to worry. One that fails quietly and then
+announces success is the more dangerous kind, and this project's entire premise is a bet against
+exactly that shape of failure — a model that says it doesn't know rather than bluffing. It would
+have been a bad joke for the build process itself to bluff on its way to the finish line.
+
+One more thing, smaller, caught in the same pass and worth a sentence rather than a paragraph:
+right after relaunching, two processes briefly appeared to be running the training script at once
+on the exact same files, which is exactly the kind of thing that corrupts a checkpoint through
+simple bad luck. It turned out to be nothing — one of the two was an idle stand-in that immediately
+hands the real work to the other, a normal detail of how this Python installation is set up, not a
+second copy of anything. But it was checked properly before being dismissed, by comparing how much
+actual work each one had done, not just by counting how many showed up in a process list. A
+plausible danger dismissed on a glance is not the same as one ruled out.
+
+The run is going again as this is written, with a config that has already been watched stay flat in
+memory for longer than the run that crashed ever survived, and with a script that will now stop and
+say so the moment something goes wrong instead of finishing anyway.
+
+---
+
 *The log continues. Next: whatever the machine actually produced overnight, reported exactly as
 measured.*
