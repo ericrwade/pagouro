@@ -61,6 +61,13 @@ D-11's deflection claim was always aimed at **commercial frontier** models, whic
 subjects. That comparison has not been run: it needs a paid API call. **Until it is run, no public
 material should claim a deflection advantage.**
 
+**UPDATE, 2026-09-16, session 2: the comparison has now been run, and the assumption above was
+wrong.** `openai/gpt-6-astra` scores **0.0% deflection** on the frozen set -- it engaged with every
+scoreable contested item and hedged on none. Frontier models do not reliably hedge on these
+questions either. **Deflection is not a differentiator over any model class tested so far, full
+stop, not merely "untested against frontier."** See `evals/BASELINES.md` for the run and the
+correction to a scorer bug that initially misread this same model's bluff rate by 4x.
+
 **The bluff rate is the differentiator, and it is real.** Baselines fabricate on ~53% of
 unanswerable questions while answering 87-93% of answerable ones. They are not confused about what
 they know; they simply do not distinguish the two cases. Scale barely helps: 6.7 points across a
