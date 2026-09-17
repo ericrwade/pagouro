@@ -13,6 +13,72 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-16 (unattended window 2) — Canon built, frontier deflection tested, tutor working
+**Model:** Sonnet 5 (session started on Opus per Eric's direct instruction, ran the bulk on Sonnet)
+**Goal:** Work docs/OVERNIGHT2.md top to bottom under its guardrails. Eric raised the OpenRouter
+budget to $10 and authorised Fable/Opus escalation if needed (not used -- stayed on Sonnet).
+**Guardrails held:** $2.7452 spent of $10 authorised, no other spending, nothing irreversible, no
+new licence agreements, committed continuously (30 commits this window), miner off then restarted.
+
+**Task 1 DONE -- the domain canon is built.** 13 public-domain works fetched via
+scripts/fetch_gutenberg.py (Gutendex was unreachable from this network; fell back to
+gutenberg.org's own search pages). Every ledger row states a specific PD basis -- author or
+translator death date, or Gutenberg's own per-edition statement -- never "it was on Gutenberg"
+alone. Locke, Smith x2, Bastiat x2, Mill x2, Ricardo, Tocqueville x2, Federalist Papers (verified
+all 85 essays present), Henry George, and the Communist Manifesto (Marx's actual Capital has no
+English edition on Gutenberg, only Modern Greek -- substituted per D-11 symmetry). 26,563,352
+tokens total in corpus.json across 15 sources. Zero trademark residue, verified by grep.
+
+**Task 2 DONE -- frontier deflection tested, and it settled D-27 for real.** Added an OpenRouter
+backend to evals/run_eval.py (--api, --budget with a hard pre-call cap, verified to actually block
+a call once over budget). Ran the full frozen suite against openai/gpt-6-astra.
+  FIRST RESULT (WRONG): bluff 93.3% -- worse than every open model. Read the raw responses before
+  believing it: "I don't recognize Verdania as a real-world nation" (correct abstention) scored
+  FABRICATE. CAUSE: the model writes a Unicode right single quote (U+2019); every marker string
+  used a straight ASCII apostrophe. Local GGUF results were unaffected (llama.cpp uses straight
+  quotes) -- meaning this bug was correlated with PROVIDER, not honesty.
+  FIXED result: bluff 23.3% (best of any model tested), calibration 96.7%, deflection 0.0% (engaged
+  27/27 scoreable items). D-27 amended directly: frontier models do NOT deflect either. Deflection
+  is not a differentiator over any tested model class, full stop.
+  evals/rescore.py re-applies a scorer fix to every saved raw response with ZERO new API calls.
+  Also expanded ABSTENTION_MARKERS with real phrasings this run exposed, and documented one
+  residual known limitation (confident false-premise corrections with no hedge word).
+  Claude Opus 5 run STILL IN PROGRESS at session close -- see docs/OPUS_RERUN_NOTE.md. Its
+  reasoning burns through a fixed token budget; first attempt (500 tokens) lost 27/28 deflection
+  items to content:null: finish_reason=length, correctly scored API_ERROR not silently miscounted.
+  Second attempt (2000 tokens) running when this session ended.
+
+**Task 3 DONE -- the tutor works end to end.** 50 hand-written item-bank entries across 5 topics,
+every `source` field validated against corpus.json by tutor/validate_items.py (a build error, not
+a warning, if any item cites an uncleared source). tutor/tutor.py: spaced repetition (SM-2), a
+model grades free-text answers against a fixed reference, SAND/STONE-honoring progress (D-19).
+TWO real bugs found and fixed while getting a working transcript:
+  (a) console encoding crash on cp1252 -- fixed by reconfiguring stdout to UTF-8 in both tutor.py
+      and run_eval.py.
+  (b) grading silently returned the ASCII-art loading banner as the model's "answer" on every
+      call, with no crash and no error. Root cause found by diffing raw output byte-for-byte:
+      llama-cli TRUNCATES its own console echo of long prompts and appends the literal text
+      "(truncated)" -- it does not truncate what's sent to the model. A first fix attempt (CRLF/LF
+      normalization) was real but did not address this and the bug persisted identically --
+      itself a lesson (a plausible fix that doesn't change the failure diagnosed the wrong cause).
+      Real fix: when "(truncated)" appears, everything after its last occurrence is the real answer.
+  Also documented, not hidden: the 0.5B grading model itself made a real grading mistake (scored an
+  off-topic answer CORRECT). Pagouro's own grading accuracy will need its own eval before being
+  trusted as the tutor's grader.
+
+**Task 4 DONE -- SFT seeds expanded 60 -> 99** (50 abstain / 49 confident), now inside the 80-150
+target. Overlap guard checked against BOTH the frozen evals (clean) and, this time, internally
+against the existing 60 items -- caught one genuine near-duplicate and swapped it.
+
+**Corpus consistency verified at close:** all 15 sources have both public_domain_basis (or a
+licence) and published_before_generative_ai. No gaps.
+
+**Open / next:** Check whether the Claude Opus 5 re-run finished (docs/OPUS_RERUN_NOTE.md) and
+fold it into BASELINES.md if so. Then: M3 proper (stream the real corpus mixture per
+docs/CORPUS_PLAN.md), and the browser-local demo (D-24) once a real Pagouro checkpoint exists.
+
+---
+
 ## 2026-09-16 (unattended window) — M2 baselined, corpus planned, SFT seeded
 **Model:** Opus 5 (1M context). NOTE: the plan says run this on Sonnet; Eric started it on Opus.
 **Goal:** Work docs/OVERNIGHT.md top to bottom under its guardrails.

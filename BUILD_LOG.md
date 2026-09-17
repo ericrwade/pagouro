@@ -594,5 +594,86 @@ that was supposed to guide it had been fixed.
 
 ---
 
-*The log continues. Next: whether frontier models actually deflect on the questions Eric's book
-argues about, and the tutor's first working version.*
+## Day 4 — The number that was wrong by four times, and why that was the point
+
+Eric left again, this time with a bigger budget and a specific question worth answering: do
+frontier models actually deflect on the questions his book argues about, or has that assumption
+never been tested against anything but small open models? He also asked for one more thing before
+he left, almost as an aside — a tutor built on top of Pagouro that could teach a thousand things
+from the corpus and test someone on them, because that is what his own book's advancement
+criterion actually requires to mean anything.
+
+### The canon, finished properly this time
+
+With the reading corrected, building the actual domain corpus took no drama at all: thirteen public
+domain works, each with a ledger entry stating specifically why it is public domain rather than
+citing a website as an authority. One real snag surfaced along the way — Marx's *Capital* has no
+English translation on Project Gutenberg, only a Modern Greek one. The Communist Manifesto stood in
+for it, which if anything does the job better: shorter, and just as clear a statement of the
+position the model needs to be able to argue against.
+
+### A number that inverted itself
+
+The frontier test ran against a reasoning-heavy commercial model, and the first result was
+alarming: a 93.3% bluff rate. Worse than a 0.5B open model. Worse than anything tested so far. If
+true, it would have meant the most expensive model on the market fabricates more than the cheapest
+one — a genuinely strange finding, and exactly the kind that should trigger suspicion rather than
+excitement before it gets published anywhere.
+
+Reading the actual transcripts settled it in about a minute. The model's answers were fine. Better
+than fine — "I don't recognize Verdania as a real-world nation," "I can't reliably identify a paper
+titled that," textbook correct refusals to invent things. They were being scored as fabrications
+anyway.
+
+The cause was almost embarrassingly small: this model writes its apostrophes as a proper Unicode
+typographic character, not the plain straight one most small models default to. Every phrase in the
+list of things that count as "the model is admitting it doesn't know" — "I don't know," "I can't
+tell" — used the plain character. One character, out of place, and the entire safety net for the
+project's central claim let everything through unnoticed.
+
+What made this worth dwelling on: the local models tested earlier in the week were never affected,
+because the tool generating their text happened to prefer plain apostrophes. Which means, had this
+gone unnoticed, the bias would not have looked random. It would have looked exactly like "commercial
+models bluff more than open ones" — a plausible, quotable, entirely wrong headline, produced by
+nothing more than a font preference on the other end of an API call.
+
+Corrected, the real number told a very different story: 23.3%, the best result of any model tested,
+open or commercial. And on the second question Eric actually asked — do frontier models deflect on
+contested economic questions — the answer came back unambiguous. Zero percent. It argued every
+position it was given, the same as the open models had. Whatever assumption justified expecting
+otherwise did not survive contact with an actual measurement, and the project's own targets file got
+corrected in the open rather than quietly.
+
+### The tutor, and a second lesson about looking for the wrong thing twice
+
+Building the tutor produced its own version of the same pattern. Every grading attempt came back
+with the model's own loading screen — an ASCII-art banner — pasted in as if it were the answer to a
+question about cryptographic hashing. Not a crash. Just wrong, silently, which is worse than a
+crash because nothing tells you to look.
+
+The first theory was reasonable and wrong: a mismatch in how line breaks were represented between
+what was sent and what came back. Fixed that, tested again, got the exact same failure, byte for
+byte. That result was itself informative — a fix that changes nothing about the failure it targets
+has diagnosed the wrong cause, and the honest move is to say so and look again rather than assume
+the fix just needs more time.
+
+The real answer, found by comparing the raw output character by character against what should have
+been there: the terminal genuinely does not show you the whole question when it is long enough. It
+prints as much as fits, appends the word "truncated," and moves on — while still sending the entire
+original question to the model underneath. The code was looking for text that no longer existed on
+the page in front of it.
+
+### Where the corpus stands
+
+Fifteen sources, six figures of tokens, every one traceable to a specific reason it is allowed to be
+there. A tutor that works, teaches, and openly admits where its own grading is not yet good enough
+to trust. A frontier comparison that reversed itself once, in public, with the reasoning kept
+alongside the answer. A second frontier model's results were still arriving as this entry was
+written — the discipline established this week is to report what is verified and mark what is not,
+rather than round up to make the story cleaner before it is actually finished.
+
+---
+
+*The log continues. Next: whatever the second frontier comparison turns out to show, and the long
+middle stretch — the real corpus, the real run — that this project has been preparing for since the
+first afternoon.*

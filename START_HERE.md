@@ -45,26 +45,40 @@ Fix anything it flags before starting work.
 ## 4. Current state
 
 ```
-STATUS AS OF 2026-09-16 (end of unattended window)
-  Milestones:     M1 complete (pipeline). M2 complete (evals frozen + baselined).
-                  M4 pilot done - methodology fixed before it cost anything (D-29).
-  Repo:           13 commits, local only. NOT pushed - no remote created yet.
-  BASELINES:      small instruct models bluff on ~53% of unanswerable questions
-                  while answering 87-93% of answerable ones. Premise confirmed.
-                  T-1 (bluff <=20%) is ambitious and stands. T-5 DEMOTED to a
-                  floor - open models already engage; see TARGETS.md amendment.
+STATUS AS OF 2026-09-16 (end of unattended window 2)
+  Milestones:     M1 complete (pipeline). M2 complete (evals frozen + baselined,
+                  now including one real frontier model). M4 pilot done.
+  Repo:           30+ commits, local only. NOT pushed - no remote created yet.
+  Corpus:         15 sources, 26.6M tokens. Domain canon built (D-38): Locke,
+                  Smith, Bastiat, Mill, Ricardo, Tocqueville, Federalist Papers,
+                  Henry George, Communist Manifesto, Anthem. Every row has a
+                  stated public-domain basis and a pre-2022 date (D-34).
+  BASELINES:      gpt-6-astra (frontier, API): bluff 23.3% (best tested),
+                  calibration 96.7%, deflection 0.0%. D-27 settled: frontier
+                  models do NOT deflect either -- not a differentiator at all.
+                  Claude Opus 5 run may still be finishing; see
+                  docs/OPUS_RERUN_NOTE.md before trusting anything about it.
+  Tutor (D-43):   working end to end against a baseline GGUF. Two real bugs
+                  found and fixed (console encoding; llama-cli truncates its
+                  own prompt echo on long prompts). Grading model's own
+                  accuracy is a known open gap, documented in docs/TUTOR.md.
+  OpenRouter:     ~$2.75 spent this window of $10 authorised.
+
+  RESOLVED SINCE LAST STATUS: O-7 (D-30, run open weights locally, never API),
+  O-11 (D-31, share-alike accepted, weights CC BY-SA 4.0), D-28 (Eric accepted
+  The Stack's terms, HF_TOKEN in .env), O-9 (D-33, custom ~32k BPE, digits
+  split individually), O-8 (book excluded, D-35), O-14 (D-34, pre-2022 cutoff
+  locked), O-10 (D-36, Bitcoin/Arweave/Solana, Quilibrium as mirror).
 
   NEEDS ERIC:
-    O-7   teacher licence for synthetic SFT data      blocks the SFT stage
-    O-11  share-alike weights? Wikipedia + StackEx    blocks the full run mix
-          are ~30% of the mixture and both CC BY-SA
-    D-28  accept The Stack's terms on the Hub, or     blocks the code slice
-          use a non-gated alternative
-    O-9   tokenizer choice (<65,536 vocab)            blocks the real run
-    O-8   publisher permission for the book
+    O-15 was closed (D-39) but the blockchain mechanisms it describes are
+    design ideas, not built -- nothing blocks on them yet.
+    O-16 (Anthem: done, D-41) -- no longer open.
+    Check whether Opus 5 finished; see docs/OPUS_RERUN_NOTE.md.
 
-  Next action:    read evals/BASELINES.md, then decide O-11. It may change the
-                  corpus mixture, so it comes before M3 data work.
+  Next action:    fold in the Opus result if it landed, then start M3 proper --
+                  stream the real corpus per docs/CORPUS_PLAN.md instead of the
+                  toy FineWeb-Edu slice from M1.
 ```
 
 ## 5. The things most likely to go wrong
