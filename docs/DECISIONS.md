@@ -114,6 +114,30 @@ later.
 Her major novels remain in copyright and stay out. The same rule that excludes Eric's own book
 excludes *Atlas Shrugged*.
 
+### D-43 — The tutor: a second artifact that uses Pagouro
+**2026-09-16, Eric's idea.** A self-contained "teach me and test me" utility that teaches ~1,000
+items from the corpus and tests the learner at their own pace. Free education resource, separate
+executable, loads the same GGUF. See `docs/TUTOR.md`.
+
+**It is not a bolt-on.** Laborism conditions federal assistance on a **work** criterion and an
+**advancement** criterion (D-38). The advancement criterion means nothing unless advancement is
+actually available to someone with no money, no broadband and no institution nearby. An offline
+tutor on a stick is that availability — the mechanism the book's own argument requires, built rather
+than proposed.
+
+It is also the strongest demonstration of Pagouro itself. "A model that fits on a stick" is a
+specification; "a tutor that teaches a thousand things with no internet, no account and no cost" is
+a use.
+
+**The design rule that decides everything: a fixed, reviewed item bank. The model explains and
+paces; it never authors facts.** Generate questions at runtime and a small model will eventually
+teach something false, which is catastrophic in a tutor and contradicts the project's central
+claim. A model that does not bluff must not bluff at a learner. Every item carries a citation into
+`corpus.json`, so the tutor inherits the provenance claim instead of diluting it.
+
+Model-agnostic, so the shell is testable before Pagouro exists. Inherits `THREAT_MODEL.md` and the
+SAND/STONE default in full. Not a milestone yet; the item bank can be built in parallel.
+
 ### D-42 — Arweave keeps the canonical storage slot; Quilibrium ships as a first-class mirror
 **2026-09-16.** Assessed against Quilibrium's own documentation; see `docs/QSTORAGE_VS_ARWEAVE.md`.
 
