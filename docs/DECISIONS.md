@@ -779,3 +779,30 @@ Read it every session. See D-2a for precedence.
 
 ### D-1 — Project home is `C:\Users\Eric Wade\PAGOURO_BUILD`
 "Pagouro", "Paguro", and "our LLM project" all mean this folder. Written spelling is **PAGOURO**.
+
+### D-45 — Tutor grading crashed silently on a llama-cli console truncation
+**2026-09-16, session 2.** Building the tutor shell (D-43), every grading call returned PARTIAL
+with the model's ASCII-art loading banner as the "answer" -- a silent, wrong result, not a crash,
+which is worse.
+
+**Root cause, found by diffing raw output byte-for-byte:** `llama-cli`'s interactive console
+truncates its own echo of a long prompt and appends the literal text `(truncated)`. It does not
+truncate what is actually sent to the model -- the real response was coherent throughout -- only
+its own display of the input. Our multi-line ~500-character grading prompt exceeded whatever
+internal display limit triggers this; `evals/run_eval.py`'s short, single-line eval prompts never
+had. `txt.rfind(prompt)` then found no match and fell through to returning the entire raw
+output, banner included, as if it were the model's answer.
+
+A first attempted fix (normalizing CRLF-vs-LF line endings, since `llama-cli` echoes with CRLF)
+was real and necessary but insufficient -- it didn't address the truncation at all, and the bug
+persisted identically after that fix, which is itself a lesson: a plausible-looking fix that does
+not change the failure it targets has diagnosed the wrong cause.
+
+**Fix:** when `(truncated)` appears in the output, treat everything after its last occurrence as
+the model's real response, since that literal string only ever appears where the console cut the
+prompt off. Verified against the exact prompt that failed.
+
+**Also fixed in the same pass:** Windows consoles default to cp1252 and cannot display many
+characters a model may legitimately emit (curly quotes, em dashes). `tutor.py` and `run_eval.py`
+both reconfigure stdout to UTF-8 with a safe fallback, so a display limitation can never crash a
+live session again.
