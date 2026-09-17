@@ -33,7 +33,22 @@ KNOWN_LICENCES = {
     # family which requires accepting terms on the Hub. See docs/CORPUS_PLAN.md 2a.
     "codeparrot/github-code-clean": ("Apache-2.0", "https://huggingface.co/datasets/codeparrot/github-code-clean"),
     "allenai/dolma": ("ODC-By 1.0", "https://huggingface.co/datasets/allenai/dolma"),
+    # Share-alike, accepted per D-31: weights released CC BY-SA 4.0.
+    "wikimedia/wikipedia": ("CC BY-SA 3.0 + GFDL", "https://huggingface.co/datasets/wikimedia/wikipedia"),
+    "HuggingFaceH4/stack-exchange-preferences": ("CC BY-SA 4.0", "https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences"),
+    # Gated: Eric accepted BigCode's terms on the Hub (D-28); HF_TOKEN is in .env.
+    "bigcode/the-stack-dedup": ("Other (BigCode OpenRAIL / per-file opt-out)", "https://huggingface.co/datasets/bigcode/the-stack-dedup"),
 }
+
+
+def _hf_token() -> str | None:
+    env_path = os.path.join(ROOT, ".env")
+    if os.path.exists(env_path):
+        for line in io.open(env_path, encoding="utf-8"):
+            line = line.strip()
+            if line.startswith("HF_TOKEN="):
+                return line.split("=", 1)[1].strip() or None
+    return os.environ.get("HF_TOKEN")
 
 
 def sha256_file(path: str) -> str:
@@ -69,6 +84,7 @@ def main() -> int:
     ap.add_argument("--split", default="train")
     ap.add_argument("--docs", type=int, default=20000, help="documents to take from the stream")
     ap.add_argument("--text-field", default="text")
+    ap.add_argument("--data-dir", default=None, help="dataset config for datasets like The Stack that use data_dir instead of name")
     ap.add_argument("--out", default=None, help="output .txt (default: data/raw/<slug>.txt)")
     a = ap.parse_args()
 
@@ -83,14 +99,34 @@ def main() -> int:
 
     from datasets import load_dataset  # imported late so --help works without the stack
 
-    slug = a.dataset.split("/")[-1] + "-" + a.config
+    # BUG FOUND during the real corpus build: a slug of just dataset+config collides
+    # whenever the same dataset/config is fetched more than once with a different
+    # --data-dir or --out (e.g. four Stack languages all default a.config to
+    # "sample-10BT" since --data-dir is used instead, and all four silently
+    # overwrote ONE ledger row despite four real files existing on disk). Fold the
+    # actual output filename into the slug so distinct fetches can never collide.
+    out_basename = os.path.splitext(os.path.basename(a.out))[0] if a.out else None
+    if a.data_dir:
+        slug = a.dataset.split("/")[-1] + "-" + a.data_dir.replace("/", "-")
+    elif out_basename and out_basename != a.dataset.split("/")[-1] + "-" + a.config:
+        slug = a.dataset.split("/")[-1] + "-" + out_basename
+    else:
+        slug = a.dataset.split("/")[-1] + "-" + a.config
     out_path = a.out or os.path.join(RAW_DIR, slug + ".txt")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
     print(f"streaming {a.dataset} [{a.config}/{a.split}], taking {a.docs:,} documents")
     print(f"licence on record: {licence}")
 
-    ds = load_dataset(a.dataset, name=a.config, split=a.split, streaming=True)
+    token = _hf_token()
+    kwargs = {"split": a.split, "streaming": True}
+    if a.data_dir:
+        kwargs["data_dir"] = a.data_dir
+    else:
+        kwargs["name"] = a.config
+    if token:
+        kwargs["token"] = token
+    ds = load_dataset(a.dataset, **kwargs)
 
     n_docs = 0
     n_chars = 0

@@ -3,14 +3,20 @@
 Vocabulary stays under 65,536 (DECISIONS.md D-7) for two independent reasons:
 the embedding table would otherwise eat a large share of a 1B parameter budget,
 and token ids fit in uint16, which halves both tokenized corpus size on disk and
-data-loader bandwidth on every epoch.
+data-loader bandwidth on every epoch. D-33 sets the real-run default at ~32,768
+and requires DIGIT SPLITTING: each digit gets its own token, via a Digits
+pre-tokenizer composed before ByteLevel. A BPE trainer left to its own devices
+merges common multi-digit sequences into single tokens, which forces a model to
+memorize arithmetic on arbitrary chunks rather than learn consistent positional
+structure -- the one tokenizer choice D-33 identifies as having a measurable
+effect on numerical reasoning.
 
 Chat and tool-call tokens are present from day one so the chat template and the
 tool harness never need a tokenizer change later. ChatML markup is used because
 llama.cpp understands it without special handling.
 
 Usage:
-    python scripts/train_tokenizer.py --vocab-size 8192
+    python scripts/train_tokenizer.py --vocab-size 32768 --input data/raw/mixture.txt
 """
 
 from __future__ import annotations
@@ -45,7 +51,7 @@ CHAT_TEMPLATE = (
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", default=DEFAULT_INPUT)
-    ap.add_argument("--vocab-size", type=int, default=8192)
+    ap.add_argument("--vocab-size", type=int, default=32768)
     ap.add_argument("--out", default=OUT_DIR)
     a = ap.parse_args()
 
@@ -62,7 +68,13 @@ def main() -> int:
     os.makedirs(a.out, exist_ok=True)
 
     tok = Tokenizer(models.BPE(unk_token=None))
-    tok.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
+    # D-33: Digits(individual_digits=True) runs BEFORE ByteLevel, splitting any run of
+    # digits into single characters so the BPE trainer can never merge them back into
+    # a multi-digit token. Order matters -- Sequence applies pre-tokenizers in order.
+    tok.pre_tokenizer = pre_tokenizers.Sequence([
+        pre_tokenizers.Digits(individual_digits=True),
+        pre_tokenizers.ByteLevel(add_prefix_space=False),
+    ])
     tok.decoder = decoders.ByteLevel()
 
     trainer = trainers.BpeTrainer(
@@ -120,6 +132,18 @@ def main() -> int:
     if not ok:
         print(f"  original : {probe!r}")
         print(f"  decoded  : {back!r}")
+        return 1
+
+    # D-33 digit-splitting check: "12345" must decode to 5 separate digit tokens,
+    # never one or two multi-digit merges. This is the tokenizer choice with an
+    # actual measured effect on arithmetic; verify it rather than trust the config.
+    digits = "12345"
+    dig_ids = tok.encode(digits).ids
+    dig_toks = [tok.id_to_token(i) for i in dig_ids]
+    digits_ok = dig_toks == list(digits)
+    print(f"digit split: {'PASS' if digits_ok else 'FAIL'}  {digits!r} -> {dig_toks}")
+    if not digits_ok:
+        print("  REFUSED: digits are not being split individually. Check pre_tokenizer order.")
         return 1
     return 0
 
