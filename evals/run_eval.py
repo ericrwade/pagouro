@@ -21,6 +21,8 @@ import re
 import subprocess
 import sys
 import time
+import urllib.request
+import urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVAL_DIR = os.path.join(ROOT, "evals")
@@ -28,6 +30,21 @@ RESULTS_DIR = os.path.join(EVAL_DIR, "results")
 LLAMA_COMPLETION = os.path.join(ROOT, "tools", "llamacpp", "llama-completion.exe")
 LLAMA_CHAT = os.path.join(ROOT, "tools", "llamacpp", "llama-cli.exe")
 ANSI = re.compile("\x1b\\[[0-9;]*m")
+
+# OpenRouter backend for evaluating COMMERCIAL models (D-27's frontier-deflection gap).
+# NEVER used to generate Pagouro's training data (D-30 is absolute) -- evaluation only.
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+_api_spend = {"total": 0.0}   # module-level running total, checked against --budget
+
+
+def _load_env_key() -> str:
+    env_path = os.path.join(ROOT, ".env")
+    if os.path.exists(env_path):
+        for line in io.open(env_path, encoding="utf-8"):
+            line = line.strip()
+            if line.startswith("OPENROUTER_API_KEY="):
+                return line.split("=", 1)[1].strip()
+    return os.environ.get("OPENROUTER_API_KEY", "")
 
 # --------------------------------------------------------------------------
 # Scoring vocabulary. Kept here, visible and auditable, rather than buried.
@@ -154,6 +171,44 @@ def score_deflection(resp: str) -> tuple[str, str]:
     return "ENGAGED", f"{words} words of substance, no deflection marker"
 
 
+def generate_api(model_slug: str, prompt: str, n_tokens: int, timeout: int, budget: float) -> str:
+    """Call a model through OpenRouter. Used ONLY to evaluate; D-30 forbids ever using this
+    path to generate Pagouro training data. Tracks real spend via the response's usage.cost
+    field and refuses to make another call once --budget is exceeded, so a run cannot overrun
+    the cap even if the estimate before starting was wrong."""
+    if _api_spend["total"] >= budget:
+        return "<<BUDGET EXCEEDED - CALL SKIPPED>>"
+    key = _load_env_key()
+    if not key:
+        raise SystemExit("OPENROUTER_API_KEY not found in .env")
+    payload = json.dumps({
+        "model": model_slug,
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": n_tokens,
+        "temperature": 0,
+    }).encode()
+    req = urllib.request.Request(OPENROUTER_URL, data=payload, method="POST")
+    req.add_header("Authorization", f"Bearer {key}")
+    req.add_header("Content-Type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            resp = json.load(r)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", "replace")[:300]
+        return f"<<API ERROR {e.code}: {body}>>"
+    except Exception as e:
+        return f"<<API ERROR: {type(e).__name__} {e}>>"
+
+    if "error" in resp:
+        return f"<<API ERROR: {resp['error']}>>"
+    choices = resp.get("choices") or []
+    text = (choices[0].get("message", {}).get("content", "") if choices else "").strip()
+    cost = (resp.get("usage") or {}).get("cost")
+    if cost is not None:
+        _api_spend["total"] += float(cost)
+    return text
+
+
 def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = True) -> str:
     """Chat mode applies the model's own chat template, which is how an instruct model
     is meant to be used and how a user would actually use it. Raw completion on an
@@ -176,7 +231,8 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
     return cont.strip()
 
 
-def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat: bool = True) -> dict:
+def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat: bool = True,
+            api: bool = False, budget: float = 0.0) -> dict:
     with io.open(os.path.join(EVAL_DIR, f"{name}.json"), encoding="utf-8") as f:
         spec = json.load(f)
     items = spec["items"]
@@ -186,7 +242,16 @@ def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat
     counts: dict[str, int] = {}
     t0 = time.time()
     for i, it in enumerate(items, 1):
-        resp = generate(model, it["prompt"], n_tokens, timeout, chat)
+        if api:
+            resp = generate_api(model, it["prompt"], n_tokens, timeout, budget)
+            if resp == "<<BUDGET EXCEEDED - CALL SKIPPED>>":
+                print(f"  [{i:3d}/{len(items)}] {it['id']:<12} SKIPPED - budget cap reached "
+                      f"(spent ${_api_spend['total']:.4f} of ${budget:.2f})", flush=True)
+                out.append({**it, "response": resp, "verdict": "SKIPPED",
+                           "reason": "budget cap reached before this call"})
+                continue
+        else:
+            resp = generate(model, it["prompt"], n_tokens, timeout, chat)
         if name == "bluff":
             verdict, why = score_bluff(resp)
         elif name == "calibration":
@@ -199,11 +264,12 @@ def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat
 
     elapsed = time.time() - t0
     result = {
-        "set": name, "model_label": label, "model_file": os.path.basename(model),
+        "set": name, "model_label": label, "model_file": model if api else os.path.basename(model),
         "n_items": len(items), "counts": counts,
         "elapsed_s": round(elapsed, 1),
         "suite_version": spec["version"], "suite_frozen": spec["frozen"],
-        "mode": "chat" if chat else "completion",
+        "mode": "openrouter-api" if api else ("chat" if chat else "completion"),
+        "spend_usd_running_total": round(_api_spend["total"], 6) if api else None,
         "items": out,
     }
     os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -211,7 +277,8 @@ def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat
     with io.open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(result, f, indent=2, ensure_ascii=False)
         f.write("\n")
-    print(f"  -> {counts}   ({elapsed:.0f}s)   saved {os.path.relpath(path, ROOT)}")
+    spend_note = f"  spend so far: ${_api_spend['total']:.4f}" if api else ""
+    print(f"  -> {counts}   ({elapsed:.0f}s)   saved {os.path.relpath(path, ROOT)}{spend_note}")
     return result
 
 
@@ -256,26 +323,47 @@ def report() -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model")
+    ap.add_argument("--model", help="path to a .gguf, OR an OpenRouter model slug with --api")
     ap.add_argument("--label")
     ap.add_argument("--set", default="all", choices=["all", "bluff", "calibration", "deflection"])
     ap.add_argument("--tokens", type=int, default=160)
     ap.add_argument("--timeout", type=int, default=180)
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--raw", action="store_true", help="raw completion instead of the chat template")
+    ap.add_argument("--api", action="store_true",
+                    help="--model is an OpenRouter slug, not a local GGUF path. "
+                         "EVALUATION ONLY -- never use API output as training data (D-30).")
+    ap.add_argument("--budget", type=float, default=1.00,
+                    help="hard USD cap for this invocation when --api is set. The run stops "
+                         "issuing new calls once cumulative spend reaches this.")
     a = ap.parse_args()
 
     if a.report:
         return report()
     if not a.model or not a.label:
         raise SystemExit("--model and --label are required (or use --report)")
-    for p in (a.model, LLAMA_CHAT, LLAMA_COMPLETION):
-        if not os.path.exists(p):
-            raise SystemExit(f"missing: {p}")
+
+    if a.api:
+        print(f"OpenRouter mode: model={a.model}  budget cap=${a.budget:.2f}")
+        print("EVALUATION ONLY. This output must never become Pagouro training data (D-30).")
+        print()
+    else:
+        for p in (a.model, LLAMA_CHAT, LLAMA_COMPLETION):
+            if not os.path.exists(p):
+                raise SystemExit(f"missing: {p}")
 
     names = ["bluff", "calibration", "deflection"] if a.set == "all" else [a.set]
     for n in names:
-        run_set(n, a.model, a.label, a.tokens, a.timeout, chat=not a.raw)
+        run_set(n, a.model, a.label, a.tokens, a.timeout, chat=not a.raw,
+               api=a.api, budget=a.budget)
+        if a.api and _api_spend["total"] >= a.budget:
+            print()
+            print(f"BUDGET CAP REACHED (${_api_spend['total']:.4f} of ${a.budget:.2f}). "
+                 f"Stopping before remaining sets.")
+            break
+    if a.api:
+        print()
+        print(f"TOTAL SPEND this invocation: ${_api_spend['total']:.4f}")
     print()
     return report()
 
