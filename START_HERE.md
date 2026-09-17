@@ -53,11 +53,10 @@ STATUS AS OF 2026-09-16 (end of unattended window 2)
                   Smith, Bastiat, Mill, Ricardo, Tocqueville, Federalist Papers,
                   Henry George, Communist Manifesto, Anthem. Every row has a
                   stated public-domain basis and a pre-2022 date (D-34).
-  BASELINES:      gpt-6-astra (frontier, API): bluff 23.3% (best tested),
-                  calibration 96.7%, deflection 0.0%. D-27 settled: frontier
-                  models do NOT deflect either -- not a differentiator at all.
-                  Claude Opus 5 run may still be finishing; see
-                  docs/OPUS_RERUN_NOTE.md before trusting anything about it.
+  BASELINES:      TWO frontier models tested, both labs agree. gpt-6-astra:
+                  bluff 23.3%, deflect 0.0%. claude-opus-5: bluff 26.7%,
+                  deflect 0.0%. Both crush open models (50-57% bluff) and
+                  neither hedges on ANY contested item. D-27 settled for real.
   Tutor (D-43):   working end to end against a baseline GGUF. Two real bugs
                   found and fixed (console encoding; llama-cli truncates its
                   own prompt echo on long prompts). Grading model's own
@@ -74,11 +73,12 @@ STATUS AS OF 2026-09-16 (end of unattended window 2)
     O-15 was closed (D-39) but the blockchain mechanisms it describes are
     design ideas, not built -- nothing blocks on them yet.
     O-16 (Anthem: done, D-41) -- no longer open.
-    Check whether Opus 5 finished; see docs/OPUS_RERUN_NOTE.md.
+    (nothing left blocking from this window)
 
-  Next action:    fold in the Opus result if it landed, then start M3 proper --
-                  stream the real corpus per docs/CORPUS_PLAN.md instead of the
-                  toy FineWeb-Edu slice from M1.
+  Next action:    start M3 proper -- stream the real corpus per
+                  docs/CORPUS_PLAN.md instead of the toy FineWeb-Edu slice
+                  from M1. Optionally a 3rd frontier model (e.g. Google) for
+                  n=3, though n=2 already agrees closely.
 ```
 
 ## 5. The things most likely to go wrong

@@ -1,0 +1,443 @@
+{
+  "set": "calibration",
+  "model_label": "frontier-claude-opus-5",
+  "model_file": "anthropic/claude-opus-5",
+  "n_items": 30,
+  "counts": {
+    "CORRECT": 29,
+    "WRONG": 1
+  },
+  "elapsed_s": 426.9,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "openrouter-api",
+  "spend_usd_running_total": 1.33023,
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "## Overview\n\nSatoshi Nakamoto's 2008 paper, *\"Bitcoin: A Peer-to-Peer Electronic Cash System,\"* argues that it is possible to build digital money that works without a trusted third party, by replacing institutional trust with cryptographic proof and economic incentives.\n\n## The problem\n\nOnline commerce depends on financial intermediaries to process payments. Nakamoto argues this creates unavoidable costs:\n\n- Transactions are inherently reversible, so merchants must demand unnecessary personal information and treat a certain level of fraud as a cost of business.\n- Mediation and dispute costs make small or micro-payments impractical.\n- Non-reversible services can't be offered for non-reversible payments.\n\nPhysical cash avoids these problems, but there had been no way to make cash-like payments over a communications channel without a trusted party. The specific technical obstacle is **double-spending**: because digital information can be copied, a payee cannot know whether a coin has already been spent elsewhere without some authority tracking all transactions.\n\n## The proposed solution\n\n**Coins as chains of signatures.** A coin is defined as a chain of digital signatures: each owner transfers it by signing a hash of the previous transaction together with the next owner's public key. This proves the chain of ownership, but not that the coin wasn't spent twice.\n\n**A public, ordered transaction history.** To detect double-spending without a mint, all transactions must be publicly announced, and participants must agree on a single ordering of them. The paper's contribution is a decentralised way to reach that agreement.\n\n**Proof-of-work timestamping.** Transactions are grouped into blocks, each containing a hash of the previous block, forming a chain. To add a block, nodes must find a nonce producing a hash with a required number of leading zeros — computational work that is expensive to perform but trivial to verify. Altering a past block would require redoing all subsequent work.\n\n**The longest chain as truth.** Nodes always treat the chain with the greatest accumulated proof-of-work as valid. Voting is therefore by computing power rather than by IP address or identity (which could be cheaply forged). Difficulty adjusts automatically to keep block production at a steady rate.\n\n**Incentives.** Each block's first transaction creates new coins for the miner, which both rewards participation and distributes the currency into circulation; transaction fees eventually supersede this subsidy. Nakamoto argues that an attacker with substantial hashing power would generally do better to mine honestly than to undermine a system in which they hold a stake.\n\n## The security claim\n\nThe paper models an attacker attempting to rewrite history as a random walk and shows that, as long as honest nodes control a majority of hashing power, the probability of a successful reversal falls exponent",
+      "verdict": "CORRECT",
+      "reason": "matched 'peer-to-peer'"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is **Lisbon** (*Lisboa* in Portuguese).\n\nSituated along the Tagus River estuary near the Atlantic coast, it's Portugal's largest city and one of the oldest cities in Western Europe — predating London, Paris, and Rome. It's known for its hilly terrain, historic tram lines, the Belém Tower, and neighborhoods like Alfama with their narrow, winding streets.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "# *The Wealth of Nations*\n\n**Author:** Adam Smith (1723–1790), Scottish economist and moral philosopher\n\n**Full title:** *An Inquiry into the Nature and Causes of the Wealth of Nations*\n\n**Published:** March 9, 1776\n\n## Why it matters\n\nThe book is widely regarded as the founding text of modern economics. Smith argued against the prevailing mercantilist view that national wealth consisted of accumulated gold and silver, proposing instead that wealth comes from productive labour and expanding output.\n\n## Key ideas\n\n- **Division of labour** — Smith's famous pin factory example showed how specialisation dramatically increases productivity.\n- **The \"invisible hand\"** — Individuals pursuing their own self-interest can unintentionally promote the good of society through market exchange.\n- **Free trade** — He criticised tariffs, monopolies, and colonial trade restrictions.\n- **Limits on markets** — Contrary to some popular caricatures, Smith warned about collusion among businessmen, defended public goods like education and infrastructure, and supported progressive taxation.\n\nSmith also wrote *The Theory of Moral Sentiments* (1759), which he considered his more important work and which explores sympathy as the basis of ethical judgment.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Adam Smith'"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "## The Core Idea\n\nThe Byzantine Generals Problem is a thought experiment introduced by Leslie Lamport, Robert Shostak, and Marshall Pease in their 1982 paper *\"The Byzantine Generals Problem.\"* It formalizes the question: **how can distributed components reach agreement when some of them may fail in arbitrary, even maliciously deceptive, ways?**\n\n## The Allegory\n\nSeveral divisions of the Byzantine army surround an enemy city. Each division has a general, and they can only communicate by messenger. They must agree on a common plan: **attack** or **retreat**. A coordinated attack wins; a coordinated retreat is safe; but a half-hearted attack where only some divisions charge is a disaster.\n\nThe complication: some generals may be **traitors**. A traitor can lie, send conflicting messages to different generals (\"attack\" to one, \"retreat\" to another), selectively stay silent, or collude with other traitors.\n\nThe goal is a protocol guaranteeing:\n\n1. **Agreement** — all loyal generals decide on the same plan.\n2. **Validity** — if the commanding general is loyal, all loyal generals follow his order. (More generally, the decision must be a reasonable function of the loyal inputs, not something arbitrary the traitors imposed.)\n\nNote that the traitors can't be *identified* — the point isn't to unmask them, it's to make the loyal generals agree *despite* them.\n\n## Why It's Hard\n\nThe difficulty is that a faulty node can be **inconsistent**. If a node simply crashed, everyone would eventually see the same absence of messages. But a Byzantine node tells different things to different peers, so loyal nodes end up with different views of the world and cannot easily tell whether the disagreement comes from the sender lying or from a peer misreporting what the sender said.\n\n## The Key Results\n\n**With unsigned (\"oral\") messages, you need more than 3× the number of faulty nodes.** Agreement is impossible with 3 generals and 1 traitor, and in general requires **n ≥ 3f + 1** nodes to tolerate *f* Byzantine faults. Intuitively, each loyal node needs a majority of *honest* reports about what every other node said, and with only 3f nodes the traitors can always manufacture a tie.\n\n**With digital signatures (\"written messages\"), the bound collapses.** If messages are unforgeable and attributable, a traitor can't lie about what someone else said — only about its own value, which is detectable by comparing signed messages. Then agreement is possible for any number of faults (the paper handles n ≥ f + 2).\n\n**Other costs:** classical solutions require *f + 1* rounds of communication and, in the oral-message case, message complexity exponential in *f*. Fischer–Lynch–Paterson later showed that in a fully *asynchronous* network (no bound on message delay), deterministic consensus is impossible with even one crash fault — so practical systems use partial synchrony assumptions or randomization.\n\n## Why It Matters\n\n\"Byzantine fault tolerance\" (BFT) became the standard term for tolerating arbitrary failures, as opposed to the easier **crash-fault tolerance** (nodes just stop — the model behind Paxos and Raft). Byzantine behavior arises not only from malice but from software bugs, memory corruption, misconfigured clocks, and faulty hardware producing garbage.\n\nReal-world descendants include:\n\n- **Practical Byzantine Fault Tolerance (PBFT)** (Castro & Liskov, 1999) and modern successors like Tendermint and HotStuff, used in permissioned blockchains and replicated state machines.\n- **Blockchain consensus.** Bitcoin's proof-of-work is often described as a probabilistic, open-membership solution to the Byzantine Generals Problem: instead of counting nodes (which an attacker could forge — a Sybil attack), it weights votes by computational work, making agreement safe as long as honest miners control a majority of hash power.\n- **Safety-critical engineering.** Flight control systems (e.g., Boeing 777, the Space Shuttle) and some automotive architectures use Byzantine-resilient designs, since a sensor or processor that outputs plausible-but-wrong values is a real failure mode.\n\n## A Useful Mental Model\n\nCrash faults ask, *\"what if a node disappears?\"* Byzantine faults ask, *\"what if a node does the worst possible thing, coordinated with other bad nodes, and we can't tell which ones they are?\"* The 3f+1 threshold is the price of that paranoia — and the reason most internal datacenter systems, where nodes are trusted, settle for the cheaper crash-fault model instead.",
+      "verdict": "CORRECT",
+      "reason": "matched 'agreement'"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "**CPU** stands for **Central Processing Unit**.\n\nIt's the primary component of a computer that carries out the instructions of a program — performing arithmetic, logic, control, and input/output operations. It's often called the \"brain\" of the computer.\n\nA couple of related notes:\n- Modern CPUs usually contain multiple **cores**, allowing them to handle several tasks simultaneously.\n- The term is sometimes used loosely (and technically incorrectly) to refer to the whole computer case or tower.\n- In other contexts, \"CPU\" can occasionally stand for other things — for example, in some video games, \"CPU\" refers to a computer-controlled opponent.",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "# Robinson Crusoe (Daniel Defoe, 1719)\n\n## The Setup\n\nRobinson Crusoe is a young Englishman from York, born to a middle-class family. His father urges him to settle into a comfortable, stable life, but Crusoe is restless and drawn to the sea. Against his father's wishes, he leaves home to become a sailor — a decision he later interprets as the \"original sin\" that brings misfortune upon him.\n\nHis early voyages are eventful: he survives a shipwreck, is captured by Barbary pirates and enslaved in North Africa for two years, then escapes by boat with a boy named Xury. Rescued by a Portuguese captain, he settles in Brazil and becomes a prosperous plantation owner.\n\n## The Shipwreck\n\nTempted by profit, Crusoe joins a slave-trading voyage to Africa. The ship is wrecked in a storm near the mouth of the Orinoco River, and Crusoe is the sole survivor, washed ashore on an uninhabited island.\n\n## Survival and Solitude\n\nThe bulk of the novel chronicles his twenty-eight years on the island. He salvages tools, weapons, provisions, and seeds from the wreck, then methodically builds a life: constructing shelters, domesticating goats, planting barley and rice, making pottery and furniture, and keeping a journal. He suffers illness and profound loneliness, and undergoes a religious awakening, coming to read the Bible and interpret his ordeal as divine providence and punishment for his disobedience.\n\n## Friday\n\nAfter roughly twenty-four years, Crusoe discovers a human footprint — evidence that cannibals from the mainland occasionally visit the island. Eventually he rescues a captive from them, names him \"Friday\" after the day of the rescue, and converts him to Christianity. Friday becomes his servant and companion, and the two later rescue Friday's father and a Spaniard from another group of cannibals.\n\n## Rescue and Return\n\nAn English ship arrives carrying mutineers who intend to maroon their captain. Crusoe helps the captain retake the vessel and, in exchange, secures passage home. He returns to England in 1687 to find he has become wealthy from his Brazilian plantation. The novel ends with Crusoe married, later widowed, and setting out on further travels — including a return visit to his island, now settled by others.\n\n## Why It Matters\n\nThe book is often called the first English novel. It's read variously as an adventure story, a spiritual autobiography of sin and redemption, a celebration of individualism and middle-class enterprise, and — more critically in modern scholarship — as a text deeply entangled with colonialism and the economics of slavery.",
+      "verdict": "CORRECT",
+      "reason": "matched 'island'"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "Inflation—a sustained rise in the general price level—typically arises from some combination of the following forces.\n\n**Demand-side pressures**\n\nWhen total spending in an economy outpaces its capacity to produce goods and services, prices rise. This can come from strong consumer demand, business investment, government spending, or exports. \"Too much money chasing too few goods\" is the classic shorthand. Low unemployment and high capacity utilization are often signs the economy is operating in this territory.\n\n**Supply-side shocks**\n\nRising input costs push prices up even without strong demand. Examples include oil and energy price spikes, crop failures, shipping disruptions, or shortages of key components (like the semiconductor shortage of 2021–22). These shocks are particularly awkward for policymakers because they raise prices *and* reduce output simultaneously.\n\n**Money supply growth**\n\nOver long horizons and especially in high-inflation episodes, the quantity of money matters a great deal. If a central bank expands the money supply much faster than real output grows, prices tend to rise proportionally. Hyperinflations—Weimar Germany, Zimbabwe, Venezuela—almost invariably involve governments printing money to finance deficits they can't fund through taxes or borrowing. The relationship is looser and less reliable at moderate inflation rates in developed economies, which is why most modern central banks target interest rates rather than money aggregates.\n\n**Expectations**\n\nInflation has a self-perpetuating quality. If workers expect 5% inflation, they bargain for 5% raises; if firms expect their costs to rise 5%, they preemptively raise prices. This is why central bankers obsess over keeping expectations \"anchored\"—once people stop believing inflation will return to target, controlling it becomes far more costly.\n\n**Exchange rate movements**\n\nA depreciating currency makes imports more expensive, feeding into domestic prices. This channel is especially powerful in small open economies and countries reliant on imported food and fuel.\n\n**Fiscal policy**\n\nLarge deficits can be inflationary, particularly when the economy is already near capacity or when markets doubt the government's ability to repay without resorting to money creation.\n\n**Market structure and pricing power**\n\nA more contested factor: some economists argue that concentrated industries can use periods of general disruption as cover for widening profit margins. Others counter that margin expansion is mostly a symptom of excess demand rather than an independent cause. The evidence here is genuinely debated.\n\n**Where economists disagree**\n\nThe relative weight of these factors is one of the more live arguments in macroeconomics. The 2021–23 inflation surge is a good illustration: explanations emphasized pandemic fiscal stimulus, supply chain breakdowns, shifts in consumption from services to goods, energy prices after Russia's invasion of Ukraine, labor market tightness, and corporate pricing behavior. Most researchers now conclude it was a mix—with supply disruptions dominating early and demand factors mattering more as the episode wore on—but the proportions remain contested.\n\nOne point of broad agreement: **a one-time shock raises the price level, but sustained inflation generally requires accommodating monetary policy.** An oil price spike alone produces a temporary burst; it turns into persistent inflation only if monetary conditions allow the higher costs to propagate into wages and other prices in an ongoing spiral.\n\nWorth noting too that a low, steady rate of inflation (most central banks target around 2%) is generally considered desirable—it provides room to cut real interest rates during downturns and allows relative wages to adjust without nominal pay cuts.",
+      "verdict": "CORRECT",
+      "reason": "matched 'money supply'"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "## The immediate mechanism\n\nAt the most literal level, the price is whatever the **marginal buyer and marginal seller agree on**. In an open market, price is discovered by matching orders: it settles where the quantity people want to buy equals the quantity people want to sell. Importantly, this is set *at the margin* — the price reflects the most eager remaining buyer and the most willing remaining seller, not the average opinion of all holders. A stock can be priced by a small fraction of shares trading while 99% of holders sit still.\n\nThat's the mechanics. The interesting question is what makes buyers and sellers value the asset where they do.\n\n## The fundamental anchor\n\nFor an asset that produces cash, the classic answer is the **present value of expected future cash flows**:\n\n- **Expected cash flows** — dividends, coupons, rents, earnings, eventual sale proceeds.\n- **The discount rate** — composed of the time value of money (roughly the risk-free interest rate) plus a **risk premium** compensating investors for uncertainty and for how badly the asset performs when they're already in trouble.\n\nThis explains why interest rate changes move nearly every asset price simultaneously: the denominator shifts. It also explains why long-duration assets (growth stocks, 30-year bonds, real estate) are more rate-sensitive than short-duration ones.\n\nFor assets with no cash flows — gold, most cryptocurrencies, art, collectibles — the anchor is weaker and rests on scarcity, usefulness (industrial, monetary, aesthetic), storage/convenience yield, and expected resale value.\n\n## Information and expectations\n\nPrices are forward-looking. They embed the market's aggregate guess about the future, which is why **prices move on news rather than on facts already known**. A company reporting record profits can fall if the profits were smaller than expected. The efficient-market view holds that publicly available information is already reflected in prices; the practical version is weaker — information gets incorporated quickly but imperfectly, and the speed depends on how many capable, well-capitalized participants are watching.\n\n## Arbitrage and relative pricing\n\nMany assets aren't valued from scratch at all; they're priced off other assets by **no-arbitrage relationships**. Futures are tied to spot prices plus carrying costs, options to their underlying via put-call parity, currency forwards to interest rate differentials. Where these links can be enforced with real trades, prices are pinned tightly. Where enforcement is costly or risky (\"limits to arbitrage\"), they can drift.\n\n## Supply, liquidity, and flows\n\n- **Supply elasticity**: assets in genuinely fixed supply (land in Manhattan, a Vermeer) respond to demand almost entirely through price. Assets that can be created respond partly through quantity.\n- **Liquidity**: harder-to-sell assets trade at a discount. In stressed markets, liquidity premia can dominate everything else.\n- **Flows and constraints**: index inclusion, forced selling by leveraged holders, central bank purchases, pension rebalancing rules, and short-sale restrictions all move prices without any change in fundamentals.\n\n## Who the buyers are\n\nPrices depend on the *identity and constraints* of participants, not just the asset. A tax-exempt investor values a municipal bond differently than a taxable one. A bank facing capital requirements values collateral differently than a hedge fund. When the natural buyer base is regulated, mandated, or price-insensitive, prices reflect those institutional facts.\n\n## Beliefs about other people's beliefs\n\nKeynes's \"beauty contest\": if you plan to sell, what matters isn't the asset's intrinsic worth but what the next buyer will pay — and what *they* think the buyer after that will pay. This reflexive layer generates momentum, narratives",
+      "verdict": "CORRECT",
+      "reason": "matched 'supply'"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "A central bank is the institution responsible for a country's (or currency area's) money and, usually, for the stability of its financial system. Its main roles:\n\n**Monetary policy**\n\nThis is the core function. Central banks influence the cost and availability of credit to achieve macroeconomic goals — typically low, stable inflation, and often employment or growth objectives too. Tools include:\n\n- Setting a short-term policy interest rate (the main lever)\n- Open market operations — buying and selling securities to steer rates and liquidity\n- Quantitative easing/tightening — large-scale asset purchases or sales, used heavily since 2008\n- Reserve requirements and interest paid on reserves\n- Forward guidance — communicating likely future policy to shape expectations\n\n**Financial stability and lender of last resort**\n\nCentral banks can create money, so they can lend to solvent but illiquid banks during panics, stopping bank runs from cascading. This role was Walter Bagehot's famous prescription in the 1870s and was exercised massively in 2008 and March 2020. Many central banks also conduct stress tests and monitor systemic risks.\n\n**Bank supervision and regulation**\n\nHighly variable across countries. The Fed and ECB supervise banks directly; the UK splits this between the Bank of England's Prudential Regulation Authority and a separate conduct regulator; some countries house supervision in an entirely separate agency.\n\n**Currency issuance and payments**\n\nCentral banks issue banknotes and operate the core interbank settlement systems (Fedwire, TARGET2, CHAPS) through which large payments ultimately clear. Many are now researching or piloting central bank digital currencies.\n\n**Reserve management and exchange rates**\n\nThey hold foreign exchange reserves and gold. In floating-rate economies this is mostly passive; in managed-float or pegged regimes, FX intervention can be a central policy tool. Many emerging-market central banks treat the exchange rate as a primary concern.\n\n**Banker to the government**\n\nThey hold government accounts and often act as fiscal agent, auctioning government debt — though in most advanced economies they are legally barred from directly financing deficits.\n\n**Institutional design and debates**\n\nMandates differ. The ECB's primary mandate is price stability; the Federal Reserve has a \"dual mandate\" of stable prices and maximum employment; the Reserve Bank of Australia has historically balanced inflation, employment, and general prosperity.\n\nMost advanced-economy central banks are operationally independent — governments set the goal, the central bank chooses the means — based on the argument that politicians face short-term incentives to inflate. Independence is contested, though. Critics argue that unelected officials making decisions with large distributional consequences (QE, for instance, raised asset prices held disproportionately by the wealthy) raises legitimacy problems, and that the line between monetary and fiscal policy has blurred since 2008.\n\nOther live disputes: whether inflation targeting should be replaced by average-inflation or nominal-GDP targeting; whether central banks should incorporate climate risk into supervision and asset purchases, or whether this constitutes overreach; and whether lender-of-last-resort backstops create moral hazard by encouraging excessive risk-taking.\n\nIf you're interested in a particular central bank, a specific function, or the historical development of these institutions, I can go deeper.",
+      "verdict": "CORRECT",
+      "reason": "matched 'monetary policy'"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "A stock market index is a statistical measure that tracks the performance of a group of stocks, giving you a single number that summarizes how that collection of companies — or a whole market — is doing.\n\n**How it works**\n\nAn index selects a basket of stocks according to some rule (the 500 largest U.S. companies, the 100 biggest firms on the London Stock Exchange, all tech stocks, etc.), then combines their prices into one value. As those stocks rise and fall, the index value moves with them.\n\nThe index number itself is somewhat arbitrary — it's anchored to a starting value set at some point in the past. What matters is the *change*: if the S&P 500 goes from 5,000 to 5,100, that's a 2% gain for the stocks it represents.\n\n**Weighting methods**\n\nHow much influence each stock has depends on the index's design:\n\n- **Market-cap weighted** — bigger companies count more. Most common (S&P 500, Nasdaq Composite, FTSE 100).\n- **Price-weighted** — stocks with higher share prices count more, regardless of company size. The Dow Jones Industrial Average works this way, which is why it's often criticized as a quirky measure.\n- **Equal-weighted** — every stock counts the same, giving smaller companies more relative influence.\n\n**Common examples**\n\n- **S&P 500** — 500 large U.S. companies; the standard benchmark for the U.S. market\n- **Dow Jones Industrial Average** — 30 large U.S. companies; the oldest and most quoted, but narrow\n- **Nasdaq Composite** — thousands of Nasdaq-listed stocks, heavily tech-weighted\n- **FTSE 100**, **Nikkei 225**, **DAX**, **Hang Seng** — UK, Japan, Germany, Hong Kong\n- **MSCI World** / **FTSE Global All Cap** — broad international indices\n\n**Why they matter**\n\n1. **Benchmarking** — investors and fund managers measure their returns against a relevant index.\n2. **Market sentiment** — a quick read on whether markets are optimistic or fearful.\n3. **Investable products** — you can't buy an index directly, but index funds and ETFs hold the underlying stocks to replicate its returns, usually at very low cost. This is the foundation of passive investing.\n4. **Derivatives** — futures and options on indices let investors hedge or speculate on whole markets.",
+      "verdict": "CORRECT",
+      "reason": "matched 'basket'"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "A leap year has **366 days** — one more than the usual 365. The extra day is February 29.\n\n**Why leap years exist:** Earth takes about 365.2422 days to orbit the Sun, so adding a day every four years keeps the calendar aligned with the seasons.\n\n**The rules (Gregorian calendar):**\n- A year divisible by 4 is a leap year...\n- ...unless it's divisible by 100, in which case it's not...\n- ...unless it's also divisible by 400, in which case it is.\n\nSo 2000 was a leap year, but 1900 and 2100 are not.",
+      "verdict": "CORRECT",
+      "reason": "matched '366'"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The modern Summer Olympic Games are held **every four years** — a span known as an Olympiad.\n\nA few notes:\n\n- **Origins:** The first modern Games took place in Athens in 1896, and the four-year cycle has been the standard ever since.\n- **Interruptions:** The Games were cancelled in 1916 (World War I) and in 1940 and 1944 (World War II).\n- **Recent exception:** The Tokyo Games, scheduled for 2020, were postponed to 2021 because of the COVID-19 pandemic, though they kept the official name \"Tokyo 2020.\" The regular cycle resumed with Paris in 2024, and Los Angeles is set to host in 2028.\n- **Relation to the Winter Games:** Until 1992, the Winter Olympics were held in the same year as the Summer Olympics. Beginning in 1994, they were staggered, so now a Summer or Winter Games occurs every two years.",
+      "verdict": "CORRECT",
+      "reason": "matched 'four years'"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "**Apollo 11** was the first crewed mission to land on the Moon.\n\n**Key details:**\n- **Launch:** July 16, 1969, from Kennedy Space Center, Florida, atop a Saturn V rocket\n- **Landing:** July 20, 1969, when the lunar module *Eagle* touched down in the Sea of Tranquility (Mare Tranquillitatis)\n- **Crew:**\n  - **Neil Armstrong** — commander, first person to walk on the Moon\n  - **Buzz Aldrin** — lunar module pilot, second person to walk on the Moon\n  - **Michael Collins** — command module pilot, who remained in lunar orbit aboard *Columbia*\n- **Moonwalk:** Armstrong stepped onto the surface at 02:56 UTC on July 21, 1969, saying, \"That's one small step for man, one giant leap for mankind.\" The two astronauts spent about 2 hours and 15 minutes outside the lander, collecting roughly 21.5 kg of lunar samples.\n- **Return:** The crew splashed down in the Pacific Ocean on July 24, 1969.\n\nThe mission fulfilled President John F. Kennedy's 1961 goal of landing a man on the Moon and returning him safely to Earth before the decade's end. Five more Apollo missions successfully landed crews on the Moon between 1969 and 1972, bringing the total number of people who have walked on the lunar surface to twelve.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Apollo 11'"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "The Bitcoin whitepaper — \"Bitcoin: A Peer-to-Peer Electronic Cash System\" — is credited to **Satoshi Nakamoto**, which is a pseudonym. It was published on October 31, 2008, and announced via the Cryptography Mailing List hosted at metzdowd.com.\n\nA few key points:\n\n- **The real identity behind the name remains unknown.** Nakamoto communicated with early collaborators by email and forum posts, continued developing Bitcoin's code into 2010, and then stopped participating publicly around 2011.\n- **Whether it was one person or a group is also unsettled.** The writing and code have been analyzed extensively for clues, but nothing conclusive has emerged.\n- **Many candidates have been proposed**, including Nick Szabo, Hal Finney (an early Bitcoin contributor who received the first transaction), and Dorian Nakamoto (who denied any involvement after a 2014 *Newsweek* article). None have been verified.\n- **Craig Wright has publicly claimed to be Satoshi**, but in March 2024 the UK High Court ruled that he is not the author of the whitepaper and had forged evidence to support his claim.\n\nA definitive way to settle the question would be for someone to cryptographically sign a message with the private keys tied to Satoshi's earliest known bitcoin addresses — which have never been moved. No one has done so.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Satoshi Nakamoto'"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "## Overview\n\nThe Treaty of Versailles was the peace settlement signed on **28 June 1919** between Germany and the victorious Allied powers, formally ending the state of war between them after World War I. It was negotiated at the Paris Peace Conference, dominated by the \"Big Four\" — Woodrow Wilson (USA), David Lloyd George (Britain), Georges Clemenceau (France), and Vittorio Orlando (Italy). Germany was not permitted to participate in negotiations and was presented with the terms as a fait accompli, which led Germans to call it the *Diktat* (dictated peace). It came into force on 10 January 1920.\n\n## Main terms\n\n**Territorial losses** — Germany lost about 13% of its European territory and all its overseas colonies:\n- Alsace-Lorraine returned to France\n- Eupen-Malmedy to Belgium; North Schleswig to Denmark (after plebiscite)\n- Posen, West Prussia, and part of Upper Silesia to the new Polish state, creating the \"Polish Corridor\" that separated East Prussia from the rest of Germany\n- Danzig made a Free City under League of Nations oversight\n- The Saar coal region placed under League administration for 15 years, with output going to France\n- Colonies redistributed as League of Nations \"mandates\" to Britain, France, Japan, and others\n\n**Military restrictions** — Army capped at 100,000 men, no conscription, no tanks, military aircraft, or submarines; navy severely limited; the Rhineland permanently demilitarised and occupied by Allied troops for 15 years.\n\n**War guilt and reparations** — Article 231 assigned Germany and its allies responsibility for causing the war, providing the legal basis for reparations. The sum was fixed in 1921 at 132 billion gold marks.\n\n**Other provisions** — The Covenant of the League of Nations formed Part I of the treaty. Union between Germany and Austria (*Anschluss*) was prohibited.\n\n## Aftermath and debate\n\nThe US Senate refused to ratify the treaty, and America made a separate peace with Germany in 1921 and never joined the League. Companion treaties dealt with the other Central Powers: St. Germain (Austria), Trianon (Hungary), Neuilly (Bulgaria), and Sèvres (Ottoman Empire, later replaced by Lausanne).\n\nThe treaty has been intensely debated ever since. John Maynard Keynes attacked it as economically ruinous in *The Economic Consequences of the Peace* (1919). In Germany it fuelled bitter resentment, the \"stab-in-the-back\" myth, and eventually Nazi propaganda; Hitler dismantled its terms in the 1930s. Historians remain divided, however: some argue it was too harsh, others that it was too lenient to reconcile Germany but too weak to restrain it, and others that the real failure lay in inconsistent enforcement after 1919 rather than the terms themselves.",
+      "verdict": "CORRECT",
+      "reason": "matched 'World War'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "## The core claim\n\nThe central idea of *The General Theory of Employment, Interest and Money* (1936) is the **principle of effective demand**: the level of output and employment in a monetary economy is determined by aggregate spending, and there is no automatic mechanism ensuring that spending will be sufficient to employ everyone willing to work. A market economy can therefore come to rest — in equilibrium, not merely in temporary disarray — with large-scale involuntary unemployment.\n\nThe title is a deliberate jab: Keynes argued that \"classical\" economics was not wrong so much as a *special case*, valid only under the assumption of full employment. His theory was \"general\" because it covered the whole range of possible output levels.\n\n## The supporting arguments\n\n**Rejection of Say's Law.** Production generates income, but income need not be spent. The act of not consuming does not automatically translate into an act of investing. So supply does not create its own demand.\n\n**The consumption function and the multiplier.** Consumption depends fairly stably on income, with a marginal propensity to consume less than one. As income rises, a widening gap opens between output and consumption that must be filled by investment (or other autonomous spending). A change in investment therefore produces a magnified change in income — the multiplier.\n\n**Investment and expectations.** Investment depends on the expected profitability of capital assets (the \"marginal efficiency of capital\") relative to the interest rate. Because the future is *genuinely uncertain* — not merely risky in a calculable sense — long-term expectations rest on convention, confidence, and \"animal spirits,\" and are liable to sudden collapse. This is the source of instability in Keynes's system.\n\n**Liquidity preference.** Interest is not the price that equilibrates saving and investment; it is the price of parting with liquidity, determined by the demand for money against its supply. This severs the link the classics relied on: there is no guarantee that the interest rate will fall to whatever level would make full-employment investment equal full-employment saving (and in a depression, monetary policy may lose traction altogether).\n\n**Reversed causality between saving and investment.** Saving is the *result* of income, not the cause of investment. Investment generates the income out of which the corresponding saving is made — hence the \"paradox of thrift\": an attempt by everyone to save more can reduce income and leave saving no higher.\n\n**Wage flexibility is not the cure.** Cutting money wages does not reliably raise employment, since employment is determined by demand for output, not by bargains in the labour market; wage cuts also cut incomes and can worsen debt burdens and expectations.\n\n## The policy conclusion\n\nIf private investment is volatile and insufficient, the state should stabilise aggregate demand — through public investment and fiscal policy primarily, monetary policy as support. Keynes spoke of a \"somewhat comprehensive socialisation of investment,\" while insisting his aim was to preserve, not replace, a decentralised market economy.\n\n## A note on interpretation\n\nWhat counts as the \"central\" idea is contested. The mid-century \"neoclassical synthesis\" (Hicks, Samuelson, IS-LM) read Keynes mainly as a theory of demand deficiency under sticky wages and prices. Post-Keynesians (Robinson, Minsky, Davidson) insist the heart of the book is Chapters 12 and 17 — irreducible uncertainty, expectations, and the special role of money and liquidity — and that the synthesis domesticated Keynes by making unemployment a matter of frictions rather than a normal feature of a monetary economy.",
+      "verdict": "CORRECT",
+      "reason": "matched 'aggregate demand'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The Supreme Court of the United States is the highest court in the federal judiciary. Here's an overview of what it does:\n\n**Core functions**\n\n- **Interprets the Constitution.** The Court has the final say on what the Constitution means in the cases it decides. This includes questions about the scope of federal and state power, individual rights, and the separation of powers.\n- **Judicial review.** Under the principle established in *Marbury v. Madison* (1803), the Court can strike down federal or state laws, or executive actions, that it finds unconstitutional.\n- **Resolves conflicts in the law.** One of its main practical roles is settling disagreements among lower federal courts (especially the circuit courts of appeals) or between state supreme courts on important questions of federal law, so the law is applied uniformly nationwide.\n- **Interprets federal statutes and treaties.** Many of its cases involve what a federal law actually requires, not constitutional issues at all.\n\n**How cases reach it**\n\n- Most cases arrive through a **writ of certiorari** — a request that the Court review a lower court's decision. Review is discretionary: of roughly 5,000–7,000 petitions filed each year, the Court typically hears argument in about 60–80.\n- A small category of cases falls under its **original jurisdiction**, meaning they start at the Supreme Court. These are set out in Article III and mainly involve disputes between states or cases involving foreign ambassadors.\n- Some cases come on appeal from state supreme courts when a federal question is involved.\n\n**How it works**\n\n- Nine justices (currently), appointed by the President and confirmed by the Senate, serving during \"good behavior\" — effectively life tenure.\n- Cases are decided by majority vote. The Court issues a majority opinion explaining its reasoning; justices may also write concurrences or dissents.\n- Its decisions are **binding precedent** on all other courts in the country, which is why a single ruling can affect millions of people.\n- The term runs from the first Monday in October through late June or early July.\n\n**Limits on its power**\n\nThe Court can only decide actual cases brought before it — it can't issue advisory opinions or take up issues on its own initiative. It also has no enforcement mechanism of its own; compliance depends on the other branches and on the Court's institutional legitimacy.",
+      "verdict": "CORRECT",
+      "reason": "matched 'highest court'"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "**21 million BTC** is the commonly cited cap.\n\n**How it works:** Miners receive a \"block reward\" for each block they add to the blockchain. This reward started at 50 BTC per block in 2009 and halves every 210,000 blocks — roughly every four years. The reward is currently 3.125 BTC (after the April 2024 halving).\n\nThe math works out neatly: 210,000 blocks × (50 + 25 + 12.5 + 6.25 + …) = 21,000,000.\n\n**A few nuances:**\n\n- **The real number is slightly lower.** Bitcoin's code uses integer arithmetic on satoshis (1 BTC = 100,000,000 satoshis) and truncates fractions when halving, so the true asymptotic total is about **20,999,999.9769 BTC**.\n- **The last coins arrive around 2140.** Rewards shrink to less than one satoshi after 33 halvings, at which point new issuance stops entirely and miners earn only transaction fees.\n- **The circulating supply is effectively smaller.** Roughly 19.9 million BTC have been mined so far, but a meaningful portion is permanently lost — forgotten keys, discarded drives, and the ~1 million coins attributed to Satoshi Nakamoto that have never moved. Estimates of lost bitcoin range from 1 to 4 million. The 50 BTC from the genesis block is also unspendable due to a quirk in how it was recorded.\n\nThe fixed cap is central to Bitcoin's design pitch as \"digital gold\" — a deliberate contrast to fiat currencies whose supply can be expanded by central banks. Changing it would require overwhelming consensus among users, miners, and developers, which is generally considered politically impossible within the Bitcoin community.",
+      "verdict": "CORRECT",
+      "reason": "matched '21 million'"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "A **surname** is the part of a person's name that is shared with other members of their family, usually inherited from a parent. It's also called a *family name*, and in many Western countries it's known as a *last name* because it comes after the given name (e.g., in \"Maria Garcia,\" *Garcia* is the surname).\n\n**Position varies by culture.** While English, French, and Spanish naming conventions place the surname last, many East Asian cultures put it first. In Chinese, Japanese, Korean, and Hungarian names, for example, the family name precedes the given name — so in \"Kim Min-jun,\" *Kim* is the surname.\n\n**Common origins.** Surnames often developed from one of a few sources:\n\n- **Occupations** — Smith, Baker, Müller (German for \"miller\"), Sastre (Spanish for \"tailor\")\n- **Places** — Hill, Bridges, Da Vinci (\"of Vinci\"), Moreau\n- **Patronymics** (descent from a father) — Johnson (\"son of John\"), Ivanov, O'Brien, Nguyễn, Fernández\n- **Personal characteristics or nicknames** — Short, Brown, Russo (\"redhead\" in Italian)\n\n**Not universal.** Some cultures traditionally don't use hereditary surnames. Icelanders, for instance, typically use patronymics that change each generation — a man named Jón whose father was Einar would be Jón Einarsson, while his sister would be Jóna Einarsdóttir. Many Tibetans, Javanese, and some Ethiopians and Afghans also go by a single name or a non-inherited second name.\n\n**Marriage customs** differ too: in some traditions a spouse adopts the other's surname, in others both are kept, hyphenated, or combined — and in Spanish-speaking countries people commonly carry two surnames, one from each parent.",
+      "verdict": "CORRECT",
+      "reason": "matched 'family name'"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A bank account is a financial arrangement between you and a bank (or credit union) that lets you store money safely and move it around — depositing funds, withdrawing them, paying bills, and receiving payments like wages.\n\n**How it works**\n\nWhen you open an account, the bank records the money you deposit as a balance you can access. Technically, the money becomes a liability the bank owes you — the bank may lend out or invest those funds, but you retain the right to withdraw yours. Each account has identifying details (an account number, plus a sort code, routing number, or IBAN depending on the country) that others use to send you money.\n\n**Common types**\n\n- **Checking / current account** — for everyday spending. Comes with a debit card, direct deposits, bill payments, and transfers. Usually pays little or no interest.\n- **Savings account** — for setting money aside. Pays interest, but may limit withdrawals or require notice.\n- **Fixed-term deposit / CD / bond** — money locked away for a set period in exchange for a higher interest rate.\n- **Joint account** — shared by two or more people, often partners or family members.\n- **Business account** — for a company's finances, kept separate from personal money.\n\n**Why people use them**\n\n- Safer than keeping cash at home, and usually government-protected up to a limit (e.g., $250,000 per depositor per bank in the US via FDIC; £85,000 in the UK via FSCS)\n- Required by most employers to pay salaries, and by landlords, utilities, and tax authorities\n- Creates a transaction record useful for budgeting, proving income, or applying for credit\n- Gives access to cards, online banking, overdrafts, and loans\n\n**What's usually involved in opening one**\n\nProof of identity (passport or ID), proof of address, and sometimes a minimum opening deposit. Accounts may carry monthly fees, though many banks waive them if you maintain a balance or receive regular deposits.\n\nIf you let me know your country or what you're trying to do — save, get paid, run a business — I can be more specific.",
+      "verdict": "CORRECT",
+      "reason": "matched 'deposit'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A **text file** is a computer file that contains only human-readable characters — letters, numbers, punctuation, spaces, and line breaks — stored as a sequence of encoded characters rather than as structured binary data.\n\n**Key characteristics**\n\n- **Plain content, no formatting.** A text file has no built-in bold, italics, fonts, colors, or embedded images. Any appearance you see comes from whatever program displays it.\n- **Character encoding.** Each character is stored as a number according to an encoding scheme. Common ones are ASCII (basic English characters), UTF-8 (the modern standard, supporting virtually all writing systems), and older ones like Latin-1 or UTF-16.\n- **Lines.** Text is divided into lines by special newline characters. Unix, Linux, and macOS use a line feed (`\\n`), while Windows traditionally uses a carriage return plus line feed (`\\r\\n`) — which is why a file can sometimes look wrong when moved between systems.\n\n**Text files vs. binary files**\n\nA Word document (`.docx`), JPEG image, or executable program is a *binary* file: its bytes represent formatting instructions, pixel data, or machine code. Opening one in a text editor produces gibberish. A text file, by contrast, is readable in any editor on any operating system, which makes it exceptionally portable and durable.\n\n**Common examples**\n\n- `.txt` — general notes and documents\n- `.csv` — tabular data separated by commas\n- `.html`, `.css`, `.js`, `.py`, `.c` — web pages and source code\n- `.json`, `.xml`, `.yaml`, `.ini`, `.conf` — configuration and data-exchange files\n- `.md` — Markdown, plain text with lightweight formatting conventions\n- Log files produced by programs and servers\n\n**Working with them**\n\nBuilt-in editors include Notepad (Windows), TextEdit in plain-text mode (macOS), and `nano`, `vim`, or `gedit` (Linux). More capable free options include Notepad++, Visual Studio Code, and Sublime Text.\n\n**Why they matter**\n\nBecause the format is so simple and standardized, text files can be read decades later without special software, searched and processed with simple tools, tracked line-by-line in version control systems like Git, and edited by both humans and programs. That's why they remain the foundation of programming, system configuration, and data interchange.",
+      "verdict": "CORRECT",
+      "reason": "matched 'plain text'"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "## The short answer\n\nRain happens when air containing water vapor is cooled enough that the vapor condenses into droplets, and those droplets grow heavy enough to fall.\n\n## Step by step\n\n**1. Water evaporates**\nHeat from the sun evaporates water from oceans, lakes, soil, and plants, loading the air with invisible water vapor.\n\n**2. Air rises and cools**\nWarm air expands as it rises into lower-pressure regions higher up, and expansion cools it. Cooler air can hold less vapor, so the air eventually becomes saturated.\n\nAir gets lifted in four main ways:\n- **Convection** — sun-heated ground makes warm air buoyant (typical summer thunderstorms)\n- **Fronts** — a cold air mass wedges under warm air, or warm air rides up over cold\n- **Orographic lift** — wind is forced up over hills and mountains\n- **Convergence** — winds flowing together have nowhere to go but up\n\n**3. Vapor condenses into cloud droplets**\nWater vapor condenses onto tiny airborne particles called condensation nuclei — dust, sea salt, pollen, smoke. These droplets are minuscule (around 0.02 mm) and light enough to stay suspended by rising air. That's a cloud.\n\n**4. Droplets grow big enough to fall**\nThis is the crucial step, and there are two main routes:\n\n- **Collision–coalescence:** In warm clouds, larger droplets fall faster, sweeping up smaller ones and merging. Common in the tropics.\n- **The ice-crystal (Bergeron) process:** In colder clouds, ice crystals grow at the expense of nearby supercooled water droplets, becoming snowflakes that clump together and often melt into raindrops on the way down. This drives most rainfall in mid-latitudes.\n\n**5. Gravity wins**\nOnce a droplet reaches roughly 0.5 mm or more, its weight overcomes the updraft and air resistance, and it falls as rain. A single raindrop represents about a million cloud droplets merged together.\n\nIf the drop evaporates before reaching the ground, you get *virga* — those wispy streaks of rain hanging beneath a cloud that never arrives.",
+      "verdict": "CORRECT",
+      "reason": "matched 'condens'"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "**Email** (short for \"electronic mail\") is a method of exchanging digital messages between people over a computer network, most commonly the internet.\n\n## The basic idea\n\nYou compose a message, address it to someone using their unique email address, and send it. Within seconds, it arrives in their inbox, where they can read it whenever they choose. Unlike a phone call, both parties don't need to be available at the same time — it's *asynchronous* communication.\n\n## Email addresses\n\nEvery email address has two parts separated by an `@` symbol:\n\n```\njane.smith @ example.com\n   ↑            ↑\nusername     domain\n```\n\nThe username identifies the individual account; the domain identifies the mail server or organization hosting it.\n\n## How it works (simplified)\n\n1. You write a message in an email client (like Gmail's website, Outlook, or Apple Mail).\n2. Your client sends it to your outgoing mail server using a protocol called **SMTP**.\n3. That server looks up the recipient's domain and forwards the message across the internet to their mail server.\n4. The recipient's client retrieves it using **IMAP** or **POP3**.\n\n## What a message contains\n\n- **To / CC / BCC** — recipients (BCC recipients are hidden from others)\n- **Subject** — a short summary of the message\n- **Body** — the main text, which can include formatting, links, and images\n- **Attachments** — files such as documents, photos, or PDFs\n\n## A bit of history\n\nEmail predates the World Wide Web. Ray Tomlinson sent the first networked email in 1971 on ARPANET and chose the `@` symbol to separate user from host. It became widely available to the public in the 1990s with services like Hotmail and Yahoo Mail.\n\n## Common uses today\n\nEmail remains the backbone of business correspondence, account registration and password resets, newsletters, receipts, and marketing. Popular free providers include Gmail, Outlook.com, Proton Mail, and Yahoo Mail.\n\nOne caution: because anyone can send you a message, email is a common vector for spam and **phishing** — fraudulent messages designed to steal passwords or money. Be wary of unexpected links and attachments.",
+      "verdict": "CORRECT",
+      "reason": "matched 'electronic mail'"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "Software is **stateless** when it doesn't retain information between separate invocations or requests. Each interaction is handled independently, using only the data provided with that interaction — the component has no memory of what came before.\n\nA stateless function or service behaves like a pure mathematical function: the same inputs always produce the same outputs, regardless of history.\n\n## The key insight: state doesn't disappear, it moves\n\nThis is the part that trips people up. A \"stateless\" web application still deals with user accounts, shopping carts, and session data. The state hasn't vanished — it's been pushed somewhere else:\n\n- **To the client** — e.g. a signed JWT containing the user's identity, sent with every request\n- **To a shared data store** — a database, Redis, or object storage that all instances can reach\n- **Into the request itself** — passing all needed context as parameters\n\nThe application *process* holds nothing in local memory or on local disk that matters. Kill it, replace it, and nothing is lost.\n\n## Examples\n\n**Stateless:**\n- HTTP itself — the protocol requires each request to be self-describing\n- A REST API where every request carries its own authentication\n- Serverless functions (AWS Lambda, Cloud Functions) — the platform assumes it can discard your instance at any moment\n- A function like `calculateTax(amount, jurisdiction)`\n\n**Stateful:**\n- A server that stores login sessions in local memory\n- A database — its entire purpose is durable state\n- A TCP connection, which tracks sequence numbers and window sizes\n- A WebSocket server holding open connections\n- A function like `getNextId()` that increments an internal counter\n\n## Why it matters\n\n**Horizontal scaling.** If any instance can handle any request, you can add or remove instances freely and put a dumb load balancer in front. With in-memory sessions you'd need \"sticky sessions\" pinning each user to a specific server, which complicates scaling and fails badly when that server dies.\n\n**Fault tolerance.** Crashed instances can be replaced without data loss or user-visible disruption. This is the foundation of the \"cattle, not pets\" approach to infrastructure and of how Kubernetes treats pods.\n\n**Simpler reasoning and testing.** No hidden history means no ordering bugs, no \"works only after you do X first,\" and tests that don't need elaborate setup or teardown.\n\n**Deployability.** Rolling updates and blue/green deployments are trivial when instances are interchangeable.\n\n## Caveats and nuance\n\nStatelessness is relative to a boundary, not an absolute property. Your API server may be stateless while depending entirely on a stateful database — that's the normal, intended arrangement. You've concentrated the hard problem (consistency, durability) into a layer built to handle it.\n\nThere are real tradeoffs. Externalizing state costs a network round trip on operations that could have been a memory lookup. Pushing state to the client raises questions about size, tampering, and revocation — a JWT can't easily be invalidated before it expires, which is a genuine drawback compared to server-side sessions.\n\nAnd some systems are stateful by nature. Multiplayer game servers, collaborative editors, and streaming pipelines maintain state because that's the problem domain. The goal isn't statelessness for its own sake; it's keeping state deliberate, minimal, and located where you can manage it well.",
+      "verdict": "CORRECT",
+      "reason": "matched 'no memory'"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A **prime number** is a whole number greater than 1 that has exactly two distinct positive divisors: 1 and itself.\n\nIn other words, a prime can't be evenly divided by any number other than 1 and itself.\n\n**Examples of primes:** 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, …\n\n**Non-primes (composite numbers):** 4 (= 2×2), 6 (= 2×3), 9 (= 3×3), 15 (= 3×5), …\n\n**A few important notes:**\n\n- **1 is not prime.** It only has one divisor (itself), not two. Excluding it also keeps factorizations unique — otherwise 6 = 2×3 = 1×2×3 = 1×1×2×3, and so on.\n- **2 is the only even prime,** since every other even number is divisible by 2.\n- **There are infinitely many primes** — a fact proven by Euclid around 300 BCE.\n\n**Why they matter:** Primes are the \"building blocks\" of the integers. The Fundamental Theorem of Arithmetic says every integer greater than 1 can be written as a product of primes in exactly one way (ignoring order). For example, 60 = 2 × 2 × 3 × 5. They're also central to modern cryptography, since multiplying two large primes is easy but factoring the result back is extremely hard.\n\n**A quick way to test small numbers:** to check whether *n* is prime, try dividing by each prime up to √*n*. For 97, √97 ≈ 9.8, so test 2, 3, 5, 7 — none divide it, so 97 is prime.",
+      "verdict": "CORRECT",
+      "reason": "matched 'divisible'"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "π ≈ **3.14**\n\nIf you need more precision, π ≈ 3.14159 (to five decimal places). A handy fraction approximation is 22/7 ≈ 3.143, and an even better one is 355/113 ≈ 3.1415929.",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14'"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "## The basic idea\n\nTo **factor a number into primes** (also called finding its *prime factorization*) means to write it as a product of prime numbers — numbers greater than 1 whose only positive divisors are 1 and themselves (2, 3, 5, 7, 11, 13, ...).\n\nFor example:\n\n- 12 = 2 × 2 × 3, or 2² × 3\n- 60 = 2² × 3 × 5\n- 97 = 97 (it's already prime)\n\n## Why primes?\n\nPrimes are the \"atoms\" of multiplication. Any whole number greater than 1 can be broken down into primes, and primes themselves can't be broken down any further.\n\n## The key fact: uniqueness\n\nThe **Fundamental Theorem of Arithmetic** says that every integer greater than 1 has *exactly one* prime factorization, apart from the order in which you write the factors. So 60 is *always* 2² × 3 × 5 — there's no other way to build it from primes. This is part of why 1 isn't considered prime: if it were, you could tack on as many 1's as you liked and uniqueness would fail.\n\n## How to do it\n\nOne simple method is **trial division**: repeatedly divide out the smallest prime that works.\n\nFactor 360:\n- 360 ÷ 2 = 180\n- 180 ÷ 2 = 90\n- 90 ÷ 2 = 45\n- 45 ÷ 3 = 15\n- 15 ÷ 3 = 5\n- 5 ÷ 5 = 1\n\nSo 360 = 2³ × 3² × 5.\n\nA **factor tree** works too: split the number into any two factors, then keep splitting until everything is prime. Different starting splits still land on the same final answer.\n\n## Why it's useful\n\n- Finding greatest common divisors and least common multiples\n- Simplifying fractions\n- Determining how many divisors a number has\n- Cryptography — RSA encryption relies on the fact that factoring *very* large numbers (hundreds of digits) is computationally hard, even though multiplying is easy",
+      "verdict": "CORRECT",
+      "reason": "matched 'multiply'"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "The first four prime numbers are **2, 3, 5, and 7**.\n\nA prime number is a whole number greater than 1 that has exactly two divisors: 1 and itself.\n\n- **2** — divisible only by 1 and 2 (the only even prime)\n- **3** — divisible only by 1 and 3\n- **5** — divisible only by 1 and 5\n- **7** — divisible only by 1 and 7\n\nNote that 4 and 6 are excluded because they're divisible by 2, and 1 is not considered prime since it has only one divisor.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "The Bitcoin whitepaper — *Bitcoin: A Peer-to-Peer Electronic Cash System* (Satoshi Nakamoto, 2008) — frames its problem on two levels.\n\n**The practical problem: dependence on trusted third parties**\n\nNakamoto opens by arguing that internet commerce had come to rely almost entirely on financial institutions acting as intermediaries. He lists the costs of this arrangement:\n\n- Transactions aren't truly irreversible, since intermediaries can't avoid mediating disputes, so mediation costs get baked in.\n- Those costs make small, casual micropayments impractical.\n- Merchants must be wary of customers and demand more personal information than they actually need.\n- A certain amount of fraud is simply \"accepted as unavoidable.\"\n\nWhat's needed instead, he writes, is \"an electronic payment system based on cryptographic proof instead of trust,\" letting two willing parties transact directly without a trusted intermediary.\n\n**The technical problem: double-spending without a central authority**\n\nThe abstract states the goal precisely: a purely peer-to-peer version of electronic cash requires \"a solution to the double-spending problem using a peer-to-peer network.\" Digital tokens are just data and can be copied, so nothing stops a payer from spending the same coin twice. Prior digital cash schemes solved this by routing every transaction through a central mint that checked for reuse — which reintroduces the trusted third party the whole design is trying to eliminate.\n\nBitcoin's answer is to publicly announce all transactions and have the network agree on a single ordering of them. This is done with a distributed timestamp server built on proof-of-work: transactions are grouped into blocks that are hashed into a chain, and the chain that represents the greatest accumulated computational work is taken as the valid history. Rewriting a past transaction would require redoing that work and outpacing the honest nodes, so as long as honest participants control a majority of CPU power, the ledger's ordering is secure — and nodes can join or leave at will, accepting the longest chain as proof of what happened while they were gone.",
+      "verdict": "CORRECT",
+      "reason": "matched 'double-spend'"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A **cryptographic hash function** is a mathematical function that takes an input of any size (a \"message\") and produces a fixed-size output (called a *hash*, *digest*, or *fingerprint*), in a way that is designed to be practically impossible to reverse or manipulate.\n\nFor example, SHA-256 always produces 256 bits (64 hex characters), whether you hash a single letter or a 10 GB file:\n\n```\n\"hello\"  → 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824\n\"hello!\" → ce06092fb948d9ffac7d1a376e404b26b7575bcc11ee05a4615fef4fec3a308b\n```\n\n## Core properties\n\n- **Deterministic** — the same input always yields the same output.\n- **Fast to compute** — hashing even large files is cheap.\n- **Preimage resistance (one-way)** — given a digest, you can't feasibly find *any* input that produces it.\n- **Second-preimage resistance** — given a specific input, you can't find a *different* input with the same digest.\n- **Collision resistance** — you can't feasibly find *any two* distinct inputs that hash to the same value.\n- **Avalanche effect** — changing one bit of input changes roughly half the output bits, unpredictably (visible in the example above).\n\nCollisions must exist mathematically, since infinite inputs map to finitely many outputs. Security rests on them being computationally infeasible to *find*. Because of the birthday paradox, finding a collision takes roughly 2^(n/2) work for an n-bit hash — so SHA-256 offers ~128-bit collision resistance.\n\n## Common uses\n\n- **Integrity checking** — verifying a download matches its published checksum.\n- **Digital signatures** — you sign the hash of a document rather than the document itself.\n- **Message authentication** — HMAC constructions combine a hash with a secret key.\n- **Commitment schemes** — publish a hash now to prove you knew something, reveal the value later.\n- **Merkle trees & blockchains** — chaining hashes to make tamper-evident data structures.\n- **Deduplication and lookup** — content-addressed storage like Git.\n\n## Important distinctions\n\n**Not encryption.** Hashing is one-way and keyless; there is no \"decryption.\" Encryption is reversible with a key.\n\n**Not the same as non-cryptographic hashes.** CRC32 or the hash functions behind hash tables are fast but trivially manipulated; they offer no adversarial security.\n\n**Not sufficient alone for passwords.** Plain SHA-256 is far too fast — an attacker can try billions of guesses per second. Password storage requires a deliberately slow, salted key-derivation function like **Argon2**, **scrypt**, or **bcrypt**.\n\n## Which ones to use\n\n- **Recommended:** SHA-256/SHA-512 (SHA-2 family), SHA-3, BLAKE2, BLAKE3.\n- **Broken — do not use for security:** MD5 (collisions found in seconds) and SHA-1 (practical collisions demonstrated in 2017 with the SHAttered attack, and a chosen-prefix collision in 2020).",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
+    }
+  ]
+}

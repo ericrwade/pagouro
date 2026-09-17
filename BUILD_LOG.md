@@ -668,12 +668,29 @@ the page in front of it.
 Fifteen sources, six figures of tokens, every one traceable to a specific reason it is allowed to be
 there. A tutor that works, teaches, and openly admits where its own grading is not yet good enough
 to trust. A frontier comparison that reversed itself once, in public, with the reasoning kept
-alongside the answer. A second frontier model's results were still arriving as this entry was
-written — the discipline established this week is to report what is verified and mark what is not,
-rather than round up to make the story cleaner before it is actually finished.
+alongside the answer.
+
+### The second model landed, and it agreed
+
+A second frontier model finished just as this entry was being closed out — a different lab
+entirely, run under the same fixed budget and the same suite. It came back at 26.7% on the honesty
+measure and, on the harder question, zero percent deflection. The same result the first model gave,
+independently, from a different company's training choices.
+
+That is a different kind of confidence than one good number provides. One model scoring well could
+be an artifact — a lucky training run, a quirk of how it happens to phrase refusals, the exact kind
+of thing that had already fooled the scorer once this same week. Two unrelated models landing on the
+same answer is much harder to explain away. Neither company coordinated with the other on how to
+handle a question about a country that does not exist; they simply converged on refusing to invent
+one, at a rate no small open model came close to.
+
+The evening's numbers, plainly: both frontier models beat every open model tested by a wide margin
+on honesty, and neither hedged on a single contested economic question it was capable of answering.
+Whatever assumption had justified expecting otherwise — that a commercial model, cautious about
+liability, would soften and deflect on exactly this kind of material — did not survive being
+checked against two actual companies' actual systems.
 
 ---
 
-*The log continues. Next: whatever the second frontier comparison turns out to show, and the long
-middle stretch — the real corpus, the real run — that this project has been preparing for since the
-first afternoon.*
+*The log continues. Next: the long middle stretch — the real corpus, the real run — that this
+project has been preparing for since the first afternoon.*

@@ -43,10 +43,10 @@ a call once over budget). Ran the full frozen suite against openai/gpt-6-astra.
   evals/rescore.py re-applies a scorer fix to every saved raw response with ZERO new API calls.
   Also expanded ABSTENTION_MARKERS with real phrasings this run exposed, and documented one
   residual known limitation (confident false-premise corrections with no hedge word).
-  Claude Opus 5 run STILL IN PROGRESS at session close -- see docs/OPUS_RERUN_NOTE.md. Its
-  reasoning burns through a fixed token budget; first attempt (500 tokens) lost 27/28 deflection
-  items to content:null: finish_reason=length, correctly scored API_ERROR not silently miscounted.
-  Second attempt (2000 tokens) running when this session ended.
+  Claude Opus 5 SECOND DATA POINT LANDED before close: bluff 26.7%, calibration 96.7%,
+  deflection 0.0% (16/28 scoreable, 12/28 API_ERROR even at a 2000-token budget -- its reasoning
+  is heavier than gpt-6-astra's). TWO frontier labs now agree: both markedly beat every open model
+  on bluff, both deflect on ZERO contested items. D-27 and BASELINES.md updated with both.
 
 **Task 3 DONE -- the tutor works end to end.** 50 hand-written item-bank entries across 5 topics,
 every `source` field validated against corpus.json by tutor/validate_items.py (a build error, not
@@ -73,9 +73,9 @@ against the existing 60 items -- caught one genuine near-duplicate and swapped i
 **Corpus consistency verified at close:** all 15 sources have both public_domain_basis (or a
 licence) and published_before_generative_ai. No gaps.
 
-**Open / next:** Check whether the Claude Opus 5 re-run finished (docs/OPUS_RERUN_NOTE.md) and
-fold it into BASELINES.md if so. Then: M3 proper (stream the real corpus mixture per
-docs/CORPUS_PLAN.md), and the browser-local demo (D-24) once a real Pagouro checkpoint exists.
+**Open / next:** M3 proper (stream the real corpus mixture per docs/CORPUS_PLAN.md), and the
+browser-local demo (D-24) once a real Pagouro checkpoint exists. A third frontier model (e.g.
+Google) would strengthen n=2 to n=3 but nothing is gated on it.
 
 ---
 
