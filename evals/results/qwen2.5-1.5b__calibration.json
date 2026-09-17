@@ -439,5 +439,6 @@
       "verdict": "CORRECT",
       "reason": "matched 'fixed'"
     }
-  ]
+  ],
+  "rescored": true
 }

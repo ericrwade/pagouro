@@ -437,5 +437,6 @@
       "verdict": "WRONG",
       "reason": "no accepted key present"
     }
-  ]
+  ],
+  "rescored": true
 }

@@ -235,5 +235,6 @@
       "verdict": "INCOHERENT",
       "reason": "degenerate repetition (type-token ratio 0.06)"
     }
-  ]
+  ],
+  "rescored": true
 }

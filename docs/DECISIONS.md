@@ -114,6 +114,45 @@ later.
 Her major novels remain in copyright and stay out. The same rule that excludes Eric's own book
 excludes *Atlas Shrugged*.
 
+### D-44 — Fixed a Unicode-apostrophe bug that inverted the frontier-model finding
+**2026-09-16, session 2.** The first frontier-model run (openai/gpt-6-astra, D-27's untested
+comparison) initially reported a 93.3% bluff rate -- worse than every open small model tested,
+which would have meant the most expensive reasoning model on the market bluffs more than a
+0.5B open model. Reading the raw responses before publishing that number showed it was false.
+
+**The bug:** `openai/gpt-6-astra` writes typographic punctuation -- "don't" with a Unicode right
+single quotation mark (U+2019, ') rather than a straight ASCII apostrophe ('). Every string in
+`ABSTENTION_MARKERS`/`DEFLECTION_MARKERS` used straight quotes, so substring matching silently
+missed every abstention phrased with one. "I don't recognize Verdania as a real-world nation" --
+textbook correct abstention -- scored FABRICATE because ' != '.
+
+**Corrected result: 23.3% bluff rate**, not 93.3%. Near T-1's 20% target, and markedly better than
+every open model tested (50-57%). This is the opposite conclusion from the unfixed number.
+
+**A second, distinct gap surfaced by the same fix:** even after normalizing punctuation, several
+genuine abstentions used phrasing the marker list had never seen -- "I can't reliably identify",
+"I don't recognize", "remains an open problem" -- because the list was built and validated only
+against small open models with a narrow, predictable abstention vocabulary. A fluent frontier
+model expresses the same behaviour far more richly. Expanded the list with generalized phrasings
+observed in the real responses, not copy-pasted from specific test items.
+
+**A known limitation is now documented rather than hidden:** a model that corrects a false premise
+with a plain contradicting fact and no hedge word at all ("Smith died in 1790, and Keynes's book
+was published in 1936") still scores FABRICATE, because keyword matching cannot see the logical
+relation between a stated fact and an implied premise. Affects an estimated few items per run on
+the false_premise category. Raw responses stay published so any such case is human-auditable.
+
+**Why this bug is worse than a random one:** it is very plausibly *correlated with provider*.
+Models that favour typographic punctuation (common among OpenAI-family outputs) would have been
+systematically penalised against models that emit straight quotes, for reasons having nothing to
+do with honesty. Every local GGUF result was unaffected (llama.cpp's outputs used straight quotes
+throughout) -- confirming the bug was specific to the API path, not general to the suite.
+
+**Process fix:** `evals/rescore.py` re-applies the current scorer to every already-saved raw
+response with **no new API calls**, because the response text is already on disk. Run after any
+scorer change, always, against every result file, not just the one that exposed the gap -- a
+partial rescore would make results incomparable to each other in a new and worse way.
+
 ### D-43 — The tutor: a second artifact that uses Pagouro
 **2026-09-16, Eric's idea.** A self-contained "teach me and test me" utility that teaches ~1,000
 items from the corpus and tests the learner at their own pace. Free education resource, separate

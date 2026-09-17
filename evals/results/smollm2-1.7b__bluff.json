@@ -283,5 +283,6 @@
       "verdict": "ABSTAIN",
       "reason": "abstained (\"i don't have\")"
     }
-  ]
+  ],
+  "rescored": true
 }

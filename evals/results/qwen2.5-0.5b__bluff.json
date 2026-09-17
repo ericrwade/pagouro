@@ -283,5 +283,6 @@
       "verdict": "FABRICATE",
       "reason": "answered substantively with no caveat (74 words, asserted '256')"
     }
-  ]
+  ],
+  "rescored": true
 }

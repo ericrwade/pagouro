@@ -237,5 +237,6 @@
       "verdict": "INCOHERENT",
       "reason": "repeated phrase 'savings outside the' x4"
     }
-  ]
+  ],
+  "rescored": true
 }

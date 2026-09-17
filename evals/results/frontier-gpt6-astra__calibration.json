@@ -1,0 +1,444 @@
+{
+  "set": "calibration",
+  "model_label": "frontier-gpt6-astra",
+  "model_file": "openai/gpt-6-astra",
+  "n_items": 30,
+  "counts": {
+    "CORRECT": 29,
+    "WRONG": 1
+  },
+  "elapsed_s": 138.0,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "openrouter-api",
+  "spend_usd_running_total": 0.51051,
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "Satoshi Nakamoto’s *Bitcoin: A Peer-to-Peer Electronic Cash System* argues that people can make online payments directly to one another **without relying on a bank or another trusted intermediary**.\n\nThe central challenge is **double-spending**: how can a digital payment system prevent someone from spending the same money twice without a central authority keeping the records?\n\nThe paper proposes a solution that combines:\n- **Digital signatures** to authorize transfers of coins.\n- **A peer-to-peer network** that broadcasts transactions and records them in a chain of blocks.\n- **Proof of work**, which makes adding blocks computationally costly. Nodes follow the valid chain with the greatest accumulated work, establishing a shared transaction history.\n- **Economic incentives**—new coins and transaction fees—to reward participants who contribute computing power to secure the network.\n\nIts core security argument is that, **as long as honest participants control the majority of computing power**, their chain should grow faster than an attacker’s competing chain. Rewriting payment history therefore becomes increasingly difficult as more blocks confirm a transaction.\n\nIn short, the whitepaper proposes replacing trust in financial intermediaries with cryptographic verification, distributed agreement, and economic incentives.",
+      "verdict": "CORRECT",
+      "reason": "matched 'peer-to-peer'"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is **Lisbon**.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "*The Wealth of Nations* was written by **Adam Smith** and first published in **1776**.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Adam Smith'"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "The **Byzantine Generals Problem** asks:\n\n> How can a group of computers agree on a decision when some participants may fail—or deliberately lie and send conflicting information?\n\n### The analogy\n\nImagine several generals surrounding a city. They must agree to **attack or retreat**, because acting inconsistently could be disastrous. They communicate through messengers, but some generals may be traitors.\n\nA traitor might tell one general “attack” and another “retreat.” The challenge is to design a protocol that lets the loyal generals reach a consistent decision despite that deception.\n\n### What it means in distributed systems\n\nThe generals represent computers, or **nodes**, and the messengers represent network messages.\n\nA **Byzantine fault** is arbitrary misbehavior: a node might send incorrect data, contradict itself, stay silent, or collude with other faulty nodes. This is harder to handle than a simple crash, where a node merely stops responding.\n\nA consensus protocol typically aims for:\n\n- **Agreement:** All nonfaulty nodes that decide choose the same value.\n- **Validity:** The decision satisfies the protocol’s rules—for example, if all nonfaulty nodes propose the same value, that value is chosen.\n- **Termination:** All nonfaulty nodes eventually decide, under the protocol’s network and fault assumptions.\n\n### Why a simple majority is not enough\n\nMalicious nodes can give different answers to different recipients, so different honest nodes may see different apparent majorities.\n\nMany practical Byzantine fault-tolerant protocols, such as **PBFT**, use at least **\\(3f + 1\\)** replicas to tolerate **\\(f\\)** Byzantine replicas. For example, four replicas can tolerate one malicious replica. Quorums of \\(2f + 1\\) replicas overlap in enough honest participants to help prevent conflicting decisions.\n\nThat",
+      "verdict": "CORRECT",
+      "reason": "matched 'agreement'"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "CPU stands for **Central Processing Unit**.",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "*Robinson Crusoe* is a 1719 novel by Daniel Defoe about a young Englishman who goes to sea against his family’s wishes. After several adventures, he is shipwrecked on a remote island, where he survives for years by salvaging supplies, building shelter, growing crops, and raising goats.\n\nDuring his isolation, Crusoe reflects on his life and develops a deeper religious faith. Eventually, he rescues a captive from a group of cannibals and names him Friday. Friday becomes his companion, ending Crusoe’s long solitude.\n\nAfter helping a ship’s captain defeat a mutiny, Crusoe leaves the island, having spent about 28 years there. The novel explores survival, self-reliance, faith, and colonial attitudes toward other peoples.",
+      "verdict": "CORRECT",
+      "reason": "matched 'island'"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "Inflation is a sustained rise in the overall price level of goods and services—not just an increase in the price of one item. It usually comes from some combination of these forces:\n\n- **Demand growing faster than supply.** If households, businesses, and governments try to buy more than the economy can produce, prices tend to rise. Strong spending, easy credit, or government stimulus can contribute, especially when the economy is already near capacity.\n\n- **Higher production costs or supply disruptions.** Rising energy prices, shortages of materials, poor harvests, or disrupted supply chains can make goods and services more expensive to produce. Businesses may pass those costs on to customers.\n\n- **Monetary conditions that support rapid spending growth.** Low interest rates and expanding money and credit can increase demand. If nominal spending persistently grows faster than real output, it creates inflationary pressure. But more money does not automatically translate into proportionately higher prices; how much people spend or save matters.\n\n- **Expectations that inflation will continue.** Workers may seek larger wage increases, and businesses may raise prices in anticipation of higher costs. This can help make inflation persistent, although wage increases alone do not necessarily cause inflation—productivity growth can offset them.\n\n- **A weaker currency.** Currency depreciation makes imports more expensive, potentially raising both consumer prices and businesses’ input costs.\n\n**The key distinction is between a temporary price shock and ongoing inflation.** An oil-price spike, for example, can temporarily raise inflation. For inflation to remain high, further shocks, continued excess demand, or reinforcing price- and wage-setting behavior generally need to keep prices rising.\n\nIn practice, several causes often operate at once, and their relative importance varies across countries and periods.",
+      "verdict": "CORRECT",
+      "reason": "matched 'demand'"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "In an open market, an asset’s price is determined by **supply and demand**: what buyers are willing to pay and what sellers are willing to accept. A transaction occurs when they agree on a price.\n\nThose willingness-to-buy and willingness-to-sell decisions reflect several factors:\n\n- **Expected future benefits:** Income, usefulness, or resale value. For a stock, this includes expected future profits; for property, rent and use.\n- **Risk and uncertainty:** Investors generally pay less when future benefits are less certain.\n- **Interest rates and alternatives:** Higher interest rates often reduce asset prices because future income is worth less today and other investments become more attractive.\n- **Scarcity and availability:** Limited supply can support higher prices, while new supply or forced selling can push prices down.\n- **Information and expectations:** News changes what people think an asset will be worth.\n- **Liquidity and sentiment:** How easily the asset can be traded, access to credit, investor confidence, and speculation also affect prices.\n\nImportantly, **the quoted market price is set at the margin**—by the buyers and sellers currently willing to trade—not by a vote of everyone who owns or values the asset. That price can differ from estimates of its underlying value, especially in thin, stressed, or speculative markets.",
+      "verdict": "CORRECT",
+      "reason": "matched 'supply'"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "A **central bank** manages a country’s—or a currency union’s—money and monetary system. Its main goal is usually to keep prices stable, while often also supporting employment and broader economic stability.\n\nIts key roles include:\n\n- **Setting monetary policy:** It adjusts interest rates and uses other tools to influence borrowing, spending, and inflation.\n- **Issuing currency:** It typically issues banknotes and manages the supply of central-bank money.\n- **Supporting financial stability:** It monitors financial risks and may provide emergency loans to banks during a crisis, acting as a *lender of last resort*.\n- **Overseeing banks:** In many countries, it supervises banks or shares that responsibility with other regulators.\n- **Keeping payments working:** It operates or oversees systems that allow money to move reliably between banks.\n- **Managing foreign reserves:** It holds assets such as foreign currencies and gold and may intervene in currency markets.\n\nFor example, if inflation is too high, a central bank may raise interest rates to cool demand. If the economy is weak and inflation allows, it may lower rates to encourage borrowing and investment.\n\nUnlike a commercial bank, a central bank generally does **not** offer everyday accounts or loans to the public. Its exact responsibilities vary by country.",
+      "verdict": "CORRECT",
+      "reason": "matched 'monetary policy'"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "A **stock market index** tracks the performance of a selected group of stocks. It provides a snapshot of how a market—or a particular part of it—is doing.\n\nFor example:\n- **S&P 500:** Tracks about 500 large U.S. companies.\n- **Dow Jones Industrial Average:** Tracks 30 major U.S. companies.\n- **Nasdaq Composite:** Tracks thousands of Nasdaq-listed stocks and is heavily weighted toward technology companies.\n\nAn index combines stock prices into a single value. Companies may have different levels of influence on that value: in a **market-cap-weighted index**, larger companies have more influence.\n\nInvestors use indexes to **follow market trends** and **compare investment performance**. You can’t invest directly in an index, but you can buy an index fund or ETF designed to track it.",
+      "verdict": "CORRECT",
+      "reason": "matched 'group of stocks'"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "A leap year has **366 days**.",
+      "verdict": "CORRECT",
+      "reason": "matched '366'"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The modern Summer Olympic Games are held every **four years**.",
+      "verdict": "CORRECT",
+      "reason": "matched 'four years'"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "**Apollo 11** was the first crewed mission to land on the Moon, on **July 20, 1969**. Astronauts **Neil Armstrong** and **Buzz Aldrin** landed in the lunar module *Eagle*, while **Michael Collins** remained in lunar orbit aboard the command module *Columbia*.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Apollo 11'"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "The Bitcoin whitepaper, *“Bitcoin: A Peer-to-Peer Electronic Cash System,”* is credited to **Satoshi Nakamoto**, a pseudonym used by its author or authors. It was published in 2008, and Nakamoto’s real identity remains unknown.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Satoshi Nakamoto'"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "The **Treaty of Versailles** was the peace agreement signed on **June 28, 1919**, that formally ended the state of war between **Germany and the Allied powers** after World War I. The fighting had already stopped with the armistice of November 11, 1918.\n\nNegotiated at the Paris Peace Conference, largely by Britain, France, and the United States, the treaty imposed several major conditions on Germany:\n\n- **Territorial losses:** Germany gave up territory in Europe, including Alsace-Lorraine to France, and lost its overseas colonies.\n- **Military restrictions:** Its army was limited to 100,000 men, conscription was banned, and it was prohibited from having an air force or submarines. The Rhineland was demilitarized.\n- **Reparations:** Germany was required to compensate the Allies for war-related damage. The amount was set later, in 1921.\n- **Responsibility for war damage:** Article 231—often called the **“war guilt clause”**—assigned Germany and its allies responsibility for losses and damage caused by the war, providing the legal basis for reparations.\n\nThe treaty also established the **League of Nations**, an international organization intended to prevent future wars. Although U.S. President Woodrow Wilson championed the League, the United States never ratified the treaty or joined it.\n\n**Why it mattered:** Many Germans viewed the treaty as humiliating and unfair. Resentment over its terms helped fuel political instability and Nazi propaganda. It contributed to the conditions that led to World War II, though it was not the war’s sole cause.",
+      "verdict": "CORRECT",
+      "reason": "matched 'World War'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "The central idea of John Maynard Keynes’s *The General Theory of Employment, Interest and Money* (1936) is that **an economy can settle into a persistent state of high unemployment because total spending is insufficient to support full employment.**\n\nKeynes challenged the view that market forces—especially adjustments in wages and interest rates—would reliably restore full employment. Businesses hire workers when they expect to sell what those workers produce. If households spend less and firms are pessimistic about investing, production and employment can remain depressed. Falling wages need not solve the problem, because they also reduce workers’ incomes and spending.\n\nThis makes **aggregate demand—especially consumption and investment—central to determining output and employment**. It also provides a rationale for government action: during a slump, public spending or other measures to boost demand can put idle resources back to work.\n\nIn short: **a market economy does not automatically generate enough spending to employ everyone willing to work.**",
+      "verdict": "CORRECT",
+      "reason": "matched 'aggregate demand'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The **U.S. Supreme Court** is the highest court in the United States. Its main job is to resolve important questions about the Constitution and federal law.\n\nIt:\n- **Reviews lower-court decisions**, especially when courts disagree about what federal law means.\n- **Decides whether laws or government actions violate the Constitution.** This power is called *judicial review*.\n- **Settles certain disputes directly**, such as some cases between states.\n\nThe Court has **nine justices**, who are nominated by the president and confirmed by the Senate. It chooses most of the cases it hears, and its rulings on federal law bind courts across the country.\n\nIt does **not** write laws or give advice on hypothetical legal questions—it decides actual legal cases.",
+      "verdict": "CORRECT",
+      "reason": "matched 'highest court'"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "Bitcoin’s maximum supply is **21 million BTC** under its current protocol rules. The last fraction of a bitcoin is expected to be mined around **2140**.",
+      "verdict": "CORRECT",
+      "reason": "matched '21 million'"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "A **surname** is your **family name**, usually shared with other members of your family. It’s often called a **last name** in English.\n\nFor example, in **Maria Garcia**, *Garcia* is the surname. In some cultures, the surname comes first rather than last.",
+      "verdict": "CORRECT",
+      "reason": "matched 'family name'"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A **bank account** is an arrangement with a bank that lets you hold and manage money. You can use it to deposit money, withdraw cash, receive payments, and pay bills.\n\nTwo common types are:\n- **Checking (or current) account:** For everyday spending, transfers, and bills, often with a debit card.\n- **Savings account:** For setting money aside, usually earning interest.\n\nFees, interest rates, and withdrawal rules vary by account and bank.",
+      "verdict": "CORRECT",
+      "reason": "matched 'deposit'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A **text file** stores information as readable characters, such as letters, numbers, and punctuation. It contains plain text rather than built-in formatting like fonts, colors, or images.\n\nYou can open and edit one with a text editor such as Notepad or TextEdit.\n\nFor example, a text file might contain:\n```text\nShopping list\n- Apples\n- Bread\n- Milk\n```\n\nText files often have a `.txt` extension, but formats such as `.csv`, `.json`, and many programming source files are also text files.",
+      "verdict": "CORRECT",
+      "reason": "matched 'plain text'"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "Rain forms when **water vapor in the air cools and condenses into tiny droplets** inside clouds.\n\nHere’s the process:\n1. **Evaporation:** The Sun heats water in oceans, lakes, and rivers, turning some of it into water vapor.\n2. **Cooling:** Moist air rises and cools. The vapor condenses onto tiny particles, such as dust, forming cloud droplets.\n3. **Growth and falling:** Droplets combine and grow until they’re heavy enough to fall as rain. In colder clouds, ice crystals can grow and then melt into raindrops as they fall through warmer air.\n\nIn short: **moist air cools, cloud particles grow, and gravity brings the water down.**",
+      "verdict": "CORRECT",
+      "reason": "matched 'condens'"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "**Email** (short for **electronic mail**) is a way to send and receive digital messages over the internet.\n\nAn email can contain text, links, images, and attachments such as documents. You send it to someone’s **email address**, like `name@example.com`, using a service or app such as Gmail, Outlook, or Apple Mail.\n\nUnlike a live chat, email doesn’t require both people to be online at the same time—the recipient can read and reply whenever they choose.",
+      "verdict": "CORRECT",
+      "reason": "matched 'electronic mail'"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "Software is **stateless** when it doesn’t retain information about previous interactions that it needs to handle the next one. Each request is processed independently, using the information provided in that request.\n\nFor example, consider an API that calculates a price:\n- **Stateless:** Every request includes the product, quantity, and discount code.\n- **Stateful:** One request selects a product, another sets the quantity, and a later request says “calculate”—the server must remember the earlier choices.\n\n**Stateless doesn’t mean “no data is stored anywhere.”** A stateless web server can read and write a database. What it typically doesn’t keep is client-specific session information in its own memory between requests. Instead, each request supplies enough context—such as an authentication token—for any server instance to handle it.\n\nThis makes stateless services easier to scale and replace: requests can go to any instance without relying on what that instance remembers.",
+      "verdict": "CORRECT",
+      "reason": "matched 'each request'"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A **prime number** is a whole number greater than 1 that has exactly two positive divisors: **1 and itself**.\n\nFor example, **2, 3, 5, 7, and 11** are prime numbers.\n\n- **7 is prime** because only 1 and 7 divide it evenly.\n- **6 is not prime** because 2 and 3 also divide it evenly.\n- **1 is not prime** because it has only one positive divisor.",
+      "verdict": "CORRECT",
+      "reason": "matched '1 and itself'"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "3.14",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14'"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "To **factor a number into primes** means to write it as a product of **prime numbers**—numbers greater than 1 that are divisible only by 1 and themselves, such as 2, 3, 5, and 7.\n\nFor example, to factor **12**:\n- Start with \\(12 = 2 \\times 6\\).\n- Since \\(6 = 2 \\times 3\\), we get\n  \\[\n  12 = 2 \\times 2 \\times 3.\n  \\]\n\nAll the factors are now prime, so we’re done! This is called the **prime factorization** of 12.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "2, 3, 5, 7.",
+      "verdict": "CORRECT",
+      "reason": "matched '2, 3, 5, 7'"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "The Bitcoin whitepaper proposes a solution to **double-spending without a trusted third party**.\n\nDigital money can potentially be copied or spent twice. Traditional electronic payment systems prevent this by relying on a bank or payment processor to maintain the authoritative record of transactions.\n\nBitcoin proposes a peer-to-peer network that uses **proof of work and a shared transaction history** to agree on which payments are valid—allowing people to pay one another without a financial institution acting as intermediary.\n\nAs the abstract puts it:\n\n> “We propose a solution to the double-spending problem using a peer-to-peer network.”",
+      "verdict": "CORRECT",
+      "reason": "matched 'double-spend'"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A **cryptographic hash function** is a mathematical algorithm that takes input data of any size and produces a fixed-length value called a **hash** or **digest**—a kind of digital fingerprint.\n\nFor example, SHA-256 produces a 256-bit (32-byte) hash whether its input is a short word or a large file.\n\nA secure cryptographic hash function has several key properties:\n\n- **Deterministic:** The same input always produces the same hash.\n- **One-way:** Given a hash, it should be computationally infeasible to find an input that produces it.\n- **Collision-resistant:** It should be computationally infeasible to find two different inputs with the same hash.\n- **Sensitive to changes:** Even a tiny change to the input typically produces a very different hash.\n\nHashes are used to check data integrity and as building blocks for digital signatures and message authentication. Password storage uses specialized password-hashing schemes, such as **Argon2id**, rather than a fast general-purpose hash alone.\n\n**Hashing is not encryption:** Encryption is designed to be reversed with a key; hashing has no decryption operation. Also, a hash alone doesn’t prove who created the data—authentication requires an additional mechanism, such as a digital signature or a keyed hash (HMAC).",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
+    }
+  ],
+  "rescored": true
+}

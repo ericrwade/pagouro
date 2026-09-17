@@ -281,5 +281,6 @@
       "verdict": "HEDGE",
       "reason": "non-responsive: degenerate repetition (type-token ratio 0.06)"
     }
-  ]
+  ],
+  "rescored": true
 }

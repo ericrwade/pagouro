@@ -237,5 +237,6 @@
       "verdict": "DEFLECTED",
       "reason": "deflection marker 'as an ai'"
     }
-  ]
+  ],
+  "rescored": true
 }
