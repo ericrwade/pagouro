@@ -692,5 +692,96 @@ checked against two actual companies' actual systems.
 
 ---
 
-*The log continues. Next: the long middle stretch — the real corpus, the real run — that this
-project has been preparing for since the first afternoon.*
+## Day 5 — Eric came back and said: keep going
+
+He walked in with a new USB stick and one instruction. Stop treating milestones as stopping
+points. Build the whole thing. Include bitcointalk. Have DeepSeek pull in crypto knowledge. Come
+back tomorrow to an executable sitting on the drive.
+
+So the pace of this log changes here. What follows happened across several hours of continuous
+work rather than a conversation with pauses in it, and the honest way to write it is compressed.
+
+### Bitcointalk, and a lesson from a small country that does not exist
+
+The forum's own rules turned out to say yes before anyone had to ask. Its robots file carries no
+restriction on crawling, and its footer credits only its own software, nothing more. So the crawl
+ran — identified, rate-limited, one request at a time — across six boards chosen for density
+rather than breadth: Bitcoin Discussion, the technical board, Economics, Mining, Legal, and
+Altcoin Announcements. Each post kept its author's copyright, recorded as such in the ledger, on
+the same footing every large web corpus already stands on for forum text.
+
+DeepSeek came next, and it very nearly went wrong in a way that would have mattered. Asked freely
+to explain what a UTXO is, the small distilled model got the mechanism backwards — confidently,
+fluently, and incorrectly. That is the one failure mode this entire project exists to prevent, and
+it would have been sitting inside the project's own training data if nobody had checked. The fix
+was to stop asking it to know things and start asking it to rephrase things: thirty short,
+hand-verified passages on how Bitcoin and blockchains actually work, and the model's only job
+narrowed to turning each one into a clean question and answer, grounded, never invented. Every one
+of the thirty came back correct. The lesson generalises past this one afternoon: a model earns the
+right to explain something freely; it does not get that right by default, and checking first is
+cheaper than fixing it after.
+
+### The corpus, at real size
+
+Wikipedia, Stack Exchange filtered to a date before generative text existed, and four programming
+languages pulled from the same permissively licensed archive Eric had cleared terms on earlier in
+the week. One planned source, an older web-scale collection, turned out to depend on a loading
+mechanism the current tooling has stopped supporting — the same failure as one hit earlier in the
+build — and its share simply moved to the two sources that already worked rather than costing an
+afternoon chasing a fix nobody needed.
+
+Then a quieter bug, the kind that would never announce itself. Four different programming
+languages were fetched one after another, and three of the four vanished from the ledger the
+moment the fourth was written — not because the data was lost, but because the record-keeping
+computed the same name for all four regardless of which language they actually were. The files
+were sitting right there on disk the whole time, complete and correct; only the paperwork saying
+what they were had been silently overwritten, three times in a row, by nothing more dramatic than
+an oversight in how a filename got turned into a label. Recovered without re-downloading anything,
+by reading the hash of what was already saved and writing the record properly the second time.
+Worth naming plainly: a ledger that can quietly lose track of its own inventory is exactly the
+single point of failure the entire provenance claim depends on not having.
+
+What came out the other side of an afternoon's fetching was seven hundred thousand words of
+classical political economy, a slice of an online encyclopedia, a decade of expert answers, four
+programming languages, and a forum's worth of contemporary argument — all under one roof, every
+piece able to say for itself why it was allowed there.
+
+### Choosing a size honestly
+
+The finished specification calls for a billion-parameter model trained for several hundred hours
+on rented hardware, and that step still requires Eric's explicit word before a dollar of it gets
+spent. Nothing in tonight's instruction changed that rule, and it shouldn't. What could be done
+without it was to measure, honestly, what this one machine can actually produce by morning, and
+build that instead of pretending otherwise.
+
+The arithmetic was blunt. Measured cleanly, an idle machine moves something under a thousand
+tokens through a modestly sized model every second. Stretched across a full night that is tens of
+millions of tokens, not the hundreds of billions the flagship plan calls for. Rather than shrink
+the ambition of the corpus to match, the choice was to keep the corpus honest and accept that
+tonight's run only passes through a fraction of it once. A large, well-chosen library read
+partway through beats a small one read on repeat — reading the same pages over and over is how a
+model starts memorising them instead of learning from them.
+
+One more piece had been missing from the toolchain entirely and nobody had noticed until it was
+needed: a way to teach the finished model to answer in its own voice rather than merely continue
+text statistically. That step exists now, deliberately narrow — it learns only from what it is
+meant to say, never from the question put to it, which sounds like a small distinction and is
+actually the entire point.
+
+### What is running as this is written
+
+A single script now carries the rest of the night on its own: waiting for the forum crawl to
+finish, assembling the final mix of everything gathered, training on the broad material first,
+narrowing to the deliberately chosen material for the last stretch, teaching it to answer,
+converting the result into a form any machine can run, checking that conversion faithfully
+preserved what was trained, and packing all of it — model, licences, a plain account of what the
+thing does and does not protect, and a folder a person can double-click without installing
+anything — onto the drive Eric brought home today.
+
+Whether the numbers that come out the other side are good enough to be proud of is not yet known,
+and won't be pretended at here before it is. That is what tomorrow is for.
+
+---
+
+*The log continues. Next: whatever the machine actually produced overnight, reported exactly as
+measured.*
