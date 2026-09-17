@@ -852,3 +852,55 @@ interpreter as its actual child (all the CPU, all the memory, 45 threads). Worth
 entry precisely because the failure mode it would have caused -- silent checkpoint corruption --
 is the same *class* of danger as this entry's main bug, and the check that ruled it out (comparing
 CPU-seconds and RSS between the two PIDs, not just seeing two PIDs) is the reusable lesson.
+
+### D-47 — The PC hard-froze mid-pretrain; resume from checkpoint, never from zero
+**2026-09-17.** The overnight real build (D-46 config) was in stage 4 when the machine stopped
+responding at about 4:35 AM: last training log line at step 6140 of 9000 (04:34:43), last
+checkpoint at step 5999 (04:24:50, val loss 2.949, perplexity 19.1). Eric found the box frozen
+18 hours later and had to unplug it and disconnect the drives to get it back. Windows logged
+Kernel-Power 41 on the way back up and nothing at all in the hours before: no hardware error, no
+memory-exhaustion warning, no crash dump. The Python process was at 5.6 GB of 32 GB when last
+checked. Cause unknown. Two facts recorded so the next session does not start from scratch on
+this: the same machine bugchecked (0x139, kernel security check failure) on 2026-09-15 at
+midnight, before this project touched it, while the Midstate miner was running; and both crashes
+happened under sustained all-core load. That is a pattern, not a diagnosis.
+
+**Decisions:**
+
+1. **Resume, do not restart.** The step-5999 checkpoint loaded cleanly (129 tensors, all finite,
+   optimizer state intact) and was backed up to `checkpoints/real_pretrain.step5999.bak.pt`
+   before anything else was done. Resumed with `--resume`; step 6000 logged loss 3.963 against
+   3.965 at step 5980 before the freeze, which is the D-22 proof applied for real. About 140
+   steps, ten minutes, were lost.
+2. **`master_pipeline.sh` gained `RESUME_PRETRAIN=1`.** Without it stage 4 begins with
+   `rm -f checkpoints/real_pretrain.pt` -- a relaunch by habit would have deleted seven hours of
+   training. The flag skips the wipe, trims the run log to the checkpoint's step so resumed steps
+   are not logged twice, and passes `--resume`. Recorded in the project memory as a hard warning.
+3. **Checkpoint saves are now atomic.** `train.py` writes to `<ckpt>.tmp` and `os.replace`s it
+   over the old file. `torch.save` straight onto the path truncates it first, so a freeze during a
+   save would have destroyed the only checkpoint of the run. This one landed ten minutes after a
+   save. Luck is not a mechanism.
+4. **`THREADS` is a pipeline variable, resumed at 12 of 16 cores** for thermal headroom, at
+   roughly a 20% throughput cost on a box that has now crashed twice under full load. The SFT
+   script has no thread control and will run at torch's default; it is a short stage.
+5. **Power plan set to High Performance**, sleep and disk timeouts off. The only "idle" theory
+   that survives the evidence is a device power transition, and this closes it at no cost. USB
+   selective suspend does not exist on this machine's plan.
+6. **Not done, on purpose:** the Midstate miner stays off during training (Eric proposed running
+   it on one thread to keep the box "always working"; the freeze happened under load, so keeping
+   the box busy does not address it, and one thread of solo PoW earns nothing while adding heat).
+   A firmware check and a memory test are recommended before the next unattended overnight run.
+
+**Also this session: a third SFT seed class.** Eric asked whether a model trained not to bluff
+would become "a glorified search engine" that chokes on a question like "was George Washington
+more like a king or a prime minister?" Inspection of `sft/abstention_seed.jsonl` showed the risk
+was real on the training side: it is correctly balanced 50/49 between abstain and confident, but
+every confident example is a definition. Nothing asks the model to compare, weigh or compose,
+which is precisely the kind of question the no-bluff training could teach it to hedge on (D-27,
+T-5). `sft/build_synthesis_seed.py` adds 37 synthesis examples (comparisons and judgements
+answered plainly, two to four sentences, position taken) and 6 mixed examples that pair a real
+thing with an invented one and answer the real half while declining the invented half, so the
+learned behaviour is discrimination between the two rather than a topic reflex. Overlap-checked
+against the frozen evals (highest Jaccard 0.20, none at or above 0.60). `train_sft.py` loads it;
+the loader was tested against the real tokenizer (172 pairs, max 125 tokens) before the running
+pipeline could reach stage 6.

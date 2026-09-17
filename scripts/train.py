@@ -182,6 +182,13 @@ def main() -> int:
             print(f"  >> val loss {vl:.4f}  perplexity {math.exp(vl):.1f}", flush=True)
 
         if (step + 1) % a.ckpt_every == 0 or step == a.max_steps - 1:
+            # Write to a sibling temp file and rename over the old checkpoint.
+            # torch.save straight onto ckpt_path truncates it first, so a crash
+            # mid-write (the 2026-09-17 hard freeze landed ten minutes after a
+            # save) would leave the ONLY checkpoint of the run half-written.
+            # os.replace is atomic on NTFS; the old file survives until the new
+            # one is complete.
+            tmp_path = ckpt_path + ".tmp"
             torch.save({
                 "model": model.state_dict(),
                 "optimizer": opt.state_dict(),
@@ -189,7 +196,8 @@ def main() -> int:
                 "config": cfg.to_dict(),
                 "val_loss": best_val,
                 "meta": meta,
-            }, ckpt_path)
+            }, tmp_path)
+            os.replace(tmp_path, ckpt_path)
             print(f"  >> checkpoint saved at step {step}", flush=True)
 
     log.close()

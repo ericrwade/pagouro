@@ -57,8 +57,33 @@ echo "### STAGE 4: PRETRAIN (the long pole) ###"
 # this size), so the step count below is scaled up to cover the same total
 # token budget the original 3000-step plan did (~36.9M tokens), not scaled
 # down for speed.
-rm -f checkpoints/real_pretrain.pt runs/real_pretrain.jsonl
-$PY -u scripts/train.py \
+#
+# THREADS: torch threads for train.py (default 0 = torch's own default, 16 on
+# this box). The 2026-09-17 hard freeze hit at step ~6140 after 8 hours at
+# full load on all cores, cause unknown; THREADS=12 leaves thermal headroom.
+#
+# RESUME_PRETRAIN=1: continue from the existing checkpoints/real_pretrain.pt
+# instead of wiping it. Without this flag stage 4 DELETES the checkpoint and
+# starts from step 0 -- after the freeze that would have thrown away 6,000
+# steps (~7 hours). The run log is trimmed to entries at or before the
+# checkpoint step so the resumed steps do not appear twice.
+THREADS="${THREADS:-0}"
+if [ -n "${RESUME_PRETRAIN:-}" ]; then
+  echo "### RESUMING pretrain from existing checkpoint (RESUME_PRETRAIN=1) ###"
+  require checkpoints/real_pretrain.pt
+  $PY - <<'PYEOF'
+import json, torch
+step = torch.load("checkpoints/real_pretrain.pt", map_location="cpu", weights_only=False)["step"]
+rows = [l for l in open("runs/real_pretrain.jsonl", encoding="utf-8") if json.loads(l)["step"] <= step]
+open("runs/real_pretrain.jsonl", "w", encoding="utf-8", newline="\n").writelines(rows)
+print(f"checkpoint step {step}; run log trimmed to {len(rows)} rows")
+PYEOF
+  RESUME_FLAG="--resume"
+else
+  rm -f checkpoints/real_pretrain.pt runs/real_pretrain.jsonl
+  RESUME_FLAG=""
+fi
+$PY -u scripts/train.py $RESUME_FLAG --threads "$THREADS" \
     --dim 512 --layers 14 --heads 8 --kv-heads 2 --seq-len 512 --batch-size 8 \
     --max-steps 9000 --warmup 450 --lr 3e-4 --min-lr 3e-5 \
     --eval-every 300 --ckpt-every 300 --seed 1337 \
@@ -67,7 +92,7 @@ require checkpoints/real_pretrain.pt
 
 echo "### STAGE 5: ANNEAL (final ~10% of training, domain-heavy) ###"
 cp checkpoints/real_pretrain.pt checkpoints/real_anneal.pt
-$PY -u scripts/train.py \
+$PY -u scripts/train.py --threads "$THREADS" \
     --dim 512 --layers 14 --heads 8 --kv-heads 2 --seq-len 512 --batch-size 8 \
     --max-steps 10050 --resume --warmup 450 --lr 3e-4 --min-lr 3e-5 \
     --eval-every 150 --ckpt-every 150 --seed 1337 \

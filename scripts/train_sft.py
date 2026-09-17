@@ -55,6 +55,20 @@ def load_examples() -> list[tuple[str, str]]:
                 continue
             d = json.loads(line)
             out.append((d["question"], d["answer"]))
+
+    # Synthesis seed (sft/build_synthesis_seed.py): comparisons and judgements
+    # answered plainly, plus a few real-vs-invented mixed items. Same message
+    # format as the abstention seed. Added 2026-09-17 because every confident
+    # example in the abstention seed was a definition; see that file's docstring.
+    p3 = os.path.join(ROOT, "sft", "synthesis_seed.jsonl")
+    if os.path.exists(p3):
+        for line in io.open(p3, encoding="utf-8"):
+            line = line.strip()
+            if not line:
+                continue
+            d = json.loads(line)
+            msgs = d["messages"]
+            out.append((msgs[0]["content"], msgs[1]["content"]))
     return out
 
 

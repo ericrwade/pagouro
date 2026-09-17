@@ -853,3 +853,74 @@ say so the moment something goes wrong instead of finishing anyway.
 
 *The log continues. Next: whatever the machine actually produced overnight, reported exactly as
 measured.*
+
+## Day 6 — The machine stopped, and what a checkpoint is for
+
+Eric left the build running overnight and came back eighteen hours later to a computer that would
+not respond to anything. Not a crash with an error on screen; a freeze, the kind where the only
+fix is to pull the plug. He disconnected the drives, cut the power, and brought it back up. Then
+he asked the obvious question: where were we when it died?
+
+The answer took about twenty minutes to establish and is worth recording in order, because the
+order is the method. The training log's last line was step 6,140 of 9,000, written at 4:34 AM.
+The last checkpoint was step 5,999, written ten minutes earlier. The previous session's own last
+words, at 4:25 AM, were a memory check — 5.6 GB in use of 32 — followed by "still safely in the
+normal range, continuing to wait." Windows recorded nothing in the hours before the freeze. No
+hardware fault, no out-of-memory warning, no crash dump. Just a note on the way back up that the
+system had rebooted without shutting down first. The model had reached a perplexity of 19, down
+from 28 at the halfway mark, and was still improving when the lights went out.
+
+What survived was the checkpoint. It was loaded and inspected before anything else was touched:
+every weight finite, the optimizer's state intact. Then it was copied somewhere safe, with the
+copy's hash checked against the original. Only after that did anyone look at how to continue.
+
+Here is the part that would have been the real loss. The pipeline script that ran the build
+begins its training stage by deleting the old checkpoint, because it was written for a fresh
+start. Relaunching it by habit — the natural thing to do at 3 PM with a rebooted machine — would
+have erased seven hours of work in the first second and started over from nothing, and the log
+would have looked perfectly normal while it did. The fix was a flag that tells the script to
+continue rather than begin, and a line in the project's memory so the next session knows the
+trap is there.
+
+A second thing was found while looking. The training script saved each checkpoint by writing
+directly over the previous one. If the freeze had come during a save instead of ten minutes
+after, the only copy would have been half-written and useless. Now it writes to a temporary file
+and swaps it into place in one step, so the old checkpoint survives until the new one is complete.
+This is a standard precaution and it should have been there from the start; it was not, and the
+run survived on timing rather than design.
+
+The resume itself is the proof that matters. The rule in this project is that resuming is
+demonstrated by doing it, never assumed. The first step after the resume logged a loss of 3.963.
+The last step before the freeze had logged 3.965. A restart from scratch would have shown a loss
+near 10. Roughly 140 steps were lost, about ten minutes of compute.
+
+Why the machine froze is not known, and this log will not pretend otherwise. Two facts are on
+the record. This same computer had crashed with a blue screen two days earlier, before this
+project ever ran on it, while the cryptocurrency miner it also hosts was running. And both
+crashes came after hours of every core working flat out. That is a pattern, not a cause. The
+training was resumed on twelve cores instead of sixteen, trading about a fifth of its speed for
+some thermal room, and the power settings were changed so nothing can go to sleep mid-run. A
+firmware check and a memory test are on the list before the next unattended night.
+
+Eric had a question while this was being sorted out that deserves its own paragraph, because it
+goes to the heart of what the project is. If the model is trained never to bluff, does it become
+a search engine over its own corpus — able to define things, unable to think? He gave an example:
+"Was George Washington more like a king or a prime minister?" A model that has read a few thousand
+descriptions of each should be able to say "neither, and here's why" without any document having
+said it for him. That is the thing training adds that a search engine cannot. But when the
+fine-tuning examples were inspected, the worry turned out to be well-founded on the training
+side. The set is correctly balanced between "decline the made-up thing" and "answer the real
+thing," but every "answer" example is a definition. Nothing asks the model to compare or judge.
+A model taught that confidence means "define a term" and anything harder means "hedge" would fail
+exactly where Eric feared. Forty-three new examples were written this afternoon — comparisons and
+judgements answered plainly, plus a handful that pair a real thing with an invented one and ask
+the model to answer the first and decline the second in the same breath. They were checked for
+overlap against the frozen test set before being added, because training on the test is the one
+way to make every published number a lie.
+
+The training is running as this is written, at step six thousand and climbing.
+
+---
+
+*The log continues. Next: what the resumed run produced, measured, including whether the machine
+stayed up.*
