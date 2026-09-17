@@ -86,6 +86,8 @@ cp docs/THREAT_MODEL.md "$REL/docs/" 2>/dev/null || true
 cp evals/BASELINES.md "$REL/docs/" 2>/dev/null || true
 cp evals/results/pagouro-real__*.json "$REL/docs/" 2>/dev/null || true
 cp evals/results/offline_audit_real.json "$REL/docs/" 2>/dev/null || true
+mkdir -p "$REL/licenses"
+cp licenses/*.txt "$REL/licenses/" 2>/dev/null || true
 
 $PY -u scripts/package_release.py --release-dir "$REL"
 
