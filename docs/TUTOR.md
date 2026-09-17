@@ -57,6 +57,21 @@ adjusting difficulty — while the truth of what is taught rests on reviewed tex
   bluffing.
 - **Pacing by the learner**, not by a streak or a timer. No engagement mechanics.
 
+## Known limitation, observed in the first working session
+
+Built and tested end to end against `Qwen2.5-0.5B-Instruct` (`tutor/tutor.py`, transcript in
+`tutor/sample_transcript.txt`). The grading pipeline itself works, but the **grading model's
+judgment** does not yet meet the bar: in that test, given a question about the difference between
+public and private keys, a student answer that was actually about blockchain (wrong topic
+entirely) was graded CORRECT by the 0.5B grader.
+
+This is not a harness bug -- the reference answer, the student's actual answer, and the prompt
+asking the model to compare them were all passed through correctly. It is a capability gap in a
+0.5B model used as a grader. **Before Pagouro itself is used as the tutor's grader, its grading
+accuracy needs its own small evaluation set** (known-correct and known-wrong sample answers per
+item, checked against what the grader actually outputs), the same discipline as the frozen eval
+suite, rather than assuming grading fidelity comes for free with model size.
+
 ## The 1,000 items
 
 Drawn from the corpus, weighted toward what a person actually benefits from knowing:

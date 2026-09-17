@@ -30,6 +30,14 @@ import argparse
 import datetime
 import glob
 import io
+import sys
+
+# Windows consoles default to cp1252, which cannot display many characters a
+# model can legitimately emit (curly quotes, em dashes, non-Latin scripts).
+# Reconfigure stdout to UTF-8 with a safe fallback so a display limitation
+# never crashes a live tutoring session.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import json
 import os
 import re
@@ -136,8 +144,23 @@ def grade_with_model(model: str, reference: str, student: str, timeout: int = 60
     except subprocess.TimeoutExpired:
         return "PARTIAL", "grading timed out; counted as partial credit"
     txt = ANSI.sub("", res.stdout or "")
-    i = txt.rfind(prompt)
-    cont = (txt[i + len(prompt):] if i >= 0 else txt).strip()
+    txt_norm = txt.replace("\r\n", "\n").replace("\r", "\n")
+    # THE REAL BUG, found by diffing byte-for-byte against a raw capture: llama-cli's
+    # interactive console TRUNCATES its own echo of a long prompt and appends the
+    # literal text "(truncated)" -- it does NOT truncate what is actually sent to the
+    # model (the response that follows is coherent and on-topic). Our first fix
+    # (normalizing CRLF/LF) was correct but insufficient, because prompt.rfind() can
+    # never match a prompt that was cut off mid-sentence on the console's side.
+    # run_eval.py's short, single-line eval prompts never hit this; this multi-line
+    # ~500-char grading prompt does. When present, "(truncated)" is a reliable anchor:
+    # the model's actual generated text starts immediately after it.
+    if "(truncated)" in txt_norm:
+        i = txt_norm.rfind("(truncated)")
+        cont = txt_norm[i + len("(truncated)"):].strip()
+    else:
+        prompt_norm = prompt.replace("\r\n", "\n").replace("\r", "\n")
+        i = txt_norm.rfind(prompt_norm)
+        cont = (txt_norm[i + len(prompt_norm):] if i >= 0 else txt_norm).strip()
     cont = re.split(r"\n\s*\[end of text\]|\nllama_perf|\nExiting", cont)[0].strip()
 
     m = re.match(r"^(CORRECT|PARTIAL|WRONG)\b\s*-?\s*(.*)", cont, re.I)

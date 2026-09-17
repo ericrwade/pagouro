@@ -24,6 +24,13 @@ import time
 import urllib.request
 import urllib.error
 
+# Windows consoles default to cp1252. The mangled apostrophes seen in early
+# console output during this session (D-44) were only ever a DISPLAY issue --
+# results files are written with explicit UTF-8 and were always correct -- but
+# fix the display too so a human watching a live run isn't misled by it.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVAL_DIR = os.path.join(ROOT, "evals")
 RESULTS_DIR = os.path.join(EVAL_DIR, "results")

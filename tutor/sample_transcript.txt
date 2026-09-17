@@ -1,0 +1,46 @@
+Pagouro Teaches -- 5 item(s) this session, topic=technology-and-crypto, SAND mode (nothing saved)
+Type your answer, or 'source' to see the citation, or 'skip' to move on.
+
+[1/5] (technology-and-crypto, difficulty 1)
+  Q: What is a cryptographic hash function?
+  A: It turns any input into a fixed size fingerprint that changes completely if you change one bit of the input, and you cannot go backward.
+  Verdict: WRONG -- the student's answer does not capture the key idea that a function turns any input into a fixed-size output, where the same input always produces the same output, and it is computationally infeasible to work backward from the output to the input.
+  Reference: A function that turns input of any size into a fixed-length output, where the same input always produces the same output, a small change in input produces a completely different output, and it is computationally infeasible to work backward from the output to the input.
+  Why: Hashes are used to verify that data hasn't changed (compare hashes instead of the whole file) and as a building block in digital signatures and blockchains.
+  Source: fineweb-edu-sample-10BT
+
+[2/5] (technology-and-crypto, difficulty 1)
+  Q: What is a blockchain, at its most basic level?
+  A: Its money loses value because there is more of it chasing the same goods.
+  Verdict: WRONG -- the student's answer does not capture the key idea of the reference answer, which emphasizes the loss of value due to increased demand for the same goods.
+  Reference: A chain of data blocks, each one containing a cryptographic hash of the previous block, so altering any earlier block changes its hash and breaks every link that comes after it -- making tampering evident.
+  Why: The 'chain' part is doing the real work: it's not the data structure alone that makes it hard to tamper with, it's that every block after a change would visibly fail to match.
+  Source: fineweb-edu-sample-10BT
+
+[3/5] (technology-and-crypto, difficulty 2)
+  Q: What does it mean to 'hold your own keys' in the context of digital assets?
+  A: I do not know.
+  Verdict: WRONG -- the student's answer does not capture the key idea of controlling the private cryptographic key that authorizes spending an asset directly, rather than relying on a third party (like an exchange) to hold and control it on your behalf.
+  Reference: Controlling the private cryptographic key that authorizes spending an asset directly, rather than relying on a third party (like an exchange) to hold and control it on your behalf.
+  Why: The tradeoff is often summarized as 'not your keys, not your coins': self-custody removes counterparty risk (the third party failing or misbehaving) but shifts all responsibility for security onto the individual, with no recourse if a key is lost.
+  Source: fineweb-edu-sample-10BT
+
+[4/5] (technology-and-crypto, difficulty 2)
+  Q: What is the basic difference between a public key and a private key in public-key cryptography?
+  A: A blockchain is a chain of blocks each holding the hash of the one before it.
+  Verdict: CORRECT -- the student captures the key idea of a blockchain being a chain of blocks, but it misses the specific role of the private key in creating signatures or decrypting messages.
+  Reference: A public key can be shared with anyone and is used to verify a signature or encrypt a message to the holder; the private key must be kept secret and is used to create signatures or decrypt messages meant for the holder.
+  Why: The security of the whole system rests entirely on the private key staying private -- the public key being public is not a weakness, it's the design.
+  Source: fineweb-edu-sample-10BT
+
+[5/5] (technology-and-crypto, difficulty 2)
+  Q: What problem does 'proof of work' attempt to solve in a decentralized digital currency?
+  A: You need PoW so people cannot just spend the same coin twice without a central authority checking.
+  Verdict: CORRECT -- the key idea is captured, but the student's answer is partially focused on the mechanism rather than the effect.
+  Reference: It provides a way for a network with no central authority to agree on which transactions are valid and in what order, by requiring participants to expend real computational effort to add new blocks, making it costly to rewrite history.
+  Why: The core problem it solves is sometimes called the double-spend problem: preventing the same digital token from being spent twice without a trusted central party checking every transaction.
+  Source: fineweb-edu-sample-10BT
+
+SAND mode: nothing was saved. Nothing about this session persists.
+
+2/5 correct this session.

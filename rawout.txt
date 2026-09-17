@@ -1,0 +1,42 @@
+
+
+Loading model... 
+
+▄▄ ▄▄
+██ ██
+██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄
+██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██
+██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀
+                                    ██    ██
+                                    ▀▀    ▀▀
+
+build      : b11005-82324fc50
+model      : C:\Users\Eric Wade\PAGOURO_BUILD\data\baselines\Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+ftype      : Q4_K - Medium
+modalities : text
+
+available commands:
+  /exit or Ctrl+C     stop or exit
+  /regen              regenerate the last response
+  /clear              clear the chat history
+  /read <file>        add a text file
+  /glob <pattern>     add text files using globbing pattern
+
+
+
+> You are grading a student's answer against a reference answer.
+Do not add outside facts. Judge only whether the student's answer captures the
+same key idea as the reference, even if worded differently.
+
+Reference answer: A function that turns input into a fixed output.
+
+Student's answer: It turns input into output.
+
+Reply with exactly one line: CORRECT, PARTIAL, or WRONG, followed by a dash and
+one short sentence of feedback. Example: "PARTIAL - you have the mechanism right but missed the direct ... (truncated)
+CORRECT - the student captures the key idea of a function that maps input to output, but it could be more precise by specifying the output as well.
+
+[ Prompt: 1622.9 t/s | Generation: 130.7 t/s ]
+
+
+Exiting...
