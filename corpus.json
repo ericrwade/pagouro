@@ -466,6 +466,21 @@
       "sha256_processed": "a812eaaf9e1f3aaf75f2711a18249c41c78d89056349889a06b08059660266d9",
       "file": "data/raw/the-stack-go.txt",
       "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch."
+    },
+    {
+      "slug": "crypto-synthetic-deepseek",
+      "name": "Synthetic crypto Q&A, generated locally by DeepSeek-R1-Distill-Qwen-7B",
+      "license": "MIT (generator) -- see sft/crypto_source_passages.py for the hand-written, checked source passages each item is grounded in",
+      "generation_method": "D-30: open weights (bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF, MIT, Apache-2.0 base) run LOCALLY via llama.cpp, never an API. Grounded in a hand-written source passage per item, not freely generated, after a smoke test showed the smaller 1.5B distill state UTXO mechanics incorrectly when generating freely.",
+      "published_before_generative_ai": false,
+      "note": "Synthetic, not scraped. Excluded from any pre-2022 claim by construction; this is a distinct, explicitly-labelled slice.",
+      "retrieved": "2026-09-16",
+      "retrieved_utc": "2026-09-17T03:16:37+00:00",
+      "documents": 30,
+      "bytes": 26169,
+      "sha256_processed": "841273c56eed0ed9575f2206f275db1e8a0741082a2339d4a551bade4b00ecec",
+      "file": "sft/crypto_synthetic.jsonl",
+      "slice": "anneal + SFT (synthetic, grounded)"
     }
   ]
 }
