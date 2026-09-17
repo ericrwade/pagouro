@@ -511,5 +511,88 @@ something going wrong was entirely the point.
 
 ---
 
-*The log continues. Next: a decision on the share-alike question, the gated-dataset problem, and the
-long unglamorous middle where projects like this usually die.*
+## Day 3 — A wrong reading, corrected in public
+
+Eric came back to seven open questions and closed six of them in one sitting: The Stack's terms,
+share-alike licensing, Project Gutenberg, the pre-generative-AI cutoff, the teacher-license question,
+the tokenizer, and the three chains. Then he read what I had written about his own book and told me
+I had it backwards.
+
+### The correction
+
+I had counted words. Marx appeared sixty times in the book and the Austrians zero, so I concluded
+the book argued from the Marxist side and proposed rebuilding the domain corpus around Marx, Veblen
+and Proudhon in place of Smith, Hayek and Mises.
+
+Eric's reply: *"What I thought I was saying is that capitalism has failed — some people. The book
+says if capitalism is working for you, then pay your taxes and we will leave you alone. That is 180
+degrees from collectivism."*
+
+Sixty mentions of Marx were sixty rejections of Marx. A chapter titled *Marxism Fails Because Some
+People Do Have Capital* should have told me that without a word count. Frequency measures what a
+book discusses, not where it stands, and I had conflated the two in a document that was about to
+shape a training corpus.
+
+The record now keeps both entries — the wrong one, struck through and marked superseded, and the
+correction beside it. Not deleted, because pretending the mistake never happened would be worse
+than the mistake.
+
+The corpus reverts to the classical liberal canon as originally specified, with Locke added by name
+and Ayn Rand's *Anthem* admitted through a narrow gap: her major novels are still in copyright, but
+this one had its US copyright lapse through non-renewal in 1938. Marx stays in, not as the spine but
+as the position the model has to be able to argue against, which the project's own evaluation
+already requires of it.
+
+### What Eric's actual answer sounds like
+
+Once corrected, Laborism turned out to be a clean, third position, and stating it plainly is worth
+doing here because it will not survive being summarized by anyone downstream who has not read it
+closely: capitalism has failed some people, not everyone. If it is working for you, pay your taxes
+and the state leaves you alone. That is the opposite of collectivism. But some people need help, and
+the help is given in kind — hungry, get food, not cash — and only to people meeting a work
+requirement and an advancement requirement.
+
+That last piece turned into a second project the same day. Eric wants a self-contained tutor,
+separate from Pagouro but built on top of it, that teaches roughly a thousand items from the corpus
+and tests people at their own pace. It is not a feature request so much as the advancement criterion
+made real: the criterion means nothing if advancement is only available to someone who already has
+money, broadband and an institution nearby. The rule for building it is the same rule as everything
+else here — the model paces and explains, a reviewed item bank carries the facts, and it never
+generates a question it might get wrong.
+
+### The three chains, and one more
+
+Eric's instinct was Bitcoin, Ethereum, Solana. The answer that survived scrutiny is Bitcoin,
+Arweave, Solana — anchor, storage, payment. Ethereum does not have a job here: it is a worse anchor
+than Bitcoin and a far more expensive place to store anything.
+
+He also asked, fairly, whether Quilibrium's QStorage could take Arweave's slot, since he rates the
+project and its founder. It cannot yet, and the reason is not a quality judgment. Their own
+documentation describes an S3-compatible storage service with encryption, which is a different
+product category from what this release needs: something that survives nobody paying for it again,
+ever, because the whole point of the release is that nobody has to maintain it. Their docs do not
+yet publish a permanence model, a price, or a durability guarantee, so there was nothing to compare.
+Quilibrium becomes a mirror instead, on Eric's request, which asks nothing of the design and gives
+his own line of work a real, measured second data point on decentralized storage next to Arweave's.
+
+### Then: building the canon for real
+
+With the reading corrected, the actual fetch work happened without incident, which after two days of
+things going wrong in useful ways felt almost suspicious. Fourteen public-domain works, each with a
+ledger entry stating why it is public domain rather than citing Gutenberg as an authority — an
+author's death date, a translator's death date, or Gutenberg's own published determination for that
+specific edition.
+
+One real snag: Marx's *Capital* has no English edition on Gutenberg at all, only a Modern Greek one.
+The Communist Manifesto stood in for it, which if anything serves the purpose better — it is the
+more legible statement of the position the model needs to be able to argue, and at a fifth the
+length.
+
+Two hundred and sixty thousand words of Locke, Smith, Bastiat, Mill, Ricardo, Tocqueville, the
+Federalist Papers, George and Marx went into the corpus in about twenty minutes, once the reading
+that was supposed to guide it had been fixed.
+
+---
+
+*The log continues. Next: whether frontier models actually deflect on the questions Eric's book
+argues about, and the tutor's first working version.*
