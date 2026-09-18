@@ -34,55 +34,68 @@ from pagouro.model import Pagouro, ModelConfig  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def load_examples() -> list[tuple[str, str]]:
-    """Return (user_content, assistant_content) pairs from every SFT source."""
+def load_examples() -> list[list[dict]]:
+    """Return conversations as message lists [{"role","content"}, ...] from every SFT
+    source. Roles: system, user, tool, assistant. Loss is taken on assistant turns."""
     out = []
-    p1 = os.path.join(ROOT, "sft", "abstention_seed.jsonl")
-    if os.path.exists(p1):
-        for line in io.open(p1, encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            msgs = d["messages"]
-            out.append((msgs[0]["content"], msgs[1]["content"]))
 
-    p2 = os.path.join(ROOT, "sft", "crypto_synthetic.jsonl")
-    if os.path.exists(p2):
-        for line in io.open(p2, encoding="utf-8"):
+    def add_pairs(path, key_user="question", key_asst="answer"):
+        if not os.path.exists(path):
+            return
+        for line in io.open(path, encoding="utf-8"):
             line = line.strip()
             if not line:
                 continue
             d = json.loads(line)
-            out.append((d["question"], d["answer"]))
+            if "messages" in d:
+                out.append(d["messages"])
+            else:
+                out.append([{"role": "user", "content": d[key_user]},
+                            {"role": "assistant", "content": d[key_asst]}])
 
-    # Synthesis seed (sft/build_synthesis_seed.py): comparisons and judgements
-    # answered plainly, plus a few real-vs-invented mixed items. Same message
-    # format as the abstention seed. Added 2026-09-17 because every confident
-    # example in the abstention seed was a definition; see that file's docstring.
-    p3 = os.path.join(ROOT, "sft", "synthesis_seed.jsonl")
-    if os.path.exists(p3):
-        for line in io.open(p3, encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            msgs = d["messages"]
-            out.append((msgs[0]["content"], msgs[1]["content"]))
+    add_pairs(os.path.join(ROOT, "sft", "abstention_seed.jsonl"))   # D-11 balance
+    add_pairs(os.path.join(ROOT, "sft", "crypto_synthetic.jsonl"))  # D-30 teacher
+    add_pairs(os.path.join(ROOT, "sft", "synthesis_seed.jsonl"))    # D-48 comparisons
+    add_pairs(os.path.join(ROOT, "sft", "harness_seed.jsonl"))      # D-51/52 router, tools, grounded, multi-turn
     return out
 
 
-def build_example_ids(tok, user: str, assistant: str, eot_id: int, im_start: int, im_end: int):
-    """Tokenize one chat example and return (input_ids, label_ids) with the user
-    turn and control tokens masked to -100 so loss only touches the response."""
-    user_ids = tok.encode(f"user\n{user}").ids
-    asst_ids = tok.encode(f"assistant\n{assistant}").ids
+def augment_with_system(convs: list[list[dict]], rng: random.Random, frac: float = 0.5) -> list[list[dict]]:
+    """Prepend the harness system prompt (with a varying date) to a fraction of the
+    conversations that lack one, so the model answers normally when the app sends
+    it. Before 2026-09-18 no SFT example carried a system prompt and the shipped
+    model answered every question under one with "I don't know"."""
+    sys.path.insert(0, os.path.join(ROOT, "app"))
+    from prompts import system_prompt  # noqa: E402
+    import datetime as _dt
+    out = []
+    for conv in convs:
+        if conv[0]["role"] != "system" and rng.random() < frac:
+            day = _dt.date(2026, 1, 1) + _dt.timedelta(days=rng.randrange(0, 1400))
+            conv = [{"role": "system", "content": system_prompt(day.isoformat())}] + conv
+        out.append(conv)
+    return out
 
-    ids = ([im_start] + user_ids + [im_end] +
-           [im_start] + asst_ids + [im_end])
-    labels = ([-100] * (1 + len(user_ids) + 1) +
-              [-100] +                       # the "<|im_start|>" opening assistant's turn
-              asst_ids + [im_end])           # loss on the actual response + its closing tag
+
+def build_example_ids(tok, messages: list[dict], im_start: int, im_end: int, nl_ids: list[int]):
+    """Tokenize one conversation exactly as the chat template renders it:
+        <|im_start|>{role}\n{content}<|im_end|>\n   for every message
+    and return (input_ids, label_ids) shifted by one, with loss only on the
+    content and closing tag of assistant turns. See the 2026-09-17 note below on
+    the shift."""
+    ids: list[int] = []
+    labels: list[int] = []
+    for m in messages:
+        body = tok.encode(f"{m['role']}\n{m['content']}").ids
+        seg = [im_start] + body + [im_end] + nl_ids
+        if m["role"] == "assistant":
+            # supervise the response and its closing tag, not the role header
+            head = 1 + len(tok.encode("assistant\n").ids)
+            lab = [-100] * head + seg[head:len(seg) - len(nl_ids)] + [-100] * len(nl_ids)
+        else:
+            lab = [-100] * len(seg)
+        ids += seg
+        labels += lab
     assert len(ids) == len(labels)
     # SHIFT BY ONE. The model's loss compares the prediction at position i with
     # targets[i], i.e. targets must hold the NEXT token. Before 2026-09-17 this
@@ -103,8 +116,11 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=2e-5)   # 10-50x lower than pretrain (brief sec.7)
     ap.add_argument("--warmup", type=int, default=30)
     ap.add_argument("--seed", type=int, default=1337)
+    ap.add_argument("--threads", type=int, default=0, help="0 = torch default (D-52: share the machine)")
     ap.add_argument("--log", default=os.path.join(ROOT, "runs", "sft_log.jsonl"))
     a = ap.parse_args()
+    if a.threads:
+        torch.set_num_threads(a.threads)
 
     from tokenizers import Tokenizer
     tok = Tokenizer.from_file(a.tokenizer)
@@ -114,10 +130,15 @@ def main() -> int:
     if im_start is None or im_end is None:
         raise SystemExit("tokenizer is missing chat tokens; wrong tokenizer file?")
 
-    examples = load_examples()
+    rng = random.Random(a.seed)
+    examples = augment_with_system(load_examples(), rng)
     if not examples:
         raise SystemExit("no SFT examples found in sft/*.jsonl")
-    print(f"loaded {len(examples)} SFT examples")
+    n_sys = sum(1 for e in examples if e[0]["role"] == "system")
+    n_multi = sum(1 for e in examples if sum(1 for m in e if m["role"] == "assistant") > 1)
+    n_tool = sum(1 for e in examples if any(m["role"] == "tool" for m in e))
+    print(f"loaded {len(examples)} SFT conversations ({n_sys} with system prompt, "
+          f"{n_multi} multi-turn, {n_tool} with a tool turn)")
 
     ck = torch.load(a.checkpoint, map_location="cpu", weights_only=False)
     cfg = ModelConfig(**ck["config"])
@@ -129,8 +150,9 @@ def main() -> int:
     # Pre-tokenize everything once; SFT sets are small enough to fit in memory.
     tokenized = []
     too_long = 0
-    for user, asst in examples:
-        ids, labels = build_example_ids(tok, user, asst, eot, im_start, im_end)
+    nl_ids = tok.encode("\n").ids
+    for conv in examples:
+        ids, labels = build_example_ids(tok, conv, im_start, im_end, nl_ids)
         if len(ids) > cfg.max_seq_len:
             too_long += 1
             continue
@@ -145,7 +167,6 @@ def main() -> int:
     model.train()
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, betas=(0.9, 0.95), weight_decay=0.0)
 
-    rng = random.Random(a.seed)
     os.makedirs(os.path.dirname(a.log), exist_ok=True)
     log = io.open(a.log, "w", encoding="utf-8", newline="\n")
 

@@ -113,7 +113,7 @@ fi
 
 if stage 6; then
 echo "### STAGE 6: SFT (loss on response tokens only) ###"
-$PY -u scripts/train_sft.py --checkpoint checkpoints/real_anneal.pt \
+$PY -u scripts/train_sft.py --threads "$THREADS" --checkpoint checkpoints/real_anneal.pt \
     --tokenizer data/tokenizer_real/tokenizer.json --out checkpoints/real_sft.pt \
     --steps 1200 --batch-size 4 --lr 2e-5
 require checkpoints/real_sft.pt

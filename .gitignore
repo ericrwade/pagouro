@@ -59,3 +59,6 @@ release/
 
 # The origin design transcript is PRIVATE (D-52). docs/ORIGIN.md is the public story.
 My_Claude_Conversation.txt
+workspace/notes/
+workspace/transcripts/
+build/

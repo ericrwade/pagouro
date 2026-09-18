@@ -18,6 +18,9 @@ import hashlib
 import io
 import json
 import os
+import shutil
+import subprocess
+import sys
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,12 +42,10 @@ echo   Type '/exit' or press Ctrl+C to quit.
 echo ============================================================
 echo.
 
-REM No -st: that flag is llama.cpp's SINGLE-TURN mode -- it answered once and
-REM exited (Eric hit this on the first real stick, 2026-09-17). --context-shift
-REM keeps the chat alive past the model's context window by dropping the oldest
-REM turns instead of stopping. q8_0 rather than q4_k_m: 4-bit costs a very
-REM small model far more quality than it costs a 1B one, and 82MB fits anywhere.
-"%~dp0llama-cli.exe" -m "%~dp0model\pagouro-q8_0.gguf" -n 300 --temp 0.4 -ngl 0 --context-shift
+REM The app (app/pagouro_app.py, frozen with PyInstaller) starts llama-server.exe
+REM beside it and owns the chat: context gauge, SAND/STONE, READ-ONLY/CAN ACT,
+REM tools, packs. D-51/D-52. The old llama-cli launcher is kept as PAGOURO-BASIC.bat.
+"%~dp0pagouro.exe"
 
 echo.
 echo Session ended. Nothing was written to disk in this mode.
@@ -96,6 +97,7 @@ def sha256_file(path: str) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--release-dir", required=True)
+    ap.add_argument("--no-app", action="store_true", help="skip the PyInstaller build of pagouro.exe")
     a = ap.parse_args()
 
     rel = a.release_dir if os.path.isabs(a.release_dir) else os.path.join(ROOT, a.release_dir)
@@ -146,11 +148,36 @@ def main() -> int:
 
 ## Run it
 
-Double-click `PAGOURO.bat`. That is the entire installation process. It runs
-`llama-cli.exe` against the model in `model/`, entirely offline, on the CPU
-of whatever machine this stick is plugged into.
+Double-click `PAGOURO.bat`. That is the entire installation process. It starts
+`pagouro.exe`, which starts `llama-server.exe` beside it and talks to the model in
+`model/`, entirely offline, on the CPU of whatever machine this stick is plugged
+into. (`PAGOURO-BASIC.bat` is a plain `llama-cli` chat with no tools, as a fallback.)
 
 No install, no admin rights, no internet connection required or used.
+
+## What you see
+
+Three switches sit above every prompt, and a bar:
+
+- **OFFLINE**: this build makes no network calls at all. There is no online mode yet.
+- **SAND / STONE**: nothing you type is saved unless you type `/stone`, after which
+  the chat is written to `workspace/transcripts/`. `/sand` stops it again.
+- **READ-ONLY / CAN ACT**: tools that write (a note to `workspace/notes/`) are
+  refused until you type `/act`. Nothing outside `workspace/` is ever written.
+- **The bar** is the model's memory. This model holds about 350 words at once.
+  When it fills, the oldest exchange is shown leaving, with its first words, so
+  you know what it no longer remembers. That is a small model's limit made visible
+  rather than hidden.
+
+## Tools
+
+Before each answer the model decides, under a grammar that only permits a valid
+choice, whether one tool is needed: `calc` (arithmetic), `time` (this machine's
+clock), `pack_search` (the reference texts in `packs/`), `read_file` (a file you
+name), `write_note` (needs CAN ACT). The call and its result are printed before
+the answer. `/tools` lists them. This is a minimum viable agent: one tool per
+turn, an explicit allowlist, never a shell. Its judgement is a small model's
+judgement; the framework around it is what you are meant to build on.
 
 ## What this is
 
