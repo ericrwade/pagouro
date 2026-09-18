@@ -109,7 +109,7 @@ ROUTER = [
     ("Why did gold become money?", "none", ""),
     ("Can you keep a secret?", "none", ""),
     ("Write me a limerick about a hermit crab.", "none", ""),
-    ("What does 'idempotent' mean?", "none", ""),
+    ("Define idempotent, in one sentence.", "none", ""),
     ("Who currently runs the European Central Bank?", "none", ""),
     ("Are you connected to the internet?", "none", ""),
     ("Summarise the difference between a merger and an acquisition.", "none", ""),
