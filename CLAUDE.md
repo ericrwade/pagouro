@@ -21,6 +21,11 @@ until Eric says otherwise.
 4. Read `docs/THREAT_MODEL.md`. It is binding on every privacy claim in the README and the UI.
 5. Read the last entry in `docs/SESSION_LOG.md` to pick up where we left off.
 6. Run `scripts/preflight.sh` to confirm keys and tooling are live.
+7. Skim `docs/ORIGIN_LEDGER.md` — every commitment from the design conversation
+   (`My_Claude_Conversation.txt`) with its status. **Before any release-facing step** (anything in
+   its section F: GitHub, Hugging Face, Arweave, manifest, signing, anchoring, README stance,
+   archiving) walk section F in order and update the row you touched. Out-of-order release steps
+   get redone.
 
 ## Hard rules
 

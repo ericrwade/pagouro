@@ -29,6 +29,7 @@ nothing from outside.
 | 3 | `docs/THREAT_MODEL.md` | Binding on every privacy claim in the README and UI. |
 | 4 | `docs/SESSION_LOG.md` (last entry) | Where the previous session stopped. |
 | 5 | `CLAUDE.md` | Standing rules. Auto-loads, but skim it. |
+| 6 | `docs/ORIGIN_LEDGER.md` | Every commitment from the design conversation, with status. Section F is the release order — walk it before any GitHub/HF/Arweave/anchoring step. |
 
 Where the brief and `DECISIONS.md` disagree, **DECISIONS wins**. Never revert a locked decision to
 match the older brief.

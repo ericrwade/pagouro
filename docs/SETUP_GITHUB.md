@@ -1,8 +1,13 @@
 # GitHub setup
 
+> **2026-09-17: the account question below is RESOLVED (D-5).** The account is `ericrwade`, the
+> work email was removed, and git identity uses `266440753+ericrwade@users.noreply.github.com`.
+> The section is kept as history. Repo strategy lives in `docs/ORIGIN_LEDGER.md` section F:
+> private repo through the messy milestones, public + archived at release.
+
 Status as of 2026-09-16.
 
-## The account question — UNRESOLVED, blocks repo creation
+## The account question — ~~UNRESOLVED, blocks repo creation~~ resolved, see above
 
 Eric has two GitHub accounts. Both exist, both have zero public repos.
 
