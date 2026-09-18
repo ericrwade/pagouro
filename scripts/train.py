@@ -93,6 +93,7 @@ def main() -> int:
     # gathered on the GPU (a 3B-token uint16 file is 6 GB, well inside 80 GB).
     ap.add_argument("--bf16", action="store_true", help="autocast to bfloat16 on CUDA")
     ap.add_argument("--data-on-gpu", action="store_true", help="hold train/val tokens in device memory")
+    ap.add_argument("--compile", action="store_true", help="torch.compile the model (CUDA; measures the MFU gain, D-55)")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--seed", type=int, default=1337)
     # Paths are arguments so the ablation pilot can run isolated arms without
@@ -129,6 +130,10 @@ def main() -> int:
         n_heads=a.heads, n_kv_heads=a.kv_heads, max_seq_len=a.seq_len,
     )
     model = Pagouro(cfg).to(device)
+    raw_model = model                       # checkpoints always save the uncompiled module's state
+    if a.compile and device == "cuda":
+        model = torch.compile(model)
+        print("torch.compile  : on")
 
     decay = [p for p in model.parameters() if p.dim() >= 2]
     no_decay = [p for p in model.parameters() if p.dim() < 2]
@@ -144,7 +149,7 @@ def main() -> int:
         if not os.path.exists(ckpt_path):
             raise SystemExit(f"--resume given but no checkpoint at {ckpt_path}")
         ck = torch.load(ckpt_path, map_location=device, weights_only=False)
-        model.load_state_dict(ck["model"])
+        raw_model.load_state_dict(ck["model"])
         opt.load_state_dict(ck["optimizer"])
         start_step = ck["step"] + 1
         print(f"RESUMED from step {ck['step']} (val loss {ck.get('val_loss', float('nan')):.4f})")
@@ -152,8 +157,8 @@ def main() -> int:
     rng = np.random.default_rng(a.seed + start_step)
 
     print(f"device       : {device} ({torch.get_num_threads()} threads)")
-    print(f"parameters   : {model.num_parameters():,} "
-          f"({model.num_parameters(non_embedding=True):,} non-embedding)")
+    print(f"parameters   : {raw_model.num_parameters():,} "
+          f"({raw_model.num_parameters(non_embedding=True):,} non-embedding)")
     print(f"tokens avail : {meta['train_tokens']:,} train / {meta['val_tokens']:,} val")
     print(f"tokens/step  : {a.batch_size * a.seq_len:,}")
     print(f"steps        : {start_step} -> {a.max_steps}")
@@ -208,7 +213,7 @@ def main() -> int:
             # one is complete.
             tmp_path = ckpt_path + ".tmp"
             torch.save({
-                "model": model.state_dict(),
+                "model": raw_model.state_dict(),
                 "optimizer": opt.state_dict(),
                 "step": step,
                 "config": cfg.to_dict(),

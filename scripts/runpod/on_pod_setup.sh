@@ -6,7 +6,7 @@ set -e
 cd /workspace
 mkdir -p pagouro && tar --no-same-owner -xzf pagouro-bundle.tar.gz -C pagouro
 cd pagouro
-python -m pip install -q --disable-pip-version-check numpy tokenizers gguf 2>&1 | tail -1 || true
+python -m pip install -q --disable-pip-version-check numpy tokenizers gguf datasets 2>&1 | tail -1 || true
 echo "== gpu =="
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader
 python - <<'EOF'
