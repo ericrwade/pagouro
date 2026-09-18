@@ -51,7 +51,7 @@ Last full walk: 2026-09-18 (overnight build of the app).
 |---|---|---|---|
 | C1 | Milestone 1: end-to-end pipeline in an afternoon (31) | DONE | M1 2026-09-16; real shakedown build 2026-09-17 |
 | C2 | Every long process resumable, progress in a human-readable file (31) | DONE | `--resume`, jsonl logs; resume proven by killing (D-22) and by a real freeze (D-47) |
-| C3 | Rent, don't buy; develop on the EVO-X2, one H100 for the final run; produce a job bundle, Eric launches (13, 55, brief) | NOT STARTED | Job-bundle export does not exist. Never rent without explicit confirmation |
+| C3 | Rent, don't buy; develop on the EVO-X2, one H100 for the final run; produce a job bundle, Eric launches (13, 55, brief) | PARTIAL | RunPod connected (D-54); bundle + on-pod scripts proven on an A40 (D-55, 62k tok/s); `docs/RUNPOD_JOB.md` is the operator sequence. Flash run in progress. The 1B run still needs Eric's 'launch' and the WSD/O-12 decisions |
 | C4 | Pearl miners' GPU cloud as a rental option; PRL acceptance maybe (98) | NOT STARTED | Logged in brief; not investigated |
 | C5 | SFT: a few thousand curated Q/A pairs; loss on response tokens only; 1–3 epochs; lr 10–50× lower than pretrain (27) | PARTIAL | 306 conversations (99 abstention, 30 crypto, 43 synthesis, 134 harness), not thousands. Multi-message, template-exact, shift fixed (D-48). ~16 epochs at 1200 steps; fine for a shakedown |
 | C6 | Abstention examples balanced with confident-answer examples so it does not over-abstain (155) | PARTIAL | 50/49 balanced seed + 43 synthesis examples. The shakedown model still over-abstains (53%); that is the knowledge gap at 59M, not the balance (D-48) |
@@ -84,7 +84,7 @@ Last full walk: 2026-09-18 (overnight build of the app).
 | E3 | Tokens/second on a ten-year-old laptop; time from double-click to first answer (155) | NOT STARTED | Needs the 1B model and an old laptop |
 | E4 | Receipts over claims: publish eval sets, scripts, loss curves, ledger, inscription ID, Arweave TX (222) | PARTIAL | Evals, scripts, loss logs (`runs/*.jsonl`), ledger all in repo. Nothing anchored or uploaded |
 | E5 | Measure the crypto claims first-hand: Arweave cost, Ordinal cost weekday vs weekend, PRL vs RunPod, Strix Halo viability (222) | PARTIAL | Strix Halo: ENVIRONMENT.md. Arweave vs Quilibrium: `QSTORAGE_VS_ARWEAVE.md`, D-42. Ordinal and rental costs unmeasured |
-| E6 | Success metrics written down before launch: stars/downloads (track, don't lead), forks, independent reruns of the bluff test, packs shipped, citations, newsletter lift (226) | NOT STARTED | Write `docs/SUCCESS_METRICS.md` before release; publish results either way |
+| E6 | Success metrics written down before launch: stars/downloads (track, don't lead), forks, independent reruns of the bluff test, packs shipped, citations, newsletter lift (226) | DRAFTED | `docs/SUCCESS_METRICS.md` (2026-09-18): tiered by how hard each is to fake, 90-day targets proposed, filled in after release regardless of outcome. Eric confirms targets before F13 |
 | E7 | The build log is the product; under-promise in print; disclose holdings and costs; no token, on purpose, say why early (222) | DONE (log), PARTIAL (disclosures) | `BUILD_LOG.md` is a deliverable (D-26). Holdings disclosure is O-10 |
 
 ## F. Release, GitHub, and anchoring — the part that must happen in ORDER
