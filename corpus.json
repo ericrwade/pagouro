@@ -508,6 +508,30 @@
       "sha256_processed": "10fe512aa183fd96b0695b7bb87381645fb193c7aa1a57b1cc1db36fcde371b3",
       "file": "data/raw/bitcointalk/bitcointalk_sample.txt",
       "slice": "contemporary voice (anneal + SFT only, never the pretraining spine, per D-10)"
+    },
+    {
+      "slug": "harness-synthetic-qwen2.5-7b",
+      "name": "Synthetic harness SFT conversations, generated locally by Qwen2.5-7B-Instruct",
+      "license": "Apache-2.0 (generator: Qwen/Qwen2.5-7B-Instruct-GGUF, q4_k_m); the prompts and validation rules are in scripts/generate_synthetic_harness.py",
+      "generation_method": "D-30: open weights run LOCALLY via llama-server on the EVO-X2, never an API. Classes: router decisions (label by construction), tool answers with the tool EXECUTED for real (calc, BM25 pack search over the shipped packs, simulated clock/file/note), grounded passage Q&A, invented-entity refusals, general-knowledge answers (verifier pass at temperature 0; answers leaning on precise figures dropped), comparisons (verified), multi-turn dialogues (invented specifics forbidden; number-heavy replies dropped). Every row deduplicated against all other SFT files and checked for overlap with the frozen evals (bluff, calibration, deflection, tooluse).",
+      "published_before_generative_ai": false,
+      "note": "Synthetic, not scraped. A 7B teacher states wrong facts occasionally; the filters reduce but do not eliminate that, which is why the answered-real and bluff rates are measured on the frozen suite rather than assumed. Excluded from any pre-2022 claim by construction.",
+      "retrieved": "2026-09-18",
+      "retrieved_utc": "2026-09-18T19:05:29+00:00",
+      "documents": 717,
+      "by_kind": {
+        "abstain": 32,
+        "confident": 30,
+        "grounded": 40,
+        "multi_turn": 13,
+        "router": 358,
+        "synthesis": 23,
+        "tool_answer": 221
+      },
+      "bytes": 543666,
+      "sha256_processed": "799c3f14378a05b345534f387226068fba140d851441915173bfa070cd607721",
+      "file": "sft/synthetic_harness.jsonl",
+      "slice": "SFT (synthetic, tool-executed, filtered)"
     }
   ]
 }
