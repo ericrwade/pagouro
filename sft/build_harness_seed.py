@@ -294,7 +294,7 @@ MULTI_TURN = [
 def check_overlap(prompts: list[str]) -> int:
     evald = os.path.join(ROOT, "evals")
     eval_prompts = []
-    for name in ("bluff.json", "calibration.json", "deflection.json"):
+    for name in ("bluff.json", "calibration.json", "deflection.json", "tooluse.json"):
         p = os.path.join(evald, name)
         if os.path.exists(p):
             with io.open(p, encoding="utf-8") as f:

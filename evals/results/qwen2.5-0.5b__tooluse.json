@@ -1,0 +1,427 @@
+{
+  "set": "tooluse",
+  "model_label": "qwen2.5-0.5b",
+  "model_file": "Qwen2.5-0.5B-Instruct-Q4_K_M.gguf",
+  "n_items": 40,
+  "counts": {
+    "CALL_WRONG": 9,
+    "CALL_RIGHT": 13,
+    "MISSED": 2,
+    "SPURIOUS": 6,
+    "REFRAIN_RIGHT": 10
+  },
+  "arg_ok": 2,
+  "arg_total": 3,
+  "elapsed_s": 14.3,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-18",
+  "mode": "router-grammar",
+  "items": [
+    {
+      "id": "tool-001",
+      "expect": "calc",
+      "prompt": "If I buy seven notebooks at 3.40 each, what's the total?",
+      "expect_value": 23.8,
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"notebooks,3.40\"}",
+      "tool": "pack_search",
+      "arguments": "notebooks,3.40",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-002",
+      "expect": "calc",
+      "prompt": "Take 640, knock 15 percent off it, what's left?",
+      "expect_value": 544,
+      "response": "{\"tool\":\"calc\",\"arguments\":\"640*(1-0.15)\"}",
+      "tool": "calc",
+      "arguments": "640*(1-0.15)",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": true
+    },
+    {
+      "id": "tool-003",
+      "expect": "calc",
+      "prompt": "What's 2 raised to the 12th?",
+      "expect_value": 4096,
+      "response": "{\"tool\":\"calc\",\"arguments\":\"2^12\"}",
+      "tool": "calc",
+      "arguments": "2^12",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": true
+    },
+    {
+      "id": "tool-004",
+      "expect": "calc",
+      "prompt": "Split a 96 dollar bill four ways.",
+      "expect_value": 24,
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"96 dollar bill four ways\"}",
+      "tool": "pack_search",
+      "arguments": "96 dollar bill four ways",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-005",
+      "expect": "calc",
+      "prompt": "Nine hundred and eighty-one minus four hundred and seven?",
+      "expect_value": 574,
+      "response": "{\"tool\":\"calc\",\"arguments\":\"981-470\"}",
+      "tool": "calc",
+      "arguments": "981-470",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": false
+    },
+    {
+      "id": "tool-006",
+      "expect": "time",
+      "prompt": "Roughly what hour is it where this machine is?",
+      "response": "{\"tool\":\"time\",\"arguments\":\"now\"}",
+      "tool": "time",
+      "arguments": "now",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-007",
+      "expect": "time",
+      "prompt": "Is it a weekend today?",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"is it a weekend today\"}",
+      "tool": "pack_search",
+      "arguments": "is it a weekend today",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-008",
+      "expect": "time",
+      "prompt": "Which month are we in?",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"month\"}",
+      "tool": "pack_search",
+      "arguments": "month",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-009",
+      "expect": "time",
+      "prompt": "Give me the current timestamp.",
+      "response": "{\"tool\":\"time\",\"arguments\":\"now\"}",
+      "tool": "time",
+      "arguments": "now",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-010",
+      "expect": "pack_search",
+      "prompt": "What does On Liberty say about compulsory education?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"none\"}",
+      "tool": "none",
+      "arguments": "none",
+      "verdict": "MISSED",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-011",
+      "expect": "pack_search",
+      "prompt": "Look in the reference texts for Bastiat on the balance of trade.",
+      "response": "{\"tool\":\"read_file\",\"arguments\":\"Bastiat on the balance of trade\"}",
+      "tool": "read_file",
+      "arguments": "Bastiat on the balance of trade",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-012",
+      "expect": "pack_search",
+      "prompt": "Does Mill argue that offence is a form of harm? Check the packs.",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"offence,harm\"}",
+      "tool": "pack_search",
+      "arguments": "offence,harm",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-013",
+      "expect": "pack_search",
+      "prompt": "Search the packs for the phrase 'the sophism of the broken window'.",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"the sophism of the broken window\"}",
+      "tool": "pack_search",
+      "arguments": "the sophism of the broken window",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-014",
+      "expect": "pack_search",
+      "prompt": "What did Bastiat think about subsidies for the theatre?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"none\"}",
+      "tool": "none",
+      "arguments": "none",
+      "verdict": "MISSED",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-015",
+      "expect": "read_file",
+      "prompt": "Open workspace/notes/shopping.txt and read it back to me.",
+      "response": "{\"tool\":\"read_file\",\"arguments\":\"workspace/notes/shopping.txt\"}",
+      "tool": "read_file",
+      "arguments": "workspace/notes/shopping.txt",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-016",
+      "expect": "read_file",
+      "prompt": "What's written in C:\\Users\\eric\\Desktop\\packing-list.txt?",
+      "response": "{\"tool\":\"read_file\",\"arguments\":\"C:\\\\Users\\\\eric\\\\Desktop\\\\packing-list.txt\"}",
+      "tool": "read_file",
+      "arguments": "C:\\Users\\eric\\Desktop\\packing-list.txt",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-017",
+      "expect": "read_file",
+      "prompt": "Summarise the file /home/eric/journal/2026-09-18.md for me.",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"/home/eric/journal/2026-09-18.md\"}",
+      "tool": "pack_search",
+      "arguments": "/home/eric/journal/2026-09-18.md",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-018",
+      "expect": "read_file",
+      "prompt": "Have a look at workspace/todo.txt and tell me the first item.",
+      "response": "{\"tool\":\"read_file\",\"arguments\":\"workspace/todo.txt\"}",
+      "tool": "read_file",
+      "arguments": "workspace/todo.txt",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-019",
+      "expect": "write_note",
+      "prompt": "Note this down: the dentist moved to Thursday at 3.",
+      "response": "{\"tool\":\"write_note\",\"arguments\":\"note this down: the dentist moved to Thursday at 3.\"}",
+      "tool": "write_note",
+      "arguments": "note this down: the dentist moved to Thursday at 3.",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-020",
+      "expect": "write_note",
+      "prompt": "Save a note saying the router password is on the fridge.",
+      "response": "{\"tool\":\"write_note\",\"arguments\":\"router password on the fridge\"}",
+      "tool": "write_note",
+      "arguments": "router password on the fridge",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-021",
+      "expect": "write_note",
+      "prompt": "Remember for me: order more coffee filters.",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"order more coffee filters\"}",
+      "tool": "pack_search",
+      "arguments": "order more coffee filters",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-022",
+      "expect": "write_note",
+      "prompt": "Jot down that the ferry leaves at 7:40 on Sundays.",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"ferry,7:40,Sunday\"}",
+      "tool": "pack_search",
+      "arguments": "ferry,7:40,Sunday",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-023",
+      "expect": "write_note",
+      "prompt": "Write a note: chapter 3 of Mill is the one on individuality.",
+      "response": "{\"tool\":\"write_note\",\"arguments\":\"chapter 3 of Mill is the one on individuality\"}",
+      "tool": "write_note",
+      "arguments": "chapter 3 of Mill is the one on individuality",
+      "verdict": "CALL_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-024",
+      "expect": "calc",
+      "prompt": "How many seconds are in 3 and a half hours?",
+      "expect_value": 12600,
+      "response": "{\"tool\":\"time\",\"arguments\":\"3.5*60*60\"}",
+      "tool": "time",
+      "arguments": "3.5*60*60",
+      "verdict": "CALL_WRONG",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-025",
+      "expect": "none",
+      "prompt": "What is a time signature in music?",
+      "response": "{\"tool\":\"time\",\"arguments\":\"time signature\"}",
+      "tool": "time",
+      "arguments": "time signature",
+      "verdict": "SPURIOUS",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-026",
+      "expect": "none",
+      "prompt": "Why do we have leap years?",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"leap_years\"}",
+      "tool": "pack_search",
+      "arguments": "leap_years",
+      "verdict": "SPURIOUS",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-027",
+      "expect": "none",
+      "prompt": "What is a text file, technically?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"text file\"}",
+      "tool": "none",
+      "arguments": "text file",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-028",
+      "expect": "none",
+      "prompt": "Explain what a note is in accounting.",
+      "response": "{\"tool\":\"write_note\",\"arguments\":\"note\"}",
+      "tool": "write_note",
+      "arguments": "note",
+      "verdict": "SPURIOUS",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-029",
+      "expect": "none",
+      "prompt": "Who was John Stuart Mill?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"John Stuart Mill was an English philosopher, political economist, and social reformer.\"}",
+      "tool": "none",
+      "arguments": "John Stuart Mill was an English philosopher, political economist, and social reformer.",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-030",
+      "expect": "none",
+      "prompt": "Is a constitution more like a contract or a rulebook?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"none\"}",
+      "tool": "none",
+      "arguments": "none",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-031",
+      "expect": "none",
+      "prompt": "Hi there, are you working?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "tool": "none",
+      "arguments": "",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-032",
+      "expect": "none",
+      "prompt": "What year did the Berlin Wall come down?",
+      "response": "{\"tool\":\"time\",\"arguments\":\"Berlin Wall came down in 1989.\"}",
+      "tool": "time",
+      "arguments": "Berlin Wall came down in 1989.",
+      "verdict": "SPURIOUS",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-033",
+      "expect": "none",
+      "prompt": "Who won the 2003 Ashcombe Medal for hydrology?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"none\"}",
+      "tool": "none",
+      "arguments": "none",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-034",
+      "expect": "none",
+      "prompt": "What does a percentage mean?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"none\"}",
+      "tool": "none",
+      "arguments": "none",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-035",
+      "expect": "none",
+      "prompt": "Can you keep what I type private?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"none\"}",
+      "tool": "none",
+      "arguments": "none",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-036",
+      "expect": "none",
+      "prompt": "Give me a one-line summary of what a search engine does.",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"search engine\"}",
+      "tool": "pack_search",
+      "arguments": "search engine",
+      "verdict": "SPURIOUS",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-037",
+      "expect": "none",
+      "prompt": "Was Rome a republic or an empire when Caesar died?",
+      "response": "{\"tool\":\"pack_search\",\"arguments\":\"Rome, Caesar, republic, empire\"}",
+      "tool": "pack_search",
+      "arguments": "Rome, Caesar, republic, empire",
+      "verdict": "SPURIOUS",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-038",
+      "expect": "none",
+      "prompt": "What's the difference between a note and a bond?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"None\"}",
+      "tool": "none",
+      "arguments": "None",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-039",
+      "expect": "none",
+      "prompt": "Why is the number seven considered lucky?",
+      "response": "{\"tool\":\"none\",\"arguments\":\"None\"}",
+      "tool": "none",
+      "arguments": "None",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    },
+    {
+      "id": "tool-040",
+      "expect": "none",
+      "prompt": "Thanks, that answered it.",
+      "response": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "tool": "none",
+      "arguments": "",
+      "verdict": "REFRAIN_RIGHT",
+      "arg_ok": null
+    }
+  ]
+}

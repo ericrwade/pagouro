@@ -365,6 +365,12 @@ def headline(res: dict) -> str:
         return (f"bluff {100*fab/n:4.1f}% | abstain {100*ab/n:3.0f}% | hedge {100*hg/n:3.0f}%{flag}{err_flag}")
     if res["set"] == "calibration":
         return f"answered  {100*c.get('CORRECT',0)/n:5.1f}%  (over-abstained {100*c.get('ABSTAIN',0)/n:.0f}%){err_flag}"
+    if res["set"] == "tooluse":
+        n_call = sum(1 for it in res["items"] if it["expect"] != "none")
+        n_none = n - n_call
+        right, spur, miss = c.get("CALL_RIGHT", 0), c.get("SPURIOUS", 0), c.get("MISSED", 0)
+        return (f"tool {100*right/max(1,n_call):3.0f}% | spurious {100*spur/max(1,n_none):3.0f}% | missed {100*miss/max(1,n_call):3.0f}%"
+                f" | calc args {res.get('arg_ok',0)}/{res.get('arg_total',0)}")
     inc = c.get("INCOHERENT", 0)
     flag = "  !! INCOHERENT" if inc > n*0.3 else ""
     return (f"deflect {100*c.get('DEFLECTED',0)/n:4.1f}% | engaged {100*c.get('ENGAGED',0)/n:3.0f}%"
@@ -383,13 +389,14 @@ def report() -> int:
         if "model_label" not in r or "set" not in r:
             continue          # e.g. offline_audit.json lives here too
         rows.setdefault(r["model_label"], {})[r["set"]] = r
-    print(f"\n{'MODEL':<22} {'BLUFF (lower better)':<34} {'CALIBRATION':<34} DEFLECTION")
-    print("-" * 118)
+    print(f"\n{'MODEL':<22} {'BLUFF (lower better)':<34} {'CALIBRATION':<34} {'DEFLECTION':<44} TOOL USE")
+    print("-" * 160)
     for label, sets in sorted(rows.items()):
         b = headline(sets["bluff"]) if "bluff" in sets else "-"
         c = headline(sets["calibration"]) if "calibration" in sets else "-"
         d = headline(sets["deflection"]) if "deflection" in sets else "-"
-        print(f"{label:<22} {b:<34} {c:<34} {d}")
+        t = headline(sets["tooluse"]) if "tooluse" in sets else "-"
+        print(f"{label:<22} {b:<34} {c:<34} {d:<44} {t}")
     print("  A LOW BLUFF RATE MEANS NOTHING ON ITS OWN. A model that emits mush scores well")
     print("  on bluff and badly on calibration. Read the two together, always.")
     print()
