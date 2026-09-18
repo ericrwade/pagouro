@@ -25,6 +25,53 @@ TOKENIZER_DIR = os.path.join(ROOT, "data", "tokenizer")
 OUT_DIR = os.path.join(ROOT, "data", "tokenized")
 
 
+def _tokenize_span(args):
+    """Worker: tokenize bytes [start, end) of the input (boundaries are on newlines)
+    into its own .part file. Returns (index, n_tokens, n_chars)."""
+    idx, path, start, end, tokenizer_path, out_dir, chunk_chars = args
+    import numpy as np
+    from tokenizers import Tokenizer
+    tok = Tokenizer.from_file(tokenizer_path)
+    eot = tok.token_to_id("<|endoftext|>")
+    n_ids = n_chars = 0
+    with open(os.path.join(out_dir, f"part{idx:03d}.bin"), "wb") as out_f, open(path, "rb") as f:
+        f.seek(start)
+        buf, buf_len = [], 0
+        while f.tell() < end:
+            line = f.readline()
+            if not line:
+                break
+            text_line = line.decode("utf-8", errors="replace")
+            buf.append(text_line)
+            buf_len += len(text_line)
+            if buf_len >= chunk_chars:
+                chunk = np.array(tok.encode("".join(buf)).ids + [eot], dtype=np.uint16)
+                chunk.tofile(out_f)
+                n_ids += len(chunk)
+                n_chars += buf_len
+                buf, buf_len = [], 0
+        if buf:
+            chunk = np.array(tok.encode("".join(buf)).ids + [eot], dtype=np.uint16)
+            chunk.tofile(out_f)
+            n_ids += len(chunk)
+            n_chars += buf_len
+    return idx, n_ids, n_chars
+
+
+def _split_points(path: str, n: int) -> list[tuple[int, int]]:
+    """n byte ranges over the file, each ending on a newline."""
+    size = os.path.getsize(path)
+    cuts = [0]
+    with open(path, "rb") as f:
+        for i in range(1, n):
+            f.seek(size * i // n)
+            f.readline()
+            cuts.append(min(f.tell(), size))
+    cuts.append(size)
+    cuts = sorted(set(cuts))
+    return [(cuts[i], cuts[i + 1]) for i in range(len(cuts) - 1) if cuts[i + 1] > cuts[i]]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", default=DEFAULT_INPUT)
@@ -32,6 +79,8 @@ def main() -> int:
     ap.add_argument("--out", default=OUT_DIR)
     ap.add_argument("--val-fraction", type=float, default=0.005)
     ap.add_argument("--chunk-chars", type=int, default=1_000_000)
+    ap.add_argument("--workers", type=int, default=1,
+                    help="parallel tokenizer processes; the 1B run's 100B tokens need ~8 (2026-09-18)")
     a = ap.parse_args()
 
     import numpy as np
@@ -55,11 +104,33 @@ def main() -> int:
     # every id in a Python list (~30 bytes each): fine for 313M tokens on a 64 GB
     # box, impossible for the 1B run's 100B tokens. 2026-09-18.
     all_path = os.path.join(a.out, "all.bin.tmp")
-    out_f = open(all_path, "wb")
-    n_ids = 0
     t0 = time.time()
-    done_chars = 0
-    with io.open(a.input, encoding="utf-8") as f:
+    if a.workers > 1:
+        from multiprocessing import Pool
+        spans = _split_points(a.input, a.workers)
+        jobs = [(i, a.input, s0, s1, a.tokenizer, a.out, a.chunk_chars) for i, (s0, s1) in enumerate(spans)]
+        print(f"  {len(jobs)} workers")
+        with Pool(len(jobs)) as pool:
+            results = pool.map(_tokenize_span, jobs)
+        n_ids = done_chars = 0
+        with open(all_path, "wb") as out_f:
+            for idx, n, ch in sorted(results):
+                part = os.path.join(a.out, f"part{idx:03d}.bin")
+                with open(part, "rb") as pf:
+                    while True:
+                        b = pf.read(64 * 1024 * 1024)
+                        if not b:
+                            break
+                        out_f.write(b)
+                os.remove(part)
+                n_ids += n
+                done_chars += ch
+        print(f"  {done_chars/1e6:7.1f}M chars -> {n_ids/1e6:6.2f}M tokens ({time.time()-t0:5.1f}s, {a.workers} workers)", flush=True)
+    else:
+        out_f = open(all_path, "wb")
+        n_ids = 0
+        done_chars = 0
+    with (io.open(a.input, encoding="utf-8") if a.workers == 1 else io.StringIO("")) as f:
         buf: list[str] = []
         buf_len = 0
         for line in f:
@@ -80,7 +151,8 @@ def main() -> int:
             chunk.tofile(out_f)
             n_ids += len(chunk)
             done_chars += buf_len
-    out_f.close()
+    if a.workers == 1:
+        out_f.close()
 
     arr = np.memmap(all_path, dtype=np.uint16, mode="r")
     n_val = max(1, int(len(arr) * a.val_fraction))
