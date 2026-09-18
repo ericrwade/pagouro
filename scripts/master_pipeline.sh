@@ -25,7 +25,8 @@ require() { [ -e "$1" ] || { echo "FATAL: expected file missing: $1" >&2; exit 1
 # retraining everything. Stages the run skips must already have left their
 # outputs in place; the require checks at each stage boundary still apply.
 START_STAGE="${START_STAGE:-0}"
-THREADS="${THREADS:-0}"   # torch threads for stages 4-5; 0 = torch default
+THREADS="${THREADS:-0}"   # torch threads for stages 4-6; 0 = torch default
+SFT_STEPS="${SFT_STEPS:-1200}"   # stage 6 steps; scale with the SFT set (2026-09-18: ~2,000 conversations -> 2000 steps = ~4 epochs)
 stage() { if [ "$1" -ge "$START_STAGE" ]; then return 0; else echo "### STAGE $1 SKIPPED (START_STAGE=$START_STAGE) ###"; return 1; fi; }
 
 # SKIP_CORPUS=1 skips stages 0-3 -- set this on a relaunch after stages 0-3
@@ -116,7 +117,7 @@ if stage 6; then
 echo "### STAGE 6: SFT (loss on response tokens only) ###"
 $PY -u scripts/train_sft.py --threads "$THREADS" --checkpoint checkpoints/real_anneal.pt \
     --tokenizer data/tokenizer_real/tokenizer.json --out checkpoints/real_sft.pt \
-    --steps 1200 --batch-size 4 --lr 2e-5
+    --steps "${SFT_STEPS:-1200}" --batch-size 4 --lr 2e-5
 require checkpoints/real_sft.pt
 fi
 
