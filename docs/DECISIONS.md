@@ -1223,3 +1223,43 @@ the checkpoint is safely downloaded. The permission layer additionally gates the
 (generation running as of this entry), (2) the anneal schedule fix from D-48 (WSD), and (3) O-12
 (context length) decided. Renting an H100 to reproduce a known over-abstention would be the
 expensive way to learn what is already measured.
+
+### D-55 — First rented-GPU run: the bundle works end to end; measured throughput reprices the 1B run
+**2026-09-18, 11:10–11:20 PT.** Pod `r2a7pzu02e9sd3`, NVIDIA A40 48 GB, secure cloud, CA-MTL-1,
+$0.49/h, official `runpod/pytorch` image, created and terminated by the session; total pod life
+about nine minutes (~$0.08 plus pennies of disk). RTX 4090 and RTX A5000 were listed as LOW
+stock and were gone by the time the create call landed; the A40 was there. `list-pods` empty at
+the end.
+
+**What was proven:** `scripts/runpod/make_bundle.sh` (391 MB: code, tokenizer, tokenized data,
+no checkpoints/corpus/secrets) → `scp` over the pod's direct SSH (the proxy endpoint needs a PTY
+and cannot carry scp) → `on_pod_setup.sh` (hash check, extract, deps, torch 2.8/CUDA 12.8, bf16
+supported) → `shakedown.sh`: the real 59M config, `--bf16 --data-on-gpu`, 300 steps, checkpoint,
+then a `--resume` for 60 more steps (RESUMED from step 299, loss continuous: D-22 on GPU) →
+checkpoint and logs `scp`'d home, checkpoint loads locally (129 tensors, all finite) → pod
+terminated. Two bugs found on the way, both fixed in the scripts: `tar` as root refused to
+restore the Windows owner ids from the archive (`--no-same-owner`), and a `grep` filter buffered
+the progress log to nothing until exit (read the `tee` file, not the filtered one).
+
+**Measured:** 62,000 tokens/second steady (steps 100–299), against 957 on the EVO-X2's CPU: 65x.
+The 37M-token shakedown pretrain that took 3.6 hours here takes ten minutes on a $0.49/h card.
+That is 6·N·D ≈ 22 TFLOPS achieved on a card whose bf16 dense peak is ~150: about **15% MFU**,
+which is what a plain PyTorch loop gets on a 59M model (small matmuls; SDPA is already used).
+
+**What that does to the 1B price.** D-6's ~420 H100-hours assumed roughly 35% MFU. From today's
+measurement, at the current code's efficiency the honest range for 1B × 100B tokens is:
+
+| MFU | H100-hours | secure $3.49 | community $2.69 |
+|---|---|---|---|
+| 15% (today's code, small model) | 1,120 | $3,900 | $3,000 |
+| 25% (larger model + torch.compile) | 670 | $2,350 | $1,800 |
+| 35% (D-6's assumption) | 480 | $1,680 | $1,300 |
+
+MFU rises with model size (bigger matmuls) and with `torch.compile`; neither is measured yet.
+**The Flash run (~150M, ~3B tokens) is where the real number comes from**, and it must include a
+`torch.compile` arm. Until then the 1B budget line reads "$1,700–$3,900 depending on measured
+efficiency", not "$850". This is exactly the kind of number the origin conversation said to
+measure first-hand rather than repeat (line 222).
+
+**Rule kept:** price stated before creation (on the status issue, once the permission layer let a
+comment through), created by the session, destroyed by the session, `list-pods` empty after.

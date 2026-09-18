@@ -4,7 +4,7 @@
 # Python deps are installed. Prints the facts the operator needs to record.
 set -e
 cd /workspace
-mkdir -p pagouro && tar -xzf pagouro-bundle.tar.gz -C pagouro
+mkdir -p pagouro && tar --no-same-owner -xzf pagouro-bundle.tar.gz -C pagouro
 cd pagouro
 python -m pip install -q --disable-pip-version-check numpy tokenizers gguf 2>&1 | tail -1 || true
 echo "== gpu =="
