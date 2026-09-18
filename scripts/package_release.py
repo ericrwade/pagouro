@@ -39,7 +39,12 @@ echo   Type '/exit' or press Ctrl+C to quit.
 echo ============================================================
 echo.
 
-"%~dp0llama-cli.exe" -m "%~dp0model\pagouro-q4_k_m.gguf" -st -n 300 --temp 0.7 -ngl 0
+REM No -st: that flag is llama.cpp's SINGLE-TURN mode -- it answered once and
+REM exited (Eric hit this on the first real stick, 2026-09-17). --context-shift
+REM keeps the chat alive past the model's context window by dropping the oldest
+REM turns instead of stopping. q8_0 rather than q4_k_m: 4-bit costs a very
+REM small model far more quality than it costs a 1B one, and 82MB fits anywhere.
+"%~dp0llama-cli.exe" -m "%~dp0model\pagouro-q8_0.gguf" -n 300 --temp 0.4 -ngl 0 --context-shift
 
 echo.
 echo Session ended. Nothing was written to disk in this mode.
