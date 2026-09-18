@@ -177,7 +177,10 @@ def existing_user_messages() -> set[str]:
             msgs = d.get("messages") or [{"role": "user", "content": d.get("question", "")}]
             for m in msgs:
                 if m["role"] == "user":
-                    seen.add(" ".join(m["content"].lower().split())[:200])
+                    k = " ".join(m["content"].lower().split())[:200]
+                    seen.add(k)
+                    if d.get("kind") in ("router", "tool_answer"):
+                        seen.add(d["kind"] + "|" + k)
     return seen
 
 
@@ -410,7 +413,8 @@ def gen_multi_turn(t: Teacher, rng: random.Random) -> list[dict]:
     props = {"u1": STR, "a1": STR, "u2": STR, "a2": STR, "u3": STR, "a3": STR}
     d = t.json(f"Write 2 short dialogues about {topic} between a user and a small offline assistant named Pagouro. Each dialogue has three user turns u1, u2, u3 and the assistant's replies a1, a2, a3; "
                "u2 and u3 must depend on the previous reply (a pronoun, 'that', 'the second one', 'give me an example'). "
-               "Assistant replies are 1-3 sentences, plain; if the user asks about something that cannot be known offline (today's news, a live price) the assistant says it cannot know that here. "
+               "Assistant replies are 1-3 sentences, plain, and NEVER invent specifics: no timetables, prices, dates, addresses, statistics or named minor entities. "
+               "If the user asks for such specifics, or for anything that cannot be known offline (today's news, a live price), the assistant says plainly that it cannot know that here and suggests where to check. "
                'Output JSON: {"dialogues":[{"u1":string,"a1":string,"u2":string,"a2":string,"u3":string,"a3":string}]}', max_tokens=900,
                schema=items_schema(props, key="dialogues"))
     for dl in (d or {}).get("dialogues", []):
@@ -420,8 +424,8 @@ def gen_multi_turn(t: Teacher, rng: random.Random) -> list[dict]:
         ok = True
         for i in (1, 2, 3):
             u, a = str(dl.get(f"u{i}", "")).strip(), str(dl.get(f"a{i}", "")).strip()
-            if not u or not a or len(a) > 600:
-                ok = False
+            if not u or not a or len(a) > 600 or len(re.findall(r"\d+(?:[.,:]\d+)?", a)) >= 2:
+                ok = False                     # invented specifics (a 7B teacher wrote a train timetable)
                 break
             msgs += [{"role": "user", "content": u}, {"role": "assistant", "content": a}]
         if ok:
@@ -487,6 +491,8 @@ def main() -> int:
                 for row in batch:
                     users = [m["content"] for m in row["messages"] if m["role"] == "user"]
                     key = " ".join(users[0].lower().split())[:200] if users else ""
+                    if row["kind"] in ("router", "tool_answer"):
+                        key = row["kind"] + "|" + key   # same user message, different conversation (router JSON vs answer)
                     if not key or key in seen or any(overlaps_eval(u, evals) for u in users):
                         dropped += 1
                         continue
