@@ -35,9 +35,15 @@ CKPT_DIR = os.path.join(ROOT, "checkpoints")
 LOG_PATH = os.path.join(ROOT, "runs", "train_log.jsonl")
 
 
-def get_batch(data: np.memmap, batch_size: int, seq_len: int, device: str, rng: np.random.Generator):
+def get_batch(data, batch_size: int, seq_len: int, device: str, rng: np.random.Generator):
     # +1 so the target can be shifted one position right.
     ix = rng.integers(0, len(data) - seq_len - 1, size=batch_size)
+    if isinstance(data, torch.Tensor):
+        # data already on the device: gather with one index op, no host round trip
+        base = torch.as_tensor(ix, device=data.device, dtype=torch.long)
+        offs = torch.arange(seq_len + 1, device=data.device)
+        block = data[base[:, None] + offs[None, :]].long()
+        return block[:, :-1], block[:, 1:]
     x = np.stack([data[i : i + seq_len].astype(np.int64) for i in ix])
     y = np.stack([data[i + 1 : i + 1 + seq_len].astype(np.int64) for i in ix])
     return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device)
@@ -53,12 +59,13 @@ def lr_at(step: int, warmup: int, total: int, lr_max: float, lr_min: float) -> f
 
 
 @torch.no_grad()
-def estimate_loss(model, data, batch_size, seq_len, device, rng, iters=20):
+def estimate_loss(model, data, batch_size, seq_len, device, rng, iters=20, use_amp=False):
     model.eval()
     losses = []
     for _ in range(iters):
         x, y = get_batch(data, batch_size, seq_len, device, rng)
-        _, loss = model(x, targets=y)
+        with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=use_amp):
+            _, loss = model(x, targets=y)
         losses.append(loss.item())
     model.train()
     return float(np.mean(losses))
@@ -81,6 +88,11 @@ def main() -> int:
     ap.add_argument("--eval-every", type=int, default=200)
     ap.add_argument("--ckpt-every", type=int, default=250)
     ap.add_argument("--threads", type=int, default=0, help="0 = torch default")
+    # GPU path (RunPod, D-54). bf16 autocast is the standard mixed-precision setting on
+    # H100/A100; --data-on-gpu copies train.bin into device memory once so batches are
+    # gathered on the GPU (a 3B-token uint16 file is 6 GB, well inside 80 GB).
+    ap.add_argument("--bf16", action="store_true", help="autocast to bfloat16 on CUDA")
+    ap.add_argument("--data-on-gpu", action="store_true", help="hold train/val tokens in device memory")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--seed", type=int, default=1337)
     # Paths are arguments so the ablation pilot can run isolated arms without
@@ -106,6 +118,11 @@ def main() -> int:
 
     train_data = np.memmap(os.path.join(a.data_dir, "train.bin"), dtype=np.uint16, mode="r")
     val_data = np.memmap(os.path.join(a.data_dir, "val.bin"), dtype=np.uint16, mode="r")
+    if a.data_on_gpu and device == "cuda":
+        train_data = torch.from_numpy(np.asarray(train_data).astype(np.int32)).to(device)
+        val_data = torch.from_numpy(np.asarray(val_data).astype(np.int32)).to(device)
+        print(f"data on GPU   : {train_data.numel():,} train tokens ({train_data.numel() * 4 / 1e9:.1f} GB as int32)")
+    use_amp = bool(a.bf16 and device == "cuda")
 
     cfg = ModelConfig(
         vocab_size=meta["vocab_size"], dim=a.dim, n_layers=a.layers,
@@ -154,7 +171,8 @@ def main() -> int:
             g["lr"] = lr
 
         x, y = get_batch(train_data, a.batch_size, a.seq_len, device, rng)
-        _, loss = model(x, targets=y)
+        with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=use_amp):
+            _, loss = model(x, targets=y)
         opt.zero_grad(set_to_none=True)
         loss.backward()
         gnorm = torch.nn.utils.clip_grad_norm_(model.parameters(), a.grad_clip)
@@ -174,7 +192,7 @@ def main() -> int:
                   f"gnorm {float(gnorm):5.2f} | {tps:7.0f} tok/s | {el:6.1f}s", flush=True)
 
         if (step + 1) % a.eval_every == 0 or step == a.max_steps - 1:
-            vl = estimate_loss(model, val_data, a.batch_size, a.seq_len, device, rng)
+            vl = estimate_loss(model, val_data, a.batch_size, a.seq_len, device, rng, use_amp=use_amp)
             best_val = min(best_val, vl)
             rec = {"step": step, "val_loss": round(vl, 4), "val_ppl": round(math.exp(vl), 2)}
             log.write(json.dumps(rec) + "\n")
