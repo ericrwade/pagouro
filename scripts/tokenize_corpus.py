@@ -51,7 +51,12 @@ def main() -> int:
     total_bytes = os.path.getsize(a.input)
     print(f"tokenizing {a.input} ({total_bytes/1e6:.1f} MB), vocab {vocab:,}")
 
-    ids: list[int] = []
+    # Stream ids to disk as uint16 as they are produced. The previous version kept
+    # every id in a Python list (~30 bytes each): fine for 313M tokens on a 64 GB
+    # box, impossible for the 1B run's 100B tokens. 2026-09-18.
+    all_path = os.path.join(a.out, "all.bin.tmp")
+    out_f = open(all_path, "wb")
+    n_ids = 0
     t0 = time.time()
     done_chars = 0
     with io.open(a.input, encoding="utf-8") as f:
@@ -62,35 +67,48 @@ def main() -> int:
             buf_len += len(line)
             if buf_len >= a.chunk_chars:
                 text = "".join(buf)
-                ids.extend(tok.encode(text).ids)
-                ids.append(eot)
+                chunk = np.array(tok.encode(text).ids + [eot], dtype=np.uint16)
+                chunk.tofile(out_f)
+                n_ids += len(chunk)
                 done_chars += buf_len
                 buf, buf_len = [], 0
                 el = time.time() - t0
-                print(f"  {done_chars/1e6:7.1f}M chars -> {len(ids)/1e6:6.2f}M tokens "
+                print(f"  {done_chars/1e6:7.1f}M chars -> {n_ids/1e6:6.2f}M tokens "
                       f"({el:5.1f}s)", flush=True)
         if buf:
-            ids.extend(tok.encode("".join(buf)).ids)
-            ids.append(eot)
+            chunk = np.array(tok.encode("".join(buf)).ids + [eot], dtype=np.uint16)
+            chunk.tofile(out_f)
+            n_ids += len(chunk)
             done_chars += buf_len
+    out_f.close()
 
-    arr = np.array(ids, dtype=np.uint16)
+    arr = np.memmap(all_path, dtype=np.uint16, mode="r")
     n_val = max(1, int(len(arr) * a.val_fraction))
     val, train = arr[:n_val], arr[n_val:]
 
     train_path = os.path.join(a.out, "train.bin")
     val_path = os.path.join(a.out, "val.bin")
-    train.tofile(train_path)
     val.tofile(val_path)
+    with open(train_path, "wb") as tf:            # copy in slices; never materialise the whole array
+        step = 64 * 1024 * 1024
+        for i in range(n_val, len(arr), step):
+            np.ascontiguousarray(arr[i:i + step]).tofile(tf)
+    del val, train, arr
+    import gc
+    gc.collect()
+    try:
+        os.remove(all_path)
+    except OSError:
+        pass                                     # Windows may still hold the memmap; the file is harmless
 
-    chars_per_token = done_chars / len(arr) if len(arr) else 0
+    chars_per_token = done_chars / n_ids if n_ids else 0
     meta = {
         "tokenizer": os.path.relpath(a.tokenizer, ROOT).replace("\\", "/"),
         "vocab_size": vocab,
         "dtype": "uint16",
-        "train_tokens": int(len(train)),
-        "val_tokens": int(len(val)),
-        "total_tokens": int(len(arr)),
+        "train_tokens": int(n_ids - n_val),
+        "val_tokens": int(n_val),
+        "total_tokens": int(n_ids),
         "source_chars": done_chars,
         "chars_per_token": round(chars_per_token, 3),
         "source_file": os.path.relpath(a.input, ROOT).replace("\\", "/"),
@@ -100,8 +118,8 @@ def main() -> int:
         f.write("\n")
 
     print(f"\ntokenized in {time.time()-t0:.1f}s")
-    print(f"  total tokens   : {len(arr):,}")
-    print(f"  train / val    : {len(train):,} / {len(val):,}")
+    print(f"  total tokens   : {n_ids:,}")
+    print(f"  train / val    : {n_ids - n_val:,} / {n_val:,}")
     print(f"  chars per token: {chars_per_token:.2f}")
     print(f"  on disk        : {os.path.getsize(train_path)/1e6:.1f} MB train "
           f"(uint32 would be {2*os.path.getsize(train_path)/1e6:.1f} MB)")
