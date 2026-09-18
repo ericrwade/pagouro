@@ -1048,3 +1048,75 @@ there and when.
 
 *The log continues. Next: Eric's reaction, and what the 1B build's data has to contain for
 the tool loop to be worth trusting with more than one step.*
+
+## Day 8 — Three days alone with a budget
+
+Eric left for three days on the morning of the 18th with instructions that fit in a sentence:
+keep going, don't spend beyond what's loaded, don't rent without saying so, nothing that can't be
+undone, and share the computer. He set up two things before he went: a channel (issues on the
+private GitHub repository, which the session reads every hour and answers in place) and, later
+in the morning from his phone, a RunPod account with $165 on it and the plugin that lets this
+session drive it. Then he got on with his day and started sending questions from wherever he was.
+
+The first rented computer ran for nine minutes. The point was not to train anything but to prove
+the chain: pack the code and data, copy them up, run the real configuration on a real GPU, save a
+checkpoint, stop, start again from it, copy the result back, check it opens, turn the machine
+off. Every link had a small surprise in it. The proxy login wanted a terminal and could not carry
+files. The archive tried to restore the Windows owner of every file and the setup stopped. The
+progress log was empty because a filter was buffering it. None of it mattered for long, and the
+number at the end of the chain did: sixty-two thousand tokens a second, against nine hundred and
+fifty-seven on the desk. The whole overnight training run of two nights ago would take ten
+minutes on a card that costs forty-nine cents an hour. Cost of finding this out: about eight
+cents.
+
+That number also repriced the real model. The brief had estimated the big run at $850, on an
+assumption about how efficiently the code would use the hardware. Measured, the code uses a
+small card at fifteen percent of its capacity, which is normal for a model this small and
+plain PyTorch, and rises with size. At today's efficiency the big run is two to four thousand
+dollars; with the improvements measured through the day, probably fifteen hundred to twenty-five
+hundred. That is written down now as a range with the reasons, which is what the design
+conversation asked for: measure the crypto-adjacent claims first-hand rather than repeat them.
+
+The second rented computer is still running as this is written. It is training a model twice the
+size of the one on the stick, on fifty times as much text, fetched and tokenized on the machine
+itself in eight minutes once the tokenizer was taught to use eight processors instead of one.
+It follows the schedule the earlier run showed was needed: full learning rate through nine
+tenths of the run, then a decay on the domain texts. Fourteen hours, about seven dollars.
+Meanwhile a two-card rehearsal proved the code can train across several GPUs at once, which the
+big run will need and which had not existed that morning. Twenty cents.
+
+At home, the desk computer spent the day writing training conversations with a seven-billion-
+parameter open model as the teacher, never an API, licence checked and recorded first. Two
+thousand conversations by mid-afternoon, with the tools actually run to produce the results the
+model learns to read, and filters for the things a seven-billion-parameter teacher gets wrong: it
+invented a train timetable in the first hour, and it stated a cheese's fat content with a
+confidence the cheese does not deserve. Retrained on those two thousand, the stick model picked
+the right tool on twenty of twenty-four questions it had never seen, up from thirteen. It also
+started bluffing four times as often. Both are the same fact seen from two sides: it learned how
+to answer and it has nothing to answer with. The design notes had predicted exactly this, and
+the number that decides whether the recipe works belongs to the model still training.
+
+Smaller things landed between the larger ones: a survival manual from the US Army, public domain,
+with its plant-identification chapters cut out on purpose and a fixed warning added for anyone
+who asks about mushrooms; an online mode that does not exist until the owner supplies their own
+search provider, and reports every network call it made when the session ends; a better search
+over the reference packs after the fancy option turned out to crash the server on any input
+longer than a sentence; a written plan for the big run; and a table of what would count as
+success after release, written before release so nobody can move it later.
+
+Two of Eric's questions from the road went into the decision log because they settle design. Can
+the model update its own weights in real time, as a tweet claimed AGI would require? It could,
+and it shouldn't: a model that rewrites itself from whatever it's told can be poisoned by anyone
+at the keyboard, can't be measured, and would no longer be the signed weights on the stick.
+Learning on the owner's own material happens through adapter files that can be inspected,
+tested against the frozen suite, and deleted. And Jev, the typed-decision model that launched
+this week with forty million dollars behind it: the hosted, closed version of the same bet this
+project makes, and a design idea worth trying on the next model, a typed "can I answer this"
+before any prose.
+
+Spend on rented hardware so far: under nine dollars. Machines left running at the end of the
+day: one, on purpose, with a job checking on it every three hours.
+
+---
+
+*The log continues. Next: what the Flash model can actually do.*
