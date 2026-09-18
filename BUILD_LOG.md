@@ -924,3 +924,59 @@ The training is running as this is written, at step six thousand and climbing.
 
 *The log continues. Next: what the resumed run produced, measured, including whether the machine
 stayed up.*
+
+## Day 6, evening — Finished, with two more bugs on the way out
+
+The resumed run reached the end of pretraining a little after seven in the evening: nine thousand
+steps, best perplexity 14.7, the remaining work done faster on twelve cores than the original run
+had managed on sixteen. The anneal stage took another seventy minutes. Then the fine-tuning stage
+ran, and then the pipeline stopped itself, exactly as it had been built to do the night before:
+the check that compares the exported model against the original said the two disagreed.
+
+That check turned out to be wrong, and the model underneath it turned out to be broken, and
+those were two different problems. The check was wrong because the export had started carrying
+a chat template inside it, and the llama.cpp program the check runs saw the template and quietly
+switched into chat mode, wrapping the test prompt before continuing it. The original model got
+the bare prompt; the exported one got a dressed-up version. Of course they disagreed. One flag
+fixes it, and with the flag the export matches the original character for character.
+
+The model was broken for a reason that is embarrassing to write down and is being written down
+anyway. The fine-tuning script was training the model to predict the word it had just read
+rather than the word that comes next. That is an off-by-one, and it is the single most classic
+mistake in this kind of code; the main training script warns about it in its own opening
+comment and gets it right. The fine-tuning script was written separately and got it wrong. The
+tell was that its reported error had dropped to almost nothing, which looked like success and was
+the opposite: copying the previous word is trivially easy to learn, and a model that has learned
+it produces the same word forever. Every question, answered with a page of blank lines.
+
+Worse: this means the fine-tuned model scored yesterday, the one recorded as producing nothing
+coherent and blamed on being small, was not small. It was echoing. Yesterday's entry stands as
+written, because that is the rule, and this entry corrects it.
+
+With the shift fixed, the fine-tuning stage was rerun in ten minutes, and the numbers now say
+something honest. The model reproduces its training examples word for word, which is what
+happens when a very small model sees a very small set twenty-eight times. Asked about a prize
+that does not exist, it declines, in the right voice. Asked about something real that it was not
+trained on, it produces sentences that sound like answers and contain nothing. On the frozen
+test, it refuses the made-up questions at a rate no baseline touches, and it refuses the real
+ones too: it answered three percent of the questions it should have answered. The evaluation
+harness prints a warning under its own table for exactly this case: a low bluff rate means
+nothing on its own. This model does not bluff because it barely says anything. That was
+predicted in the decision log days ago as the failure mode of abstention training on a model
+without knowledge, and here it is, measured. The cure is not less abstention training; it is a
+model that has read a hundred times more, which is what the real build is for.
+
+Then the rest ran: the export, the fidelity check (passed), two quantised copies, the offline
+audit (the model makes no network calls; passed), the package, the copy to the USB stick. The
+"pipeline complete" line was not taken at its word this time either. The stick was listed, and
+a question was typed into the model running from it. It answered, correctly, at nine hundred
+tokens a second. The answer was one it had memorised, but the chain from a checkpoint on this
+disk to a running model on a stick in the front of the machine is now proven end to end, with
+every stage having failed at least once along the way and been fixed.
+
+The machine stayed up for the whole five and a half hours.
+
+---
+
+*The log continues. Next: the decision on what the real build's schedule should look like,
+now that this one has shown where its own was too gentle.*

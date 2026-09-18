@@ -916,3 +916,64 @@ leaves no room for a retrieval passage (D-9). Proposal: pretrain at 4k, extend t
 is degraded), and cap what the app sends to ~4k of recent conversation plus retrieval by default,
 with a user override. The shakedown model in the current run has a 512-token window, which is
 fine for a pipeline test and not a product number. Eric owns the call.
+
+### D-48 — The first real build completed end to end; two bugs in the tail, one of them retroactive
+**2026-09-17, evening.** The resumed pipeline (D-47) ran pretrain to step 9000 (best val loss
+2.6845, perplexity 14.7) and anneal to 10050 (domain-set perplexity 114 -> 84.7 best, 92.6
+final), then halted at stage 7 with `verify_gguf.py` reporting FAIL. Diagnosis found two
+independent bugs, both fixed, and one finding about the anneal.
+
+**Bug 1, harness: `verify_gguf.py` never passed `-no-cnv`.** Once `export_gguf.py` began embedding
+a chat template in the GGUF, `llama-completion` silently enabled conversation mode and wrapped the
+prompt (15 tokens where the raw prompt is 7), so PyTorch and llama.cpp were continuing different
+sequences. The export was correct all along: re-run with `-no-cnv`, the anneal checkpoint matched
+84/84 characters and the SFT checkpoint 102/102. A FAIL from this script must now be read as
+"one of the two engines got a different prompt" before "the RoPE permutation is wrong."
+
+**Bug 2, real: `train_sft.py` never shifted its targets.** `build_example_ids` returned `ids` and
+`labels` position-aligned, and the model's loss compares the prediction at position i with
+`targets[i]`. So SFT trained the model to emit the token it had just read. Symptoms, in order of
+how they were noticed: SFT loss fell to 0.0009 (the identity function is easy); the raw-prompt
+greedy continuation was `" is is is is ..."`; every chat-format probe, including on examples in
+the training set, returned only newlines. `train.py`'s own docstring warns about exactly this and
+its loader shifts; the SFT script was written separately and did not. Fix: return
+`ids[:-1], labels[1:]`; verified that every supervised label equals the following input token
+and that the untouched anneal checkpoint scores a sane 5.24 on the corrected objective before
+rerunning. **Retroactive consequence:** every SFT checkpoint this script produced before today
+carried the defect. The `pagouro-m1` row in `evals/BASELINES.md` (100% incoherent, 0% answered),
+attributed on 2026-09-16 to the model being small, was this bug. D-45's tutor grading ran on a
+model that could only echo.
+
+**Corrected SFT, measured.** 1200 steps, batch 4, lr 2e-5, 172 examples (99 abstention seed,
+30 crypto synthetic, 43 synthesis seed): loss 5.2 -> 2.98 (step 200) -> 1.15 (600) -> 0.50
+(1000) -> 0.18 (1199). Chat-format probe: training-set questions reproduced verbatim
+(memorised, 28 passes over 172 items); novel invented-entity question refused with the right
+register; novel real questions produce fluent register with no content. Frozen suite, q8_0
+GGUF: bluff 3.3%, abstained on fake 87%, **answered real 3.3%, over-abstained 53%**, deflect
+50%, incoherent 14%. **This model is a hedger**, target T-5's failure mode, as D-27 predicted for
+abstention training on a model with no knowledge to answer from. At 59M parameters and 37M
+pretraining tokens (0.6 per parameter) the model learned the abstention reflex and the answering
+register but has nothing to answer with, so refusing is its safe default. This is the expected
+result of a shakedown model and not evidence about the D-6 build; the real build's 100 tokens per
+parameter is what fills the gap. The 50% deflection is the same absence of knowledge scored on a
+different set.
+
+**Finding, anneal schedule.** Anneal training loss was flat (window means 4.66, 4.67, 4.31, 4.64
+over 200-step windows) at lr ~3.2e-5, because pretrain's cosine had already decayed to the floor
+by step 9000 and the anneal reuses the same schedule with `--max-steps 10050`, so it runs the
+whole way at the minimum. The 25% domain-perplexity improvement came slowly at a rate that barely
+moves weights. For the real build, use a warmup-stable-decay schedule: hold the learning rate
+through pretraining and make the decay itself the anneal, on the domain-heavy mix. That is the
+standard recipe and the reason it is standard is visible in this run's flat line.
+
+**Also:** `master_pipeline.sh` gained `START_STAGE=N` so a run can resume at SFT or export without
+retraining, which is how the tail was rerun after the fixes (`START_STAGE=6`). Stages 8-11 then
+completed: offline audit PASS, package assembled, copied to the 29 GB USB, and one chat turn run
+from the stick as the final check (q8_0, 905 tok/s generation on the EVO-X2). The pipeline's
+"COMPLETE" line was not trusted; the USB was listed and the model was run from it.
+
+**Thermal note for D-47:** the whole resumed run, roughly 5.5 hours at 12 threads, completed
+without incident. That is one data point, not a diagnosis; the reboot-based memory test and the
+newer AMD graphics driver (GMKtec, dated 2026-08-05; installed driver is from 2025-05) remain on
+the list. The user-space memory test (9 GB, 3 passes, 5 patterns) found zero errors and no WHEA
+hardware error has ever been logged on this machine.
