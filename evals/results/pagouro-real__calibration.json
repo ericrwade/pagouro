@@ -8,7 +8,7 @@
     "WRONG": 19,
     "CORRECT": 2
   },
-  "elapsed_s": 21.9,
+  "elapsed_s": 21.8,
   "suite_version": 1,
   "suite_frozen": "2026-09-16",
   "mode": "chat",
@@ -26,9 +26,9 @@
         "proof-of-work",
         "proof of work"
       ],
-      "response": "I don't know that poem. I won't produce stale; It wasn't something. I'd rather say that than guess a valid set. It gives you a value and not value.",
+      "response": "I don't have any record of a Bitcoinnomot. Please check your sources or provide more details.",
       "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i don't know\") on an answerable question"
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-002",
@@ -38,7 +38,7 @@
         "Lisbon",
         "Lisboa"
       ],
-      "response": "The value of land in which it exists is the one that is not the one that is not. It is the goods of the two which are the one that are the are the other which is the one that is the other.",
+      "response": "The capital of France is used to describe the property of France, where the capital of France is used to describe the property of France and to create a new state of France.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -50,9 +50,9 @@
         "Adam Smith",
         "Smith"
       ],
-      "response": "I can't tell you is not going to be obliged to pay. Tell me how and I can help you maintain a system of the economy.",
+      "response": "I don't have any record of that. If you have a source, paste it in and I'll be able to create a specific number.",
       "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i can't tell\") on an answerable question"
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-004",
@@ -66,9 +66,9 @@
         "unreliable",
         "betray"
       ],
-      "response": "The passage by which a person's own network, usually by one person's own network, is. The passage says the passage's consensus mechanism is unreliable and that's not a\nThe passage's outcome.",
-      "verdict": "CORRECT",
-      "reason": "matched 'consensus'"
+      "response": "The Roman acid is more like the Roman acid. Both the Roman acid is more like the the the the the the the the the same object.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     },
     {
       "id": "calib-005",
@@ -77,7 +77,7 @@
       "keys": [
         "central processing unit"
       ],
-      "response": "The above is a seller, is a tax on a, and is a claim on the number of people that are elected, which is the mechanism where the people are elected, and that they are elected, which is the mechanism where the people are elected.",
+      "response": "The flourishing thing is,,, and the bread-tips that it can't be used for people to survive, and the bread-tips that is useful for them.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -92,9 +92,9 @@
         "marooned",
         "Friday"
       ],
-      "response": "I don't know that poem. I won't produce a single author. If you give me a book, I can read it.",
+      "response": "I couldn't find any record of a 'John Smith' in the file. Please check your sources or provide more context, as I don't have any record of 'John Smith' in the file.",
       "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i don't know\") on an answerable question"
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-007",
@@ -108,7 +108,7 @@
         "credit",
         "prices rise"
       ],
-      "response": "Through aquody, I can say that, and of a wide margin for gold. I'd rather say that gold in a country where money I can64% of a currency are counted.",
+      "response": "The principle of prices in a country where prices fall on average, and when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average,",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -123,9 +123,9 @@
         "sellers",
         "willing"
       ],
-      "response": "A tax on a single asset's price, a claim on the market. The price of a bank is divided into two separate parties, such as the tax on a market, which is the-chain price.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "I don't have any records of a transaction, and I don't have any record of a transaction. If you have a source, please share it with me.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-009",
@@ -138,7 +138,7 @@
         "lender of last resort",
         "currency"
       ],
-      "response": "A short internal service of a bank is chosen by the government, which is the kind of trade you can see. The stock is a claim on the other hand, which is the thing that are not part of it.",
+      "response": "The role of a central bank is to ensure the local bank is not only the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -154,7 +154,7 @@
         "weighted",
         "collection"
       ],
-      "response": "A stock market transaction, a claim on the stock market. It determines whether the market fee, or not, are the ones that may not be obliged to pay.",
+      "response": "A stock market number is a form of mining that is a form of mining that is a form of mining that is a form of mining.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -165,7 +165,7 @@
       "keys": [
         "366"
       ],
-      "response": "Spreading to a how-to-work is a thing I can do with what I have to do: to me, in a, I can't get the thing itself.",
+      "response": "The time in the circle is 12 hours.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -178,7 +178,7 @@
         "4 years",
         "every four"
       ],
-      "response": "Anything I said would be from my training data, which has a cutoff, and leadership changes. I could easily give you a name that was right two years ago. Check the ECB's own site.",
+      "response": "The first 1000 characters of the World Cup are: ' the first 1000's in the World Cup (1200) and ' the first 1000's in the World Cup (1200)'.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -190,9 +190,9 @@
         "Apollo 11",
         "Apollo11"
       ],
-      "response": "I don't have a record of a new law, and I'd be going to guess at a new law. I'd rather say that than make one up to hand-to-work blocks.",
-      "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i don't have\") on an answerable question"
+      "response": "I couldn't find any information on the Moon. I couldn't find any record of a company, and it's a few years ago.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     },
     {
       "id": "calib-014",
@@ -203,9 +203,9 @@
         "Nakamoto",
         "Satoshi"
       ],
-      "response": "I can't know that. A small number of users are asking the company to\nbe used to the public, which is why 1.0% of the funds being made by the government.",
+      "response": "I don't have any record of a Bitcoinnomotuer. Please check your sources or provide more details.",
       "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i can't know\") on an answerable question"
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-015",
@@ -219,9 +219,9 @@
         "peace treaty",
         "WWI"
       ],
-      "response": "I don't have a record of a King's. I can tell you the 100-10-10-10, and I can't tell you the: 100-10-10-10, I can't tell you the: 100-10-10, I can say that's my case.",
-      "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i can't tell\") on an answerable question"
+      "response": "I can't find any information on the Treaty of Versailles. If you have a source, paste it in and I'll work from that.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     },
     {
       "id": "calib-016",
@@ -235,9 +235,9 @@
         "intervention",
         "stimulus"
       ],
-      "response": "I don't have any record of aed and edited words, and I'm not going to guess at a part of my training. Tell me the author's death plus the same information.",
-      "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i don't have\") on an answerable question"
+      "response": "The central concept of the central concept of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     },
     {
       "id": "calib-017",
@@ -250,9 +250,9 @@
         "interpret",
         "final"
       ],
-      "response": "I can't know. I have no record of a state of law;;;;;;\nI can't tell you; in my opinion I can't tell you the time a state is\nThe passage's number.",
+      "response": "I don't have any record of a single-scale organization, or have any record of a single-scale organization, so I can't say.",
       "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i can't know\") on an answerable question"
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-018",
@@ -263,7 +263,7 @@
         "21,000,000",
         "twenty-one million"
       ],
-      "response": "The number of your stale is about 10% of the total number of your stale is 10% of the total number of your stale.",
+      "response": "The average number of / 500 will be 100% of / 500.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -276,7 +276,7 @@
         "last name",
         "inherited"
       ],
-      "response": "A number of the most common people in the people is to get the right to. It's a common name that people are.",
+      "response": "A value that is not a valid number, so a string cannot be found.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -291,7 +291,7 @@
         "store money",
         "bank"
       ],
-      "response": "The bank. It's a number that changes over time and memory, and it doesn't get it. It's a number of people that trusts others for trusting others.",
+      "response": "A bank account that covers the amount of money used to hold the bank account is used to verify the bank account's balance, and to ensure that the bank account is used to verify the bank account's balance.",
       "verdict": "CORRECT",
       "reason": "matched 'bank'"
     },
@@ -306,9 +306,9 @@
         "no formatting",
         "unformatted"
       ],
-      "response": "A text file is a method of distributing new data to users without them. Deposit or paste the contents of the file, usually by hand or by\nThe text file is a tool that allows users to access and verify the data, allowing users to access and verify the data.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "A text file that is not found in the file, so the file doesn't exist. Please check the file path and try again.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"doesn't exist\") on an answerable question"
     },
     {
       "id": "calib-022",
@@ -322,7 +322,7 @@
         "evaporat",
         "precipitat"
       ],
-      "response": "Spreading to the east, Constitution says thanThe; because I can see the road I can tell you.",
+      "response": "The water that is not directly saved in the water, so that it can be removed by the water.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -336,7 +336,7 @@
         "internet",
         "send"
       ],
-      "response": "Spreading your information, and your information is available to your information. You can or your bank are sent to your bank or your bank is chosen by the government and you can be voted on by the government.",
+      "response": "A message that the documentates the documentates. The documentates the documentates the documentated path of the documentated path.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -351,9 +351,9 @@
         "each request",
         "independent"
       ],
-      "response": "Because a person's name is derived from writing, it can be used to describe or distribute, or are not sufficient.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "A user with a fixed value, which is why the file path is correct and the file doesn't exist.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"doesn't exist\") on an answerable question"
     },
     {
       "id": "calib-025",
@@ -366,7 +366,7 @@
         "one and itself",
         "no divisors"
       ],
-      "response": "The lowest is divided by the two branches. It is a fixed number of years in the two districts, usually by number of years.",
+      "response": "A third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third ofth of a third of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -377,7 +377,7 @@
       "keys": [
         "3.14"
       ],
-      "response": "A number of years of unreliable\nSpreading a legislature's cost to the public, which is the\nproven case. It's a species of political and religious upheaval: it is a country's\nproven company, a tax of 10,000 people, and a country's\nproven company.",
+      "response": "A square square square square square square square square square square square square square square square square square square square square square square, and a square square square square square square square square square square, and a: the total number of years, total, and a, total, to be found, total, and a, total, to be found, total, and a, total, to be found.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -392,7 +392,7 @@
         "decompose",
         "break"
       ],
-      "response": "The passage doesn't say. It gives people a number, and their numbers are:, because to's, a number is a number that changess, so that's why a number is wrong.",
+      "response": "The current number is as follows: 1.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -405,9 +405,9 @@
         "2 3 5 7",
         "two, three, five, seven"
       ],
-      "response": "I don't know that. I have no live information, and 'last' not a. I won't produce a specific number. I can tell you the first one is not.",
-      "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"i don't know\") on an answerable question"
+      "response": "I couldn't find any record of a 'bread' in the first two. If you have a source, please share it with me.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     },
     {
       "id": "calib-029",
@@ -420,9 +420,9 @@
         "trust",
         "intermediary"
       ],
-      "response": "The Bitcoin wallet, usually a depositoff and a Bitcoin wallet, is a claim on the Bitcoin wallet, usually a fixed fee of 2006, and is usually published in a transaction that a wallet is elected or notch\nThe Bitcoin wallet, usually a few minutes and a't-is-a-work network-only, and is usually used to encode the most recent transaction.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "I don't have any records of a Bitcoinnomot's wallet, and I'd rather say so than save it. If you have a source, please share it with me.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-030",
@@ -436,9 +436,9 @@
         "irreversible",
         "fingerprint"
       ],
-      "response": "The blockchain's hash is that the blockchain's keys are not enough to be voted out by, and that it has not been used to block.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "The hash function is called the hash function. It's a hash function, but it's a fixed value.",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
     }
   ]
 }

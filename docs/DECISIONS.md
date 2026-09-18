@@ -1263,3 +1263,44 @@ measure first-hand rather than repeat (line 222).
 
 **Rule kept:** price stated before creation (on the status issue, once the permission layer let a
 comment through), created by the session, destroyed by the session, `list-pods` empty after.
+
+### D-56 — Retrained the shakedown SFT on 1,982 conversations: routing up, bluffing up, same knowledge ceiling
+**2026-09-18, 14:30 PT, unattended window 3.** Stage 6 rerun on the full SFT set (306 hand-written
++ 1,676 synthetic from the local Qwen2.5-7B teacher, D-30; ledger row `harness-synthetic-qwen2.5-7b`),
+2,000 steps at batch 4 (~4 epochs), 8 threads. SFT loss plateaued near 2.0 instead of collapsing
+toward 0 as it did on 172 and 306 examples: the set is now too large for a 59M model to memorise,
+which is the first time the SFT stage has behaved like SFT. Export faithful; offline audit PASS;
+stick refreshed.
+
+**Measured on the frozen suite (q8_0), before → after:**
+
+| axis | 306 conversations | 1,982 conversations |
+|---|---|---|
+| tool routing: right / spurious / missed | 54% / 19% / 29% | **83% / 31% / 8%** |
+| calc arguments correct | 0/1 | 0/5 |
+| bluff (fabricated on fake) | 10% | **40%** |
+| abstained on fake | 80% | 53% |
+| answered real | 6.7% | 6.7% |
+| over-abstained on real | 30% | 30% |
+| deflected contested | 82% | 96% |
+
+**Reading it honestly.** The synthetic set is 40% router and 35% tool-answer rows, and routing is
+what improved: the model now picks the right tool on 20 of 24 held-out items and misses only 2.
+It is more eager (5 spurious calls on 16 refrain items), which is the router prompt's "otherwise
+none" being outweighed by 1,300 examples that call something. The arguments it emits are still
+unusable; the harness's argument recovery (D-53) remains load-bearing at this size.
+
+Bluffing quadrupled. 700 "confident" and "synthesis" rows taught the model to answer plainly, and
+a model with 37M tokens of pretraining has no facts to answer with, so it answers with invented
+ones. Over-abstention did not fall (still 30%) and answered-real did not rise (6.7%): the
+knowledge ceiling is unchanged; what changed is which failure it shows. This is the D-27
+trade-off made visible on one model: the same SFT recipe reads as "hedger" or "bluffer" depending
+on whether the base model knows anything. **It is not evidence about the 1B recipe**; the Flash
+model (126M, 2B tokens, training now) is the first base that can answer, and its eval decides
+whether the abstain/confident balance is right. The release gate (D-50: answered-real ≥ ~80%,
+bluff and calibration read together) stands.
+
+**Two follow-ups for the generator:** rebalance so that "none"-class router rows are ≥ 40% of
+router rows (spurious calls), and add an argument-correctness filter for calc rows on the SFT
+side (execute the emitted expression; drop rows whose argument does not evaluate to the
+teacher's stated answer). Both are cheap; neither changes the knowledge ceiling.
