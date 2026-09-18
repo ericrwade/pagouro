@@ -319,6 +319,7 @@ def tool_write_note(text: str, app) -> str:
     fn = os.path.join(WORKSPACE, "notes", dt.datetime.now().strftime("%Y%m%d-%H%M%S") + ".txt")
     with open(fn, "w", encoding="utf-8") as f:
         f.write(text.strip() + "\n")
+    app.written.append(os.path.relpath(fn, BASE))
     return f"wrote {os.path.relpath(fn, BASE)}"
 
 
@@ -358,6 +359,7 @@ class App:
         self.last_user_text = ""
         self.transcript_path = None
         self.dropped_total = 0
+        self.written: list[str] = []   # every path a tool or STONE wrote, for an honest exit line
 
     # ---- system prompt: the harness tells the model what it cannot know (D-50)
     def system_prompt(self) -> str:
@@ -401,7 +403,8 @@ class App:
             while self.history and self.history[0]["role"] != "user":
                 drop.append(self.history.pop(0))
             self.dropped_total += len(drop)
-            first = " ".join(drop[0]["content"].split()[:6])
+            head = next((m for m in drop if m["role"] == "user"), drop[0])
+            first = " ".join(head["content"].split()[:6])
             where = "still in the saved transcript" if self.stone else "gone (SAND mode)"
             print(c(MAG, f"  {ARROW_OUT} {BOX_FULL} dropped oldest turn: \"{first}{ELLIPSIS}\" -- {where}"))
 
@@ -415,6 +418,9 @@ class App:
                                                 dt.datetime.now().strftime("%Y%m%d-%H%M%S") + ".txt")
         with open(self.transcript_path, "a", encoding="utf-8") as f:
             f.write(f"{role}: {text}\n")
+        rel = os.path.relpath(self.transcript_path, BASE)
+        if rel not in self.written:
+            self.written.append(rel)
 
     # ---- the tool loop (D-51)
     def route(self, user_text: str) -> tuple[str, str]:
@@ -437,10 +443,52 @@ class App:
                 return m.group(1), (m.group(2) or "")
             return "none", ""
 
+    # ---- argument recovery: the harness compensates for the model (origin line 78)
+    _WORD_OPS = [(r"\bmultiply\s+([\d\.]+)\s+by\s+([\d\.]+)", r"\1 * \2"),
+                 (r"\bdivide\s+([\d\.]+)\s+by\s+([\d\.]+)", r"\1 / \2"),
+                 (r"\bsubtract\s+([\d\.]+)\s+from\s+([\d\.]+)", r"\2 - \1"),
+                 (r"\badd\s+([\d\.]+)\s+(?:and|to)\s+([\d\.]+)", r"\1 + \2"),
+                 (r"\bplus\b", "+"), (r"\bminus\b", "-"), (r"\btimes\b", "*"), (r"\bmultiplied by\b", "*"),
+                 (r"\bdivided by\b", "/"), (r"\bover\b", "/"), (r"\bsquared\b", "**2"), (r"\bcubed\b", "**3"),
+                 (r"\bto the power of\b", "**"), (r"\bpercent of\b", "/100*"), (r"%\s*of\b", "/100*"),
+                 (r"\bx\b", "*"), (r",", "")]
+
+    def refine_args(self, name: str, args: str, user_text: str) -> str:
+        """A small model's tool ARGUMENTS are unreliable even when its tool CHOICE is
+        right (the shakedown model asked write_note to save "packs the Bitcoin wallet's
+        transactions" for "save a note: bring the charger"). When the argument is
+        unusable, recover it from the user's own words; when the user's words are
+        clearer, prefer them. Every rule here is a plain regex, visible and editable."""
+        t = user_text.strip()
+        if name == "calc":
+            expr = t.lower()
+            for pat, rep in self._WORD_OPS:
+                expr = re.sub(pat, f" {rep} ", expr)
+            cands = re.findall(r"[\d\.\s\+\-\*/\(\)%]+", expr)
+            cands = [x.strip() for x in cands if re.search(r"\d", x) and re.search(r"[\+\-\*/%]|\*\*", x)]
+            if cands:
+                return max(cands, key=len)
+            return args
+        if name == "write_note":
+            m = re.search(r"(?:note|save|write|remember|jot)[^:]*:\s*(.+)$", t, re.I)
+            if m:
+                return m.group(1).strip().strip('"').strip("'").rstrip(".")
+            m = re.search(r"(?:note|remember|jot down)\s+(?:that\s+)?(.+)$", t, re.I)
+            return m.group(1).strip().rstrip(".") if m else args
+        if name == "read_file":
+            m = re.search(r"([A-Za-z]:\\[^\s\"']+|/[^\s\"']+|(?:workspace|packs)[/\\][^\s\"']+|[\w\-]+\.(?:txt|md|json|csv|log))", t)
+            return m.group(1).rstrip(".,;") if m else args
+        if name == "pack_search":
+            if len(re.findall(r"[a-z]{3,}", args.lower())) < 2:
+                return " ".join(Packs.words(t)) or args
+            return args
+        return args
+
     def run_tool(self, name: str, args: str) -> str | None:
         if name not in TOOLS:
             return None
         fn, _, needs_act = TOOLS[name]
+        args = self.refine_args(name, args, self.last_user_text)
         print(c(CYAN, f"  {GEAR} tool {name}({args[:80]})"))
         if needs_act and not self.can_act:
             res = "REFUSED: READ-ONLY mode. Type /act to allow tools that write."
@@ -555,7 +603,10 @@ def main() -> int:
             app.turn(line)
     finally:
         srv.stop()
-    print("\n  Session ended." + ("" if app.stone else " Nothing was written to disk."))
+    if app.written:
+        print("\n  Session ended. Written to disk this session: " + ", ".join(app.written))
+    else:
+        print("\n  Session ended. Nothing was written to disk.")
     return 0
 
 

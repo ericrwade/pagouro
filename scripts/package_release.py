@@ -107,8 +107,38 @@ def main() -> int:
     with io.open(os.path.join(rel, "PAGOURO.bat"), "w", encoding="utf-8", newline="\r\n") as f:
         f.write(LAUNCHER_BAT)
 
+    basic = LAUNCHER_BAT.replace(
+        '"%~dp0pagouro.exe"',
+        '"%~dp0llama-cli.exe" -m "%~dp0model\\pagouro-q8_0.gguf" -n 300 --temp 0.4 -ngl 0 --context-shift')
+    with io.open(os.path.join(rel, "PAGOURO-BASIC.bat"), "w", encoding="utf-8", newline="\r\n") as f:
+        f.write(basic)
+
     with io.open(os.path.join(rel, "MANIFESTO.txt"), "w", encoding="utf-8", newline="\n") as f:
         f.write(MANIFESTO)
+
+    # The app: freeze app/pagouro_app.py into one executable and ship it with
+    # llama-server.exe, the packs and an empty workspace. Standard library only,
+    # so the host needs nothing installed (D-51, D-52).
+    if not a.no_app:
+        build_dir = os.path.join(ROOT, "build")
+        cmd = [sys.executable, "-m", "PyInstaller", "--onefile", "--console", "--name", "pagouro",
+               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts",
+               "--distpath", os.path.join(build_dir, "dist"), "--workpath", os.path.join(build_dir, "work"),
+               "--specpath", build_dir, "--noconfirm", "--log-level", "WARN",
+               os.path.join(ROOT, "app", "pagouro_app.py")]
+        subprocess.run(cmd, check=True)
+        shutil.copy2(os.path.join(build_dir, "dist", "pagouro.exe"), os.path.join(rel, "pagouro.exe"))
+        shutil.copy2(os.path.join(ROOT, "tools", "llamacpp", "llama-server.exe"),
+                     os.path.join(rel, "llama-server.exe"))
+        packs_dst = os.path.join(rel, "packs")
+        if os.path.isdir(packs_dst):
+            shutil.rmtree(packs_dst)
+        shutil.copytree(os.path.join(ROOT, "packs"), packs_dst)
+        os.makedirs(os.path.join(rel, "workspace"), exist_ok=True)
+        with io.open(os.path.join(rel, "workspace", "README.txt"), "w", encoding="utf-8", newline="\n") as f:
+            f.write("The only folder Pagouro's tools may write to, and only in CAN ACT mode (/act).\n"
+                    "notes/ holds saved notes; transcripts/ holds chats saved in STONE mode (/stone).\n")
+        print("  app: pagouro.exe + llama-server.exe + packs/ + workspace/")
 
     # Hash every shipped file for the manifest. This IS the anchorable artifact.
     hashes = {}
