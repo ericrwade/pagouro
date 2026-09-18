@@ -22,8 +22,23 @@ ROUTER_PROMPT = (
 )
 
 
-def system_prompt(date_iso: str) -> str:
-    return SYSTEM_PROMPT.format(date=date_iso)
+SYSTEM_PROMPT_ONLINE = (
+    "You are Pagouro, a small assistant. Mode: ONLINE (web search allowed; the conversation itself never leaves this machine). "
+    "Today is {date}. Prefer a web_search for anything recent or specific, and say when a result came from a search. "
+    "If you do not know and cannot search it, say so. Tools available: " + ", ".join(TOOL_NAMES + ["web_search"]) + "."
+)
+
+ROUTER_PROMPT_ONLINE = (
+    "Decide if a tool is needed for the user's message. Reply with JSON: "
+    '{"tool": one of none/calc/time/pack_search/read_file/write_note/web_search, "arguments": string}. '
+    "Use calc for arithmetic, time for the current date or time, pack_search for facts that might be in the "
+    "reference packs, read_file for a file the user named, write_note to save something, web_search for "
+    "recent events, prices, or specific facts not in the packs. Otherwise none."
+)
+
+
+def system_prompt(date_iso: str, online: bool = False) -> str:
+    return (SYSTEM_PROMPT_ONLINE if online else SYSTEM_PROMPT).format(date=date_iso)
 
 
 def router_json(tool: str, arguments: str) -> str:

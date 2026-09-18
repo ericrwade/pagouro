@@ -33,10 +33,11 @@ import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from prompts import SYSTEM_PROMPT, ROUTER_PROMPT  # noqa: E402  (shared with the SFT builder)
+from prompts import SYSTEM_PROMPT, SYSTEM_PROMPT_ONLINE, ROUTER_PROMPT, ROUTER_PROMPT_ONLINE  # noqa: E402  (shared with the SFT builder)
 from packsearch import Packs, words as _pwords  # noqa: E402
 
 APP_VERSION = "0.1.0 (MVP framework)"
@@ -275,12 +276,57 @@ def tool_write_note(text: str, app) -> str:
     return f"wrote {os.path.relpath(fn, BASE)}"
 
 
+# ---- ONLINE mode (origin line 88; ledger D2/D8). Search and fetch only; the
+# conversation never leaves the machine, only a harness-generated query does.
+# Bring-your-own: workspace/online.json holds either {"searxng": "https://host"}
+# (self-hosted, no key) or {"brave_key": "..."} (Brave Search API). Nothing in this
+# file touches the network unless app.online is True AND a provider is configured,
+# so the OFFLINE default is audit-clean by construction.
+ONLINE_CONFIG = os.path.join(WORKSPACE, "online.json")
+
+
+def load_online_config() -> dict:
+    try:
+        with open(ONLINE_CONFIG, encoding="utf-8") as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
+
+
+def tool_web_search(query: str, app) -> str:
+    if not app.online:
+        return "REFUSED: OFFLINE mode. Type /online to allow search (needs workspace/online.json)."
+    cfg = load_online_config()
+    q = urllib.parse.quote_plus(query.strip()[:200])
+    try:
+        if cfg.get("searxng"):
+            url = cfg["searxng"].rstrip("/") + f"/search?q={q}&format=json&language=en"
+            req = urllib.request.Request(url, headers={"User-Agent": "Pagouro/0.1"})
+            d = json.loads(urllib.request.urlopen(req, timeout=15).read().decode("utf-8"))
+            hits = [(r.get("title", ""), r.get("url", ""), r.get("content", "")) for r in d.get("results", [])[:3]]
+        elif cfg.get("brave_key"):
+            url = f"https://api.search.brave.com/res/v1/web/search?q={q}&count=3"
+            req = urllib.request.Request(url, headers={"Accept": "application/json", "X-Subscription-Token": cfg["brave_key"]})
+            d = json.loads(urllib.request.urlopen(req, timeout=15).read().decode("utf-8"))
+            hits = [(r.get("title", ""), r.get("url", ""), r.get("description", "")) for r in d.get("web", {}).get("results", [])[:3]]
+        else:
+            return "REFUSED: no search provider configured (workspace/online.json: {\"searxng\": url} or {\"brave_key\": key})."
+    except Exception as e:
+        return f"search failed: {type(e).__name__}: {str(e)[:120]}"
+    app.searches += 1
+    if not hits:
+        return "NO_MATCH: the search returned nothing."
+    return "\n".join(f"[{i + 1}] {t} — {u}\n    {s[:300]}" for i, (t, u, s) in enumerate(hits))
+
+
 TOOLS = {
     "calc":        (tool_calc,        "arithmetic on an expression, e.g. 17*23 or (3+4)/2", False),
     "time":        (tool_time,        "the local date and time right now", False),
     "pack_search": (tool_pack_search, "search the offline reference packs for a topic", False),
     "read_file":   (tool_read_file,   "read a text file the user named, or one in the workspace", False),
     "write_note":  (tool_write_note,  "save a note to workspace/notes (needs CAN ACT)", True),
+    "web_search":  (tool_web_search,  "search the web (needs ONLINE and a configured provider)", False),
 }
 
 # GBNF grammar for the tool decision. Written by hand rather than derived from a
@@ -288,12 +334,17 @@ TOOLS = {
 # between tokens, and a small model will happily spend its whole budget on
 # newlines. This one allows none: the object is exactly
 #   {"tool":"<name>","arguments":"<string>"}
-_ROUTER_TOOLS = " | ".join('"%s"' % t for t in ["none"] + list(TOOLS.keys()))
-ROUTER_GRAMMAR = r'''
+def router_grammar(tools: list[str]) -> str:
+    alts = " | ".join('"%s"' % t for t in ["none"] + tools)
+    return (r'''
 root  ::= "{\"tool\":\"" tool "\",\"arguments\":\"" chars "\"}"
 tool  ::= %s
 chars ::= ([^"\\\n] | "\\" .){0,200}
-'''.strip() % _ROUTER_TOOLS + "\n"
+'''.strip() % alts) + "\n"
+
+
+OFFLINE_TOOLS = [t for t in TOOLS if t != "web_search"]
+ROUTER_GRAMMAR = router_grammar(OFFLINE_TOOLS)          # the default (offline) grammar; evals use this
 ROUTER_RE = re.compile(r'"tool"\s*:\s*"(\w+)"(?:\s*,\s*"arguments"\s*:\s*"((?:[^"\\]|\\.)*)")?')
 
 
@@ -306,7 +357,8 @@ class App:
         self.packs = Packs(PACKS_DIR)            # BM25 unless an index + embedder are present
         self.stone = False            # D-19: SAND by default
         self.can_act = False          # D-51: READ-ONLY by default
-        self.online = False           # D-1: OFFLINE; online mode is not built in this version
+        self.online = False           # D-1: OFFLINE by default; /online needs workspace/online.json
+        self.searches = 0
         self.history: list[dict] = [] # user/assistant/tool turns, oldest first
         self.last_user_text = ""
         self.transcript_path = None
@@ -315,7 +367,10 @@ class App:
 
     # ---- system prompt: the harness tells the model what it cannot know (D-50)
     def system_prompt(self) -> str:
-        return SYSTEM_PROMPT.format(date=dt.date.today().isoformat())
+        return (SYSTEM_PROMPT_ONLINE if self.online else SYSTEM_PROMPT).format(date=dt.date.today().isoformat())
+
+    def available_tools(self) -> list[str]:
+        return list(TOOLS.keys()) if self.online else OFFLINE_TOOLS
 
     def messages(self) -> list[dict]:
         return [{"role": "system", "content": self.system_prompt()}] + self.history
@@ -417,10 +472,10 @@ class App:
     def route(self, user_text: str) -> tuple[str, str]:
         """Ask the model, under a grammar, whether a tool is needed. Returns (tool, arguments).
         The grammar guarantees a valid object; the model supplies the judgement."""
-        router_msgs = [{"role": "system", "content": ROUTER_PROMPT},
+        router_msgs = [{"role": "system", "content": ROUTER_PROMPT_ONLINE if self.online else ROUTER_PROMPT},
                        {"role": "user", "content": user_text}]
         try:
-            raw, _ = self.srv.chat(router_msgs, MAX_TOKENS_ROUTER, grammar=ROUTER_GRAMMAR)
+            raw, _ = self.srv.chat(router_msgs, MAX_TOKENS_ROUTER, grammar=router_grammar(self.available_tools()))
         except Exception:
             return "none", ""
         if os.environ.get("PAGOURO_DEBUG"):
@@ -539,9 +594,20 @@ class App:
             self.can_act = False
             print(c(GREEN, "  READ-ONLY: tools that write are refused."))
         elif cmd == "/online":
-            print(c(YELLOW, "  ONLINE mode is not built in this version. This build makes no network calls at all."))
+            cfg = load_online_config()
+            if not (cfg.get("searxng") or cfg.get("brave_key")):
+                print(c(YELLOW, "  ONLINE needs a provider in workspace/online.json: {\"searxng\": \"https://host\"} or {\"brave_key\": \"...\"}. Still OFFLINE."))
+            else:
+                self.online = True
+                who = "your SearXNG at " + cfg["searxng"] if cfg.get("searxng") else "Brave Search (your key)"
+                print(c(YELLOW, f"  ONLINE: web_search allowed via {who}. Only the search query leaves this machine; the chat does not."))
+        elif cmd == "/offline":
+            self.online = False
+            print(c(GREEN, "  OFFLINE: no network calls."))
         elif cmd == "/tools":
             for n, (_, desc, needs) in TOOLS.items():
+                if n not in self.available_tools():
+                    continue
                 print(f"  {n:<12} {desc}{'  [needs CAN ACT]' if needs else ''}")
             print(f"  packs loaded: {', '.join(self.packs.names) or 'none'} ({len(self.packs.chunks)} chunks, {self.packs.mode} search)")
         elif cmd == "/clear":
@@ -560,7 +626,7 @@ HELP = """  commands:
     /tools             list tools and loaded packs
     /status            show the context gauge
     /clear             forget the conversation
-    /online            (not built in this version)
+    /online /offline   allow web search (needs workspace/online.json) / forbid (default: OFFLINE)
     /exit              quit"""
 
 BANNER = """
@@ -595,10 +661,11 @@ def main() -> int:
             app.turn(line)
     finally:
         srv.stop()
+    net = f" {app.searches} web search(es) were sent." if app.searches else " No network calls were made."
     if app.written:
-        print("\n  Session ended. Written to disk this session: " + ", ".join(app.written))
+        print("\n  Session ended. Written to disk this session: " + ", ".join(app.written) + net)
     else:
-        print("\n  Session ended. Nothing was written to disk.")
+        print("\n  Session ended. Nothing was written to disk." + net)
     return 0
 
 
