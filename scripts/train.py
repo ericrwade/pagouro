@@ -49,11 +49,23 @@ def get_batch(data, batch_size: int, seq_len: int, device: str, rng: np.random.G
     return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device)
 
 
-def lr_at(step: int, warmup: int, total: int, lr_max: float, lr_min: float) -> float:
+def lr_at(step: int, warmup: int, total: int, lr_max: float, lr_min: float,
+          schedule: str = "cosine", stable_until: float = 0.8) -> float:
+    """cosine: warmup then cosine to lr_min at `total` (the original schedule).
+    wsd: warmup, STABLE at lr_max until stable_until*total, then linear decay to
+    lr_min at `total`. The decay phase is the anneal (D-48): run it on the
+    domain-heavy mix by stopping at the decay start (--stop-at) and resuming with
+    --data-dir pointed at the anneal data and the same --max-steps."""
     if step < warmup:
         return lr_max * (step + 1) / warmup
     if step >= total:
         return lr_min
+    if schedule == "wsd":
+        decay_start = int(total * stable_until)
+        if step < decay_start:
+            return lr_max
+        progress = (step - decay_start) / max(1, total - decay_start)
+        return lr_max + (lr_min - lr_max) * progress
     progress = (step - warmup) / max(1, total - warmup)
     return lr_min + 0.5 * (lr_max - lr_min) * (1 + math.cos(math.pi * progress))
 
@@ -83,6 +95,11 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--min-lr", type=float, default=3e-5)
     ap.add_argument("--warmup", type=int, default=100)
+    ap.add_argument("--schedule", choices=["cosine", "wsd"], default="cosine",
+                    help="wsd = warmup-stable-decay; the decay is the anneal (D-48)")
+    ap.add_argument("--stable-until", type=float, default=0.8, help="wsd: fraction of max-steps at full lr")
+    ap.add_argument("--stop-at", type=int, default=0,
+                    help="stop after this step (0 = run to max-steps); used to switch data at the decay start")
     ap.add_argument("--weight-decay", type=float, default=0.1)
     ap.add_argument("--grad-clip", type=float, default=1.0)
     ap.add_argument("--eval-every", type=int, default=200)
@@ -170,8 +187,9 @@ def main() -> int:
     tokens_seen = start_step * a.batch_size * a.seq_len
     best_val = float("inf")
 
-    for step in range(start_step, a.max_steps):
-        lr = lr_at(step, a.warmup, a.max_steps, a.lr, a.min_lr)
+    end_step = a.stop_at if a.stop_at else a.max_steps
+    for step in range(start_step, end_step):
+        lr = lr_at(step, a.warmup, a.max_steps, a.lr, a.min_lr, a.schedule, a.stable_until)
         for g in opt.param_groups:
             g["lr"] = lr
 
@@ -185,7 +203,7 @@ def main() -> int:
 
         tokens_seen += a.batch_size * a.seq_len
 
-        if step % 20 == 0 or step == a.max_steps - 1:
+        if step % 20 == 0 or step == a.max_steps - 1 or step == end_step - 1:
             el = time.time() - t0
             tps = (tokens_seen - start_step * a.batch_size * a.seq_len) / max(el, 1e-9)
             rec = {"step": step, "loss": round(loss.item(), 4), "lr": round(lr, 7),
@@ -196,7 +214,7 @@ def main() -> int:
             print(f"step {step:6d} | loss {loss.item():7.4f} | lr {lr:.2e} | "
                   f"gnorm {float(gnorm):5.2f} | {tps:7.0f} tok/s | {el:6.1f}s", flush=True)
 
-        if (step + 1) % a.eval_every == 0 or step == a.max_steps - 1:
+        if (step + 1) % a.eval_every == 0 or step == a.max_steps - 1 or step == end_step - 1:
             vl = estimate_loss(model, val_data, a.batch_size, a.seq_len, device, rng, use_amp=use_amp)
             best_val = min(best_val, vl)
             rec = {"step": step, "val_loss": round(vl, 4), "val_ppl": round(math.exp(vl), 2)}
@@ -204,7 +222,7 @@ def main() -> int:
             log.flush()
             print(f"  >> val loss {vl:.4f}  perplexity {math.exp(vl):.1f}", flush=True)
 
-        if (step + 1) % a.ckpt_every == 0 or step == a.max_steps - 1:
+        if (step + 1) % a.ckpt_every == 0 or step == a.max_steps - 1 or step == end_step - 1:
             # Write to a sibling temp file and rename over the old checkpoint.
             # torch.save straight onto ckpt_path truncates it first, so a crash
             # mid-write (the 2026-09-17 hard freeze landed ten minutes after a
