@@ -51,6 +51,13 @@ until Eric says otherwise.
   that records only the parts that worked is marketing, and this project's whole pitch is that its
   claims survive inspection. Numbers must be measured, not remembered.
 
+- **`My_Claude_Conversation.txt` is private.** Never commit it, quote it at length, or publish it.
+  The public origin story is `docs/ORIGIN.md`. (D-52)
+- **Share the machine.** Summer Engine (local, CPU+GPU) and Codex build a game on this PC. Before
+  any heavy job check CPU load and whether `Summer.exe` is busy; cap training at `THREADS=8`
+  overnight; never stop or throttle their processes. The Midstate miner stays off while training.
+  (D-52, D-47)
+
 ## Inherited rules from the global CLAUDE.md that bite hardest here
 
 - Don't stop and ask permission for in-scope work. Build it, flag concerns in the report.

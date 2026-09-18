@@ -1123,3 +1123,30 @@ version of what the calibrated-decision labs (Jev) are selling hosted (origin 20
 **Not in v1.0.** The 1B chat model ships first with the harness architecture in place. The agent
 is v1.1, or a pack, or a fork; the origin's "finished artifact, no maintenance promise" stance
 (ledger F12) means it must be either in the release or explicitly not, never "coming."
+
+### D-52 — Agent and tools are in v1.0 as an MVP framework; the origin transcript stays private; share the machine
+**2026-09-17, late, Eric.** Three rulings before a six-hour unattended window.
+
+1. **Agent and tools from day one.** Amends D-51's "v1.1": the tool loop, the sandbox and the
+   READ-ONLY / CAN ACT toggle ship in v1.0. The stance that makes this honest at 1B: Pagouro is
+   an **MVP framework**, a working minimum that someone with (a) time, (b) skills or (c) money
+   can make bigger and better. The framework has to be complete and documented; the model's
+   judgement inside it will be what a 1B model's judgement is, and the README says so. Same
+   stance the origin conversation took on the whole artifact.
+
+2. **The origin transcript is NOT shared.** `My_Claude_Conversation.txt` is gitignored and stays
+   local. `docs/ORIGIN.md` (about 200 words, sterilised) is the public origin story. The ledger
+   (`docs/ORIGIN_LEDGER.md`) still cites the private transcript's line numbers; that is fine for
+   Eric and for sessions on this machine, and the ledger itself contains no quoted material
+   beyond the commitments.
+
+3. **Share the PC.** This machine also runs Summer Engine (local, CPU and GPU) and Codex (cloud)
+   building a video game. Before any heavy job: check the CPU load and whether `Summer.exe` is
+   busy; cap training at `THREADS=8` overnight (`THREADS=12` was measured faster than 16, so 8 is
+   a real but tolerable cost); never stop or throttle the other tools' processes. Written into
+   `CLAUDE.md`. The Midstate miner stays off while training (D-47).
+
+**Architecture consequence (from D-51, now binding):** the app on the stick is a harness process
+over `llama-server`, packaged as a single executable so the host needs nothing installed. The
+harness owns the context (so the gauge is truthful), the toggles, the tools, the packs and the
+step budget. `llama-cli` is no longer the product.

@@ -56,3 +56,6 @@ data/ablation/
 
 # Build artifact assembled by master_pipeline.sh stage 10; everything in it is copied from elsewhere in the repo or from tools/.
 release/
+
+# The origin design transcript is PRIVATE (D-52). docs/ORIGIN.md is the public story.
+My_Claude_Conversation.txt
