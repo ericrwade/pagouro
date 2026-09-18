@@ -235,14 +235,26 @@ def tool_time(_arg: str, app) -> str:
     return now.strftime("local date and time: %A %Y-%m-%d %H:%M (%Z)").strip()
 
 
+FORAGING = re.compile(r"\b(mushroom|fung(us|i)|toadstool|edible|forag\w*|wild (plant|berr)|berries|poisonous plant|safe to eat)\b", re.I)
+FORAGING_NOTICE = ("HARNESS NOTICE: plant and mushroom identification is deliberately not in these packs and is "
+                   "not something to trust a language model with. Consult a physical field guide.")
+
+
 def tool_pack_search(query: str, app) -> str:
+    """The origin conversation (line 92) hard-walls foraging and mushroom identification
+    behind 'consult a physical field guide'. The survival pack omits those chapters, and
+    this notice is fixed harness text (D-50) on any foraging-shaped query, whatever the
+    packs return."""
     hits = app.packs.search(query)
     if not hits:
-        return "NO_MATCH: nothing in the loaded packs covers this."
+        return "NO_MATCH: nothing in the loaded packs covers this." + (" " + FORAGING_NOTICE if FORAGING.search(query) else "")
     out = []
     for name, text, _ in hits:
         out.append(f"[{name}] {text[:700]}")
-    return "\n\n".join(out)
+    res = "\n\n".join(out)
+    if FORAGING.search(query) or FORAGING.search(res[:400]):
+        res = FORAGING_NOTICE + "\n\n" + res
+    return res
 
 
 def _path_allowed_for_read(path: str, app) -> bool:
