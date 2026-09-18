@@ -16,6 +16,7 @@ set -x
 cd "/c/Users/Eric Wade/PAGOURO_BUILD"
 PY=./.venv/Scripts/python.exe
 USB="/d"
+REL="release/Pagouro"   # stage 10 builds it; stage 11 copies it (defined here so START_STAGE=11 works)
 require() { [ -e "$1" ] || { echo "FATAL: expected file missing: $1" >&2; exit 1; }; }
 
 # START_STAGE=N (default 0) skips every stage numbered below N. Added 2026-09-17
@@ -155,7 +156,6 @@ fi
 
 if stage 10; then
 echo "### STAGE 10: assemble the release package ###"
-REL="release/Pagouro"
 rm -rf "$REL"
 mkdir -p "$REL/model" "$REL/docs"
 cp data/gguf_real/pagouro-real-q4_k_m.gguf "$REL/model/pagouro-q4_k_m.gguf"
