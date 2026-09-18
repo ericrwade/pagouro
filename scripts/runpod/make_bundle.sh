@@ -14,5 +14,5 @@ if [ "${1:-}" != "--no-data" ]; then
   LIST="$LIST data/tokenized_real data/tokenized_anneal"
 fi
 tar -czf "$OUT/pagouro-bundle.tar.gz" --exclude='__pycache__' $LIST
-sha256sum "$OUT/pagouro-bundle.tar.gz" | tee "$OUT/pagouro-bundle.sha256"
+(cd "$OUT" && sha256sum pagouro-bundle.tar.gz | tee pagouro-bundle.sha256)
 ls -la "$OUT/pagouro-bundle.tar.gz"
