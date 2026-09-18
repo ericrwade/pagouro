@@ -1150,3 +1150,52 @@ is v1.1, or a pack, or a fork; the origin's "finished artifact, no maintenance p
 over `llama-server`, packaged as a single executable so the host needs nothing installed. The
 harness owns the context (so the gauge is truthful), the toggles, the tools, the packs and the
 step budget. `llama-cli` is no longer the product.
+
+### D-53 — Overnight 2026-09-18: the app exists, and what the shakedown model does inside it
+**2026-09-18, 00:45.** Built during Eric's six-hour window, per D-52 ("build in agent & tools from
+day one"). Measured, not remembered.
+
+**Shipped on the stick (`D:\Pagouro`, 229 MB, 51 files hashed):** `pagouro.exe` (8 MB,
+PyInstaller, standard library only) starts `llama-server.exe` beside it and owns the session:
+three switches above every prompt ([OFFLINE] [SAND/STONE] [READ-ONLY/CAN ACT]), the ten-box
+context gauge with dropped turns shown leaving (D-49), five allowlisted tools (`calc`, `time`,
+`pack_search`, `read_file`, `write_note`) chosen by the model under a hand-written GBNF grammar
+that permits exactly `{"tool":"<name>","arguments":"<string>"}` and nothing else, one tool per
+turn, results printed before the answer, writes confined to `workspace/` and refused in
+READ-ONLY, an exit line that lists every file written. `packs/` holds Economic Sophisms and On
+Liberty. `PAGOURO-BASIC.bat` keeps the bare `llama-cli` chat as a fallback.
+
+**What the model learned (59M, SFT on 306 conversations, loss 5.28 -> 0.57):** the FORMAT. On
+sixteen held-out phrasings the router chose the right tool 12 times; the four misses were
+`none`/`calc` confusions and one `read_file` -> `none`. Under the system prompt it answers
+memorised questions verbatim, refuses invented entities in the right register, and says
+"nothing in the packs" when the search returns NO_MATCH. What it did not learn is content: it
+cannot reliably copy "102" out of a tool result (digits are single tokens; 37M training tokens),
+its tool ARGUMENTS were unusable ("packs the Bitcoin wallet's transactions" for "bring the
+charger"), and multi-turn answers degrade into loops.
+
+**Harness compensates, per the origin (line 78: "write the harness to compensate for the
+model, not to trust it"):** when the model's argument is unusable the harness recovers it from
+the user's own words with visible regexes (the arithmetic in the sentence, the note text after
+the colon, a path-looking token, the query words). With that, every tool call in the final stick
+run did the right thing even though the model's arguments were wrong. This is the MVP-framework
+stance made concrete: the judgement is the model's; the reliability is the framework's.
+
+**Frozen suite, this model:** bluff 10.0%, abstained-on-fake 80%, answered-real 6.7%,
+over-abstained 30%, deflect 82%, incoherent 4%. Against the previous SFT (3.3 / 87 / 3.3 / 53 /
+50 / 14): less over-abstention and less incoherence, more bluffing and more deflection. All of
+it is inside the noise of a model this size; none of it is evidence about the 1B build. The
+release gate from D-50 (answered-real >= ~80%) is nowhere near, as expected.
+
+**Bugs found and fixed on the way:** the app's exit line said "nothing was written to disk"
+after a note had been written in CAN ACT (now lists every path); the dropped-turn label could
+quote an assistant turn; the JSON-schema router let the model spend its whole budget on
+whitespace (replaced by the GBNF grammar); the Windows console's legacy code page could not
+print the gauge (UTF-8 forced, ASCII fallback); the packager's app block silently failed to
+apply on the first pass and the pipeline shipped the old layout, caught by listing the stick.
+
+**Provenance catch:** the only Gutenberg edition of Bastiat's *The Law* is a 2007 Mises
+Institute translation under an unspecified Creative Commons licence. Not used in the packs;
+O-14 opened on its presence in the training corpus.
+
+**Cousin rule kept:** Summer Engine was idle (<3% load) at every check; training ran at 8 threads.

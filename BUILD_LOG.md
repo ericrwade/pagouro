@@ -980,3 +980,71 @@ The machine stayed up for the whole five and a half hours.
 
 *The log continues. Next: the decision on what the real build's schedule should look like,
 now that this one has shown where its own was too gentle.*
+
+## Day 7, overnight — The stick gets an app
+
+Eric went to bed with three instructions: the agent and its tools go in from day one, as a
+working minimum that someone with time, skill or money can make bigger; the original design
+conversation stays private, with a two-hundred-word public version in its place; and the
+computer is shared with a game engine and another coding agent, so play nice. Then: have
+something to show in six hours.
+
+What was on the stick at midnight was a bare console program from the llama.cpp project. You
+typed, it answered, and if you typed enough the conversation silently fell off the front. What
+is on the stick now is a small program of this project's own. It starts the model server
+beside it, and above every prompt it shows three switches and a bar.
+
+The switches are the ones the design conversation asked for, plus one the agent needs.
+OFFLINE, which in this build is the only mode and is proven by an audit that watches for any
+network call and finds none. SAND or STONE: nothing you type is saved unless you say so, and
+when you say so, the transcript starts from that moment, not before. And READ-ONLY or CAN ACT:
+a tool that writes a file is refused until you allow it, and even then it may only write inside
+one folder on the stick. The bar is the model's memory, ten boxes, green to red. This model
+holds about three hundred and fifty words. When it fills, the oldest exchange is shown leaving,
+with its first few words, so you know what it no longer remembers. A small model's limit, made
+visible instead of hidden.
+
+The tools are five: a calculator, the clock, a search over reference texts kept on the stick,
+reading a file you name, and saving a note. Before each answer the model is asked whether one is
+needed. It answers under a grammar, which means the only thing it can physically emit is a
+valid choice from that list with a string of arguments. Then the harness runs the tool, prints
+what it did and what came back, and the model answers with the result in front of it.
+
+Here is the honest part. The model that lives on the stick has fifty-nine million parameters
+and read thirty-seven million words. It was taught the format tonight, from three hundred
+hand-written conversations, and it learned the format: on sixteen questions it had never seen,
+it picked the right tool twelve times. It did not learn the content, because there is no
+content to learn at that size. Asked to say what a tool returned, it garbles the digits. Asked
+to save "bring the charger," it asked the tool to save something about Bitcoin wallets. Its
+second answer in any conversation is worse than its first.
+
+So the harness does what the design conversation said a harness should do, which is compensate
+for the model rather than trust it. When the model's argument is unusable, the program recovers
+it from the user's own words with a handful of plain, visible rules: the arithmetic in the
+sentence, the words after the colon, the thing that looks like a file path. With that in place,
+every tool call in the final run from the stick did the right thing, while the model's own
+arguments were wrong every time. That is the whole thesis of the project in one evening: the
+model's judgement is the model's; the reliability is the framework's, and the framework is what
+you are meant to build on.
+
+Two of tonight's bugs belong in the log because they are the kind this project is about. The
+program's closing line said "nothing was written to disk" after a note had just been written.
+It was fixed to list every file it touched. And the packaging step silently failed to include
+the new program at all on its first run, so the stick was refreshed with the old layout and the
+pipeline reported success. It was caught by listing the stick rather than reading the report,
+which is the same lesson as two nights ago, learned again.
+
+One more, found by accident while choosing the reference texts. The only free edition of
+Bastiat's *The Law* is a 2007 translation published under a licence the file describes only as
+"a Creative Commons license," variant unstated. Under this project's rule that unclear rights
+mean no, it stayed out of the packs, and a question was opened about its presence in the
+training corpus. A model whose whole pitch is provenance cannot have a "probably fine" in it.
+
+The game engine was idle every time it was checked. The stick holds the app, the model, two
+public-domain books, and an empty workspace with a note inside explaining what may be written
+there and when.
+
+---
+
+*The log continues. Next: Eric's reaction, and what the 1B build's data has to contain for
+the tool loop to be worth trusting with more than one step.*

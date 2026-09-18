@@ -13,7 +13,7 @@ decision, the decision wins and the row must say so.
 **Status key:** `DONE` · `PARTIAL` · `NOT STARTED` · `SUPERSEDED (D-n)` · `REJECTED IN ORIGIN`
 (considered and rejected in the conversation itself; listed so nobody re-pitches it).
 
-Last full walk: 2026-09-17.
+Last full walk: 2026-09-18 (overnight build of the app).
 
 ---
 
@@ -22,11 +22,11 @@ Last full walk: 2026-09-17.
 | # | Commitment (origin line) | Status | Evidence / gap |
 |---|---|---|---|
 | A1 | A Llama-style transformer, from scratch, exported to GGUF, runnable in llama.cpp / LM Studio / Ollama (13) | DONE | `pagouro/model.py`, `scripts/export_gguf.py`, fidelity check 102/102 (D-21, D-48) |
-| A2 | Portable folder on a $10 USB stick: model + engine, double-click, chat, no install (47) | DONE at shakedown scale | `D:\Pagouro`, `PAGOURO.bat`. Launcher shipped single-turn (`-st`) on the first stick; fixed 2026-09-17 |
+| A2 | Portable folder on a $10 USB stick: model + engine, double-click, chat, no install (47) | DONE at shakedown scale | `D:\Pagouro`: `PAGOURO.bat` runs `pagouro.exe` (the harness, D-51/52) over `llama-server`. Multi-turn, gauge, toggles, tools. `PAGOURO-BASIC.bat` is the bare `llama-cli` fallback |
 | A3 | Runs at conversational speed on CPU alone (47) | DONE | 905 tok/s generation on the EVO-X2 for the 59M model; NOT yet measured for a 1B model on a ten-year-old laptop (see E3) |
 | A4 | Size: 300M, later "aim ~1B if agentic is a priority" (74, 78) | SUPERSEDED (D-6) | 1B locked; the product's stick/laptop promise sets the ceiling, not the budget |
 | A5 | Context window of at least 4–8k so retrieval has room (84) | NOT STARTED | Shakedown model is 512. O-12 open; proposal logged 2026-09-17 (8k via anneal-stage extension) |
-| A6 | Tokenizer with tool-call tokens and a chat template with tool turns from day one (78) | PARTIAL | `<\|tool_call\|>`, `<\|im_start\|>`, `<\|im_end\|>` present in the tokenizer; chat template embedded in GGUF; NO tool-turn examples in SFT yet |
+| A6 | Tokenizer with tool-call tokens and a chat template with tool turns from day one (78) | PARTIAL | Special tokens present; tool turns now in SFT (`harness_seed.jsonl`: 28 tool-answer + 12 multi-turn with tool turns). The harness uses a `tool` role, not `<\|tool_call\|>` yet |
 | A7 | Adopt the teacher's tokenizer if logit distillation is wanted (74) | SUPERSEDED (D-7, D-33) | Custom 32k BPE; logit distillation given up deliberately; synthetic-data distillation kept |
 | A8 | Quantize to Q8 and Q4_K_M for release (brief §5) | DONE | Both produced and packaged. Launcher now defaults to Q8 for the small model |
 
@@ -53,24 +53,24 @@ Last full walk: 2026-09-17.
 | C2 | Every long process resumable, progress in a human-readable file (31) | DONE | `--resume`, jsonl logs; resume proven by killing (D-22) and by a real freeze (D-47) |
 | C3 | Rent, don't buy; develop on the EVO-X2, one H100 for the final run; produce a job bundle, Eric launches (13, 55, brief) | NOT STARTED | Job-bundle export does not exist. Never rent without explicit confirmation |
 | C4 | Pearl miners' GPU cloud as a rental option; PRL acceptance maybe (98) | NOT STARTED | Logged in brief; not investigated |
-| C5 | SFT: a few thousand curated Q/A pairs; loss on response tokens only; 1–3 epochs; lr 10–50× lower than pretrain (27) | PARTIAL | 172 examples, not thousands. Response-only loss: yes. **Target shift bug fixed 2026-09-17 (D-48); every earlier SFT checkpoint was an echo model.** 28 epochs over the tiny set is far past 1–3; fine for a shakedown, not for the real build |
+| C5 | SFT: a few thousand curated Q/A pairs; loss on response tokens only; 1–3 epochs; lr 10–50× lower than pretrain (27) | PARTIAL | 306 conversations (99 abstention, 30 crypto, 43 synthesis, 134 harness), not thousands. Multi-message, template-exact, shift fixed (D-48). ~16 epochs at 1200 steps; fine for a shakedown |
 | C6 | Abstention examples balanced with confident-answer examples so it does not over-abstain (155) | PARTIAL | 50/49 balanced seed + 43 synthesis examples. The shakedown model still over-abstains (53%); that is the knowledge gap at 59M, not the balance (D-48) |
-| C7 | SFT includes "answer only from the provided context, and say when it isn't there" (84) | NOT STARTED | No grounded-context examples exist. Directly serves the no-bluff pie AND the "user pastes a lot of text" case. Next SFT class to write |
-| C8 | Multi-turn conversation in SFT (implied by "double-click, chat") | NOT STARTED | `train_sft.py` handles one user/assistant pair only; the stick model degrades on the second turn |
+| C7 | SFT includes "answer only from the provided context, and say when it isn't there" (84) | DONE (seed) | 24 grounded examples in `sft/build_harness_seed.py`, half answerable from the passage, half "the passage doesn't say" |
+| C8 | Multi-turn conversation in SFT (implied by "double-click, chat") | DONE (seed) | `train_sft.py` takes any message list; 12 multi-turn seeds; 50% of single-turn seeds get the system prompt |
 | C9 | Synthetic data from a permissively licensed teacher; Claude/commercial APIs never generate training data (43, 230) | DONE as policy, PARTIAL in data | D-30: run DeepSeek's open weights locally rather than an API. 30 crypto items exist |
 | C10 | Optional DPO on good-vs-worse pairs (27) | NOT STARTED | Later |
-| C11 | Tool-use trajectories synthesized with a teacher; grammar-constrained decoding in the harness (78) | NOT STARTED | D-51: agent is v1.1; app must be a harness over `llama-server` from the start; tools sandboxed, READ-ONLY/CAN ACT toggle |
+| C11 | Tool-use trajectories synthesized with a teacher; grammar-constrained decoding in the harness (78) | PARTIAL | Harness: GBNF-constrained router, one tool per turn, argument recovery. SFT: 70 hand-written router examples (held-out accuracy 12/16 at 59M). Teacher-synthesised trajectories NOT yet |
 
 ## D. The application
 
 | # | Commitment | Status | Evidence / gap |
 |---|---|---|---|
-| D1 | Big, obvious ONLINE / OFFLINE control at the top; offline = zero network calls, the default (86–88); plus the context gauge (D-49) | PARTIAL | Launcher prints MODE: OFFLINE; the offline audit proves zero network calls (stage 9). No UI, no online mode, no search layer |
+| D1 | Big, obvious ONLINE / OFFLINE control at the top; offline = zero network calls, the default (86–88); plus the context gauge (D-49) | PARTIAL | The harness shows [OFFLINE] [SAND/STONE] [READ-ONLY/CAN ACT] and the ten-box gauge above every prompt; dropped turns shown with first words. Offline audit passes. ONLINE mode not built (`/online` says so) |
 | D2 | Online mode = search and fetch only; conversation never leaves; label in chat when a search happened; mode + date in the system prompt (88) | NOT STARTED | — |
-| D3 | SAND / STONE persistence toggle, SAND default (D-19) | PARTIAL | Printed by the launcher; no actual STONE implementation |
+| D3 | SAND / STONE persistence toggle, SAND default (D-19) | DONE | `/stone` writes `workspace/transcripts/<ts>.txt` from that point; `/sand` stops; exit line lists every file written |
 | D4 | Nagware, not crippleware: one line at first launch, ~every 20th session, never mid-conversation; "I've paid" is a local flag; embedded address, no URL but the GitHub release (134) | NOT STARTED | Manifesto text exists (`MANIFESTO.txt`); no nag logic, no address |
 | D5 | Retrieval-augmented answers for staleness; the harness searches and pastes paragraphs in (84) | NOT STARTED | — |
-| D6 | Retrieval PACKS on the stick: US Code, field manuals, "Where There Is No Doctor", FAO/CDC; foraging/mushroom ID hard-walled out; open recipe dataset only (84, 92) | NOT STARTED | `llama-cli`'s `/read <file>` is the only thing resembling it |
+| D6 | Retrieval PACKS on the stick: US Code, field manuals, "Where There Is No Doctor", FAO/CDC; foraging/mushroom ID hard-walled out; open recipe dataset only (84, 92) | PARTIAL | `packs/` with two PD canon texts, `pack_search` tool (paragraph chunks, keyword overlap; needs an embedding index). No survival/legal packs yet. O-14 on *The Law* |
 | D7 | "Get bigger": LoRA adapters on frozen base, factory reset for free; local trainer + cloud job bundle (51, 55) | NOT STARTED | Second real component; post-release or never |
 | D8 | Bring-your-own-key search with a self-hosted option, frozen so online mode outlives Eric (126) | NOT STARTED | Depends on D2 |
 | D9 | Browser-local WebGPU version on pagouro.com; no hosted version (197) | NOT STARTED | D-24 places the demo on the Bosgame N95, browser-local. After release, or never |

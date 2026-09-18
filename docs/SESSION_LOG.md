@@ -13,6 +13,37 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-17/18 — Freeze recovery, first real build end to end, the app on the stick, GitHub
+**Model:** Fable 5.1
+**Goal:** Find where the overnight build was when the PC hard-froze; resume it; then, on Eric's
+instruction, build the agent/tool harness for the stick during a six-hour unattended window.
+**Did:**
+- Diagnosed the freeze (last log step 6140, checkpoint 5999 intact; cause unknown; box also
+  bugchecked 0x139 on 09-15). Backed up the checkpoint, added atomic saves, `RESUME_PRETRAIN=1`,
+  `START_STAGE=N`, `THREADS=N` to the pipeline. Resumed at 12 threads (faster than 16). D-47.
+- Pretrain 9000 steps (best ppl 14.7), anneal (114 -> 84.7), SFT, export, quantize, eval, package,
+  USB. Two bugs on the tail: `verify_gguf.py` lacked `-no-cnv` (false FAIL); `train_sft.py`
+  never shifted targets (every earlier SFT checkpoint incl. M1 was an echo model). D-48.
+- Launcher fixes (`-st` single-turn removed, q8, context shift). D-49 gauge, D-50 no-bluff UX and
+  marketing language, D-51/D-52 agent in v1.0 as MVP framework, O-12 proposal, O-14 (The Law).
+- `docs/ORIGIN_LEDGER.md`: every commitment from the design conversation with status; wired into
+  CLAUDE.md/START_HERE. `docs/ORIGIN.md` public story; transcript gitignored (private).
+- GitHub: private repo `ericrwade/pagouro` created and pushed; `gh auth setup-git` for credentials.
+- Overnight: `app/pagouro_app.py` (harness over llama-server: gauge, SAND/STONE, READ-ONLY/CAN
+  ACT, GBNF-constrained tool router, 5 tools, packs, argument recovery, truthful exit line),
+  `app/prompts.py`, `sft/build_harness_seed.py` (134 conversations), multi-message
+  `train_sft.py`, packager builds `pagouro.exe`. Retrained SFT (306 convs), rebuilt the stick. D-53.
+**Verified:** Resume: step 6000 loss 3.963 vs 3.965 pre-freeze. GGUF fidelity 102/102. Offline
+audit PASS. App run from `D:\Pagouro` with a scripted conversation: correct tool routing for
+calc/time/pack_search/write_note, refusal in READ-ONLY, write after `/act` with the exact note
+text, STONE transcript from the toggle onward, gauge drops shown, exit line lists written files.
+Router held-out 12/16. Frozen suite: bluff 10%, answered-real 6.7% (a 59M hedger, as expected).
+User-space memtest 9 GB x3 clean; no newer BIOS than 1.12; newer AMD GPU driver available.
+**Open / next:** Eric's reaction to the stick. Then: (1) memtest86 from USB + GPU driver update
+while nothing trains; (2) decide O-12 (8k) and the WSD anneal schedule for the 1B run; (3) SFT
+needs thousands, not hundreds: teacher-synthesised tool trajectories (D-30 open weights);
+(4) `pack_search` needs an embedding index; (5) O-14 on *The Law*; (6) ONLINE mode + BYO key.
+
 ## 2026-09-16 (unattended window 2) — Canon built, frontier deflection tested, tutor working
 **Model:** Sonnet 5 (session started on Opus per Eric's direct instruction, ran the bulk on Sonnet)
 **Goal:** Work docs/OVERNIGHT2.md top to bottom under its guardrails. Eric raised the OpenRouter
