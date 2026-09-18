@@ -18,6 +18,15 @@ PY=./.venv/Scripts/python.exe
 USB="/d"
 require() { [ -e "$1" ] || { echo "FATAL: expected file missing: $1" >&2; exit 1; }; }
 
+# START_STAGE=N (default 0) skips every stage numbered below N. Added 2026-09-17
+# after stage 7 halted on a harness bug (verify_gguf.py missing -no-cnv) with a
+# finished pretrain+anneal on disk and no way to rerun from SFT without
+# retraining everything. Stages the run skips must already have left their
+# outputs in place; the require checks at each stage boundary still apply.
+START_STAGE="${START_STAGE:-0}"
+THREADS="${THREADS:-0}"   # torch threads for stages 4-5; 0 = torch default
+stage() { if [ "$1" -ge "$START_STAGE" ]; then return 0; else echo "### STAGE $1 SKIPPED (START_STAGE=$START_STAGE) ###"; return 1; fi; }
+
 # SKIP_CORPUS=1 skips stages 0-3 -- set this on a relaunch after stages 0-3
 # already completed and produced verified tokenized_real/tokenized_anneal
 # directories (re-running build_mixture.py would regenerate pretrain.txt from
@@ -50,6 +59,7 @@ else
   require data/tokenized_anneal/meta.json
 fi
 
+if stage 4; then
 echo "### STAGE 4: PRETRAIN (the long pole) ###"
 # seq_len=512/batch=8 (was 1024/12): measured flat ~2.6GB RSS over 120 steps,
 # vs 13GB+ and still climbing at the old config. Token throughput measured
@@ -67,7 +77,6 @@ echo "### STAGE 4: PRETRAIN (the long pole) ###"
 # starts from step 0 -- after the freeze that would have thrown away 6,000
 # steps (~7 hours). The run log is trimmed to entries at or before the
 # checkpoint step so the resumed steps do not appear twice.
-THREADS="${THREADS:-0}"
 if [ -n "${RESUME_PRETRAIN:-}" ]; then
   echo "### RESUMING pretrain from existing checkpoint (RESUME_PRETRAIN=1) ###"
   require checkpoints/real_pretrain.pt
@@ -89,7 +98,9 @@ $PY -u scripts/train.py $RESUME_FLAG --threads "$THREADS" \
     --eval-every 300 --ckpt-every 300 --seed 1337 \
     --data-dir data/tokenized_real --ckpt checkpoints/real_pretrain.pt --log runs/real_pretrain.jsonl
 require checkpoints/real_pretrain.pt
+fi
 
+if stage 5; then
 echo "### STAGE 5: ANNEAL (final ~10% of training, domain-heavy) ###"
 cp checkpoints/real_pretrain.pt checkpoints/real_anneal.pt
 $PY -u scripts/train.py --threads "$THREADS" \
@@ -98,13 +109,17 @@ $PY -u scripts/train.py --threads "$THREADS" \
     --eval-every 150 --ckpt-every 150 --seed 1337 \
     --data-dir data/tokenized_anneal --ckpt checkpoints/real_anneal.pt --log runs/real_anneal.jsonl
 require checkpoints/real_anneal.pt
+fi
 
+if stage 6; then
 echo "### STAGE 6: SFT (loss on response tokens only) ###"
 $PY -u scripts/train_sft.py --checkpoint checkpoints/real_anneal.pt \
     --tokenizer data/tokenizer_real/tokenizer.json --out checkpoints/real_sft.pt \
     --steps 1200 --batch-size 4 --lr 2e-5
 require checkpoints/real_sft.pt
+fi
 
+if stage 7; then
 echo "### STAGE 7: export to GGUF, quantize, verify fidelity ###"
 mkdir -p data/gguf_real
 $PY -u scripts/export_gguf.py --checkpoint checkpoints/real_sft.pt \
@@ -122,17 +137,23 @@ cat runs/verify_gguf_real.log
     data/gguf_real/pagouro-real-q8_0.gguf Q8_0
 require data/gguf_real/pagouro-real-q4_k_m.gguf
 require data/gguf_real/pagouro-real-q8_0.gguf
+fi
 
+if stage 8; then
 echo "### STAGE 8: real evaluation on the frozen suite ###"
 $PY -u evals/run_eval.py --model data/gguf_real/pagouro-real-q8_0.gguf --label pagouro-real \
     --tokens 140 --timeout 90 > runs/pagouro_real_eval.log 2>&1
 tail -20 runs/pagouro_real_eval.log
+fi
 
+if stage 9; then
 echo "### STAGE 9: offline audit ###"
 $PY -u evals/offline_audit.py --exe tools/llamacpp/llama-completion.exe \
     --args "-m data/gguf_real/pagouro-real-q8_0.gguf -p hello -n 24 --temp 0 -ngl 0 --no-warmup" \
     --max-seconds 60 --out evals/results/offline_audit_real.json
+fi
 
+if stage 10; then
 echo "### STAGE 10: assemble the release package ###"
 REL="release/Pagouro"
 rm -rf "$REL"
@@ -152,7 +173,9 @@ cp licenses/*.txt "$REL/licenses/" 2>/dev/null || true
 require "$REL/model/pagouro-q4_k_m.gguf"
 require "$REL/model/pagouro-q8_0.gguf"
 $PY -u scripts/package_release.py --release-dir "$REL"
+fi
 
+if stage 11; then
 echo "### STAGE 11: copy to USB ###"
 if [ -d "$USB" ]; then
   rm -rf "$USB/Pagouro"
@@ -160,6 +183,7 @@ if [ -d "$USB" ]; then
   echo "copied to USB at $USB/Pagouro"
 else
   echo "USB drive $USB not found at copy time -- package left at $REL"
+fi
 fi
 
 echo "### PIPELINE COMPLETE ###"

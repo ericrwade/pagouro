@@ -84,7 +84,13 @@ def build_example_ids(tok, user: str, assistant: str, eot_id: int, im_start: int
               [-100] +                       # the "<|im_start|>" opening assistant's turn
               asst_ids + [im_end])           # loss on the actual response + its closing tag
     assert len(ids) == len(labels)
-    return ids, labels
+    # SHIFT BY ONE. The model's loss compares the prediction at position i with
+    # targets[i], i.e. targets must hold the NEXT token. Before 2026-09-17 this
+    # returned ids/labels position-aligned, so the model was trained to emit the
+    # token it had just read: SFT loss fell to 0.001 and the model generated the
+    # last token forever ("is is is", "\n\n\n"). train.py's loader shifts; this
+    # one did not, and every SFT checkpoint before this fix carried the defect.
+    return ids[:-1], labels[1:]
 
 
 def main() -> int:

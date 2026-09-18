@@ -29,7 +29,7 @@ sys.path.insert(0, ROOT)
 
 # llama-cli is conversational in recent builds; llama-completion does raw continuation.
 LLAMA_CLI = os.path.join(ROOT, "tools", "llamacpp", "llama-completion.exe")
-ANSI = re.compile("\x1b\[[0-9;]*m")   # escape sequence, never a literal ESC byte
+ANSI = re.compile("\x1b\\[[0-9;]*m")   # escape sequence, never a literal ESC byte
 
 
 def torch_greedy(ckpt_path: str, tokenizer_path: str, prompt: str, n: int):
@@ -55,10 +55,15 @@ def torch_greedy(ckpt_path: str, tokenizer_path: str, prompt: str, n: int):
 
 
 def llamacpp_greedy(gguf_path: str, prompt: str, n: int):
+    # -no-cnv is load-bearing: once the GGUF carries a chat template (export_gguf.py
+    # embeds one), llama-completion auto-enables conversation mode and wraps the
+    # prompt in the template, so it would be continuing a different token sequence
+    # than the raw one PyTorch sees. 2026-09-17: this produced a FAIL verdict on a
+    # correct export and halted the pipeline at stage 7.
     cmd = [
         LLAMA_CLI, "-m", gguf_path, "-p", prompt, "-n", str(n),
         "--temp", "0", "--top-k", "1", "--seed", "1",
-        "--no-warmup", "-ngl", "0",
+        "--no-warmup", "-ngl", "0", "-no-cnv",
     ]
     res = subprocess.run(cmd, capture_output=True, text=True, timeout=300,
                          encoding="utf-8", errors="replace")
