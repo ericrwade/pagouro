@@ -119,7 +119,7 @@ def main() -> int:
     # clobbering the main run's data, checkpoint or log.
     ap.add_argument("--data-dir", default=DATA_DIR)
     ap.add_argument("--ckpt", default=os.path.join(CKPT_DIR, "latest.pt"))
-    ap.add_argument("--log", default=LOG_PATH)
+    ap.add_argument("--log", "--log-path", dest="log", default=LOG_PATH)   # --log-path: torchrun swallows --log as its own --log-dir
     a = ap.parse_args()
 
     if a.threads:

@@ -11,7 +11,7 @@ echo "== $N GPUs =="
 nvidia-smi -L
 COMMON="--bf16 --data-on-gpu --dim 512 --layers 14 --heads 8 --kv-heads 2 --seq-len 512 --batch-size 16 \
   --warmup 10 --lr 3e-4 --min-lr 3e-5 --eval-every 50 --ckpt-every 50 --seed 1337 \
-  --data-dir data/tokenized_real --ckpt /workspace/ckpt/ddp.pt --log /workspace/runs/ddp.jsonl"
+  --data-dir data/tokenized_real --ckpt /workspace/ckpt/ddp.pt --log-path /workspace/runs/ddp.jsonl"
 torchrun --nproc_per_node "$N" scripts/train.py $COMMON --max-steps 100 2>&1 | tee /workspace/runs/ddp.stdout \
   | grep --line-buffered -E "DDP|device|tokens/step|step +[0-9]+ \||val loss|checkpoint|done in|Error|error"
 echo "== resume proof (D-22, multi-GPU) =="

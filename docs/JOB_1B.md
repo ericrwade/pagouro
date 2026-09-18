@@ -45,7 +45,7 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
 ## Prerequisites (in order)
 1. **Flash run finished and evaluated** (D-56): the first model with real knowledge; its
    answered-real and bluff rates tell us whether the recipe works before spending 100x more.
-2. **Multi-GPU training.** DONE in code 2026-09-18: `train.py` runs under torchrun (env-driven DDP, per-rank sampling, one all-reduce per step with grad accumulation, rank-0 checkpoints of the unwrapped module), verified with two CPU ranks on gloo. Still to do: a 2×A40 GPU rehearsal (~$1). Without it, one H100 at 25% MFU is ~29 days: too long
+2. **Multi-GPU training.** DONE 2026-09-18: `train.py` runs under torchrun (env-driven DDP, per-rank sampling, one all-reduce per step with grad accumulation, rank-0 checkpoints of the unwrapped module). Rehearsed on a 2×L4 pod ($0.98/h, ~12 min): 60,400 tok/s aggregate, checkpoint + resume proven (`runs/runpod/ddp_rehearsal_2xL4.jsonl`). Gotcha: torchrun swallows `--log`; use `--log-path`. Without multi-GPU, one H100 at 25% MFU is ~29 days: too long
    and too fragile. Needed: DDP (torch.distributed, one process per GPU, data on each GPU,
    gradient all-reduce), tested on a 2×A40 pod for an hour (~$1). Checkpoints stay rank-0-only
    and uncompiled (D-55's `raw_model`).
