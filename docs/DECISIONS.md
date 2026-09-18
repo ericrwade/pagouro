@@ -904,3 +904,15 @@ learned behaviour is discrimination between the two rather than a topic reflex. 
 against the frozen evals (highest Jaccard 0.20, none at or above 0.60). `train_sft.py` loads it;
 the loader was tested against the real tokenizer (172 pairs, max 125 tokens) before the running
 pipeline could reach stage 6.
+
+### O-12 proposal — context 8k, reached by training at 4k and extending during the anneal
+**2026-09-17, proposed, not closed.** Eric asked whether the amount of user input the model can
+hold is ours to control, and whether quality drops if it is too large or satisfaction drops if it
+is too small. Both are real: cost scales with the square of the window (D-46 measured it), small
+models use the middle of a long window poorly, and CPU inference reads every context token before
+the first word; but a window under ~4k produces visible "you forgot what I said" failures and
+leaves no room for a retrieval passage (D-9). Proposal: pretrain at 4k, extend to 8k in the anneal
+(the standard progressive-extension recipe; avoids the post-training stretch O-12 already warns
+is degraded), and cap what the app sends to ~4k of recent conversation plus retrieval by default,
+with a user override. The shakedown model in the current run has a 512-token window, which is
+fine for a pipeline test and not a product number. Eric owns the call.
