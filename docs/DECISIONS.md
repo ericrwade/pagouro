@@ -1199,3 +1199,27 @@ Institute translation under an unspecified Creative Commons licence. Not used in
 O-14 opened on its presence in the training corpus.
 
 **Cousin rule kept:** Summer Engine was idle (<3% load) at every check; training ran at 8 threads.
+
+### D-54 — RunPod is the rental provider; connected via the official plugin; spend rule restated
+**2026-09-18, Eric.** Eric created a RunPod account and connected it to this session through the
+official Claude Code plugin (`runpod@runpod`, hosted MCP, OAuth; no API key stored anywhere).
+Verified from live reads: 0 pods, $0 billed in the last 7 days. io.net's Training-as-a-Service was
+evaluated and rejected: its docs state it does not support training from scratch (fine-tuning of
+existing models via a web form only), which rules it out for a from-scratch model by definition.
+
+**Live secure-cloud prices at connection time (per GPU-hour):** H100 SXM $3.49 (community
+$2.69), H100 PCIe $2.89, A100 80GB $1.59, H200 $4.59, RTX PRO 6000 Blackwell 96 GB $2.09. D-6's
+~420 H100-hours therefore costs roughly $1,470 secure / $1,130 community, above the brief's $850
+floor, as D-6 itself warned (1.5-2x on a first run). The job bundle (ledger C3) quotes from live
+reads, not from memory.
+
+**Rule, unchanged from the origin and now enforceable:** the session never creates a billable
+resource (pod, volume, endpoint, cluster) without an explicit instruction from Eric naming the
+run; the prefunded balance is the hard cap; the hourly price is stated before anything billable
+is created; every resource the session creates is destroyed by the session when the run ends and
+the checkpoint is safely downloaded. The permission layer additionally gates these calls.
+
+**Not before:** a GPU run waits for (1) the SFT set to reach thousands of conversations
+(generation running as of this entry), (2) the anneal schedule fix from D-48 (WSD), and (3) O-12
+(context length) decided. Renting an H100 to reproduce a known over-abstention would be the
+expensive way to learn what is already measured.
