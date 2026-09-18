@@ -124,7 +124,27 @@ def main() -> int:
 
     if a.threads:
         torch.set_num_threads(a.threads)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    # Multi-GPU (docs/JOB_1B.md prerequisite 2). Launched by torchrun, one process per
+    # GPU: WORLD_SIZE/RANK/LOCAL_RANK come from the environment. Each rank samples its
+    # own batches (seed + rank), DDP all-reduces gradients, rank 0 logs and checkpoints
+    # the UNWRAPPED, uncompiled module. Without torchrun this is a single process and
+    # nothing below changes. Tested 2026-09-18 with two CPU processes (gloo).
+    ddp = int(os.environ.get("WORLD_SIZE", "1")) > 1
+    rank = int(os.environ.get("RANK", "0"))
+    world = int(os.environ.get("WORLD_SIZE", "1"))
+    local_rank = int(os.environ.get("LOCAL_RANK", "0"))
+    if ddp:
+        import torch.distributed as dist
+        backend = "nccl" if torch.cuda.is_available() else "gloo"
+        dist.init_process_group(backend=backend)
+    if torch.cuda.is_available():
+        torch.cuda.set_device(local_rank)
+        device = f"cuda:{local_rank}"
+    else:
+        device = "cpu"
+    is_main = rank == 0
+    say = print if is_main else (lambda *args, **kw: None)
 
     os.makedirs(CKPT_DIR, exist_ok=True)
     os.makedirs(os.path.dirname(a.log) or ".", exist_ok=True)
@@ -138,21 +158,25 @@ def main() -> int:
 
     train_data = np.memmap(os.path.join(a.data_dir, "train.bin"), dtype=np.uint16, mode="r")
     val_data = np.memmap(os.path.join(a.data_dir, "val.bin"), dtype=np.uint16, mode="r")
-    if a.data_on_gpu and device == "cuda":
+    if a.data_on_gpu and device.startswith("cuda"):
         train_data = torch.from_numpy(np.asarray(train_data).astype(np.int32)).to(device)
         val_data = torch.from_numpy(np.asarray(val_data).astype(np.int32)).to(device)
-        print(f"data on GPU   : {train_data.numel():,} train tokens ({train_data.numel() * 4 / 1e9:.1f} GB as int32)")
-    use_amp = bool(a.bf16 and device == "cuda")
+        say(f"data on GPU   : {train_data.numel():,} train tokens ({train_data.numel() * 4 / 1e9:.1f} GB as int32)")
+    use_amp = bool(a.bf16 and device.startswith("cuda"))
 
     cfg = ModelConfig(
         vocab_size=meta["vocab_size"], dim=a.dim, n_layers=a.layers,
         n_heads=a.heads, n_kv_heads=a.kv_heads, max_seq_len=a.seq_len,
     )
     model = Pagouro(cfg).to(device)
-    raw_model = model                       # checkpoints always save the uncompiled module's state
-    if a.compile and device == "cuda":
+    raw_model = model                       # checkpoints always save the uncompiled, unwrapped module's state
+    if a.compile and device.startswith("cuda"):
         model = torch.compile(model)
-        print("torch.compile  : on")
+        say("torch.compile  : on")
+    if ddp:
+        from torch.nn.parallel import DistributedDataParallel as DDP
+        model = DDP(model, device_ids=[local_rank] if device.startswith("cuda") else None)
+        say(f"DDP            : {world} processes ({backend})")
 
     decay = [p for p in model.parameters() if p.dim() >= 2]
     no_decay = [p for p in model.parameters() if p.dim() < 2]
@@ -171,22 +195,23 @@ def main() -> int:
         raw_model.load_state_dict(ck["model"])
         opt.load_state_dict(ck["optimizer"])
         start_step = ck["step"] + 1
-        print(f"RESUMED from step {ck['step']} (val loss {ck.get('val_loss', float('nan')):.4f})")
+        say(f"RESUMED from step {ck['step']} (val loss {ck.get('val_loss', float('nan')):.4f})")
 
-    rng = np.random.default_rng(a.seed + start_step)
+    rng = np.random.default_rng(a.seed + start_step + 100_003 * rank)   # different batches per rank
 
-    print(f"device       : {device} ({torch.get_num_threads()} threads)")
-    print(f"parameters   : {raw_model.num_parameters():,} "
-          f"({raw_model.num_parameters(non_embedding=True):,} non-embedding)")
-    print(f"tokens avail : {meta['train_tokens']:,} train / {meta['val_tokens']:,} val")
-    print(f"tokens/step  : {a.batch_size * a.seq_len * a.grad_accum:,} ({a.batch_size} x {a.seq_len} x accum {a.grad_accum})")
-    print(f"steps        : {start_step} -> {a.max_steps}")
-    print(f"log          : {os.path.relpath(a.log, ROOT)}\n")
+    say(f"device       : {device} ({torch.get_num_threads()} threads)")
+    say(f"parameters   : {raw_model.num_parameters():,} "
+        f"({raw_model.num_parameters(non_embedding=True):,} non-embedding)")
+    say(f"tokens avail : {meta['train_tokens']:,} train / {meta['val_tokens']:,} val")
+    say(f"tokens/step  : {a.batch_size * a.seq_len * a.grad_accum * world:,} ({a.batch_size} x {a.seq_len} x accum {a.grad_accum} x {world} ranks)")
+    say(f"steps        : {start_step} -> {a.max_steps}")
+    say(f"log          : {os.path.relpath(a.log, ROOT)}\n")
 
-    log = io.open(a.log, "a", encoding="utf-8", newline="\n")
+    log = io.open(a.log, "a", encoding="utf-8", newline="\n") if is_main else None
     model.train()
     t0 = time.time()
-    tokens_seen = start_step * a.batch_size * a.seq_len * a.grad_accum
+    per_step = a.batch_size * a.seq_len * a.grad_accum * world
+    tokens_seen = start_step * per_step
     best_val = float("inf")
 
     end_step = a.stop_at if a.stop_at else a.max_steps
@@ -199,19 +224,21 @@ def main() -> int:
         loss_sum = 0.0
         for _micro in range(a.grad_accum):
             x, y = get_batch(train_data, a.batch_size, a.seq_len, device, rng)
+            if ddp:
+                model.require_backward_grad_sync = (_micro == a.grad_accum - 1)   # all-reduce once per step
             with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=use_amp):
                 _, loss = model(x, targets=y)
             (loss / a.grad_accum).backward()
             loss_sum += loss.item()
-        loss = torch.tensor(loss_sum / a.grad_accum)          # logged value: mean over micro-batches
+        loss = torch.tensor(loss_sum / a.grad_accum)          # logged value: this rank's mean over micro-batches
         gnorm = torch.nn.utils.clip_grad_norm_(model.parameters(), a.grad_clip)
         opt.step()
 
-        tokens_seen += a.batch_size * a.seq_len * a.grad_accum
+        tokens_seen += per_step
 
-        if step % 20 == 0 or step == a.max_steps - 1 or step == end_step - 1:
+        if is_main and (step % 20 == 0 or step == a.max_steps - 1 or step == end_step - 1):
             el = time.time() - t0
-            tps = (tokens_seen - start_step * a.batch_size * a.seq_len * a.grad_accum) / max(el, 1e-9)
+            tps = (tokens_seen - start_step * per_step) / max(el, 1e-9)
             rec = {"step": step, "loss": round(loss.item(), 4), "lr": round(lr, 7),
                    "grad_norm": round(float(gnorm), 3), "tokens": tokens_seen,
                    "elapsed_s": round(el, 1), "tokens_per_s": round(tps, 1)}
@@ -220,15 +247,15 @@ def main() -> int:
             print(f"step {step:6d} | loss {loss.item():7.4f} | lr {lr:.2e} | "
                   f"gnorm {float(gnorm):5.2f} | {tps:7.0f} tok/s | {el:6.1f}s", flush=True)
 
-        if (step + 1) % a.eval_every == 0 or step == a.max_steps - 1 or step == end_step - 1:
-            vl = estimate_loss(model, val_data, a.batch_size, a.seq_len, device, rng, use_amp=use_amp)
+        if is_main and ((step + 1) % a.eval_every == 0 or step == a.max_steps - 1 or step == end_step - 1):
+            vl = estimate_loss(raw_model, val_data, a.batch_size, a.seq_len, device, rng, use_amp=use_amp)
             best_val = min(best_val, vl)
             rec = {"step": step, "val_loss": round(vl, 4), "val_ppl": round(math.exp(vl), 2)}
             log.write(json.dumps(rec) + "\n")
             log.flush()
             print(f"  >> val loss {vl:.4f}  perplexity {math.exp(vl):.1f}", flush=True)
 
-        if (step + 1) % a.ckpt_every == 0 or step == a.max_steps - 1 or step == end_step - 1:
+        if is_main and ((step + 1) % a.ckpt_every == 0 or step == a.max_steps - 1 or step == end_step - 1):
             # Write to a sibling temp file and rename over the old checkpoint.
             # torch.save straight onto ckpt_path truncates it first, so a crash
             # mid-write (the 2026-09-17 hard freeze landed ten minutes after a
@@ -247,9 +274,13 @@ def main() -> int:
             os.replace(tmp_path, ckpt_path)
             print(f"  >> checkpoint saved at step {step}", flush=True)
 
-    log.close()
-    print(f"\ndone in {time.time()-t0:.1f}s. best val loss {best_val:.4f} "
-          f"(perplexity {math.exp(best_val):.1f})")
+    if log:
+        log.close()
+    say(f"\ndone in {time.time()-t0:.1f}s. best val loss {best_val:.4f} "
+        f"(perplexity {math.exp(best_val):.1f})")
+    if ddp:
+        dist.barrier()
+        dist.destroy_process_group()
     return 0
 
 
