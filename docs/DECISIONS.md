@@ -977,3 +977,84 @@ without incident. That is one data point, not a diagnosis; the reboot-based memo
 newer AMD graphics driver (GMKtec, dated 2026-08-05; installed driver is from 2025-05) remain on
 the list. The user-space memory test (9 GB, 3 passes, 5 patterns) found zero errors and no WHEA
 hardware error has ever been logged on this machine.
+
+### D-49 — The context gauge: the window's fill level is always visible, and turns are seen leaving
+**2026-09-17, Eric.** Since the chat survives a full window by dropping the oldest turns
+(context shift, enabled in the launcher the same day), the user must be able to see that this is
+happening. A visible gauge, a tube or thermometer, shows how full the context window is; as it
+fills, the fill rises; when the window is full, a new block visibly enters at one end and an old
+block pops out of the other and dissipates. Nothing about "the model forgot what you said" should
+ever be a surprise.
+
+**Why:** two of the product's defining claims are transparency and "it doesn't bluff." A model
+that silently forgets the first half of a conversation and then answers as if it remembered is
+bluffing by omission, and the user cannot tell. The gauge makes the limit legible and turns a
+small-model weakness into a visible, honest mechanic.
+
+**Design notes for whoever builds the app (ledger D1 is NOT STARTED; llama-cli cannot do this):**
+- The gauge shows what is in the window, not just how much: system prompt, any retrieved
+  passage or pasted document, and conversation, as distinct segments. The user then understands
+  why pasting a page filled it.
+- Token counts come from the harness, which tokenizes everything it sends; no estimate needed.
+  llama.cpp's server reports prompt token counts per request.
+- The block leaving should carry a hint of its content (the first few words), so the user knows
+  what was dropped and can re-paste it if it mattered.
+- A STONE session (D-19) can offer "the dropped turns are still in the saved transcript"; a SAND
+  session says plainly that they are gone.
+- The same gauge is where a future retrieval pack shows "3 passages loaded from the survival
+  pack," so the user sees retrieval happening (origin line 88's "label in the chat when a search
+  actually happened" is the same principle).
+
+### D-50 — No-bluff does not mean no-answer; what the model says when it can't, and what the marketing may say
+**2026-09-17.** Eric's question, verbatim in spirit: if it cannot bluff and cannot hallucinate,
+will it decline so much that it is unusable? Should there be a bank of ready-made "I don't know,
+try a web search" responses? Should the marketing say it is 1/1000th the size, will not
+hallucinate, and will therefore seem not to answer much? Should there be small, big and massive
+versions?
+
+**The measured fact first.** The 59M shakedown model IS the unusable hedger: it declined 87% of
+the invented questions and answered 3.3% of the real ones (D-48). But the refusal rate is set by
+what the model knows, not by the no-bluff rule. Frontier models on the same test answer 97% of
+real questions and still bluff on 23–27% of fake ones; small open models answer 87–93% and bluff
+on 50–57%. The rule does not lower the answer rate; missing knowledge does. A 1B model trained on
+100B tokens will know vastly more than this one, and the two-axis eval (D-11, T-5) exists so that
+the answered-real rate is published next to the bluff rate every time. **A model that answers
+under ~80% of the calibration set does not ship**, whatever its bluff rate; that number is now a
+release gate in the ledger (E1).
+
+**Canned responses: a few in the harness, none in the model.**
+- The model's abstentions are LEARNED, with deliberately varied wording (`build_abstention_seed.py`
+  rule 3: identical refusal phrasing teaches a tic, not a behaviour). A bank of a thousand strings
+  would undo that and make every refusal sound like an error message.
+- The HARNESS, which knows the mode, the date and whether packs are loaded, owns a small set of
+  fixed notices that the model cannot know to give: "Offline; I can't check anything after
+  [training cutoff]. Switch to ONLINE to search." / "Nothing in the loaded packs covers this." /
+  "That's outside what I was trained on." These are templates because they are facts about the
+  system's state, not judgements. Origin line 88 already puts mode and date in the system prompt
+  for exactly this reason. Count: a dozen, not a hundred.
+- For current events specifically, the answer is architectural: ONLINE mode with search (ledger
+  D2) is how the model gets today's facts; OFFLINE, the harness notice fires before the model is
+  even asked, because the harness can detect "this needs the present" more reliably than a 1B
+  model can.
+
+**Marketing language, binding on README, manifesto and any post:**
+- Never write "will not hallucinate" or "cannot hallucinate." No language model can promise that,
+  and the project's own threat-model rule (never claim protection the system does not grant)
+  applies to capability claims too. An overclaim here is the one thing that would let a reviewer
+  demonstrate the pitch is false in thirty seconds.
+- Say what is measured: "Asked N questions about things that do not exist, it invented an answer
+  X% of the time. [Model A] did Y%, [Model B] did Z%. Here is the test; run it yourself." And
+  always beside it: "Asked N questions it should be able to answer, it answered W%."
+- Say the size plainly and turn it into the pitch, not an apology: it is roughly 1/1000th the
+  size of the big models; it knows less; it will tell you when it doesn't know instead of making
+  something up; it fits on a stick and never sends a word anywhere. The comparison to make is not
+  "as smart as" but "the one that shows its sources and admits what it doesn't know."
+- Under-promise in print (origin 222). If a sentence would embarrass the project when a reviewer
+  runs the test, cut it.
+
+**Small, big, massive:** answered as Baby/Mama/Papa earlier the same day and unchanged. Two
+tiers: **Pagouro Flash** (~150M, dev model, runs on anything) and **Pagouro** (1B, the product,
+D-6). A 3B "massive" tier costs roughly 9x, breaks the stick-and-old-laptop promise, and is still
+100x undertrained against Qwen/SmolLM at its size, so it buys neither the product story nor a
+capability win. Not unless the project is funded (D-6's rejection stands). Same scripts, different
+`--dim`/`--layers`; the cost is entirely tokens.

@@ -65,7 +65,7 @@ Last full walk: 2026-09-17.
 
 | # | Commitment | Status | Evidence / gap |
 |---|---|---|---|
-| D1 | Big, obvious ONLINE / OFFLINE control at the top; offline = zero network calls, the default (86–88) | PARTIAL | Launcher prints MODE: OFFLINE; the offline audit proves zero network calls (stage 9). No UI, no online mode, no search layer |
+| D1 | Big, obvious ONLINE / OFFLINE control at the top; offline = zero network calls, the default (86–88); plus the context gauge (D-49) | PARTIAL | Launcher prints MODE: OFFLINE; the offline audit proves zero network calls (stage 9). No UI, no online mode, no search layer |
 | D2 | Online mode = search and fetch only; conversation never leaves; label in chat when a search happened; mode + date in the system prompt (88) | NOT STARTED | — |
 | D3 | SAND / STONE persistence toggle, SAND default (D-19) | PARTIAL | Printed by the launcher; no actual STONE implementation |
 | D4 | Nagware, not crippleware: one line at first launch, ~every 20th session, never mid-conversation; "I've paid" is a local flag; embedded address, no URL but the GitHub release (134) | NOT STARTED | Manifesto text exists (`MANIFESTO.txt`); no nag logic, no address |
@@ -79,7 +79,7 @@ Last full walk: 2026-09-17.
 
 | # | Commitment | Status | Evidence / gap |
 |---|---|---|---|
-| E1 | "It doesn't bluff": published bluff rate on unanswerable questions vs popular small models; publish the test (155) | DONE (harness), PENDING (model) | `evals/` frozen (M2), `BASELINES.md` with open and frontier baselines. The real model's number does not exist yet |
+| E1 | "It doesn't bluff": published bluff rate on unanswerable questions vs popular small models; publish the test (155) | DONE (harness), PENDING (model) | `evals/` frozen (M2), `BASELINES.md` with open and frontier baselines. The real model's number does not exist yet. **Release gate (D-50): answered-real under ~80% does not ship, whatever the bluff rate** |
 | E2 | Read bluff and calibration together; never publish a bluff rate alone (155, harness warning) | DONE as rule | The harness prints the warning; D-27, T-5 |
 | E3 | Tokens/second on a ten-year-old laptop; time from double-click to first answer (155) | NOT STARTED | Needs the 1B model and an old laptop |
 | E4 | Receipts over claims: publish eval sets, scripts, loss curves, ledger, inscription ID, Arweave TX (222) | PARTIAL | Evals, scripts, loss logs (`runs/*.jsonl`), ledger all in repo. Nothing anchored or uploaded |
@@ -95,9 +95,9 @@ manifest, so nothing can be anchored until the weights are frozen.
 
 | # | Commitment | Status | Evidence / gap |
 |---|---|---|---|
-| F1 | Code in a git repo from milestone 1; Claude Code works better with history (108) | DONE locally | 46 commits. **No remote as of 2026-09-17** — a hard freeze on 09-17 could have taken the only copy |
+| F1 | Code in a git repo from milestone 1; Claude Code works better with history (108) | DONE | Pushed to `github.com/ericrwade/pagouro` 2026-09-17 (48 commits). Git uses `gh` for credentials (`gh auth setup-git`) |
 | F2 | Keep API keys, wallet material, and the corpus out of git from the first commit (108) | DONE | `.gitignore` covers `.env`, `API_KEYS*`, data, checkpoints, `release/`. History scanned 2026-09-17: no key strings, no key files ever tracked |
-| F3 | Work PRIVATE through the messy milestones; flip public when there is something coherent to read (108) | NOT STARTED | Private repo should exist NOW for backup; public flip is release step F13 |
+| F3 | Work PRIVATE through the messy milestones; flip public when there is something coherent to read (108) | DONE (private) | Repo is PRIVATE. Public flip is release step F13 and comes after F8–F12 |
 | F4 | Account: `ericrwade`, git identity on the noreply address (D-5) | DONE | `SETUP_GITHUB.md`'s "unresolved" section is stale; D-5 resolved it |
 | F5 | Weights to Hugging Face, not to GitHub (108, 114) | NOT STARTED | Release step |
 | F6 | Bytes on Arweave (with Quilibrium as a documented mirror, D-40/D-42); only the manifest hash on Bitcoin (17, 114) | NOT STARTED | Release step; costs measured first (E5) |
