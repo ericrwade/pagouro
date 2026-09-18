@@ -122,7 +122,7 @@ def main() -> int:
     if not a.no_app:
         build_dir = os.path.join(ROOT, "build")
         cmd = [sys.executable, "-m", "PyInstaller", "--onefile", "--console", "--name", "pagouro",
-               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts",
+               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts", "--hidden-import", "packsearch",
                "--distpath", os.path.join(build_dir, "dist"), "--workpath", os.path.join(build_dir, "work"),
                "--specpath", build_dir, "--noconfirm", "--log-level", "WARN",
                os.path.join(ROOT, "app", "pagouro_app.py")]

@@ -37,6 +37,7 @@ import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from prompts import SYSTEM_PROMPT, ROUTER_PROMPT  # noqa: E402  (shared with the SFT builder)
+from packsearch import Packs, words as _pwords  # noqa: E402
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
@@ -233,55 +234,6 @@ def tool_time(_arg: str, app) -> str:
     return now.strftime("local date and time: %A %Y-%m-%d %H:%M (%Z)").strip()
 
 
-class Packs:
-    """Keyword search over plain-text packs. Deliberately simple: chunk by paragraph,
-    score by overlap of query words, return the best few. A real build swaps this for
-    an embedding index; the interface stays the same."""
-
-    def __init__(self, root: str):
-        self.chunks: list[tuple[str, str]] = []   # (source name, text)
-        self.names: list[str] = []
-        if not os.path.isdir(root):
-            return
-        for fn in sorted(os.listdir(root)):
-            if not fn.lower().endswith(".txt"):
-                continue
-            self.names.append(fn)
-            with open(os.path.join(root, fn), encoding="utf-8", errors="replace") as f:
-                text = f.read()
-            buf = []
-            for para in re.split(r"\n\s*\n", text):
-                para = " ".join(para.split())
-                if not para:
-                    continue
-                buf.append(para)
-                if sum(len(p) for p in buf) >= 600:
-                    self.chunks.append((fn, " ".join(buf)))
-                    buf = []
-            if buf:
-                self.chunks.append((fn, " ".join(buf)))
-
-    @staticmethod
-    def words(s: str) -> set[str]:
-        return {w for w in re.findall(r"[a-z]{3,}", s.lower())
-                if w not in {"the", "and", "that", "with", "for", "this", "what", "which", "from", "are", "was", "were", "have", "has", "not", "but", "his", "her", "its", "they", "them", "there", "their", "than", "then", "into", "upon", "about", "does", "did", "how", "why", "who", "can", "all", "any", "one", "two"}}
-
-    def search(self, query: str, k: int = 3) -> list[tuple[str, str, float]]:
-        q = self.words(query)
-        if not q or not self.chunks:
-            return []
-        scored = []
-        for name, text in self.chunks:
-            w = self.words(text)
-            if not w:
-                continue
-            overlap = len(q & w)
-            if overlap:
-                scored.append((overlap / (len(q) ** 0.5) / (len(w) ** 0.25), name, text))
-        scored.sort(reverse=True)
-        return [(n, t, s) for s, n, t in scored[:k]]
-
-
 def tool_pack_search(query: str, app) -> str:
     hits = app.packs.search(query)
     if not hits:
@@ -351,7 +303,7 @@ ROUTER_RE = re.compile(r'"tool"\s*:\s*"(\w+)"(?:\s*,\s*"arguments"\s*:\s*"((?:[^
 class App:
     def __init__(self, server: Server):
         self.srv = server
-        self.packs = Packs(PACKS_DIR)
+        self.packs = Packs(PACKS_DIR)            # BM25 unless an index + embedder are present
         self.stone = False            # D-19: SAND by default
         self.can_act = False          # D-51: READ-ONLY by default
         self.online = False           # D-1: OFFLINE; online mode is not built in this version
@@ -519,7 +471,7 @@ class App:
             return m.group(1).rstrip(".,;") if m else args
         if name == "pack_search":
             if len(re.findall(r"[a-z]{3,}", args.lower())) < 2:
-                return " ".join(Packs.words(t)) or args
+                return " ".join(sorted(_pwords(t))) or args
             return args
         return args
 
@@ -591,7 +543,7 @@ class App:
         elif cmd == "/tools":
             for n, (_, desc, needs) in TOOLS.items():
                 print(f"  {n:<12} {desc}{'  [needs CAN ACT]' if needs else ''}")
-            print(f"  packs loaded: {', '.join(self.packs.names) or 'none'} ({len(self.packs.chunks)} chunks)")
+            print(f"  packs loaded: {', '.join(self.packs.names) or 'none'} ({len(self.packs.chunks)} chunks, {self.packs.mode} search)")
         elif cmd == "/clear":
             self.history.clear()
             print("  context cleared.")

@@ -62,3 +62,6 @@ My_Claude_Conversation.txt
 workspace/notes/
 workspace/transcripts/
 build/
+tools/teacher/
+packs/index.json
+tools/embed/
