@@ -178,9 +178,20 @@ fi
 if stage 11; then
 echo "### STAGE 11: copy to USB ###"
 if [ -d "$USB" ]; then
-  rm -rf "$USB/Pagouro"
-  cp -r "$REL" "$USB/Pagouro"
-  echo "copied to USB at $USB/Pagouro"
+  # 2026-09-18: Eric had the app open from the stick; rm -rf deleted everything it
+  # could and then failed on the running exes, leaving the stick EMPTY. Never
+  # touch the USB while anything runs from it. Copy into a sibling folder first
+  # and swap, so a failure mid-copy leaves the old package intact.
+  busy=$(powershell -NoProfile -Command "@(Get-Process | Where-Object { \$_.Path -like '$(cygpath -w "$USB")\\Pagouro\\*' }).Count" 2>/dev/null | tr -d '\r')
+  if [ "${busy:-0}" != "0" ]; then
+    echo "USB SKIPPED: $busy process(es) are running from $USB/Pagouro -- close the Pagouro window and rerun with START_STAGE=11"
+  else
+    rm -rf "$USB/Pagouro.new"
+    cp -r "$REL" "$USB/Pagouro.new"
+    rm -rf "$USB/Pagouro"
+    mv "$USB/Pagouro.new" "$USB/Pagouro"
+    echo "copied to USB at $USB/Pagouro"
+  fi
 else
   echo "USB drive $USB not found at copy time -- package left at $REL"
 fi

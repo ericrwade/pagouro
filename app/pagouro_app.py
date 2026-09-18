@@ -39,7 +39,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from prompts import SYSTEM_PROMPT, ROUTER_PROMPT  # noqa: E402  (shared with the SFT builder)
 
 APP_VERSION = "0.1.0 (MVP framework)"
-MAX_TOKENS_ANSWER = 200          # generation budget per answer
+MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
 MAX_TOKENS_ROUTER = 96           # the tool decision is a tiny JSON object
 GAUGE_BOXES = 10
 TOOL_STEPS_PER_TURN = 1          # D-51: one tool per turn in the MVP
@@ -393,12 +393,25 @@ class App:
         return f"[{mode}] [{persist}] [{act}]  {self.gauge(used)}  " + c(DIM, f"(system {sys_t} · chat {chat_t})")
 
     # ---- context management: drop oldest, visibly (D-49)
+    def _current_turn_start(self) -> int:
+        """Index of the last user message. Everything from there on is the CURRENT
+        turn (the question and any tool result) and is never dropped."""
+        for i in range(len(self.history) - 1, -1, -1):
+            if self.history[i]["role"] == "user":
+                return i
+        return len(self.history)
+
     def make_room(self, reserve: int):
-        while self.history:
+        """Drop the oldest exchanges until the answer fits. 2026-09-18, Eric's first run:
+        a pack search returned ~600 tokens into a 512-token window and this loop
+        dropped everything, INCLUDING the question just asked and its search result,
+        then the model answered from an empty context. Now the current turn is
+        protected, and if it alone does not fit, the tool result is trimmed to the
+        room that is left (see fit_current_turn)."""
+        while self._current_turn_start() > 0:
             used, _, _ = self.used_tokens()
             if used + reserve <= self.srv.n_ctx:
                 return
-            # drop the oldest exchange: a user turn and everything up to the next user turn
             drop = [self.history.pop(0)]
             while self.history and self.history[0]["role"] != "user":
                 drop.append(self.history.pop(0))
@@ -407,6 +420,32 @@ class App:
             first = " ".join(head["content"].split()[:6])
             where = "still in the saved transcript" if self.stone else "gone (SAND mode)"
             print(c(MAG, f"  {ARROW_OUT} {BOX_FULL} dropped oldest turn: \"{first}{ELLIPSIS}\" -- {where}"))
+        self.fit_current_turn(reserve)
+
+    def fit_current_turn(self, reserve: int):
+        """With only the current turn left, trim the tool result (never the question)
+        until question + result + answer fit the window. Says so when it does."""
+        trimmed = False
+        for _ in range(12):
+            used, _, _ = self.used_tokens()
+            if used + reserve <= self.srv.n_ctx:
+                break
+            tool_idx = next((i for i in range(len(self.history) - 1, -1, -1)
+                             if self.history[i]["role"] == "tool"), None)
+            if tool_idx is None:
+                break                       # nothing trimmable; the server will truncate
+            over = used + reserve - self.srv.n_ctx
+            content = self.history[tool_idx]["content"]
+            # ~4 chars per token; cut a little more than the overflow, keep at least a line
+            cut = max(80, len(content) - int(over * 4.5) - 40)
+            if cut >= len(content):
+                cut = max(80, len(content) - 40)
+            if cut >= len(content):
+                break
+            self.history[tool_idx]["content"] = content[:cut].rstrip() + " [trimmed]"
+            trimmed = True
+        if trimmed:
+            print(c(DIM, "  note: the tool result was trimmed to fit the model's window."))
 
     # ---- persistence (D-19)
     def record(self, role: str, text: str):
@@ -513,9 +552,10 @@ class App:
             if tool_result is not None:
                 self.history.append({"role": "tool", "content": f"{tool}: {tool_result[:1200]}"})
 
-        self.make_room(MAX_TOKENS_ANSWER)
+        budget = min(MAX_TOKENS_ANSWER, max(64, self.srv.n_ctx // 4))
+        self.make_room(budget)
         try:
-            answer, usage = self.srv.chat(self.messages(), MAX_TOKENS_ANSWER)
+            answer, usage = self.srv.chat(self.messages(), budget)
         except urllib.error.HTTPError as e:
             answer = f"(the model server refused the request: {e.code}; try /clear)"
             usage = {}
