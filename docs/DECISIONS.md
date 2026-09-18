@@ -1327,3 +1327,37 @@ inverted); (2) online updates drift with no evaluation gate, and Pagouro's centr
 in the manifest (D-14). Rule: **weight changes are explicit, versioned, reversible adapter files,
 run through the frozen suite before they are kept, never silent.** The same discipline as a
 release, at the scale of one user's machine.
+
+### D-58 — The shelf: spread the licensed flavors thin, in the anneal, and publish every one
+**2026-09-18, Eric.** "Have fun with the sources… spread everything that isn't code very thin… like
+the urban legend of the Dr Pepper recipe." Adopted, with the stage fixed by D-9 and the
+proof by D-29.
+
+**Shape.** The pretrain backbone stays what D-8/D-9 say: educational web, code, Wikipedia, Stack
+Exchange, a modest canon slice. The **anneal** (last ~10% of tokens; ~10B in the 1B run) becomes
+"domain canon + the shelf": roughly a third of the anneal spread across ~25 small licensed
+slices at 0.2–0.5% of total each (~100M tokens apiece at 100B, a full bookshelf each). Every slice
+is a `corpus.json` row with licence, size and hash, and the release lists them as the flavors.
+Dr Pepper's twenty-three cannot be checked; ours can, which is the whole pitch in miniature.
+
+**Why the anneal and not the backbone.** Breadth helps generalisation (the mixed corpora beat
+single-source ones at equal size), but special-interest text in the main mix costs reasoning for
+little knowledge (D-9). The origin conversation already put the disproportionate benefit of a
+high-quality diverse slice for small models in the anneal (line 74).
+
+**The shelf, first draft (public domain or open licence; each verified per edition before use):**
+1911 Britannica; 1911 Boy Scout Handbook; Fannie Farmer 1918; Hoyle's Games; Capablanca 1921 and
+early poker/whist/bridge (O-16); Robert's Rules of Order (1876); Emily Post's Etiquette (1922);
+Bowditch; FAA handbooks; Navy NAVEDTRA courses; Army TM 9-8000 + vehicle TMs; USDA guides; FMCSA
+driver manual (O-17); Dudeney, Loyd, Carroll's Symbolic Logic; OpenStax (CC BY); Supreme Court
+opinions; Lincoln–Douglas debates; Congressional Record; BIPs/EIPs; Plato (Jowett); Sherlock
+Holmes (PD stories); pre-1929 bird guides (never mushrooms); Sears catalogs 1900s; Old Farmer's
+Almanac pre-1929; folk tales; program-generated verifiable reasoning (O-18).
+
+**Guardrails.** (1) Licence check and ledger row before a byte moves; per-edition, as *The Law*
+taught (O-14). (2) Clean each slice (OCR, headers, dedup) and look at it; the survival manual's
+OCR is the warning. (3) D-29 ablation at Flash scale, shelf vs no shelf, on the shared held-out
+set, so the box can say whether it helped in a number. (4) Pre-2022 claim (D-34): every shelf
+item is dated on its row; program-generated data is labelled synthetic by construction.
+
+O-16, O-17 and O-18 are now sub-items of this decision.
