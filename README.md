@@ -6,9 +6,15 @@
 > Greek *págouros*, hermit crab: carries a home it can move out of. The *ouro* nods to ouroboros —
 > self-sufficient.
 
-**Status: milestone 1 of 9 complete.** This is a working end-to-end pipeline at toy scale, not the
-model. Nothing here is released, and the numbers below are from a 12.6M parameter model trained for
-31 minutes. See `docs/MILESTONES.md` for where this is going.
+**Status (2026-09-18): private, in progress; nothing is released.** The full pipeline runs end to
+end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → package → USB) and has produced a
+59M-parameter shakedown model that lives on a stick inside the real application (`app/`): three
+switches, a context gauge, five sandboxed tools, reference packs. That model is a pipeline proof,
+not the product; on the frozen eval it routes tools at 54% and answers 7% of real questions. The
+first rented-GPU run measured 62,000 tokens/s (D-55); a ~150M "Flash" model is training. The 1B
+model (D-6) waits on a thousand-fold larger SFT set (generating), a schedule fix (D-48), and Eric's
+launch. `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
+`docs/ORIGIN.md` for where this came from.
 
 ---
 

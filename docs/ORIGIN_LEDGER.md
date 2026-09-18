@@ -66,13 +66,13 @@ Last full walk: 2026-09-18 (overnight build of the app).
 | # | Commitment | Status | Evidence / gap |
 |---|---|---|---|
 | D1 | Big, obvious ONLINE / OFFLINE control at the top; offline = zero network calls, the default (86–88); plus the context gauge (D-49) | PARTIAL | The harness shows [OFFLINE] [SAND/STONE] [READ-ONLY/CAN ACT] and the ten-box gauge above every prompt; dropped turns shown with first words. Offline audit passes. ONLINE mode not built (`/online` says so) |
-| D2 | Online mode = search and fetch only; conversation never leaves; label in chat when a search happened; mode + date in the system prompt (88) | NOT STARTED | — |
+| D2 | Online mode = search and fetch only; conversation never leaves; label in chat when a search happened; mode + date in the system prompt (88) | PARTIAL | `web_search` tool, `/online` (needs `workspace/online.json` with a SearXNG URL or Brave key), grammar/prompts switch per mode, calls printed, exit line counts network calls. Tested against a local stub. No page fetch yet; the 59M model never routes to it |
 | D3 | SAND / STONE persistence toggle, SAND default (D-19) | DONE | `/stone` writes `workspace/transcripts/<ts>.txt` from that point; `/sand` stops; exit line lists every file written |
 | D4 | Nagware, not crippleware: one line at first launch, ~every 20th session, never mid-conversation; "I've paid" is a local flag; embedded address, no URL but the GitHub release (134) | NOT STARTED | Manifesto text exists (`MANIFESTO.txt`); no nag logic, no address |
 | D5 | Retrieval-augmented answers for staleness; the harness searches and pastes paragraphs in (84) | NOT STARTED | — |
 | D6 | Retrieval PACKS on the stick: US Code, field manuals, "Where There Is No Doctor", FAO/CDC; foraging/mushroom ID hard-walled out; open recipe dataset only (84, 92) | PARTIAL | `packs/` with two PD canon texts, `pack_search` tool (paragraph chunks, keyword overlap; needs an embedding index). No survival/legal packs yet. O-14 on *The Law* |
 | D7 | "Get bigger": LoRA adapters on frozen base, factory reset for free; local trainer + cloud job bundle (51, 55) | NOT STARTED | Second real component; post-release or never |
-| D8 | Bring-your-own-key search with a self-hosted option, frozen so online mode outlives Eric (126) | NOT STARTED | Depends on D2 |
+| D8 | Bring-your-own-key search with a self-hosted option, frozen so online mode outlives Eric (126) | DONE (plumbing) | SearXNG (self-hosted, no key) or Brave (key) in `workspace/online.json`; file is gitignored |
 | D9 | Browser-local WebGPU version on pagouro.com; no hosted version (197) | NOT STARTED | D-24 places the demo on the Bosgame N95, browser-local. After release, or never |
 
 ## E. The pie, the evals, and the receipts
