@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pagouro one-pager</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+body{margin:0;font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;background:#f6f3ec;color:#1c211f}
+a{color:#b8552f}a:hover{color:#8f3f22}
+</style>
+</helmet>
+<div style="width: 880px; height: 1140px; box-sizing: border-box; padding: 64px 72px; background: #f6f3ec; display: flex; flex-direction: column; gap: 28px;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #1c211f; padding-bottom: 14px;">
+    <div style="font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 700; letter-spacing: 0.02em;">PAGOURO</div>
+    <div style="font-size: 15px; color: #6b736f;">One page · private draft · September 2026</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 40px; line-height: 1.1; font-weight: 600;">A language model on a USB stick. Free, open source, offline, always yours.</h1>
+    <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #3a413e;">Built from random weights by one person on a desk computer and a rented GPU, on a corpus where every byte has a nameable licence. It is small on purpose. Its trick is knowing what it doesn't know.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; background: #ffffff; border: 1px solid #e4ded1; border-radius: 10px;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 600;">Doesn't bluff</div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4a524e;">Trained to say "I have no record of that" instead of inventing one. The rate is measured on a frozen public test, next to how often it answers real questions.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; background: #ffffff; border: 1px solid #e4ded1; border-radius: 10px;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 600;">Every byte on the ledger</div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4a524e;">One file: every source, its licence or public-domain basis, token count, and hash. Enough to rebuild the corpus. The big labs cannot publish this file.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px; background: #ffffff; border: 1px solid #e4ded1; border-radius: 10px;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 600;">Nothing leaves the machine</div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4a524e;">No account, no telemetry, no update check. Audited to make zero network calls. The threat model states what that does and does not protect.</p>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 24px;">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">How it's measured</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4a524e;">Four frozen sets: 30 questions about things that don't exist, 30 that a well-read person can answer, 28 contested economic questions, 40 tool-use decisions. Two numbers always published together, because a model that says nothing never bluffs. Baselines on the same test: small open models invent an answer 50–57% of the time; frontier models 23–27%, while answering 97% of the real ones.</p>
+    </div>
+    <div style="width: 300px; display: flex; flex-direction: column; gap: 8px; padding: 18px; background: #1c211f; border-radius: 10px; color: #e9e4d8;">
+      <div style="font-size: 13px; color: #9aa39e;">Release gate</div>
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 18px; font-weight: 600;">It ships only if it answers ≥80% of the real questions and its bluff rate is below every open baseline.</div>
+      <div style="font-size: 13px; color: #9aa39e;">Both numbers are printed on the box either way.</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">Who it's for</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4a524e;">People who want to ask a machine anything without a record existing anywhere. People with no connection. Researchers who need a model whose training data can be inspected. Tinkerers who want a complete, documented, small model to make bigger.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">What it costs</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4a524e;">Nothing. Apache 2.0 code, CC BY-SA 4.0 weights, a signed manifest whose hash is anchored to Bitcoin. A tip-jar address is in the manifesto; nobody is tracking whether you used it. Released as a finished artifact: no updates, no support, fork it.</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px; padding: 18px; background: #ece7db; border-radius: 10px;">
+    <div style="font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 600;">Where it stands</div>
+    <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3a413e;">The full pipeline runs end to end and a proof-of-concept model lives on a stick inside the real application: three switches, a visible memory gauge, five sandboxed tools, reference packs. A 126M-parameter model is training on a rented GPU; the 1B product model follows once its data and gate are ready. The whole build, mistakes included, is a public log at release.</p>
+  </div>
+
+  <div style="margin-top: auto; display: flex; justify-content: space-between; font-size: 13px; color: #6b736f; border-top: 1px solid #ddd6c8; padding-top: 12px;">
+    <div>Greek págouros, hermit crab: carries a home it can leave.</div>
+    <div>[CONTACT] · pagouro.com</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":880,"height":1140}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

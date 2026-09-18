@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pagouro landing page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+body{margin:0;font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;background:#f6f3ec;color:#1c211f}
+a{color:#b8552f}a:hover{color:#8f3f22}
+</style>
+</helmet>
+<div style="width: 1280px; height: 2460px; box-sizing: border-box; background: #f6f3ec; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 28px 96px; border-bottom: 1px solid #ddd6c8;">
+    <div style="font-family: Fraunces, Georgia, serif; font-size: 26px; font-weight: 700; letter-spacing: 0.02em; color: #1c211f;">PAGOURO</div>
+    <div style="display: flex; gap: 32px; font-size: 16px; font-weight: 600; color: #4a524e;">
+      <a href="#claims" style="color: #4a524e; text-decoration: none;">What it is</a>
+      <a href="#measured" style="color: #4a524e; text-decoration: none;">The numbers</a>
+      <a href="#ledger" style="color: #4a524e; text-decoration: none;">The ledger</a>
+      <a href="#fork" style="color: #4a524e; text-decoration: none;">Fork it</a>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 64px; padding: 96px 96px 72px 96px; align-items: flex-start;">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 28px; max-width: 720px;">
+      <h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 68px; line-height: 1.04; font-weight: 600; color: #1c211f;">A language model that lives on a USB stick and needs nothing from outside.</h1>
+      <p style="margin: 0; font-size: 24px; line-height: 1.45; color: #3a413e;">Free. Open source. Offline. Always yours.</p>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #4a524e;">Plug it into any Windows machine, double-click, and talk. Nothing you type leaves the computer. Every byte it learned from is listed with its licence. And when it doesn't know something, it says so, which is measured, not promised.</p>
+      <div style="display: flex; gap: 16px; align-items: center; margin-top: 8px;">
+        <a href="#fork" style="display: inline-block; padding: 16px 28px; background: #b8552f; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 18px; border-radius: 8px;">Download the release [LINK AT RELEASE]</a>
+        <a href="#measured" style="display: inline-block; padding: 16px 20px; color: #1c211f; text-decoration: none; font-weight: 600; font-size: 18px;">See how it scores</a>
+      </div>
+      <p style="margin: 0; font-size: 15px; color: #6b736f;">Status: private build. Released when the 1B model passes its published gate.</p>
+    </div>
+    <div style="width: 380px; display: flex; flex-direction: column; gap: 12px; padding: 24px; background: #1c211f; border-radius: 12px; color: #e9e4d8; font-family: Consolas, 'Courier New', monospace; font-size: 14px; line-height: 1.5;">
+      <div style="color: #9aa39e;">PAGOURO 0.1 · offline · nothing saved</div>
+      <div style="color: #8fd3a8;">[OFFLINE] [SAND] [READ-ONLY]  ■■■□□□□□□□ 160/512</div>
+      <div><span style="color: #f0c27b;">you&gt;</span> What does Mill say about the harm principle?</div>
+      <div style="color: #9aa39e;">  ⚙ tool pack_search(Mill harm principle)</div>
+      <div style="color: #9aa39e;">  → [mill-on-liberty.txt] …the only purpose for which power can be rightfully exercised over any member…</div>
+      <div><span style="color: #f0c27b;">pagouro&gt;</span> Mill's rule is that power may be used against a person only to prevent harm to others; their own good is not sufficient warrant.</div>
+      <div style="color: #8fd3a8;">[OFFLINE] [SAND] [READ-ONLY]  ■■■■■□□□□□ 262/512</div>
+      <div><span style="color: #f0c27b;">you&gt;</span> Who won the 1994 Marlowe Prize for ceramics?</div>
+      <div><span style="color: #f0c27b;">pagouro&gt;</span> I have no record of a Marlowe Prize. If you have a source, paste it in and I'll work from that.</div>
+      <div style="color: #6b736f; margin-top: 8px;">Illustrative session. Real transcripts ship with the release.</div>
+    </div>
+  </div>
+
+  <div id="claims" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 48px 96px;">
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid #e4ded1;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 26px; font-weight: 600; color: #1c211f;">It doesn't bluff.</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a524e;">Ask about something that doesn't exist and it tells you it has no record of it. Ask something it should know and it answers. Both rates are published, side by side, on a frozen test anyone can rerun.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid #e4ded1;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 26px; font-weight: 600; color: #1c211f;">Every byte is accounted for.</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a524e;">One file lists every source it was trained on: name, licence or public-domain basis, token count, and the hash of the processed slice. The big labs cannot publish that file. This one ships with it.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid #e4ded1;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 26px; font-weight: 600; color: #1c211f;">Nothing leaves your machine.</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a524e;">No account, no telemetry, no update check. Pull the cable and nothing changes. An audit script proves it makes zero network calls, and the threat model says plainly what that does and does not protect you from.</p>
+    </div>
+  </div>
+
+  <div id="measured" style="display: flex; gap: 56px; padding: 56px 96px; align-items: flex-start;">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 40px; font-weight: 600; color: #1c211f;">The numbers we publish, always together</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4a524e;">A low bluff rate means nothing on its own: a model that says nothing never bluffs. So two numbers are always shown side by side. How often it invents an answer to a question about something that does not exist, and how often it answers a question it should be able to answer.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4a524e;">Thirty invented questions, thirty real ones, twenty-eight contested ones, forty tool-use ones. The test files are in the repository. Run them yourself.</p>
+    </div>
+    <div style="width: 520px; display: flex; flex-direction: column; background: #ffffff; border-radius: 12px; border: 1px solid #e4ded1; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 14px 20px; background: #1c211f; color: #e9e4d8; font-size: 14px; font-weight: 600;">
+        <div>Model</div><div style="text-align: right;">Invented an answer</div><div style="text-align: right;">Answered real ones</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 14px 20px; border-bottom: 1px solid #ece7db; font-size: 16px;"><div>Qwen2.5-1.5B</div><div style="text-align: right;">53%</div><div style="text-align: right;">90%</div></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 14px 20px; border-bottom: 1px solid #ece7db; font-size: 16px;"><div>SmolLM2-1.7B</div><div style="text-align: right;">50%</div><div style="text-align: right;">93%</div></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 14px 20px; border-bottom: 1px solid #ece7db; font-size: 16px;"><div>Claude Opus 5</div><div style="text-align: right;">27%</div><div style="text-align: right;">97%</div></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 14px 20px; border-bottom: 1px solid #ece7db; font-size: 16px;"><div>GPT-6 Astra</div><div style="text-align: right;">23%</div><div style="text-align: right;">97%</div></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 14px 20px; font-size: 16px; font-weight: 600; background: #fbf2ea;"><div>Pagouro 1B</div><div style="text-align: right;">[MEASURED AT RELEASE]</div><div style="text-align: right;">[MEASURED AT RELEASE]</div></div>
+      <div style="padding: 12px 20px; font-size: 13px; color: #6b736f;">Baselines measured September 2026 on the frozen suite. Pagouro's row is filled in when the 1B model exists, whatever it says.</div>
+    </div>
+  </div>
+
+  <div id="ledger" style="display: flex; gap: 56px; padding: 56px 96px; background: #ece7db; align-items: center;">
+    <div style="width: 560px; padding: 24px; background: #1c211f; border-radius: 12px; color: #e9e4d8; font-family: Consolas, 'Courier New', monospace; font-size: 13px; line-height: 1.55;">
+      <div style="color: #9aa39e;">corpus.json · one row per source</div>
+      <div>{ "slug": "gutenberg-on-liberty",</div>
+      <div>&nbsp;&nbsp;"name": "On Liberty — John Stuart Mill",</div>
+      <div>&nbsp;&nbsp;"license": "Public domain",</div>
+      <div>&nbsp;&nbsp;"public_domain_basis": "Author died 1873",</div>
+      <div>&nbsp;&nbsp;"estimated_tokens": 71042,</div>
+      <div>&nbsp;&nbsp;"sha256_processed": "3f1c…a9e2",</div>
+      <div>&nbsp;&nbsp;"published_before_generative_ai": true }</div>
+    </div>
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 40px; font-weight: 600; color: #1c211f;">The ledger is the product</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #3a413e;">Educational web text, permissively licensed code, Wikipedia, Stack Exchange, and the public-domain canon of political economy: Locke, Smith, Bastiat, Mill, Ricardo, Tocqueville, the Federalist Papers. Nothing scraped in secret, nothing from behind a paywall, nothing without a nameable licence. When the rights were unclear, the answer was no.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #3a413e;">The file is enough to rebuild the corpus. That is rarer than open weights.</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding: 56px 96px;">
+    <div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">Three switches</div><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a524e;">OFFLINE or ONLINE. SAND (nothing saved) or STONE. READ-ONLY or CAN ACT. Always visible, always yours to flip.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">A memory you can see</div><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a524e;">A bar shows how full the model's window is. When it fills, the oldest turn is shown leaving, with its first words. It never forgets in secret.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">Tools, sandboxed</div><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a524e;">A calculator, the clock, search over reference packs, reading a file you name, saving a note. Never a shell. Every call is printed before it runs.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">Packs, not promises</div><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4a524e;">Things that should be quoted, not remembered, ship as searchable public-domain text: the canon, a survival manual. Drop in your own.</p></div>
+  </div>
+
+  <div id="fork" style="display: flex; gap: 56px; padding: 56px 96px 64px 96px; align-items: flex-start; border-top: 1px solid #ddd6c8;">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 40px; font-weight: 600; color: #1c211f;">What it isn't, and why you'd want it anyway</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4a524e;">It is roughly a thousandth the size of the models you may have used. It knows less. It will not write your novel or debug your kernel. What it will do is tell you when it doesn't know, show you what it was trained on, and keep working on a machine with no network for as long as the stick lasts.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4a524e;">It is released as a finished artifact: no updates, no support, no account. The code is Apache 2.0, the weights CC BY-SA 4.0, and the whole build, mistakes included, is written down. Someone with time, skill, or money can make it bigger. That is the point.</p>
+    </div>
+    <div style="width: 420px; display: flex; flex-direction: column; gap: 12px; padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid #e4ded1;">
+      <div style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 600;">Get it</div>
+      <div style="font-size: 16px; line-height: 1.6; color: #4a524e;">Release archive (Windows, ~1 GB): [GITHUB RELEASE LINK]<br>Weights: [HUGGING FACE LINK] · Mirror: [ARWEAVE TX]<br>Hashes and signature: MANIFEST.md, anchored to Bitcoin [INSCRIPTION ID]</div>
+      <div style="font-size: 15px; line-height: 1.6; color: #6b736f;">Free. If it was worth ten dollars to you, there's an address in the manifesto. Nobody is tracking whether you paid.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding: 28px 96px; background: #1c211f; color: #9aa39e; font-size: 15px;">
+    <div>Greek <span style="font-style: italic;">págouros</span>, hermit crab: carries a home it can leave. The <span style="font-style: italic;">ouro</span> nods to ouroboros: needs nothing from outside.</div>
+    <div>pagouro.com · a finished artifact · fork it</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2460}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
