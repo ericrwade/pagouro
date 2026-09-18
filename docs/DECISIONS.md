@@ -1304,3 +1304,22 @@ bluff and calibration read together) stands.
 router rows (spurious calls), and add an argument-correctness filter for calc rows on the SFT
 side (execute the emitted expression; drop rows whose argument does not evaluate to the
 teacher's stated answer). Both are cheap; neither changes the knowledge ceiling.
+
+### D-57 — Weight updates on the stick: explicit, versioned, reversible adapters, gated by the frozen suite; never silent or real-time
+**2026-09-18, Eric's question (a tweet: "AGI will not happen until models update their own weights
+in real time"; is weight updating possible in Pagouro?).** Possible, and the origin conversation
+already chose the shape (lines 49–55, ledger D7): learning on the owner's own material happens
+through a **LoRA adapter** trained on top of frozen base weights and loaded at start (llama.cpp
+applies GGUF adapters); minutes to an hour on a laptop CPU for a few hundred documents; a 10–20 MB
+file that can be shared, versioned, or deleted, so factory reset is free and the base never
+forgets. That is the "get bigger" feature and ships as a second component, not in v1.0.
+
+**Real-time, per-message self-modification is rejected for this product**, for reasons specific
+to its pitch: (1) a model that rewrites itself from whatever it is told is trivially poisoned by
+whoever is at the keyboard, and it cannot tell truth from a confident lie (the bluff problem,
+inverted); (2) online updates drift with no evaluation gate, and Pagouro's central claim is a
+*measured* bluff rate on a frozen suite; a model that changes hourly has no measurable number;
+(3) it breaks provenance: the weights on the stick would no longer be the hashed, signed weights
+in the manifest (D-14). Rule: **weight changes are explicit, versioned, reversible adapter files,
+run through the frozen suite before they are kept, never silent.** The same discipline as a
+release, at the scale of one user's machine.
