@@ -111,6 +111,8 @@ def main() -> int:
     ap.add_argument("--bf16", action="store_true", help="autocast to bfloat16 on CUDA")
     ap.add_argument("--data-on-gpu", action="store_true", help="hold train/val tokens in device memory")
     ap.add_argument("--compile", action="store_true", help="torch.compile the model (CUDA; measures the MFU gain, D-55)")
+    ap.add_argument("--grad-accum", type=int, default=1,
+                    help="micro-batches per optimizer step; tokens/step = batch * seq * accum (2026-09-18: batch 64 x 1024 OOMs a 44 GB A40 on the 32k-vocab logits)")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--seed", type=int, default=1337)
     # Paths are arguments so the ablation pilot can run isolated arms without
@@ -177,14 +179,14 @@ def main() -> int:
     print(f"parameters   : {raw_model.num_parameters():,} "
           f"({raw_model.num_parameters(non_embedding=True):,} non-embedding)")
     print(f"tokens avail : {meta['train_tokens']:,} train / {meta['val_tokens']:,} val")
-    print(f"tokens/step  : {a.batch_size * a.seq_len:,}")
+    print(f"tokens/step  : {a.batch_size * a.seq_len * a.grad_accum:,} ({a.batch_size} x {a.seq_len} x accum {a.grad_accum})")
     print(f"steps        : {start_step} -> {a.max_steps}")
     print(f"log          : {os.path.relpath(a.log, ROOT)}\n")
 
     log = io.open(a.log, "a", encoding="utf-8", newline="\n")
     model.train()
     t0 = time.time()
-    tokens_seen = start_step * a.batch_size * a.seq_len
+    tokens_seen = start_step * a.batch_size * a.seq_len * a.grad_accum
     best_val = float("inf")
 
     end_step = a.stop_at if a.stop_at else a.max_steps
@@ -193,19 +195,23 @@ def main() -> int:
         for g in opt.param_groups:
             g["lr"] = lr
 
-        x, y = get_batch(train_data, a.batch_size, a.seq_len, device, rng)
-        with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=use_amp):
-            _, loss = model(x, targets=y)
         opt.zero_grad(set_to_none=True)
-        loss.backward()
+        loss_sum = 0.0
+        for _micro in range(a.grad_accum):
+            x, y = get_batch(train_data, a.batch_size, a.seq_len, device, rng)
+            with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=use_amp):
+                _, loss = model(x, targets=y)
+            (loss / a.grad_accum).backward()
+            loss_sum += loss.item()
+        loss = torch.tensor(loss_sum / a.grad_accum)          # logged value: mean over micro-batches
         gnorm = torch.nn.utils.clip_grad_norm_(model.parameters(), a.grad_clip)
         opt.step()
 
-        tokens_seen += a.batch_size * a.seq_len
+        tokens_seen += a.batch_size * a.seq_len * a.grad_accum
 
         if step % 20 == 0 or step == a.max_steps - 1 or step == end_step - 1:
             el = time.time() - t0
-            tps = (tokens_seen - start_step * a.batch_size * a.seq_len) / max(el, 1e-9)
+            tps = (tokens_seen - start_step * a.batch_size * a.seq_len * a.grad_accum) / max(el, 1e-9)
             rec = {"step": step, "loss": round(loss.item(), 4), "lr": round(lr, 7),
                    "grad_norm": round(float(gnorm), 3), "tokens": tokens_seen,
                    "elapsed_s": round(el, 1), "tokens_per_s": round(tps, 1)}
