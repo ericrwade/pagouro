@@ -59,7 +59,7 @@ Last full walk: 2026-09-17.
 | C8 | Multi-turn conversation in SFT (implied by "double-click, chat") | NOT STARTED | `train_sft.py` handles one user/assistant pair only; the stick model degrades on the second turn |
 | C9 | Synthetic data from a permissively licensed teacher; Claude/commercial APIs never generate training data (43, 230) | DONE as policy, PARTIAL in data | D-30: run DeepSeek's open weights locally rather than an API. 30 crypto items exist |
 | C10 | Optional DPO on good-vs-worse pairs (27) | NOT STARTED | Later |
-| C11 | Tool-use trajectories synthesized with a teacher; grammar-constrained decoding in the harness (78) | NOT STARTED | North star, post-1B |
+| C11 | Tool-use trajectories synthesized with a teacher; grammar-constrained decoding in the harness (78) | NOT STARTED | D-51: agent is v1.1; app must be a harness over `llama-server` from the start; tools sandboxed, READ-ONLY/CAN ACT toggle |
 
 ## D. The application
 

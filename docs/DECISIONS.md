@@ -1058,3 +1058,68 @@ D-6). A 3B "massive" tier costs roughly 9x, breaks the stick-and-old-laptop prom
 100x undertrained against Qwen/SmolLM at its size, so it buys neither the product story nor a
 capability win. Not unless the project is funded (D-6's rejection stands). Same scripts, different
 `--dim`/`--layers`; the cost is entirely tokens.
+
+### D-49 addendum — reference implementation for the gauge
+**2026-09-17, Eric.** Hermes Agent's CLI shows context fill as a row of ASCII boxes (about ten)
+that change colour one at a time as the window fills, green to yellow. That is the right
+minimum: it works in a plain console, needs no graphics, and reads at a glance. The D-49 design
+(segments, the dropping block with its first words) is the full version for the app; the
+ten-box row is the version the console launcher can have as soon as the launcher is a harness
+process rather than bare `llama-cli` (see D-51). Red for the last box; the block that leaves is a
+box that empties from the left.
+
+### D-51 — An agent on the stick: yes, as v1.1, tool-assisted before autonomous, and sandboxed
+**2026-09-17.** Eric: the industry's attention is on agents; a tool-powered autonomous agent
+living on a USB stick would be remarkable; is it possible? The origin conversation (line 78)
+already made tool use the "north star" and set the size to ~1B partly for it (D-6). This entry
+turns that into a plan and a set of constraints.
+
+**Possible: yes.** Everything an agent needs fits on the stick beside the model: `llama-server`
+(already in the llama.cpp bundle), a small harness process that runs the loop (ask the model,
+parse a tool call, run the tool, feed the result back, repeat), and the tools themselves, which
+for an offline stick are local: a calculator, date/time, search over the retrieval packs, read a
+file the user points at, write a note to a workspace folder, and, in ONLINE mode, web search and
+fetch. None of that needs a GPU or a network. The stick becomes the agent's home in the same way
+it is the model's, which is the hermit-crab metaphor doing more work.
+
+**Capability, honestly.** Tool use is a format plus judgement. The FORMAT (emit a valid call with
+the right arguments) is learnable by a 1B model and is made unbreakable by llama.cpp's
+grammar-constrained decoding: every call is syntactically valid by construction. The JUDGEMENT
+(when to call, which tool, chaining steps, noticing a bad result and recovering) is where small
+models are weak; the industry's small agentic models (Qwen 1.5B, SmolLM2 1.7B, Phi) do one- and
+two-step tool chains reliably and fall apart on long plans. At 1B, expect a competent assistant
+with a checklist, not an autonomous operator: "search the survival pack for water purification,
+compute the dose for 20 litres with the calculator, cite the passage" is a realistic two-tool
+chain; "reorganise my documents folder" is not. Write the harness to compensate for the model,
+never to trust it (origin 78): constrained decoding, one tool per turn, results shown to the user,
+and a step budget.
+
+**Order of work.** The chat model comes first; the agent is a layer over it. The one decision that
+must be made NOW so the agent is cheap later: **the app is a harness process talking to
+`llama-server`, not a `.bat` around `llama-cli`.** That single architecture choice is what makes
+the context gauge (D-49), ONLINE/OFFLINE with search (ledger D2), SAND/STONE (D-19), retrieval
+packs (D6) and tools one codebase. Then, for the agent: (1) tool-turn examples in SFT, synthesised
+with the DeepSeek open-weights teacher (D-30) as question -> call -> actually executed result ->
+answer, including failures (ledger C11); (2) a tool-use axis in the frozen eval, scored the same
+two-sided way as bluffing: did it call when it should, did it refrain when it shouldn't, did it
+say "I can't do that with the tools I have" instead of pretending; (3) the sandbox below.
+
+**The sandbox is not optional, and it changes the promise.** A chat model on a stick can only
+say things. An agent can DO things on a stranger's computer, and `THREAT_MODEL.md` is binding
+here: an agent that writes to the host disk breaks "nothing you type is saved" unless the user
+turned that on. Constraints: tools are an explicit allowlist, never a shell; file access is
+confined to the stick's own workspace folder plus paths the user names in that session; nothing
+outside the workspace is deleted or overwritten, ever; the READ-ONLY / CAN ACT state is a third
+top-of-screen toggle beside ONLINE/OFFLINE and SAND/STONE, defaulting to READ-ONLY; every tool
+call is printed before it runs and the result after; a step budget per request. The name of the
+third toggle is open; the behaviour is not.
+
+**Why this fits the pitch instead of diluting it.** A model that does not bluff and an agent that
+does not overreach are the same property: knowing the edge of what it can do and saying so. A
+small agent that says "I don't have a tool for that" and "that passage doesn't answer it" is
+rarer and more useful than a large one that improvises. And it is the direct, open, offline
+version of what the calibrated-decision labs (Jev) are selling hosted (origin 205).
+
+**Not in v1.0.** The 1B chat model ships first with the harness architecture in place. The agent
+is v1.1, or a pack, or a fork; the origin's "finished artifact, no maintenance promise" stance
+(ledger F12) means it must be either in the release or explicitly not, never "coming."
