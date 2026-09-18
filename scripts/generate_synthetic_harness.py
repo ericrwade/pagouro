@@ -226,7 +226,9 @@ def fmt_num(v) -> str:
 # --------------------------------------------------------------------------
 # generators. Each returns a list of {"kind", "messages"} rows.
 # --------------------------------------------------------------------------
-def gen_router(t: Teacher, rng: random.Random, packs: Packs) -> list[dict]:
+def gen_router(t: Teacher, rng: random.Random, packs: Packs, only_none: bool = False) -> list[dict]:
+    """only_none: generate just the 'none' class (D-56: spurious calls rose when only 18% of
+    router rows were no-tool examples; the main loop tops 'none' up to 40%)."""
     rows = []
     spec = {
         "calc": ("needs arithmetic to answer (percentages, unit conversions with a given factor, totals, averages, powers). Give the exact arithmetic expression using only numbers and + - * / ( ) ** %.", "expression"),
@@ -237,6 +239,8 @@ def gen_router(t: Teacher, rng: random.Random, packs: Packs) -> list[dict]:
         "none": ("is an ordinary question or remark that needs NO tool: a definition, an opinion, a comparison, a greeting, a question about something that may not exist, a request for a short explanation, or a question about the assistant itself.", None),
     }
     for tool, (desc, argkey) in spec.items():
+        if only_none and tool != "none":
+            continue
         topic = rng.choice(TOPICS)
         argline = f' "{argkey}": string,' if argkey else ""
         props = {"message": STR}
@@ -447,10 +451,14 @@ def main() -> int:
     evals = load_eval_prompts()
     seen = existing_user_messages()
     counts: dict[str, int] = {}
+    none_rows = 0
     if os.path.exists(OUT):
         for line in io.open(OUT, encoding="utf-8"):
             try:
-                counts[json.loads(line)["kind"]] = counts.get(json.loads(line)["kind"], 0) + 1
+                d = json.loads(line)
+                counts[d["kind"]] = counts.get(d["kind"], 0) + 1
+                if d["kind"] == "router" and '"tool":"none"' in d["messages"][-1]["content"]:
+                    none_rows += 1
             except Exception:
                 pass
     log(f"start: existing {counts}, {len(seen)} known user messages, {len(evals)} eval prompts")
@@ -468,6 +476,10 @@ def main() -> int:
                 log("time budget reached")
                 break
             need = [k for k in kinds if counts.get(k, 0) < a.per_class and empty_streak.get(k, 0) < 6]
+            # D-56 rebalance: keep adding no-tool router rows until they are 40% of the router class
+            want_none = counts.get("router", 0) >= a.per_class and none_rows < 0.4 * counts.get("router", 0)
+            if want_none and empty_streak.get("router_none", 0) < 6:
+                need.append("router_none")
             if not need:
                 log("targets met")
                 break
@@ -478,6 +490,9 @@ def main() -> int:
                     batch += r
                 if "tool_answer" in need:
                     batch += gen_tool_answers(t, rng, packs, r)
+            if "router_none" in need:
+                for _ in range(3):
+                    batch += gen_router(t, rng, packs, only_none=True)
             if "grounded" in need:
                 batch += gen_grounded(t, rng)
             if "abstain" in need or "confident" in need:
@@ -500,15 +515,18 @@ def main() -> int:
                         dropped += 1
                         continue
                     seen.add(key)
+                    if row["kind"] == "router" and row.get("_tool") == "none":
+                        none_rows += 1
                     out = {"kind": row["kind"], "source": SOURCE, "messages": row["messages"]}
                     f.write(json.dumps(out, ensure_ascii=False) + "\n")
                     counts[row["kind"]] = counts.get(row["kind"], 0) + 1
                     kept += 1
             kept_total += kept
             for k in need:
-                empty_streak[k] = 0 if any(r["kind"] == k for r in batch) else empty_streak.get(k, 0) + 1
+                kk = "router" if k == "router_none" else k
+                empty_streak[k] = 0 if any(r["kind"] == kk for r in batch) else empty_streak.get(k, 0) + 1
             el = (time.time() - t0) / 3600
-            log(f"+{kept} kept ({dropped} dropped total) -> {counts} | {t.tokens_out} teacher tokens, {t.tokens_out / max(1, time.time() - t0):.1f} tok/s, {el:.2f} h")
+            log(f"+{kept} kept ({dropped} dropped total, none-router {none_rows}) -> {counts} | {t.tokens_out} teacher tokens, {t.tokens_out / max(1, time.time() - t0):.1f} tok/s, {el:.2f} h")
     finally:
         t.stop()
     log(f"done: {kept_total} rows this run, totals {counts}")
