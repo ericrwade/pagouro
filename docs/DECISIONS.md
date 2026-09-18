@@ -20,6 +20,7 @@ evidence genuinely contradicts a LOCKED item, say so once, plainly, and let Eric
 |---|---|---|---|
 | O-10 | Disclosure text for the three chains | release | Chains settled in D-36. Still needs Eric's holdings disclosure and the published cost comparison. |
 | O-12 | Context length: 4k or 8k | milestone 1 config | Retrieval needs room; extending after training is degraded. Decide with the tokenizer. |
+| O-15 | Answerability gate (a Jev-shaped typed decision before prose) | post-Flash experiment | Before free text, the model answers {"can_answer": bool, "confidence": 0-1} under a grammar; the harness abstains or answers. Calibration must be TRAINED (RLCD-style, from right/wrong-labelled examples) or the number is decoration. Try on the Flash model, score the calibration curve on the frozen suite. Jev (TypeSafe, launched 2026-09-15, closed API) is the hosted version of the same bet; not a dependency (D-30, offline). |
 | O-13 | Does the N95 status page count as telemetry? | the demo page | It publishes the BOX's own stats, never a visitor's. Decide the wording so it cannot be misread as user telemetry, which the project forbids. |
 | O-3 | Data-retention posture on OpenRouter | confidential work only | Review <https://openrouter.ai/settings/privacy> if anything sensitive is ever sent. |
 | O-6 | Enable the aixbt crypto MCP? | only if needed | Verified working 2026-09-16; public tools need no key. Costs context every session. See `MCP_AIXBT.md`. |
