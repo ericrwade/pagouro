@@ -26,8 +26,8 @@ Built on existing open corpora with ledger rows, tokenized on a CPU pod with `to
 | Q&A | ~8% | Stack Exchange | CC BY-SA |
 | canon + government | ~10% | Gutenberg canon (D-38), US gov works | public domain |
 
-The decay phase (last 10B tokens) shifts to a domain-heavy mix (canon, Stack Exchange economics,
-bitcointalk voice, crypto synthetic) per D-9. Every row gets its `corpus.json` entry before
+The decay phase (last 10B tokens) shifts to a domain-heavy mix (canon, the shelf, Stack Exchange economics,
+crypto synthetic — bitcointalk EXCLUDED per D-60) per D-9. Every row gets its `corpus.json` entry before
 training starts; nothing pre-2022-claimed is mixed with synthetic (D-34).
 
 ## Cost, from measurement
