@@ -1603,3 +1603,12 @@ and the memory feature going from 0/10 to 10/10.
 **2026-09-19, Eric: "Both."** Within the $165 RunPod balance ($7.54 spent so far); one A40 at
 ~$0.49/h, created, used and deleted in the same session; plan and price on issue #2 before the
 create call (D-54). Budget stated: ~$0.10 for (i), ~$1 for (ii); ceiling for the pair $5.
+
+### D-66 — Re-OCR the shelf's scanned works with LightOnOCR (closes O-26)
+**2026-09-19, Eric: "Yes."** The nine archive.org-OCR shelf works (FAA PHAK + AFH, TM 9-8000,
+NEETS 1/2/13, TM 10-412, MUTCD 2009, USDA canning, NASA SP-4201/4205 — plus the survival pack)
+get re-OCR'd from their page images with LightOnOCR-2-1B (Apache-2.0) on the A40, batched,
+in the same rental as D-65 (~$1–2, ceiling $5 for the three jobs together, $10 overall).
+Rights unchanged (US Government works); the OCR engine, model version and per-file stats go on
+each ledger row; the old text files are kept beside the new ones until the new rows are verified,
+then superseded. The packs on the stick are refreshed from the same output.
