@@ -37,7 +37,9 @@ def main() -> int:
         words += len(text.split())
         parts.append("\n\n---\n\n" + text)
     io.open(OUT, "w", encoding="utf-8", newline="\n").write("".join(parts))
-    print(f"wrote {OUT}: {len(files)} chapters, {words:,} words")
+    story = [f for f in files if f[:2].isdigit() and "do-it" not in f]
+    print(f"wrote {OUT}: {len(files)} chapters, {words:,} words "
+          f"({len(story)} story/all-rights-reserved, {len(files) - len(story)} CC BY-SA 4.0; D-64)")
     for f in files:
         print("  ", f)
     return 0

@@ -63,10 +63,14 @@ see" (a number or an output line) so they know it worked.
   are paraphrased, not presented as a co-author's prose. Eric's quoted messages are his words.
 - The origin transcript is never quoted at length (D-52). `docs/ORIGIN.md` is the ceiling.
 - Every number traces to a log or eval file in the repo (cite the file in a footnote).
-- Licence for the book: **Eric's call** (O-20). Options: CC BY-SA 4.0 like the weights (consistent,
-  forkable, and the DO-IT chapters are mostly repo docs already under Apache 2.0), or all rights
-  reserved for the story chapters with the instruction chapters CC BY-SA. Price in dollars if
-  sold (F17), tip jar either way.
+- Licence for the book (**D-64, Eric 2026-09-19**): STORY chapters and signposts all rights
+  reserved; DO-IT chapters and generated appendices CC BY-SA 4.0. Each chapter file says which at
+  the top. Price in dollars if sold (F17), tip jar either way.
+- **Signposts** (Eric): short connective passages between chapters — "this is where we tested
+  whether adding X, Y and Z would change the output, so we tested it" — so the reader always knows
+  where they are. Written once the draft is whole enough to see the gaps. Candidates: the pivot to
+  the canon (D-10); the shelf ablation (D-58/D-61); the decay redesign (D-61); the three integrity
+  findings (D-60/D-63); memory 0/10 → 10/10.
 - Marketing wording rule D-50 applies to the cover and the blurb.
 
 ## Process from here

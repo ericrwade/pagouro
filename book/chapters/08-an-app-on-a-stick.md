@@ -1,5 +1,7 @@
 # Chapter 8 — An app on a stick
 
+*Licence: all rights reserved (story strand, D-64).*
+
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 7 with the morning after
 (Day 7's app transcript, D-53) and later corrections as footnotes.*
 

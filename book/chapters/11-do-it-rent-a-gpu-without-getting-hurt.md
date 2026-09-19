@@ -1,5 +1,7 @@
 # Chapter 11 — Do it: rent a GPU without getting hurt
 
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
+
 *DO-IT chapter, draft 1 (2026-09-19). Numbers from `docs/RUNPOD_JOB.md`, `docs/DECISIONS.md`
 D-54/D-55/D-61, the RunPod billing API, and the run logs under `runs/runpod/`; footnotes name
 the file.*

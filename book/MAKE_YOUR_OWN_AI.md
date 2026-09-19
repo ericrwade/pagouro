@@ -7,6 +7,8 @@
 
 # Chapter 4 — Do it: a corpus you can defend
 
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
+
 *DO-IT chapter, draft 1 (2026-09-18). Every number here comes from `corpus.json` or a script in
 the repo on that date; footnotes name the file.*
 
@@ -238,6 +240,8 @@ The fetcher fix and the re-hash are in the same commit as this chapter draft.
 
 # Chapter 6 — Do it: measure honesty
 
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
+
 *DO-IT chapter, draft 1 (2026-09-18). Numbers from `evals/BASELINES.md`, `evals/results/`,
 and `docs/DECISIONS.md`; footnotes name the file.*
 
@@ -427,6 +431,8 @@ answered-real unchanged, after retraining on 1,982 conversations instead of 306.
 
 # Chapter 7 — The machine stopped
 
+*Licence: all rights reserved (story strand, D-64).*
+
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 6 and Day 6 evening. The
 log entries stand as written on their days; where later work corrected a number, the correction
 is a footnote here, not a rewrite.*
@@ -581,6 +587,8 @@ the project's standing rules.
 
 # Chapter 8 — An app on a stick
 
+*Licence: all rights reserved (story strand, D-64).*
+
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 7 with the morning after
 (Day 7's app transcript, D-53) and later corrections as footnotes.*
 
@@ -695,6 +703,8 @@ d. 1891), a nameable basis. An open question is not a licence.
 ---
 
 # Chapter 11 — Do it: rent a GPU without getting hurt
+
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
 
 *DO-IT chapter, draft 1 (2026-09-19). Numbers from `docs/RUNPOD_JOB.md`, `docs/DECISIONS.md`
 D-54/D-55/D-61, the RunPod billing API, and the run logs under `runs/runpod/`; footnotes name
@@ -836,7 +846,7 @@ $7.54 total; D-61.
 
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 63 decisions, 14 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 64 decisions, 14 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -905,6 +915,7 @@ $7.54 total; D-61.
 | D-61 | 2026-09-19 | Pagouro Flash (126M, 2B tokens): the numbers, the decay that ate itself, and the shelf ablation |
 | D-62 | 2026-09-19 | The Stack: keep with the caveat now, replace with a dated code source before the 1B volume |
 | D-63 | 2026-09-19 | *The Law* leaves the anneal: an "unclear = no" that was only half applied |
+| D-64 | 2026-09-19 | The book's licence and its connective tissue (closes O-20) |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -1004,6 +1015,8 @@ $7.54 total; D-61.
 ---
 
 # Appendix C — Glossary
+
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
 
 *Draft 1 (2026-09-19). Plain-language definitions, with the number Pagouro actually uses where
 there is one. Terms are in the order a reader meets them, not alphabetical; the index at the

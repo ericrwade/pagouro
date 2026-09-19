@@ -1,5 +1,7 @@
 # Chapter 7 — The machine stopped
 
+*Licence: all rights reserved (story strand, D-64).*
+
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 6 and Day 6 evening. The
 log entries stand as written on their days; where later work corrected a number, the correction
 is a footnote here, not a rewrite.*

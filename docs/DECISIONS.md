@@ -1584,3 +1584,17 @@ canon through *Economic Sophisms* (Stirling, d. 1891). Numbering note: the "O-14
 collided with an earlier O-14 closed by D-34; both are now resolved. Lesson for the process: a
 rights question opened against a source must either close with a basis or remove the source from
 the next mixture build — an open question is not a licence.
+
+### D-64 — The book's licence and its connective tissue (closes O-20)
+**2026-09-19, Eric: "B."** Story chapters all rights reserved (Eric's narrative, his to sell
+exclusively); instruction chapters and the generated appendices CC BY-SA 4.0, matching the weights
+and the repo docs they are rewritten from. Each chapter file states which it is at the top; the
+build script prints the split.
+
+Eric also asked for **roadsign narrative**: short connective passages between chapters — "this is
+where we tested whether adding X, Y and Z would change the output, so we tested it" — high-level
+milestones so a reader always knows where they are in the build. Adopted as a chapter type,
+*signpost* (a few hundred words each, story-strand licence), written once the draft is whole
+enough to see the gaps; candidates so far: the pivot from bitcointalk to the canon (D-10), the
+shelf ablation (D-58/D-61), the decay redesign (D-61), the three integrity findings (D-60/D-63),
+and the memory feature going from 0/10 to 10/10.

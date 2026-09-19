@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 63 decisions, 14 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 64 decisions, 14 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -69,6 +69,7 @@
 | D-61 | 2026-09-19 | Pagouro Flash (126M, 2B tokens): the numbers, the decay that ate itself, and the shelf ablation |
 | D-62 | 2026-09-19 | The Stack: keep with the caveat now, replace with a dated code source before the 1B volume |
 | D-63 | 2026-09-19 | *The Law* leaves the anneal: an "unclear = no" that was only half applied |
+| D-64 | 2026-09-19 | The book's licence and its connective tissue (closes O-20) |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 

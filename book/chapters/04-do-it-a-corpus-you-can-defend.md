@@ -1,5 +1,7 @@
 # Chapter 4 — Do it: a corpus you can defend
 
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
+
 *DO-IT chapter, draft 1 (2026-09-18). Every number here comes from `corpus.json` or a script in
 the repo on that date; footnotes name the file.*
 

@@ -1,5 +1,7 @@
 # Chapter 6 — Do it: measure honesty
 
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
+
 *DO-IT chapter, draft 1 (2026-09-18). Numbers from `evals/BASELINES.md`, `evals/results/`,
 and `docs/DECISIONS.md`; footnotes name the file.*
 

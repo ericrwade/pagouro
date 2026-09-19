@@ -1,5 +1,7 @@
 # Appendix C — Glossary
 
+*Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
+
 *Draft 1 (2026-09-19). Plain-language definitions, with the number Pagouro actually uses where
 there is one. Terms are in the order a reader meets them, not alphabetical; the index at the
 end is alphabetical.*
