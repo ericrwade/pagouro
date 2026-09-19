@@ -1630,3 +1630,18 @@ a concrete, checkable goal and a corpus signal: the training set gets a delibera
 crustacean/marine/shell imagery from the CC0 museum and natural-history collections (Smithsonian,
 Biodiversity Heritage Library, Met) so the model has actually seen a hermit crab. The hundred
 logos are also the first thing the book shows the model drawing.
+
+### D-68 — Beyond English and America: both moves, plus register-following spelling (closes O-27)
+**2026-09-19, Eric: "both", and: can it be bilingual in English — colour and color?** Adopted:
+(i) de-Americanise the shelf in English with PD world literature/philosophy in translation and
+other governments' open-licence works (UK OGL v3, CA/AU/NZ, EU; verified per source); (ii) a 2–5%
+Latin-script multilingual slice (fr/es/de/pt, dump-dated) in the backbone, kept only if a
+Flash-scale ablation and a ten-item fr/es calibration set say it costs nothing; never claimed as
+"multilingual" on the box. (iii) **Spelling register:** the tokenizer is not the obstacle
+("colour" and "color" are distinct tokens, like "grey"/"gray"); the corpus is already mixed
+(British canon and Britannica, American web and manuals), so today's model is inconsistent within
+an answer. Rather than normalise the corpus (edits PD texts, loses information), teach the model
+to **match the user's spelling**: a program-generated British-spelling variant of the SFT set
+(dictionary swap, ~1,700 pairs), paired with British-spelled questions; measured by a ten-item
+set, five per spelling, scored on whether the answer's spellings match the question's. "Follows
+your spelling" goes on the box only if the number says so. Built after the D-65/D-66 GPU jobs.
