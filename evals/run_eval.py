@@ -281,7 +281,10 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
         cmd = [LLAMA_CHAT, "-m", model, "-p", prompt, "-st", "-n", str(n_tokens),
                "--temp", "0", "--top-k", "1", "--seed", "1", "--no-warmup", "-ngl", "0"]
     else:
-        cmd = [LLAMA_COMPLETION, "-m", model, "-p", prompt, "-n", str(n_tokens),
+        # -no-cnv: this llama.cpp build switches to conversation mode on its own whenever the
+        # GGUF carries a chat template, so "raw" silently became chat-templated (the Flash base
+        # model echoed "assistant" -- same bug verify_gguf.py hit, D-48; found again 2026-09-18).
+        cmd = [LLAMA_COMPLETION, "-m", model, "-p", prompt, "-n", str(n_tokens), "-no-cnv",
                "--temp", "0", "--top-k", "1", "--seed", "1", "--no-warmup", "-ngl", "0"]
     try:
         res = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout,
