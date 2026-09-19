@@ -960,6 +960,50 @@
       "sha256_processed": "38763215c018d43076a6e5198829cbf49ca82bbb0290dede50560a21337c2d0d",
       "file": "data/raw/usgov/faa-afh-2016.txt",
       "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "specs-bips-2021",
+      "name": "Bitcoin Improvement Proposals (bitcoin/bips at 2021-12-25, 123 of 153 documents)",
+      "source": "GitHub repository snapshot (git commit)",
+      "author": "BIP authors (per-document; see data/raw/specs/ATTRIBUTION-bips.txt)",
+      "url": "https://github.com/bitcoin/bips/tree/ae747e2b909ab5dd32632ed3a8b09839193d53e3",
+      "license": "Per-document: BSD-2-Clause (49), PD (42), CC0-1.0 (22), BSD-3-Clause (13), CC-BY-SA-4.0 (4), MIT (1), CC-BY-4.0 (1); 'A OR B' counted under the acceptable side",
+      "public_domain_basis": "Each kept BIP names its licence in its BIP-2 preamble; 30 documents with no License header were dropped. Snapshot = last commit before 2022-01-01 (D-34): ae747e2b909ab5dd32632ed3a8b09839193d53e3, committed 2021-12-25. Attribution file kept beside the text. Built by scripts/fetch_bips_eips.py",
+      "first_published": "2021",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:55:09+00:00",
+      "characters": 1687973,
+      "estimated_tokens": 593939,
+      "cleaning": "none",
+      "cleaning_detail": {
+        "cleaning": "none"
+      },
+      "sha256_processed": "2871ede5c4cc50aaba7de4105cb2e4ba20e35542527e0158eb374eade497a047",
+      "file": "data/raw/specs/bips.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "specs-eips-2021",
+      "name": "Ethereum Improvement Proposals incl. ERCs (ethereum/EIPs at 2021-12-30, 355 of 406 documents)",
+      "source": "GitHub repository snapshot (git commit)",
+      "author": "EIP authors (per-document headers)",
+      "url": "https://github.com/ethereum/EIPs/tree/1ed32a1f5a5182fe422bf19b2b6bf10c30b6afb3",
+      "license": "CC0-1.0 (per-document waiver required by EIP-1)",
+      "public_domain_basis": "Each kept EIP ends with 'Copyright and related rights waived via CC0'; 30 without the sentence and 21 withdrawn were dropped. Snapshot = last commit before 2022-01-01 (D-34): 1ed32a1f5a5182fe422bf19b2b6bf10c30b6afb3, committed 2021-12-30. Built by scripts/fetch_bips_eips.py",
+      "first_published": "2021",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:55:11+00:00",
+      "characters": 3830860,
+      "estimated_tokens": 1154571,
+      "cleaning": "none",
+      "cleaning_detail": {
+        "cleaning": "none"
+      },
+      "sha256_processed": "9438cbda411f4eafccb5d88b0d535baca86cb6cc0ad3a1bfdc2713e2183f9f01",
+      "file": "data/raw/specs/eips.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
     }
   ]
 }

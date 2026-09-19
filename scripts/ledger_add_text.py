@@ -73,7 +73,7 @@ def main() -> int:
     sha = hashlib.sha256(text.encode("utf-8")).hexdigest()
     now = datetime.now(timezone.utc)
     row = {
-        "slug": a.slug, "name": a.name, "source": "archive.org / publisher PDF text" if "archive.org" in a.url else "publisher",
+        "slug": a.slug, "name": a.name, "source": ("archive.org OCR text" if "archive.org" in a.url else "GitHub repository snapshot (git commit)" if "github.com" in a.url else "publisher"),
         "author": a.author, "url": a.url, "license": a.license, "public_domain_basis": a.basis,
         "first_published": str(a.published), "published_before_generative_ai": a.published < 2022,
         "retrieved": now.date().isoformat(), "retrieved_utc": now.isoformat(timespec="seconds"),
