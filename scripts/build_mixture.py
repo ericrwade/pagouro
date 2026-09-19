@@ -32,8 +32,8 @@ PRETRAIN_MIX = [
     # codeparrot/github-code-clean earlier -- see docs/CORPUS_PLAN.md 2a).
     # Its 20% share is redistributed to FineWeb-Edu and Wikipedia, both of
     # which succeeded and serve an overlapping role (educational/general web).
-    ("fineweb-edu-big.txt",                        0.45),
-    ("fineweb-edu-sample-10BT.txt",                 0.10),  # M1's original slice, reused
+    ("fineweb-edu-big-pre2022.txt",                0.45),  # O-22: dump-dated (CC-MAIN-2013..2021); the undated slice is superseded
+    ("fineweb-edu-sample-10BT-pre2022.txt",         0.10),  # O-22: dump-dated re-fetch of M1's slice
     ("the-stack-python.txt",                        0.08),
     ("the-stack-rust.txt",                          0.04),
     ("the-stack-go.txt",                            0.04),
@@ -165,7 +165,7 @@ def main() -> int:
             anneal_parts.append(synth_text)
             print(f"  {'sft/crypto_synthetic.jsonl (as text)':<45} {len(synth_text)/1e6:6.1f}M chars")
     # Add the highest-quality pretrain slice too, per brief section 6's annealing guidance.
-    fw = read_if_exists("fineweb-edu-sample-10BT.txt")
+    fw = read_if_exists("fineweb-edu-sample-10BT-pre2022.txt")
     if fw:
         anneal_parts.append(fw[: len(fw) // 4])   # a slice of it, not all of it
 

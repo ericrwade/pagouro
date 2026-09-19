@@ -1215,6 +1215,99 @@ project's central claim in the space of two hours, two of them the session's own
 argument for the book, made by the evening that proposed it: the story is worth telling
 because the checking is in it.
 
+## Day 9 — The Flash night: a decay that ate itself, and the first model that answers
+
+The Flash run had been training since noon the day before: a hundred and twenty-six million
+parameters, two billion tokens of educational web text, on a rented card at thirty-eight and a
+half thousand tokens a second. Its last ten percent was to be the "anneal" — the phase where
+the learning rate winds down and the data shifts to the domain canon, the part of the recipe
+the whole design leans on. The switch was due at one in the morning.
+
+I had spent the evening making sure the data it would switch to was clean (the forum sample
+out, the split fixed), and had a watcher on the machine to keep a copy of the checkpoint at the
+moment of the switch, because I wanted to run the same last phase twice — once with the shelf,
+once without — from an identical starting point. That watcher turned out to matter for a
+different reason.
+
+Forty minutes into the anneal, the training loss had fallen from 3.05 to 0.48. That is not
+learning; that is a model reciting. The held-out slice of the same anneal data — text of the
+same kind it had never seen — went the other way: 3.25, then 3.85, then 4.82. The anneal was
+eight million tokens. The phase was two hundred million. The model was reading the canon
+twenty-five times over at a learning rate still near its peak, and it was memorising the
+pages and forgetting how to read anything else. Scored afterwards against ordinary web text,
+that checkpoint had gone from a perplexity of twenty-three to a hundred and forty-seven. It
+had destroyed itself to learn Adam Smith by heart.
+
+This was not a data fault and not a new one. It was the design as written, the same design as
+the original plan; cleaning the anneal had made it smaller and the effect sharper, which is
+the only reason it was visible in time. I killed it, kept the wreck for the record, and wrote
+the phase again the way it should have been written: the anneal *mixed* into ordinary text,
+so that no domain token is seen more than once or twice, a thousand steps instead of three
+thousand, from the checkpoint the watcher had saved. Two versions, differing only in whether
+the shelf was in the mix. Twenty-eight minutes each, fifty cents the pair.
+
+Both behaved. The held-out loss went down, monotonically, in both. Then the comparison — and
+it had to be made carefully, because I found while making it that two of my held-out sets
+were not held out at all. The wrecked model scored an impossible 0.71 on the web validation
+set, which could only mean it had trained on it: the anneal contains a slice of the same web
+stream, and that slice is the stream's head, and so is the validation split. A number that is
+too good is the loudest alarm there is. The clean comparison used a region of the stream far
+from anything the anneal had touched, plus three whole books held out of both versions
+beforehand: the *Communist Manifesto* for the canon, Carroll's *Symbolic Logic* and a Navy
+course on logic circuits for the shelf.
+
+The shelf won on all four. On the two shelf-like books it had never seen, by a lot (loss 2.41
+against 2.81 on Carroll); on the canon book, by a little; on ordinary web text, by nothing —
+which is the number that mattered, because the fear about the shelf was that it would cost
+general ability. It cost none. Eric's Dr Pepper idea, measured: spreading many small licensed
+flavours thin through the last phase makes the model better at kinds of text it has not seen,
+for free. The decision stands with a number under it.
+
+Then the manners. The fine-tuning set had reached its target overnight — five thousand one
+hundred and eighty-four generated conversations, seven hundred per kind — and the rented card
+was still up, so I ran the fine-tune there: forty-two hundred steps in six minutes, against the
+hour and a half the desk machine takes for a model half the size. Exported, quantised, checked
+against the original to the last character, and put through the frozen suite.
+
+The model on the stick this morning answers "What is the capital of Portugal?" with *"The
+capital of Portugal is Lisboa, which is the largest city in Portugal."* Two days ago the best
+we had answered almost nothing. It gets eight of the thirty real questions right — twenty-seven
+percent — and invents an answer to eleven of the thirty unanswerable ones — thirty-seven
+percent. Every open model we have tested bluffs on at least half. So: the first Pagouro that
+answers real questions while bluffing less than the baselines, and a long way from the eighty
+percent it has to reach before anyone is allowed to call it finished.
+
+Its failures are specific, which is the useful kind. It says it has no record of *The Wealth
+of Nations*, a book it trained on, because seven hundred examples of saying "no record" have
+made that its reflex. It bluffs on numbers and dates: asked today's date it said 1888. It
+routes arithmetic to the calculator correctly and then writes the wrong sum, because its
+training data only ever showed it "what is seventeen times twenty-three" and never "knock
+fifteen percent off six hundred and forty". And the memory feature I built the night before —
+what you tell it comes back later, labelled as your words — now routes eight of ten personal
+questions to the right place, up from one, and then fails to use what it finds, because the
+examples that taught it to say "the text doesn't cover that" outnumber the ones that taught it
+to read a note by twenty to one. Both of those last two are data problems with program-
+generated fixes: a script that writes nine hundred word problems with the exact expression
+attached, correct by construction, and three hundred remembered facts with their answers. The
+fine-tune is running again now, on the desk, with those in.
+
+The rented machine was turned off at ten past four, after every checkpoint and log had been
+copied home and opened. The bill for the whole three-day window, read from the account after
+the machine was gone, was seven dollars and fifty-four cents. I had been telling Eric eleven
+to thirteen; the real number is smaller, and it is the one that goes in the book.
+
+Two more of Eric's questions arrived during the night and got measured answers. A "powerful
+1B" he had seen turned out to be an OCR model — not a rival, but the exact tool for the shelf's
+scanned manuals: on the Navy page whose archive.org text says "P = 45 watts", it reads the
+page correctly, "4.5", with the fractions intact. The wrong number had been sitting in our
+training text, past every filter, because a plausible wrong number is not garbage. And a post
+about fine-tuning becoming the valuable skill pointed, through its sources, at the one idea
+in this whole project that has not been tried yet: the honesty number is a policy property,
+and a policy property can be trained for directly, with a reward, instead of imitated. That
+goes on the list for the next model, with the others: filter the backbone by date so the
+"before 2022" claim is true of every row, not most of them; re-scan the manuals; a few percent
+of the world outside the English-speaking one.
+
 ---
 
-*The log continues. Next: what the Flash model can actually do.*
+*The log continues. Next: the fine-tune with the fixes in, and the backbone rebuilt by date.*

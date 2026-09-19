@@ -368,7 +368,9 @@
       "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
       "sha256_processed": "6ac7f9537eda6b58b92fbc54ad685a7e6fdae9767fb4054711353cf02de16a30",
       "file": "data/raw/fineweb-edu-big.txt",
-      "milestone": "M1 pipeline check"
+      "milestone": "M1 pipeline check",
+      "slice": "SUPERSEDED 2026-09-19 by fineweb-edu-big-pre2022 (D-34/O-22): no date basis; the same stream position held ~44,480 post-2021 documents among 194k, so this slice was ~23% after the cutoff. Trained into the 59M and Flash models; not in any future mixture.",
+      "published_before_generative_ai": false
     },
     {
       "slug": "wikipedia-20231101.en",
@@ -437,7 +439,9 @@
       "estimated_tokens": 23835027,
       "sha256_processed": "afd9e36a1d543aeea688368fc08a1bbc0399e412e83bc3de691dad78a5e562fe",
       "file": "data/raw/fineweb-edu-sample-10BT.txt",
-      "repair_note": "Repaired 2026-09-16: original M1 fetch, overwritten by a slug collision with the bigger fetch. Restored from the file already on disk, no re-fetch."
+      "repair_note": "Repaired 2026-09-16: original M1 fetch, overwritten by a slug collision with the bigger fetch. Restored from the file already on disk, no re-fetch.",
+      "slice": "SUPERSEDED 2026-09-19 by fineweb-edu-sample-10BT-pre2022 (D-34/O-22): no date basis. Trained into M1/59M/Flash; not in any future mixture.",
+      "published_before_generative_ai": false
     },
     {
       "slug": "the-stack-python",
@@ -1445,6 +1449,64 @@
       "sha256_processed": "16fa58ffdf0524f5b8389f7d3cf46014ec56c9373583f061dac38edc3bf69298",
       "file": "sft/synthetic_harness.jsonl",
       "slice": "SFT (synthetic, tool-executed, filtered)"
+    },
+    {
+      "slug": "fineweb-edu-big-pre2022",
+      "name": "HuggingFaceFW/fineweb-edu",
+      "config": "sample-10BT",
+      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu",
+      "license": "ODC-By 1.0",
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T11:37:01+00:00",
+      "documents": 150000,
+      "characters": 693799621,
+      "bytes": 697490123,
+      "estimated_tokens": 173449905,
+      "mixture_share": null,
+      "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
+      "date_basis": {
+        "field": "dump",
+        "max": "CC-MAIN-2021-99",
+        "skipped_after_max": 44480,
+        "histogram": {
+          "CC-MAIN-2013-20": 50440,
+          "CC-MAIN-2017-26": 50200,
+          "CC-MAIN-2020-05": 49360
+        }
+      },
+      "published_before_generative_ai": true,
+      "sha256_processed": "8483405ea1f9d891b107262b2ab55fb48f723a63712f3ce23940b4c023710929",
+      "file": "data/raw/fineweb-edu-big-pre2022.txt",
+      "milestone": "M1 pipeline check"
+    },
+    {
+      "slug": "fineweb-edu-sample-10BT-pre2022",
+      "name": "HuggingFaceFW/fineweb-edu",
+      "config": "sample-10BT",
+      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu",
+      "license": "ODC-By 1.0",
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T11:37:58+00:00",
+      "documents": 20000,
+      "characters": 94558622,
+      "bytes": 95047181,
+      "estimated_tokens": 23639655,
+      "mixture_share": null,
+      "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
+      "date_basis": {
+        "field": "dump",
+        "max": "CC-MAIN-2021-99",
+        "skipped_after_max": 5560,
+        "histogram": {
+          "CC-MAIN-2013-20": 7555,
+          "CC-MAIN-2017-26": 6275,
+          "CC-MAIN-2020-05": 6170
+        }
+      },
+      "published_before_generative_ai": true,
+      "sha256_processed": "ee061646ea0437c78bfa048cccf615197193b507532eb25a173f88a021a690ee",
+      "file": "data/raw/fineweb-edu-sample-10BT-pre2022.txt",
+      "milestone": "M1 pipeline check"
     }
   ]
 }
