@@ -1561,3 +1561,13 @@ still wrong every time — a tokenizer/format problem to look at before the 1B S
 
 **Kept:** `checkpoints/flash_stable.pt`, `flash_mix_shelf.pt`, `flash_sft.pt`,
 `data/gguf_flash/`; all logs under `runs/runpod/d61/`. Pod deleted after the fetch was verified.
+
+### D-62 — The Stack: keep with the caveat now, replace with a dated code source before the 1B volume
+**2026-09-19, Eric: "A then B."** The Stack v1 (four rows, 160M tokens of Python/Rust/Go/Solidity)
+has no per-file dates and was collected to 2022-03-31, three months past the D-34 cutoff. It is
+the last corpus source without a pre-2022 basis (O-22). Decision: (a) keep it for Flash-scale
+work with the caveat written on its ledger rows and on the box — "code collected to 2022-03-31,
+per-file dates unavailable"; (b) before the 1B data volume is built, replace it with a code source
+that carries commit dates, filtered to ≤ 2021-12-31, so the pre-2022 claim holds for every row
+without a footnote. (b) is a prerequisite in `docs/JOB_1B.md`. Closes the O-22 decision list;
+the O-22 work itself finishes with (b).

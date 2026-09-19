@@ -14,7 +14,7 @@ not the product; on the frozen eval it routes tools at 54% and answers 7% of rea
 first rented-GPU run measured 62,000 tokens/s (D-55); a 126M "Flash" model is training. The
 corpus ledger holds 62 rows, including a 36-work "shelf" of licensed flavours for the anneal
 (D-58: government manuals, 1911 Britannica slices, BIPs/EIPs at pre-2022 commits, folk tales,
-recipes; every row dated before 2022 per D-34). The 1B model (D-6) waits on a thousand-fold larger
+recipes; every row dated before 2022 per D-34). The backbone now carries a date basis on every row except the code slice (The Stack: collected to 2022-03-31, per-file dates unavailable — kept with this caveat, to be replaced before the 1B run, D-62). The 1B model (D-6) waits on a thousand-fold larger
 SFT set (generating), a schedule fix (D-48), and Eric's launch. `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
 `docs/ORIGIN.md` for where this came from.
 

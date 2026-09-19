@@ -427,7 +427,9 @@
       "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
       "sha256_processed": "e8950c2803de73b4bd12bcd8379dd968cbfb791df924bdc1abec8fd1f0aeb9b3",
       "file": "data/raw/the-stack-solidity.txt",
-      "milestone": "M1 pipeline check"
+      "milestone": "M1 pipeline check",
+      "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
+      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
     },
     {
       "slug": "fineweb-edu-sample-10BT-original-M1",
@@ -457,7 +459,9 @@
       "estimated_tokens": 34368101,
       "sha256_processed": "eaa36f6fd5bd7491a0024da8a393c8861384dddca7ec929fb3ed247803ea8633",
       "file": "data/raw/the-stack-python.txt",
-      "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch."
+      "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch.",
+      "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
+      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
     },
     {
       "slug": "the-stack-rust",
@@ -471,7 +475,9 @@
       "estimated_tokens": 44345466,
       "sha256_processed": "c1e7056d67838b3913204a3ee86af54ee36286a540c5fe64f8681ffa8d38f81b",
       "file": "data/raw/the-stack-rust.txt",
-      "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch."
+      "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch.",
+      "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
+      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
     },
     {
       "slug": "the-stack-go",
@@ -485,7 +491,9 @@
       "estimated_tokens": 35786517,
       "sha256_processed": "a812eaaf9e1f3aaf75f2711a18249c41c78d89056349889a06b08059660266d9",
       "file": "data/raw/the-stack-go.txt",
-      "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch."
+      "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch.",
+      "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
+      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
     },
     {
       "slug": "crypto-synthetic-deepseek",
