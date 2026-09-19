@@ -34,8 +34,10 @@ data, and the held-out anneal loss is watched every 250 steps and must not rise 
 training starts; nothing pre-2022-claimed is mixed with synthetic (D-34).
 
 ## Cost, from measurement
-MFU measured: 15% at 59M, 20% at 126M on the A40 (plain PyTorch, SDPA, bf16). Expect 25–35% at
-1B on H100s. 6·N·D = 6 × 1.03e9 × 1e11 = 6.2e20 FLOP.
+MFU measured: 15% at 59M, 20% at 126M on the A40 (plain PyTorch, SDPA, bf16). **Head-to-head with
+nanochat's loop on the same A40 (2026-09-19, D-69): nanochat depth-8 (~45M params) 85.6k tok/s =
+16.9% MFU by its own meter; ours at 126M 39.0k tok/s ≈ 20%. No efficiency to borrow at this size;
+the card, not the loop, is the limit.** Expect 25–35% at 1B on H100s. 6·N·D = 6 × 1.03e9 × 1e11 = 6.2e20 FLOP.
 
 | MFU | H100-hours | secure $3.49 | community $2.69 | wall clock on 8×H100 |
 |---|---|---|---|---|

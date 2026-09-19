@@ -1,0 +1,21 @@
+Cloning into 'nanochat'...
+Using CPython 3.10.18 interpreter at: /usr/bin/python3.10
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+ + wandb==0.30.0
+ + xxhash==4.0.1
+Done! Downloaded: 5/5 shards to /workspace/nanochat_cache/base_data_climbmix
+Saved token_bytes to /workspace/nanochat_cache/tokenizer/token_bytes.pt
+== nanochat base_train: depth 8, 150 steps, device batch 16 ==
+step 00142/00150 (94.67%) | loss: 4.856446 | lrm: 0.13 | dt: 3063.11ms | tok/sec: 85,581 | bf16_mfu: 16.90 | epoch: 1 pq: 0 rg: 72 | total time: 6.74m | eta: 0.4m
+step 00143/00150 (95.33%) | loss: 4.850592 | lrm: 0.12 | dt: 3061.57ms | tok/sec: 85,624 | bf16_mfu: 16.91 | epoch: 1 pq: 0 rg: 73 | total time: 6.79m | eta: 0.4m
+step 00144/00150 (96.00%) | loss: 4.847831 | lrm: 0.11 | dt: 3063.56ms | tok/sec: 85,568 | bf16_mfu: 16.90 | epoch: 1 pq: 0 rg: 73 | total time: 6.84m | eta: 0.3m
+step 00145/00150 (96.67%) | loss: 4.840670 | lrm: 0.10 | dt: 3065.04ms | tok/sec: 85,527 | bf16_mfu: 16.89 | epoch: 1 pq: 0 rg: 74 | total time: 6.89m | eta: 0.3m
+step 00146/00150 (97.33%) | loss: 4.828451 | lrm: 0.09 | dt: 3064.59ms | tok/sec: 85,539 | bf16_mfu: 16.90 | epoch: 1 pq: 0 rg: 74 | total time: 6.94m | eta: 0.2m
+step 00147/00150 (98.00%) | loss: 4.815585 | lrm: 0.08 | dt: 3063.83ms | tok/sec: 85,560 | bf16_mfu: 16.90 | epoch: 1 pq: 0 rg: 74 | total time: 6.99m | eta: 0.2m
+step 00148/00150 (98.67%) | loss: 4.824541 | lrm: 0.07 | dt: 3066.98ms | tok/sec: 85,472 | bf16_mfu: 16.88 | epoch: 1 pq: 0 rg: 75 | total time: 7.04m | eta: 0.1m
+step 00149/00150 (99.33%) | loss: 4.820936 | lrm: 0.06 | dt: 3063.49ms | tok/sec: 85,570 | bf16_mfu: 16.90 | epoch: 1 pq: 0 rg: 75 | total time: 7.10m | eta: 0.1m
+== ours: train.py, Flash config, 100 steps, bf16, data on GPU ==
+parameters   : 125,854,464 (100,688,640 non-embedding)
+step     99 | loss  6.1362 | lr 3.02e-05 | gnorm  0.44 |   38988 tok/s |  168.1s
+H2H_DONE
