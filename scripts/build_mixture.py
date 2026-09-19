@@ -82,6 +82,8 @@ def main() -> int:
                     help="the shelf (D-58) is at most this fraction of the anneal")
     ap.add_argument("--shelf-cap-chars", type=int, default=1_500_000,
                     help="per-work cap so no single flavor dominates (~375k tokens)")
+    ap.add_argument("--anneal-only", action="store_true",
+                    help="skip writing pretrain.txt (the anneal changes far more often than the backbone)")
     ap.add_argument("--out-dir", default=os.path.join(ROOT, "data", "mixture"))
     ap.add_argument("--seed", type=int, default=1337)
     a = ap.parse_args()
@@ -94,10 +96,10 @@ def main() -> int:
         ledger = json.load(f)
     known_files = {s.get("file", "").replace("\\", "/") for s in ledger["sources"]}
 
-    print("=== PRETRAIN MIX ===")
+    print("=== PRETRAIN MIX ===" + (" (skipped: --anneal-only)" if a.anneal_only else ""))
     pretrain_parts = []
     total_share = sum(s for _, s in PRETRAIN_MIX)
-    for rel, share in PRETRAIN_MIX:
+    for rel, share in ([] if a.anneal_only else PRETRAIN_MIX):
         target_chars = int(a.pretrain_chars * (share / total_share))
         text = read_if_exists(rel)
         if not text:
@@ -123,9 +125,10 @@ def main() -> int:
     rng.shuffle(pretrain_parts)  # shuffle at the SOURCE level so sources interleave, not just within one
     pretrain_text = "\n\n".join(pretrain_parts)
     pretrain_out = os.path.join(a.out_dir, "pretrain.txt")
-    io.open(pretrain_out, "w", encoding="utf-8", newline="\n").write(pretrain_text)
-    print(f"\nwrote {pretrain_out}: {len(pretrain_text)/1e6:.1f}M chars, "
-          f"~{len(pretrain_text)//4:,} tokens")
+    if not a.anneal_only:
+        io.open(pretrain_out, "w", encoding="utf-8", newline="\n").write(pretrain_text)
+        print(f"\nwrote {pretrain_out}: {len(pretrain_text)/1e6:.1f}M chars, "
+              f"~{len(pretrain_text)//4:,} tokens")
 
     print("\n=== ANNEAL MIX ===")
     anneal_parts = []
