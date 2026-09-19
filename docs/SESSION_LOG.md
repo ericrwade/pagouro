@@ -53,11 +53,11 @@ chars/work cap, ≤33% of anneal; measured 30%); shelf anneal tokenized (18.9M t
 to the pod; `flash_ablation.sh` + `score_heldout.py` written; a watcher on the pod keeps the
 stable-end checkpoint so the D-58 ablation costs ~$0.70 (decay phase only). Offline audit re-run
 for real (49 samples, 0 connections).
-**Open / next:** (1) Flash finishes ~02:00 PT Sep 19 → cron: fetch, eval, D-60 (D-56 taken, D-59 = the book),
+**Open / next:** (1) Flash finishes ~02:00 PT Sep 19 → cron: fetch, eval, D-61 (D-59 book, D-60 integrity findings),
 **run the ablation, score both arms on the shared held-out sets**, delete pod. (2) Re-eval the
 stick model after the generator finishes (~700/class). (3) Shelf: Britannica 1911 (Gutenberg robot
 policy: no bulk crawl; mirror or harvest tool), Supreme Court opinions, Bowditch, USDA guides.
-(4) O-12, O-19, O-20 (book licence) and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries. (6) **The book (D-59)**: `book/OUTLINE.md`; draft DO-IT chapters (corpus, evals) between Flash tasks; Flash results are **D-60**.
+(4) O-12, O-19, O-20 (book licence) and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries. (6) **The book (D-59)**: `book/OUTLINE.md`; draft DO-IT chapters (corpus, evals) between Flash tasks; Flash results are **D-61**; **D-60**: bitcointalk excluded, spread val split, backbone pre-2022 gap (O-22) must be fixed before the 1B data volume.
 
 ## 2026-09-17/18 — Freeze recovery, first real build end to end, the app on the stick, GitHub
 **Model:** Fable 5.1
