@@ -28,6 +28,6 @@ cd /workspace/pagouro
 echo "== ours: train.py, Flash config, 100 steps, bf16, data on GPU =="
 python -u scripts/train.py --bf16 --data-on-gpu --dim 768 --layers 16 --heads 12 --kv-heads 4 --seq-len 1024 \
   --batch-size 16 --grad-accum 4 --max-steps 100 --warmup 10 --lr 6e-4 --eval-every 1000 --ckpt-every 1000 --seed 1 \
-  --ckpt /workspace/ckpt/h2h_ours.pt --log /workspace/runs/h2h_ours.jsonl --data-dir /workspace/data/flash \
+  --ckpt /workspace/ckpt/h2h_ours.pt --log /workspace/runs/h2h_ours.jsonl --data-dir data/tokenized_anneal_shelf \
   2>&1 | tee /workspace/runs/ours_h2h.log | grep -E "parameters|step +(50|90|99) \|" | tail -4
 echo H2H_DONE
