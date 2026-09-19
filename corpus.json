@@ -1172,6 +1172,75 @@
       "sha256_processed": "3b26318b483defd33e200bfa3c1e276c8928bae8ad04f503bf52196bf98fb315",
       "file": "data/raw/gutenberg/english-fairy-tales.txt",
       "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-usda-home-canning",
+      "name": "USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015 revision)",
+      "source": "archive.org OCR text",
+      "author": "US Department of Agriculture, National Institute of Food and Agriculture",
+      "url": "https://archive.org/details/usda-complete-guide-to-home-canning-2015-revision",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "USDA Agriculture Information Bulletin No. 539 (2015 revision), a work of the US Department of Agriculture; archive.org item usda-complete-guide-to-home-canning-2015-revision; no copyright notice in the text",
+      "first_published": "2015",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T01:05:49+00:00",
+      "characters": 366009,
+      "estimated_tokens": 122484,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 14,
+        "lines_kept": 11213
+      },
+      "sha256_processed": "9a2aef564c0052962efc0937a54310afadf504489b755cbd7fe400908eb3910a",
+      "file": "data/raw/usgov/usda-home-canning-2015.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-nasa-sp4205",
+      "name": "Chariots for Apollo: A History of Manned Lunar Spacecraft (NASA SP-4205, 1979)",
+      "source": "archive.org OCR text",
+      "author": "Courtney G. Brooks, James M. Grimwood, Loyd S. Swenson Jr. (NASA History Series)",
+      "url": "https://archive.org/details/NASA_NTRS_Archive_19790020032",
+      "license": "Public domain (NASA History Series, US Government publication; published 1979 by GPO with no copyright notice)",
+      "public_domain_basis": "NASA SP-4205, NASA History Series, printed by the US Government Printing Office in 1979 without a copyright notice (pre-1989 US publications without notice are public domain); NASA NTRS document 19790020032; text carries no copyright line (checked)",
+      "first_published": "1979",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T01:05:50+00:00",
+      "characters": 1504954,
+      "estimated_tokens": 468620,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 86,
+        "lines_kept": 35537
+      },
+      "sha256_processed": "f6e477c0f01e151ee2bc2dc8604a2520e48ce0a4d8bc6f2fd17306f268141bb9",
+      "file": "data/raw/usgov/nasa-sp4205-chariots-for-apollo.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-nasa-sp4201",
+      "name": "This New Ocean: A History of Project Mercury (NASA SP-4201, 1966)",
+      "source": "archive.org OCR text",
+      "author": "Loyd S. Swenson Jr., James M. Grimwood, Charles C. Alexander (NASA History Series)",
+      "url": "https://archive.org/details/NASA_NTRS_Archive_19670005605",
+      "license": "Public domain (NASA History Series, US Government publication; published 1966 by GPO with no copyright notice)",
+      "public_domain_basis": "NASA SP-4201, NASA History Series, printed by the US Government Printing Office in 1966 without a copyright notice (pre-1989 US publications without notice are public domain); NASA NTRS document 19670005605; text carries no copyright line (checked)",
+      "first_published": "1966",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T01:05:52+00:00",
+      "characters": 2052017,
+      "estimated_tokens": 602605,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 20,
+        "lines_kept": 47772
+      },
+      "sha256_processed": "08a6f3abbf1698adc47a379fa1d4e71eda9880a2968043bb5a0c456e61a42177",
+      "file": "data/raw/usgov/nasa-sp4201-this-new-ocean.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
     }
   ]
 }
