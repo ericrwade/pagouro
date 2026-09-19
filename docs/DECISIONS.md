@@ -1486,3 +1486,15 @@ but the right tool for the shelf's formula/table pages that archive.org's OCR re
 Rights unchanged (output status = source's; OCR engine named on the row; D-34 untouched). ~12k
 pages ≈ $1 on the A40. CPU test on this machine blocked by our llama.cpp build's vision path
 (fail-fast 0xC0000409, same class as its embedding crash) -> GPU test on the pod first.
+
+### O-27 — Beyond English and America: coverage, not reasoning (proposal)
+**2026-09-19, Eric's question from the road.** The corpus is ~100% English; the content is
+Anglo-American heavy, and the American tilt is a licensing artefact (17 U.S.C. §105 made the
+technical shelf all US Government works). Evidence says other languages do not improve
+reasoning at 1B (math/code do; the "curse of multilinguality" cuts the other way at fixed
+capacity; non-Latin scripts hit byte fallback in our English-trained 32k BPE). Recommendation:
+(1) de-Americanise the content in English via PD translations of world literature/philosophy and
+other governments' open licences (UK OGL v3, CA/AU/NZ open gov, EU reuse — verify per source);
+(2) a 2–5% Latin-script multilingual slice (FineWeb-2 / ≤2021 fr-es-de-pt Wikipedia dumps, dump-
+dated for D-34) decided by a Flash-scale ablation and a ten-item French/Spanish calibration set;
+(3) never claim multilingual competence at 1B. Fits inside the O-22 backbone rebuild. Eric's call.
