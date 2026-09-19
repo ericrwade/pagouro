@@ -1,20 +1,20 @@
 {
   "set": "memory",
-  "model_label": "pagouro-real",
-  "model_file": "pagouro-real-q8_0.gguf",
+  "model_label": "pagouro-flash2",
+  "model_file": "pagouro-flash-sft2-q8_0.gguf",
   "n_items": 10,
   "counts": {
-    "ROUTED": 2,
+    "ROUTED": 7,
     "RETRIEVED": 10,
-    "ANSWERED": 0
+    "ANSWERED": 10
   },
   "rates": {
-    "ROUTED": 0.2,
+    "ROUTED": 0.7,
     "RETRIEVED": 1.0,
-    "ANSWERED": 0.0
+    "ANSWERED": 1.0
   },
-  "elapsed_s": 1.3,
-  "utc": "2026-09-19T13:32:46+00:00",
+  "elapsed_s": 2.0,
+  "utc": "2026-09-19T13:32:31+00:00",
   "items": [
     {
       "id": "mem-001",
@@ -23,12 +23,12 @@
       "keys": [
         "ruby"
       ],
-      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is my dog's name\"}",
+      "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any information on the car you mentioned. Please check the source or provide more details."
+      "response": "You told me your dog is called Ruby."
     },
     {
       "id": "mem-002",
@@ -40,9 +40,9 @@
       "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
       "routed": false,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "You can check your coffee, and you can check your coffee's or no coffee."
+      "response": "You should black your coffee as it has a significant amount of sugar."
     },
     {
       "id": "mem-003",
@@ -51,12 +51,12 @@
       "keys": [
         "lisbon"
       ],
-      "router": "{\"tool\":\"pack_search\",\"arguments\":\"John's city is my own city\"}",
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Which city does my sister live in\"}",
       "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any record of a city in our database. Could you check your sources or provide more details?"
+      "response": "You told me your sister lives in Lisbon."
     },
     {
       "id": "mem-004",
@@ -65,12 +65,12 @@
       "keys": [
         "bluefern42"
       ],
-      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What's the wifi password at the cabin\"}",
+      "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any information on the wrench balance. Please check the path and try again."
+      "response": "The wifi password at the cabin is bluefern42."
     },
     {
       "id": "mem-005",
@@ -80,12 +80,12 @@
         "tomato",
         "basil"
       ],
-      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What did I decide to plant in the raised bed\"}",
+      "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any information on the wereher, but I couldn't find any information on the: 'I couldn't find any information on 'I'm 'I' or 'I'. Please make sure the first one is correct and try again."
+      "response": "You said you decided to plant tomatoes and basil in the raised bed this spring."
     },
     {
       "id": "mem-006",
@@ -95,12 +95,12 @@
         "15400-plm-a02",
         "15400"
       ],
-      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "router": "{\"tool\":\"calc\",\"arguments\":\"123-243\"}",
       "routed": false,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any information on the car's website. Could you check the source or provide more details?"
+      "response": "You have 2009 Honda Fit and the oil filter part number 15400-PLM-A02."
     },
     {
       "id": "mem-007",
@@ -110,12 +110,12 @@
         "14",
         "june"
       ],
-      "router": "{\"tool\":\"time\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When is our anniversary\"}",
+      "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any record of a new. Please check the source or provide more details."
+      "response": "The 14th of June, you said."
     },
     {
       "id": "mem-008",
@@ -127,9 +127,9 @@
       "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
       "routed": false,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find any information on the text. Please check the path and try again."
+      "response": "You are allergic to penicillin, a commonly usedicillin class."
     },
     {
       "id": "mem-009",
@@ -138,12 +138,12 @@
       "keys": [
         "thursday"
       ],
-      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is the book \"}",
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"}\"}",
       "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "The book company is from the first Wednesday of the week at Dana's website."
+      "response": "The book club meeting is the first Thursday of the month at Dana's place."
     },
     {
       "id": "mem-010",
@@ -152,12 +152,12 @@
       "keys": [
         "okafor"
       ],
-      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is my landlord called\"}",
+      "routed": true,
       "retrieved": true,
-      "answered": false,
+      "answered": true,
       "top_hit": "memory:remembered.txt",
-      "response": "I have no record of that name in your text or Dr. Staof or the number of years in 7731. Please check if you have the correct name or source."
+      "response": "You said your landlord's name is Mr. Okafor."
     }
   ]
 }

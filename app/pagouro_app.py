@@ -249,6 +249,12 @@ def tool_pack_search(query: str, app) -> str:
     hits = app.packs.search(query)
     if not hits:
         return "NO_MATCH: nothing in the loaded packs covers this." + (" " + FORAGING_NOTICE if FORAGING.search(query) else "")
+    # O-23: if the owner's own words match, they come first and alone (at most two passages). A
+    # small model given three mixed hits binds the answer to the wrong one (D-61 memory eval:
+    # right shape, wrong hit); the owner's note is also the higher-priority source by design.
+    mem = [h for h in hits if h[0].startswith("memory:")]
+    if mem:
+        hits = mem[:2]
     out = []
     for name, text, _ in hits:
         label = f"YOUR OWN WORDS, from {name[len('memory:'):]}" if name.startswith("memory:") else name

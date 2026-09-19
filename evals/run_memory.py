@@ -96,6 +96,9 @@ def main() -> int:
                 routed = False
             hits = packs.search(it["ask"], k=3)
             retrieved = any(n.startswith("memory:") and it["told"] in t for n, t, _ in hits)
+            mem = [h for h in hits if h[0].startswith("memory:")]      # mirror the app: owner's words first and alone
+            if mem:
+                hits = mem[:2]
             tool_result = "\n\n".join(
                 f"[{'YOUR OWN WORDS, from ' + n[len('memory:'):] if n.startswith('memory:') else n}] {t[:700]}"
                 for n, t, _ in hits) or "NO_MATCH"

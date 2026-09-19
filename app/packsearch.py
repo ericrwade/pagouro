@@ -146,9 +146,14 @@ class Packs:
                 if name in self.names:
                     continue
                 self.names.append(name)
-                for ch in chunk_file(os.path.join(root, fn)):
-                    self.chunks.append((name, ch))
-                    n += 1
+                # Memory is one entry per paragraph, never merged: a remembered line must be its own
+                # hit, or a small model reads the first line of a merged chunk for every question.
+                with open(os.path.join(root, fn), encoding="utf-8", errors="replace") as f:
+                    for para in re.split(r"\n\s*\n", f.read()):
+                        para = " ".join(para.split())
+                        if para:
+                            self.chunks.append((name, para[:CHUNK_CHARS * 2]))
+                            n += 1
         if n:
             self.vectors = None                      # mixed corpus: fall back to BM25 for everything
             self.bm25 = BM25([t for _, t in self.chunks])
