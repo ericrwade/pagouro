@@ -388,7 +388,9 @@
       "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
       "sha256_processed": "7c26830772c5d1fc048dfd24d813043819c3978ec9e2bc13735dc43df954d53d",
       "file": "data/raw/wikipedia-en.txt",
-      "milestone": "M1 pipeline check"
+      "milestone": "M1 pipeline check",
+      "slice": "SUPERSEDED 2026-09-19 by wikipedia-en-20211220 (D-34/O-22): a 2023-11 dump, revisions after the cutoff. Trained into the 59M and Flash models; not in any future mixture.",
+      "published_before_generative_ai": false
     },
     {
       "slug": "stackexchange-preferences",
@@ -1507,6 +1509,45 @@
       "sha256_processed": "ee061646ea0437c78bfa048cccf615197193b507532eb25a173f88a021a690ee",
       "file": "data/raw/fineweb-edu-sample-10BT-pre2022.txt",
       "milestone": "M1 pipeline check"
+    },
+    {
+      "slug": "wikipedia-en-20211220",
+      "name": "English Wikipedia, dump enwiki-20211220 (random stream sample)",
+      "source": "archive.org mirror of the Wikimedia dump (enwiki-20211220), multistream index + HTTP range requests",
+      "url": "https://archive.org/details/enwiki-20211220",
+      "license": "CC BY-SA 3.0 + GFDL",
+      "date_basis": {
+        "dump_date": "20211220",
+        "note": "every revision in the dump predates the dump date",
+        "last_revision_year_histogram": {
+          "2012": 1,
+          "2013": 14,
+          "2014": 14,
+          "2015": 34,
+          "2016": 116,
+          "2017": 269,
+          "2018": 616,
+          "2019": 1770,
+          "2020": 8637,
+          "2021": 74914
+        }
+      },
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T14:06:48+00:00",
+      "sampling": {
+        "seed": 1337,
+        "streams": 5007,
+        "streams_total": 216975,
+        "streams_undecodable": 0
+      },
+      "documents": 86385,
+      "characters": 400765672,
+      "estimated_tokens": 100191418,
+      "cleaning": "namespace-0 articles only; redirects and disambiguation pages dropped; templates, refs, tables, galleries removed (mwparserfromhell); sections See also/References/External links cut; stubs under --min-chars dropped",
+      "sha256_processed": "16a80d465dde64807798eb9cb81a09928164ff73eb13a4a322ca0ea2f1506798",
+      "file": "data/raw/wikipedia-en-20211220.txt",
+      "slice": "backbone (pretrain), encyclopedic"
     }
   ]
 }

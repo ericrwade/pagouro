@@ -38,7 +38,7 @@ PRETRAIN_MIX = [
     ("the-stack-rust.txt",                          0.04),
     ("the-stack-go.txt",                            0.04),
     ("the-stack-solidity.txt",                      0.04),
-    ("wikipedia-en.txt",                            0.20),
+    ("wikipedia-en-20211220.txt",                   0.20),  # O-22: sampled from the 2021-12-20 dump; the 2023 dump row is superseded
     ("stackexchange-preferences.txt",               0.05),
 ]
 
