@@ -1,0 +1,16 @@
+{
+  "set": "memory",
+  "note": "Level-1 memory (O-23): each item is a line the owner said in an EARLIER session (told) and a question asked in a LATER one (ask). Three stages are scored: ROUTED (the router chose pack_search), RETRIEVED (the told line is in the top-3 pack_search hits, labelled as the owner's words), ANSWERED (the model's answer, given that tool result, contains an accepted key). Frozen with the suite; do not edit items after a baseline is recorded.",
+  "items": [
+    {"id": "mem-001", "told": "my dog is called Ruby and she is a border collie", "ask": "What is my dog's name?", "keys": ["ruby"]},
+    {"id": "mem-002", "told": "I take my coffee black, no sugar", "ask": "How do I take my coffee?", "keys": ["black"]},
+    {"id": "mem-003", "told": "my sister Marta lives in Lisbon", "ask": "Which city does my sister live in?", "keys": ["lisbon"]},
+    {"id": "mem-004", "told": "the wifi password at the cabin is bluefern42", "ask": "What's the wifi password at the cabin?", "keys": ["bluefern42"]},
+    {"id": "mem-005", "told": "I decided to plant tomatoes and basil in the raised bed this spring", "ask": "What did I decide to plant in the raised bed?", "keys": ["tomato", "basil"]},
+    {"id": "mem-006", "told": "my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02", "ask": "What is the oil filter part number for my car?", "keys": ["15400-plm-a02", "15400"]},
+    {"id": "mem-007", "told": "our anniversary is on the 14th of June", "ask": "When is our anniversary?", "keys": ["14", "june"]},
+    {"id": "mem-008", "told": "I am allergic to penicillin", "ask": "Am I allergic to anything?", "keys": ["penicillin"]},
+    {"id": "mem-009", "told": "the book club meets on the first Thursday of the month at Dana's place", "ask": "When does the book club meet?", "keys": ["thursday"]},
+    {"id": "mem-010", "told": "my landlord's name is Mr. Okafor and his number ends in 7731", "ask": "What is my landlord called?", "keys": ["okafor"]}
+  ]
+}

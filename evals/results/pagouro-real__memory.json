@@ -1,0 +1,163 @@
+{
+  "set": "memory",
+  "model_label": "pagouro-real",
+  "model_file": "pagouro-real-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "ROUTED": 1,
+    "RETRIEVED": 10,
+    "ANSWERED": 0
+  },
+  "rates": {
+    "ROUTED": 0.1,
+    "RETRIEVED": 1.0,
+    "ANSWERED": 0.0
+  },
+  "elapsed_s": 3.9,
+  "utc": "2026-09-19T06:38:42+00:00",
+  "items": [
+    {
+      "id": "mem-001",
+      "told": "my dog is called Ruby and she is a border collie",
+      "ask": "What is my dog's name?",
+      "keys": [
+        "ruby"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I don't have any record of a car that I can't find any record of a car. Please check your car's or provide more details."
+    },
+    {
+      "id": "mem-002",
+      "told": "I take my coffee black, no sugar",
+      "ask": "How do I take my coffee?",
+      "keys": [
+        "black"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I don't have any record of a car that has been saved in the 2026-08-20: The car that's in the time of the car is a source. I can't find any record of a car that is a source. I can't find any record of a car that is a source."
+    },
+    {
+      "id": "mem-003",
+      "told": "my sister Marta lives in Lisbon",
+      "ask": "Which city does my sister live in?",
+      "keys": [
+        "lisbon"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "Here are the first two: 'r'' 2009-08-20: 'The first Wednesday of the week is 'The first Wednesday of the week. Please check the text or type /act to check the milk file."
+    },
+    {
+      "id": "mem-004",
+      "told": "the wifi password at the cabin is bluefern42",
+      "ask": "What's the wifi password at the cabin?",
+      "keys": [
+        "bluefern42"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I couldn't find the record of a car that was a 2026-08-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-"
+    },
+    {
+      "id": "mem-005",
+      "told": "I decided to plant tomatoes and basil in the raised bed this spring",
+      "ask": "What did I decide to plant in the raised bed?",
+      "keys": [
+        "tomato",
+        "basil"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no record of a car that is a world-76-18-21_20: a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread"
+    },
+    {
+      "id": "mem-006",
+      "told": "my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02",
+      "ask": "What is the oil filter part number for my car?",
+      "keys": [
+        "15400-plm-a02",
+        "15400"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "Here are the first few of the 15th of April 2026-08-21: the book name is Dr. H. Smith, a 8-21-21: the name is Dr. H. Smith, a 8-21-21: the name is Dr. H. Smith, a 8-21-21: the name is Dr. H. Smith, a 8-"
+    },
+    {
+      "id": "mem-007",
+      "told": "our anniversary is on the 14th of June",
+      "ask": "When is our anniversary?",
+      "keys": [
+        "14",
+        "june"
+      ],
+      "router": "{\"tool\":\"time\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "The passage gives no information on that. It covers the text file, 'bastiat-economic-sophisms.txt' and the text file. It covers the file path, 'bastiat-economic-sophisms.txt' and the file path. It covers the file path, 'bastiat-economic-sophisms.txt' and the file path. It covers the file path, 'bastiat-economic-sophisms.txt' and the file path. It covers the file path, 'bastiat-economic-s"
+    },
+    {
+      "id": "mem-008",
+      "told": "I am allergic to penicillin",
+      "ask": "Am I allergic to anything?",
+      "keys": [
+        "penicillin"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I don't have any record of a car that has been saved to the market. Please check your car's, or check the file path and try again."
+    },
+    {
+      "id": "mem-009",
+      "told": "the book club meets on the first Thursday of the month at Dana's place",
+      "ask": "When does the book club meet?",
+      "keys": [
+        "thursday"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"workspace/knots_tips\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "The text file file file file file file file file file file file file file file file file path: 'C:\\\\'filefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefile"
+    },
+    {
+      "id": "mem-010",
+      "told": "my landlord's name is Mr. Okafor and his number ends in 7731",
+      "ask": "What is my landlord called?",
+      "keys": [
+        "okafor"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I don't have any record of a car, and I'd rather say the file name. Please check the path and try again."
+    }
+  ]
+}
