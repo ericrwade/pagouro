@@ -64,5 +64,12 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
    scripts/train.py --bf16 --data-on-gpu --schedule wsd ...` detached; every 500 steps a checkpoint
    on the volume; the session copies the latest checkpoint home every 6 hours and posts progress.
 5. Decay phase on the domain mix with 8k context; then anneal-stage SFT on the pod (minutes).
+   The decay data is `build_mixture.py --anneal-only` output: the canon + **the shelf (D-58)**,
+   36 licensed works / 10.4M tokens as of 2026-09-18, each capped (`--shelf-cap-chars`) and the
+   shelf as a whole ≤ `--shelf-fraction` of the anneal (measured 30% at the defaults). At 1B
+   scale the anneal is ~10B tokens, so the shelf is repeated; keep each work under ~4 epochs by
+   raising the cap only if the Flash ablation (shelf vs no-shelf, `scripts/runpod/flash_ablation.sh`
+   + `scripts/score_heldout.py`) showed the shelf helped on the shared held-out sets. If it did
+   not, ship the canon-only anneal and say so on the box.
 6. Export, quantize, fidelity check, evals, package; **delete the pod**; keep the volume until the
    checkpoint is verified home, then delete it too.
