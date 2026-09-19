@@ -38,7 +38,7 @@ The book's credibility is the same as the model's — it survives inspection.
 | 4 | **Do it: build a corpus you can defend** | do-it | `corpus.json`, fetch tools, licence rules, the shelf (D-58) | draft 1 (`chapters/04-…`) |
 | 5 | The test that caught itself | story | BUILD_LOG Day 1 night, Day 3, Day 4 (the number wrong by four) | raw |
 | 6 | **Do it: measure honesty** (bluff / calibration / deflection / tool-use) | do-it | `evals/`, BASELINES.md, SUCCESS_METRICS.md | draft 1 (`chapters/06-…`) |
-| 7 | The machine stopped | story | BUILD_LOG Day 6 (freeze, checkpoints, resume) | raw |
+| 7 | The machine stopped | story | BUILD_LOG Day 6 (freeze, checkpoints, resume) | draft 1 (`chapters/07-…`; later corrections as footnotes) |
 | 8 | An app on a stick | story | BUILD_LOG Day 7 (gauge, three switches, tools, the dropped turn) | raw |
 | 9 | **Do it: make it yours** (packs, model swap, tools, fine-tune) | do-it | MAKE_IT_YOURS rungs 1–5 | drafted (doc) |
 | 10 | Three days alone with a budget | story | BUILD_LOG Days 8–9 (RunPod, Flash, the shelf, the ablation, the decay that ate itself) | raw (build log written) |
