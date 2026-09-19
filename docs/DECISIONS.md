@@ -1478,3 +1478,11 @@ bits-per-byte validation; HF Smol Training Playbook -> read before the 1B mixtur
 -> **O-25**: an RL stage after SFT with a paired, program-generated reward (+1 correct on real,
 +1 abstain on invented, -1 bluff, -1 over-abstain) so the bluff rate is optimised, not imitated,
 using the eval's own scorer as the reward. Both GPU items wait for Eric's go (D-54).
+
+### O-26 — LightOnOCR-2-1B: re-OCR the shelf's scanned works (proposal)
+**2026-09-19, Eric's question.** `docs/REVIEW_2026-09-19_lightonocr.md`. It is a 1B OCR
+vision-language model (Apache-2.0), not a general LM: not a candidate for Pagouro's weights,
+but the right tool for the shelf's formula/table pages that archive.org's OCR reduced to soup.
+Rights unchanged (output status = source's; OCR engine named on the row; D-34 untouched). ~12k
+pages ≈ $1 on the A40. CPU test on this machine blocked by our llama.cpp build's vision path
+(fail-fast 0xC0000409, same class as its embedding crash) -> GPU test on the pod first.
