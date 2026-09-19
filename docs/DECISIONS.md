@@ -1660,3 +1660,11 @@ Smithsonian print collections, Sears catalogues, BHL plates) — the era before 
 image licensed. (3) The entrepreneur use case is the privacy claim applied to a picture; stated
 limit: it sketches, it does not clear trademarks. (4) Outputs CC0, so the PFP campaign has no
 rights question; a hundred hermit-crab logos (D-67) is the first batch. Sits inside D-67.
+**Addendum, Eric:** "Victorian or Gilded Age aesthetic but modernized" — adopted as the style
+brief for Draw 1.0. Corpus consequence: the 1880–1928 slice leans Victorian/Gilded Age print —
+engraved trade cards, ornamental borders, cartouches, drop-cap lettering, natural-history plates,
+Sears/Montgomery Ward catalogue cuts — all public domain; "modernized" is what the medium does
+(a 32-colour palette, one-pixel outlines, 64 px), so the look is engraving-era forms in pixel
+art rather than pastiche. Palette candidates will be drawn from that print world (ink, cream,
+oxblood, brass, verdigris) plus the shell/sea range. First test of the brief: the hermit-crab
+logos (D-67).
