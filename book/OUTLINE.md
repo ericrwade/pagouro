@@ -35,14 +35,14 @@ The book's credibility is the same as the model's — it survives inspection.
 | 1 | What "doesn't bluff" costs | story | D-11, D-50, BUILD_LOG Day 1 ("a thirty-fold lie") | raw |
 | 2 | **Do it: a model in an afternoon** (tokenizer → 59M on CPU) | do-it | `scripts/train.py`, MAKE_IT_YOURS rung 5–6, BUILD_LOG Day 1 numbers | to write |
 | 3 | The ledger, or why the big labs can't publish this file | story | D-8/D-9, D-32, D-34, CORPUS_PLAN, BUILD_LOG Days 1–2 | raw |
-| 4 | **Do it: build a corpus you can defend** | do-it | `corpus.json`, fetch tools, licence rules, the shelf (D-58) | to write |
+| 4 | **Do it: build a corpus you can defend** | do-it | `corpus.json`, fetch tools, licence rules, the shelf (D-58) | draft 1 (`chapters/04-…`) |
 | 5 | The test that caught itself | story | BUILD_LOG Day 1 night, Day 3, Day 4 (the number wrong by four) | raw |
-| 6 | **Do it: measure honesty** (bluff / calibration / deflection / tool-use) | do-it | `evals/`, BASELINES.md, SUCCESS_METRICS.md | to write |
+| 6 | **Do it: measure honesty** (bluff / calibration / deflection / tool-use) | do-it | `evals/`, BASELINES.md, SUCCESS_METRICS.md | draft 1 (`chapters/06-…`) |
 | 7 | The machine stopped | story | BUILD_LOG Day 6 (freeze, checkpoints, resume) | raw |
 | 8 | An app on a stick | story | BUILD_LOG Day 7 (gauge, three switches, tools, the dropped turn) | raw |
 | 9 | **Do it: make it yours** (packs, model swap, tools, fine-tune) | do-it | MAKE_IT_YOURS rungs 1–5 | drafted (doc) |
-| 10 | Three days alone with a budget | story | BUILD_LOG Day 8 + window-3 session log (RunPod, Flash, the shelf, the ablation) | raw / in progress |
-| 11 | **Do it: rent a GPU without getting hurt** | do-it | RUNPOD_JOB.md, JOB_1B.md, the spend rules (D-54) | to write |
+| 10 | Three days alone with a budget | story | BUILD_LOG Days 8–9 (RunPod, Flash, the shelf, the ablation, the decay that ate itself) | raw (build log written) |
+| 11 | **Do it: rent a GPU without getting hurt** | do-it | RUNPOD_JOB.md, JOB_1B.md, D-54/D-55/D-61 | draft 1 (`chapters/11-…`) |
 | 12 | What "private" means, exactly | story+do-it | THREAT_MODEL.md, the offline audit | raw |
 | 13 | The one-billion run | story | (not yet happened) | future |
 | 14 | **Do it: ship a finished thing** (manifest, signature, anchor, archive) | do-it | RELEASE_RUNBOOK.md | drafted (doc) |
