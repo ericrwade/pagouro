@@ -57,7 +57,7 @@ hours and ~$1. Fetching page images from archive.org is the slower part.
 visible content" — a trap worth recording). Two pages, outputs in `docs/samples/ocr/`:
 
 - **NEETS module 1, page 120 (formulas):** 1,107 chars in 12.9 s. Every equation correct in
-  LaTeX (`I = rac{2 	ext{ volts}}{2 	ext{ ohms}}`, `P = 4.5 	ext{ watts}`). The archive.org text
+  LaTeX (`I = \frac{2 \text{ volts}}{2 \text{ ohms}}`, `P = 4.5 \text{ watts}`). The archive.org text
   of the same page (`neets-p120.archive-org.txt`) reads **"P = 45 watts"** where the page says
   4.5, "I = -", "P- HI", "j _ 2 volts" — i.e. the training text we ledgered carries a *wrong
   number*, not just noise. That is the strongest argument for the re-OCR: garbage lines were
