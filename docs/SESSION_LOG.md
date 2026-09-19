@@ -57,7 +57,7 @@ for real (49 samples, 0 connections).
 **run the ablation, score both arms on the shared held-out sets**, delete pod. (2) Re-eval the
 stick model after the generator finishes (~700/class). (3) Shelf: Britannica 1911 (Gutenberg robot
 policy: no bulk crawl; mirror or harvest tool), Supreme Court opinions, Bowditch, USDA guides.
-(4) O-12, O-19 and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries.
+(4) O-12, O-19, O-20 (book licence) and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries. (6) **The book (D-59)**: `book/OUTLINE.md`; draft DO-IT chapters (corpus, evals) between Flash tasks; Flash results are **D-60**.
 
 ## 2026-09-17/18 — Freeze recovery, first real build end to end, the app on the stick, GitHub
 **Model:** Fable 5.1
