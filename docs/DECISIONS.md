@@ -1382,3 +1382,25 @@ O-16, O-17 and O-18 are now sub-items of this decision.
   commit hash on the row (D-34 made provable by construction; `scripts/fetch_bips_eips.py`), plus
   seven Gutenberg works (Lincoln–Douglas debates, Jowett's *Republic*, Grimm/Hunt, Aesop/Townsend,
   *Bird Neighbors*, Jacobs' *English Fairy Tales*). Mushrooms still never.
+
+### D-59 — The book: "Make Your Own AI" — the story plus the actual instructions
+**2026-09-18, Eric (from the road).** "Maybe that 'how to improve Pagouro' is the pretense for
+making this a book? Everything you've been storing as you work, and how to make your own
+and/or modify Pagouro, is part of the book. 'Make your own AI', packed with our story plus the
+actual instructions."
+
+**Adopted as the destination for the build log.** `BUILD_LOG.md` was already written for
+readers, append-only, mistakes kept in, numbers measured (`CLAUDE.md`); the book is that log
+edited into STORY chapters, braided with DO-IT chapters rewritten from the instruction docs
+(`MAKE_IT_YOURS`, `CORPUS_PLAN` + `corpus.json`, `RUNPOD_JOB` + `JOB_1B`, `BASELINES` +
+`SUCCESS_METRICS`, `THREAT_MODEL`, `RELEASE_RUNBOOK`). Working spine: `book/OUTLINE.md`
+(chapter map, reader, rules). Raw material on 2026-09-18: ~41k words.
+
+**Rules.** (1) The build log stays the source of truth; chapters are downstream. (2) The origin
+transcript is never quoted at length (D-52); `docs/ORIGIN.md` is the ceiling. (3) Every number
+in the book traces to a log or eval file. (4) D-50 wording on the cover and blurb. (5) Eric's
+quoted messages are his words; the session is paraphrased, not a co-author voice.
+
+**Open (O-20, Eric):** the book's licence (CC BY-SA 4.0 like the weights, or story chapters
+reserved + instruction chapters CC BY-SA) and whether it is sold (price in dollars, F17) or
+given away with a tip jar.
