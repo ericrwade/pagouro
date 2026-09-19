@@ -4,17 +4,17 @@
   "model_file": "pagouro-real-q8_0.gguf",
   "n_items": 10,
   "counts": {
-    "ROUTED": 1,
+    "ROUTED": 3,
     "RETRIEVED": 10,
     "ANSWERED": 0
   },
   "rates": {
-    "ROUTED": 0.1,
+    "ROUTED": 0.3,
     "RETRIEVED": 1.0,
     "ANSWERED": 0.0
   },
-  "elapsed_s": 3.9,
-  "utc": "2026-09-19T06:38:42+00:00",
+  "elapsed_s": 2.4,
+  "utc": "2026-09-19T09:35:45+00:00",
   "items": [
     {
       "id": "mem-001",
@@ -28,7 +28,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "I don't have any record of a car that I can't find any record of a car. Please check your car's or provide more details."
+      "response": "I have no record of a car in the late 2026-08-2003-08-21.txt. If you have another source, please share it."
     },
     {
       "id": "mem-002",
@@ -42,7 +42,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "I don't have any record of a car that has been saved in the 2026-08-20: The car that's in the time of the car is a source. I can't find any record of a car that is a source. I can't find any record of a car that is a source."
+      "response": "You said your car is a 2026-08-25: The car was a 2026-08-21. The car was a B-A026-08-21-26. The car was a B-A026-08-21-26. The car was a B-A026-21-26. The car was a B-A026-21-26. The car was a B-A0"
     },
     {
       "id": "mem-003",
@@ -51,12 +51,12 @@
       "keys": [
         "lisbon"
       ],
-      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"John's city is my own city\"}",
+      "routed": true,
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "Here are the first two: 'r'' 2009-08-20: 'The first Wednesday of the week is 'The first Wednesday of the week. Please check the text or type /act to check the milk file."
+      "response": "I have no record of a car in our database. Please check your car's website or provide more details."
     },
     {
       "id": "mem-004",
@@ -70,7 +70,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "I couldn't find the record of a car that was a 2026-08-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-20-"
+      "response": "I have no record of a car in the late 2026-08-20: my car has been in the passage for a new year. If you have another source, please share it."
     },
     {
       "id": "mem-005",
@@ -85,7 +85,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "I have no record of a car that is a world-76-18-21_20: a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread, a bread"
+      "response": "I have no record of a car in the late 18th of 2026-08-20: our own car has been a, not-of-2026-08-26: our own car has been a real-time, our own car has been a good choice for our own car."
     },
     {
       "id": "mem-006",
@@ -100,7 +100,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "Here are the first few of the 15th of April 2026-08-21: the book name is Dr. H. Smith, a 8-21-21: the name is Dr. H. Smith, a 8-21-21: the name is Dr. H. Smith, a 8-21-21: the name is Dr. H. Smith, a 8-"
+      "response": "I have no record of a car in the late 2026-08-2010.txt. If you have a source, please share it."
     },
     {
       "id": "mem-007",
@@ -110,12 +110,12 @@
         "14",
         "june"
       ],
-      "router": "{\"tool\":\"time\",\"arguments\":\"\"}",
-      "routed": false,
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What's the best time for the first 1000s book\"}",
+      "routed": true,
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "The passage gives no information on that. It covers the text file, 'bastiat-economic-sophisms.txt' and the text file. It covers the file path, 'bastiat-economic-sophisms.txt' and the file path. It covers the file path, 'bastiat-economic-sophisms.txt' and the file path. It covers the file path, 'bastiat-economic-sophisms.txt' and the file path. It covers the file path, 'bastiat-economic-s"
+      "response": "I have no record of a 2026-08-29: The car has a unique. Please check your car's, you can check your car's, you can check your car's for the first Wednesday of 2026-08-29: The car's temperature is 15400-08-29.txt."
     },
     {
       "id": "mem-008",
@@ -129,7 +129,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "I don't have any record of a car that has been saved to the market. Please check your car's, or check the file path and try again."
+      "response": "I have no record of a 2026-08-29: The car has a unique, but I have no record of a car in the late 2026-08-29: The car has no coffee 2026-08-29: The car has no coffee 2026-08-29: The car has no coffee 2026-08-29: The car has no coffee 2026-08-29: The car"
     },
     {
       "id": "mem-009",
@@ -138,12 +138,12 @@
       "keys": [
         "thursday"
       ],
-      "router": "{\"tool\":\"pack_search\",\"arguments\":\"workspace/knots_tips\"}",
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is the book \"}",
       "routed": true,
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "The text file file file file file file file file file file file file file file file file path: 'C:\\\\'filefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefilefile"
+      "response": "I have no record of a car in the late 2026-08-2010-08-21-22: The book company is a well-known book by the book company. Please check if you have the correct name or source."
     },
     {
       "id": "mem-010",
@@ -157,7 +157,7 @@
       "retrieved": true,
       "answered": false,
       "top_hit": "memory:remembered.txt",
-      "response": "I don't have any record of a car, and I'd rather say the file name. Please check the path and try again."
+      "response": "I have no record of a 2026-08-201.txt for your car: first, you said you can check your car's, not-file. Please check your car's or check your car's for your first Wednesday."
     }
   ]
 }

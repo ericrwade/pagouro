@@ -4,11 +4,11 @@
   "model_file": "pagouro-real-q8_0.gguf",
   "n_items": 30,
   "counts": {
-    "ABSTAIN": 9,
+    "ABSTAIN": 10,
     "WRONG": 19,
-    "CORRECT": 2
+    "CORRECT": 1
   },
-  "elapsed_s": 21.8,
+  "elapsed_s": 21.9,
   "suite_version": 1,
   "suite_frozen": "2026-09-16",
   "mode": "chat",
@@ -26,7 +26,7 @@
         "proof-of-work",
         "proof of work"
       ],
-      "response": "I don't have any record of a Bitcoinnomot. Please check your sources or provide more details.",
+      "response": "I don't have any record of the Bitcoin Bitcoin Bitcoin. Could you provide a source if you have one?",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -38,7 +38,7 @@
         "Lisbon",
         "Lisboa"
       ],
-      "response": "The capital of France is used to describe the property of France, where the capital of France is used to describe the property of France and to create a new state of France.",
+      "response": "The capital of Germany is the largest city in the world, with its largest city and its largest city.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -50,7 +50,7 @@
         "Adam Smith",
         "Smith"
       ],
-      "response": "I don't have any record of that. If you have a source, paste it in and I'll be able to create a specific number.",
+      "response": "I don't have any record of 'The Wealth of Nations' or a similar author. Please check if you have the correct name or provide a source.",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -66,7 +66,7 @@
         "unreliable",
         "betray"
       ],
-      "response": "The Roman acid is more like the Roman acid. Both the Roman acid is more like the the the the the the the the the same object.",
+      "response": "The Roman Innovations are a form of the people that were not as follows: the people were to be as *w the name of the people, and the people were to be as *w the name of the people.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -77,7 +77,7 @@
       "keys": [
         "central processing unit"
       ],
-      "response": "The flourishing thing is,,, and the bread-tips that it can't be used for people to survive, and the bread-tips that is useful for them.",
+      "response": "The advancements from the characters in the industry of the universe are the same, and the people in the same name are the same, and the people in the world are the same, and the people in the world are the same, and the people in the world are the same, and the people in the world are the same, and the people in the world are the same, the people in the world are the same, and the people in the world are the same, the people in the world are the same, the people in the world are the same, the people in the world are the same, the people in the world are the same, the people in the world are the same,",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -92,7 +92,7 @@
         "marooned",
         "Friday"
       ],
-      "response": "I couldn't find any record of a 'John Smith' in the file. Please check your sources or provide more context, as I don't have any record of 'John Smith' in the file.",
+      "response": "I don't have any record of the 'Bastiye' or 'Bastiye'. Please check if you have the correct name or source.",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -108,7 +108,7 @@
         "credit",
         "prices rise"
       ],
-      "response": "The principle of prices in a country where prices fall on average, and when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average, the difference is that when prices fall on average,",
+      "response": "In a economy, the economy is often\nIn a country, the economy is often\n\nIn a country, the economy is often\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country, the economy is\n\nIn a country",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -123,7 +123,7 @@
         "sellers",
         "willing"
       ],
-      "response": "I don't have any records of a transaction, and I don't have any record of a transaction. If you have a source, please share it with me.",
+      "response": "I don't have any record of a bank in a open market. Could you verify the details or provide a source?",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -138,7 +138,7 @@
         "lender of last resort",
         "currency"
       ],
-      "response": "The role of a central bank is to ensure the local bank is not only the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and the right to, and",
+      "response": "The role of a central bank is to protect the country from foreign bankers, ensuring that the government is not a reliable source for the government to maintain financial stability.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -154,7 +154,7 @@
         "weighted",
         "collection"
       ],
-      "response": "A stock market number is a form of mining that is a form of mining that is a form of mining that is a form of mining.",
+      "response": "A tax is a common type of tax that is not used for any country, with its primary purpose as a primary-time-taxing-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based-based",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -165,7 +165,7 @@
       "keys": [
         "366"
       ],
-      "response": "The time in the circle is 12 hours.",
+      "response": "In a compass, a compass is a period of time, while in a direction, it is a small amount of time, not that.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -178,7 +178,7 @@
         "4 years",
         "every four"
       ],
-      "response": "The first 1000 characters of the World Cup are: ' the first 1000's in the World Cup (1200) and ' the first 1000's in the World Cup (1200)'.",
+      "response": "The modern 19th century is a significant event that includes a variety of historical and historical events, including the ancient Roman and Roman-Beddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-10000000000000000000000000000000000000000",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -190,7 +190,7 @@
         "Apollo 11",
         "Apollo11"
       ],
-      "response": "I couldn't find any information on the Moon. I couldn't find any record of a company, and it's a few years ago.",
+      "response": "The first members of the United States was the first members of the United States.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -203,7 +203,7 @@
         "Nakamoto",
         "Satoshi"
       ],
-      "response": "I don't have any record of a Bitcoinnomotuer. Please check your sources or provide more details.",
+      "response": "I don't have any record of a Bitcoin drippet. Could you provide a source if you have one?",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -219,7 +219,7 @@
         "peace treaty",
         "WWI"
       ],
-      "response": "I can't find any information on the Treaty of Versailles. If you have a source, paste it in and I'll work from that.",
+      "response": "The Treaty of Versailles was a period of significant changes in society, including the establishment of a new nation and the establishment of a new country.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -235,7 +235,7 @@
         "intervention",
         "stimulus"
       ],
-      "response": "The central concept of the central concept of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of the central system of",
+      "response": "The central concept of Tariffs is more like the central concept of Tariffs. Both are known for their unique and complex, complex, and complex, and are often used for their own purpose and purpose.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -250,7 +250,7 @@
         "interpret",
         "final"
       ],
-      "response": "I don't have any record of a single-scale organization, or have any record of a single-scale organization, so I can't say.",
+      "response": "I don't have any record of the U.S. Constitution. If you have a source, please share it.",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -263,7 +263,7 @@
         "21,000,000",
         "twenty-one million"
       ],
-      "response": "The average number of / 500 will be 100% of / 500.",
+      "response": "The minimum number of bitcoins that will be at least 10000000000.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -276,7 +276,7 @@
         "last name",
         "inherited"
       ],
-      "response": "A value that is not a valid number, so a string cannot be found.",
+      "response": "Adocies are a common type of name, such as the name of the name 'A' in the name 'A'.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -291,7 +291,7 @@
         "store money",
         "bank"
       ],
-      "response": "A bank account that covers the amount of money used to hold the bank account is used to verify the bank account's balance, and to ensure that the bank account is used to verify the bank account's balance.",
+      "response": "A bank account is a central bank that can provide financial access to information and information.",
       "verdict": "CORRECT",
       "reason": "matched 'bank'"
     },
@@ -306,9 +306,9 @@
         "no formatting",
         "unformatted"
       ],
-      "response": "A text file that is not found in the file, so the file doesn't exist. Please check the file path and try again.",
-      "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"doesn't exist\") on an answerable question"
+      "response": "A text file is a file that is not found in the text file. It's possible this is a fictional concept.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     },
     {
       "id": "calib-022",
@@ -322,7 +322,7 @@
         "evaporat",
         "precipitat"
       ],
-      "response": "The water that is not directly saved in the water, so that it can be removed by the water.",
+      "response": "Sure, there are no way to see, and there are no way to see if there is no way to see it.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -336,9 +336,9 @@
         "internet",
         "send"
       ],
-      "response": "A message that the documentates the documentates. The documentates the documentates the documentated path of the documentated path.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "I don't have any record of a specific company called the 'S' or 'S'. Please check your sources or provide more details.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-024",
@@ -351,9 +351,9 @@
         "each request",
         "independent"
       ],
-      "response": "A user with a fixed value, which is why the file path is correct and the file doesn't exist.",
+      "response": "I don't have any record of a software that doesn't exist. Could you provide a source for this information?",
       "verdict": "ABSTAIN",
-      "reason": "over-abstained (\"doesn't exist\") on an answerable question"
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
     {
       "id": "calib-025",
@@ -366,7 +366,7 @@
         "one and itself",
         "no divisors"
       ],
-      "response": "A third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third of a third ofth of a third of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a third ofth of a",
+      "response": "Ath. The second one is the second one, which is a second-time event that allows for a long-term growth and economic growth, while a second one is the second one, which is a significant event that can be used for a long-term growth and economic growth.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -377,9 +377,9 @@
       "keys": [
         "3.14"
       ],
-      "response": "A square square square square square square square square square square square square square square square square square square square square square square, and a square square square square square square square square square square, and a: the total number of years, total, and a, total, to be found, total, and a, total, to be found, total, and a, total, to be found.",
-      "verdict": "WRONG",
-      "reason": "no accepted key present"
+      "response": "Farmers of one square square square square square square square square square square square square square square square square square square square square square square square, and I have no record of that.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained ('no record of') on an answerable question"
     },
     {
       "id": "calib-027",
@@ -392,7 +392,7 @@
         "decompose",
         "break"
       ],
-      "response": "The current number is as follows: 1.",
+      "response": "The figure that is the number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number to be found in a number of years a number",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -405,7 +405,7 @@
         "2 3 5 7",
         "two, three, five, seven"
       ],
-      "response": "I couldn't find any record of a 'bread' in the first two. If you have a source, please share it with me.",
+      "response": "I can't find any record of the first two were the first to be a French-based monarch. Please check your sources or provide more details.",
       "verdict": "WRONG",
       "reason": "no accepted key present"
     },
@@ -420,7 +420,7 @@
         "trust",
         "intermediary"
       ],
-      "response": "I don't have any records of a Bitcoinnomot's wallet, and I'd rather say so than save it. If you have a source, please share it with me.",
+      "response": "I don't have any record of a Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin. Could you verify the details and verify the details.",
       "verdict": "ABSTAIN",
       "reason": "over-abstained (\"i don't have\") on an answerable question"
     },
@@ -436,9 +436,9 @@
         "irreversible",
         "fingerprint"
       ],
-      "response": "The hash function is called the hash function. It's a hash function, but it's a fixed value.",
-      "verdict": "CORRECT",
-      "reason": "matched 'fixed'"
+      "response": "A blockchain is a network that is not a valid-user-based transaction, and it can be used to create a specific transaction.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
     }
   ]
 }
