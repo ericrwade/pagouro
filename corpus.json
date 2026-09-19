@@ -776,6 +776,52 @@
       "sha256_processed": "9e3bdffe0cb09b0ea4fe38a1a4903a0b5179ff3b6d7d645cf2a1f8cb01cb077f",
       "file": "data/raw/gutenberg/the-hound-of-the-baskervilles.txt",
       "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-faa-phak",
+      "name": "Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25A)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Federal Aviation Administration",
+      "url": "https://archive.org/details/PilotsHandbookOfAeronauticalKnowledge",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "Work of the US Federal Aviation Administration (Flight Standards Service); archive.org item PilotsHandbookOfAeronauticalKnowledge carries the Public Domain Mark; FAA publications are US Government works",
+      "first_published": "2008",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:41:02+00:00",
+      "characters": 1563508,
+      "estimated_tokens": 419501,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 421,
+        "lines_kept": 69604
+      },
+      "sha256_processed": "938636b7700ec648f4d90b1d7d97a4e6e2faba770c9d1ecde20c348859871219",
+      "file": "data/raw/usgov/faa-phak.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-tm9-8000-automotive",
+      "name": "TM 9-8000 Principles of Automotive Vehicles (1985)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Army (Headquarters, Department of the Army)",
+      "url": "https://archive.org/details/tm-9-8000-principles-of-automotive-vehicles-1985",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Army technical manual TM 9-8000, October 1985, 'Approved for public release; distribution is unlimited'; archive.org item tm-9-8000-principles-of-automotive-vehicles-1985 (OCR text)",
+      "first_published": "1985",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:41:04+00:00",
+      "characters": 1411840,
+      "estimated_tokens": 416035,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 2354,
+        "lines_kept": 64259
+      },
+      "sha256_processed": "db94b9c81338d34c20286ead3891f91ef15ed41948b09749d17848ceac02926a",
+      "file": "data/raw/usgov/tm9-8000-automotive-1985.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
     }
   ]
 }
