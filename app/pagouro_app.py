@@ -251,7 +251,8 @@ def tool_pack_search(query: str, app) -> str:
         return "NO_MATCH: nothing in the loaded packs covers this." + (" " + FORAGING_NOTICE if FORAGING.search(query) else "")
     out = []
     for name, text, _ in hits:
-        out.append(f"[{name}] {text[:700]}")
+        label = f"YOUR OWN WORDS, from {name[len('memory:'):]}" if name.startswith("memory:") else name
+        out.append(f"[{label}] {text[:700]}")
     res = "\n\n".join(out)
     if FORAGING.search(query) or FORAGING.search(res[:400]):
         res = FORAGING_NOTICE + "\n\n" + res
@@ -368,6 +369,12 @@ class App:
     def __init__(self, server: Server):
         self.srv = server
         self.packs = Packs(PACKS_DIR)            # BM25 unless an index + embedder are present
+        # The owner's long-term memory (O-23): notes, /remember lines and STONE transcripts from
+        # earlier sessions are searchable beside the packs, labelled as the owner's own words.
+        # Nothing is learned from SAND sessions -- they were never written down.
+        self.memory_chunks = 0
+        for sub in ("memory", "notes", "transcripts"):
+            self.memory_chunks += self.packs.add_dir(os.path.join(WORKSPACE, sub), "memory")
         self.stone = False            # D-19: SAND by default
         self.can_act = False          # D-51: READ-ONLY by default
         self.online = False           # D-1: OFFLINE by default; /online needs workspace/online.json
@@ -630,9 +637,44 @@ class App:
             print("  " + self.status_line())
         elif cmd == "/art":
             self.art(rest.strip())
+        elif cmd == "/remember":
+            self.remember(rest.strip())
+        elif cmd == "/forget":
+            self.forget()
         else:
             print("  unknown command; /help")
         return True
+
+    def remember(self, text: str) -> None:
+        """O-23 level 1: long-term memory by retrieval. Appends one dated line to
+        workspace/memory/remembered.txt and re-indexes, so it comes back through pack_search in
+        every later session, labelled as the owner's own words. User-initiated, like /stone, so
+        it does not need CAN ACT; the write is listed on the exit line like any other."""
+        if not text:
+            n = sum(1 for nm in self.packs.names if nm.startswith("memory:"))
+            print(f"  memory: {self.memory_chunks} passages from {n} file(s) in workspace/memory, notes, transcripts. "
+                  "/remember <text> adds a line; /forget deletes remembered.txt.")
+            return
+        d = os.path.join(WORKSPACE, "memory")
+        os.makedirs(d, exist_ok=True)
+        fn = os.path.join(d, "remembered.txt")
+        with open(fn, "a", encoding="utf-8", newline="\n") as f:
+            f.write(f"{dt.date.today().isoformat()}: {text}\n\n")
+        rel = os.path.relpath(fn, BASE)
+        if rel not in self.written:
+            self.written.append(rel)
+        self.memory_chunks = self.packs.reindex_dir(d, "memory") + sum(
+            self.packs.add_dir(os.path.join(WORKSPACE, sub), "memory") for sub in ("notes", "transcripts"))
+        print(c(GREEN, f"  remembered (written to {rel}); it will come back through pack_search, as your words."))
+
+    def forget(self) -> None:
+        fn = os.path.join(WORKSPACE, "memory", "remembered.txt")
+        if os.path.exists(fn):
+            os.remove(fn)
+            print(c(YELLOW, "  forgot: workspace/memory/remembered.txt deleted. Notes and transcripts are untouched; delete those files yourself."))
+        else:
+            print("  nothing remembered.")
+        self.packs.reindex_dir(os.path.join(WORKSPACE, "memory"), "memory")
 
     def art(self, arg: str) -> None:
         """O-21 frame: `/art [seed]` shows a program-generated test sprite in the terminal;
@@ -666,6 +708,7 @@ HELP = """  commands:
     /tools             list tools and loaded packs
     /status            show the context gauge
     /art [save] [n]    show a program-generated 32x32 test sprite (save: PNG to workspace/art, needs CAN ACT)
+    /remember <text>   keep a line in workspace/memory for every later session (/remember alone: status; /forget deletes it)
     /clear             forget the conversation
     /online /offline   allow web search (needs workspace/online.json) / forbid (default: OFFLINE)
     /exit              quit"""

@@ -132,6 +132,38 @@ class Packs:
 
         self.bm25 = BM25([t for _, t in self.chunks])
 
+    def add_dir(self, root: str, prefix: str) -> int:
+        """Index every .txt in another folder under `prefix:filename` -- used for the owner's
+        long-term memory (workspace/memory, notes, STONE transcripts), so what the user said in
+        earlier sessions comes back by retrieval, labelled as theirs (O-23). Keyword mode only;
+        the embedded index, if any, covers the packs alone. Returns chunks added."""
+        if not os.path.isdir(root):
+            return 0
+        n = 0
+        for fn in sorted(os.listdir(root)):
+            if fn.lower().endswith(".txt"):
+                name = f"{prefix}:{fn}"
+                if name in self.names:
+                    continue
+                self.names.append(name)
+                for ch in chunk_file(os.path.join(root, fn)):
+                    self.chunks.append((name, ch))
+                    n += 1
+        if n:
+            self.vectors = None                      # mixed corpus: fall back to BM25 for everything
+            self.bm25 = BM25([t for _, t in self.chunks])
+        return n
+
+    def reindex_dir(self, root: str, prefix: str) -> int:
+        """Drop everything under `prefix:` and index the folder again (after a /remember)."""
+        keep = [(n, t) for n, t in self.chunks if not n.startswith(prefix + ":")]
+        self.chunks = keep
+        self.names = [n for n in self.names if not n.startswith(prefix + ":")]
+        added = self.add_dir(root, prefix)
+        if not added:
+            self.bm25 = BM25([t for _, t in self.chunks])
+        return added
+
     @property
     def mode(self) -> str:
         return "embedded" if self.vectors is not None else "keyword"
@@ -156,7 +188,8 @@ class Packs:
                 return [(n, t, s) for s, n, t in scored[:k]]
         if not q:
             return []
-        scored = [(self.bm25.score(query, i), name, text) for i, (name, text) in enumerate(self.chunks)]
+        scored = [(self.bm25.score(query, i) * (1.25 if name.startswith("memory:") else 1.0), name, text)
+                  for i, (name, text) in enumerate(self.chunks)]   # the owner's own words win near-ties
         scored = [x for x in scored if x[0] > 0]
         scored.sort(reverse=True)
         return [(n, t, s) for s, n, t in scored[:k]]
