@@ -1468,3 +1468,13 @@ a design rule — adapters learn style and habits, retrieval keeps facts, so a u
 becomes a bluff in the model's own voice. Level 3 (continual pretraining on the owner's documents)
 is the same path with more tokens and needs a GPU at 1B. The line that stays: no self-updating
 weights mid-conversation (D-57), because there is no gate for it.
+
+### O-24 / O-25 — Review of the fine-tuning post; GRPO on the no-bluff objective (proposals)
+**2026-09-19, Eric's request from the road.** `docs/REVIEW_2026-09-19_finetuning_post.md`. The
+post's X Article is unreadable from here (login-walled); the visible claim is our own thesis.
+Its signposts, checked at source: nanochat (MIT; GPT-2-class in ~2 h / $48 on 8xH100) -> measure
+its loop against `train.py` on the A40 for ten minutes before trusting the 1B budget, and adopt
+bits-per-byte validation; HF Smol Training Playbook -> read before the 1B mixture is fixed; GRPO
+-> **O-25**: an RL stage after SFT with a paired, program-generated reward (+1 correct on real,
++1 abstain on invented, -1 bluff, -1 over-abstain) so the bluff rate is optimised, not imitated,
+using the eval's own scorer as the reward. Both GPU items wait for Eric's go (D-54).
