@@ -86,15 +86,65 @@ def answer_row(user: str, tool_result: str, assistant: str) -> dict:
         {"role": "assistant", "content": assistant}]}
 
 
+# Templated facts (D-61: 32 hand rows were not enough against ~700 "no coverage" grounded rows;
+# the Flash model answered memory questions with "The text doesn't cover that"). Names, places
+# and values below are disjoint from evals/memory.json by construction (checked in main()).
+NAMES = ["Ana", "Bruno", "Chiara", "Dev", "Elif", "Farid", "Greta", "Hiro", "Ivo", "Jana", "Kofi", "Lena",
+         "Mateo", "Nadia", "Oren", "Priya", "Quinn", "Rosa", "Sven", "Tomasz", "Uma", "Viktor", "Wen", "Yara"]
+CITIES = ["Porto", "Oslo", "Nairobi", "Osaka", "Bogotá", "Leeds", "Zagreb", "Adelaide", "Tallinn", "Quito",
+          "Halifax", "Ljubljana", "Tucson", "Cork", "Valparaíso"]
+PETS = [("cat", "Mochi"), ("dog", "Otis"), ("parrot", "Kiwi"), ("rabbit", "Clover"), ("dog", "Nala"), ("cat", "Sable")]
+RELATIONS = ["sister", "brother", "cousin", "aunt", "neighbour", "flatmate", "boss", "godson"]
+TEMPLATES = [
+    ((f"my {r} {n} lives in {c}", f"Where does my {r} {n} live?", f"You told me your {r} {n} lives in {c}."))
+    for r, n, c in [(rng.choice(RELATIONS), rng.choice(NAMES), rng.choice(CITIES)) for _ in range(40)]
+] + [
+    ((f"my {k} is called {nm}", f"What's my {k} called?", f"You said your {k} is called {nm}."))
+    for k, nm in [rng.choice(PETS) for _ in range(30)]
+] + [
+    ((f"the {thing} code is {code}", f"What's the {thing} code?", f"You told me the {thing} code is {code}."))
+    for thing, code in [(rng.choice(["garage", "storage unit", "office door", "bike lock", "shed padlock"]), rng.randint(1000, 9999)) for _ in range(30)]
+] + [
+    ((f"{who}'s birthday is the {d} of {m}", f"When is {who}'s birthday?", f"The {d} of {m}, you said."))
+    for who, d, m in [(rng.choice(NAMES), rng.choice(["2nd", "5th", "9th", "11th", "17th", "21st", "23rd", "28th"]),
+                       rng.choice(["January", "February", "April", "May", "July", "August", "September", "October", "November", "December"])) for _ in range(30)]
+] + [
+    ((f"I prefer {pref}", f"What do I prefer, {alt}?", f"You said you prefer {pref}."))
+    for pref, alt in [("tea over coffee", "tea or coffee"), ("the window seat", "aisle or window"), ("metric units", "metric or imperial"),
+                      ("answers in bullet points", "prose or bullets"), ("early meetings", "early or late meetings"),
+                      ("dark mode", "light or dark mode"), ("mild curry", "mild or hot curry"), ("paperbacks", "hardback or paperback")]
+] + [
+    ((f"my {veh} takes {part}", f"What {ptype} does my {veh} take?", f"You noted your {veh} takes {part}."))
+    for veh, part, ptype in [("lawnmower", "SAE 30 oil", "oil"), ("van", "225/65 R16 tyres", "tyres"), ("scooter", "a 12N9-4B battery", "battery"),
+                             ("printer", "TN-2420 toner", "toner"), ("boiler", "a 3 amp fuse", "fuse"), ("camera", "NP-FW50 batteries", "battery")]
+] + [
+    ((f"{ev} is on {day}s at {t}", f"When is {ev}?", f"{day}s at {t}, according to your note."))
+    for ev, day, t in [(rng.choice(["swimming", "the pottery class", "five-a-side", "band practice", "the parents' group", "chess club"]),
+                        rng.choice(["Monday", "Wednesday", "Friday", "Saturday", "Sunday"]),
+                        rng.choice(["six", "seven thirty", "eight", "ten in the morning", "noon"])) for _ in range(30)]
+]
+
+
 def main() -> int:
     rows = []
-    for told, ask, ans in FACTS:
-        rows.append(router_row(ask, "pack_search", ask.rstrip("?")))
+    facts = list(FACTS) + list(TEMPLATES)
+    seen_q = set()
+    for told, ask, ans in facts:
+        if ask not in seen_q:                      # one router row per distinct question
+            seen_q.add(ask)
+            rows.append(router_row(ask, "pack_search", ask.rstrip("?")))
         day = f"2027-{rng.randint(1, 12):02d}-{rng.randint(1, 28):02d}"
         hit = f"[YOUR OWN WORDS, from remembered.txt] {day}: {told}"
         noise = rng.sample(PACK_NOISE, 2)
         order = [hit] + noise if rng.random() < 0.6 else [noise[0], hit, noise[1]]
         rows.append(answer_row(ask, "\n\n".join(order), ans))
+    # Eval disjointness: no eval key or told line may appear anywhere in the seed.
+    ev = json.load(io.open(os.path.join(ROOT, "evals", "memory.json"), encoding="utf-8"))["items"]
+    forbidden = {k.lower() for it in ev for k in it["keys"] if len(k) > 3} | {it["told"].lower() for it in ev}
+    blob = json.dumps(rows).lower()
+    hit = [k for k in forbidden if k in blob]
+    if hit:
+        raise SystemExit(f"eval overlap: {hit}")
     for q in UNKNOWN_Q:
         rows.append(router_row(q, "pack_search", q.rstrip("?")))
         rows.append(answer_row(q, "\n\n".join(rng.sample(PACK_NOISE, 2)),
