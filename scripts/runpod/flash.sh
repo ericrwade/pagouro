@@ -36,7 +36,31 @@ if [ "$CUR" -lt "$DECAY_START" ]; then
   python -u scripts/train.py $COMMON $RESUME --data-dir /workspace/data/flash --stop-at "$DECAY_START" \
       2>&1 | tee -a /workspace/runs/flash.stdout | grep --line-buffered -E "$FILTER"
 fi
-echo "== phase 2: decay (anneal) on the domain mix =="
-python -u scripts/train.py $COMMON --resume --data-dir data/tokenized_anneal \
+# D-61 (2026-09-19): the decay must be a MIX. Anneal-only decay replayed an 8M-token anneal ~25x
+# over the 200M-token phase and memorised it (train 3.05->0.48, held-out anneal 3.25->4.82).
+# Phase 2 data = FW_DECAY_TOKENS of the FineWeb stream + the anneal, so domain tokens are seen
+# ~1-2x. ANNEAL_DIR selects canon-only (default) or the shelf build.
+ANNEAL_DIR="${ANNEAL_DIR:-data/tokenized_anneal}"
+FW_DECAY_TOKENS="${FW_DECAY_TOKENS:-150000000}"
+DECAY_DIR=data/decay_mix_$(basename "$ANNEAL_DIR")
+if [ ! -f "$DECAY_DIR/meta.json" ]; then
+  python - "$ANNEAL_DIR" "$DECAY_DIR" "$FW_DECAY_TOKENS" <<'PY'
+import json, os, sys, numpy as np
+src, out, N = sys.argv[1], sys.argv[2], int(sys.argv[3])
+os.makedirs(out, exist_ok=True)
+fw = np.memmap('/workspace/data/flash/train.bin', dtype=np.uint16, mode='r')
+off = int(np.random.default_rng(1337).integers(0, len(fw) - N))
+dom = np.fromfile(os.path.join(src, 'train.bin'), dtype=np.uint16)
+mix = np.concatenate([np.asarray(fw[off:off + N]), dom]); mix.tofile(os.path.join(out, 'train.bin'))
+np.fromfile(os.path.join(src, 'val.bin'), dtype=np.uint16).tofile(os.path.join(out, 'val.bin'))
+meta = json.load(open(os.path.join(src, 'meta.json')))
+meta.update({'decay_mix': {'fineweb_tokens': N, 'fineweb_offset': off, 'domain_tokens': int(len(dom)),
+             'domain_share': round(len(dom) / len(mix), 4), 'source': src}, 'train_tokens': int(len(mix))})
+json.dump(meta, open(os.path.join(out, 'meta.json'), 'w'), indent=1)
+print(f"decay mix {out}: {len(mix):,} tokens, domain {100*len(dom)/len(mix):.1f}%")
+PY
+fi
+echo "== phase 2: decay on the MIX ($DECAY_DIR); watch the held-out anneal loss, it must not rise =="
+python -u scripts/train.py $COMMON --resume --data-dir "$DECAY_DIR" \
     2>&1 | tee -a /workspace/runs/flash.stdout | grep --line-buffered -E "$FILTER"
 echo FLASH_DONE
