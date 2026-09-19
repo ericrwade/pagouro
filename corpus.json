@@ -822,6 +822,144 @@
       "sha256_processed": "db94b9c81338d34c20286ead3891f91ef15ed41948b09749d17848ceac02926a",
       "file": "data/raw/usgov/tm9-8000-automotive-1985.txt",
       "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-neets-01",
+      "name": "NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Navy, Naval Education and Training Professional Development and Technology Center",
+      "url": "https://archive.org/details/NEETSModule01",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Navy nonresident training course NAVEDTRA 14173; archive.org item NEETSModule01 carries the Public Domain Mark",
+      "first_published": "1998",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:43:45+00:00",
+      "characters": 406979,
+      "estimated_tokens": 121896,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 71,
+        "lines_kept": 17213
+      },
+      "sha256_processed": "5bac6cce5ae9ec3a0ccf9030d4d673923d9f794177ebab55c92dcae425c98e6c",
+      "file": "data/raw/usgov/neets-01-dc.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-neets-02",
+      "name": "NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Navy, Naval Education and Training Professional Development and Technology Center",
+      "url": "https://archive.org/details/NEETSModule02",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Navy nonresident training course NAVEDTRA 14174; archive.org item NEETSModule02 carries the Public Domain Mark",
+      "first_published": "1998",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:43:46+00:00",
+      "characters": 379462,
+      "estimated_tokens": 129229,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 150,
+        "lines_kept": 22097
+      },
+      "sha256_processed": "30d75c40fc8d946f3d924a3bbf062004c3b9b370d7c6b21eba0a561fc839441d",
+      "file": "data/raw/usgov/neets-02-ac.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-neets-13",
+      "name": "NEETS Module 13: Introduction to Number Systems and Logic Circuits (NAVEDTRA 14185)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Navy, Naval Education and Training Professional Development and Technology Center",
+      "url": "https://archive.org/details/NEETSModule13",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Navy nonresident training course NAVEDTRA 14185; archive.org item NEETSModule13 carries the Public Domain Mark",
+      "first_published": "1998",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:43:46+00:00",
+      "characters": 254793,
+      "estimated_tokens": 93386,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 106,
+        "lines_kept": 17660
+      },
+      "sha256_processed": "5397314617f2a338a44ced59d8a464f20dd375f932546c08d058f4892f64e170",
+      "file": "data/raw/usgov/neets-13-digital.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-tm10-412-recipes",
+      "name": "TM 10-412 Armed Forces Recipe Service (2003)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Army / Navy / Air Force / Marine Corps (joint publication)",
+      "url": "https://archive.org/details/tm-10-412-armed-forces-recipe-service-2003",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "Joint-service technical manual TM 10-412 / NAVSUP P-7 / AFM 146-12 / MCO P10110.4; archive.org item tm-10-412-armed-forces-recipe-service-2003 carries the Public Domain Mark",
+      "first_published": "2003",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:43:48+00:00",
+      "characters": 1782910,
+      "estimated_tokens": 753919,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 42,
+        "lines_kept": 71410
+      },
+      "sha256_processed": "c01911c9003ebf65d04f50af743055f2aa8d418806f2a635ec18ec00a54ceb17",
+      "file": "data/raw/usgov/tm10-412-recipes-2003.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-fhwa-mutcd-2009",
+      "name": "Manual on Uniform Traffic Control Devices, 2009 Edition",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Federal Highway Administration (US DOT)",
+      "url": "https://archive.org/details/mutcd2009edition_202401",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "Work of the Federal Highway Administration, US Department of Transportation; archive.org item mutcd2009edition_202401 (original 2009 edition text)",
+      "first_published": "2009",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:43:50+00:00",
+      "characters": 2127825,
+      "estimated_tokens": 623943,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 103,
+        "lines_kept": 70398
+      },
+      "sha256_processed": "430e02a01bad0ece87d3fb58680faf4145da00c72359653d16cdc7003c07c852",
+      "file": "data/raw/usgov/fhwa-mutcd-2009.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "usgov-faa-afh",
+      "name": "Airplane Flying Handbook (FAA-H-8083-3B, 2016)",
+      "source": "archive.org / publisher PDF text",
+      "author": "US Federal Aviation Administration",
+      "url": "https://archive.org/details/airplane_flying_handbook_202604",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "Work of the Federal Aviation Administration (Flight Standards Service), FAA-H-8083-3B; archive.org item airplane_flying_handbook_202604",
+      "first_published": "2016",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T00:43:51+00:00",
+      "characters": 1219669,
+      "estimated_tokens": 305811,
+      "cleaning": "homoglyph map + drop lines >5% non-ASCII + whitespace",
+      "cleaning_detail": {
+        "lines_dropped_non_ascii": 87,
+        "lines_kept": 34228
+      },
+      "sha256_processed": "38763215c018d43076a6e5198829cbf49ca82bbb0290dede50560a21337c2d0d",
+      "file": "data/raw/usgov/faa-afh-2016.txt",
+      "slice": "shelf (D-58): anneal-only flavor"
     }
   ]
 }

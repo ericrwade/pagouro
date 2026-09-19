@@ -78,6 +78,10 @@ def main() -> int:
                     help="target character budget for the pretrain mix (~4 chars/token)")
     ap.add_argument("--anneal-fraction", type=float, default=0.10,
                     help="anneal is this fraction of TOTAL training tokens (brief section 6)")
+    ap.add_argument("--shelf-fraction", type=float, default=0.33,
+                    help="the shelf (D-58) is at most this fraction of the anneal")
+    ap.add_argument("--shelf-cap-chars", type=int, default=1_500_000,
+                    help="per-work cap so no single flavor dominates (~375k tokens)")
     ap.add_argument("--out-dir", default=os.path.join(ROOT, "data", "mixture"))
     ap.add_argument("--seed", type=int, default=1337)
     a = ap.parse_args()
@@ -152,6 +156,39 @@ def main() -> int:
     fw = read_if_exists("fineweb-edu-sample-10BT.txt")
     if fw:
         anneal_parts.append(fw[: len(fw) // 4])   # a slice of it, not all of it
+
+    # The shelf (D-58): every ledger row whose slice starts "shelf (D-58)" goes into the anneal,
+    # spread thin -- each work capped at --shelf-cap-chars and the whole shelf capped at
+    # --shelf-fraction of the anneal built so far. Paragraph-sampled deterministically, like
+    # the pretrain path, so a capped work contributes a spread rather than its opening chapters.
+    canon_chars = sum(len(p) for p in anneal_parts)
+    shelf_budget = int(canon_chars * a.shelf_fraction / max(1e-9, 1 - a.shelf_fraction))
+    shelf_rows = [s for s in ledger["sources"] if str(s.get("slice", "")).startswith("shelf (D-58)")]
+    print(f"\n=== SHELF (D-58): {len(shelf_rows)} works, budget {shelf_budget/1e6:.1f}M chars "
+          f"({100*a.shelf_fraction:.0f}% of anneal), cap {a.shelf_cap_chars/1e6:.2f}M chars each ===")
+    shelf_parts, used = [], 0
+    for s in sorted(shelf_rows, key=lambda r: r["slug"]):
+        rel = s["file"].replace("\\", "/")
+        rel = rel[len("data/raw/"):] if rel.startswith("data/raw/") else rel
+        text = read_if_exists(rel)
+        if not text:
+            continue
+        cap = min(a.shelf_cap_chars, max(0, shelf_budget - used))
+        if len(text) > cap:
+            docs = text.split("\n\n")
+            rng.shuffle(docs)
+            out, n = [], 0
+            for d in docs:
+                if n >= cap:
+                    break
+                out.append(d)
+                n += len(d)
+            text = "\n\n".join(out)
+        used += len(text)
+        shelf_parts.append(text)
+        print(f"  {s['slug']:<45} {len(text)/1e6:6.2f}M chars")
+    anneal_parts.extend(shelf_parts)
+    print(f"  shelf total {used/1e6:.1f}M chars = {100*used/max(1, used + canon_chars):.0f}% of anneal")
     rng.shuffle(anneal_parts)
     anneal_text = "\n\n".join(anneal_parts)
     anneal_out = os.path.join(a.out_dir, "anneal.txt")

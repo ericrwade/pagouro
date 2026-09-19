@@ -1361,3 +1361,18 @@ set, so the box can say whether it helped in a number. (4) Pre-2022 claim (D-34)
 item is dated on its row; program-generated data is labelled synthetic by construction.
 
 O-16, O-17 and O-18 are now sub-items of this decision.
+
+**Shelf log (running, session-maintained).**
+- 2026-09-18: wired into `scripts/build_mixture.py` — every ledger row whose `slice` starts
+  `shelf (D-58)` is paragraph-sampled into the anneal, ≤1.5M chars per work, ≤33% of the anneal in
+  total (`--shelf-cap-chars`, `--shelf-fraction`). Test build: 18 works, 15.3M chars, 23% of anneal.
+- 2026-09-18: 18 works on the shelf — 10 Gutenberg (per-edition PD bases) + 8 US-Government works
+  via archive.org OCR text (FAA PHAK, FAA Airplane Flying Handbook, Army TM 9-8000, NEETS modules
+  1/2/13, Armed Forces Recipe Service TM 10-412 (2003), FHWA MUTCD 2009). Cleaner + ledger:
+  `scripts/ledger_add_text.py` (homoglyph map, drop lines >5% non-ASCII, whitespace); fetch:
+  `scripts/fetch_archive_text.py`. Noise measured per file: 0.1–3.7% lines dropped.
+- 2026-09-18: **OpenStax excluded.** Its help centre now states the textbooks are CC BY-NC-SA 4.0
+  (NC → out by the rights rule). Earlier editions were distributed CC BY 4.0 and CC licences are
+  irrevocable for a copy so distributed, but that is an argument, not a licence line on the
+  current page — "unclear = no". Revisit only with a specific edition whose own copyright page
+  says CC BY 4.0 (open item **O-19**, Eric's call).
