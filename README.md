@@ -11,9 +11,11 @@ end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → 
 59M-parameter shakedown model that lives on a stick inside the real application (`app/`): three
 switches, a context gauge, five sandboxed tools, reference packs. That model is a pipeline proof,
 not the product; on the frozen eval it routes tools at 54% and answers 7% of real questions. The
-first rented-GPU run measured 62,000 tokens/s (D-55); a ~150M "Flash" model is training. The 1B
-model (D-6) waits on a thousand-fold larger SFT set (generating), a schedule fix (D-48), and Eric's
-launch. `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
+first rented-GPU run measured 62,000 tokens/s (D-55); a 126M "Flash" model is training. The
+corpus ledger holds 62 rows, including a 36-work "shelf" of licensed flavours for the anneal
+(D-58: government manuals, 1911 Britannica slices, BIPs/EIPs at pre-2022 commits, folk tales,
+recipes; every row dated before 2022 per D-34). The 1B model (D-6) waits on a thousand-fold larger
+SFT set (generating), a schedule fix (D-48), and Eric's launch. `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
 `docs/ORIGIN.md` for where this came from.
 
 ---
