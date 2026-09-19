@@ -122,7 +122,7 @@ numbers stay comparable across months.
 tools, the router. It never lets the model touch a shell or write outside `workspace/`.
 
 **Router.** The model's first, tiny decision on each message: which tool, if any, with what
-argument, as a five-line JSON object.
+argument, as a one-line JSON object.
 
 **Grammar (GBNF).** A formal description of the only strings the router is allowed to emit, so
 it can name a real tool or nothing, never an invented one.
@@ -134,7 +134,7 @@ it can name a real tool or nothing, never an invented one.
 a file in the folder and it is searchable. Retrieval, not training, is where verbatim text
 belongs.
 
-**BM25.** The forty-year-old keyword-ranking formula that finds passages in the packs. Twenty
+**BM25.** The thirty-year-old keyword-ranking formula that finds passages in the packs. Twenty
 milliseconds a query, no model needed.
 
 **Retrieval.** Looking a fact up in text at answer time instead of hoping the weights hold it.
