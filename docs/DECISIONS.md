@@ -1500,8 +1500,8 @@ dated for D-34) decided by a Flash-scale ablation and a ten-item French/Spanish 
 (3) never claim multilingual competence at 1B. Fits inside the O-22 backbone rebuild. Eric's call.
 
 ### D-61 — Pagouro Flash (126M, 2B tokens): the numbers, the decay that ate itself, and the shelf ablation
-**2026-09-19, 03:00–04:00 AM PT, session; pod `01lg4pj2955o57` (A40, $0.49/h), total window
-spend ≈ $13.** Every number below is in `evals/results/` (`pagouro-flash__*.json`, `d61/`).
+**2026-09-19, 03:00–04:00 AM PT, session; pod `01lg4pj2955o57` (A40, $0.49/h). Window spend on RunPod, from the billing API after
+the pod was deleted: $7.54 (Sep 18–19 UTC; my running estimate of ~$11–13 was high).** Every number below is in `evals/results/` (`pagouro-flash__*.json`, `d61/`).
 
 **The run.** 126M params (dim 768, 16 layers, GQA 12/4), 2B FineWeb-Edu tokens at 1024 context,
 WSD schedule, ~38.5k tok/s, 12.3 h for the stable phase. Stable-end checkpoint (step 27,464):
