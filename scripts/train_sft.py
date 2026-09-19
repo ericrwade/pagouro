@@ -58,6 +58,7 @@ def load_examples() -> list[list[dict]]:
     add_pairs(os.path.join(ROOT, "sft", "synthesis_seed.jsonl"))    # D-48 comparisons
     add_pairs(os.path.join(ROOT, "sft", "harness_seed.jsonl"))      # D-51/52 router, tools, grounded, multi-turn
     add_pairs(os.path.join(ROOT, "sft", "synthetic_harness.jsonl"))  # D-30 teacher-generated, tool-executed, filtered (ledger row)
+    add_pairs(os.path.join(ROOT, "sft", "memory_seed.jsonl"))       # O-23 level-1 memory: personal questions -> pack_search; answer from YOUR OWN WORDS hits
     return out
 
 
