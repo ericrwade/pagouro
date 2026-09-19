@@ -34,7 +34,14 @@ def main() -> int:
     ap.add_argument("--batch-size", type=int, default=16)
     ap.add_argument("--max-windows", type=int, default=0, help="cap windows per set (0 = all)")
     ap.add_argument("--out", default="")
+    ap.add_argument("--tokenizer", default="", help="tokenizer.json: if given, also report bits-per-byte "
+                    "(loss in nats x tokens / (ln 2 x UTF-8 bytes of the decoded text)), which is comparable "
+                    "across tokenizers and to published models (nanochat convention; O-24)")
     a = ap.parse_args()
+    tok = None
+    if a.tokenizer:
+        from tokenizers import Tokenizer
+        tok = Tokenizer.from_file(a.tokenizer)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     ck = torch.load(a.ckpt, map_location=device, weights_only=False)
@@ -61,8 +68,16 @@ def main() -> int:
                 tot_loss += loss.item() * y.numel()
                 tot_tok += y.numel()
         mean = tot_loss / max(1, tot_tok)
-        result["sets"][path] = {"tokens": tot_tok, "loss": round(mean, 4), "ppl": round(math.exp(mean), 2)}
-        print(f"{path}: {tot_tok:,} tokens  loss {mean:.4f}  ppl {math.exp(mean):.2f}", flush=True)
+        row = {"tokens": tot_tok, "loss": round(mean, 4), "ppl": round(math.exp(mean), 2)}
+        if tok is not None:
+            n_bytes = 0
+            for b0 in range(0, n_win * a.seq_len, 1_000_000):
+                n_bytes += len(tok.decode(data[b0:min(n_win * a.seq_len, b0 + 1_000_000)].tolist()).encode("utf-8"))
+            row["bytes"] = n_bytes
+            row["bits_per_byte"] = round(mean * tot_tok / (math.log(2) * max(1, n_bytes)), 4)
+        result["sets"][path] = row
+        print(f"{path}: {tot_tok:,} tokens  loss {mean:.4f}  ppl {math.exp(mean):.2f}"
+              + (f"  bpb {row['bits_per_byte']:.4f}" if tok is not None else ""), flush=True)
     if a.out:
         os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
         io.open(a.out, "w", encoding="utf-8", newline="\n").write(json.dumps(result, indent=2) + "\n")
