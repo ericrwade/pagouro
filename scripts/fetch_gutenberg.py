@@ -71,6 +71,8 @@ def main() -> int:
     ap.add_argument("--pd-basis", required=True,
                     help="WHY this is public domain. Not 'it was on Gutenberg'.")
     ap.add_argument("--published", required=True, help="first publication year")
+    ap.add_argument("--slice", default="domain canon",
+                    help='ledger slice tag; shelf works use "shelf (D-58): anneal-only flavor"')
     a = ap.parse_args()
 
     if int(a.published) >= 2022:
@@ -140,7 +142,7 @@ def main() -> int:
         "cleaning_detail": notes,
         "sha256_processed": digest,
         "file": os.path.relpath(out, ROOT).replace("\\", "/"),
-        "slice": "domain canon",
+        "slice": a.slice,
     })
     with io.open(LEDGER, "w", encoding="utf-8", newline="\n") as f:
         json.dump(ledger, f, indent=2, ensure_ascii=False)
