@@ -41,10 +41,21 @@ English/America).
   now a mix. Build log Day 8 evening written.
 **Verified:** every number from a results file; ledger 62/62; all four Flash checkpoints load;
 `list-pods` empty; billing read after deletion.
-**Open / next:** (1) memory answering (0/10) and `calc` arguments (0/4) in the SFT data before
-the 1B SFT; (2) O-22 backbone rebuild (required before 1B); (3) Eric's calls: O-12, O-19, O-20
-(book licence), O-21 (images v1.0/v1.1), O-25 (GRPO), O-26 (re-OCR), O-27; (4) build log Day 9
-(the Flash night); (5) book chapters continue; (6) bits-per-byte + CORE at 1B.
+**Morning addendum (04:00–09:40 PT):** (1) done — calc seed (923 program-generated rows) and
+templated memory seed (~320): Flash re-fit → calc args 0/4→3/6, routing 75→87.5%, and with two
+harness fixes (memory entries one chunk each; owner's words first and alone) **memory 0/10→10/10**;
+the 59M stays 0/10 (size). (2) O-22: FineWeb slices re-fetched with the dump-date basis (the old
+ones were ~23% post-2021 — corrected on the record), Wikipedia sampled from the 2021-12-20 dump
+(86k articles / 100M tokens via range requests), Stack Exchange already dated; only The Stack
+remains (Eric's call). (4) done. (5) ch. 11 (rent a GPU) drafted. Also: **the stick now ships the
+Flash model** (MODEL_STEM knob; live scripted run: Lisbon, memory recall, calc 544); the offline
+audit was found to pass on 0 samples and now audits the shipped model with real generation
+(PASS, 39 samples / 20 launches / 0 connections). Pod deleted at 04:10 PT; RunPod window spend
+$7.54 from billing.
+**Open / next:** (1) The Stack decision (O-22, last D-34 item) — Eric; (2) Eric's calls: O-12,
+O-19, O-20, O-21, O-25, O-26, O-27; (3) book: glossary appendix, then story chapters after the
+window; (4) bits-per-byte + CORE at 1B; (5) nanochat head-to-head (~$0.10) when GPU time is next
+authorised.
 
 ---
 
