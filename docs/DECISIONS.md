@@ -1498,3 +1498,66 @@ other governments' open licences (UK OGL v3, CA/AU/NZ open gov, EU reuse — ver
 (2) a 2–5% Latin-script multilingual slice (FineWeb-2 / ≤2021 fr-es-de-pt Wikipedia dumps, dump-
 dated for D-34) decided by a Flash-scale ablation and a ten-item French/Spanish calibration set;
 (3) never claim multilingual competence at 1B. Fits inside the O-22 backbone rebuild. Eric's call.
+
+### D-61 — Pagouro Flash (126M, 2B tokens): the numbers, the decay that ate itself, and the shelf ablation
+**2026-09-19, 03:00–04:00 AM PT, session; pod `01lg4pj2955o57` (A40, $0.49/h), total window
+spend ≈ $13.** Every number below is in `evals/results/` (`pagouro-flash__*.json`, `d61/`).
+
+**The run.** 126M params (dim 768, 16 layers, GQA 12/4), 2B FineWeb-Edu tokens at 1024 context,
+WSD schedule, ~38.5k tok/s, 12.3 h for the stable phase. Stable-end checkpoint (step 27,464):
+FineWeb val loss 3.176 (ppl 24.0).
+
+**The decay that ate itself.** Phase 2 as written ran the last 3,052 steps (200M tokens) on the
+canon anneal *alone* — 7.9M tokens, so ~25 epochs at an LR still near 5e-4. Train loss fell
+3.05 → 0.48 in 1,200 steps while the held-out anneal loss rose 3.25 → 3.85 → 4.82. Stopped at
+step ~28,700; its partial checkpoint scored afterwards: FineWeb probe loss **4.99 (ppl 147)**
+against the stable checkpoint's 3.13 — it had destroyed general text to memorise the anneal.
+Same design as the original plan (16 epochs of the pre-D-60 anneal); the clean-up only made it
+sharper. Rule, now in `flash.sh` and `JOB_1B.md`: **the decay is a mix, domain data is never
+replayed more than ~2×, and the held-out anneal loss is watched and must not rise.**
+
+**The redesigned decay (two arms, same stable checkpoint, same seed, 1,000 steps = 65M
+tokens, 45M-token FineWeb slice + the anneal):** canon arm (domain 15%) and canon+shelf arm
+(domain ~22%). Held-out anneal loss fell monotonically in both (canon 3.285 → 3.145; shelf
+3.145 → 2.988 on its own val).
+
+**The D-58 ablation, on tokens neither arm's decay saw** (loss; ppl; bits-per-byte in
+`d61/*.json`):
+
+| held-out set | stable end | mix-canon | mix-shelf | naive (stopped) |
+|---|---|---|---|---|
+| FineWeb probe (3.3M tokens, late region, seen equally by both arms in pretraining only) | 3.126 | 3.088 | **3.085** | 4.991 |
+| *Communist Manifesto* (canon-like, held out of both) | 3.572 | 3.177 | **3.146** | 4.966 |
+| Carroll, *Symbolic Logic* (shelf-like, held out of both) | 4.264 | 2.809 | **2.414** | 4.244 |
+| NEETS module 13 (shelf-like, held out of both) | 3.830 | 2.826 | **2.679** | 4.583 |
+
+The shelf arm is better on every clean set: large on shelf-like unseen works (−0.40, −0.15
+nats), small on the canon-like one (−0.03), and **no cost on general text** (−0.003, i.e. equal).
+Caveat: the shelf arm had ~7% more domain tokens in its mix; this measures "add the shelf",
+which is the question. **The shelf stays (D-58 guardrail 3 satisfied).** Two sets in
+`heldout_*.json` are NOT valid for the comparison and are recorded as such: the FineWeb `val.bin`
+(the anneal's FineWeb quarter is the head of the same stream, so the decay replayed the val
+documents — found by the naive arm's impossible 0.71) and both anneal vals (cross-contaminated
+between arms). The `probe_late` set replaces them.
+
+**SFT and the suite (mix-shelf → 4,200 SFT steps on the pod GPU in 6 min, 5,558
+conversations incl. the memory seed; exported, q8 153 MB, fidelity 176/176):**
+
+| | Flash (126M) | stick (59M, same SFT) | open 0.5–1.7B | frontier |
+|---|---|---|---|---|
+| bluff ↓ | **36.7%** (11/30; 2 of the 11 are abstentions the marker list misses: "haven't come across") | 16.7% | 50–57% | 23–27% |
+| answered-real ↑ | **26.7%** (8/30; over-abstained 3) | 3.3% | 87–93% | 97% |
+| deflection | 89% deflected | 89% | 4–32% | 0% |
+| tool routing (calls right, the suite's number) | **75%** (18/24; 3 wrong tool, 3 missed; spurious 2/16 vs the stick's 5/16; calc args 0/4) | 83% (20/24) | 54–92% | — |
+| memory (routed / retrieved / answered) | **8/10** / 10/10 / 0/10 | 3/10 / 10/10 / 0/10 | — | — |
+
+Read honestly: the first Pagouro that answers real questions (Lisbon, CPU) while bluffing less
+than every open baseline, and it is nowhere near the release gate (80% answered-real). It
+over-abstains on things it trained on ("no record of *The Wealth of Nations*" — the canon is
+in its anneal) and bluffs on numbers and dates ("Today's date is 1888"; the 400th digit of pi).
+Its no-hedge coherence is new: 0 degenerate answers on the bluff set. The memory seed worked
+on routing (1 → 8/10) and not yet on answering from the hit. Tool arguments for `calc` are
+still wrong every time — a tokenizer/format problem to look at before the 1B SFT.
+
+**Kept:** `checkpoints/flash_stable.pt`, `flash_mix_shelf.pt`, `flash_sft.pt`,
+`data/gguf_flash/`; all logs under `runs/runpod/d61/`. Pod deleted after the fetch was verified.
