@@ -85,6 +85,9 @@ def main() -> int:
                     help="per-work cap so no single flavor dominates (~375k tokens)")
     ap.add_argument("--anneal-only", action="store_true",
                     help="skip writing pretrain.txt (the anneal changes far more often than the backbone)")
+    ap.add_argument("--exclude", default="",
+                    help="comma-separated ledger slugs or data/raw-relative files to hold out of the anneal "
+                         "entirely (D-60 ablation: whole works held out of BOTH arms for a clean held-out set)")
     ap.add_argument("--out-dir", default=os.path.join(ROOT, "data", "mixture"))
     ap.add_argument("--seed", type=int, default=1337)
     a = ap.parse_args()
@@ -132,8 +135,13 @@ def main() -> int:
               f"~{len(pretrain_text)//4:,} tokens")
 
     print("\n=== ANNEAL MIX ===")
+    excluded = {x.strip() for x in a.exclude.split(",") if x.strip()}
+    slug_by_file = {s.get("file", "").replace("\\", "/"): s["slug"] for s in ledger["sources"]}
     anneal_parts = []
     for rel in ANNEAL_SOURCES:
+        if rel in excluded or slug_by_file.get(f"data/raw/{rel}") in excluded:
+            print(f"  HELD OUT: {rel}")
+            continue
         text = read_if_exists(rel)
         if text:
             anneal_parts.append(text)
@@ -172,6 +180,9 @@ def main() -> int:
           f"({100*a.shelf_fraction:.0f}% of anneal), cap {a.shelf_cap_chars/1e6:.2f}M chars each ===")
     shelf_parts, used = [], 0
     for s in sorted(shelf_rows, key=lambda r: r["slug"]):
+        if s["slug"] in excluded:
+            print(f"  HELD OUT: {s['slug']}")
+            continue
         rel = s["file"].replace("\\", "/")
         rel = rel[len("data/raw/"):] if rel.startswith("data/raw/") else rel
         text = read_if_exists(rel)
