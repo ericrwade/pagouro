@@ -70,10 +70,11 @@ def fetch_pages(item: str, n: int, d: str, width: int = 1400, workers: int = 4) 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--items", nargs="+", required=True)
+    ap.add_argument("--limit", type=int, default=0, help="test: only this many pages per item")
     ap.add_argument("--out", default="/workspace/reocr")
     ap.add_argument("--model", default="lightonai/LightOnOCR-2-1B")
     ap.add_argument("--batch", type=int, default=8)
-    ap.add_argument("--max-new-tokens", type=int, default=2048)
+    ap.add_argument("--max-new-tokens", type=int, default=1536)
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     import torch
@@ -81,12 +82,13 @@ def main() -> int:
     from transformers import LightOnOcrForConditionalGeneration, LightOnOcrProcessor
     device = "cuda"
     proc = LightOnOcrProcessor.from_pretrained(a.model)
+    proc.tokenizer.padding_side = "left"          # decoder-only batching: pad on the left or generation is wrong
     model = LightOnOcrForConditionalGeneration.from_pretrained(a.model, dtype=torch.bfloat16).to(device).eval()
     for item in a.items:
         t0 = time.time()
         n = page_count(item)
         d = os.path.join(a.out, item)
-        pages = fetch_pages(item, n, os.path.join(d, "pages"))
+        pages = fetch_pages(item, n if not a.limit else min(n, a.limit), os.path.join(d, "pages"))
         print(f"{item}: {len(pages)}/{n} pages fetched in {time.time()-t0:.0f}s", flush=True)
         done_dir = os.path.join(d, "md"); os.makedirs(done_dir, exist_ok=True)
         todo = [p for p in pages if not os.path.exists(os.path.join(done_dir, os.path.basename(p)[:-4] + ".md"))]
@@ -98,7 +100,8 @@ def main() -> int:
             try:
                 convs = [[{"role": "user", "content": [{"type": "image", "image": im}]}] for im in imgs]
                 inputs = proc.apply_chat_template(convs, add_generation_prompt=True, tokenize=True,
-                                                  return_dict=True, return_tensors="pt", padding=True).to(device)
+                                                  return_dict=True, return_tensors="pt",
+                                                  processor_kwargs={"padding": True}).to(device)
                 if "pixel_values" in inputs:
                     inputs["pixel_values"] = inputs["pixel_values"].to(torch.bfloat16)
                 with torch.no_grad():
