@@ -50,6 +50,25 @@ hours and ~$1. Fetching page images from archive.org is the slower part.
   (the pod is alive anyway; no extra rental), and compare the output with archive.org's text
   for that page. If it is as good as the card says, the shelf re-OCR is a ~$1 job.
 
+## The GPU test (done 02:05 AM PT, on the pod, transformers 5.17, bf16, A40)
+
+`scripts/ocr_page.py` (uses the model's own `LightOnOcrForConditionalGeneration` /
+`LightOnOcrProcessor`; the generic auto-classes load it with missing weights and return "no
+visible content" — a trap worth recording). Two pages, outputs in `docs/samples/ocr/`:
+
+- **NEETS module 1, page 120 (formulas):** 1,107 chars in 12.9 s. Every equation correct in
+  LaTeX (`I = rac{2 	ext{ volts}}{2 	ext{ ohms}}`, `P = 4.5 	ext{ watts}`). The archive.org text
+  of the same page (`neets-p120.archive-org.txt`) reads **"P = 45 watts"** where the page says
+  4.5, "I = -", "P- HI", "j _ 2 volts" — i.e. the training text we ledgered carries a *wrong
+  number*, not just noise. That is the strongest argument for the re-OCR: garbage lines were
+  measured and dropped, but a plausible wrong number passes every filter.
+- **Armed Forces Recipe Service, page 300 (a recipe card):** 1,724 chars in 19.7 s; the
+  nutrition line and the ingredient list come out as proper HTML tables with headers.
+
+Speed with plain transformers, one page at a time, is 13–20 s/page on the A40 — ~50 h for the
+~12k shelf pages, so the re-OCR job needs batching or vLLM (the card's 5.7 pages/s is vLLM on an
+H100). Plan for ~2 h and ~$1–2 on the A40 with vLLM; verify the rate on 100 pages first.
+
 ## Two smaller things it suggests
 
 1. **An offline "read this scan" tool for the stick** (`read_file` for images/PDF pages).
@@ -65,5 +84,5 @@ hours and ~$1. Fetching page images from archive.org is the slower part.
 Yes, helpful — as a tool on the corpus, not as a model in the product. Concretely: re-OCR the
 shelf's scanned technical works with it on a rented GPU (~$1), write the OCR engine on each
 row, and re-measure the cleaning stats; expect the NEETS formulas and the recipe/canning
-tables to become usable. Blocked on this machine by our llama.cpp build's vision path; the
-GPU test on the pod decides whether the re-OCR is scheduled. Logged as **O-26**.
+tables to become usable. The GPU test passed decisively (formulas exact where archive.org's text had a wrong number);
+the re-OCR should be scheduled, with vLLM for throughput. Logged as **O-26**.

@@ -1,0 +1,85 @@
+Power (P), in watts, is determined by applying the basic power formula:
+
+P = E x I
+
+P = 1 volt x 0,5 ampere
+P = 0.5 watt
+
+When E is increased to 2 volts:
+R
+
+j _ 2 volts
+2 ohms
+
+I = 1 amp ere
+
+and
+
+P = ExI
+
+P = 2 volts x 1 ampere
+P = 2 watts
+
+When E is increased to 3 volts:
+R
+
+j _ 3 volts
+2 ohms
+
+I = 1,5 amperes
+
+and
+
+P = Ex I
+
+P = 3 volts x 1.5 ampere
+P = 45 watts
+
+You should notice that when the voltage was increased to 2 volts, the power increased from .5 watts
+to 2 watts or 4 times. When the voltage increased to 3 volts, the power increased to 4.5 watts or 9 times.
+This shows that if the resistance in a circuit is held constant, the power varies directly with the SQUARE
+OF THE VOLTAGE.
+
+Another way of proving that power varies as the square of the voltage when resistance is held
+constant is:
+
+3-13
+
+Since: I = -
+
+R
+
+By substitution in: P = ExI
+
+E
+
+You get: P = Ex_
+
+6 R
+
+Or: P- HI
+
+R
+
+E2
+
+Therefore: P =
+
+R
+
+Another important relationship may be seen by studying figure 3-10. Thus far, power has been
+calculated with voltage and current (P = E x I), and with voltage and resistance
+
+R
+
+Referring to figure 3-10, note that power also varies as the square of current just as it does with
+ige. Thus,
+be proved by:
+
+voltage. Thus, another formula for power, with current and resistance as its factors, is P = I R. This can
+
+Since: E = I x R
+
+By sub sti tuition in: P = ExI
+
+You get: P = I x
