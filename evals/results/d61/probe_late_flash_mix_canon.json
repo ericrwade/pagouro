@@ -1,0 +1,14 @@
+{
+  "ckpt": "/workspace/ckpt/flash_mix_canon.pt",
+  "step": 28463,
+  "seq_len": 1024,
+  "sets": {
+    "/workspace/data/flash/probe_late.bin": {
+      "tokens": 3275776,
+      "loss": 3.0884,
+      "ppl": 21.94,
+      "bytes": 14674519,
+      "bits_per_byte": 0.9946
+    }
+  }
+}

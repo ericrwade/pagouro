@@ -1,0 +1,14 @@
+{
+  "ckpt": "/workspace/ckpt/flash_stable.pt",
+  "step": 27464,
+  "seq_len": 1024,
+  "sets": {
+    "/workspace/data/flash/probe_late.bin": {
+      "tokens": 3275776,
+      "loss": 3.1255,
+      "ppl": 22.77,
+      "bytes": 14674519,
+      "bits_per_byte": 1.0066
+    }
+  }
+}

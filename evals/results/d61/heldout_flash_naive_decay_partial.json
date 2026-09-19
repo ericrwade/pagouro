@@ -1,0 +1,49 @@
+{
+  "ckpt": "/workspace/ckpt/flash_naive_decay_partial.pt",
+  "step": 28499,
+  "seq_len": 1024,
+  "sets": {
+    "/workspace/data/flash/val.bin": {
+      "tokens": 3261440,
+      "loss": 0.7077,
+      "ppl": 2.03,
+      "bytes": 14153339,
+      "bits_per_byte": 0.2353
+    },
+    "data/heldout/communist-manifesto.bin": {
+      "tokens": 16384,
+      "loss": 4.9655,
+      "ppl": 143.39,
+      "bytes": 69559,
+      "bits_per_byte": 1.6874
+    },
+    "data/heldout/symbolic-logic.bin": {
+      "tokens": 143360,
+      "loss": 4.2439,
+      "ppl": 69.68,
+      "bytes": 436087,
+      "bits_per_byte": 2.0128
+    },
+    "data/heldout/neets-13.bin": {
+      "tokens": 93184,
+      "loss": 4.5827,
+      "ppl": 97.78,
+      "bytes": 254278,
+      "bits_per_byte": 2.4229
+    },
+    "data/tokenized_anneal/val.bin": {
+      "tokens": 80896,
+      "loss": 4.843,
+      "ppl": 126.84,
+      "bytes": 353722,
+      "bits_per_byte": 1.5979
+    },
+    "data/tokenized_anneal_shelf/val.bin": {
+      "tokens": 125952,
+      "loss": 2.2672,
+      "ppl": 9.65,
+      "bytes": 513560,
+      "bits_per_byte": 0.8022
+    }
+  }
+}

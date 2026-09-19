@@ -1,0 +1,14 @@
+{
+  "ckpt": "/workspace/ckpt/flash_naive_decay_partial.pt",
+  "step": 28499,
+  "seq_len": 1024,
+  "sets": {
+    "/workspace/data/flash/probe_late.bin": {
+      "tokens": 3275776,
+      "loss": 4.9913,
+      "ppl": 147.13,
+      "bytes": 14674519,
+      "bits_per_byte": 1.6075
+    }
+  }
+}

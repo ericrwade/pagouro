@@ -1,0 +1,49 @@
+{
+  "ckpt": "/workspace/ckpt/flash_mix_canon.pt",
+  "step": 28463,
+  "seq_len": 1024,
+  "sets": {
+    "/workspace/data/flash/val.bin": {
+      "tokens": 3261440,
+      "loss": 2.8426,
+      "ppl": 17.16,
+      "bytes": 14153339,
+      "bits_per_byte": 0.945
+    },
+    "data/heldout/communist-manifesto.bin": {
+      "tokens": 16384,
+      "loss": 3.1774,
+      "ppl": 23.98,
+      "bytes": 69559,
+      "bits_per_byte": 1.0797
+    },
+    "data/heldout/symbolic-logic.bin": {
+      "tokens": 143360,
+      "loss": 2.8086,
+      "ppl": 16.59,
+      "bytes": 436087,
+      "bits_per_byte": 1.3321
+    },
+    "data/heldout/neets-13.bin": {
+      "tokens": 93184,
+      "loss": 2.8264,
+      "ppl": 16.88,
+      "bytes": 254278,
+      "bits_per_byte": 1.4943
+    },
+    "data/tokenized_anneal/val.bin": {
+      "tokens": 80896,
+      "loss": 3.1233,
+      "ppl": 22.72,
+      "bytes": 353722,
+      "bits_per_byte": 1.0305
+    },
+    "data/tokenized_anneal_shelf/val.bin": {
+      "tokens": 125952,
+      "loss": 2.9885,
+      "ppl": 19.86,
+      "bytes": 513560,
+      "bits_per_byte": 1.0574
+    }
+  }
+}
