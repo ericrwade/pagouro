@@ -165,6 +165,7 @@ cp tools/llamacpp/llama-cli.exe "$REL/"
 cp tools/llamacpp/*.dll "$REL/" 2>/dev/null || true
 cp corpus.json "$REL/docs/"
 cp docs/THREAT_MODEL.md "$REL/docs/" 2>/dev/null || true
+cp docs/MAKE_IT_YOURS.md "$REL/docs/" 2>/dev/null || true   # how to improve or customise it (Eric, 2026-09-18)
 cp evals/BASELINES.md "$REL/docs/" 2>/dev/null || true
 cp evals/results/pagouro-real__*.json "$REL/docs/" 2>/dev/null || true
 cp evals/results/offline_audit_real.json "$REL/docs/" 2>/dev/null || true

@@ -216,7 +216,8 @@ judgement; the framework around it is what you are meant to build on.
 A small language model (see `docs/corpus.json` for exactly what it was trained
 on, and why each source was allowed in) that runs from this USB stick with no
 account, no telemetry, and no network calls in its default mode. Read
-`MANIFESTO.txt` for the short version of why, and `docs/THREAT_MODEL.md` for
+`MANIFESTO.txt` for the short version of why, `docs/MAKE_IT_YOURS.md` for how to
+improve or customise it (packs, model swap, tools, fine-tuning, retraining), and `docs/THREAT_MODEL.md` for
 the precise, honest account of what "offline" does and does not protect you
 from -- please read that before relying on this for anything sensitive.
 
