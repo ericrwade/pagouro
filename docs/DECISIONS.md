@@ -1612,3 +1612,21 @@ in the same rental as D-65 (~$1–2, ceiling $5 for the three jobs together, $10
 Rights unchanged (US Government works); the OCR engine, model version and per-file stats go on
 each ledger row; the old text files are kept beside the new ones until the new rows are verified,
 then superseded. The packs on the stick are refreshed from the same output.
+
+### D-67 — Pagouro Draws ships in v1.0, with its own gate; first job: a hundred hermit-crab logos (closes O-21)
+**2026-09-19, Eric: "A, it is."** Two proofs of one idea launch together: the text model and a
+pixel-art drawing model on the same stick, both with a ledgered corpus and a published number.
+Marketing reasoning recorded: attention comes once; the sprite in the terminal is the screenshot,
+the bluff-rate table is the paragraph after it; "then we taught it to draw for three dollars" is
+a chapter, not an update note. Cost accepted: ~two sessions plus ~$3 of GPU, pushing the 1B run
+out by a few days; the honesty gate (D-50) is untouched and still decides whether anything ships.
+
+**Gate for the drawing model:** it must produce a recognisable thing for a plain caption on a
+frozen set of 40 captions (judged by a fixed rubric, results published like the text evals), or
+it stays out of v1.0 without affecting the text.
+
+**Eric's target:** good enough to generate **a hundred hermit-crab-related logos for Pagouro** —
+a concrete, checkable goal and a corpus signal: the training set gets a deliberate slice of
+crustacean/marine/shell imagery from the CC0 museum and natural-history collections (Smithsonian,
+Biodiversity Heritage Library, Met) so the model has actually seen a hermit crab. The hundred
+logos are also the first thing the book shows the model drawing.
