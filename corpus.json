@@ -22,9 +22,10 @@
         "footer_bytes_removed": 18789,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "dbd711c710a45677d2d0a35be147c323ecb80e4d1df21893f93626be5f9e87f7",
+      "sha256_processed": "023783f4d1e304ead48298b33b00048e4a15a273da0a8c1ff44e0b86b4697c3a",
       "file": "data/raw/gutenberg/anthem.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-second-treatise-of-government",
@@ -46,9 +47,10 @@
         "footer_bytes_removed": 18812,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "f24b28af4da486de9bacc11cc9b864d34cbd76e178efec432d14c18b38be6c14",
+      "sha256_processed": "c2795963a377adcffd494674486731198abd68efff376aa268edebd56ba7f1c1",
       "file": "data/raw/gutenberg/second-treatise-of-government.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-wealth-of-nations",
@@ -70,9 +72,10 @@
         "footer_bytes_removed": 18845,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "2d7955218e5dcd7dc6f2d17d097fc18c9531206f9d40cba2385de5d356aec3da",
+      "sha256_processed": "c87dd929783fb6579532220071407e2d9df4d4bfc8aa6acc2c377bbc3785e05f",
       "file": "data/raw/gutenberg/the-wealth-of-nations.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-theory-of-moral-sentiments",
@@ -94,9 +97,10 @@
         "footer_bytes_removed": 18813,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "59f5a983b84d1180033a39bab1fe1a63201eee6c9381374836cf34ddb6a8858c",
+      "sha256_processed": "5a2eb56dc3adeb9f5dd7263e4a1f56784a7ced95c01f9782fcda9e337f0876f2",
       "file": "data/raw/gutenberg/the-theory-of-moral-sentiments.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-law",
@@ -118,9 +122,10 @@
         "footer_bytes_removed": 18790,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "0504664114a7f27a1c3a9a579bab884d0bc6f1eacc118df61950140f7be55782",
+      "sha256_processed": "1a51d13f063a5afdcac05265e086e90c766c48dd99c1f5834dc36f7713803884",
       "file": "data/raw/gutenberg/the-law.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-economic-sophisms",
@@ -142,9 +147,10 @@
         "footer_bytes_removed": 18800,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "044369f992923eeeca628e90b6967a60169b6a2aab0785c9a227a752a9310a64",
+      "sha256_processed": "8c24d6971177aafbb16b3c2f61ff87f8632d84121b272691bf0bb42a61b2773d",
       "file": "data/raw/gutenberg/economic-sophisms.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-on-liberty",
@@ -166,9 +172,10 @@
         "footer_bytes_removed": 18793,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "2e4ebafdb1ea8150c84a0b64ee0c56528d2358ee439377c27cfa60bbe5b7503d",
+      "sha256_processed": "6e04fec76faeea3e1075889d1352400933c95521a77780eb5916277926845f5d",
       "file": "data/raw/gutenberg/on-liberty.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-principles-of-political-economy",
@@ -190,9 +197,10 @@
         "footer_bytes_removed": 18814,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "3fcf6adc3b905a122773012c5eae83720fc2e96b9cc601d0fa1a26dacf700989",
+      "sha256_processed": "4ac60aea54d8b35e7e3b3de55588ffcfe7aaeb320836be31bd426f139407c44e",
       "file": "data/raw/gutenberg/principles-of-political-economy.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-on-the-principles-of-political-economy-and-taxation",
@@ -214,9 +222,10 @@
         "footer_bytes_removed": 18835,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "3f428e9e277d147875d45580acb80b15e30060002a6e8bbc9b63515f6859e7d4",
+      "sha256_processed": "c822d0992be3ad00ddca8a0c6e6b6b2a7351f67fe7d9561fe24c0dd9a7496b05",
       "file": "data/raw/gutenberg/on-the-principles-of-political-economy-and-taxation.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-democracy-in-america-volume-1",
@@ -238,9 +247,10 @@
         "footer_bytes_removed": 18814,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "329645c15251cd93bf90702331f38fb987c7e92190377d85f8d349528a3d82ac",
+      "sha256_processed": "6e871707fe0e261cf6d976f9042f07a641954089ac92dcbd1ba581ec320bfdc0",
       "file": "data/raw/gutenberg/democracy-in-america-volume-1.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-democracy-in-america-volume-2",
@@ -262,9 +272,10 @@
         "footer_bytes_removed": 18814,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "7d58367c3a7fcefcc55276e2c218c831f8c75364acbbd7813ebd6bf0e928899a",
+      "sha256_processed": "42fa1120d3bed9d7bc0e57c6dc2374e89ee49f27804f6701c6ea7f7819f375a7",
       "file": "data/raw/gutenberg/democracy-in-america-volume-2.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-federalist-papers",
@@ -286,9 +297,10 @@
         "footer_bytes_removed": 18804,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "9b04ce472313ea37b46a2f91a2cb0bcdcba4aaf52450976586e3c593c5bb04c5",
+      "sha256_processed": "7360376660ae6e9c28dd2cf4eb08457b1bd6c29403c0ee3b6b7b1cdb992f1209",
       "file": "data/raw/gutenberg/the-federalist-papers.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-progress-and-poverty",
@@ -310,9 +322,10 @@
         "footer_bytes_removed": 18821,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "01d013d55d9df2e42481446b53fa945282eda3b1fb3542fed294bb692c1c2475",
+      "sha256_processed": "ef73317cfcfe48cfce3e48e1988c518bce59a46cf2e48a4a90d60dd3fcf75adc",
       "file": "data/raw/gutenberg/progress-and-poverty.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-communist-manifesto",
@@ -334,9 +347,10 @@
         "footer_bytes_removed": 18806,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "3eee8893f3de4eacfe14a6211f768e55226a370237f5936729ee4f593126be0e",
+      "sha256_processed": "4a6b2fcaa5c59ac5d99b3e310addb16aa499f554f68b95068e6a6664e162bf7d",
       "file": "data/raw/gutenberg/the-communist-manifesto.txt",
-      "slice": "domain canon"
+      "slice": "domain canon",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "fineweb-edu-sample-10BT",
@@ -529,9 +543,10 @@
         "tool_answer": 640
       },
       "bytes": 1295056,
-      "sha256_processed": "da8c0629806b42fe8b21e17556bc6a5e0b7e1e6bb1e68ad719a77fac6a3c083c",
+      "sha256_processed": "158052e0c64d7de3b8efee8be8ddd53a524ddf483ba8faa5acd31ac9e1e8bec2",
       "file": "sft/synthetic_harness.jsonl",
-      "slice": "SFT (synthetic, tool-executed, filtered)"
+      "slice": "SFT (synthetic, tool-executed, filtered)",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-boy-scouts-handbook-1911",
@@ -554,9 +569,10 @@
         "trademark_mentions_in_body": 1,
         "lines_dropped_for_trademark": 1
       },
-      "sha256_processed": "9f080e40a9e2c8c1f7146de3973966c9163dae1e3e1e66e18f20b6f0d02378fa",
+      "sha256_processed": "640dc259aadda9b1d377c414ac6d1c310e59adefef59790200438b7fb9cad62b",
       "file": "data/raw/gutenberg/boy-scouts-handbook-1911.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-boston-cooking-school-cook-book",
@@ -578,9 +594,10 @@
         "footer_bytes_removed": 18818,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "817a44821ae5d7ee98e661d4728ac5272c0f808f251d82ca279085a6dd6587f3",
+      "sha256_processed": "6409f3c917c369e453830e69cdf3ee3a30b1691fcf6e3b3da228d0aeb9eb553f",
       "file": "data/raw/gutenberg/the-boston-cooking-school-cook-book.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-robert-s-rules-of-order-revised",
@@ -602,9 +619,10 @@
         "footer_bytes_removed": 18814,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "61a6c8be6d8d900aa1348f755804c3f3399da2f0715ef570c1aee13bb4647466",
+      "sha256_processed": "5598388a48304b1217494a742d541aaec02432625caf00b58917290f9f700b52",
       "file": "data/raw/gutenberg/robert-s-rules-of-order-revised.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-etiquette-in-society-in-business-in-politics-and-at-home-1922",
@@ -626,9 +644,10 @@
         "footer_bytes_removed": 18792,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "912238d2240d3a0da0886523a82f0dec3b39ef7e6b6a7a15bbf89325e72141f4",
+      "sha256_processed": "c0b2504da136b6fb176d018469dc8b02f9e6919f0fef355e8eb942613cc3c990",
       "file": "data/raw/gutenberg/etiquette-in-society-in-business-in-politics-and-at-home-1922.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-amusements-in-mathematics",
@@ -651,9 +670,10 @@
         "trademark_mentions_in_body": 1,
         "lines_dropped_for_trademark": 1
       },
-      "sha256_processed": "003a9b21a8d6c6be96fda1eebeaa7ade5f3859c697cb1171240dd727f7234f3c",
+      "sha256_processed": "b2dd29e719dc4b3745914873c3b5b7a5e05343883a4477692bd25a7251aa2dab",
       "file": "data/raw/gutenberg/amusements-in-mathematics.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-symbolic-logic",
@@ -675,9 +695,10 @@
         "footer_bytes_removed": 18797,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "7da916766f2410dfed42f0ac1adb1b66416a1c61d0d16e84d5194ab164d49d3b",
+      "sha256_processed": "764aa5fde5aa3b6066d11e674fd6dd7c9480afcca08c73138541b0be7c052702",
       "file": "data/raw/gutenberg/symbolic-logic.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-chess-fundamentals",
@@ -700,9 +721,10 @@
         "trademark_mentions_in_body": 1,
         "lines_dropped_for_trademark": 1
       },
-      "sha256_processed": "e74ddc7e33e144d2a891729231f488f32d8c0bd34f825d8d01446048d71b69de",
+      "sha256_processed": "48631a17532249777fa7fe0b63df42323682c3f9d6a3a4cac0943329e0604e19",
       "file": "data/raw/gutenberg/chess-fundamentals.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-hoyle-s-games-modernized",
@@ -725,9 +747,10 @@
         "trademark_mentions_in_body": 2,
         "lines_dropped_for_trademark": 2
       },
-      "sha256_processed": "447ddd097dbb24d3bde348bb231e9f68a514baf5f55514ad77b7fd9ce8d7664c",
+      "sha256_processed": "d4c68bf6c966015952f9eb2c6063407efaf9b8ec27745787610c18980c7a7e0d",
       "file": "data/raw/gutenberg/hoyle-s-games-modernized.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-adventures-of-sherlock-holmes",
@@ -749,9 +772,10 @@
         "footer_bytes_removed": 18816,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "2b7238758a350af441475489c7db10b8d8e9686a3897b1acebd7e81723960f80",
+      "sha256_processed": "25c8fe8c878adf4c10c85557f6f4637b7a6bda277837e4235ea5b4c1a2f4a488",
       "file": "data/raw/gutenberg/the-adventures-of-sherlock-holmes.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-hound-of-the-baskervilles",
@@ -773,9 +797,10 @@
         "footer_bytes_removed": 18812,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "9e3bdffe0cb09b0ea4fe38a1a4903a0b5179ff3b6d7d645cf2a1f8cb01cb077f",
+      "sha256_processed": "ac46222ea86f936eaa053d87bb22a886dee79a4a4d3268db02e8054a361bd24f",
       "file": "data/raw/gutenberg/the-hound-of-the-baskervilles.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "usgov-faa-phak",
@@ -1025,9 +1050,10 @@
         "footer_bytes_removed": 18865,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "7842a73d04ca3ef0d22ffd2f5e8d8d8380cfe6e2167ec815baf8ff9b2bd1153b",
+      "sha256_processed": "c8d8ca9039224d974f034301eed1078ff84d5c19d11bf0e8d07defc38cda21ca",
       "file": "data/raw/gutenberg/the-papers-and-writings-of-abraham-lincoln-vol-3-the-lincoln-douglas-debates-i.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-papers-and-writings-of-abraham-lincoln-vol-4-the-lincoln-douglas-debates-ii",
@@ -1049,9 +1075,10 @@
         "footer_bytes_removed": 18865,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "fe8394fbab7c019b0d94f17d2cb58c27eab8581d39267042d7bf56dcbfcc88b2",
+      "sha256_processed": "d14adec0df469e518938a3d4dc5c71aebcd8ba268bd71e75c966ccac958c7d77",
       "file": "data/raw/gutenberg/the-papers-and-writings-of-abraham-lincoln-vol-4-the-lincoln-douglas-debates-ii.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-the-republic-jowett-translation",
@@ -1073,9 +1100,10 @@
         "footer_bytes_removed": 18795,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "837a4aafb7c2e7b6857fef086ff4ca8275deaf88709d02626ec2258b5370968e",
+      "sha256_processed": "002a530b4f321125f267c908bfce04826ab845b72811722fb37f9d76711fff5c",
       "file": "data/raw/gutenberg/the-republic-jowett-translation.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-household-tales-by-brothers-grimm-hunt-translation",
@@ -1097,9 +1125,10 @@
         "footer_bytes_removed": 18816,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "29d165565c08e279e17cc78df8ef0dadfece9f4edce40c1dd94e5f6cf9005fcd",
+      "sha256_processed": "99cd1be4ddd20b0c5c3b0e63801fe3c8c169fac1588be6ce289a3d6909fd872d",
       "file": "data/raw/gutenberg/household-tales-by-brothers-grimm-hunt-translation.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-three-hundred-aesop-s-fables-townsend-translation",
@@ -1121,9 +1150,10 @@
         "footer_bytes_removed": 18811,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "4f8d4c873f36528c4f1daef47afdf61bdef6b0b33fdfee1aa6eb38dbb8e3746f",
+      "sha256_processed": "0b1cd715d9910e08aa2771ac0a9f4761f98c1466c5c439a857b4a82ae3170f56",
       "file": "data/raw/gutenberg/three-hundred-aesop-s-fables-townsend-translation.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-bird-neighbors",
@@ -1145,9 +1175,10 @@
         "footer_bytes_removed": 18797,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "402aeb7e6358adf5689a60acb57df61e56b3113c3dcf7bfeff9fd071023cce97",
+      "sha256_processed": "e7f6cb02eb3e24153763c169caa3973b0564356ba40d42d69ba88011925cd08b",
       "file": "data/raw/gutenberg/bird-neighbors.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-english-fairy-tales",
@@ -1169,9 +1200,10 @@
         "footer_bytes_removed": 18802,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "3b26318b483defd33e200bfa3c1e276c8928bae8ad04f503bf52196bf98fb315",
+      "sha256_processed": "6025b42ca464e1787e09d5275ceadbcf38b212db794611e3fe1dffbf8a860290",
       "file": "data/raw/gutenberg/english-fairy-tales.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "usgov-usda-home-canning",
@@ -1262,9 +1294,10 @@
         "footer_bytes_removed": 18852,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "ba8ead0dc4feab44441cf53970ca45c7b025bb98ee832e5d92f64c70ff544e4b",
+      "sha256_processed": "2cca6cc41c7558a5c9a57a41e36e97aeb559dbcc369007e3de420a876851100a",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-2-slice-7-arundel-to-athens.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-encyclopaedia-britannica-11th-ed-vol-5-slice-4-carnegie-to-casus-belli",
@@ -1286,9 +1319,10 @@
         "footer_bytes_removed": 18857,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "8d74c517a0c8b30f9415d10c1d00c46ca3f97e36c53d4f16a65261cc1e0419d3",
+      "sha256_processed": "c4f0d270335de037afc034f1f4193fbe06d6c0ccffddd573e0c5967ea0e31bb2",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-5-slice-4-carnegie-to-casus-belli.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-encyclopaedia-britannica-11th-ed-vol-9-slice-7-equation-to-ethics",
@@ -1310,9 +1344,10 @@
         "footer_bytes_removed": 18845,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "11d242071b80e444aa7c8541e153a5ef730ed75544d51cdb0d4c9b22b074f8df",
+      "sha256_processed": "472aeb093faa12dacfdad8f22e5cd20f248d5be1ed604e18b7fcc266a3d0a4f9",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-9-slice-7-equation-to-ethics.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-encyclopaedia-britannica-11th-ed-vol-12-slice-6-groups-theory-of-to-gwyniad",
@@ -1334,9 +1369,10 @@
         "footer_bytes_removed": 18855,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "75a1aa4d4bf4614734af73f923053401fc484e496dc92939d52c1313d58fccf2",
+      "sha256_processed": "798e95c840c89f4192e1e2e89307a3d0fc06392c2cb4365c5ce353f029592ab5",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-12-slice-6-groups-theory-of-to-gwyniad.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-encyclopaedia-britannica-11th-ed-vol-15-slice-8-kite-flying-to-kyshtym",
@@ -1358,9 +1394,10 @@
         "footer_bytes_removed": 18849,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "2ead313888429a18bbd1f191d44b7a901a1bffa518549d083dacffd35ce097b7",
+      "sha256_processed": "e5798ae1a611bc4c0887b3b0e1a2e77936ba3fa85ac047b93562d2ae6a220780",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-15-slice-8-kite-flying-to-kyshtym.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "gutenberg-encyclopaedia-britannica-11th-ed-vol-16-slice-7-liquid-gases-to-logar",
@@ -1382,9 +1419,10 @@
         "footer_bytes_removed": 18848,
         "trademark_mentions_in_body": 0
       },
-      "sha256_processed": "a31cd370b97ffe1c14c9941158018220b8218fd405a1ad070a5ca16c034fca76",
+      "sha256_processed": "d3ce8879ad8b14a6c2fb9a6fc82bda8494ff9e3a8f8e3830a3a9c90a03be250c",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-16-slice-7-liquid-gases-to-logar.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "shelf (D-58): anneal-only flavor",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
     },
     {
       "slug": "pack-us-army-fm21-76-survival",

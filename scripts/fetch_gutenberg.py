@@ -110,8 +110,12 @@ def main() -> int:
     out = os.path.join(RAW, f"{slug}.txt")
     io.open(out, "w", encoding="utf-8", newline="\n").write(body + "\n")
 
+    # Hash the FILE AS WRITTEN, not the in-memory string: the two differed by the trailing
+    # newline for the first 38 rows, so no row's hash matched its file (found 2026-09-18 while
+    # writing the ledger chapter of the book; rows re-hashed from disk the same night).
     h = hashlib.sha256()
-    h.update(body.encode("utf-8"))
+    with open(out, "rb") as f:
+        h.update(f.read())
     digest = h.hexdigest()
 
     print(f"\nwrote {os.path.relpath(out, ROOT)}")
