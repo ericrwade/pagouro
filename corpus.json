@@ -1385,6 +1385,28 @@
       "sha256_processed": "a31cd370b97ffe1c14c9941158018220b8218fd405a1ad070a5ca16c034fca76",
       "file": "data/raw/gutenberg/encyclopaedia-britannica-11th-ed-vol-16-slice-7-liquid-gases-to-logar.txt",
       "slice": "shelf (D-58): anneal-only flavor"
+    },
+    {
+      "slug": "pack-us-army-fm21-76-survival",
+      "name": "FM 21-76 / MCRP 3-02F Survival (1992), plant chapters removed (pack only)",
+      "source": "archive.org OCR text",
+      "author": "US Army and US Marine Corps",
+      "url": "https://archive.org/details/MCRP_3-02F_FM_21-76_Survival",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Army field manual FM 21-76 (1992); archive.org item MCRP_3-02F_FM_21-76_Survival (OCR). Chapters 9-10 and Appendices B-C (edible/medicinal/poisonous plants) removed on purpose (origin line 92). Retrieval pack only: NOT in any training mixture",
+      "first_published": "1992",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-19",
+      "retrieved_utc": "2026-09-19T01:12:38+00:00",
+      "characters": 570424,
+      "estimated_tokens": 150860,
+      "cleaning": "none",
+      "cleaning_detail": {
+        "cleaning": "none"
+      },
+      "sha256_processed": "8fc9be7e4b08b62c2d253c21c92cd286631f9f8f80c39a4060ce607075f3dedd",
+      "file": "packs/us-army-fm21-76-survival.txt",
+      "slice": "pack (retrieval only, not trained on)"
     }
   ]
 }
