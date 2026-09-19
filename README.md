@@ -6,16 +6,20 @@
 > Greek *págouros*, hermit crab: carries a home it can move out of. The *ouro* nods to ouroboros —
 > self-sufficient.
 
-**Status (2026-09-18): private, in progress; nothing is released.** The full pipeline runs end to
-end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → package → USB) and has produced a
-59M-parameter shakedown model that lives on a stick inside the real application (`app/`): three
-switches, a context gauge, five sandboxed tools, reference packs. That model is a pipeline proof,
-not the product; on the frozen eval it routes tools at 54% and answers 7% of real questions. The
-first rented-GPU run measured 62,000 tokens/s (D-55); a 126M "Flash" model is training. The
-corpus ledger holds 62 rows, including a 36-work "shelf" of licensed flavours for the anneal
-(D-58: government manuals, 1911 Britannica slices, BIPs/EIPs at pre-2022 commits, folk tales,
-recipes; every row dated before 2022 per D-34). The backbone now carries a date basis on every row except the code slice (The Stack: collected to 2022-03-31, per-file dates unavailable — kept with this caveat, to be replaced before the 1B run, D-62). The 1B model (D-6) waits on a thousand-fold larger
-SFT set (generating), a schedule fix (D-48), and Eric's launch. `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
+**Status (2026-09-19): private, in progress; nothing is released.** The full pipeline runs end to
+end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → package → USB). The stick now
+carries **Pagouro Flash**: 126M parameters, 2B tokens on a rented A40 (14 h, the whole window
+$7.54), fine-tuned on 6,700 conversations, inside the real application (`app/`): three switches, a
+context gauge, five sandboxed tools, reference packs, and a long-term memory that returns what you
+told it labelled as your own words. On the frozen suite it answers 20–27% of real questions and
+bluffs on 36.7% of unanswerable ones (small open models: 87–93% and 50–57%; frontier: 97% and
+23–27%); tool routing 87.5%; memory 10/10. It is far from the release gate (answered-real ≥ 80%)
+and says so. The corpus ledger holds 65 rows, including a 36-work "shelf" of licensed flavours for
+the anneal (D-58; measured to help on unseen text at no general-text cost, D-61) and a backbone
+that now carries a date basis on every row except the code slice (The Stack: collected to
+2022-03-31, per-file dates unavailable — kept with this caveat, to be replaced before the 1B run,
+D-62). The 1B model (D-6) waits on that replacement, O-12 (context), and Eric's launch.
+`docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
 `docs/ORIGIN.md` for where this came from.
 
 ---
