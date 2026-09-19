@@ -1117,6 +1117,104 @@ before any prose.
 Spend on rented hardware so far: under nine dollars. Machines left running at the end of the
 day: one, on purpose, with a job checking on it every three hours.
 
+## Day 8, evening — The shelf, the book, and two things the ledger got wrong
+
+The evening was supposed to be about breadth. Eric had sent a run of questions from the road —
+would poker and game rules help a model reason, what about repair manuals, road maps, driver
+handbooks — and then, in one message, the whole idea at once: spread the sources thin, like the
+twenty-three flavours in the Dr Pepper legend, small percentages of many things, every one of
+them licensed. That became a decision (D-58, "the shelf") and then a night of sourcing. By the
+end of it the ledger had thirty-six shelf works: a pilot's handbook and an Army manual on how
+engines work, the Navy's course on direct current, the Armed Forces recipe service (seventeen
+hundred recipes, all scaled to feed a hundred), the federal manual on road signs, the USDA
+guide to canning, NASA's own histories of Mercury and Apollo, six slices of the 1911 Britannica,
+Grimm and Aesop and Jacobs, Lincoln and Douglas arguing in 1858, Plato in Jowett's English, the
+Bitcoin and Ethereum improvement proposals. That last pair got the strictest treatment of
+anything so far: each repository taken at its last commit before the first of January 2022,
+the commit hash written on the row, each document kept only if its own header named a licence.
+Thirty Bitcoin proposals had no licence line and were dropped. OpenStax, which everyone
+assumes is open, turned out to have moved to a NonCommercial licence, and stayed out.
+
+Four of the manuals also went onto the stick as packs, which is a different thing from
+training: the model can now search the canning guide or the road-sign manual and quote it,
+without anything having been trained. A recipe for chili con carne for a hundred people comes
+back in twenty milliseconds.
+
+Then Eric, still on the road, asked whether "how to improve Pagouro" was really the pretext
+for a book: our story, plus the actual instructions, in the same pages. It is, and most of it
+already exists — this log is twelve thousand words written for readers, the decisions file is
+fifteen thousand more. The outline went down as fifteen chapters braided two ways, story and
+do-it, and I started with the two instruction chapters whose subject had stopped moving: how
+to build a corpus you can defend, and how to measure honesty.
+
+Writing a chapter means pulling every number from its file, and that is how the evening turned.
+
+The first thing the corpus chapter needed was a command a reader could run to check the ledger
+against the files. There was no such command. I wrote one, ran it, and thirty-eight of the
+fifty-four rows it could check did not match. The Gutenberg fetcher had hashed the text it held
+in memory, then written that text to disk with one extra newline on the end. Every book row for
+two days carried a hash that no file anywhere would produce. Nothing about the model was wrong.
+The promise was: the promise that a stranger can check. The fix took ten minutes and the
+lesson took one sentence — a claim is only as good as the command that verifies it — and the
+command now exists, and the paragraph about it is in the chapter.
+
+The second thing was worse. Pulling the training numbers for the story chapter, the training
+loss and the validation perplexity did not agree with each other: a loss around 4.5 next to a
+perplexity of 14.7, which would need a loss near 2.7. The validation split was the first one
+percent of the token stream. The mixture is shuffled at the level of whole sources. So that one
+percent was one source, and decoding it settled which: Solidity smart contracts, start to end.
+The "perplexity 14.7" recorded on Day 6 is the perplexity of this model on Solidity code, not
+on its corpus. The split now samples blocks across the whole stream, and a check of the new
+validation set finds the canon, a card-game manual, an Ethereum proposal and a web page in the
+first six samples.
+
+And while decoding those samples, one of them began with a date in 2026.
+
+It was a post from the crypto forum sample — the "contemporary voice" that had been in the
+anneal since the design was locked. Its ledger row's licence field, read again with fresh eyes,
+was not a licence. It said the posts were included on the same basis that big web corpora
+include forum text, which is an argument, and the project's own rule is that an argument is
+not enough. A count of the dates finished it: of about twelve thousand dated posts, eight
+thousand eight hundred were from 2026. The corpus that claims to predate generative AI had, as
+a quarter of its final training slice, text written this year. It had trained into the model
+on the stick, and it was packed and waiting on the rented machine for the Flash run's final
+phase, due to start in five hours.
+
+The forum sample is out. Both versions of the final-phase data were rebuilt without it and
+copied to the rented machine with the hashes checked at both ends, at step sixteen thousand
+of the twenty-seven thousand four hundred where the switch happens. The row stays in the
+ledger marked excluded, with the reason, because a ledger that deletes its mistakes is just
+another marketing document. And the check that found it — decode the validation set and look
+— is now a habit rather than an accident.
+
+Then the harder admission, logged as D-60 and put to Eric plainly: the backbone of the corpus,
+the educational web crawl and Wikipedia and the code, carries no date basis at all. The
+decision that says "everything predates 2022" was locked two days ago with an implementation
+note — filter the crawls by dump date — that nobody had carried out for the data on disk. A
+measurement tonight suggests the web slice is almost entirely from 2013 to 2021, and the fetch
+tool now records the crawl dump of every document and refuses anything later. But "almost
+entirely" and "suggests" are not what goes on the box, so until every backbone row carries its
+basis, nothing public says pre-2022 about the whole corpus. The route to fix it is written
+down and costs bandwidth, not money. It is now a prerequisite of the one-billion run.
+
+Two smaller things from the same evening. Eric asked whether an image generator was in range.
+It is, as pixel art, and the plumbing that needs no model — a terminal renderer that draws two
+pixels per character cell in colour, a PNG writer in forty lines of standard library, a
+test sprite — is on the stick behind a `/art` command that says, truthfully, that there is no
+drawing model yet. And the ablation that will say whether the shelf helped is now honest by
+construction: three whole works — the Communist Manifesto, Carroll's *Symbolic Logic*, the
+Navy's module on logic circuits — are held out of both arms, so the two models will be compared
+on text neither has seen.
+
+The Flash run, meanwhile, went on regardless: step twenty thousand, validation perplexity
+24.9 on web text, thirty-eight and a half thousand tokens a second, nine hours in. Spend on
+rented hardware for the whole window so far: about eleven dollars.
+
+A day that started as sourcing ended as auditing, and the audit found three faults in the
+project's central claim in the space of two hours, two of them the session's own. That is the
+argument for the book, made by the evening that proposed it: the story is worth telling
+because the checking is in it.
+
 ---
 
 *The log continues. Next: what the Flash model can actually do.*
