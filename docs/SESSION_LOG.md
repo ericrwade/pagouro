@@ -13,6 +13,41 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-19 (unattended window 3, day 2, overnight) — Flash evaluated, the decay that ate itself, the shelf wins, three integrity fixes
+**Model:** Fable 5.1
+**Goal:** Land the Flash run (D-61) and keep the plan moving while Eric is away; answer his
+questions from the road (book, images, learning from the owner, the fine-tuning post, LightOnOCR,
+English/America).
+**Did:**
+- **Integrity (D-60):** `bitcointalk-sample` excluded (no nameable licence; 8,823 of ~12k posts
+  dated 2026) and swapped out of the pod's anneal before the decay began; validation split now
+  spread across the stream (the real run's "ppl 14.7" was on Solidity alone); backbone pre-2022
+  gap logged as O-22 with a route (`fetch_data.py --date-field dump`, `enwiki-20211220`).
+- **D-61:** naive anneal-only decay memorised the anneal (held-out 3.25→4.82); stopped; redesigned
+  as a FineWeb+anneal mix, two arms from the same stable checkpoint. Shelf arm better on every
+  clean held-out set, no general-text cost. SFT on the pod GPU (6 min); Flash 126M: bluff 36.7%,
+  answered-real 26.7%, tool 75%, memory routed 8/10. Pod deleted; window spend $7.54 (billing API).
+- **Stick (59M)** re-fit on the full 5,558-conversation set (generator finished: 5,184 rows,
+  700/class): bluff 16.7%, answered-real 3.3%; stick rebuilt.
+- **Book (D-59):** outline + chapters 4 (corpus) and 6 (measuring honesty); writing ch. 4 found
+  the Gutenberg hash bug (38 rows re-hashed; `verify_ledger.py`).
+- **Memory (O-23):** level 1 built (`/remember`, `/forget`, notes + STONE transcripts indexed,
+  hits labelled YOUR OWN WORDS); `evals/memory.json` + runner; memory SFT seed (68 rows).
+- **Reviews:** fine-tuning post (O-24/O-25: nanochat head-to-head, GRPO on the no-bluff
+  objective); LightOnOCR (O-26: GPU test — exact LaTeX where archive.org's text had "P = 45
+  watts"; re-OCR the shelf for ~$1–2); English/America (O-27: coverage, not reasoning).
+- Art frame (`app/artkit.py`, `/art`), `verify_manifest.py` on the stick, `RELEASE_RUNBOOK.md`,
+  `MAKE_IT_YOURS.md`, `eval_flash.sh`, bits-per-byte in `score_heldout.py`, `flash.sh` phase 2
+  now a mix. Build log Day 8 evening written.
+**Verified:** every number from a results file; ledger 62/62; all four Flash checkpoints load;
+`list-pods` empty; billing read after deletion.
+**Open / next:** (1) memory answering (0/10) and `calc` arguments (0/4) in the SFT data before
+the 1B SFT; (2) O-22 backbone rebuild (required before 1B); (3) Eric's calls: O-12, O-19, O-20
+(book licence), O-21 (images v1.0/v1.1), O-25 (GRPO), O-26 (re-OCR), O-27; (4) build log Day 9
+(the Flash night); (5) book chapters continue; (6) bits-per-byte + CORE at 1B.
+
+---
+
 ## 2026-09-18 (unattended window 3, day 1) — RunPod proven, Flash training, SFT at scale, the shelf
 **Model:** Fable 5.1
 **Goal:** Eric away Sep 18–21. Channel = GitHub issues (hourly cron) + Remote Control. Budget: $165
