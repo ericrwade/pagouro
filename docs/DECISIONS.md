@@ -1456,3 +1456,15 @@ and cost; the requirement itself is not open. Until then the README and collater
 claim pre-2022 for the whole corpus — only for the rows that carry the flag (they do not today).
 
 **Numbering note:** the Flash results become **D-61**.
+
+### O-23 — Learning from its owner: retrieval memory now, adapters with a gate next (proposal + level 1 built)
+**2026-09-18, Eric's question from the road** ("ingest the conversation… long term, like corpus
+again a little at a time"). Answer in `docs/LEARNING_FROM_THE_OWNER.md`. Level 1 built the same
+night: `/remember`, `/forget`, and `workspace/{memory,notes,transcripts}` indexed beside the packs
+with hits labelled the owner's own words (nothing kept from SAND sessions). Level 2 (LoRA adapters
+on the owner's log, D-57) proposed with three guardrails: replay of the manners set, the frozen
+suite as a gate that can refuse to activate an adapter, rollback by deleting the adapter file; and
+a design rule — adapters learn style and habits, retrieval keeps facts, so a user's mistake never
+becomes a bluff in the model's own voice. Level 3 (continual pretraining on the owner's documents)
+is the same path with more tokens and needs a GPU at 1B. The line that stays: no self-updating
+weights mid-conversation (D-57), because there is no gate for it.

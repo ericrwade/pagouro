@@ -67,6 +67,11 @@ Two things to know before you do:
   `threads = ...` line in `app/pagouro_app.py` (rung 4) — or use `PAGOURO-BASIC.bat`, the plain
   llama-cli launcher, where `-t N`, `-c N` (context) and `--temp` are ordinary flags you can edit
   in Notepad.
+- **Long-term memory.** `/remember <text>` keeps a dated line in `workspace/memory/`; that
+  folder, your notes and every STONE transcript are searched beside the packs in later
+  sessions and come back labelled as your own words. `/forget` deletes the remembered file.
+  Nothing from a SAND session is kept. (`docs/LEARNING_FROM_THE_OWNER.md` explains the two
+  deeper levels — adapters trained on your log, continual pretraining — and their guardrails.)
 - **Saving chats / letting tools write.** `/stone` writes the chat to `workspace/transcripts/`;
   `/act` lets `write_note` save into `workspace/notes/`. Both default off. Nothing outside
   `workspace/` is ever written by any tool, and that boundary is enforced in code, not by
