@@ -1,6 +1,6 @@
 # Appendix B — The ledger, printed
 
-*Generated from `corpus.json` by `book/build_appendix_b.py`: 65 rows, of which 60 are in a training mixture (487M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
+*Generated from `corpus.json` by `book/build_appendix_b.py`: 65 rows, of which 59 are in a training mixture (487M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
 
 | Where | Source | Licence / basis | Tokens | Date basis |
 |---|---|---|---|---|
@@ -23,7 +23,6 @@
 | canon (anneal) | Economic Sophisms — Frederic Bastiat | Public domain | 0.1M | published 1845 |
 | canon (anneal) | Second Treatise of Government — John Locke | Public domain | 0.1M | published 1689 |
 | canon (anneal) | On Liberty — John Stuart Mill | Public domain | 0.1M | published 1859 |
-| canon (anneal) | The Law — Frederic Bastiat | Public domain | 0.0M | published 1850 |
 | canon (anneal) | Anthem — Ayn Rand | Public domain | 0.0M | published 1938 |
 | canon (anneal) | The Communist Manifesto — Karl Marx and Friedrich Engels | Public domain | 0.0M | published 1848 |
 | shelf (anneal) | Ethereum Improvement Proposals incl. ERCs (ethereum/EIPs at 2021-12-30, 355 of 4 | CC0-1.0 (per-document waiver required by EIP-1) | 1.2M | published 2021 |
@@ -69,3 +68,4 @@
 | superseded | wikimedia/wikipedia | CC BY-SA 3.0 + GFDL | 96.2M | — |
 | superseded | HuggingFaceFW/fineweb-edu (M1 slice) | ODC-By 1.0 | 23.8M | — |
 | excluded | bitcointalk.org forum sample | Individual posts retain author copyright; included as web-scraped f… | 4.3M | — |
+| excluded | The Law — Frederic Bastiat | Public domain | 0.0M | published 1850 |

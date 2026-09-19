@@ -48,7 +48,7 @@ ANNEAL_SOURCES = [
     "gutenberg/second-treatise-of-government.txt",
     "gutenberg/the-wealth-of-nations.txt",
     "gutenberg/the-theory-of-moral-sentiments.txt",
-    "gutenberg/the-law.txt",
+    # "gutenberg/the-law.txt",  # EXCLUDED 2026-09-19 (D-63): 2007 Mises Institute translation, CC variant unstated
     "gutenberg/economic-sophisms.txt",
     "gutenberg/on-liberty.txt",
     "gutenberg/principles-of-political-economy.txt",

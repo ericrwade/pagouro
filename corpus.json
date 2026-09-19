@@ -124,8 +124,9 @@
       },
       "sha256_processed": "1a51d13f063a5afdcac05265e086e90c766c48dd99c1f5834dc36f7713803884",
       "file": "data/raw/gutenberg/the-law.txt",
-      "slice": "domain canon",
-      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)"
+      "slice": "EXCLUDED 2026-09-19 (D-63): not in any mixture",
+      "hash_note": "re-hashed from the file on disk 2026-09-18 (earlier value omitted the trailing newline)",
+      "excluded_reason": "The text is a 2007 translation \"Copyright (c) 2007 by the Ludwig von Mises Institute ... licensed under a Creative Commons license\" -- variant unstated in the file and on the Gutenberg record (#44800). Unclear = no. Excluded from the packs on 2026-09-17 (O-14) but left in the anneal by mistake; trained into the 59M and Flash models. Bastiat is represented by Economic Sophisms (Stirling translation, translator d. 1891, public domain)."
     },
     {
       "slug": "gutenberg-economic-sophisms",

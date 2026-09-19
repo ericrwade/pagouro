@@ -1571,3 +1571,16 @@ per-file dates unavailable"; (b) before the 1B data volume is built, replace it 
 that carries commit dates, filtered to ≤ 2021-12-31, so the pre-2022 claim holds for every row
 without a footnote. (b) is a prerequisite in `docs/JOB_1B.md`. Closes the O-22 decision list;
 the O-22 work itself finishes with (b).
+
+### D-63 — *The Law* leaves the anneal: an "unclear = no" that was only half applied
+**2026-09-19, session, found while footnoting the book's Chapter 8.** On 2026-09-17 the only free
+edition of Bastiat's *The Law* (Gutenberg #44800, a 2007 Mises Institute translation, "licensed
+under a Creative Commons license", variant unstated in the file and on the Gutenberg record) was
+kept out of the stick's packs under the rule that unclear rights mean no — and a question was
+opened about the training corpus. That question was never actioned: the file stayed in
+`ANNEAL_SOURCES` and trained into the 59M and Flash models. Removed now; the row stays in
+`corpus.json` marked EXCLUDED with the reason, as with bitcointalk (D-60). Bastiat is still in the
+canon through *Economic Sophisms* (Stirling, d. 1891). Numbering note: the "O-14" of 2026-09-17
+collided with an earlier O-14 closed by D-34; both are now resolved. Lesson for the process: a
+rights question opened against a source must either close with a basis or remove the source from
+the next mixture build — an open question is not a licence.
