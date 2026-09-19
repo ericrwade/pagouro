@@ -1404,3 +1404,11 @@ quoted messages are his words; the session is paraphrased, not a co-author voice
 **Open (O-20, Eric):** the book's licence (CC BY-SA 4.0 like the weights, or story chapters
 reserved + instruction chapters CC BY-SA) and whether it is sold (price in dollars, F17) or
 given away with a tip jar.
+
+### O-21 — Pagouro Draws: a pixel-art image generator on the stick (proposal)
+**2026-09-18, Eric's question from the road.** Answered in `docs/IMAGE_MVP.md`: in range as
+low-resolution (32–64 px) pixel art rendered in the terminal with half-block ANSI, as one more
+harness tool (`draw`), on a CC0/PD image corpus (Kenney, OpenGameArt CC0, Smithsonian/Met/Rijks
+open access, NASA/USGS, program-generated) ledgered exactly like the text; ~30M-param diffusion
+first, image-tokens-through-the-same-transformer as the ablation; est. $1–3 of GPU at 32×32.
+Not photorealism, not >64 px, alignment loose at MVP scale. Eric decides v1.0 vs v1.1.
