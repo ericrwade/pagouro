@@ -13,6 +13,7 @@ for arm in flash flash_shelf; do
     --data /workspace/data/flash/val.bin \
     --data data/heldout/communist-manifesto.bin --data data/heldout/symbolic-logic.bin --data data/heldout/neets-13.bin \
     --data data/tokenized_anneal/val.bin --data data/tokenized_anneal_shelf/val.bin \
+    --tokenizer data/tokenizer_real/tokenizer.json \
     --out /workspace/runs/heldout_$arm.json
 done
 echo SCORED
