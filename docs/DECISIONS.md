@@ -1598,3 +1598,8 @@ milestones so a reader always knows where they are in the build. Adopted as a ch
 enough to see the gaps; candidates so far: the pivot from bitcointalk to the canon (D-10), the
 shelf ablation (D-58/D-61), the decay redesign (D-61), the three integrity findings (D-60/D-63),
 and the memory feature going from 0/10 to 10/10.
+
+### D-65 — Eric authorises the two small GPU experiments: nanochat head-to-head (O-24) and GRPO on the no-bluff objective (O-25)
+**2026-09-19, Eric: "Both."** Within the $165 RunPod balance ($7.54 spent so far); one A40 at
+~$0.49/h, created, used and deleted in the same session; plan and price on issue #2 before the
+create call (D-54). Budget stated: ~$0.10 for (i), ~$1 for (ii); ceiling for the pair $5.
