@@ -1645,3 +1645,18 @@ to **match the user's spelling**: a program-generated British-spelling variant o
 (dictionary swap, ~1,700 pairs), paired with British-spelled questions; measured by a ten-item
 set, five per spelling, scored on whether the answer's spellings match the question's. "Follows
 your spelling" goes on the box only if the number says so. Built after the D-65/D-66 GPU jobs.
+
+### O-28 — Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea
+**2026-09-19, Eric, from the road.** "Draw 1.0 should have a style. Maybe even a palette. An
+aesthetic of our own, as if we hacked Madison Avenue." Plus two uses: free branding research for
+entrepreneurs (name, PFP, logo — on a stick, so the idea never leaves the machine), and a launch
+campaign where EFF-aligned people wear Pagouro-generated marks as their profile pictures.
+Session's take, to build: (1) the palette *is* the style in pixel art — a designed 32-colour set
+(shell / sea / ember range), one-pixel outline rule, 32 or 64 px, dithering allowed, enforced by
+the renderer and listed in the manifest; three candidates rendered on the test sprite for Eric to
+choose from. (2) "Hacked Madison Avenue" taken literally: a deliberate corpus slice of
+public-domain advertising art, trade cards, posters and catalogue plates from ~1880–1928 (LoC and
+Smithsonian print collections, Sears catalogues, BHL plates) — the era before the industry, every
+image licensed. (3) The entrepreneur use case is the privacy claim applied to a picture; stated
+limit: it sketches, it does not clear trademarks. (4) Outputs CC0, so the PFP campaign has no
+rights question; a hundred hermit-crab logos (D-67) is the first batch. Sits inside D-67.
