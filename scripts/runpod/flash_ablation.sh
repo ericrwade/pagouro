@@ -1,3 +1,4 @@
+# SUPERSEDED 2026-09-19 by flash_decay_mix.sh (D-61): the anneal-only decay memorised the anneal. Kept for the record.
 #!/bin/bash
 # D-58 guardrail (3): shelf vs no-shelf at Flash scale. Re-runs ONLY the decay phase (the last
 # 10% of steps) from the stable-phase-end checkpoint that stable_watch.sh copied to

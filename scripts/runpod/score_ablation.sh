@@ -8,7 +8,7 @@
 #   tokenized_anneal_shelf/val.bin  shelf-arm val; arm A never saw the shelf   -> B held-out; A = "no shelf" baseline
 set -e
 cd /workspace/pagouro
-for arm in flash flash_shelf; do
+for arm in flash_stable flash_mix_canon flash_mix_shelf flash_naive_decay_partial; do   # D-61: stable end, the two mixed-decay arms, and the stopped naive decay for the record
   python -u scripts/score_heldout.py --ckpt /workspace/ckpt/$arm.pt --seq-len 1024 --batch-size 16 \
     --data /workspace/data/flash/val.bin \
     --data data/heldout/communist-manifesto.bin --data data/heldout/symbolic-logic.bin --data data/heldout/neets-13.bin \
