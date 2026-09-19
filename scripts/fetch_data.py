@@ -84,6 +84,12 @@ def main() -> int:
     ap.add_argument("--split", default="train")
     ap.add_argument("--docs", type=int, default=20000, help="documents to take from the stream")
     ap.add_argument("--text-field", default="text")
+    ap.add_argument("--date-field", default="",
+                    help="row field carrying the collection/publication date (D-34); e.g. 'dump' for FineWeb "
+                         "(CC-MAIN-YYYY-WW) -- rows are kept only if the field is <= --date-max as a string, "
+                         "and a histogram of the field goes on the ledger row as the date basis")
+    ap.add_argument("--date-max", default="CC-MAIN-2021-99",
+                    help="keep rows whose --date-field sorts <= this (default: every 2021 Common Crawl dump)")
     ap.add_argument("--data-dir", default=None, help="dataset config for datasets like The Stack that use data_dir instead of name")
     ap.add_argument("--out", default=None, help="output .txt (default: data/raw/<slug>.txt)")
     a = ap.parse_args()
@@ -130,8 +136,16 @@ def main() -> int:
 
     n_docs = 0
     n_chars = 0
+    n_skipped_date = 0
+    date_hist: dict[str, int] = {}
     with io.open(out_path, "w", encoding="utf-8", newline="\n") as f:
         for row in ds:
+            if a.date_field:
+                dv = str(row.get(a.date_field) or "")
+                if not dv or dv > a.date_max:
+                    n_skipped_date += 1
+                    continue
+                date_hist[dv] = date_hist.get(dv, 0) + 1
             text = (row.get(a.text_field) or "").strip()
             if not text:
                 continue
@@ -172,6 +186,10 @@ def main() -> int:
         "estimated_tokens": est_tokens,
         "mixture_share": None,      # set when the real mixture is designed
         "cleaning": "stripped whitespace; blank documents dropped; documents joined with a blank line",
+        "date_basis": ({"field": a.date_field, "max": a.date_max, "skipped_after_max": n_skipped_date,
+                        "histogram": dict(sorted(date_hist.items()))} if a.date_field
+                       else "NONE RECORDED -- does not satisfy D-34 on its own (O-22)"),
+        "published_before_generative_ai": (True if a.date_field and a.date_max < "CC-MAIN-2022" else None),
         "sha256_processed": digest,
         "file": os.path.relpath(out_path, ROOT).replace("\\", "/"),
         "milestone": "M1 pipeline check",
