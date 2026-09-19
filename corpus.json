@@ -503,7 +503,7 @@
       "license": "Individual posts retain author copyright; included as web-scraped forum text on the same basis general web corpora (FineWeb-Edu, Common Crawl) already include forum content. Not a separately licensed dataset.",
       "public_domain_basis": null,
       "crawl_basis": "robots.txt contains no Disallow directives (verified 2026-09-16); crawled politely with a fixed per-request delay and an identifying User-Agent, bounded to a fixed thread sample rather than an unbounded crawl.",
-      "published_before_generative_ai": null,
+      "published_before_generative_ai": false,
       "boards_sampled": {
         "1": "Bitcoin Discussion",
         "6": "Development & Technical Discussion",
@@ -521,7 +521,8 @@
       "cleaning": "HTML post divs extracted, whitespace collapsed",
       "sha256_processed": "10fe512aa183fd96b0695b7bb87381645fb193c7aa1a57b1cc1db36fcde371b3",
       "file": "data/raw/bitcointalk/bitcointalk_sample.txt",
-      "slice": "contemporary voice (anneal + SFT only, never the pretraining spine, per D-10)"
+      "slice": "EXCLUDED 2026-09-18 (D-60): not in any mixture",
+      "excluded_reason": "No nameable licence (row cited \"the same basis general web corpora include forum content\", which is not a licence) and 8,823 of ~12,000 dated posts are from 2026, after the D-34 cutoff. Was in the anneal of the 59M stick model and in the Flash run bundle; removed from the anneal on the pod before its decay phase began."
     },
     {
       "slug": "harness-synthetic-qwen2.5-7b",

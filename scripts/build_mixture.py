@@ -59,7 +59,8 @@ ANNEAL_SOURCES = [
     "gutenberg/progress-and-poverty.txt",
     "gutenberg/the-communist-manifesto.txt",
     "gutenberg/anthem.txt",
-    "bitcointalk/bitcointalk_sample.txt",
+    # "bitcointalk/bitcointalk_sample.txt",  # EXCLUDED 2026-09-18 (D-60): no nameable licence; 8,823 of
+    #   ~12,000 dated posts are from 2026 -- fails the ledger rule and D-34. Row kept in corpus.json as a record.
 ]
 
 

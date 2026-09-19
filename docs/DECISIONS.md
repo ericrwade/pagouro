@@ -1412,3 +1412,47 @@ harness tool (`draw`), on a CC0/PD image corpus (Kenney, OpenGameArt CC0, Smiths
 open access, NASA/USGS, program-generated) ledgered exactly like the text; ~30M-param diffusion
 first, image-tokens-through-the-same-transformer as the ablation; est. $1–3 of GPU at 32×32.
 Not photorealism, not >64 px, alignment loose at MVP scale. Eric decides v1.0 vs v1.1.
+
+### D-60 — Two integrity findings from writing the book: the forum sample was never licensed, and the validation split was one source
+**2026-09-18 evening, session, while pulling numbers for the book's chapters.** Both stand
+as corrections to earlier records; nothing here is optional.
+
+**Finding 1 — `bitcointalk-sample` fails both hard rules.** Its ledger row's licence field reads
+"Individual posts retain author copyright; included … on the same basis general web corpora
+already include forum content." That is an argument, not a licence; the rule is unclear = no.
+And 8,823 of its ~12,000 dated posts are from 2026 (1,474 from 2025, 720 from 2024), after the
+D-34 cutoff. It was ~26% of the anneal (17.3M chars), so it trained into the 59M stick model's
+anneal and was bundled for the Flash run's decay phase.
+**Action taken:** removed from `ANNEAL_SOURCES`; row kept in `corpus.json` with
+`slice = "EXCLUDED 2026-09-18 (D-60)"` and the reason, because the ledger records retractions
+too. Both anneals (canon-only and canon+shelf) rebuilt without it and re-uploaded to the pod
+**before** the Flash decay phase began (pod was at step 16,100 of 27,466; hashes verified). The
+59M stick model stays as-is and is labelled: its anneal contained this source. D-10 (bitcointalk
+as "contemporary voice") is void unless a licensed forum source replaces it — none is in view.
+
+**Finding 2 — validation perplexity was measured on one source.** `tokenize_corpus.py` took the
+first `val_fraction` of the token stream as validation. `build_mixture.py` shuffles at the
+*source* level, so that head is a single source: for the real run it is 100% Solidity code.
+The "best perplexity 14.7" in `BUILD_LOG.md` Day 6 and the README's status table is therefore
+perplexity on Solidity, not on the mixture (training loss at the same step was ~4.5, ppl ~90).
+The anneal's "84.7" is likewise one source. The Flash run's val is FineWeb-only by construction
+(single-source stream) and is unaffected.
+**Action taken:** `--val-mode spread` (default): validation = every k-th 4,096-token block across
+the whole stream; `head` kept as an explicit option. Both clean anneals were tokenized with it;
+the shelf-anneal val now samples canon, Hoyle, EIPs, FineWeb, and shelf works (checked by
+decoding). The ablation and every future number use it. Earlier numbers are annotated where
+they appear, not rewritten (append-only), and the book's chapter tells it as it happened.
+
+**Still open, and it is required, not optional — the backbone has no pre-2022 basis.** D-34 is
+LOCKED, and its implementation line ("select Common Crawl dumps by date; filter Stack Exchange
+by post date and Wikipedia by revision date") was never carried out for the data on disk:
+`fineweb-edu-sample-10BT` spans crawls to 2024, `wikipedia-20231101.en` is a 2023 dump, The Stack
+rows carry no per-file dates. The shelf, canon and specs rows satisfy D-34; the backbone does
+not yet. Before the 1B data volume is built: FineWeb-Edu filtered on its `dump` field to
+CC-MAIN-2021-xx and earlier; a Wikipedia dump dated ≤ 2021-12 (candidates to verify:
+`wikipedia` 20200501/20220301 configs, archive.org dump mirrors); The Stack either replaced by a
+dated code source or shipped with the caveat stated on the box. Logged as **O-22** for the route
+and cost; the requirement itself is not open. Until then the README and collateral must not
+claim pre-2022 for the whole corpus — only for the rows that carry the flag (they do not today).
+
+**Numbering note:** the Flash results become **D-61**.

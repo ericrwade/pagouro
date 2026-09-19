@@ -78,6 +78,11 @@ def main() -> int:
     ap.add_argument("--tokenizer", default=os.path.join(TOKENIZER_DIR, "tokenizer.json"))
     ap.add_argument("--out", default=OUT_DIR)
     ap.add_argument("--val-fraction", type=float, default=0.005)
+    ap.add_argument("--val-mode", choices=["spread", "head"], default="spread",
+                    help="spread (default): val = evenly spaced 4096-token blocks across the whole stream, "
+                         "so every source is represented; head: the first val_fraction tokens (the old "
+                         "behaviour -- with a source-shuffled mixture that is ONE source: the real run's "
+                         "'ppl 14.7' was measured on Solidity alone, found 2026-09-18, D-60)")
     ap.add_argument("--chunk-chars", type=int, default=1_000_000)
     ap.add_argument("--workers", type=int, default=1,
                     help="parallel tokenizer processes; the 1B run's 100B tokens need ~8 (2026-09-18)")
@@ -155,17 +160,41 @@ def main() -> int:
         out_f.close()
 
     arr = np.memmap(all_path, dtype=np.uint16, mode="r")
-    n_val = max(1, int(len(arr) * a.val_fraction))
-    val, train = arr[:n_val], arr[n_val:]
-
     train_path = os.path.join(a.out, "train.bin")
     val_path = os.path.join(a.out, "val.bin")
-    val.tofile(val_path)
-    with open(train_path, "wb") as tf:            # copy in slices; never materialise the whole array
-        step = 64 * 1024 * 1024
-        for i in range(n_val, len(arr), step):
-            np.ascontiguousarray(arr[i:i + step]).tofile(tf)
-    del val, train, arr
+    if a.val_mode == "head":
+        n_val = max(1, int(len(arr) * a.val_fraction))
+        val, train = arr[:n_val], arr[n_val:]
+        val.tofile(val_path)
+        with open(train_path, "wb") as tf:            # copy in slices; never materialise the whole array
+            step = 64 * 1024 * 1024
+            for i in range(n_val, len(arr), step):
+                np.ascontiguousarray(arr[i:i + step]).tofile(tf)
+        del val, train
+    else:
+        # Every k-th block of BLOCK tokens is validation, so the split samples the whole stream
+        # (every source in a source-shuffled mixture) instead of whatever happened to be first.
+        BLOCK = 4096
+        n_blocks = len(arr) // BLOCK
+        k = max(2, int(round(1.0 / max(a.val_fraction, 1e-6))))
+        val_blocks = set(range(1, n_blocks, k))          # start at 1 so block 0 stays in train
+        n_val = 0
+        with open(val_path, "wb") as vf, open(train_path, "wb") as tf:
+            step_blocks = 16384                            # 64M tokens per slice
+            for b0 in range(0, n_blocks + 1, step_blocks):
+                b1 = min(n_blocks, b0 + step_blocks)
+                if b0 < b1:
+                    sl = np.ascontiguousarray(arr[b0 * BLOCK:b1 * BLOCK]).reshape(-1, BLOCK)
+                    mask = np.array([(b0 + j) in val_blocks for j in range(b1 - b0)])
+                    sl[mask].tofile(vf)
+                    sl[~mask].tofile(tf)
+                    n_val += int(mask.sum()) * BLOCK
+                    del sl
+            tail = arr[n_blocks * BLOCK:]                  # remainder shorter than a block -> train
+            if len(tail):
+                np.ascontiguousarray(tail).tofile(tf)
+        print(f"  val mode       : spread (every {k}th block of {BLOCK} tokens, {len(val_blocks):,} blocks)")
+    del arr
     import gc
     gc.collect()
     try:
