@@ -8,7 +8,7 @@ below. Numbers here are from measured runs (D-55, the Flash run) and are updated
 |---|---|---|
 | params | ~1.03B | dim 2048, 20 layers, 16 heads, 4 kv heads, ffn 6144, vocab 32,768, tied embeddings |
 | context | 8,192 (O-12 proposal) | trained at 4k for the stable phase, extended to 8k in the decay phase |
-| schedule | WSD (D-48) | warmup 2k steps, stable at 3e-4, last 10% linear decay on the domain-heavy mix |
+| schedule | WSD (D-48, D-61) | warmup 2k steps, stable at 3e-4, last 10% linear decay on a **mix**: backbone data + domain anneal, with no domain token replayed more than ~2x (the Flash run's anneal-only decay memorised an 8M-token anneal in 1,200 steps: train 3.05->0.48, held-out 3.25->4.82) |
 | tokens | 100B (D-6) | ~100 tokens/parameter |
 | batch | 1M tokens/step | e.g. 8 GPUs × 16 × 4096 × accum 2 |
 | precision | bf16 autocast | as measured on the A40 |
@@ -27,7 +27,10 @@ Built on existing open corpora with ledger rows, tokenized on a CPU pod with `to
 | canon + government | ~10% | Gutenberg canon (D-38), US gov works | public domain |
 
 The decay phase (last 10B tokens) shifts to a domain-heavy mix (canon, the shelf, Stack Exchange economics,
-crypto synthetic — bitcointalk EXCLUDED per D-60) per D-9. Every row gets its `corpus.json` entry before
+crypto synthetic — bitcointalk EXCLUDED per D-60) per D-9 — **heavy, not exclusive**: the domain
+slices are ~10.4M tokens (shelf) + ~7.9M (canon) today, so at 10B decay tokens they can be at most a
+few percent of the decay without being replayed dozens of times; the rest of the decay stays backbone
+data, and the held-out anneal loss is watched every 250 steps and must not rise (D-61). Every row gets its `corpus.json` entry before
 training starts; nothing pre-2022-claimed is mixed with synthetic (D-34).
 
 ## Cost, from measurement
