@@ -115,6 +115,8 @@ def main() -> int:
 
     with io.open(os.path.join(rel, "MANIFESTO.txt"), "w", encoding="utf-8", newline="\n") as f:
         f.write(MANIFESTO)
+    # The checker ships beside the manifest so a stranger can verify without the repo (F8).
+    shutil.copy2(os.path.join(ROOT, "scripts", "verify_manifest.py"), os.path.join(rel, "verify_manifest.py"))
 
     # The app: freeze app/pagouro_app.py into one executable and ship it with
     # llama-server.exe, the packs and an empty workspace. Standard library only,
@@ -222,7 +224,9 @@ from -- please read that before relying on this for anything sensitive.
 
 Every file in this folder is hashed in `MANIFEST.md`. If you got this stick or
 folder from someone other than Eric directly, check the hashes match before
-trusting it.
+trusting it: `python verify_manifest.py` in this folder (standard library only,
+no network) prints every mismatch and a verdict. When a release is signed, the
+same command also checks `MANIFEST.md.minisig` if `minisign` is installed.
 
 ## Licence
 
