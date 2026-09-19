@@ -13,6 +13,42 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-18 (unattended window 3, day 1) — RunPod proven, Flash training, SFT at scale, the shelf
+**Model:** Fable 5.1
+**Goal:** Eric away Sep 18–21. Channel = GitHub issues (hourly cron) + Remote Control. Budget: $165
+on RunPod (Eric loaded it mid-morning), $0 elsewhere. Guardrails per issue #2.
+**Did (in order):**
+- Inbox mechanism (issue #1 test, #2 status log). Teacher licence verified (Qwen2.5-7B-Instruct,
+  Apache-2.0), downloaded, ~12 tok/s locally; `scripts/generate_synthetic_harness.py` written and
+  run: router / tool-answer (tools executed) / grounded / abstain / confident (verifier pass, no
+  precise figures) / synthesis / multi-turn (no invented specifics). 3,100+ rows by evening;
+  ledger row `harness-synthetic-qwen2.5-7b` (`scripts/ledger_synthetic.py`).
+- Retrieval: embedding index attempted (this llama-server build crashes on embedding inputs >
+  ~32 tokens); BM25 shipped instead (`app/packsearch.py`). Survival pack FM 21-76 (US Gov PD),
+  plant/foraging chapters removed + harness notice.
+- Eval: tool-use axis (`evals/tooluse.json`, `evals/run_tooluse.py`) with baselines.
+- RunPod: plugin connected (OAuth), SSH key registered, shakedown on an A40 (62k tok/s, resume
+  proven, ~$0.08), `docs/RUNPOD_JOB.md`, D-54, D-55. DDP support in `train.py`, rehearsed on
+  2×L4 (60.4k tok/s aggregate, ~$0.20). Flash run launched on an A40: 126M params, 2B tokens,
+  WSD schedule with the decay on the domain mix, ~38.9k tok/s, ~14 h, ~$7; 3-hourly checkpoint
+  fetch cron (job d761dc56). `--grad-accum`, `--compile`, `--schedule wsd`, `--stop-at`,
+  `--log-path`; streaming + `--workers` tokenizer (8 workers: 1.63B tokens in 8 min).
+- Local SFT retrained on 1,982 conversations: routing 54%→83%, bluff 10%→40%, answered-real
+  unchanged (D-56). Generator rebalanced to 40% no-tool router rows.
+- Docs/decisions: JOB_1B.md (budget $1,500–2,500 from measured MFU), SUCCESS_METRICS.md,
+  README truth, ONLINE-mode plumbing (D2/D8), D-57 (weights update only via reversible adapters),
+  O-15 (answerability gate), O-16/17/18 and **D-58 the shelf** (licensed flavors spread thin in
+  the anneal); first ten shelf works ledgered from Gutenberg with per-edition PD bases.
+- Collateral drafts (landing page + one-pager) on a private artifact and in `site/`.
+- Build log Day 8 written.
+**Verified:** every number above is from a run log or an eval result file; pods created by the
+session were deleted by the session except the Flash pod (running on purpose).
+**Open / next:** (1) Flash finishes ~02:00 PT Sep 19 → cron: fetch, eval, D-59 (D-56 was used),
+delete pod. (2) Re-eval the stick model after the generator finishes (~700/class). (3) Shelf: the
+gov technical shelf (FAA, Navy NRTC, TM 9-8000: PDFs need extraction), OpenStax (CC BY),
+Britannica 1911 (Gutenberg robot policy: no bulk crawl; use a mirror or the harvest tool).
+(4) O-12 and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries.
+
 ## 2026-09-17/18 — Freeze recovery, first real build end to end, the app on the stick, GitHub
 **Model:** Fable 5.1
 **Goal:** Find where the overnight build was when the PC hard-froze; resume it; then, on Eric's
