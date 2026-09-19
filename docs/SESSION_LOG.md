@@ -43,11 +43,21 @@ on RunPod (Eric loaded it mid-morning), $0 elsewhere. Guardrails per issue #2.
 - Build log Day 8 written.
 **Verified:** every number above is from a run log or an eval result file; pods created by the
 session were deleted by the session except the Flash pod (running on purpose).
+**Evening addendum (18:00–18:45 PT):** the shelf went from 10 to **27 works / 7.46M tokens**:
+8 US-Government works from archive.org OCR (FAA PHAK + AFH, Army TM 9-8000, NEETS 1/2/13, Armed
+Forces Recipe Service 2003, MUTCD 2009; `scripts/fetch_archive_text.py`, `scripts/ledger_add_text.py`
+with measured noise 0.1–3.7% lines dropped), BIPs + EIPs/ERCs at their last pre-2022 commits with
+per-document licence checks (`scripts/fetch_bips_eips.py`), 7 more Gutenberg works. OpenStax
+excluded (now CC BY-NC-SA; O-19). Shelf wired into `build_mixture.py` (paragraph-sampled, 1.5M
+chars/work cap, ≤33% of anneal; measured 30%); shelf anneal tokenized (18.9M tokens) and uploaded
+to the pod; `flash_ablation.sh` + `score_heldout.py` written; a watcher on the pod keeps the
+stable-end checkpoint so the D-58 ablation costs ~$0.70 (decay phase only). Offline audit re-run
+for real (49 samples, 0 connections).
 **Open / next:** (1) Flash finishes ~02:00 PT Sep 19 → cron: fetch, eval, D-59 (D-56 was used),
-delete pod. (2) Re-eval the stick model after the generator finishes (~700/class). (3) Shelf: the
-gov technical shelf (FAA, Navy NRTC, TM 9-8000: PDFs need extraction), OpenStax (CC BY),
-Britannica 1911 (Gutenberg robot policy: no bulk crawl; use a mirror or the harvest tool).
-(4) O-12 and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries.
+**run the ablation, score both arms on the shared held-out sets**, delete pod. (2) Re-eval the
+stick model after the generator finishes (~700/class). (3) Shelf: Britannica 1911 (Gutenberg robot
+policy: no bulk crawl; mirror or harvest tool), Supreme Court opinions, Bowditch, USDA guides.
+(4) O-12, O-19 and the 1B data volume wait for Eric. (5) Session log: append day-2/3 entries.
 
 ## 2026-09-17/18 — Freeze recovery, first real build end to end, the app on the stick, GitHub
 **Model:** Fable 5.1
