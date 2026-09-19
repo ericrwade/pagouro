@@ -1376,3 +1376,9 @@ O-16, O-17 and O-18 are now sub-items of this decision.
   irrevocable for a copy so distributed, but that is an argument, not a licence line on the
   current page — "unclear = no". Revisit only with a specific edition whose own copyright page
   says CC BY 4.0 (open item **O-19**, Eric's call).
+- 2026-09-18 (late): **27 works, 7.46M tokens.** Added BIPs (123 docs with a BIP-2 licence header;
+  30 without one dropped) and EIPs incl. ERCs (355 docs carrying the EIP-1 CC0 waiver; 30 without
+  it and 21 withdrawn dropped), each taken at the repo's **last commit before 2022-01-01** with the
+  commit hash on the row (D-34 made provable by construction; `scripts/fetch_bips_eips.py`), plus
+  seven Gutenberg works (Lincoln–Douglas debates, Jowett's *Republic*, Grimm/Hunt, Aesop/Townsend,
+  *Bird Neighbors*, Jacobs' *English Fairy Tales*). Mushrooms still never.
