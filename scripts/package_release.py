@@ -98,6 +98,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--release-dir", required=True)
     ap.add_argument("--no-app", action="store_true", help="skip the PyInstaller build of pagouro.exe")
+    ap.add_argument("--context-words", type=int, default=350,
+                    help="what the stick README says the model holds at once (59M/512 tokens: ~350; Flash/1024: ~700)")
     a = ap.parse_args()
 
     rel = a.release_dir if os.path.isabs(a.release_dir) else os.path.join(ROOT, a.release_dir)
@@ -196,7 +198,7 @@ Three switches sit above every prompt, and a bar:
   the chat is written to `workspace/transcripts/`. `/sand` stops it again.
 - **READ-ONLY / CAN ACT**: tools that write (a note to `workspace/notes/`) are
   refused until you type `/act`. Nothing outside `workspace/` is ever written.
-- **The bar** is the model's memory. This model holds about 350 words at once.
+- **The bar** is the model's memory. This model holds about {a.context_words} words at once.
   When it fills, the oldest exchange is shown leaving, with its first words, so
   you know what it no longer remembers. That is a small model's limit made visible
   rather than hidden.

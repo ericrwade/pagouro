@@ -159,22 +159,28 @@ if stage 10; then
 echo "### STAGE 10: assemble the release package ###"
 rm -rf "$REL"
 mkdir -p "$REL/model" "$REL/docs"
-cp data/gguf_real/pagouro-real-q4_k_m.gguf "$REL/model/pagouro-q4_k_m.gguf"
-cp data/gguf_real/pagouro-real-q8_0.gguf "$REL/model/pagouro-q8_0.gguf"
+# MODEL_STEM selects which exported model ships (default: the pipeline's own real_sft export).
+# 2026-09-19: MODEL_STEM=gguf_flash/pagouro-flash-sft2 puts the 126M Flash model on the stick (D-61).
+MODEL_STEM="${MODEL_STEM:-gguf_real/pagouro-real}"
+[ -f "data/${MODEL_STEM}-q4_k_m.gguf" ] || ./tools/llamacpp/llama-quantize.exe "data/${MODEL_STEM}-f32.gguf" "data/${MODEL_STEM}-q4_k_m.gguf" q4_k_m > /dev/null
+cp "data/${MODEL_STEM}-q4_k_m.gguf" "$REL/model/pagouro-q4_k_m.gguf"
+cp "data/${MODEL_STEM}-q8_0.gguf" "$REL/model/pagouro-q8_0.gguf"
+echo "model shipped: data/${MODEL_STEM}-q8_0.gguf" > "$REL/model/WHICH_MODEL.txt"
 cp tools/llamacpp/llama-cli.exe "$REL/"
 cp tools/llamacpp/*.dll "$REL/" 2>/dev/null || true
 cp corpus.json "$REL/docs/"
 cp docs/THREAT_MODEL.md "$REL/docs/" 2>/dev/null || true
 cp docs/MAKE_IT_YOURS.md "$REL/docs/" 2>/dev/null || true   # how to improve or customise it (Eric, 2026-09-18)
 cp evals/BASELINES.md "$REL/docs/" 2>/dev/null || true
-cp evals/results/pagouro-real__*.json "$REL/docs/" 2>/dev/null || true
+EVAL_LABEL="${EVAL_LABEL:-pagouro-real}"        # the eval results that describe the shipped model
+cp evals/results/${EVAL_LABEL}__*.json "$REL/docs/" 2>/dev/null || true
 cp evals/results/offline_audit_real.json "$REL/docs/" 2>/dev/null || true
 mkdir -p "$REL/licenses"
 cp licenses/*.txt "$REL/licenses/" 2>/dev/null || true
 
 require "$REL/model/pagouro-q4_k_m.gguf"
 require "$REL/model/pagouro-q8_0.gguf"
-$PY -u scripts/package_release.py --release-dir "$REL"
+$PY -u scripts/package_release.py --release-dir "$REL" --context-words "${CONTEXT_WORDS:-350}"
 fi
 
 if stage 11; then
