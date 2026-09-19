@@ -149,10 +149,11 @@ tail -20 runs/pagouro_real_eval.log
 fi
 
 if stage 9; then
-echo "### STAGE 9: offline audit ###"
+echo "### STAGE 9: offline audit (of the model that ships, MODEL_STEM) ###"
+MODEL_STEM="${MODEL_STEM:-gguf_real/pagouro-real}"
 $PY -u evals/offline_audit.py --exe tools/llamacpp/llama-completion.exe \
-    --args "-m data/gguf_real/pagouro-real-q8_0.gguf -p hello -n 24 --temp 0 -ngl 0 --no-warmup" \
-    --max-seconds 60 --out evals/results/offline_audit_real.json
+    --args "-m data/${MODEL_STEM}-q8_0.gguf -p hello -n 4000 --ignore-eos --temp 0 -ngl 0 --no-warmup -no-cnv" \
+    --max-seconds 60 --out "evals/results/offline_audit_$(basename "$MODEL_STEM").json"
 fi
 
 if stage 10; then
@@ -174,7 +175,7 @@ cp docs/MAKE_IT_YOURS.md "$REL/docs/" 2>/dev/null || true   # how to improve or 
 cp evals/BASELINES.md "$REL/docs/" 2>/dev/null || true
 EVAL_LABEL="${EVAL_LABEL:-pagouro-real}"        # the eval results that describe the shipped model
 cp evals/results/${EVAL_LABEL}__*.json "$REL/docs/" 2>/dev/null || true
-cp evals/results/offline_audit_real.json "$REL/docs/" 2>/dev/null || true
+cp "evals/results/offline_audit_$(basename "$MODEL_STEM").json" "$REL/docs/offline_audit.json" 2>/dev/null || true
 mkdir -p "$REL/licenses"
 cp licenses/*.txt "$REL/licenses/" 2>/dev/null || true
 

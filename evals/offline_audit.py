@@ -117,10 +117,18 @@ def main() -> int:
     # Enumerating the process tree costs ~4s per call, which throttled sampling to a
     # useless 1 sample per run. Cache it and refresh occasionally; a new child still
     # gets picked up within a few seconds, and the connection table is what matters.
-    pids = descendants(proc.pid)
-    last_tree = time.time()
+    pids = [proc.pid]                    # sample the root immediately; the ~4 s tree walk comes after
+    last_tree = 0.0
+    launches = 1
     try:
-        while proc.poll() is None and (time.time() - t0) < a.max_seconds:
+        while (time.time() - t0) < a.max_seconds:
+            if proc.poll() is not None:
+                # The generation finished (a small model fills its window in ~2 s). Relaunch so the
+                # audit watches real inference for the whole window, not an idle or absent process.
+                proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, cwd=ROOT)
+                launches += 1
+                pids = [proc.pid]
+                last_tree = 0.0
             if time.time() - last_tree > 5.0:
                 pids = descendants(proc.pid)
                 last_tree = time.time()
@@ -137,12 +145,19 @@ def main() -> int:
             proc.terminate()
 
     elapsed = time.time() - t0
-    verdict = "PASS" if not observed else "FAIL"
+    # A PASS with nothing observed is only worth something if the process was actually running
+    # and generating while we watched: 2026-09-19 the audited binary exited in 0.6 s with 0
+    # samples (conversation mode on a closed stdin) and the audit said PASS. Vacuous = INCONCLUSIVE.
+    if samples < 10 or elapsed < 2.0:
+        verdict = "INCONCLUSIVE"
+    else:
+        verdict = "PASS" if not observed else "FAIL"
     result = {
         "verdict": verdict,
         "utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "command": " ".join(cmd),
         "samples": samples,
+        "launches": launches,
         "elapsed_s": round(elapsed, 1),
         "connections_observed": observed,
         "limitation": "Observes sockets opened by the process tree. Pair with an external packet "
