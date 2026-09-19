@@ -1,0 +1,444 @@
+{
+  "set": "calibration",
+  "model_label": "pagouro-flash-grpo",
+  "model_file": "pagouro-flash-grpo-q8_0.gguf",
+  "n_items": 30,
+  "counts": {
+    "ABSTAIN": 6,
+    "CORRECT": 8,
+    "WRONG": 16
+  },
+  "elapsed_s": 22.5,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "chat",
+  "spend_usd_running_total": null,
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "I don't have any record of a main argument of Bitcoin whitepaper by Satoshi Nakamoto. Could you verify the details or provide a source? I can't invent details for something that isn't documented.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is Lisbon, which is the largest city in Portugal.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "I don’t have any records of 'The Wealth of Nations' in our database. Please provide a source if you have one.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "The Byzantine Generals Problem is a problem in distributed systems where the primary function is to provide a centralized source of information for the governance of the system.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "The acronym CPU is forCentral processing Unit, a name that refers to the hardware device that is used for processing the CPU's processing resources.",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "I don't have any record of that. It's possible this is a fictional concept. Please provide a source if you have one.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "In an economy, inflation is the rate at which the cost of goods and services is increasing, usually due to government intervention in the economy.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "The price of an asset in an open market determines the price of that asset by measuring the market price of the goods or services that are sold, as a percentage of the price of the goods or services.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "The role of a central bank is to maintain price stability within a country, which typically means keeping inflation at a low and stable level.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "A stock market index (SJE) is a financial measure that indicates the value of a company's shares of a company at a specific moment in time. It's a good way to gauge the company's financial health and ensure that enough funds are available to cover the company's needs.",
+      "verdict": "CORRECT",
+      "reason": "matched 'measure'"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "leap years are typically written in months, not days.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The modern Summer Olympic Games are held every four years, typically in the United States, to raise funds for the Games and to celebrate the Games' rich history and culture.",
+      "verdict": "CORRECT",
+      "reason": "matched 'four years'"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "The first crewed mission to land on the Moon was the Mariner 12, which landed on the moon in 1972.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "I don't have any record of a specific authoring process or authoring process. Please verify the details or provide a source.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "The Treaty of Versailles was a treaty between Germany and the United States that ended the Thirty Years' War and established the principle of state sovereignty.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Germany'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "Keynes' general theory is that the demand for money is driven by a desire for growth and security, leading to a desire for growth and growth in general.",
+      "verdict": "CORRECT",
+      "reason": "matched 'demand'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The US Supreme Court is a 24-bed court that has powers to make decisions on behalf of the people, including the constitutionally-restricted case of states, and the like.",
+      "verdict": "CORRECT",
+      "reason": "matched 'constitutional'"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "The maximum number of bitcoins that will ever exist is 1, with a 100,000 possible outcome in 2015.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "A surname is a name or reference to a person who were recorded in a document or record as a person by the public in the past.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A bank account is a financial institution that allows you to save and existential expenses. It allows you to access financial information and maintain your financial stability, which can be a key benefit of a bank account.",
+      "verdict": "CORRECT",
+      "reason": "matched 'financial institution'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A text file is a file that can be saved as a file, but it cannot be saved as a file.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "Rain is caused by rain falling on the ground, rainwater, and rain falling on the ground.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "A networked connection that allows one to share information and resources, usually with a message or a message-making device.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "stateless software is a collection of programs that can be collapsed into a single heap or heap, but the heap can be re-usable or changed as needed, so the program can't be revived.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A number between 1 and 9 that is not prime. The digits 0 to 9 are prime, and 9 is the prime number. The digits 10 to 19 are prime, and 19 is the prime number.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "pi is the number of days in a year that a number is 2000 years old, and the number is 2000 years old, so 2000 years is 2000 years.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "factor a number into primes, which is why it is so important to factor a number in primes.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "I don't have any record of a first four prime numbers. Please check your sources or provide more details.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "I don't have any record of a whitepaper that discusses Bitcoin whitepaper. Could you provide a source or verify the information?",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A hash function is a cryptographic hash function that can be used to verify transactions and ensure security. It can be used to verify information such as bank account or bank balance, but it is not a complete hash function.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    }
+  ]
+}
