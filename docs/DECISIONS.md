@@ -1801,6 +1801,11 @@ reported as one, never answered around. (3) Each skill's answer examples get as 
 rows as answering rows, plus program-generated NO_MATCH pairs across all tools, before the next
 fine-tune. (4) The fine-tune did teach names: model-alone skill routing 0 → 5–8 of 10, so the
 trigger layer is a bridge, not the design.
+**Built the same hour:** `evals/toolresult.json` (frozen 2026-09-20; 10 real results, 10 NO_MATCH)
++ `evals/run_toolresult.py`. Baselines — **sft2: faithful 6/10, NO_MATCH reported 3/10; sft3:
+6/10, 4/10.** So the fabrication-around-NO_MATCH was already in sft2; sft3 does it more fluently.
+Both ignore a bare `calc` result ("48 times 19 is 48 times 19"). This set joins the frozen suite
+and `eval_sft_ckpt.sh`; the NO_MATCH-balanced examples (item 3) are the next data job.
 
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
