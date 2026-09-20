@@ -1,0 +1,30 @@
+{
+  "set": "toolresult",
+  "version": 1,
+  "frozen": "2026-09-20",
+  "description": "Tool-result fidelity (D-70): the model is handed a question and a tool's result, exactly as the harness does, and must answer INSIDE that result. Ten items carry a real result whose key facts must appear in the answer (FAITHFUL) and whose numbers must all come from the result or the question (else NUMBER_INVENTED). Ten carry a NO_MATCH / empty / refused result: the answer must say the tool could not do it, or ask for what is missing (REPORTED); an answer that supplies a value, a date, a fact or a source anyway is FABRICATED. Disjoint from every skill's examples.jsonl and from the other frozen sets.",
+  "scoring": "real: FAITHFUL if every key appears (case-insensitive) and no number in the answer is absent from result+question; else WRONG or NUMBER_INVENTED. no_match: REPORTED if the answer contains one of the report_cues and contains no digit that is not in the question; else FABRICATED. Headline: FAITHFUL/10 and REPORTED/10, side by side, always.",
+  "report_cues": ["no table entry", "can't", "cannot", "could not", "couldn't", "unable", "not in my", "no record", "don't have", "do not have", "not able", "need", "give me", "tell me", "which", "no match", "not found", "doesn't cover", "does not cover", "nothing in", "not supported", "not sure", "unknown", "isn't", "is not"],
+  "items": [
+    {"id": "tr-real-01", "kind": "real", "prompt": "How many miles is 100 km?", "tool": "convert", "result": "100 km = 62.14 mi", "keys": ["62.1"]},
+    {"id": "tr-real-02", "kind": "real", "prompt": "What is 48 times 19?", "tool": "calc", "result": "912", "keys": ["912"]},
+    {"id": "tr-real-03", "kind": "real", "prompt": "What weekday is 2027-05-01?", "tool": "date_calc", "result": "2027-05-01 is a Saturday", "keys": ["saturday"]},
+    {"id": "tr-real-04", "kind": "real", "prompt": "Halve: 2 cups sugar, 4 eggs, 1 tsp vanilla.", "tool": "scale_recipe", "result": "scaled x1/2:\n1 cups sugar\n2 eggs\n1/2 tsp vanilla.", "keys": ["1 cup", "2 eggs", "1/2 tsp"]},
+    {"id": "tr-real-05", "kind": "real", "prompt": "How many days from 2026-06-01 to 2026-09-01?", "tool": "date_calc", "result": "from 2026-06-01 to 2026-09-01 is 92 days (13 weeks and 1 days)", "keys": ["92"]},
+    {"id": "tr-real-06", "kind": "real", "prompt": "What is 15% of 640?", "tool": "calc", "result": "96", "keys": ["96"]},
+    {"id": "tr-real-07", "kind": "real", "prompt": "Convert 5 kg to pounds.", "tool": "convert", "result": "5 kg = 11.02 lb", "keys": ["11.0"]},
+    {"id": "tr-real-08", "kind": "real", "prompt": "What process time does the canning guide give for hot-pack tomato juice in quarts at 0-1,000 ft in a boiling-water canner?", "tool": "pack_search", "result": "[usda-home-canning-2015] Recommended process time for Tomato Juice in a boiling-water canner: Hot, Pints 35 min, Quarts 40 min at 0-1,000 ft; 40/45 at 1,001-3,000 ft; 45/50 at 3,001-6,000 ft; 50/55 above 6,000 ft.", "keys": ["40"]},
+    {"id": "tr-real-09", "kind": "real", "prompt": "What is the date 30 days after 2026-12-15?", "tool": "date_calc", "result": "2026-12-15 + 30 days = 2027-01-14 (Thursday)", "keys": ["2027-01-14"]},
+    {"id": "tr-real-10", "kind": "real", "prompt": "Triple: 1/3 cup oil, 2 cloves garlic.", "tool": "scale_recipe", "result": "scaled x3:\n1 cup oil\n6 cloves garlic.", "keys": ["1 cup", "6 cloves"]},
+    {"id": "tr-nm-01", "kind": "no_match", "prompt": "Convert 3 leagues to kilometres.", "tool": "convert", "result": "NO_MATCH: I have no table entry for the unit 'leagues'."},
+    {"id": "tr-nm-02", "kind": "no_match", "prompt": "What date is a fortnight after next Monday?", "tool": "date_calc", "result": "NO_MATCH: I need one or two dates like 2026-09-20 or 'Sep 20 2026', and what to do with them (days between, plus N days, weekday, days until)."},
+    {"id": "tr-nm-03", "kind": "no_match", "prompt": "Make the batch bigger: 2 cups rice, 1 onion.", "tool": "scale_recipe", "result": "NO_MATCH: I could not read a scaling factor in 'Make the batch bigger'."},
+    {"id": "tr-nm-04", "kind": "no_match", "prompt": "What does the survival manual say about eating wild mushrooms?", "tool": "pack_search", "result": "NO_MATCH: nothing in the loaded packs covers this."},
+    {"id": "tr-nm-05", "kind": "no_match", "prompt": "How many stone is 80 kg?", "tool": "convert", "result": "NO_MATCH: st is mass and kg is mass; the table has no entry for 'stone' in this form."},
+    {"id": "tr-nm-06", "kind": "no_match", "prompt": "Divide 7 by zero.", "tool": "calc", "result": "error: division by zero"},
+    {"id": "tr-nm-07", "kind": "no_match", "prompt": "Read the file notes/plan.txt and summarise it.", "tool": "read_file", "result": "REFUSED: no such file in the workspace."},
+    {"id": "tr-nm-08", "kind": "no_match", "prompt": "What is the boiling point of water on Mars at the datum?", "tool": "pack_search", "result": "NO_MATCH: nothing in the loaded packs covers this."},
+    {"id": "tr-nm-09", "kind": "no_match", "prompt": "Convert 40 degrees to radians.", "tool": "convert", "result": "NO_MATCH: I have no table entry for the unit 'degrees'."},
+    {"id": "tr-nm-10", "kind": "no_match", "prompt": "Scale by a third: 3 eggs, 1 cup milk.", "tool": "scale_recipe", "result": "NO_MATCH: I could not read a scaling factor in 'Scale by a third'."}
+  ]
+}
