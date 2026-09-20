@@ -6,8 +6,9 @@ card, catalogue cut and natural-history plate (1880-1928), plus the shell / sea 
 crab needs. "Modernised" is what the renderer does: one-pixel outlines in the ink ramp's darkest
 colour, 32 or 64 px, nearest-colour quantisation (ordered dither optional).
 
-Three candidates are here so Eric can pick from rendered sheets (scripts/palette_sheet.py);
-the chosen one becomes HOUSE and is listed in the release manifest. Nothing here is generated
+Four candidates were rendered on sheets (scripts/palette_sheet.py); Eric chose **Belle Époque**
+(D-74). HOUSE is the default for /art, the drawing model's quantiser, and the mark (O-29); the
+other three stay as named palettes anyone may use. Nothing here is generated
 by a model; the values were chosen by hand from the reference print colours named in each brief.
 """
 
@@ -119,4 +120,4 @@ CANDIDATES: dict[str, Palette] = {
         }),
 }
 
-HOUSE: str | None = None   # set when Eric picks (O-28); until then the app's /art uses artkit's small palettes
+HOUSE: str = "belleepoque"   # D-74, Eric, 2026-09-20: "decision for palette is Belle Epoque. Lock it in. Posters over cards. France it is."

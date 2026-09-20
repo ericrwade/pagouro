@@ -1,4 +1,4 @@
-# Palette candidates for Pagouro Draws (O-28)
+# Palette candidates for Pagouro Draws (O-28) — HOUSE = Belle Époque (D-74, 2026-09-20)
 
 Rendered by `scripts/palette_sheet.py` from `app/palettes.py`. Everything on these sheets is
 program-drawn (the hermit crab and the blob sprites are procedural, O-18) and then snapped to the

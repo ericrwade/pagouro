@@ -1885,6 +1885,21 @@ calibration100 19%, tool-result 6/10 + 4/10, skills model-alone 6/8/5, memory 9/
 shipped, because it bluffs 16 points more on bluff100. From now on the 100-sets are the
 adjudicating numbers and the 30-sets the historical yardstick; the box carries both.
 
+### D-74 — HOUSE palette is Belle Époque; posters over cards; the style brief is the Paris poster (closes O-28's palette question)
+**2026-09-20, Eric: "decision for palette is Belle Epoque. Lock it in. Posters over cards. France
+it is."** `app/palettes.py` `HOUSE = "belleepoque"`: warm black on cream poster stock, chrome
+yellow, vermilion, Prussian and cobalt blue, Mucha sage and dusty rose, gold-ochre outlines —
+32 colours in eight ramps, one-pixel outline in the ink ramp's darkest, 32/64 px, ordered dither
+allowed. **Style brief (replaces the "Victorian trade card" lean in O-28):** the Paris
+lithographic poster of 1890–1910 — Chéret, Mucha, Steinlen, Grasset, Toulouse-Lautrec, Bonnard —
+flat planes, bold silhouette, hand-lettered titles; "modernised" is what 64 px does to it.
+Corpus consequence: the Met slice's poster-master queries become the core (they already carry
+the largest share: Toulouse-Lautrec 200, Bonnard 125, plus Chéret, Steinlen, Grasset, Penfield,
+Rhead, Bradley); trade cards stay in the pool as supporting material, not the lead. The Belle
+Époque is the same era as the Gilded Age seen from Paris, so nothing in the rights position
+changes: all pre-1929, all public domain, all CC0 at the Met. Trade Card, Gaslight and Naturalist
+Plate remain shipped as named palettes. The hermit-crab logos (D-67) are drawn in HOUSE.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same

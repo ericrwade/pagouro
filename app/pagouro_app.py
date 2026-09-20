@@ -41,6 +41,7 @@ from prompts import SYSTEM_PROMPT, SYSTEM_PROMPT_ONLINE, ROUTER_PROMPT, ROUTER_P
 from packsearch import Packs, words as _pwords  # noqa: E402
 import artkit  # noqa: E402  (O-21: terminal pixel-art renderer + PNG; the drawing model is not on this stick yet)
 import skills as _skills  # noqa: E402  (O-30: skill folders under skills/ add tools and packs)
+import palettes as _palettes  # noqa: E402  (D-74: HOUSE palette, Belle Époque; the crab is drawn in it)
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
@@ -706,24 +707,32 @@ class App:
         self.packs.reindex_dir(os.path.join(WORKSPACE, "memory"), "memory")
 
     def art(self, arg: str) -> None:
-        """O-21 frame: `/art [seed]` shows a program-generated test sprite in the terminal;
-        `/art save [seed]` also writes workspace/art/sprite-<seed>.png (needs CAN ACT). There is
-        no drawing model on this stick yet; this proves the display and file path it will use."""
+        """O-21 frame, D-74 palette: `/art [seed]` draws a program-generated hermit crab in the HOUSE
+        palette (Belle Époque) in the terminal; `/art blob [seed]` the older test sprite; `/art save
+        [seed]` also writes workspace/art/crab-<seed>.png (needs CAN ACT). No drawing model on this
+        stick yet; this proves the display, the palette and the file path it will use."""
         parts = arg.split()
         save = bool(parts) and parts[0] == "save"
-        seed_s = parts[1] if save and len(parts) > 1 else (parts[0] if parts and not save else "")
-        seed = int(seed_s) if seed_s.isdigit() else int(time.time()) % 100000
-        img = artkit.test_sprite(seed, 32)
+        blob = bool(parts) and parts[0] == "blob"
+        rest = parts[1:] if (save or blob) else parts
+        seed = int(rest[0]) if rest and rest[0].isdigit() else int(time.time()) % 100000
+        pal = _palettes.CANDIDATES[_palettes.HOUSE]
+        if blob:
+            img = pal.quantize(artkit.test_sprite(seed, 32, transparent=(0, 0, 0)), transparent=(0, 0, 0))
+        else:
+            ramps = list(pal.ramps.values())
+            img = pal.quantize(artkit.hermit_crab(seed, 32, shell=ramps[2 + seed % 6], body=ramps[2 + (seed + 3) % 6],
+                                                  ink=pal.ink, transparent=(0, 0, 0)), transparent=(0, 0, 0))
         print(artkit.render_ansi(img, transparent=(0, 0, 0)) if COLOR else artkit.render_ascii(img))
-        print(c(DIM, f"  test sprite #{seed}: program-generated (no drawing model on this stick yet, O-21). "
-                     "/art save <n> writes a PNG into workspace/art (needs CAN ACT)."))
+        print(c(DIM, f"  {'test sprite' if blob else 'hermit crab'} #{seed} in the {pal.name} palette (HOUSE, D-74): program-generated, "
+                     "no drawing model on this stick yet (O-21). /art save <n> writes a PNG into workspace/art (needs CAN ACT)."))
         if save:
             if not self.can_act:
                 print(c(YELLOW, "  READ-ONLY: /act first to let this write inside workspace/."))
                 return
             d = os.path.join(WORKSPACE, "art")
             os.makedirs(d, exist_ok=True)
-            fn = os.path.join(d, f"sprite-{seed}.png")
+            fn = os.path.join(d, f"{'sprite' if blob else 'crab'}-{seed}.png")
             n = artkit.write_png(fn, img)
             rel = os.path.relpath(fn, BASE)
             if rel not in self.written:
@@ -736,7 +745,7 @@ HELP = """  commands:
     /act    /readonly  allow tools to write inside workspace/ / forbid (default: READ-ONLY)
     /tools             list tools and loaded packs
     /status            show the context gauge
-    /art [save] [n]    show a program-generated 32x32 test sprite (save: PNG to workspace/art, needs CAN ACT)
+    /art [save|blob] [n]  draw a program-generated hermit crab in the house palette (blob: the old test sprite; save: PNG, needs CAN ACT)
     /remember <text>   keep a line in workspace/memory for every later session (/remember alone: status; /forget deletes it)
     /skills            list installed skills (skills/<name>/), their licences, tools, and whether they match their MANIFEST
     /clear             forget the conversation
