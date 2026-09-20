@@ -1,0 +1,10 @@
+{"id": "dm-01", "prompt": "How many days are there from 2026-03-01 to 2026-12-31?", "tool": "date_calc", "argument": "2026-03-01 to 2026-12-31", "expect": "305 days"}
+{"id": "dm-02", "prompt": "What day of the week was 2001-09-11?", "tool": "date_calc", "argument": "weekday of 2001-09-11", "expect": "Tuesday"}
+{"id": "dm-03", "prompt": "What date is 100 days after 2026-09-20?", "tool": "date_calc", "argument": "2026-09-20 plus 100 days", "expect": "2026-12-29"}
+{"id": "dm-04", "prompt": "Give me the date 2 weeks before 2027-01-05.", "tool": "date_calc", "argument": "2027-01-05 minus 2 weeks", "expect": "2026-12-22"}
+{"id": "dm-05", "prompt": "Days between 4 July 1776 and 4 July 2026?", "tool": "date_calc", "argument": "4 July 1776 to 4 July 2026", "expect": "91310 days"}
+{"id": "dm-06", "prompt": "What weekday is 2000-02-29?", "tool": "date_calc", "argument": "weekday of 2000-02-29", "expect": "Tuesday"}
+{"id": "dm-07", "prompt": "Add 1 month to 2026-01-31.", "tool": "date_calc", "argument": "2026-01-31 plus 1 month", "expect": "2026-02-28"}
+{"id": "dm-08", "prompt": "How many days from Dec 25 2026 to Jan 1 2027?", "tool": "date_calc", "argument": "Dec 25 2026 to Jan 1 2027", "expect": "7 days"}
+{"id": "dm-09", "prompt": "What is next Tuesday's date?", "tool": "date_calc", "argument": "next tuesday", "expect": "NO_MATCH"}
+{"id": "dm-10", "prompt": "What date is 3 years after 2024-02-29?", "tool": "date_calc", "argument": "2024-02-29 plus 3 years", "expect": "2027-02-28"}

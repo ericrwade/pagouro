@@ -60,7 +60,33 @@ def load_examples() -> list[list[dict]]:
     add_pairs(os.path.join(ROOT, "sft", "synthetic_harness.jsonl"))  # D-30 teacher-generated, tool-executed, filtered (ledger row)
     add_pairs(os.path.join(ROOT, "sft", "memory_seed.jsonl"))
     add_pairs(os.path.join(ROOT, "sft", "calc_seed.jsonl"))         # O-18/D-61: word problem -> exact expression, program-generated       # O-23 level-1 memory: personal questions -> pack_search; answer from YOUR OWN WORDS hits
+    out.extend(load_skill_examples())                                # O-30: each skill's examples.jsonl teaches the router its tool name
     return out
+
+
+def load_skill_examples() -> list[list[dict]]:
+    """skills/<name>/examples.jsonl rows ({"user","tool","arguments"}) become router conversations
+    under the skill-extended router prompt, so the fine-tuned router knows the new tool names."""
+    import glob
+    sys.path.insert(0, os.path.join(ROOT, "app"))
+    from prompts import ROUTER_PROMPT, router_json
+    import skills as S
+    convs = []
+    for folder in sorted(glob.glob(os.path.join(ROOT, "skills", "*"))):
+        ex = os.path.join(folder, "examples.jsonl")
+        sk = S.load_skill(folder, set()) if os.path.exists(ex) else None
+        if not sk or not sk.tools:
+            continue
+        names = "/".join(sk.tools)
+        clauses = "; ".join(f"{n} for {d}" for n, (_, d, _) in sk.tools.items())
+        prompt = ROUTER_PROMPT.replace('"arguments": string}', f'"arguments": string}} (also: {names})') + f" Use {clauses}."
+        for line in io.open(ex, encoding="utf-8"):
+            if not line.strip():
+                continue
+            d = json.loads(line)
+            convs.append([{"role": "system", "content": prompt}, {"role": "user", "content": d["user"]},
+                          {"role": "assistant", "content": router_json(d["tool"], d.get("arguments", ""))}])
+    return convs
 
 
 def augment_with_system(convs: list[list[dict]], rng: random.Random, frac: float = 0.5) -> list[list[dict]]:

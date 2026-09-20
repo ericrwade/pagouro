@@ -1,0 +1,7 @@
+Kitchen scaling notes (Pagouro recipe_scale skill, CC0).
+
+What scales linearly: ingredient quantities. What does not: cooking time (a doubled roast does not take twice as long; it takes longer but less than double, and a thermometer is the honest guide), pan size (doubling a cake batter in the same pan changes the depth, and the bake time and temperature with it), leavening in very large batches (bakers often reduce baking powder slightly when scaling up several times), seasoning (salt and strong spices are usually scaled to about three quarters of the arithmetic amount for large multiples, then adjusted to taste), and eggs (round to whole eggs, or beat an egg and measure it: one large egg is about 50 grams or 3 1/4 tablespoons).
+
+Approximate cup-to-gram weights, US cups, spooned and levelled: all-purpose flour 120 to 125 g; bread flour 127 g; granulated sugar 200 g; brown sugar, packed 220 g; powdered sugar 120 g; butter 227 g (one US cup is two sticks); rolled oats 90 g; cocoa powder 85 g; honey 340 g; water or milk 240 g (millilitres and grams are nearly equal for water). Weights vary with how the cup is filled; a kitchen scale is more reliable than any table.
+
+Scaling for a crowd: the Armed Forces Recipe Service (US Army TM 10-412) writes every recipe for 100 portions with weights and measures side by side; to serve 25, divide by four; to serve 8, divide by 12.5 and round to sensible measures.

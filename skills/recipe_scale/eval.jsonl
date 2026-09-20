@@ -1,0 +1,10 @@
+{"id": "rs-01", "prompt": "Double this: 1 1/2 cups flour, 2 eggs, 3/4 tsp salt.", "tool": "scale_recipe", "argument": "double: 1 1/2 cups flour, 2 eggs, 3/4 tsp salt", "expect": "3 cups flour"}
+{"id": "rs-02", "prompt": "Halve: 3 cups rice, 1 tbsp oil, 5 cups water.", "tool": "scale_recipe", "argument": "halve: 3 cups rice, 1 tbsp oil, 5 cups water", "expect": "1 1/2 cups rice"}
+{"id": "rs-03", "prompt": "This serves 4, make it for 6: 400 g pasta, 2 cloves garlic.", "tool": "scale_recipe", "argument": "for 6 instead of 4: 400 g pasta, 2 cloves garlic", "expect": "600 g pasta"}
+{"id": "rs-04", "prompt": "Scale by 1.5: 2/3 cup sugar, 1 egg.", "tool": "scale_recipe", "argument": "1.5x: 2/3 cup sugar, 1 egg", "expect": "1 cup sugar"}
+{"id": "rs-05", "prompt": "Triple: 1/4 tsp nutmeg, 1 onion.", "tool": "scale_recipe", "argument": "triple: 1/4 tsp nutmeg, 1 onion", "expect": "3/4 tsp nutmeg"}
+{"id": "rs-06", "prompt": "For 25 instead of 100: 12 lb beef, 3 qt stock.", "tool": "scale_recipe", "argument": "for 25 instead of 100: 12 lb beef, 3 qt stock", "expect": "3 lb beef"}
+{"id": "rs-07", "prompt": "Quarter: 2 cups stock, 1 carrot.", "tool": "scale_recipe", "argument": "quarter: 2 cups stock, 1 carrot", "expect": "1/2 cups stock"}
+{"id": "rs-08", "prompt": "Double: a pinch of salt, 2 cups milk.", "tool": "scale_recipe", "argument": "double: a pinch of salt, 2 cups milk", "expect": "no quantity found"}
+{"id": "rs-09", "prompt": "Scale by 3/2: 1 1/3 cups oats.", "tool": "scale_recipe", "argument": "3/2x: 1 1/3 cups oats", "expect": "2 cups oats"}
+{"id": "rs-10", "prompt": "Make it bigger: 2 cups flour.", "tool": "scale_recipe", "argument": "make it bigger: 2 cups flour", "expect": "NO_MATCH"}

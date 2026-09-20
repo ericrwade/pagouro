@@ -1699,6 +1699,16 @@ number with every port (`pagouro skill test`), credit built in (`ported_by` show
 CONTRIBUTORS.md), the "Runs on Pagouro" compatibility mark under O-29, a ranked wanted list of
 twenty, micro-bounties only if Eric ever says so. Build order: container → three first-party
 example ports → catalogue.
+**Built 2026-09-20 (commit after 47e79c2).** `app/skills.py` loader (screened, not sandboxed —
+say so), `skills/{unit_convert,date_math,recipe_scale}` (CC0, first-party), `scripts/skill_test.py`
+(static / tool / end-to-end / routing layers; writes `skills/CATALOGUE.md`), `/skills`, and the
+packager ships `skills/`. **Measured on `pagouro-flash-sft2-q8_0`, 10 eval prompts per skill:** tool
+10/10 ×3; end-to-end 10/10 ×3; **model router alone 0/10 ×3** — it routed every conversion to
+`calc` with an invented factor (`26.2*35000`), the bluff in tool form. Decided from that: (a) a
+skill tool may declare a `TRIGGER` regex the harness routes on before the model (checked against
+the frozen tool-use suite: 0 false positives after the ISO-date-in-a-path and time-unit cases were
+excluded); (b) `train_sft.py` loads every skill's `examples.jsonl` so the next router fine-tune
+learns the names; (c) the catalogue prints model-alone and harness numbers side by side, always.
 
 ### D-69 — Two of the three rental jobs measured: the loop is not the bottleneck (nanochat), and GRPO moves the headline numbers a little (D-65)
 **2026-09-19, 15:45–18:30 PT, pod `y1wscss6dj9gsw` (A40, $0.49/h).** Logs in `runs/runpod/d69/`,

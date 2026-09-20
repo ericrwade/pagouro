@@ -1,0 +1,12 @@
+{"user": "how many miles is 12 km", "tool": "convert", "arguments": "12 km to mi"}
+{"user": "convert 350 F to celsius", "tool": "convert", "arguments": "350 f to c"}
+{"user": "2 cups in ml please", "tool": "convert", "arguments": "2 cup to ml"}
+{"user": "what's 5 pounds in kilos", "tool": "convert", "arguments": "5 lb to kg"}
+{"user": "1.5 GB is how many MB", "tool": "convert", "arguments": "1.5 gb to mb"}
+{"user": "turn 6 feet into centimetres", "tool": "convert", "arguments": "6 ft to cm"}
+{"user": "20 knots in km/h", "tool": "convert", "arguments": "20 kn to kph"}
+{"user": "I need 3 tablespoons as teaspoons", "tool": "convert", "arguments": "3 tbsp to tsp"}
+{"user": "how many seconds in 3 days", "tool": "convert", "arguments": "3 day to s"}
+{"user": "convert 100 kelvin to fahrenheit", "tool": "convert", "arguments": "100 k to f"}
+{"user": "what is 17 times 23", "tool": "calc", "arguments": "17*23"}
+{"user": "what time is it", "tool": "time", "arguments": ""}

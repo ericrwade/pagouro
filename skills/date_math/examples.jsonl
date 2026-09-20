@@ -1,0 +1,12 @@
+{"user": "how many days between 2026-01-01 and 2026-09-20", "tool": "date_calc", "arguments": "2026-01-01 to 2026-09-20"}
+{"user": "what day of the week was July 20 1969", "tool": "date_calc", "arguments": "weekday of 1969-07-20"}
+{"user": "what's 45 days after 2026-09-20", "tool": "date_calc", "arguments": "2026-09-20 plus 45 days"}
+{"user": "how many days until Christmas 2026", "tool": "date_calc", "arguments": "days until 2026-12-25"}
+{"user": "date 3 weeks before March 1 2027", "tool": "date_calc", "arguments": "2027-03-01 minus 3 weeks"}
+{"user": "days from 15 Feb 2024 to 15 Feb 2025?", "tool": "date_calc", "arguments": "2024-02-15 to 2025-02-15"}
+{"user": "what weekday is 2030-01-01", "tool": "date_calc", "arguments": "weekday of 2030-01-01"}
+{"user": "add 6 months to 2026-08-31", "tool": "date_calc", "arguments": "2026-08-31 plus 6 months"}
+{"user": "how long ago was 2020-03-11", "tool": "date_calc", "arguments": "days since 2020-03-11"}
+{"user": "ninety days from 2026-10-01 is when", "tool": "date_calc", "arguments": "2026-10-01 plus 90 days"}
+{"user": "what's the date today", "tool": "time", "arguments": ""}
+{"user": "what is 365 times 4", "tool": "calc", "arguments": "365*4"}

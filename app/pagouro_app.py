@@ -40,6 +40,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from prompts import SYSTEM_PROMPT, SYSTEM_PROMPT_ONLINE, ROUTER_PROMPT, ROUTER_PROMPT_ONLINE  # noqa: E402  (shared with the SFT builder)
 from packsearch import Packs, words as _pwords  # noqa: E402
 import artkit  # noqa: E402  (O-21: terminal pixel-art renderer + PNG; the drawing model is not on this stick yet)
+import skills as _skills  # noqa: E402  (O-30: skill folders under skills/ add tools and packs)
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
@@ -59,6 +60,7 @@ BASE = base_dir()
 MODEL_DIR = os.path.join(BASE, "model")
 PACKS_DIR = os.path.join(BASE, "packs")
 WORKSPACE = os.path.join(BASE, "workspace")
+SKILLS_DIR = os.path.join(BASE, "skills")
 SERVER_EXE = os.path.join(BASE, "llama-server.exe")
 
 # Development fallback: run from the repo against tools/ and data/.
@@ -381,6 +383,8 @@ class App:
         self.memory_chunks = 0
         for sub in ("memory", "notes", "transcripts"):
             self.memory_chunks += self.packs.add_dir(os.path.join(WORKSPACE, sub), "memory")
+        # Skills (O-30): each folder under skills/ may add tools (screened, hash-listed) and packs.
+        self.skills = _skills.load_all(SKILLS_DIR, TOOLS, self.packs)
         self.stone = False            # D-19: SAND by default
         self.can_act = False          # D-51: READ-ONLY by default
         self.online = False           # D-1: OFFLINE by default; /online needs workspace/online.json
@@ -395,8 +399,19 @@ class App:
     def system_prompt(self) -> str:
         return (SYSTEM_PROMPT_ONLINE if self.online else SYSTEM_PROMPT).format(date=dt.date.today().isoformat())
 
+    def router_prompt(self) -> str:
+        """The frozen router prompt, plus one clause per skill tool (O-30). Until the router is
+        fine-tuned on the skills' examples.jsonl this clause is the only teaching it gets."""
+        base = ROUTER_PROMPT_ONLINE if self.online else ROUTER_PROMPT
+        extra = [(n, d) for n, (_, d, _) in TOOLS.items() if d.startswith("[") and n in self.available_tools()]
+        if not extra:
+            return base
+        names = "/".join(n for n, _ in extra)
+        clauses = "; ".join(f"{n} for {d.split('] ', 1)[-1]}" for n, d in extra)
+        return base.replace('"arguments": string}', f'"arguments": string}} (also: {names})') + f" Use {clauses}."
+
     def available_tools(self) -> list[str]:
-        return list(TOOLS.keys()) if self.online else OFFLINE_TOOLS
+        return list(TOOLS.keys()) if self.online else [t for t in TOOLS if t != "web_search"]
 
     def messages(self) -> list[dict]:
         return [{"role": "system", "content": self.system_prompt()}] + self.history
@@ -498,7 +513,10 @@ class App:
     def route(self, user_text: str) -> tuple[str, str]:
         """Ask the model, under a grammar, whether a tool is needed. Returns (tool, arguments).
         The grammar guarantees a valid object; the model supplies the judgement."""
-        router_msgs = [{"role": "system", "content": ROUTER_PROMPT_ONLINE if self.online else ROUTER_PROMPT},
+        for name, pat in _skills.TRIGGERS.items():      # O-30: a skill's own trigger outranks the model
+            if name in self.available_tools() and pat.search(user_text):
+                return name, user_text
+        router_msgs = [{"role": "system", "content": self.router_prompt()},
                        {"role": "user", "content": user_text}]
         try:
             raw, _ = self.srv.chat(router_msgs, MAX_TOKENS_ROUTER, grammar=router_grammar(self.available_tools()))
@@ -645,6 +663,11 @@ class App:
             self.art(rest.strip())
         elif cmd == "/remember":
             self.remember(rest.strip())
+        elif cmd == "/skills":
+            if not self.skills:
+                print("  no skills installed (drop a folder into skills/; see docs/SKILLS.md)")
+            for sk in self.skills:
+                print("  " + _skills.describe(sk).replace("\n", "\n  "))
         elif cmd == "/forget":
             self.forget()
         else:
@@ -715,6 +738,7 @@ HELP = """  commands:
     /status            show the context gauge
     /art [save] [n]    show a program-generated 32x32 test sprite (save: PNG to workspace/art, needs CAN ACT)
     /remember <text>   keep a line in workspace/memory for every later session (/remember alone: status; /forget deletes it)
+    /skills            list installed skills (skills/<name>/), their licences, tools, and whether they match their MANIFEST
     /clear             forget the conversation
     /online /offline   allow web search (needs workspace/online.json) / forbid (default: OFFLINE)
     /exit              quit"""

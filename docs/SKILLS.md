@@ -1,6 +1,24 @@
 # Skills for a one-billion-parameter model — the container, the port, the catalogue (O-30)
 
-*Spec, 2026-09-19. Nothing here is built yet; this is what gets built and the rules it follows.*
+*Spec 2026-09-19; built 2026-09-20.* What exists: `app/skills.py` (the loader), `skills/` with three
+first-party skills (`unit_convert`, `date_math`, `recipe_scale`), `scripts/skill_test.py` (the
+offline test; writes `skills/CATALOGUE.md`), `/skills` in the app, and `skills/` on the stick.
+
+**Measured on the Flash stick model (126M, 2026-09-20), ten eval prompts per skill:** tool eval
+10/10 for all three; end-to-end through the harness 10/10 for all three; **the model's router
+alone 0/10 for all three.** The router has never seen the tool names, and a clause in the prompt
+does not teach a 126M model a new name — it routed every conversion to `calc` with an *invented
+factor* ("26.2*35000" for miles to kilometres): the bluff in tool form. Two consequences, both
+built: (1) a skill's tool may carry a `TRIGGER` regex, and the harness routes on it before asking
+the model (the same philosophy as `refine_args`: the harness compensates for the model, visibly);
+(2) every skill's `examples.jsonl` is loaded by `train_sft.py`, so the next router fine-tune learns
+the names, and the catalogue reports both numbers so the difference stays visible.
+
+**Screened, not sandboxed.** Python cannot sandbox Python. The loader refuses a tool whose source
+mentions `subprocess`, `socket`, `urllib`, `http.`, `requests`, `ctypes`, `os.system`, `os.popen`,
+`shutil.rmtree`, `eval(`, `exec(`, `__import__` or `importlib`, prints why, and hash-lists every
+file against the skill's `MANIFEST` (mismatch = loads, marked MODIFIED). The rest is reading the
+code, which is short by construction. Say that plainly wherever skills are described.
 
 ## What a skill is here
 

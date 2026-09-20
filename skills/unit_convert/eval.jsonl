@@ -1,0 +1,10 @@
+{"id": "uc-01", "prompt": "How many kilometres is 26.2 miles?", "tool": "convert", "argument": "26.2 mi to km", "expect": "42.16"}
+{"id": "uc-02", "prompt": "Convert 180 degrees C to Fahrenheit.", "tool": "convert", "argument": "180 c to f", "expect": "356"}
+{"id": "uc-03", "prompt": "What is 250 ml in cups?", "tool": "convert", "argument": "250 ml to cup", "expect": "1.057"}
+{"id": "uc-04", "prompt": "How much is 70 kg in pounds?", "tool": "convert", "argument": "70 kg to lb", "expect": "154.3"}
+{"id": "uc-05", "prompt": "64 GB in gibibytes?", "tool": "convert", "argument": "64 gb to gib", "expect": "59.6"}
+{"id": "uc-06", "prompt": "Change 8 inches to millimetres.", "tool": "convert", "argument": "8 in to mm", "expect": "203.2"}
+{"id": "uc-07", "prompt": "60 mph is how many km/h?", "tool": "convert", "argument": "60 mph to kph", "expect": "96.56"}
+{"id": "uc-08", "prompt": "How many tablespoons in half a cup?", "tool": "convert", "argument": "0.5 cup to tbsp", "expect": "8 tbsp"}
+{"id": "uc-09", "prompt": "Convert 3 parsecs to miles.", "tool": "convert", "argument": "3 parsecs to mi", "expect": "NO_MATCH"}
+{"id": "uc-10", "prompt": "What's 3 yards in metres?", "tool": "convert", "argument": "3 yd to m", "expect": "2.743"}

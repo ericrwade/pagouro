@@ -126,7 +126,7 @@ def main() -> int:
     if not a.no_app:
         build_dir = os.path.join(ROOT, "build")
         cmd = [sys.executable, "-m", "PyInstaller", "--onefile", "--console", "--name", "pagouro",
-               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts", "--hidden-import", "packsearch", "--hidden-import", "artkit",
+               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts", "--hidden-import", "packsearch", "--hidden-import", "artkit", "--hidden-import", "skills",
                "--distpath", os.path.join(build_dir, "dist"), "--workpath", os.path.join(build_dir, "work"),
                "--specpath", build_dir, "--noconfirm", "--log-level", "WARN",
                os.path.join(ROOT, "app", "pagouro_app.py")]
@@ -138,11 +138,18 @@ def main() -> int:
         if os.path.isdir(packs_dst):
             shutil.rmtree(packs_dst)
         shutil.copytree(os.path.join(ROOT, "packs"), packs_dst)
+        # Skills (O-30): every folder under skills/ with a SKILL.md, minus test residue. Their MANIFEST
+        # files ride along; the release manifest below hashes every file again.
+        skills_dst = os.path.join(rel, "skills")
+        if os.path.isdir(skills_dst):
+            shutil.rmtree(skills_dst)
+        shutil.copytree(os.path.join(ROOT, "skills"), skills_dst,
+                        ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "last_test.json"))
         os.makedirs(os.path.join(rel, "workspace"), exist_ok=True)
         with io.open(os.path.join(rel, "workspace", "README.txt"), "w", encoding="utf-8", newline="\n") as f:
             f.write("The only folder Pagouro's tools may write to, and only in CAN ACT mode (/act).\n"
                     "notes/ holds saved notes; transcripts/ holds chats saved in STONE mode (/stone).\n")
-        print("  app: pagouro.exe + llama-server.exe + packs/ + workspace/")
+        print("  app: pagouro.exe + llama-server.exe + packs/ + skills/ + workspace/")
 
     # Hash every shipped file for the manifest. This IS the anchorable artifact.
     hashes = {}
