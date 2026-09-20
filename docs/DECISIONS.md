@@ -1774,6 +1774,34 @@ ones, one pass each, before more steps mean anything. Kept: `checkpoints/flash_g
 `flash_grpo240.pt`, their GGUFs. The stick keeps `flash_sft2` until a GRPO result clears a full
 re-evaluation with the larger set. Re-OCR (D-66) still running at the time of writing.
 
+### D-70 — flash-sft3 measured and not shipped: the fine-tune learned the tool names and learned to answer NO_MATCH
+**2026-09-20, 09:40 PT.** `flash_sft3.pt` = `flash_mix_shelf.pt` + 4,800 SFT steps on 7,285
+conversations (sft2's 6,736 + 48 skill router/answer examples + 501 spelling rows), 2.9 h on the
+desk CPU at THREADS=8 (`runs/sft_flash3.log`). Every number from `scripts/eval_sft_ckpt.sh`:
+
+| | sft2 (on the stick) | sft3 |
+|---|---|---|
+| bluff / answered-real / deflect | 36.7% / 20.0% / 100% | 36.7% / 20.0% / 100% |
+| tool-use right / spurious / calc args | 21/24 / 4/16 / 3/6 | 20/24 / 5/16 / 3/6 |
+| router p(tool) right / wrong (O-35) | 0.917 / 0.816 | 0.915 / 0.725 |
+| memory routed / answered / numbers | 7 / 10 / 1/1 | 6 / 9 / 1/1 |
+| spelling novel / echo-inclusive | 0/0 / 4/4 | 0/0 / 5/5 |
+| skills routing, model alone (harness) | 0,0,0 /10 (10 ×3) | 6,8,5 /10 (10 ×3) |
+
+Composed replies from a skill result (system + user + tool turn, temperature 0): sft3 answers
+properly where sft2 echoed — "26.2 miles is approximately 42.16 km", the full doubled ingredient
+list — **but on a `NO_MATCH` result it fabricates** ("3 parsecs is 1.5 miles"; sft2 said "You have
+no table entry for the unit 'parsecs'") and it decorated a date answer with an invented source.
+Four NO_MATCH answer examples against thousands of answering ones taught it to answer.
+**Decided:** (1) the stick keeps sft2 — headline numbers equal, one item lost on tool-use and
+memory, and a new fabrication mode; sft3 is kept as `checkpoints/flash_sft3.pt` / `gguf_flash/
+pagouro-flash-sft3-*`. (2) A new frozen set, **tool-result fidelity**: given a tool result, the
+answer must stay inside it — numbers preserved (already a column), and a NO_MATCH result must be
+reported as one, never answered around. (3) Each skill's answer examples get as many NO_MATCH
+rows as answering rows, plus program-generated NO_MATCH pairs across all tools, before the next
+fine-tune. (4) The fine-tune did teach names: model-alone skill routing 0 → 5–8 of 10, so the
+trigger layer is a bridge, not the design.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
