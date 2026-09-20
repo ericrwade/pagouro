@@ -1730,3 +1730,22 @@ keys (program-generated from the packs and Wikipedia first sentences) and thousa
 ones, one pass each, before more steps mean anything. Kept: `checkpoints/flash_grpo.pt`,
 `flash_grpo240.pt`, their GGUFs. The stick keeps `flash_sft2` until a GRPO result clears a full
 re-evaluation with the larger set. Re-OCR (D-66) still running at the time of writing.
+
+### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
+**2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
+fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
+discipline: a ~$1 shakedown (bundle, 300 steps, checkpoint, resume, tokens/s), then a one-hour
+DDP rehearsal, before it can be a candidate for the 1B. The risk is node churn during a
+multi-day multi-GPU job, not price; the story is worth telling only if the run survives.
+
+### O-32 — Compute-for-receipt (not licence) for a model beyond 1B; the number first
+**2026-09-19, Eric:** after the 1B proves the method, fund a 30B/72B by trading H100 time for a
+tokenised "$200 lifetime licence" ($100 of compute → one licence, resellable). Session's
+assessment: the core is sound (compute delivered before anything is issued); the instrument
+is wrong under our own rules — D-31 and the corpus's share-alike inputs make the weights CC
+BY-SA, so a licence cannot be exclusive and is worth nothing at release. The honest instrument
+is a **receipt**: proof of contribution, name in the manifest, early checkpoint access, a vote on
+the shelf, transferable, never sold as a right to what everyone gets. The scale: 72B at ~1.4T
+tokens ≈ 6e23 FLOP ≈ ~1M H100-hours ≈ ~$3.5M (35,000 contributors at $100); 30B ≈ $600k; **7B
+≈ $60–80k and is the realistic next step**, where the receipt model would be tested first.
+Securities counsel before any transferable token. Nothing built; contemplation only, per Eric.
