@@ -1671,6 +1671,13 @@ at any date) selects, and the selection gets its own ledger with the same fields
 a fourth candidate, Belle Époque (Paris poster 1890–1910), added at Eric's request; finalists
 sheet Trade Card vs Belle Époque; the era name in the brief may widen to "Belle Époque / Gilded
 Age, the trade card and the poster" — proposed, Eric's call.
+**Slice two (same day):** Kenney CC0 pixel packs via `scripts/fetch_kenney.py` (licence line
+recorded from each asset page; per-pack ledger `data/images/kenney/ledger.jsonl`, per-sprite
+index) — 22 packs, 4,380 loose sprites/tiles, plus `scripts/slice_kenney_sheets.py` cutting the
+sheet-only packs on their 16 px + 1 px-gutter grid: **9,687 images**. Curation of the Met pool
+(`scripts/curate_draw_corpus.py`: print kinds, year ≥ 1850, naturalist-plate exception, contrast
+floor) → **307** prints at 64/32 px with their own ledger. Volume is Kenney; style is the Met.
+Still to fetch: OpenGameArt's CC0 filter, Smithsonian/BHL plates.
 
 ### O-28 — Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea
 **2026-09-19, Eric, from the road.** "Draw 1.0 should have a style. Maybe even a palette. An
