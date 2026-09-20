@@ -1828,6 +1828,10 @@ the scorer); answerability labels for the GRPO big set; the typed-decision contr
 the O-35 router. **Where it does not:** anything the stick does at runtime. Install via the Claude
 Code plugin marketplace was blocked by the permission classifier (untrusted code integration) and
 left for Eric to run.
+**Billing, resolved (Eric, 2026-09-20):** TypeSafe seeds new accounts with a $5 starting credit;
+that is why unfunded calls succeeded. Used so far: $0.10 over three runs (verification, GRPO
+answerability, Met style-fit). Rule stands: every run hard-capped in `jev_label.py`, every use
+logged on the status issue and in `runs/jev_usage.log`, running total shown against the $5.
 
 ### D-71 — The GRPO big set becomes a three-way curriculum: known / unknowable / invented (first Jev use, $0.054)
 **2026-09-20.** Jev use #2 (O-36): `scripts/jev_label.py` asked one Choice per real question in
