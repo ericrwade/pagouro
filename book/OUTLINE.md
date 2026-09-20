@@ -68,9 +68,11 @@ see" (a number or an output line) so they know it worked.
   the top. Price in dollars if sold (F17), tip jar either way.
 - **Signposts** (Eric): short connective passages between chapters — "this is where we tested
   whether adding X, Y and Z would change the output, so we tested it" — so the reader always knows
-  where they are. Written once the draft is whole enough to see the gaps. Candidates: the pivot to
-  the canon (D-10); the shelf ablation (D-58/D-61); the decay redesign (D-61); the three integrity
-  findings (D-60/D-63); memory 0/10 → 10/10.
+  where they are. Draft 1 written 2026-09-20 as `chapters/NNa-signpost-*.md` (sorted after chapter
+  NN by `build.py`): 04a the canon and the shelf; 06a the tests of the tests; 07a what the
+  checkpoint bought; 08a the harness is the product; 10a the audit habit and the scan. Still to
+  write once their chapters exist: after 1 (what "doesn't bluff" costs), after 12 (private),
+  after 13 (the 1B run).
 - Marketing wording rule D-50 applies to the cover and the blurb.
 
 ## Process from here

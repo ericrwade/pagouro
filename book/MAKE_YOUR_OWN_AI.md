@@ -238,6 +238,32 @@ The fetcher fix and the re-hash are in the same commit as this chapter draft.
 
 ---
 
+## Signpost — where the corpus came from, and where it went next
+
+*Licence: all rights reserved (story strand, D-64). Signposts are the short connective passages
+Eric asked for: "this is where we tested whether adding X, Y and Z would change the output, so we
+tested it."*
+
+Where we are: the project has a rule — no byte without a nameable licence — and a file that
+proves it. What it did not have, on the first day, was a spine. The original idea was a model
+that had read the crypto forums: the contemporary voice. On the second day that was turned
+inside out. The forums are not a licence, and they are not the substance either; the substance
+is the written tradition the crypto ethos descends from — Smith, Ricardo, Bastiat, Mill,
+Locke, Hume, Tocqueville, the founding documents, the protocol specifications — and nearly all
+of it is public domain. So the canon became the spine and the forum became a seasoning, and
+later, when a date count showed the seasoning was three-quarters written this year, it was
+removed altogether.
+
+Then Eric asked, from the road, whether many *small* licensed things — game rules, repair
+manuals, road signs, recipes — would help more than one big thing. That is a question you can
+test, so it was tested: two models trained from the same checkpoint, one with the shelf of
+thirty-six small works in its final phase and one without, scored on three books neither had
+seen. The next chapters are about how you score such a thing honestly; Chapter 10 is what the
+score said.
+
+
+---
+
 # Chapter 6 — Do it: measure honesty
 
 *Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
@@ -429,6 +455,28 @@ answered-real unchanged, after retraining on 1,982 conversations instead of 306.
 
 ---
 
+## Signpost — the tests, and the tests of the tests
+
+*Licence: all rights reserved (story strand, D-64).*
+
+Where we are: there is now a frozen set of questions — real ones with known answers, invented
+ones with none — and a rule that the model's number is whatever those questions say, measured
+by a script, never by a person reading transcripts. That is the instrument. Everything after
+this point is measured with it, including the instrument itself.
+
+Three times in the next chapters the instrument turned out to be wrong, and each time it was
+the instrument that reported it. A validation score was found to be measuring the model on
+one source instead of the corpus. An offline audit was found to be passing without running.
+A spelling score of eight out of nine was found to be counting the question's own words echoed
+back. In every case the fix was the same shape: find what the number was really measuring,
+write that down, and measure again. If you take one habit from this book, take that one. A
+number that is too good is the loudest alarm there is.
+
+Next: the machine stops.
+
+
+---
+
 # Chapter 7 — The machine stopped
 
 *Licence: all rights reserved (story strand, D-64).*
@@ -585,6 +633,28 @@ the project's standing rules.
 
 ---
 
+## Signpost — what a checkpoint is for
+
+*Licence: all rights reserved (story strand, D-64).*
+
+Where we are: the first real model trained for seven hours and the machine froze. The run
+survived on a checkpoint written ten minutes earlier, and the chapter you have just read is
+mostly about the two ways it could have been lost anyway — a script that deletes the old
+checkpoint on restart, a save that overwrites in place. Both are fixed; both are the kind of
+thing nobody writes down until it costs them a night.
+
+The same discipline is what made the next two chapters possible. When a rented machine is
+running at forty-nine cents an hour, "copy the checkpoint at the moment the phase switches"
+is a one-line watcher, and that one line is why the shelf could be tested at all: two models
+had to start from an identical point, and the watcher had kept it. It is also why the run that
+destroyed itself in Chapter 10 cost fifty cents to redo rather than seven dollars. Save early,
+save atomically, keep the one you would want if the lights went out now.
+
+Next: the app on the stick.
+
+
+---
+
 # Chapter 8 — An app on a stick
 
 *Licence: all rights reserved (story strand, D-64).*
@@ -698,6 +768,30 @@ and configure; it stays off by default.
 the training anneal for two more days, until writing this footnote found it there. It is out
 now (D-63). Bastiat remains through *Economic Sophisms* in the Stirling translation (translator
 d. 1891), a nameable basis. An open question is not a licence.
+
+
+---
+
+## Signpost — the harness is the product
+
+*Licence: all rights reserved (story strand, D-64).*
+
+Where we are: the stick now has an app of its own around the model — three switches, a
+context gauge, a router that chooses tools under a grammar, packs it can search. This is the
+point in the story where the balance shifts. From here on, most of what makes Pagouro honest
+lives in that harness rather than in the weights: the router grammar that cannot emit a tool
+that does not exist, the argument-recovery rules that rebuild what a small model garbles, the
+memory that comes back labelled as your own words, the triggers that route a skill before the
+model is asked.
+
+That is not a concession. A small model is a small model; the whole bet of this project is
+that a small model wrapped in a checkable harness beats a large one you cannot inspect, for
+the things a person on a stick actually needs. Chapter 9 is the instruction manual for that
+harness, and it ends with the number that proved the point the hard way: a model that scored
+zero out of ten at choosing a new tool from its prompt, and ten out of ten once the harness
+did what a harness is for.
+
+Next: make it yours.
 
 
 ---
@@ -1110,6 +1204,30 @@ in the book.[^bill]
 
 ---
 
+## Signpost — the audit habit, and the scan it caught
+
+*Licence: all rights reserved (story strand, D-64).*
+
+Where we are: three days alone with a budget produced a model that answers, a shelf that
+measurably helps, a phase of the recipe rewritten after it ate itself, and three faults found
+in the project's central claim in one evening — two of them the session's own. The last of
+those is the one to carry forward: the habit of decoding what you are about to train on and
+*looking*, and of pulling every number from its file before you write it down.
+
+That habit is what caught the next thing, which happened after this chapter and before the
+one-billion run. The scanned manuals on the shelf were re-read from their page images by a
+new OCR model, and the result was beautiful — fractions as fractions, tables as tables — and a
+quarter of its pages were wrong. Batched, the model had carried the end of one page into the
+start of the next, fluently. No filter for garbage catches text that reads well. What caught
+it was a per-page comparison of the numbers, one page image opened by hand, and a check that
+the printed page numbers run in order — which now runs on every re-scanned work before the
+ledger will take it. The full account is in the build log for the eleventh day.
+
+Next: how to rent a GPU without getting hurt, and what the rentals cost in total.
+
+
+---
+
 # Chapter 11 — Do it: rent a GPU without getting hurt
 
 *Licence: CC BY-SA 4.0 (instruction strand / generated appendix, D-64).*
@@ -1362,7 +1480,7 @@ $7.54 total; D-61.
 
 # Appendix B — The ledger, printed
 
-*Generated from `corpus.json` by `book/build_appendix_b.py`: 70 rows, of which 59 are in a training mixture (488M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
+*Generated from `corpus.json` by `book/build_appendix_b.py`: 71 rows, of which 54 are in a training mixture (486M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
 
 | Where | Source | Licence / basis | Tokens | Date basis |
 |---|---|---|---|---|
@@ -1387,9 +1505,8 @@ $7.54 total; D-61.
 | canon (anneal) | On Liberty — John Stuart Mill | Public domain | 0.1M | published 1859 |
 | canon (anneal) | Anthem — Ayn Rand | Public domain | 0.0M | published 1938 |
 | canon (anneal) | The Communist Manifesto — Karl Marx and Friedrich Engels | Public domain | 0.0M | published 1848 |
-| shelf (anneal) | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 1.6M | published 2003 |
 | shelf (anneal) | Ethereum Improvement Proposals incl. ERCs (ethereum/EIPs at 2021-12-30, 355 of 4 | CC0-1.0 (per-document waiver required by EIP-1) | 1.2M | published 2021 |
-| shelf (anneal) | Manual on Uniform Traffic Control Devices, 2009 Edition | Public domain (US Government work, 17 U.S.C. 105) | 0.6M | published 2009 |
+| shelf (anneal) | Manual on Uniform Traffic Control Devices, 2009 Edition | Public domain (US Government work, 17 U.S.C. 105) | 0.8M | published 2009 |
 | shelf (anneal) | This New Ocean: A History of Project Mercury (NASA SP-4201, 1966) | Public domain (NASA History Series, US Government publication; publ… | 0.6M | published 1966 |
 | shelf (anneal) | Bitcoin Improvement Proposals (bitcoin/bips at 2021-12-25, 123 of 153 documents) | Per-document: BSD-2-Clause (49), PD (42), CC0-1.0 (22), BSD-3-Claus… | 0.6M | published 2021 |
 | shelf (anneal) | Chariots for Apollo: A History of Manned Lunar Spacecraft (NASA SP-4205, 1979) | Public domain (NASA History Series, US Government publication; publ… | 0.5M | published 1979 |
@@ -1409,11 +1526,7 @@ $7.54 total; D-61.
 | shelf (anneal) | Amusements in Mathematics — Henry Ernest Dudeney | Public domain | 0.2M | published 1917 |
 | shelf (anneal) | Boy Scouts Handbook (1911) — Boy Scouts of America | Public domain | 0.2M | published 1911 |
 | shelf (anneal) | Hoyle's Games Modernized — Professor Hoffmann (Angelo Lewis) and Edmond Hoyle | Public domain | 0.2M | published 1909 |
-| shelf (anneal) | USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015  | Public domain (US Government work, 17 U.S.C. 105) | 0.2M | published 2015 |
 | shelf (anneal) | The Adventures of Sherlock Holmes — Arthur Conan Doyle | Public domain | 0.1M | published 1892 |
-| shelf (anneal) | NEETS Module 13: Introduction to Number Systems and Logic Circuits (NAVEDTRA 141 | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
-| shelf (anneal) | NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
-| shelf (anneal) | NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
 | shelf (anneal) | Robert's Rules of Order Revised — Henry M. Robert | Public domain | 0.1M | published 1915 |
 | shelf (anneal) | Symbolic Logic — Lewis Carroll | Public domain | 0.1M | published 1896 |
 | shelf (anneal) | Bird Neighbors — Neltje Blanchan | Public domain | 0.1M | published 1897 |
@@ -1429,7 +1542,13 @@ $7.54 total; D-61.
 | superseded | HuggingFaceFW/fineweb-edu | ODC-By 1.0 | 178.9M | — |
 | superseded | wikimedia/wikipedia | CC BY-SA 3.0 + GFDL | 96.2M | — |
 | superseded | HuggingFaceFW/fineweb-edu (M1 slice) | ODC-By 1.0 | 23.8M | — |
+| superseded | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 1.6M | published 2003 |
 | superseded | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 0.8M | published 2003 |
+| superseded | Manual on Uniform Traffic Control Devices, 2009 Edition | Public domain (US Government work, 17 U.S.C. 105) | 0.6M | published 2009 |
+| superseded | USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015  | Public domain (US Government work, 17 U.S.C. 105) | 0.2M | published 2015 |
+| superseded | NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
+| superseded | NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
+| superseded | NEETS Module 13: Introduction to Number Systems and Logic Circuits (NAVEDTRA 141 | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
 | superseded | NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
 | superseded | USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015  | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 2015 |
 | superseded | NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |

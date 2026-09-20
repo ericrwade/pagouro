@@ -1,6 +1,6 @@
 # Appendix B — The ledger, printed
 
-*Generated from `corpus.json` by `book/build_appendix_b.py`: 70 rows, of which 59 are in a training mixture (488M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
+*Generated from `corpus.json` by `book/build_appendix_b.py`: 71 rows, of which 54 are in a training mixture (486M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
 
 | Where | Source | Licence / basis | Tokens | Date basis |
 |---|---|---|---|---|
@@ -25,9 +25,8 @@
 | canon (anneal) | On Liberty — John Stuart Mill | Public domain | 0.1M | published 1859 |
 | canon (anneal) | Anthem — Ayn Rand | Public domain | 0.0M | published 1938 |
 | canon (anneal) | The Communist Manifesto — Karl Marx and Friedrich Engels | Public domain | 0.0M | published 1848 |
-| shelf (anneal) | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 1.6M | published 2003 |
 | shelf (anneal) | Ethereum Improvement Proposals incl. ERCs (ethereum/EIPs at 2021-12-30, 355 of 4 | CC0-1.0 (per-document waiver required by EIP-1) | 1.2M | published 2021 |
-| shelf (anneal) | Manual on Uniform Traffic Control Devices, 2009 Edition | Public domain (US Government work, 17 U.S.C. 105) | 0.6M | published 2009 |
+| shelf (anneal) | Manual on Uniform Traffic Control Devices, 2009 Edition | Public domain (US Government work, 17 U.S.C. 105) | 0.8M | published 2009 |
 | shelf (anneal) | This New Ocean: A History of Project Mercury (NASA SP-4201, 1966) | Public domain (NASA History Series, US Government publication; publ… | 0.6M | published 1966 |
 | shelf (anneal) | Bitcoin Improvement Proposals (bitcoin/bips at 2021-12-25, 123 of 153 documents) | Per-document: BSD-2-Clause (49), PD (42), CC0-1.0 (22), BSD-3-Claus… | 0.6M | published 2021 |
 | shelf (anneal) | Chariots for Apollo: A History of Manned Lunar Spacecraft (NASA SP-4205, 1979) | Public domain (NASA History Series, US Government publication; publ… | 0.5M | published 1979 |
@@ -47,11 +46,7 @@
 | shelf (anneal) | Amusements in Mathematics — Henry Ernest Dudeney | Public domain | 0.2M | published 1917 |
 | shelf (anneal) | Boy Scouts Handbook (1911) — Boy Scouts of America | Public domain | 0.2M | published 1911 |
 | shelf (anneal) | Hoyle's Games Modernized — Professor Hoffmann (Angelo Lewis) and Edmond Hoyle | Public domain | 0.2M | published 1909 |
-| shelf (anneal) | USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015  | Public domain (US Government work, 17 U.S.C. 105) | 0.2M | published 2015 |
 | shelf (anneal) | The Adventures of Sherlock Holmes — Arthur Conan Doyle | Public domain | 0.1M | published 1892 |
-| shelf (anneal) | NEETS Module 13: Introduction to Number Systems and Logic Circuits (NAVEDTRA 141 | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
-| shelf (anneal) | NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
-| shelf (anneal) | NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
 | shelf (anneal) | Robert's Rules of Order Revised — Henry M. Robert | Public domain | 0.1M | published 1915 |
 | shelf (anneal) | Symbolic Logic — Lewis Carroll | Public domain | 0.1M | published 1896 |
 | shelf (anneal) | Bird Neighbors — Neltje Blanchan | Public domain | 0.1M | published 1897 |
@@ -67,7 +62,13 @@
 | superseded | HuggingFaceFW/fineweb-edu | ODC-By 1.0 | 178.9M | — |
 | superseded | wikimedia/wikipedia | CC BY-SA 3.0 + GFDL | 96.2M | — |
 | superseded | HuggingFaceFW/fineweb-edu (M1 slice) | ODC-By 1.0 | 23.8M | — |
+| superseded | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 1.6M | published 2003 |
 | superseded | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 0.8M | published 2003 |
+| superseded | Manual on Uniform Traffic Control Devices, 2009 Edition | Public domain (US Government work, 17 U.S.C. 105) | 0.6M | published 2009 |
+| superseded | USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015  | Public domain (US Government work, 17 U.S.C. 105) | 0.2M | published 2015 |
+| superseded | NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
+| superseded | NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
+| superseded | NEETS Module 13: Introduction to Number Systems and Logic Circuits (NAVEDTRA 141 | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
 | superseded | NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
 | superseded | USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015  | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 2015 |
 | superseded | NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173) | Public domain (US Government work, 17 U.S.C. 105) | 0.1M | published 1998 |
