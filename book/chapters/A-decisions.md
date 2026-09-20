@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 64 decisions, 14 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 69 decisions, 22 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -70,6 +70,11 @@
 | D-62 | 2026-09-19 | The Stack: keep with the caveat now, replace with a dated code source before the 1B volume |
 | D-63 | 2026-09-19 | *The Law* leaves the anneal: an "unclear = no" that was only half applied |
 | D-64 | 2026-09-19 | The book's licence and its connective tissue (closes O-20) |
+| D-65 | 2026-09-19 | Eric authorises the two small GPU experiments: nanochat head-to-head (O-24) and GRPO on the no-bluff objective (O-25) |
+| D-66 | 2026-09-19 | Re-OCR the shelf's scanned works with LightOnOCR (closes O-26) |
+| D-67 | 2026-09-19 | Pagouro Draws ships in v1.0, with its own gate; first job: a hundred hermit-crab logos (closes O-21) |
+| D-68 | 2026-09-19 | Beyond English and America: both moves, plus register-following spelling (closes O-27) |
+| D-69 | 2026-09-19 | Two of the three rental jobs measured: the loop is not the bottleneck (nanochat), and GRPO moves the headline numbers a little (D-65) |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -84,8 +89,16 @@
 | O-16 | A licensed games-and-strategy slice for the anneal (Eric, 2026-09-18) | open |
 | O-17 | Reasoning-shaped licensed slices for the 1B anneal (Eric, 2026-09-18: "Chilton's manuals? What else?") | open |
 | O-18 | Program-generated verifiable reasoning data for the anneal (from Eric's road-maps question, 2026-09-18) | open |
-| O-21 | Pagouro Draws: a pixel-art image generator on the stick (proposal) | open |
+| O-21 | Pagouro Draws: a pixel-art image generator on the stick (proposal) | closed by D-67 |
 | O-23 | Learning from its owner: retrieval memory now, adapters with a gate next (proposal + level 1 built) | open |
 | O-24 | Review of the fine-tuning post; GRPO on the no-bluff objective (proposals) | open |
-| O-26 | LightOnOCR-2-1B: re-OCR the shelf's scanned works (proposal) | open |
-| O-27 | Beyond English and America: coverage, not reasoning (proposal) | open |
+| O-26 | LightOnOCR-2-1B: re-OCR the shelf's scanned works (proposal) | closed by D-66 |
+| O-27 | Beyond English and America: coverage, not reasoning (proposal) | closed by D-68 |
+| O-28 | Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea | open |
+| O-29 | One look across everything that grows from Pagouro: the style follows the model and the mark, not the licence | open |
+| O-30 | Skills: adopt the standard container, not the standard semantics; a catalogue, not a marketplace | open |
+| O-31 | io.net reconsidered: raw GPU clusters, tested the same way as RunPod | open |
+| O-32 | Compute-for-receipt (not licence) for a model beyond 1B; the number first | open |
+| O-33 | Secret / NEAR, Cartesi, Mina: three uses that fit inside D-14 and the threat model | open |
+| O-34 | Note: the "local AI business" thread (noisyb0y1, 2026-09-19) — market yes, numbers no, offline undercut | open |
+| O-35 | Jev / "System One" models: validation, not displacement; make the router a calibrated typed decision (with O-15) | open |
