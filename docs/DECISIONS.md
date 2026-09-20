@@ -1772,3 +1772,15 @@ the hard 20% to a cloud API — the quiet hybrid our OFFLINE/ONLINE switch and e
 visible. Takeaways: (1) audit is the sell to those clients — labelled pack hits + the ledger,
 which that stack lacks; (2) an "integrator kit" framing for MAKE_IT_YOURS + packs + skills; (3) a
 plain offline web UI as a later item for non-technical users. Nothing to build now.
+
+### O-35 — Jev / "System One" models: validation, not displacement; make the router a calibrated typed decision (with O-15)
+**2026-09-19, Eric: "is there a chance we're building something nobody will want in a month?"**
+Jev (TypeSafe, early access 2026-09-15) returns typed decisions with calibrated probabilities
+from an option set supplied by the caller — no free text, so it cannot hallucinate; hosted, closed,
+per-token. It takes the routing/classification slice of agent work; it cannot explain, summarise
+or converse. Pagouro's grammar-constrained router already is a typed-decision component in front
+of the language model. Assessment: no displacement; $40M of validation for "calibrated, says no
+when it can't"; ours is the offline/open/ledgered form Jev cannot be. Action for the 1B (a
+session, no GPU): router emits a probability with its choice; the O-15 answerability gate as a
+typed decision before prose; calibration measured on the frozen suite. Real risks remain: a big
+lab shipping a small open *ledgered* model (they cannot ledger), attention.
