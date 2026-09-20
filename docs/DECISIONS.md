@@ -1805,6 +1805,14 @@ when it can't"; ours is the offline/open/ledgered form Jev cannot be. Action for
 session, no GPU): router emits a probability with its choice; the O-15 answerability gate as a
 typed decision before prose; calibration measured on the frozen suite. Real risks remain: a big
 lab shipping a small open *ledgered* model (they cannot ledger), attention.
+**First measurement, 2026-09-20 (`evals/run_tooluse.py --probs`).** The router's probability is
+read from llama-server's per-token logprobs at the tool-name token under the grammar (the raw
+distribution; alternatives include non-tool tokens, so a normalised-over-tools value is stored
+too). Flash sft2 on the frozen 40-item suite: mean p(chosen tool) **0.917 when right (n=33) vs
+0.816 when wrong (n=7)**; accuracy by bin <0.5: 0/1, 0.5–0.9: 9/11, ≥0.9: 24/28. Signal exists,
+but the model is overconfident at the top and a threshold would not separate the seven errors.
+No calibration claim; re-measure at 1B, and try the normalised value and a temperature fit
+(learned on the GRPO big set, tested on the frozen suite) before the O-15 gate is built on it.
 **D-66 audit note (2026-09-19, from Rahul's guide via Eric — "track numeric strings separately;
 never auto-correct numbers"):** `scripts/numeric_drift.py` compares the numeric strings of the old
 archive.org OCR and the re-OCR per work. Disagreement (share of numbers present on one side only):

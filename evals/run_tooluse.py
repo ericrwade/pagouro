@@ -78,12 +78,19 @@ class Server:
                 time.sleep(0.5)
         raise SystemExit("llama-server did not start")
 
-    def route(self, prompt: str) -> str:
+    def route(self, prompt: str, probs: bool = False):
+        """The router's JSON; with probs=True also (json, p_tool) where p_tool is the model's probability
+        of the tool-name token it chose (O-35: the router emits a probability with its decision)."""
         body = {"messages": [{"role": "system", "content": ROUTER_PROMPT}, {"role": "user", "content": prompt}],
                 "temperature": 0, "max_tokens": 96, "grammar": ROUTER_GRAMMAR}
+        if probs:
+            body.update({"logprobs": True, "top_logprobs": 8})
         req = urllib.request.Request(f"http://127.0.0.1:{self.port}/v1/chat/completions",
                                      data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"})
-        return json.loads(urllib.request.urlopen(req, timeout=180).read())["choices"][0]["message"]["content"]
+        ch = json.loads(urllib.request.urlopen(req, timeout=180).read())["choices"][0]
+        if not probs:
+            return ch["message"]["content"]
+        return ch["message"]["content"], tool_prob(ch)
 
     def stop(self):
         try:
@@ -92,11 +99,40 @@ class Server:
             pass
 
 
+TOOL_TOKENS = ("none", "calc", "time", "pack", "read", "write", "web")
+
+
+def tool_prob(choice: dict):
+    """Probability of the chosen tool-name token: the first generated token whose text begins one of
+    the tool names, i.e. the token right after '{"tool":"'. Also the runner-up tool and its probability.
+    Returns (p_chosen, p_normalised_over_tool_alternatives, runner_up, p_runner_up) or None."""
+    import math
+    toks = (choice.get("logprobs") or {}).get("content") or []
+    seen = ""
+    for t in toks:
+        if seen.endswith('"tool":"') or seen.endswith('"tool": "'):
+            p = math.exp(t["logprob"])
+            alts = {}
+            for a in t.get("top_logprobs", []):
+                name = a["token"].strip()
+                if any(name.startswith(x) for x in TOOL_TOKENS):
+                    alts[name] = max(alts.get(name, 0.0), math.exp(a["logprob"]))
+            alts[t["token"].strip()] = max(alts.get(t["token"].strip(), 0.0), p)
+            z = sum(alts.values()) or 1.0
+            others = sorted(((n, v) for n, v in alts.items() if n != t["token"].strip()), key=lambda x: -x[1])
+            ru, pru = (others[0] if others else ("", 0.0))
+            return round(p, 4), round(p / z, 4), ru, round(pru, 4)
+        seen += t["token"]
+    return None
+
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
     ap.add_argument("--label", required=True)
     ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--probs", action="store_true", help="O-35: record the router's probability for its tool choice and report calibration")
     a = ap.parse_args()
 
     with io.open(os.path.join(EVAL_DIR, "tooluse.json"), encoding="utf-8") as f:
@@ -109,7 +145,11 @@ def main() -> int:
     t0 = time.time()
     try:
         for i, it in enumerate(items, 1):
-            raw = srv.route(it["prompt"])
+            pinfo = None
+            if a.probs:
+                raw, pinfo = srv.route(it["prompt"], probs=True)
+            else:
+                raw = srv.route(it["prompt"])
             try:
                 d = json.loads(raw)
                 tool, arg = str(d.get("tool", "none")), str(d.get("arguments", ""))
@@ -131,8 +171,12 @@ def main() -> int:
                 argv = v is not None and abs(float(v) - float(it["expect_value"])) < 1e-6
                 arg_ok += bool(argv)
             counts[verdict] = counts.get(verdict, 0) + 1
-            out.append({**it, "response": raw, "tool": tool, "arguments": arg, "verdict": verdict, "arg_ok": argv})
-            print(f"  [{i:3d}/{len(items)}] {it['id']:<10} {verdict:<14} {tool:<12} {arg[:40]}", flush=True)
+            row = {**it, "response": raw, "tool": tool, "arguments": arg, "verdict": verdict, "arg_ok": argv}
+            if pinfo:
+                row.update({"p_tool": pinfo[0], "p_tool_norm": pinfo[1], "runner_up": pinfo[2], "p_runner_up": pinfo[3]})
+            out.append(row)
+            ptxt = f"  p={pinfo[0]:.2f} (next {pinfo[2]} {pinfo[3]:.2f})" if pinfo else ""
+            print(f"  [{i:3d}/{len(items)}] {it['id']:<10} {verdict:<14} {tool:<12} {arg[:40]}{ptxt}", flush=True)
     finally:
         srv.stop()
     result = {
@@ -141,6 +185,24 @@ def main() -> int:
         "elapsed_s": round(time.time() - t0, 1), "suite_version": spec["version"], "suite_frozen": spec["frozen"],
         "mode": "router-grammar", "items": out,
     }
+    if a.probs:
+        right = [r["p_tool"] for r in out if r.get("p_tool") is not None and r["verdict"] in ("CALL_RIGHT", "REFRAIN_RIGHT")]
+        wrong = [r["p_tool"] for r in out if r.get("p_tool") is not None and r["verdict"] not in ("CALL_RIGHT", "REFRAIN_RIGHT")]
+        bins = {"<0.5": [0, 0], "0.5-0.9": [0, 0], ">=0.9": [0, 0]}
+        for r in out:
+            pr = r.get("p_tool")
+            if pr is None:
+                continue
+            b = "<0.5" if pr < 0.5 else "0.5-0.9" if pr < 0.9 else ">=0.9"
+            bins[b][1] += 1
+            bins[b][0] += r["verdict"] in ("CALL_RIGHT", "REFRAIN_RIGHT")
+        result["calibration"] = {"mean_p_when_right": round(sum(right) / max(1, len(right)), 3), "n_right": len(right),
+                                 "mean_p_when_wrong": round(sum(wrong) / max(1, len(wrong)), 3), "n_wrong": len(wrong),
+                                 "bins_right_of_n": {k: f"{v[0]}/{v[1]}" for k, v in bins.items()},
+                                 "note": "p_tool = model probability of the chosen tool-name token under the router grammar (O-35)"}
+        c = result["calibration"]
+        print(f"  calibration: mean p right {c['mean_p_when_right']} (n={c['n_right']}), wrong {c['mean_p_when_wrong']} (n={c['n_wrong']}); "
+              f"accuracy by bin {c['bins_right_of_n']}")
     os.makedirs(RESULTS_DIR, exist_ok=True)
     path = os.path.join(RESULTS_DIR, f"{a.label}__tooluse.json")
     with io.open(path, "w", encoding="utf-8", newline="\n") as f:

@@ -12,7 +12,7 @@
   },
   "arg_ok": 3,
   "arg_total": 6,
-  "elapsed_s": 3.0,
+  "elapsed_s": 3.5,
   "suite_version": 1,
   "suite_frozen": "2026-09-18",
   "mode": "router-grammar",
@@ -26,7 +26,11 @@
       "tool": "calc",
       "arguments": "77.12",
       "verdict": "CALL_RIGHT",
-      "arg_ok": false
+      "arg_ok": false,
+      "p_tool": 0.9947,
+      "p_tool_norm": 0.9957,
+      "runner_up": "none",
+      "p_runner_up": 0.0031
     },
     {
       "id": "tool-002",
@@ -37,7 +41,11 @@
       "tool": "calc",
       "arguments": "640*(1-15/100)",
       "verdict": "CALL_RIGHT",
-      "arg_ok": true
+      "arg_ok": true,
+      "p_tool": 0.9999,
+      "p_tool_norm": 0.9999,
+      "runner_up": "write",
+      "p_runner_up": 0.0
     },
     {
       "id": "tool-003",
@@ -48,7 +56,11 @@
       "tool": "calc",
       "arguments": "2**12",
       "verdict": "CALL_RIGHT",
-      "arg_ok": true
+      "arg_ok": true,
+      "p_tool": 0.9997,
+      "p_tool_norm": 1.0,
+      "runner_up": "write",
+      "p_runner_up": 0.0
     },
     {
       "id": "tool-004",
@@ -59,7 +71,11 @@
       "tool": "calc",
       "arguments": "96/4",
       "verdict": "CALL_RIGHT",
-      "arg_ok": true
+      "arg_ok": true,
+      "p_tool": 0.9969,
+      "p_tool_norm": 0.9996,
+      "runner_up": "none",
+      "p_runner_up": 0.0002
     },
     {
       "id": "tool-005",
@@ -70,7 +86,11 @@
       "tool": "calc",
       "arguments": "163-446",
       "verdict": "CALL_RIGHT",
-      "arg_ok": false
+      "arg_ok": false,
+      "p_tool": 0.5403,
+      "p_tool_norm": 0.6328,
+      "runner_up": "none",
+      "p_runner_up": 0.3136
     },
     {
       "id": "tool-006",
@@ -80,7 +100,11 @@
       "tool": "calc",
       "arguments": "(1-30) * 2",
       "verdict": "CALL_WRONG",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.4446,
+      "p_tool_norm": 0.5442,
+      "runner_up": "read",
+      "p_runner_up": 0.1763
     },
     {
       "id": "tool-007",
@@ -90,7 +114,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "MISSED",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9513,
+      "p_tool_norm": 0.9672,
+      "runner_up": "time",
+      "p_runner_up": 0.0293
     },
     {
       "id": "tool-008",
@@ -100,7 +128,11 @@
       "tool": "time",
       "arguments": "",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9531,
+      "p_tool_norm": 0.9687,
+      "runner_up": "pack",
+      "p_runner_up": 0.0105
     },
     {
       "id": "tool-009",
@@ -110,7 +142,11 @@
       "tool": "time",
       "arguments": "",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.7799,
+      "p_tool_norm": 0.7923,
+      "runner_up": "write",
+      "p_runner_up": 0.1643
     },
     {
       "id": "tool-010",
@@ -120,7 +156,11 @@
       "tool": "pack_search",
       "arguments": "On Liberty",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9902,
+      "p_tool_norm": 0.9938,
+      "runner_up": "none",
+      "p_runner_up": 0.006
     },
     {
       "id": "tool-011",
@@ -130,7 +170,11 @@
       "tool": "pack_search",
       "arguments": "Bastiat balance of trade",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.8556,
+      "p_tool_norm": 0.9479,
+      "runner_up": "read",
+      "p_runner_up": 0.0356
     },
     {
       "id": "tool-012",
@@ -140,7 +184,11 @@
       "tool": "pack_search",
       "arguments": " offence",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9384,
+      "p_tool_norm": 0.9503,
+      "runner_up": "none",
+      "p_runner_up": 0.0388
     },
     {
       "id": "tool-013",
@@ -150,7 +198,11 @@
       "tool": "read_file",
       "arguments": "C:\\Users\\John\\workspace\\Philosophy\\The Sophism of the broken window\\John\\workspace\\Philosophy\\The Sophism of the broken window\\John\\workspace\\Philosophy\\The Sophism of the broken window\\John\\workspace",
       "verdict": "CALL_WRONG",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.675,
+      "p_tool_norm": 0.6833,
+      "runner_up": "pack",
+      "p_runner_up": 0.2228
     },
     {
       "id": "tool-014",
@@ -160,7 +212,11 @@
       "tool": "pack_search",
       "arguments": "Bastiat subsidies for the theatre",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9958,
+      "p_tool_norm": 0.998,
+      "runner_up": "none",
+      "p_runner_up": 0.002
     },
     {
       "id": "tool-015",
@@ -170,7 +226,11 @@
       "tool": "read_file",
       "arguments": "workspace/notes/shopping.txt",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9942,
+      "p_tool_norm": 0.9951,
+      "runner_up": "write",
+      "p_runner_up": 0.0045
     },
     {
       "id": "tool-016",
@@ -180,7 +240,11 @@
       "tool": "read_file",
       "arguments": "C:\\Users\\eric\\Desktop\\packing-list.txt",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.6125,
+      "p_tool_norm": 0.7197,
+      "runner_up": "pack",
+      "p_runner_up": 0.1323
     },
     {
       "id": "tool-017",
@@ -190,7 +254,11 @@
       "tool": "read_file",
       "arguments": "workspace/eric/journal/2026-09-18.md",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9629,
+      "p_tool_norm": 0.9644,
+      "runner_up": "write",
+      "p_runner_up": 0.0307
     },
     {
       "id": "tool-018",
@@ -200,7 +268,11 @@
       "tool": "read_file",
       "arguments": "workspace/todo.txt",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.8995,
+      "p_tool_norm": 0.9402,
+      "runner_up": "none",
+      "p_runner_up": 0.044
     },
     {
       "id": "tool-019",
@@ -210,7 +282,11 @@
       "tool": "write_note",
       "arguments": "Doe at 3.",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9874,
+      "p_tool_norm": 0.9883,
+      "runner_up": "read",
+      "p_runner_up": 0.0107
     },
     {
       "id": "tool-020",
@@ -220,7 +296,11 @@
       "tool": "write_note",
       "arguments": "The router password is on the fridge",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9945,
+      "p_tool_norm": 0.9954,
+      "runner_up": "pack",
+      "p_runner_up": 0.0019
     },
     {
       "id": "tool-021",
@@ -230,7 +310,11 @@
       "tool": "write_note",
       "arguments": "Order more coffee filters",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9443,
+      "p_tool_norm": 0.9604,
+      "runner_up": "none",
+      "p_runner_up": 0.022
     },
     {
       "id": "tool-022",
@@ -240,7 +324,11 @@
       "tool": "write_note",
       "arguments": "The ferry leaves at 7:40 on Sundays",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9982,
+      "p_tool_norm": 0.9991,
+      "runner_up": "read",
+      "p_runner_up": 0.0005
     },
     {
       "id": "tool-023",
@@ -250,7 +338,11 @@
       "tool": "write_note",
       "arguments": " chapter 3 of Mill",
       "verdict": "CALL_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9525,
+      "p_tool_norm": 0.9639,
+      "runner_up": "none",
+      "p_runner_up": 0.0212
     },
     {
       "id": "tool-024",
@@ -261,7 +353,11 @@
       "tool": "calc",
       "arguments": "3.5*60",
       "verdict": "CALL_RIGHT",
-      "arg_ok": false
+      "arg_ok": false,
+      "p_tool": 0.9999,
+      "p_tool_norm": 1.0,
+      "runner_up": "none",
+      "p_runner_up": 0.0
     },
     {
       "id": "tool-025",
@@ -271,7 +367,11 @@
       "tool": "time",
       "arguments": "",
       "verdict": "SPURIOUS",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9764,
+      "p_tool_norm": 0.9787,
+      "runner_up": "none",
+      "p_runner_up": 0.0143
     },
     {
       "id": "tool-026",
@@ -281,7 +381,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9981,
+      "p_tool_norm": 0.9991,
+      "runner_up": "pack",
+      "p_runner_up": 0.0007
     },
     {
       "id": "tool-027",
@@ -291,7 +395,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.6749,
+      "p_tool_norm": 0.6754,
+      "runner_up": "pack",
+      "p_runner_up": 0.3203
     },
     {
       "id": "tool-028",
@@ -301,7 +409,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9933,
+      "p_tool_norm": 0.9984,
+      "runner_up": "write",
+      "p_runner_up": 0.0012
     },
     {
       "id": "tool-029",
@@ -311,7 +423,11 @@
       "tool": "pack_search",
       "arguments": "John Stuart Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill Mill MillMill",
       "verdict": "SPURIOUS",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9929,
+      "p_tool_norm": 0.9949,
+      "runner_up": "none",
+      "p_runner_up": 0.005
     },
     {
       "id": "tool-030",
@@ -321,7 +437,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9982,
+      "p_tool_norm": 0.9998,
+      "runner_up": "pack",
+      "p_runner_up": 0.0001
     },
     {
       "id": "tool-031",
@@ -331,7 +451,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9998,
+      "p_tool_norm": 1.0,
+      "runner_up": "pack",
+      "p_runner_up": 0.0
     },
     {
       "id": "tool-032",
@@ -341,7 +465,11 @@
       "tool": "time",
       "arguments": "",
       "verdict": "SPURIOUS",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9972,
+      "p_tool_norm": 0.9992,
+      "runner_up": "calc",
+      "p_runner_up": 0.0003
     },
     {
       "id": "tool-033",
@@ -351,7 +479,11 @@
       "tool": "calc",
       "arguments": "2003*2003",
       "verdict": "SPURIOUS",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.6747,
+      "p_tool_norm": 0.7743,
+      "runner_up": "none",
+      "p_runner_up": 0.1926
     },
     {
       "id": "tool-034",
@@ -361,7 +493,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.8139,
+      "p_tool_norm": 0.8311,
+      "runner_up": "calc",
+      "p_runner_up": 0.1624
     },
     {
       "id": "tool-035",
@@ -371,7 +507,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.5967,
+      "p_tool_norm": 0.6031,
+      "runner_up": "write",
+      "p_runner_up": 0.3612
     },
     {
       "id": "tool-036",
@@ -381,7 +521,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.989,
+      "p_tool_norm": 0.9931,
+      "runner_up": "read",
+      "p_runner_up": 0.0058
     },
     {
       "id": "tool-037",
@@ -391,7 +535,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.8395,
+      "p_tool_norm": 0.8604,
+      "runner_up": "pack",
+      "p_runner_up": 0.1336
     },
     {
       "id": "tool-038",
@@ -401,7 +549,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.998,
+      "p_tool_norm": 0.9984,
+      "runner_up": "pack",
+      "p_runner_up": 0.0013
     },
     {
       "id": "tool-039",
@@ -411,7 +563,11 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9904,
+      "p_tool_norm": 0.9977,
+      "runner_up": "calc",
+      "p_runner_up": 0.0015
     },
     {
       "id": "tool-040",
@@ -421,7 +577,23 @@
       "tool": "none",
       "arguments": "",
       "verdict": "REFRAIN_RIGHT",
-      "arg_ok": null
+      "arg_ok": null,
+      "p_tool": 0.9626,
+      "p_tool_norm": 0.9775,
+      "runner_up": "write",
+      "p_runner_up": 0.0161
     }
-  ]
+  ],
+  "calibration": {
+    "mean_p_when_right": 0.917,
+    "n_right": 33,
+    "mean_p_when_wrong": 0.816,
+    "n_wrong": 7,
+    "bins_right_of_n": {
+      "<0.5": "0/1",
+      "0.5-0.9": "9/11",
+      ">=0.9": "24/28"
+    },
+    "note": "p_tool = model probability of the chosen tool-name token under the router grammar (O-35)"
+  }
 }
