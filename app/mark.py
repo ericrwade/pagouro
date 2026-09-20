@@ -119,45 +119,55 @@ def mark(seed: int = 0, n: int = 64, band: bool = True) -> list[list[Pixel]]:
             d = math.hypot(x + 0.5 - c, y + 0.5 - c)
             if n * 0.43 <= d <= n * 0.47:
                 img[y][x] = R[ray_r][1]
-    # shell: spiral disc, tilted, upper right of centre
-    sx, sy, sr = c + n * 0.13, c - n * 0.06, n * 0.19
-    disc(img, sx, sy, sr, R[shell_r][2])
-    disc(img, sx, sy, sr, R[shell_r][1], only_on=None) if False else None
-    tilt = rng.uniform(-0.6, 0.6)
-    for i in range(0, 700):
-        a = math.radians(i) + tilt
-        r = sr * (i / 700.0) ** 0.75
-        x, y = int(sx + r * math.cos(a)), int(sy + r * math.sin(a))
-        if 0 <= x < n and 0 <= y < n and img[y][x] == R[shell_r][2]:
-            img[y][x] = R[shell_r][0]
-    # crab body: one flat plane — a wide ellipse under the shell's mouth, two big claws forward-left, legs
-    bx, by = c - n * 0.10, c + n * 0.09
+    # THE FIGURE (Eric, 2026-09-20): the crab retreated into its shell — the shell is the mass, the
+    # crab is only what shows at the mouth: two folded claws under the lip, eyes on short stalks
+    # peeking over them, thin antennae. No body. Seen from the front-left, shell high and behind.
+    shell = R[shell_r]
     body = R[crab_r][2]
-    ellipse(img, bx, by, n * 0.17, n * 0.10, body)
-    disc(img, bx - n * 0.20, by - n * 0.04, n * 0.085, body)      # big claw
-    disc(img, bx - n * 0.15, by + n * 0.10, n * 0.065, body)      # small claw
-    # pincer gaps
-    for (ox, oy, rr) in ((bx - n * 0.20, by - n * 0.04, n * 0.085), (bx - n * 0.15, by + n * 0.10, n * 0.065)):
-        for k in range(int(rr * 0.9)):
-            for dy in range(-(k // 3), k // 3 + 1):
-                x, y = int(ox - rr + k), int(oy + dy)
-                if 0 <= x < n and 0 <= y < n and img[y][x] == body:
-                    img[y][x] = paper if img[y][x] == body else img[y][x]
-    for k in range(3):                                            # legs: three strokes each side, flat
-        stroke(img, [(bx - n * 0.02 - k * n * 0.06 + j * 0.3, by + n * 0.08 + j * 0.9) for j in range(int(n * 0.08))], body, 1.6)
-        stroke(img, [(bx + n * 0.08 + k * n * 0.05 + j * 0.5, by + n * 0.07 + j * 0.8) for j in range(int(n * 0.07))], body, 1.6)
-    # eyes on whiplash stalks (Art Nouveau curve), dots in ink
-    for side in (-1, 1):
-        p0 = (bx + side * n * 0.04, by - n * 0.08)
-        p1 = (bx + side * n * 0.10, by - n * 0.24)
-        p2 = (bx + side * n * 0.02 + (n * 0.06 if side > 0 else -n * 0.02), by - n * 0.27)
-        stroke(img, bezier(p0, p1, p2), body, 1.4)
-        ex, ey = p2
-        disc(img, ex, ey, 1.6, ink)
-    # a darker plane on the body for the poster's two-tone shadow
-    ellipse(img, bx + n * 0.03, by + n * 0.03, n * 0.10, n * 0.05, R[crab_r][1], only_on=body)
-    # single heavy contour around crab + shell
-    outline(img, {R[crab_r][2], R[crab_r][1], R[shell_r][2], R[shell_r][0]}, ink, width=2 if n >= 64 else 1)
+    sx, sy = c + n * 0.08, c - n * 0.07          # shell centre, right and high
+    srx, sry = n * 0.30, n * 0.25                # a fat ellipse, the apex up-right
+    ellipse(img, sx, sy, srx, sry, shell[2])
+    ellipse(img, sx + n * 0.05, sy - n * 0.05, srx * 0.62, sry * 0.6, shell[3], only_on=shell[2])   # highlight plane
+    # growth lines: three arcs following the shell, in the dark shell tone (the poster's two-tone shading)
+    for k, f in enumerate((0.92, 0.72, 0.52)):
+        for i in range(0, 360, 2):
+            a = math.radians(i)
+            x, y = sx + n * 0.03 + srx * f * math.cos(a) * 0.98, sy - n * 0.03 + sry * f * math.sin(a)
+            if -1.3 < a - math.pi * 0.85 < 1.6 and 0 <= int(x) < n and 0 <= int(y) < n and img[int(y)][int(x)] in (shell[2], shell[3]):
+                img[int(y)][int(x)] = shell[1]
+    # the aperture: a dark opening low-left of the shell, where the crab lives
+    ax, ay = sx - srx * 0.58, sy + sry * 0.50
+    ellipse(img, ax, ay, n * 0.19, n * 0.12, shell[0])
+    # claws: two knuckled lobes folded under the lip, filling the opening; the big one forward-left
+    cx1, cy1 = ax - n * 0.04, ay + n * 0.03
+    disc(img, cx1, cy1, n * 0.10, body)
+    outline(img, {body}, ink, width=1)
+    disc(img, cx1 + n * 0.14, cy1 + n * 0.03, n * 0.08, body)
+    # knuckle lines and the pincer notch
+    for (ox, oy, rr) in ((cx1, cy1, n * 0.10), (cx1 + n * 0.14, cy1 + n * 0.03, n * 0.08)):
+        for k in range(int(rr * 0.8)):
+            x, y = int(ox - rr * 0.2 + k * 0.6), int(oy - rr + k * 0.9)
+            if 0 <= x < n and 0 <= y < n and img[y][x] == body:
+                img[y][x] = R[crab_r][1]
+        for k in range(int(rr * 0.7)):                       # pincer gap on the outer edge
+            x, y = int(ox - rr + k), int(oy + rr * 0.35)
+            if 0 <= x < n and 0 <= y < n and img[y][x] == body:
+                img[y][x] = shell[0]
+    # eyes: two short stalks rising from between the claws and the lip, big dark eyes on top
+    for k, ex in enumerate((cx1 + n * 0.01, cx1 + n * 0.11)):
+        ey = ay - n * 0.09
+        stroke(img, [(ex, ey + j * 0.5) for j in range(int(n * 0.16))], body, 1.8)
+        disc(img, ex, ey - n * 0.01, n * 0.042, ink)
+        disc(img, ex, ey - n * 0.01, n * 0.030, R["poster"][3])
+        disc(img, ex + n * 0.005, ey, n * 0.017, ink)
+    # antennae: the one whiplash line, out to the left and up
+    for k, sign in enumerate((1.0, 0.7)):
+        p0 = (cx1 - n * 0.02, ay - n * 0.02 - k * n * 0.03)
+        p1 = (cx1 - n * 0.16, ay - n * 0.14 * sign)
+        p2 = (cx1 - n * 0.30, ay - n * 0.02 - k * n * 0.06)
+        stroke(img, bezier(p0, p1, p2), R[crab_r][1], 1.1)
+    # single heavy contour around the whole figure (shell + claws + stalks), in ink
+    outline(img, {shell[0], shell[1], shell[2], shell[3], body, R[crab_r][1]}, ink, width=2 if n >= 64 else 1)
     # band with lettering
     if band:
         y0 = int(c + n * 0.26)
