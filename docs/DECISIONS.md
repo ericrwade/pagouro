@@ -1807,6 +1807,20 @@ trigger layer is a bridge, not the design.
 Both ignore a bare `calc` result ("48 times 19 is 48 times 19"). This set joins the frozen suite
 and `eval_sft_ckpt.sh`; the NO_MATCH-balanced examples (item 3) are the next data job.
 
+### O-36 — The TypeSafe (Jev / "System One") skill: installed on request, used only for a genuine benefit, never in the product
+**2026-09-20, Eric:** "promise me you will consider how it can help us if it can help us when it can
+help us but also only call it if there is a genuine benefit" — install the TypeSafe skill and use
+it on this project. Read: the skill teaches decomposing problems into typed judgements (Choice /
+Score primitives) answered by TypeSafe's hosted models; needs an API key; application state and
+questions leave the machine. **Rules:** never inside the stick or the app (D-1); dev-time only;
+only public or corpus text is ever sent, never Eric's own material or the private conversation;
+each use logged on the status issue with what was sent and why. **Where it plausibly helps:** a
+second opinion on frozen-suite verdicts where our scorer is disputed (audit of the scorer, never
+the scorer); answerability labels for the GRPO big set; the typed-decision contract as a model for
+the O-35 router. **Where it does not:** anything the stick does at runtime. Install via the Claude
+Code plugin marketplace was blocked by the permission classifier (untrusted code integration) and
+left for Eric to run.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
