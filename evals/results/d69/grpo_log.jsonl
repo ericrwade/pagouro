@@ -1,0 +1,60 @@
+{"step": 0, "loss": -0.0129, "mean_reward": -0.375, "verdicts": {"FABRICATE": 35, "WRONG": 8, "CORRECT": 16, "HEDGE": 4, "ABSTAIN": 1}, "elapsed_s": 12.8}
+{"step": 1, "loss": -0.0214, "mean_reward": -0.672, "verdicts": {"WRONG": 30, "ABSTAIN": 5, "FABRICATE": 29}, "elapsed_s": 25.2}
+{"step": 2, "loss": -0.0007, "mean_reward": -0.438, "verdicts": {"CORRECT": 8, "WRONG": 24, "FABRICATE": 20, "ABSTAIN": 12}, "elapsed_s": 37.3}
+{"step": 3, "loss": 0.0105, "mean_reward": -0.406, "verdicts": {"FABRICATE": 11, "ABSTAIN": 17, "HEDGE": 1, "WRONG": 27, "CORRECT": 8}, "elapsed_s": 49.6}
+{"step": 4, "loss": -0.0772, "mean_reward": -0.016, "verdicts": {"WRONG": 20, "CORRECT": 19, "HEDGE": 2, "FABRICATE": 15, "ABSTAIN": 8}, "elapsed_s": 61.8}
+{"step": 5, "loss": -0.0273, "mean_reward": -0.57, "verdicts": {"ABSTAIN": 11, "WRONG": 39, "FABRICATE": 13, "CORRECT": 1}, "elapsed_s": 74.1}
+{"step": 6, "loss": -0.1676, "mean_reward": -0.164, "verdicts": {"WRONG": 34, "FABRICATE": 7, "HEDGE": 1, "CORRECT": 18, "ABSTAIN": 4}, "elapsed_s": 86.3}
+{"step": 7, "loss": -0.0392, "mean_reward": -0.273, "verdicts": {"FABRICATE": 25, "ABSTAIN": 7, "WRONG": 21, "CORRECT": 11}, "elapsed_s": 98.5}
+{"step": 8, "loss": -0.1022, "mean_reward": -0.391, "verdicts": {"WRONG": 29, "CORRECT": 10, "ABSTAIN": 3, "FABRICATE": 21, "HEDGE": 1}, "elapsed_s": 111.0}
+{"step": 9, "loss": -0.1137, "mean_reward": -0.258, "verdicts": {"WRONG": 25, "CORRECT": 15, "FABRICATE": 20, "HEDGE": 2, "ABSTAIN": 2}, "elapsed_s": 123.6}
+{"step": 10, "loss": -0.0339, "mean_reward": -0.125, "verdicts": {"WRONG": 44, "ABSTAIN": 3, "CORRECT": 17}, "elapsed_s": 135.7}
+{"step": 11, "loss": -0.0603, "mean_reward": -0.461, "verdicts": {"ABSTAIN": 3, "FABRICATE": 28, "WRONG": 24, "HEDGE": 1, "CORRECT": 8}, "elapsed_s": 148.1}
+{"step": 12, "loss": -0.1551, "mean_reward": -0.094, "verdicts": {"FABRICATE": 17, "HEDGE": 1, "CORRECT": 9, "WRONG": 23, "ABSTAIN": 14}, "elapsed_s": 160.6}
+{"step": 13, "loss": -0.0415, "mean_reward": -0.367, "verdicts": {"ABSTAIN": 5, "WRONG": 44, "CORRECT": 8, "HEDGE": 1, "FABRICATE": 6}, "elapsed_s": 172.7}
+{"step": 14, "loss": 0.0008, "mean_reward": -0.328, "verdicts": {"WRONG": 38, "FABRICATE": 13, "ABSTAIN": 12, "CORRECT": 1}, "elapsed_s": 185.0}
+{"step": 15, "loss": -0.0697, "mean_reward": -0.164, "verdicts": {"WRONG": 27, "ABSTAIN": 7, "FABRICATE": 17, "CORRECT": 13}, "elapsed_s": 197.2}
+{"step": 16, "loss": -0.0296, "mean_reward": -0.195, "verdicts": {"WRONG": 23, "FABRICATE": 17, "ABSTAIN": 11, "CORRECT": 13}, "elapsed_s": 209.7}
+{"step": 17, "loss": -0.1137, "mean_reward": 0.297, "verdicts": {"ABSTAIN": 21, "WRONG": 26, "CORRECT": 14, "FABRICATE": 3}, "elapsed_s": 221.9}
+{"step": 18, "loss": -0.0924, "mean_reward": -0.43, "verdicts": {"WRONG": 16, "FABRICATE": 33, "HEDGE": 1, "ABSTAIN": 14}, "elapsed_s": 234.7}
+{"step": 19, "loss": -0.1762, "mean_reward": -0.234, "verdicts": {"FABRICATE": 20, "ABSTAIN": 11, "WRONG": 25, "CORRECT": 7, "HEDGE": 1}, "elapsed_s": 247.0}
+{"step": 20, "loss": -0.1292, "mean_reward": -0.227, "verdicts": {"ABSTAIN": 9, "FABRICATE": 22, "HEDGE": 1, "WRONG": 22, "CORRECT": 10}, "elapsed_s": 259.5}
+{"step": 21, "loss": -0.1194, "mean_reward": -0.133, "verdicts": {"WRONG": 37, "CORRECT": 9, "FABRICATE": 5, "ABSTAIN": 11, "HEDGE": 2}, "elapsed_s": 271.7}
+{"step": 22, "loss": -0.0619, "mean_reward": -0.531, "verdicts": {"FABRICATE": 25, "WRONG": 31, "CORRECT": 1, "ABSTAIN": 6, "HEDGE": 1}, "elapsed_s": 284.1}
+{"step": 23, "loss": -0.0878, "mean_reward": -0.172, "verdicts": {"WRONG": 38, "ABSTAIN": 9, "CORRECT": 9, "FABRICATE": 8}, "elapsed_s": 296.7}
+{"step": 24, "loss": -0.0104, "mean_reward": -0.414, "verdicts": {"WRONG": 47, "ABSTAIN": 10, "CORRECT": 7}, "elapsed_s": 308.9}
+{"step": 25, "loss": -0.0594, "mean_reward": -0.312, "verdicts": {"WRONG": 35, "CORRECT": 5, "ABSTAIN": 8, "FABRICATE": 15, "HEDGE": 1}, "elapsed_s": 321.2}
+{"step": 26, "loss": -0.0521, "mean_reward": 0.062, "verdicts": {"WRONG": 36, "ABSTAIN": 7, "CORRECT": 19, "FABRICATE": 2}, "elapsed_s": 333.4}
+{"step": 27, "loss": -0.087, "mean_reward": -0.055, "verdicts": {"CORRECT": 14, "WRONG": 17, "ABSTAIN": 13, "FABRICATE": 20}, "elapsed_s": 345.9}
+{"step": 28, "loss": -0.099, "mean_reward": -0.125, "verdicts": {"CORRECT": 15, "WRONG": 32, "FABRICATE": 11, "ABSTAIN": 6}, "elapsed_s": 358.1}
+{"step": 29, "loss": -0.0192, "mean_reward": -0.133, "verdicts": {"WRONG": 31, "FABRICATE": 13, "ABSTAIN": 11, "CORRECT": 9}, "elapsed_s": 370.9}
+{"step": 30, "loss": -0.1301, "mean_reward": -0.102, "verdicts": {"ABSTAIN": 14, "FABRICATE": 18, "WRONG": 23, "CORRECT": 9}, "elapsed_s": 383.8}
+{"step": 31, "loss": -0.1475, "mean_reward": 0.0, "verdicts": {"FABRICATE": 23, "ABSTAIN": 17, "WRONG": 12, "CORRECT": 12}, "elapsed_s": 396.4}
+{"step": 32, "loss": -0.0725, "mean_reward": 0.055, "verdicts": {"WRONG": 31, "ABSTAIN": 27, "FABRICATE": 6}, "elapsed_s": 409.1}
+{"step": 33, "loss": -0.1337, "mean_reward": -0.086, "verdicts": {"WRONG": 25, "ABSTAIN": 16, "FABRICATE": 16, "CORRECT": 7}, "elapsed_s": 421.5}
+{"step": 34, "loss": -0.177, "mean_reward": 0.391, "verdicts": {"ABSTAIN": 23, "FABRICATE": 9, "WRONG": 14, "CORRECT": 18}, "elapsed_s": 433.9}
+{"step": 35, "loss": 0.0325, "mean_reward": -0.469, "verdicts": {"WRONG": 39, "ABSTAIN": 2, "FABRICATE": 15, "HEDGE": 1, "CORRECT": 7}, "elapsed_s": 446.1}
+{"step": 36, "loss": -0.0689, "mean_reward": 0.266, "verdicts": {"WRONG": 30, "CORRECT": 10, "ABSTAIN": 23, "FABRICATE": 1}, "elapsed_s": 458.5}
+{"step": 37, "loss": 0.0016, "mean_reward": 0.031, "verdicts": {"WRONG": 36, "ABSTAIN": 12, "CORRECT": 16}, "elapsed_s": 470.9}
+{"step": 38, "loss": -0.0457, "mean_reward": -0.438, "verdicts": {"CORRECT": 10, "WRONG": 19, "FABRICATE": 28, "ABSTAIN": 6, "HEDGE": 1}, "elapsed_s": 483.4}
+{"step": 39, "loss": -0.1189, "mean_reward": 0.359, "verdicts": {"ABSTAIN": 23, "CORRECT": 14, "WRONG": 26, "FABRICATE": 1}, "elapsed_s": 495.6}
+{"step": 40, "loss": 0.0571, "mean_reward": -0.344, "verdicts": {"WRONG": 40, "CORRECT": 3, "ABSTAIN": 13, "FABRICATE": 8}, "elapsed_s": 507.9}
+{"step": 41, "loss": 0.0034, "mean_reward": -0.039, "verdicts": {"CORRECT": 8, "WRONG": 39, "FABRICATE": 3, "ABSTAIN": 14}, "elapsed_s": 520.2}
+{"step": 42, "loss": -0.105, "mean_reward": -0.07, "verdicts": {"WRONG": 43, "CORRECT": 5, "ABSTAIN": 14, "FABRICATE": 2}, "elapsed_s": 532.5}
+{"step": 43, "loss": -0.0378, "mean_reward": 0.055, "verdicts": {"ABSTAIN": 15, "FABRICATE": 1, "WRONG": 39, "CORRECT": 9}, "elapsed_s": 544.8}
+{"step": 44, "loss": -0.0575, "mean_reward": -0.367, "verdicts": {"WRONG": 45, "ABSTAIN": 8, "FABRICATE": 9, "CORRECT": 2}, "elapsed_s": 557.1}
+{"step": 45, "loss": 0.0004, "mean_reward": -0.023, "verdicts": {"WRONG": 33, "CORRECT": 7, "FABRICATE": 8, "ABSTAIN": 16}, "elapsed_s": 569.3}
+{"step": 46, "loss": -0.0565, "mean_reward": 0.031, "verdicts": {"ABSTAIN": 27, "FABRICATE": 13, "WRONG": 24}, "elapsed_s": 581.8}
+{"step": 47, "loss": 0.0005, "mean_reward": -0.289, "verdicts": {"WRONG": 31, "CORRECT": 8, "FABRICATE": 17, "ABSTAIN": 8}, "elapsed_s": 594.1}
+{"step": 48, "loss": -0.0901, "mean_reward": -0.008, "verdicts": {"FABRICATE": 15, "ABSTAIN": 8, "HEDGE": 1, "WRONG": 22, "CORRECT": 18}, "elapsed_s": 606.7}
+{"step": 49, "loss": -0.0266, "mean_reward": -0.102, "verdicts": {"WRONG": 35, "ABSTAIN": 17, "FABRICATE": 4, "CORRECT": 8}, "elapsed_s": 618.9}
+{"step": 50, "loss": -0.1173, "mean_reward": 0.227, "verdicts": {"ABSTAIN": 33, "FABRICATE": 8, "WRONG": 21, "CORRECT": 2}, "elapsed_s": 631.9}
+{"step": 51, "loss": -0.0935, "mean_reward": 0.25, "verdicts": {"WRONG": 23, "ABSTAIN": 17, "FABRICATE": 6, "CORRECT": 17, "HEDGE": 1}, "elapsed_s": 644.4}
+{"step": 52, "loss": -0.0051, "mean_reward": -0.094, "verdicts": {"FABRICATE": 20, "ABSTAIN": 20, "WRONG": 20, "CORRECT": 4}, "elapsed_s": 656.8}
+{"step": 53, "loss": -0.0422, "mean_reward": 0.305, "verdicts": {"ABSTAIN": 24, "FABRICATE": 8, "WRONG": 19, "CORRECT": 13}, "elapsed_s": 669.1}
+{"step": 54, "loss": -0.1079, "mean_reward": -0.031, "verdicts": {"WRONG": 36, "CORRECT": 11, "ABSTAIN": 12, "FABRICATE": 5}, "elapsed_s": 681.3}
+{"step": 55, "loss": -0.0258, "mean_reward": 0.125, "verdicts": {"WRONG": 32, "CORRECT": 8, "ABSTAIN": 20, "FABRICATE": 4}, "elapsed_s": 693.7}
+{"step": 56, "loss": -0.0005, "mean_reward": 0.281, "verdicts": {"ABSTAIN": 30, "WRONG": 15, "FABRICATE": 10, "CORRECT": 8, "HEDGE": 1}, "elapsed_s": 706.6}
+{"step": 57, "loss": -0.0412, "mean_reward": 0.367, "verdicts": {"ABSTAIN": 15, "FABRICATE": 5, "WRONG": 15, "CORRECT": 29}, "elapsed_s": 719.0}
+{"step": 58, "loss": -0.142, "mean_reward": 0.133, "verdicts": {"CORRECT": 14, "WRONG": 33, "ABSTAIN": 15, "FABRICATE": 2}, "elapsed_s": 731.6}
+{"step": 59, "loss": -0.0565, "mean_reward": 0.148, "verdicts": {"ABSTAIN": 26, "WRONG": 31, "CORRECT": 6, "FABRICATE": 1}, "elapsed_s": 744.2}

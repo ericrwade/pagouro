@@ -1699,3 +1699,34 @@ number with every port (`pagouro skill test`), credit built in (`ported_by` show
 CONTRIBUTORS.md), the "Runs on Pagouro" compatibility mark under O-29, a ranked wanted list of
 twenty, micro-bounties only if Eric ever says so. Build order: container → three first-party
 example ports → catalogue.
+
+### D-69 — Two of the three rental jobs measured: the loop is not the bottleneck (nanochat), and GRPO moves the headline numbers a little (D-65)
+**2026-09-19, 15:45–18:30 PT, pod `y1wscss6dj9gsw` (A40, $0.49/h).** Logs in `runs/runpod/d69/`,
+results in `evals/results/d69/` and `evals/results/pagouro-flash-grpo*__*.json`.
+
+**nanochat head-to-head (O-24): null result.** nanochat's `base_train` at depth 8 (~45M params,
+its own tokenizer and data) ran at 85.6k tok/s = **16.9% MFU** by its own meter on the A40; our
+`train.py` at the Flash config (126M) ran 39.0k tok/s ≈ **20%** on the same card. No 2–3× to
+borrow; at these sizes the card is the limit, not the loop. The 1B budget in `JOB_1B.md` stands,
+and the H100 (larger model, better utilisation) is the lever, as planned.
+
+**GRPO on the no-bluff objective (O-25): a nudge, and the bottleneck named.** From `flash_sft2`,
+paired reward scored by the frozen suite's own scorer, 97 program-generated prompts (63 real with
+keys, 34 invented), G=8, lr 2–3e-6, KL 0.05. On the frozen suite:
+
+| | SFT (flash2) | GRPO 60 steps (12 min) | GRPO 240 steps (95 min, shared GPU) |
+|---|---|---|---|
+| bluff ↓ | 36.7% | **33.3%** | **33.3%** |
+| answered-real ↑ | 20.0% | **26.7%** | **26.7%** |
+| hedge (degenerate) | 4 | 1 | 4 |
+| tool routing / calc args / memory | 87.5% / 3/6 / 10/10 | same | same |
+
+Both numbers moved the right way by 1–2 items (n=30, so a nudge) and the mechanism plainly
+works: fabrications in the training samples fell from ~20/64 per step to ~1/64. But four times
+the steps gave nothing more on the frozen suite while the training reward climbed to +0.875 —
+the model was learning the 97 training questions, not calibration. **Conclusion:** the
+prompt set is the bottleneck. The next GRPO run needs thousands of distinct real questions with
+keys (program-generated from the packs and Wikipedia first sentences) and thousands of invented
+ones, one pass each, before more steps mean anything. Kept: `checkpoints/flash_grpo.pt`,
+`flash_grpo240.pt`, their GGUFs. The stick keeps `flash_sft2` until a GRPO result clears a full
+re-evaluation with the larger set. Re-OCR (D-66) still running at the time of writing.
