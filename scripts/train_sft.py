@@ -34,6 +34,9 @@ from pagouro.model import Pagouro, ModelConfig  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+REPEAT: dict[str, int] = {}   # basename -> times to include (D-72: --repeat abstention_seed.jsonl=2 restores its share)
+
+
 def load_examples() -> list[list[dict]]:
     """Return conversations as message lists [{"role","content"}, ...] from every SFT
     source. Roles: system, user, tool, assistant. Loss is taken on assistant turns."""
@@ -42,7 +45,8 @@ def load_examples() -> list[list[dict]]:
     def add_pairs(path, key_user="question", key_asst="answer"):
         if not os.path.exists(path):
             return
-        for line in io.open(path, encoding="utf-8"):
+        n = REPEAT.get(os.path.basename(path), 1)
+        for line in list(io.open(path, encoding="utf-8")) * n:
             line = line.strip()
             if not line:
                 continue
@@ -152,9 +156,12 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=2e-5)   # 10-50x lower than pretrain (brief sec.7)
     ap.add_argument("--warmup", type=int, default=30)
     ap.add_argument("--seed", type=int, default=1337)
+    ap.add_argument("--repeat", nargs="*", default=[], help="file=N: include that seed file N times (D-72 mix balancing)")
     ap.add_argument("--threads", type=int, default=0, help="0 = torch default (D-52: share the machine)")
     ap.add_argument("--log", default=os.path.join(ROOT, "runs", "sft_log.jsonl"))
     a = ap.parse_args()
+    for spec in a.repeat:
+        f, n = spec.split("=", 1); REPEAT[f] = int(n)
     if a.threads:
         torch.set_num_threads(a.threads)
 
