@@ -120,7 +120,10 @@ def main() -> int:
                 if not img_url or "tile.loc.gov" not in img_url:
                     continue
                 time.sleep(6.0)                      # LoC crawl pace: they throttled at 3 s; 6 s holds
-                it = get_json(item.rstrip("/") + "/?fo=json") or {}
+                try:
+                    it = get_json(item.rstrip("/") + "/?fo=json") or {}
+                except RuntimeError as e:            # one dead item must not end the crawl
+                    print(f"  skip: {e}", flush=True); continue
                 itm = it.get("item") or {}
                 rights = itm.get("rights_advisory") or itm.get("rights") or it.get("rights") or ""
                 if isinstance(rights, list):
@@ -129,7 +132,10 @@ def main() -> int:
                 if "no known restrictions" not in rights.lower():
                     continue
                 time.sleep(1.0)
-                data = get(img_url)
+                try:
+                    data = get(img_url)
+                except RuntimeError as e:
+                    print(f"  skip: {e}", flush=True); continue
                 sz = jpeg_size(data)
                 if not sz or min(sz) < 200:
                     continue
