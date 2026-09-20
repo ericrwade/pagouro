@@ -41,7 +41,7 @@ The book's credibility is the same as the model's — it survives inspection.
 | 7 | The machine stopped | story | BUILD_LOG Day 6 (freeze, checkpoints, resume) | draft 1 (`chapters/07-…`; later corrections as footnotes) |
 | 8 | An app on a stick | story | BUILD_LOG Day 7 (gauge, three switches, tools, the dropped turn) | raw |
 | 9 | **Do it: make it yours** (packs, model swap, skills, fine-tune) | do-it | MAKE_IT_YOURS rungs 1–7, SKILLS.md, the skills numbers | draft 1 (`chapters/09-…`) |
-| 10 | Three days alone with a budget | story | BUILD_LOG Days 8–9 (RunPod, Flash, the shelf, the ablation, the decay that ate itself) | raw (build log written) |
+| 10 | Three days alone with a budget | story | BUILD_LOG Days 8–9 (RunPod, Flash, the shelf, the ablation, the decay that ate itself) | draft 1 (`chapters/10-…`) |
 | 11 | **Do it: rent a GPU without getting hurt** | do-it | RUNPOD_JOB.md, JOB_1B.md, D-54/D-55/D-61 | draft 1 (`chapters/11-…`) |
 | 12 | What "private" means, exactly | story+do-it | THREAT_MODEL.md, the offline audit | raw |
 | 13 | The one-billion run | story | (not yet happened) | future |
