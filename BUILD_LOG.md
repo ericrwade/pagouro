@@ -1308,6 +1308,131 @@ goes on the list for the next model, with the others: filter the backbone by dat
 "before 2022" claim is true of every row, not most of them; re-scan the manuals; a few percent
 of the world outside the English-speaking one.
 
+## Day 10 — Five decisions from the road, three jobs on one rented card, and the manual that had 1,691 pages
+
+Eric came back into range in the evening, from wherever the trip had taken him, and answered
+the five questions I had been holding. Asked one at a time, as he had asked me to ask them,
+each with the choice spelled out and a recommendation attached. He took the recommendation
+on four and overrode it on one, and the override was the interesting one.
+
+The book's licence: the story chapters are his, all rights reserved; the instructions and the
+appendices are as open as the code, so anyone can copy the how-to and nobody can sell his
+narrative without him. He added something I had not proposed — short connective passages
+between chapters, "this is where we tested whether adding X, Y and Z would change the output,
+so we tested it," so a reader always knows where they are. Signposts. They go in once the
+draft is whole enough to see the gaps.
+
+Two small experiments on a rented card, both authorised, about two dollars between them. The
+re-scan of the shelf's manuals, authorised. The English-language world shelf and a small
+Latin-script slice, both, plus a question of his own that turned out to be sharper than it
+looked: could the model be bilingual within English — *colour* and *color*? The answer is that
+the tokenizer is not the obstacle (they are different tokens, like *grey* and *gray*), the
+corpus is already mixed (British canon, American manuals), and so the model today is
+inconsistent within a single answer. The honest fix is not to normalise the corpus but to
+teach the model to match the spelling the user used, with a ten-item test to say whether it
+learned. That is now a decision.
+
+The override: I had recommended shipping the drawing model as a later update, to keep the path
+to the big run short. He asked which was the better marketing strategy, and the honest answer
+was the other one — attention comes once, the sprite in the terminal is the screenshot people
+share, the bluff-rate table is the paragraph they read afterwards. Two proofs of one idea
+launch together. He set the target himself: good enough to draw a hundred hermit-crab logos.
+An hour later, from the road: Victorian, Gilded Age, modernised. The pre-1929 print world —
+engraved trade cards, catalogue cuts, natural-history plates — every image licensed, rendered
+in pixels. The hermit crab is a Victorian natural-history subject to begin with.
+
+### The rental
+
+One A40 at forty-nine cents an hour, three jobs in sequence, the plan and the price posted
+before the machine existed.
+
+The first job was a ten-minute race: the training loop from a well-known public project
+against ours, on the same card. Theirs ran a smaller model at 85,600 tokens a second and
+reported 16.9 percent utilisation of the card by its own meter; ours ran the Flash model at
+39,000 and works out to about twenty. A null result, which is a result: there is no two-times
+sitting in the loop to be borrowed, the card is the limit at this size, and the budget for the
+big run stands. Ten cents well spent, and the temptation to rewrite the trainer is gone.
+
+The second job was the one I had wanted to try since the first eval: instead of *showing* the
+model examples of saying "I have no record of that," *reward* it for the behaviour. Ninety-seven
+program-generated questions, half real with known answers, half about things that do not
+exist; eight sampled answers per question; the same scorer the frozen test uses, so the reward
+and the number on the box cannot drift apart. Sixty steps, twelve minutes. On the frozen
+test: bluffing 36.7 to 33.3 percent, real questions answered 20 to 26.7 percent. A nudge in
+the right direction on both — one or two items out of thirty. So I ran it four times longer.
+The reward during training climbed to 0.875, fabrications in the sampled answers fell from
+twenty per batch to one, and on the frozen test — nothing further changed. Exactly the same
+two numbers. The model had learned the ninety-seven questions. The mechanism works; the
+bottleneck is the size of the question set, and the next run needs thousands of distinct
+questions seen once, not ninety-seven seen fifteen times. That is written down with the
+numbers, and the stick keeps the model it had.
+
+The third job was the re-scan. The pages came out beautifully — clean Markdown, the fractions
+as fractions, the tables as tables — and slowly: a fifth of a page a second on that card. I
+tried the faster serving engine the model's authors recommend, and it wanted a different
+version of the library that the model needs, and twenty minutes went into a version knot
+before I cut it and went back to the plain path. Then I killed my own SSH session with a
+`pkill` that matched its own command line, the exact mistake recorded two days ago in this
+log, learned again. Then the second launch died at once on a space in a filename that I had
+already fixed in a sister script the day before and not carried over. Forty idle minutes at
+forty-nine cents an hour. Small money; the pattern is the point, and it is in my standing
+rules now in plainer words.
+
+With the scope cut to the six works where tables and formulas live, four came home before
+midnight: the three Navy modules and the canning guide, 944 pages, not one failed. The
+canning guide went from mirrored-header soup to two hundred and thirty real tables —
+"Recommended process time for Fish in Quart Jars in a dial-gauge pressure canner" — and the
+stick's search finds them. Then, mid-evening, Eric pasted the full text of the fine-tuning
+guide he had sent the night before, and one line in it was worth the read: *never auto-correct
+numbers; track numeric strings separately.* Ten minutes later there was a tool that compares
+the numbers in the old scan against the numbers in the new one, and it said something I would
+not have guessed: the two scans disagree on thirteen to thirty-eight percent of their numbers,
+and almost none of it is conflict. The old scan had transcribed the tick marks on graph axes
+as text — "0.1, 0.2 … 0.9," seventy-five times each in the module on alternating current — and
+the new scan ignores figures but recovers the table cells the old one dropped, including the
+altitude thresholds in the canning tables, which are exactly the numbers a person needs. The
+next refinement is a page-by-page diff to list the true conflicts, like the 45 for 4.5 that
+started all this.
+
+The recipe manual, when the machine finally got to it, turned out to have 1,691 pages rather
+than the seven hundred I had estimated from its size on disk. At a fifth of a page a second
+that is most of the night. It is inside the ceiling Eric set, so it runs; the road-sign manual
+follows; the machine comes down when they are done.
+
+### The other conversations
+
+He asked whether we are building something nobody will want in a month, because the talk
+online was that typed-decision models would replace language models. I read what has been
+published. The new model returns typed answers from a set you supply, with calibrated
+probabilities, and cannot produce free text at all — so it cannot explain, summarise, or
+converse, and it is hosted and closed. It takes the routing-and-classification slice of the
+work; the language stays with language models. Our grammar-constrained router is already a
+tiny version of the same idea, sitting in front of the language model. Forty million dollars
+just went into "calibrated, says no when it can't," hosted. Ours is the offline, open,
+ledgered form of the same bet. Not displacement; validation, with one concrete thing to do for
+the big model: make the router emit a probability with its decision and measure it.
+
+He asked whether a licence could keep everything that grows from Pagouro looking the same —
+Solana's purple — while the model itself stays free to fork. A licence cannot; a style is not
+copyrightable and a keep-the-look clause would make the assets non-free. What can: the drawing
+model *is* the style, the palette ships as a named artifact, and the name and the mark are a
+trademark you may use only with the look. Fork everything; keep the name only with the look.
+His to decide. He asked about skills, and the answer was a container and a catalogue rather
+than a marketplace, because a stick that never phones home cannot have a store; and then he
+saw the real point before I did — the catalogue is the on-ramp for contributors, and someone
+will port a good skill to the 1B fast if porting is a half-hour task with a number and a
+credit attached. He asked whether we are really building the product or a small rehearsal of
+it, and the honest answer is the one this log has been giving since the first rented minute:
+the corpus, the pipeline, the harness, the evals and the release steps are the product; the
+models so far are instruments that bought decisions at a hundredth of the price of learning
+them at scale. And he asked about three more chains, and got the same answer as always: three
+pillars, options and mirrors for the rest, and one genuinely good idea among them — a proof of
+the release that fits on the stick.
+
+Spend on rented hardware for the window, before tonight's machine is turned off: seven dollars
+and fifty-four cents, plus tonight's four or five.
+
 ---
 
-*The log continues. Next: the fine-tune with the fixes in, and the backbone rebuilt by date.*
+*The log continues. Next: the road-sign manual, the machine off, and the drawing model's
+corpus.*
