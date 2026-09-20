@@ -1784,3 +1784,12 @@ when it can't"; ours is the offline/open/ledgered form Jev cannot be. Action for
 session, no GPU): router emits a probability with its choice; the O-15 answerability gate as a
 typed decision before prose; calibration measured on the frozen suite. Real risks remain: a big
 lab shipping a small open *ledgered* model (they cannot ledger), attention.
+**D-66 audit note (2026-09-19, from Rahul's guide via Eric — "track numeric strings separately;
+never auto-correct numbers"):** `scripts/numeric_drift.py` compares the numeric strings of the old
+archive.org OCR and the re-OCR per work. Disagreement (share of numbers present on one side only):
+NEETS 13 15%/19%, NEETS 01 14%/9%, NEETS 02 38%/12%, USDA 3%/17% (old/new). Mostly coverage, not
+conflict: the old OCR transcribed chart axis ticks as text (NEETS 02's "0.1…0.9" ×75), the new one
+ignores figures but recovers table cells the old one dropped (USDA's jar sizes and the 6,000-ft
+altitude thresholds). Next refinement: a per-page diff to list true value conflicts (45 vs 4.5) for
+review. Also adopted from the guide: a numeric-preservation column for the tool-use and memory
+evals (numbers in an answer must appear in the tool result).
