@@ -50,3 +50,18 @@ The hand-coloured natural-history lithograph (the Biodiversity Heritage Library 
 - rose: `#7c3050` `#b05070` `#dc8098` `#f6b8c4`
 - shadow: `#2e3440` `#505868` `#7c8494` `#b4bac8`
 
+## Belle Époque (`belleepoque`)
+
+The Paris lithographic poster, 1890-1910 (Chéret, Mucha, Steinlen, Toulouse-Lautrec): warm black on cream poster stock, chrome yellow and vermilion, Prussian and cobalt blue, Mucha's sage and dusty rose with gold-ochre outlines. Flat planes, the boldest of the four; the crab in vermilion and cobalt.
+
+![Belle Époque](belleepoque.png)
+
+- warmblack: `#1a1410` `#332822` `#55443a` `#7a6656`
+- poster: `#b8a888` `#d9c9a6` `#efe3c6` `#faf3df`
+- chrome: `#8a5f0c` `#c48f16` `#eab826` `#f8dd6a`
+- vermilion: `#6e1c14` `#a9301f` `#d9502c` `#f08a5a`
+- prussian: `#0e2a44` `#174a72` `#2d6fa0` `#7fb0d4`
+- sage: `#3a4a34` `#5f7452` `#8fa27e` `#c3ceae`
+- dustyrose: `#7a3c4a` `#a8606e` `#cf8e98` `#ecc3c6`
+- goldochre: `#7a5a1e` `#a8823a` `#cfa95e` `#e8cf94`
+
