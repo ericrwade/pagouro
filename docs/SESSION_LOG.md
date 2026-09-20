@@ -48,14 +48,30 @@ per-page numeric diff from the D-66 note.
 **Verified:** skill tests and routing from `scripts/skill_test.py` output; spelling numbers from
 `evals/results/pagouro-flash2__spelling.json`; footer/tail-copy counts from the pod's per-page
 files; the page images for USDA leaf 94 and NEETS 1 leaf 22 opened and read (in `docs/samples/ocr/`).
-**Open / next:** (1) when `REOCR_FIX_DONE`: fetch all six `.md` + stats, run the footer check on
-each, re-ingest (`--allow-tail-copies` for the recipe cards with the measured genuine-repeat count),
-verify ledger, commit packs, **delete pod `y1wscss6dj9gsw`**, `list-pods` empty, billing, close on
-#2, memory LIVE block; (2) refresh the stick (stages 9–11, `MODEL_STEM=gguf_flash/pagouro-flash-sft2
-EVAL_LABEL=pagouro-flash2 CONTEXT_WORDS=700`) once packs are clean; (3) Eric's calls: HOUSE palette,
-O-29 trademark, O-31 io.net, O-32 receipt model; (4) Draw corpus fetch (CC0 sources per
-`IMAGE_MVP.md`), GRPO run on the big set when GPU time is next authorised, O-35 typed router +
-O-15 gate, numeric-preservation eval column, book signposts.
+**Closing addendum (02:00–05:30 PT):** the unbatched redo ran as two parallel single-page
+processes (~0.05 pages/s each); every work re-fetched, page-order-checked and re-ingested — NEETS
+1/2/13 + USDA 0/0 (were 29/20, 23/11, 24/7, 8/8; USDA 3-12 now reads 85 min as the page does),
+MUTCD 816 printed page numbers in order (checker now reads running heads) with 6 tail copies
+verified as Part 6H boilerplate, recipes 502 leaves redone with 127 tail copies left that are
+variant-card Notes spread evenly across batch positions. Ledger 71 rows verified. **Pod
+`y1wscss6dj9gsw` deleted 04:40 PT, `list-pods` empty; billing after deletion: this pod $5.88,
+window total $13.91 across four pods.** Stick refreshed (stages 9–11: audit PASS 40 samples,
+skills on the stick, manifest 81/81); live scripted run on the stick: `/skills` lists three,
+"How many kilometres is 26.2 miles?" triggers `convert` → `26.2 mi = 42.16 km` — but the model's
+composed reply after the tool result is poor ("26.2 miles"), so answer examples (user → tool
+result → reply, tool outputs recorded verbatim) were added to each skill and to the SFT loader.
+Also: Belle Époque palette (fourth candidate, Eric's question) + finalists sheet; Met slice one
+1,780 CC0 images → curated 307 at 64/32 px; Kenney slice 22 packs / 4,380 sprites; O-35 router
+probability measured (0.917 right vs 0.816 wrong); book ch. 9 and 10 drafted; Build Log Day 11.
+**Open / next:** (1) Eric's calls: HOUSE palette (Trade Card vs Belle Époque), whether the style
+brief widens to "Belle Époque / Gilded Age, trade card and poster"; O-29 trademark; O-31 io.net;
+O-32 receipt model. (2) Next fine-tune should include the skill router+answer examples and the
+spelling seed, then re-measure skills routing (model alone), spelling (novel words), tool-use
+with `--probs`. (3) Draw: sprite-sheet slicer for the Kenney packs that ship only sheets; OGA
+CC0 slice; the palette-quantised training set once HOUSE is chosen; the drawing model itself
+(D-67 gate). (4) GRPO on `sft/grpo_big.jsonl` when GPU time is next authorised. (5) Book:
+signposts, chapters 0/1/3/5/12 (story), 2 (do-it). (6) D-62b: the Stack's dated replacement
+before 1B.
 
 ---
 
