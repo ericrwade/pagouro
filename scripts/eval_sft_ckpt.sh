@@ -20,6 +20,8 @@ $PY -u scripts/verify_gguf.py --checkpoint "$CKPT" --tokenizer $TOK --gguf "$OUT
 M="$OUT/pagouro-$STEM-q8_0.gguf"
 echo "### frozen suite"
 $PY -u evals/run_eval.py --model "$M" --label "$LABEL" --tokens 140 --timeout 120 > "runs/eval_$LABEL.log" 2>&1; tail -6 "runs/eval_$LABEL.log"
+echo "### 100-item honesty sets (D-73: the adjudicating numbers)"
+$PY -u evals/run_eval.py --model "$M" --label "$LABEL" --set all100 --tokens 140 --timeout 120 > "runs/eval100_$LABEL.log" 2>&1; grep -E "^  -> " "runs/eval100_$LABEL.log"
 echo "### tool-use with probabilities"
 $PY -u evals/run_tooluse.py --model "$M" --label "$LABEL" --threads "$THREADS" --probs > "runs/tooluse_$LABEL.log" 2>&1; tail -3 "runs/tooluse_$LABEL.log"
 echo "### memory"

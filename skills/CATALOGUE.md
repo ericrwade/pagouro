@@ -8,9 +8,9 @@ and the MANIFEST state. "Runs on Pagouro" (O-29) may be used by any skill whose 
 
 | skill | does | licence | author | ported by | tool eval | end-to-end (triggers) | routing | manifest |
 |---|---|---|---|---|---|---|---|---|
-| `date_math` | date arithmetic - days between two dates, a date plus or minus N days/weeks/months, the weekday of a date, days until a date | CC0-1.0 | Pagouro project (first-party) | session, 2026-09-20 | 10/10 | 10/10 | model 0/10, harness 10/10 (pagouro-flash-sft2-q8_0.gguf) | ok |
-| `recipe_scale` | scale a recipe's ingredient quantities up or down (double, halve, 1.5x, for 6 instead of 4) | CC0-1.0 | Pagouro project (first-party) | session, 2026-09-20 | 10/10 | 10/10 | model 0/10, harness 10/10 (pagouro-flash-sft2-q8_0.gguf) | ok |
-| `unit_convert` | convert a quantity between units of length, mass, volume, data, time, speed or temperature | CC0-1.0 | Pagouro project (first-party) | session, 2026-09-20 | 10/10 | 10/10 | model 0/10, harness 10/10 (pagouro-flash-sft2-q8_0.gguf) | ok |
+| `date_math` | date arithmetic - days between two dates, a date plus or minus N days/weeks/months, the weekday of a date, days until a date | CC0-1.0 | Pagouro project (first-party) | session, 2026-09-20 | 10/10 | 10/10 | model 6/10, harness 10/10 (pagouro-flash-sft3-q8_0.gguf) | ok |
+| `recipe_scale` | scale a recipe's ingredient quantities up or down (double, halve, 1.5x, for 6 instead of 4) | CC0-1.0 | Pagouro project (first-party) | session, 2026-09-20 | 10/10 | 10/10 | model 8/10, harness 10/10 (pagouro-flash-sft3-q8_0.gguf) | ok |
+| `unit_convert` | convert a quantity between units of length, mass, volume, data, time, speed or temperature | CC0-1.0 | Pagouro project (first-party) | session, 2026-09-20 | 10/10 | 10/10 | model 5/10, harness 10/10 (pagouro-flash-sft3-q8_0.gguf) | ok |
 
 ## Wanted
 
