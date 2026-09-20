@@ -1762,3 +1762,13 @@ Cartesi machine so the numbers on the box are proven computations; a post-1B lig
 stick, so `verify_manifest.py` could confirm the release fully offline; Bitcoin stays the anchor
 (D-14), Mina a documented mirror; depends on shipping a small enough verifier. None of the three
 becomes a fourth pillar; all three are options and mirrors.
+
+### O-34 — Note: the "local AI business" thread (noisyb0y1, 2026-09-19) — market yes, numbers no, offline undercut
+**Eric asked.** The article's market observation is real and matches our third claim (small
+regulated businesses want AI that keeps data in the building at a predictable cost); its tool
+stack (Ollama, AnythingLLM, Open WebUI, n8n) is the integrator's architecture of other people's
+models with unknown corpora; its revenue math is fantasy; and its "offline" is undercut by routing
+the hard 20% to a cloud API — the quiet hybrid our OFFLINE/ONLINE switch and exit line make
+visible. Takeaways: (1) audit is the sell to those clients — labelled pack hits + the ledger,
+which that stack lacks; (2) an "integrator kit" framing for MAKE_IT_YOURS + packs + skills; (3) a
+plain offline web UI as a later item for non-technical users. Nothing to build now.
