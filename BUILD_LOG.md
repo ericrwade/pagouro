@@ -1434,5 +1434,109 @@ and fifty-four cents, plus tonight's four or five.
 
 ---
 
-*The log continues. Next: the road-sign manual, the machine off, and the drawing model's
-corpus.*
+*(Day 10 closed; continued below.)*
+
+## Day 11 — Three palettes, three skills, a number that said zero, and the scan that had to be checked against the page
+
+The road-sign manual took the small hours. While it ran I did the things on the list that
+needed no machine but this one.
+
+### The palettes
+
+Eric's brief was the Gilded Age, modernised. The palette *is* the style in pixel art, so the
+first deliverable was three of them, thirty-two colours each in eight ramps of four, named for
+the print world they come from: the chromolithographed trade card (ink on cream, oxblood,
+brass, verdigris), the Gilded Age after dark (night ink, gaslight amber, plum, bone, silver),
+and the hand-coloured natural-history plate (sepia on warm paper, coral, ochre, olive,
+cerulean). Each rendered on a sheet — swatches, six program-drawn hermit crabs, three test
+sprites, on the palette's own paper and on its ink — and sent to his phone. The hermit crab is
+procedural, forty lines: a spiral shell, a body of overlapping discs, two claws with a pincer
+gap, three legs, two eye-stalks, and the one-pixel outline rule applied last. The first version
+read as a snail. Pixels are honest that way.
+
+### The skills, and the zero
+
+The skills container is built: a folder with a one-function Python file, a reference text, ten
+examples, ten tests and a hash list. Three first-party skills — units, dates, recipe scaling —
+and a test script that prints numbers. The tools scored ten out of ten. Then I asked the model on
+the stick to *choose* those tools, having told it in its prompt that they existed, and it scored
+zero out of ten, three times over. It sent every unit conversion to the calculator with a
+conversion factor it had invented — 26.2 times 35,000 for miles to kilometres. The bluff in tool
+form, with the calculator's authority behind it.
+
+That number is the reason the design changed in the same hour. A model this size does not
+learn a new name from a sentence in its prompt; it learns names from training. So a skill may
+now declare a trigger, a plain pattern the harness checks before the model is asked — the same
+philosophy as the argument-recovery rules: the harness compensates for the model, visibly — and
+every skill's examples are now in the fine-tuning set, so the next model learns the names
+properly. The triggers were checked against the frozen tool-use test until none of them fired
+on prompts belonging to other tools; two had to be fixed, an ISO date inside a file path and
+"three and a half hours" in seconds. The catalogue prints the model's own number and the
+harness's number side by side and always will. Also the spelling register, colour and color:
+the swap table, the seed set, the ten-item test — and the first run scored eight of nine, which
+was a lie, because the model was echoing the question's own word back. The score now counts
+only marked words the question did not contain. On that count the stick model scores nothing
+at all, ten unscored, which is the truth: it rarely volunteers a marked word of its own.
+
+### The scan
+
+The re-scanned manuals had been the good news of the week. Then the per-page number diff I
+had promised in the audit note listed a canning process time the two scans disagreed on —
+forty minutes in the old text, twenty in the new — and I did what the audit rule says: opened
+the page image. It said eighty-five. Neither scan had it.
+
+The new scan's text for that page carried the headings of page 3-12 and the numbers of page
+3-8. A check on the printed page numbers found the pattern in minutes: every eighth leaf — the
+batch size — broke the sequence. The first two pages of every batch began with their own
+page and continued, mid-paragraph, with the text of the previous batch's fourth and fifth
+pages; the footers proved it, leaf 22 of the Navy module being page 1-11 and ending "1-7". A
+quarter of every batched work was fluent, plausible and wrong. The one failure the re-scan was
+bought to remove, and worse than the old garble because it reads well. Nothing had reached the
+stick — the packaging step had not been re-run — but the ledger rows and the repository's packs
+had it, and the six works are being redone, one page at a time, on the same rented card, for
+about a dollar. A two-page test came back clean before I committed to the rest. The ingest now
+refuses any re-scanned work whose page numbers do not run in order.
+
+The lesson is not about that model or that library. It is that a tool which produces fluent
+text has to be checked the way a person would be checked — against the page, not against how
+it reads — and that the check has to be in the pipeline, not in my memory.
+
+### Also
+
+A reward set for the honesty training at the scale the last run said it needed: nearly six
+thousand questions, half real from prominent encyclopaedia first sentences, half about things
+that do not exist, in identical wording so the model cannot tell them apart by shape, every
+invented name checked against every title. And the drawing model's first corpus slice began
+to come in from the Met's open-access collection — engraved trade cards, dated, public domain,
+each with its hash in an image ledger — one thousand seven hundred and eighty images by the end of the day.
+
+### The close
+
+The rented machine was turned off at twenty to five in the morning, after the last of the six
+re-scanned works had come home, been checked page by page against its own printed page numbers,
+and gone into the ledger. The Navy modules and the canning guide: every printed page number in
+order, no page ending in another page's text, where the morning's versions had failed twenty-nine
+and twenty times. The road-sign manual: eight hundred and sixteen page numbers in order, six
+repeated endings, all of them the same standard sentence that Part 6H really does print on
+every page. The recipe manual: five hundred and two pages redone, a hundred and twenty-seven
+repeated endings left, spread evenly across the eight batch positions where before they had
+piled up on the first two — which is what a fixed defect looks like in a table. The rented card
+cost five dollars and eighty-eight cents for the whole re-scan including the redo; the window's
+total on rented hardware, read from the account after the machine was gone, is thirteen dollars
+and ninety-one cents across four machines. Eric had set ten dollars for this one. It came in
+under, and the number that goes in the book is the one from the bill.
+
+Also in the day, small: a second corpus slice for the drawing model, four thousand three hundred
+and eighty sprites and tiles from Kenney's CC0 packs, each pack's licence line copied from the
+page it came from; the Met's prints curated down to three hundred and seven that still read at
+sixty-four pixels, faint pencil studies out; a fourth palette, Belle Époque, because Eric asked
+whether the Paris poster fitted the idea better than the American trade card, and the honest
+answer was that they are the same decade seen from two cities, so both are on the sheet; the
+router asked to say how sure it is, and found to be sure at ninety-two percent when right and
+eighty-two when wrong, which is a start and not a claim; and two more chapters of the book.
+
+
+---
+
+*The log continues. Next: the clean scans on the stick, the palette Eric picks, and the
+drawing model's corpus.*
