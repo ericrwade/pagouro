@@ -906,7 +906,7 @@
       },
       "sha256_processed": "5397314617f2a338a44ced59d8a464f20dd375f932546c08d058f4892f64e170",
       "file": "data/raw/usgov/neets-13-digital.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "SUPERSEDED 2026-09-20 by usgov-neets-13-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)"
     },
     {
       "slug": "usgov-tm10-412-recipes",
@@ -1557,6 +1557,32 @@
       "sha256_processed": "16a80d465dde64807798eb9cb81a09928164ff73eb13a4a322ca0ea2f1506798",
       "file": "data/raw/wikipedia-en-20211220.txt",
       "slice": "backbone (pretrain), encyclopedic"
+    },
+    {
+      "name": "NEETS Module 13: Introduction to Number Systems and Logic Circuits (NAVEDTRA 14185)",
+      "author": "US Navy, Naval Education and Training Professional Development and Technology Center",
+      "url": "https://archive.org/details/NEETSModule13",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Navy nonresident training course NAVEDTRA 14185; archive.org item NEETSModule13 carries the Public Domain Mark",
+      "first_published": "1998",
+      "published_before_generative_ai": true,
+      "slug": "usgov-neets-13-reocr",
+      "source": "archive.org page images, re-OCR'd (D-66)",
+      "retrieved": "2026-09-20",
+      "retrieved_utc": "2026-09-20T01:36:56+00:00",
+      "characters": 343563,
+      "estimated_tokens": 139639,
+      "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
+      "ocr_stats": {
+        "pages_total": 218,
+        "pages_ocr": 218,
+        "seconds": 3152.0,
+        "failed": 0
+      },
+      "sha256_processed": "7226556ce16a8306223f1650660a30879bc1531d7df9ee77592363450b3326eb",
+      "file": "data/raw/usgov/usgov-neets-13-reocr.md",
+      "slice": "shelf (D-58): anneal-only flavor",
+      "supersedes": "usgov-neets-13"
     }
   ]
 }
