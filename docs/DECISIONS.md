@@ -1851,6 +1851,23 @@ prompt's kind uniformly, so abstain-on-everything cannot win by volume. Curricul
 `sft/grpo_curriculum.jsonl`: real 303, unknowable_real 2,846, invented 2,956. Labels are
 committed with provenance (jev-1.13.0, 2026-09-20). Runs when GPU time is next authorised.
 
+### D-72 — flash-sft4: the tool-result seed works, the headline moves two items the wrong way, and 30-item sets cannot adjudicate that
+**2026-09-20.** `flash_sft4.pt` = sft3's mix + `sft/toolresult_seed.jsonl` (600 rows, half
+failures), 4,800 steps, 2.8 h CPU. Numbers from `scripts/eval_sft_ckpt.sh`:
+bluff 36.7 → **43.3%** (11 → 13 fabrications of 30), answered-real 20.0 → 16.7%, deflect 100 →
+82.1%; tool-use right 21 → 19/24, calc args 3 → 4/6; memory answered 10 → 9/10; spelling
+novel-words **1/1 scored** (first ever); **tool-result fidelity faithful 6 → 7/10, NO_MATCH
+reported 3 → 6/10**; skills routing model-alone **10, 9, 10 of 10** (sft2: 0). The seed did its
+job. The SFT mix shifted ~15% away from the abstention rows (1,149 new rows of 7,885) and the
+headline honesty numbers lost two items. **Decided:** (1) sft4 not shipped; the stick keeps sft2
+(rule: the frozen suite decides, and it did not improve). (2) One item on a 30-item set is 3.3
+points; sft2 → sft3 → sft4 differ by one or two items on every headline. Before another
+fine-tune iteration, **build larger honesty sets** — `bluff-100` and `calibration-100`, hand +
+program-generated in the same style, eval-disjoint, frozen once — so a two-item move can be told
+from noise. The 30-item sets stay as the historical yardstick. (3) Next mix: keep the tool-result
+and skill rows, duplicate the abstention seed to restore its share, and measure on the 100-item
+sets. Kept: `checkpoints/flash_sft4.pt`, `gguf_flash/pagouro-flash-sft4-*`.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same

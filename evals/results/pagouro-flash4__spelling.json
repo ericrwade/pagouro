@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-flash4",
+  "model_file": "pagouro-flash-sft4-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 1,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 9
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 5,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 5
+  },
+  "followed_of_scored": "1/1",
+  "followed_of_scored_echo_inclusive": "5/5",
+  "rate_followed_of_scored": 1.0,
+  "elapsed_s": 1.6,
+  "utc": "2026-09-20T18:34:18+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is typically about 2.5 years."
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "You should first check if the water stations are within 1.5 kilometres of each other, and if they are, then you should check the distance between the water stations and the finish."
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "At the centre of a hurricane, the hurricane's wind is strong enough to cause widespread damage and damage to buildings and infrastructure."
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A grey squirrel's fur is usually one shade. Grey squirrels are often smaller and have a more prolonged coat."
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that is not danger, but is close to a house is often a sign of a safe place to live, as it can be easily seen and seen."
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe eggplant is typically about 12 to 15 inches in length."
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The finish is the distance between the water stations and the finish, so the total distance should be 1.5 km."
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "At the center of a hurricane, the hurricane is usually located in the Atlantic and Pacific Oceans."
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A gray squirrel's fur is primarily made of down and is used for its hats andcoats. It is also known for its distinctive, shaggy coat and large, beak."
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that is not strong enough to be a danger to others or a source of danger, such as a tree that is not strong enough to be a threat, is called a treeanger."
+    }
+  ]
+}
