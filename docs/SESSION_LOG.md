@@ -63,6 +63,19 @@ result → reply, tool outputs recorded verbatim) were added to each skill and t
 Also: Belle Époque palette (fourth candidate, Eric's question) + finalists sheet; Met slice one
 1,780 CC0 images → curated 307 at 64/32 px; Kenney slice 22 packs / 4,380 sprites; O-35 router
 probability measured (0.917 right vs 0.816 wrong); book ch. 9 and 10 drafted; Build Log Day 11.
+**Afternoon addendum (06:00–15:30 PT):** D-70 sft3 measured (skills routing 0→5–8/10 model-alone;
+NO_MATCH fabrication found) and a **tool-result fidelity** frozen set built (sft2 6/10, 3/10).
+D-71: Jev use #2 ($0.054) labelled the GRPO big set — 91% of "real" questions unknowable to a
+stick model — → three-way curriculum + `--balance` + 170 known reals from the ledger's own books.
+D-72: sft4 (tool-result seed) fixed its target (NO_MATCH 6/10) but the 30-item headline moved two
+items. D-73: **100-item honesty sets** frozen; they overturned the sft2/sft3 tie (56/11 vs 38/19)
+→ **sft3 shipped** on the stick. D-74: **HOUSE = Belle Époque**, posters over cards; `/art mark`
+draws the medallion; Met artist: queries; LoC Artists Posters fetcher (throttled, now 6 s pacing).
+O-36: TypeSafe/Jev key stored and verified, $5 starting credit, uses logged ($0.13 total, 4 uses).
+O-37/D-75: procedural mark in the retreated configuration (Eric's refs), then the **Belle Époque
+LoRA** on CommonCanvas-S-C trained on our poster slice on a rented A40 (~75 min, ≈$0.61; pod
+deleted, `list-pods` empty): 192 litho-look candidates home, sheets sent. sft5 (abstention ×3 +
+tool-result seed, 5,500 steps) training; eval chain armed.
 **Open / next:** (1) Eric's calls: HOUSE palette (Trade Card vs Belle Époque), whether the style
 brief widens to "Belle Époque / Gilded Age, trade card and poster"; O-29 trademark; O-31 io.net;
 O-32 receipt model. (2) Next fine-tune should include the skill router+answer examples and the
