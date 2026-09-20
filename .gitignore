@@ -69,15 +69,3 @@ workspace/online.json
 tools/ocr/
 skills/last_test.json
 runs/jev_usage.log
-
-# image ledgers are provenance, not data (D-67)
-!data/images/
-data/images/*
-!data/images/ledger.jsonl
-!data/images/pool_meta.labelled.jsonl
-!data/images/train/
-data/images/train/*
-!data/images/train/ledger.jsonl
-!data/images/kenney/
-data/images/kenney/*
-!data/images/kenney/ledger.jsonl
