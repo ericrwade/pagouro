@@ -1,0 +1,506 @@
+[
+ {
+  "file": "i2i_0_0_55_0.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5005
+ },
+ {
+  "file": "i2i_0_0_55_1.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5006
+ },
+ {
+  "file": "i2i_0_0_70_0.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5007
+ },
+ {
+  "file": "i2i_0_0_70_1.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5008
+ },
+ {
+  "file": "i2i_0_1_55_0.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5015
+ },
+ {
+  "file": "i2i_0_1_55_1.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5016
+ },
+ {
+  "file": "i2i_0_1_70_0.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5017
+ },
+ {
+  "file": "i2i_0_1_70_1.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5018
+ },
+ {
+  "file": "i2i_0_2_55_0.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5025
+ },
+ {
+  "file": "i2i_0_2_55_1.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5026
+ },
+ {
+  "file": "i2i_0_2_70_0.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5027
+ },
+ {
+  "file": "i2i_0_2_70_1.png",
+  "init": "mark_0",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5028
+ },
+ {
+  "file": "i2i_1_0_55_0.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5105
+ },
+ {
+  "file": "i2i_1_0_55_1.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5106
+ },
+ {
+  "file": "i2i_1_0_70_0.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5107
+ },
+ {
+  "file": "i2i_1_0_70_1.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5108
+ },
+ {
+  "file": "i2i_1_1_55_0.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5115
+ },
+ {
+  "file": "i2i_1_1_55_1.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5116
+ },
+ {
+  "file": "i2i_1_1_70_0.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5117
+ },
+ {
+  "file": "i2i_1_1_70_1.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5118
+ },
+ {
+  "file": "i2i_1_2_55_0.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5125
+ },
+ {
+  "file": "i2i_1_2_55_1.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5126
+ },
+ {
+  "file": "i2i_1_2_70_0.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5127
+ },
+ {
+  "file": "i2i_1_2_70_1.png",
+  "init": "mark_1",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5128
+ },
+ {
+  "file": "i2i_2_0_55_0.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5205
+ },
+ {
+  "file": "i2i_2_0_55_1.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5206
+ },
+ {
+  "file": "i2i_2_0_70_0.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5207
+ },
+ {
+  "file": "i2i_2_0_70_1.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5208
+ },
+ {
+  "file": "i2i_2_1_55_0.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5215
+ },
+ {
+  "file": "i2i_2_1_55_1.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5216
+ },
+ {
+  "file": "i2i_2_1_70_0.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5217
+ },
+ {
+  "file": "i2i_2_1_70_1.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5218
+ },
+ {
+  "file": "i2i_2_2_55_0.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5225
+ },
+ {
+  "file": "i2i_2_2_55_1.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5226
+ },
+ {
+  "file": "i2i_2_2_70_0.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5227
+ },
+ {
+  "file": "i2i_2_2_70_1.png",
+  "init": "mark_2",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5228
+ },
+ {
+  "file": "i2i_3_0_55_0.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5305
+ },
+ {
+  "file": "i2i_3_0_55_1.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5306
+ },
+ {
+  "file": "i2i_3_0_70_0.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5307
+ },
+ {
+  "file": "i2i_3_0_70_1.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5308
+ },
+ {
+  "file": "i2i_3_1_55_0.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5315
+ },
+ {
+  "file": "i2i_3_1_55_1.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5316
+ },
+ {
+  "file": "i2i_3_1_70_0.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5317
+ },
+ {
+  "file": "i2i_3_1_70_1.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5318
+ },
+ {
+  "file": "i2i_3_2_55_0.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5325
+ },
+ {
+  "file": "i2i_3_2_55_1.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5326
+ },
+ {
+  "file": "i2i_3_2_70_0.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5327
+ },
+ {
+  "file": "i2i_3_2_70_1.png",
+  "init": "mark_3",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5328
+ },
+ {
+  "file": "i2i_4_0_55_0.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5405
+ },
+ {
+  "file": "i2i_4_0_55_1.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5406
+ },
+ {
+  "file": "i2i_4_0_70_0.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5407
+ },
+ {
+  "file": "i2i_4_0_70_1.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5408
+ },
+ {
+  "file": "i2i_4_1_55_0.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5415
+ },
+ {
+  "file": "i2i_4_1_55_1.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5416
+ },
+ {
+  "file": "i2i_4_1_70_0.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5417
+ },
+ {
+  "file": "i2i_4_1_70_1.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5418
+ },
+ {
+  "file": "i2i_4_2_55_0.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5425
+ },
+ {
+  "file": "i2i_4_2_55_1.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5426
+ },
+ {
+  "file": "i2i_4_2_70_0.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5427
+ },
+ {
+  "file": "i2i_4_2_70_1.png",
+  "init": "mark_4",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5428
+ },
+ {
+  "file": "i2i_5_0_55_0.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5505
+ },
+ {
+  "file": "i2i_5_0_55_1.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.55,
+  "seed": 5506
+ },
+ {
+  "file": "i2i_5_0_70_0.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5507
+ },
+ {
+  "file": "i2i_5_0_70_1.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster, a hermit crab retreated into its spiral shell, only two folded claws and two eyes on stalks showing at the mouth of the shell, flat colour planes, one heavy black contour, cream paper, sunburst medallion",
+  "strength": 0.7,
+  "seed": 5508
+ },
+ {
+  "file": "i2i_5_1_55_0.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5515
+ },
+ {
+  "file": "i2i_5_1_55_1.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.55,
+  "seed": 5516
+ },
+ {
+  "file": "i2i_5_1_70_0.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5517
+ },
+ {
+  "file": "i2i_5_1_70_1.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque lithograph poster by Jules Ch\u00e9ret, emblem: a snail-like spiral shell with a hermit crab's eyes and claws peeking out, vermilion, chrome yellow, Prussian blue, cast shadow, round cartouche",
+  "strength": 0.7,
+  "seed": 5518
+ },
+ {
+  "file": "i2i_5_2_55_0.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5525
+ },
+ {
+  "file": "i2i_5_2_55_1.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.55,
+  "seed": 5526
+ },
+ {
+  "file": "i2i_5_2_70_0.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5527
+ },
+ {
+  "file": "i2i_5_2_70_1.png",
+  "init": "mark_5",
+  "prompt": "belleposter, Belle \u00c9poque poster logo in the manner of Steinlen, a hermit crab hiding in its shell, claws folded under the lip, eyes peeking, bold silhouette, two colours on cream, medallion",
+  "strength": 0.7,
+  "seed": 5528
+ }
+]

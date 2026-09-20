@@ -1914,6 +1914,29 @@ per model before use (their weights licence and their training-set statement bot
 ledger). **C:** the D-67 pixel model from scratch, the product path. Recommendation: A now, B on
 Eric's word.
 
+### D-75 — The Belle Époque LoRA exists: CommonCanvas-S-C fine-tuned on our poster slice; the first 192 litho-look crab candidates
+**2026-09-20, Eric: "Go, approved to rent what you need for this."** Pod `4lah3cnqng73h1` (A40,
+$0.49/h, EU-SE-1), created 20:31 UTC after the plan and price were posted, deleted ~21:45 UTC,
+`list-pods` empty; ≈ $0.61 (billing to be re-read when it posts). **Base:** CommonCanvas-S-C —
+weights CC-BY-SA-4.0, trained on CC-BY/CC-BY-SA images (the commercial variant); caveat recorded:
+its captions were machine-written by BLIP-2. **Data:** 557 images at 512 px from our own ledgers
+(Met rows Jev-labelled keep_print/keep_plate + 24 LoC posters), captions from each object's own
+metadata with the trigger word `belleposter` (`scripts/build_sd_trainset.py`,
+`data/images/sd_train/ledger.jsonl`). **Training:** diffusers text-to-image LoRA, rank 32, 1,500
+steps, batch 8, bf16 (fp16 failed on the grad scaler; the SD2 config repos are gated, the
+CommonCanvas repo ships its own diffusers layout), ~15 min. **Outputs home with hashes checked:**
+`runs/runpod/belle/lora/pytorch_lora_weights.safetensors` (26 MB), 120 text-to-image candidates
+in six prompt families, 72 img2img candidates seeded from the procedural mark at strengths 0.55 /
+0.7 so the retreated-crab composition holds (`scripts/runpod/belle_lora.sh`, `belle_img2img.sh`).
+Sheets: `docs/samples/palettes/belle_candidates_512.jpg`, `belle_candidates_i2i.jpg`. **Read:**
+the litho surface, poster colours, medallions and hand-lettered bands are there; anatomy is
+loose (crab–shell hybrids, the odd lobster), the img2img pass fixes composition; a dozen are
+close. **Licence of the outputs:** the LoRA is a derivative of CC-BY-SA-4.0 weights trained on
+PD/CC0 images → the LoRA ships CC-BY-SA-4.0 with attribution to CommonCanvas; generated images
+carry no copyright claim of ours (CC0 per O-28). Next: Eric picks seeds/rows; iterate those with
+more steps and a shell/crab-plate-weighted caption set; the on-stick 64 px version is derived
+from the chosen master, not generated on the stick.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
