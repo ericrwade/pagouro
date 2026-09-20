@@ -860,7 +860,7 @@
       },
       "sha256_processed": "5bac6cce5ae9ec3a0ccf9030d4d673923d9f794177ebab55c92dcae425c98e6c",
       "file": "data/raw/usgov/neets-01-dc.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "SUPERSEDED 2026-09-20 by usgov-neets-01-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)"
     },
     {
       "slug": "usgov-neets-02",
@@ -883,7 +883,7 @@
       },
       "sha256_processed": "30d75c40fc8d946f3d924a3bbf062004c3b9b370d7c6b21eba0a561fc839441d",
       "file": "data/raw/usgov/neets-02-ac.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "SUPERSEDED 2026-09-20 by usgov-neets-02-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)"
     },
     {
       "slug": "usgov-neets-13",
@@ -1217,7 +1217,7 @@
       },
       "sha256_processed": "9a2aef564c0052962efc0937a54310afadf504489b755cbd7fe400908eb3910a",
       "file": "data/raw/usgov/usda-home-canning-2015.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "SUPERSEDED 2026-09-20 by usgov-usda-home-canning-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)"
     },
     {
       "slug": "usgov-nasa-sp4205",
@@ -1583,6 +1583,84 @@
       "file": "data/raw/usgov/usgov-neets-13-reocr.md",
       "slice": "shelf (D-58): anneal-only flavor",
       "supersedes": "usgov-neets-13"
+    },
+    {
+      "name": "NEETS Module 1: Matter, Energy, and Direct Current (NAVEDTRA 14173)",
+      "author": "US Navy, Naval Education and Training Professional Development and Technology Center",
+      "url": "https://archive.org/details/NEETSModule01",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Navy nonresident training course NAVEDTRA 14173; archive.org item NEETSModule01 carries the Public Domain Mark",
+      "first_published": "1998",
+      "published_before_generative_ai": true,
+      "slug": "usgov-neets-01-reocr",
+      "source": "archive.org page images, re-OCR'd (D-66)",
+      "retrieved": "2026-09-20",
+      "retrieved_utc": "2026-09-20T02:10:59+00:00",
+      "characters": 442177,
+      "estimated_tokens": 136965,
+      "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
+      "ocr_stats": {
+        "pages_total": 283,
+        "pages_ocr": 283,
+        "seconds": 2869.6,
+        "failed": 0
+      },
+      "sha256_processed": "118c8321c5002e9024a169719683667484b745a69aa160f9f179cd2e595d54d3",
+      "file": "data/raw/usgov/usgov-neets-01-reocr.md",
+      "slice": "shelf (D-58): anneal-only flavor",
+      "supersedes": "usgov-neets-01"
+    },
+    {
+      "name": "NEETS Module 2: Alternating Current and Transformers (NAVEDTRA 14174)",
+      "author": "US Navy, Naval Education and Training Professional Development and Technology Center",
+      "url": "https://archive.org/details/NEETSModule02",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "US Navy nonresident training course NAVEDTRA 14174; archive.org item NEETSModule02 carries the Public Domain Mark",
+      "first_published": "1998",
+      "published_before_generative_ai": true,
+      "slug": "usgov-neets-02-reocr",
+      "source": "archive.org page images, re-OCR'd (D-66)",
+      "retrieved": "2026-09-20",
+      "retrieved_utc": "2026-09-20T02:10:59+00:00",
+      "characters": 421434,
+      "estimated_tokens": 134288,
+      "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
+      "ocr_stats": {
+        "pages_total": 250,
+        "pages_ocr": 250,
+        "seconds": 1796.6,
+        "failed": 0
+      },
+      "sha256_processed": "484ce03722d157cef2b0c468c08c35fa0dd96192d7e0978cf1f7eb85386bda6c",
+      "file": "data/raw/usgov/usgov-neets-02-reocr.md",
+      "slice": "shelf (D-58): anneal-only flavor",
+      "supersedes": "usgov-neets-02"
+    },
+    {
+      "name": "USDA Complete Guide to Home Canning (Agriculture Information Bulletin 539, 2015 revision)",
+      "author": "US Department of Agriculture, National Institute of Food and Agriculture",
+      "url": "https://archive.org/details/usda-complete-guide-to-home-canning-2015-revision",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "USDA Agriculture Information Bulletin No. 539 (2015 revision), a work of the US Department of Agriculture; archive.org item usda-complete-guide-to-home-canning-2015-revision; no copyright notice in the text",
+      "first_published": "2015",
+      "published_before_generative_ai": true,
+      "slug": "usgov-usda-home-canning-reocr",
+      "source": "archive.org page images, re-OCR'd (D-66)",
+      "retrieved": "2026-09-20",
+      "retrieved_utc": "2026-09-20T02:10:59+00:00",
+      "characters": 473237,
+      "estimated_tokens": 167305,
+      "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
+      "ocr_stats": {
+        "pages_total": 193,
+        "pages_ocr": 193,
+        "seconds": 1624.1,
+        "failed": 0
+      },
+      "sha256_processed": "44a4bc1d925f63a51f968a0b7a0ee5551b4d3a74752540e3af44722c49888db7",
+      "file": "data/raw/usgov/usgov-usda-home-canning-reocr.md",
+      "slice": "shelf (D-58): anneal-only flavor",
+      "supersedes": "usgov-usda-home-canning"
     }
   ]
 }
