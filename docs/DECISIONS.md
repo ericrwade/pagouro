@@ -1692,3 +1692,10 @@ with a licence, a hash and a ledger-style row, installed by copying, listed with
 launch. Order: container + 3–4 first-party example skills → catalogue → nothing more unless a
 community appears. Generalises MAKE_IT_YOURS rung 4. Eric's later call: whether a catalogue ever
 carries money.
+**Addendum (Eric): the catalogue is the contributor on-ramp; encourage ports.** Spec written:
+`docs/SKILLS.md` — the decomposed container (tools/packs/examples/eval/manifest), compatibility
+with plain SKILL.md folders (the app says which parts it used), the half-hour porting recipe, a
+number with every port (`pagouro skill test`), credit built in (`ported_by` shown in the app,
+CONTRIBUTORS.md), the "Runs on Pagouro" compatibility mark under O-29, a ranked wanted list of
+twenty, micro-bounties only if Eric ever says so. Build order: container → three first-party
+example ports → catalogue.
