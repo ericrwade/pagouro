@@ -61,6 +61,7 @@ def load_examples() -> list[list[dict]]:
     add_pairs(os.path.join(ROOT, "sft", "memory_seed.jsonl"))
     add_pairs(os.path.join(ROOT, "sft", "calc_seed.jsonl"))         # O-18/D-61: word problem -> exact expression, program-generated       # O-23 level-1 memory: personal questions -> pack_search; answer from YOUR OWN WORDS hits
     out.extend(load_skill_examples())                                # O-30: each skill's examples.jsonl teaches the router its tool name
+    add_pairs(os.path.join(ROOT, "sft", "spelling_seed.jsonl"))     # D-68: answer in the spelling register the question used
     return out
 
 

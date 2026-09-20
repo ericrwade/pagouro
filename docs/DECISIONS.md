@@ -1645,6 +1645,17 @@ to **match the user's spelling**: a program-generated British-spelling variant o
 (dictionary swap, ~1,700 pairs), paired with British-spelled questions; measured by a ten-item
 set, five per spelling, scored on whether the answer's spellings match the question's. "Follows
 your spelling" goes on the box only if the number says so. Built after the D-65/D-66 GPU jobs.
+**(iii) built 2026-09-20.** `app/spelling.py` (1,960 US↔UK pairs from ~180 stems + four suffix
+rules; meaning-changing pairs like practice/practise deliberately absent), `sft/build_spelling_seed.py`
+→ `sft/spelling_seed.jsonl` (501 rows: 461 British copies of SFT conversations whose *question*
+changes under the swap, 40 paired templates in both registers; loaded by `train_sft.py`),
+`evals/spelling.json` + `evals/run_spelling.py`. **Scoring lesson learned on the first run:** the
+naive score was 8/9 on Flash — because the model echoes the question's own marked word back
+("colours" → "colours"). That is copying, not register. The headline now counts only *novel*
+marked words (ones the question did not contain in either spelling); the echo-inclusive number is
+shown beside it, never as the headline. **Flash baseline (sft2): novel 0/0 scored, 10 unscored;
+echo-inclusive 4/4.** A 126M model rarely volunteers a marked word of its own; the metric becomes
+meaningful at 1B. No claim on the box until it scores.
 
 ### O-28 — Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea
 **2026-09-19, Eric, from the road.** "Draw 1.0 should have a style. Maybe even a palette. An

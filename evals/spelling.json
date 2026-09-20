@@ -1,0 +1,18 @@
+{
+  "set": "spelling",
+  "version": 2,
+  "description": "D-68 (iii): does the answer follow the spelling register of the question, in words of its own? Five British-spelled questions, five American-spelled, pairwise identical apart from spelling. Each question carries one cue word (colour/color, organise/organize, centre/center, grey/gray, recognise/recognize) and asks for something whose natural answer uses OTHER register-marked words (a measurement in metres/meters or kilometres/kilometers, a colour/color). Scored by app/spelling.py on NOVEL marked words only - marked words in the answer that the question did not contain in either spelling - so echoing the cue back scores nothing. FOLLOWED: every novel marked word is in the question's register and there is at least one; MIXED: both registers; OPPOSED: all in the other register; UNSCORED: no novel marked word (a small model's usual result). Headline = FOLLOWED / scored, with the unscored count and the echo-inclusive score shown beside it. Disjoint from sft/spelling_seed.jsonl.",
+  "scoring": "novel-words-only verdict per item; headline = followed / (10 - unscored), unscored shown; echo-inclusive score reported beside it, never as the headline",
+  "items": [
+    {"id": "sp-uk-01", "register": "british", "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?"},
+    {"id": "sp-uk-02", "register": "british", "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?"},
+    {"id": "sp-uk-03", "register": "british", "prompt": "What is at the centre of a hurricane, and how wide is it usually?"},
+    {"id": "sp-uk-04", "register": "british", "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size."},
+    {"id": "sp-uk-05", "register": "british", "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?"},
+    {"id": "sp-us-01", "register": "american", "prompt": "What color is a ripe eggplant, and roughly how long does one grow?"},
+    {"id": "sp-us-02", "register": "american", "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?"},
+    {"id": "sp-us-03", "register": "american", "prompt": "What is at the center of a hurricane, and how wide is it usually?"},
+    {"id": "sp-us-04", "register": "american", "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size."},
+    {"id": "sp-us-05", "register": "american", "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?"}
+  ]
+}
