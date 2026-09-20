@@ -102,7 +102,7 @@ def main() -> int:
                 break
             # The search index's isPublicDomain filter is broken (crab: 226 -> 3), so search on hasImages only
             # and check isPublicDomain on each object. "title:" prefix restricts a phrase to titles.
-            qq, extra = (q[6:], "&title=true") if q.startswith("title:") else (q, "")
+            qq, extra = (q[6:], "&title=true") if q.startswith("title:") else (q[7:], "&artistOrCulture=true") if q.startswith("artist:") else (q, "")
             res = get_json(f"{API}/search?hasImages=true{extra}&q={urllib.parse.quote(qq)}")
             ids = (res or {}).get("objectIDs") or []
             print(f"  '{q}': {len(ids):,} objects with images (PD checked per object)", flush=True)

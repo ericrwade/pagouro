@@ -124,10 +124,26 @@ def mark(seed: int = 0, n: int = 64, band: bool = True) -> list[list[Pixel]]:
     # peeking over them, thin antennae. No body. Seen from the front-left, shell high and behind.
     shell = R[shell_r]
     body = R[crab_r][2]
-    sx, sy = c + n * 0.08, c - n * 0.07          # shell centre, right and high
-    srx, sry = n * 0.30, n * 0.25                # a fat ellipse, the apex up-right
+    sx, sy = c + n * 0.08, c - n * 0.05          # shell centre, right and high
+    srx, sry = n * 0.28, n * 0.21                # the body whorl
+    # cast shadow on the poster floor (Eric): a flat dark-cream ellipse under the figure, offset down-left
+    for ymul in (1.0,):
+        ellipse(img, sx - n * 0.06, sy + sry + n * 0.02, srx * 1.05, n * 0.06, R["poster"][1], only_on=paper)
+        ellipse(img, sx - n * 0.06, sy + sry + n * 0.02, srx * 1.05, n * 0.06, R["poster"][1], only_on=R["poster"][2])
     ellipse(img, sx, sy, srx, sry, shell[2])
-    ellipse(img, sx + n * 0.05, sy - n * 0.05, srx * 0.62, sry * 0.6, shell[3], only_on=shell[2])   # highlight plane
+    # the spire: a second, smaller whorl up-right with a pointed apex, so the form reads as a snail shell, not an egg
+    ellipse(img, sx + srx * 0.55, sy - sry * 0.55, srx * 0.42, sry * 0.45, shell[2])
+    ellipse(img, sx + srx * 0.86, sy - sry * 0.95, srx * 0.18, sry * 0.22, shell[2])
+    for k in range(int(n * 0.06)):                                        # the apex point
+        x, y = int(sx + srx * 0.98 + k * 0.5), int(sy - sry * 1.15 - k * 0.6)
+        if 0 <= x < n and 0 <= y < n: img[y][x] = shell[2]
+    ellipse(img, sx + n * 0.03, sy - n * 0.05, srx * 0.62, sry * 0.6, shell[3], only_on=shell[2])   # highlight plane
+    # suture line between the whorls, in the dark shell tone
+    for i in range(0, 360, 2):
+        a = math.radians(i)
+        x, y = sx + srx * 0.55 + srx * 0.42 * math.cos(a), sy - sry * 0.55 + sry * 0.45 * math.sin(a)
+        if 0 <= int(x) < n and 0 <= int(y) < n and img[int(y)][int(x)] in (shell[2], shell[3]) and math.pi * 0.55 < a < math.pi * 1.55:
+            img[int(y)][int(x)] = shell[1]
     # growth lines: three arcs following the shell, in the dark shell tone (the poster's two-tone shading)
     for k, f in enumerate((0.92, 0.72, 0.52)):
         for i in range(0, 360, 2):
