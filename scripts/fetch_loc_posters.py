@@ -22,6 +22,7 @@ import os
 import re
 import struct
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -32,20 +33,25 @@ UA = {"User-Agent": "pagouro-corpus-builder/1.0 (+https://github.com/ericrwade/p
 COLL = "https://www.loc.gov/collections/artists-posters/"
 
 
-def get(url: str, tries: int = 5) -> bytes:
+def get(url: str, tries: int = 8) -> bytes:
+    """LoC throttles bursts (429, sometimes 520): back off for real and never treat a throttle as an answer."""
     for i in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=90) as r:
                 return r.read()
-        except (http.client.IncompleteRead,) as e:
-            if i == tries - 1:
-                return e.partial
-            time.sleep(2 * (i + 1))
-        except Exception:
-            if i == tries - 1:
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 520, 502, 503):
+                wait = 30 * (i + 1)
+                print(f"  throttled ({e.code}); waiting {wait}s", flush=True)
+                time.sleep(wait); continue
+            if e.code == 404:
                 return b""
-            time.sleep(3 * (i + 1))
-    return b""
+            time.sleep(5)
+        except (http.client.IncompleteRead,) as e:
+            time.sleep(5 * (i + 1))
+        except Exception:
+            time.sleep(5 * (i + 1))
+    raise RuntimeError(f"gave up on {url}")
 
 
 def get_json(url: str):
@@ -83,6 +89,7 @@ def main() -> int:
     ap.add_argument("--query", default="")
     ap.add_argument("--max-year", type=int, default=1928)
     ap.add_argument("--per-page", type=int, default=100)
+    ap.add_argument("--dates", default="1880/1928", help="LoC dates facet, start/end; keeps the walk to the era")
     a = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
     have = set()
@@ -94,7 +101,7 @@ def main() -> int:
     with io.open(LEDGER, "a", encoding="utf-8", newline="\n") as led:
         while new < a.cap:
             q = f"&q={urllib.parse.quote(a.query)}" if a.query else ""
-            d = get_json(f"{COLL}?fo=json&c={a.per_page}&sp={page}{q}")
+            d = get_json(f"{COLL}?fo=json&c={a.per_page}&sp={page}{q}&dates={a.dates}")
             if not d or not d.get("results"):
                 break
             total = (d.get("pagination") or {}).get("of")
@@ -112,7 +119,7 @@ def main() -> int:
                 img_url = next((u for u in imgs if u.endswith("r.jpg")), imgs[-1] if imgs else "")
                 if not img_url or "tile.loc.gov" not in img_url:
                     continue
-                time.sleep(0.6)
+                time.sleep(3.0)                      # LoC crawl pace: well under their burst limit
                 it = get_json(item.rstrip("/") + "/?fo=json") or {}
                 itm = it.get("item") or {}
                 rights = itm.get("rights_advisory") or itm.get("rights") or it.get("rights") or ""
@@ -121,6 +128,7 @@ def main() -> int:
                 rights = str(rights).strip()
                 if "no known restrictions" not in rights.lower():
                     continue
+                time.sleep(1.0)
                 data = get(img_url)
                 sz = jpeg_size(data)
                 if not sz or min(sz) < 200:
