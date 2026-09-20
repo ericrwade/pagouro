@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-flash5",
+  "model_file": "pagouro-flash-sft5-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 0,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 10
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 6,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 4
+  },
+  "followed_of_scored": "0/0",
+  "followed_of_scored_echo_inclusive": "6/6",
+  "rate_followed_of_scored": null,
+  "elapsed_s": 1.9,
+  "utc": "2026-09-20T23:05:24+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is typically about 2.5 years old."
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "You can organise a five-kilometre run by choosing the right station, then measure the distance between the water stations, then measure the distance between the water stations, then measure the distance between the water stations, and then measure the distance between the water stations, then measure the distance between the water stations, then measure the distance between the water stations, and then measure the distance between the water stations, then measure the distance between the water stations, and then measure the distance between the water stations, then measure the distance between the water stations, and then measure the distance between the water stations, and then measure the distance between the water stations, and then measure the distance between the water stations, and then measure the distance between the water stations, and then measure the distance between the water stations"
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "At the centre of a hurricane, the hurricane is usually the largest and most powerful of the many hurricane systems."
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A grey squirrel's fur is typically one shade."
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that is dangerous, and you can remove it from its own path, can be removed by a professional from its own property."
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe eggplant is typically about 12 to 15 inches in diameter, with a spread of 1 to 2 inches. The plant is usually about 12 to 15 inches in diameter, with a spread of 1 to 2 inches."
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "You should organize the five-kilometer fun run in the water stations' starting points, with the finish going to the station's end."
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "At the center of a hurricane, the hurricane's wind is strong enough to damage structures, but it's also often strong enough to damage a structure on the ground."
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A gray squirrel's fur is typically more than 100% black."
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that is dangerous, easy to remove, and can be removed by a professional from its source."
+    }
+  ]
+}

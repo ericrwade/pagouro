@@ -1937,6 +1937,20 @@ carry no copyright claim of ours (CC0 per O-28). Next: Eric picks seeds/rows; it
 more steps and a shell/crab-plate-weighted caption set; the on-stick 64 px version is derived
 from the chosen master, not generated on the stick.
 
+### D-76 — flash-sft5: the tool-result problem is solved and the honesty line still moves; stop iterating SFT mixes on the 126M
+**2026-09-20.** sft5 = sft3's mix + tool-result seed (600) + abstention seed ×3, 5,500 steps, 2.9 h
+CPU. On the adjudicating 100-item sets: **bluff 48% / answered 15%** (sft3: 38 / 19); on the
+30-item sets 33.3 / 23.3 — the best 30-item numbers of any Flash model, and the 100-sets say the
+opposite, which is D-73's lesson repeated. Tool-result fidelity **faithful 7/10, NO_MATCH reported
+9/10** (sft3: 6, 4); skills routing model-alone 9/9/9; memory 8/10; tool-use 19/24; spelling
+novel 0/0. **Decided:** (1) the stick keeps sft3. (2) Across sft3 → sft4 → sft5 the pattern is
+stable: rows that teach answering *from a tool result* raise open-question fabrication by 10–16
+points on bluff100 no matter how the abstention share is padded — at 126M this is capacity, not
+mix. **No further SFT-mix iterations on Flash.** The seeds (tool-result, spelling, skill router +
+answer examples, known/unknowable GRPO curriculum) are ready for the 1B, where the trade-off is
+expected to relax; the 100-sets are the yardstick there. (3) The 30-item sets are demoted to
+history in every report from now on. Kept: `checkpoints/flash_sft5.pt`, GGUFs, results.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
