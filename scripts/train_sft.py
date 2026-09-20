@@ -85,6 +85,11 @@ def load_skill_examples() -> list[list[dict]]:
             if not line.strip():
                 continue
             d = json.loads(line)
+            if "answer" in d:      # an answer example: the model reads the tool's result and composes the reply
+                convs.append([{"role": "user", "content": d["user"]},
+                              {"role": "tool", "content": f"{d['tool']}: {d['tool_result']}"},
+                              {"role": "assistant", "content": d["answer"]}])
+                continue
             convs.append([{"role": "system", "content": prompt}, {"role": "user", "content": d["user"]},
                           {"role": "assistant", "content": router_json(d["tool"], d.get("arguments", ""))}])
     return convs

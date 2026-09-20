@@ -10,3 +10,7 @@
 {"user": "convert 100 kelvin to fahrenheit", "tool": "convert", "arguments": "100 k to f"}
 {"user": "what is 17 times 23", "tool": "calc", "arguments": "17*23"}
 {"user": "what time is it", "tool": "time", "arguments": ""}
+{"user": "How far is 42 km in miles?", "tool": "convert", "tool_result": "42 km = 26.1 mi", "answer": "42 km is 26.1 miles."}
+{"user": "What's 200 F in celsius?", "tool": "convert", "tool_result": "200 f = 93.33 c", "answer": "200 °F is 93.33 °C."}
+{"user": "How many ml in 3 cups?", "tool": "convert", "tool_result": "3 cup = 709.8 ml", "answer": "3 US cups is 709.8 ml."}
+{"user": "Convert 5 furlongs to metres.", "tool": "convert", "tool_result": "NO_MATCH: I have no table entry for the unit 'furlongs'.", "answer": "I can't convert that: furlongs are not in my unit table. I can do length in mm, cm, m, km, inches, feet, yards, miles and nautical miles."}

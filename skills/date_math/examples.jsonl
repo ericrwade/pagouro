@@ -10,3 +10,7 @@
 {"user": "ninety days from 2026-10-01 is when", "tool": "date_calc", "arguments": "2026-10-01 plus 90 days"}
 {"user": "what's the date today", "tool": "time", "arguments": ""}
 {"user": "what is 365 times 4", "tool": "calc", "arguments": "365*4"}
+{"user": "How many days from 2026-01-15 to 2026-04-01?", "tool": "date_calc", "tool_result": "from 2026-01-15 to 2026-04-01 is 76 days (10 weeks and 6 days)", "answer": "From 15 January 2026 to 1 April 2026 is 76 days — 10 weeks and 6 days."}
+{"user": "What weekday was 1969-07-20?", "tool": "date_calc", "tool_result": "1969-07-20 is a Sunday", "answer": "20 July 1969 was a Sunday."}
+{"user": "What date is 45 days after 2026-11-01?", "tool": "date_calc", "tool_result": "2026-11-01 + 45 days = 2026-12-16 (Wednesday)", "answer": "45 days after 1 November 2026 is Wednesday, 16 December 2026."}
+{"user": "When is the Friday after next?", "tool": "date_calc", "tool_result": "NO_MATCH: I need one or two dates like 2026-09-20 or 'Sep 20 2026', and what to do with them (days between, plus N days, weekday, days until).", "answer": "I can't work that out without a starting date. Give me today's date, or ask for a date plus a number of days, and I'll calculate it."}

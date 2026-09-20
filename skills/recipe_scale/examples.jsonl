@@ -10,3 +10,7 @@
 {"user": "scale this recipe from 100 portions to 25: 12 lb beef, 3 qt stock", "tool": "scale_recipe", "arguments": "for 25 instead of 100: 12 lb beef, 3 qt stock"}
 {"user": "how many grams in a cup of flour", "tool": "pack_search", "arguments": "cup flour grams"}
 {"user": "what is 3/4 of 2 cups", "tool": "calc", "arguments": "3/4*2"}
+{"user": "Triple: 2 cups flour, 1 egg, 1/4 tsp salt.", "tool": "scale_recipe", "tool_result": "scaled x3:\n6 cups flour\n3 egg\n3/4 tsp salt.", "answer": "Tripled: 6 cups flour, 3 eggs, 3/4 tsp salt."}
+{"user": "Halve this: 4 cups stock, 3 carrots, 1 tbsp butter.", "tool": "scale_recipe", "tool_result": "scaled x1/2:\n2 cups stock\n1 1/2 carrots\n1/2 tbsp butter.", "answer": "Halved: 2 cups stock, 1 1/2 carrots, 1/2 tbsp butter."}
+{"user": "For 8 instead of 4: 500 g beef, 2 onions.", "tool": "scale_recipe", "tool_result": "scaled x2:\n1000 g beef\n4 onions.", "answer": "For 8 instead of 4: 1000 g beef and 4 onions."}
+{"user": "Scale it up a bit: 3 cups rice.", "tool": "scale_recipe", "tool_result": "NO_MATCH: I could not read a scaling factor in 'Scale it up a bit'.", "answer": "Tell me how much — double, 1.5x, or 'for 6 instead of 4' — and I'll scale the 3 cups of rice."}

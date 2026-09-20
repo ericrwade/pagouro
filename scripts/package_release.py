@@ -144,7 +144,7 @@ def main() -> int:
         if os.path.isdir(skills_dst):
             shutil.rmtree(skills_dst)
         shutil.copytree(os.path.join(ROOT, "skills"), skills_dst,
-                        ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "last_test.json"))
+                        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))   # last_test.json ships: /skills shows the scores
         os.makedirs(os.path.join(rel, "workspace"), exist_ok=True)
         with io.open(os.path.join(rel, "workspace", "README.txt"), "w", encoding="utf-8", newline="\n") as f:
             f.write("The only folder Pagouro's tools may write to, and only in CAN ACT mode (/act).\n"
