@@ -13,6 +13,52 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-20 (unattended window 3, day 3) — Palettes, skills, spelling, GRPO at scale, and the re-OCR audit that caught our own OCR
+**Model:** Fable 5.1
+**Goal:** Finish the D-66 rental (recipes, MUTCD), then work the post-rental list: O-28 palette
+candidates, O-30 skills container, D-68 spelling register, the thousands-scale GRPO set, the
+per-page numeric diff from the D-66 note.
+**Did:**
+- **Recipe manual re-OCR'd and ingested** (1,691 pages, 0 failed, 1.64M tokens; 2,975 tables).
+- **O-28:** three 32-colour house palettes (Trade Card, Gaslight, Naturalist Plate) in
+  `app/palettes.py` with the renderer rules (quantiser, dither, one-pixel ink outline); a
+  program-drawn hermit crab in `artkit.py`; `scripts/palette_sheet.py` → `docs/samples/palettes/`;
+  sheet sent to Eric's phone and posted on #2. **Eric's call: which becomes HOUSE.**
+- **O-30 built:** `app/skills.py` (screened-not-sandboxed loader, MANIFEST hashes, wild SKILL.md
+  folders accepted with a used/ignored report), three first-party CC0 skills (`unit_convert`,
+  `date_math`, `recipe_scale`), `scripts/skill_test.py` (static / tool / end-to-end / routing;
+  writes `skills/CATALOGUE.md`), `/skills`, packager ships `skills/`, `.gitattributes` pins LF.
+  Measured on Flash: tool 10/10 ×3, end-to-end 10/10 ×3, **model router alone 0/10 ×3** (routed
+  conversions to `calc` with invented factors) → `TRIGGER` regexes in the harness (0 false positives
+  on the frozen suite) and skill examples fed into `train_sft.py`.
+- **D-68 (iii):** `app/spelling.py` (1,960 pairs), `sft/spelling_seed.jsonl` (501 rows),
+  `evals/spelling.json` + runner scored on *novel* marked words (the naive score was 8/9 because the
+  model echoes the cue). Flash baseline: 0/0 scored, 10 unscored; echo-inclusive 4/4.
+- **GRPO at scale:** `sft/build_grpo_big.py` → 5,935 prompts (2,979 real from prominent Wikipedia
+  first sentences with common-category heads as keys; 2,956 invented in identical surface forms,
+  stems verified absent from every title); eval-disjoint.
+- **D-66 audit — the important one.** `numeric_drift.py --conflicts` (ordered-number alignment,
+  context-gated near-miss pairs) flagged a canning process time; the page image said a third number.
+  `reocr_footer_check.py` showed the cause: **batched OCR contaminated the first two leaves of every
+  8-page batch** (they begin with their own page and continue with the previous batch's leaves 4–5;
+  footers prove it). ~25% of pages in all six works. The stick was never touched; the ledger rows and
+  repo packs were. `reocr_fix.py` (unbatched redo of positions 0/1 + every tail-copy leaf) tested
+  clean on two leaves and is queued behind MUTCD on the pod; `ingest_reocr.py` now refuses a work
+  that fails the page-order check and records the check on the ledger row.
+**Verified:** skill tests and routing from `scripts/skill_test.py` output; spelling numbers from
+`evals/results/pagouro-flash2__spelling.json`; footer/tail-copy counts from the pod's per-page
+files; the page images for USDA leaf 94 and NEETS 1 leaf 22 opened and read (in `docs/samples/ocr/`).
+**Open / next:** (1) when `REOCR_FIX_DONE`: fetch all six `.md` + stats, run the footer check on
+each, re-ingest (`--allow-tail-copies` for the recipe cards with the measured genuine-repeat count),
+verify ledger, commit packs, **delete pod `y1wscss6dj9gsw`**, `list-pods` empty, billing, close on
+#2, memory LIVE block; (2) refresh the stick (stages 9–11, `MODEL_STEM=gguf_flash/pagouro-flash-sft2
+EVAL_LABEL=pagouro-flash2 CONTEXT_WORDS=700`) once packs are clean; (3) Eric's calls: HOUSE palette,
+O-29 trademark, O-31 io.net, O-32 receipt model; (4) Draw corpus fetch (CC0 sources per
+`IMAGE_MVP.md`), GRPO run on the big set when GPU time is next authorised, O-35 typed router +
+O-15 gate, numeric-preservation eval column, book signposts.
+
+---
+
 ## 2026-09-19 (unattended window 3, day 2, overnight) — Flash evaluated, the decay that ate itself, the shelf wins, three integrity fixes
 **Model:** Fable 5.1
 **Goal:** Land the Flash run (D-61) and keep the plan moving while Eric is away; answer his
