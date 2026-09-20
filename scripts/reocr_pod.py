@@ -16,6 +16,7 @@ import json
 import os
 import sys
 import time
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
@@ -41,7 +42,7 @@ def page_count(item: str) -> int:
         return int(n)
     for f in m.get("files", []):
         if f["name"].endswith("_scandata.xml"):
-            xml = get(f"https://archive.org/download/{item}/{f['name']}").decode("utf-8", "replace")
+            xml = get(f"https://archive.org/download/{item}/{urllib.parse.quote(f['name'])}").decode("utf-8", "replace")
             return xml.count("<page ")
     raise RuntimeError(f"{item}: no page count")
 
