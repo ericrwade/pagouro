@@ -952,7 +952,7 @@
       },
       "sha256_processed": "430e02a01bad0ece87d3fb58680faf4145da00c72359653d16cdc7003c07c852",
       "file": "data/raw/usgov/fhwa-mutcd-2009.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "SUPERSEDED 2026-09-20 by usgov-fhwa-mutcd-2009-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)"
     },
     {
       "slug": "usgov-faa-afh",
@@ -1731,6 +1731,43 @@
       "file": "data/raw/usgov/usgov-usda-home-canning-reocr.md",
       "slice": "SUPERSEDED 2026-09-20 by usgov-usda-home-canning-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)",
       "supersedes": "usgov-usda-home-canning"
+    },
+    {
+      "name": "Manual on Uniform Traffic Control Devices, 2009 Edition",
+      "author": "US Federal Highway Administration (US DOT)",
+      "url": "https://archive.org/details/mutcd2009edition_202401",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "Work of the Federal Highway Administration, US Department of Transportation; archive.org item mutcd2009edition_202401 (original 2009 edition text)",
+      "first_published": "2009",
+      "published_before_generative_ai": true,
+      "slug": "usgov-fhwa-mutcd-2009-reocr",
+      "source": "archive.org page images, re-OCR'd (D-66)",
+      "retrieved": "2026-09-20",
+      "retrieved_utc": "2026-09-20T10:42:28+00:00",
+      "characters": 2510378,
+      "estimated_tokens": 751117,
+      "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
+      "ocr_stats": {
+        "pages_total": 864,
+        "pages_ocr": 864,
+        "seconds": 7596.3,
+        "failed": 0,
+        "fix": {
+          "redone_leaves": 220,
+          "reason": "batched generation contaminated batch positions 0-1; redone unbatched",
+          "seconds": 4130.9
+        },
+        "page_order_check": {
+          "pages": 864,
+          "with_footer": 816,
+          "out_of_order": 0,
+          "tail_copies": 6
+        }
+      },
+      "sha256_processed": "88139baab455cb99345a7bb48a4bf19584e0789812217e31c5221e7cb0fabebf",
+      "file": "data/raw/usgov/usgov-fhwa-mutcd-2009-reocr.md",
+      "slice": "shelf (D-58): anneal-only flavor",
+      "supersedes": "usgov-fhwa-mutcd-2009"
     }
   ]
 }

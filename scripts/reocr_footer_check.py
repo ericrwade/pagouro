@@ -15,6 +15,7 @@ import re
 import sys
 
 FOOT = re.compile(r"^\s*(?:(\d{1,2})-(\d{1,3})|(\d{1,4}))\s*$", re.M)   # "3-12" or "412"
+HEAD = re.compile(r"\bPage\s+(\d{1,4})\b")                                # MUTCD-style running head "2009 Edition   Page 259"
 
 
 def pages(path: str) -> list[tuple[int, str]]:
@@ -32,6 +33,9 @@ def footer(page_text: str):
             if m.group(1):
                 return int(m.group(1)), int(m.group(2))
             return 0, int(m.group(3))
+    m = HEAD.search(page_text[:200])
+    if m:
+        return 0, int(m.group(1))
     return None
 
 
