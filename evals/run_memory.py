@@ -20,6 +20,7 @@ import datetime as dt
 import io
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -63,6 +64,19 @@ def answer(srv: Server, question: str, tool_result: str, ctx: int, max_tokens: i
         return f"<<HTTP {e.code}: {e.read()[:200]!r}>>"
 
 
+_NUM = re.compile(r"(?<![\w.])[-+]?\d[\d,]*(?:\.\d+)?(?![\w])")
+
+
+def numbers_preserved(response: str, sources: str) -> bool | None:
+    """D-66 audit column (from Rahul's guide: track numeric strings separately). Every number in the
+    answer must appear in the tool result or the question; None when the answer has no numbers."""
+    got = {n.replace(",", "") for n in _NUM.findall(response)}
+    if not got:
+        return None
+    have = {n.replace(",", "") for n in _NUM.findall(sources)}
+    return got <= have
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
@@ -85,7 +99,7 @@ def main() -> int:
     srv = Server(a.model, a.threads)
     ctx = n_ctx(srv)
     print(f"  model window: {ctx} tokens", flush=True)
-    out, c = [], {"ROUTED": 0, "RETRIEVED": 0, "ANSWERED": 0}
+    out, c = [], {"ROUTED": 0, "RETRIEVED": 0, "ANSWERED": 0, "NUMERIC_CHECKED": 0, "NUMERIC_PRESERVED": 0}
     t0 = time.time()
     try:
         for i, it in enumerate(items, 1):
@@ -105,10 +119,14 @@ def main() -> int:
             resp = answer(srv, it["ask"], tool_result, ctx)
             low = resp.lower()
             answered = any(k.lower() in low for k in it["keys"])
+            npres = numbers_preserved(resp, tool_result + " " + it["ask"] + " " + it["told"])
             c["ROUTED"] += routed; c["RETRIEVED"] += retrieved; c["ANSWERED"] += answered
+            if npres is not None:
+                c["NUMERIC_CHECKED"] += 1; c["NUMERIC_PRESERVED"] += npres
             out.append({**it, "router": raw, "routed": routed, "retrieved": retrieved, "answered": answered,
-                        "top_hit": hits[0][0] if hits else None, "response": resp})
-            print(f"  [{i:2d}/{len(items)}] {it['id']}  routed={int(routed)} retrieved={int(retrieved)} answered={int(answered)}  {resp[:70]!r}", flush=True)
+                        "numbers_preserved": npres, "top_hit": hits[0][0] if hits else None, "response": resp})
+            print(f"  [{i:2d}/{len(items)}] {it['id']}  routed={int(routed)} retrieved={int(retrieved)} answered={int(answered)} "
+                  f"numbers={'-' if npres is None else int(npres)}  {resp[:60]!r}", flush=True)
     finally:
         srv.stop()
         shutil.rmtree(tmp, ignore_errors=True)
@@ -120,7 +138,8 @@ def main() -> int:
     os.makedirs(os.path.join(EVAL_DIR, "results"), exist_ok=True)
     path = os.path.join(EVAL_DIR, "results", f"{a.label}__memory.json")
     io.open(path, "w", encoding="utf-8", newline="\n").write(json.dumps(result, indent=2, ensure_ascii=False) + "\n")
-    print(f"  -> routed {c['ROUTED']}/{n}  retrieved {c['RETRIEVED']}/{n}  answered {c['ANSWERED']}/{n}   ({result['elapsed_s']}s)   saved {path}")
+    print(f"  -> routed {c['ROUTED']}/{n}  retrieved {c['RETRIEVED']}/{n}  answered {c['ANSWERED']}/{n}  "
+          f"numbers preserved {c['NUMERIC_PRESERVED']}/{c['NUMERIC_CHECKED']} answers-with-numbers   ({result['elapsed_s']}s)   saved {path}")
     return 0
 
 

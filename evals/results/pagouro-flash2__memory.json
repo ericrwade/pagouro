@@ -6,15 +6,19 @@
   "counts": {
     "ROUTED": 7,
     "RETRIEVED": 10,
-    "ANSWERED": 10
+    "ANSWERED": 10,
+    "NUMERIC_CHECKED": 1,
+    "NUMERIC_PRESERVED": 1
   },
   "rates": {
     "ROUTED": 0.7,
     "RETRIEVED": 1.0,
-    "ANSWERED": 1.0
+    "ANSWERED": 1.0,
+    "NUMERIC_CHECKED": 0.1,
+    "NUMERIC_PRESERVED": 0.1
   },
   "elapsed_s": 2.0,
-  "utc": "2026-09-19T13:32:31+00:00",
+  "utc": "2026-09-20T08:17:53+00:00",
   "items": [
     {
       "id": "mem-001",
@@ -27,6 +31,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "You told me your dog is called Ruby."
     },
@@ -41,6 +46,7 @@
       "routed": false,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "You should black your coffee as it has a significant amount of sugar."
     },
@@ -55,6 +61,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "You told me your sister lives in Lisbon."
     },
@@ -69,6 +76,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "The wifi password at the cabin is bluefern42."
     },
@@ -84,6 +92,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "You said you decided to plant tomatoes and basil in the raised bed this spring."
     },
@@ -99,6 +108,7 @@
       "routed": false,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": true,
       "top_hit": "memory:remembered.txt",
       "response": "You have 2009 Honda Fit and the oil filter part number 15400-PLM-A02."
     },
@@ -114,6 +124,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "The 14th of June, you said."
     },
@@ -128,6 +139,7 @@
       "routed": false,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "You are allergic to penicillin, a commonly usedicillin class."
     },
@@ -142,6 +154,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "The book club meeting is the first Thursday of the month at Dana's place."
     },
@@ -156,6 +169,7 @@
       "routed": true,
       "retrieved": true,
       "answered": true,
+      "numbers_preserved": null,
       "top_hit": "memory:remembered.txt",
       "response": "You said your landlord's name is Mr. Okafor."
     }
