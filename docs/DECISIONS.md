@@ -1749,3 +1749,16 @@ the shelf, transferable, never sold as a right to what everyone gets. The scale:
 tokens ≈ 6e23 FLOP ≈ ~1M H100-hours ≈ ~$3.5M (35,000 contributors at $100); 30B ≈ $600k; **7B
 ≈ $60–80k and is the realistic next step**, where the receipt model would be tested first.
 Securities counsel before any transferable token. Nothing built; contemplation only, per Eric.
+
+### O-33 — Secret / NEAR, Cartesi, Mina: three uses that fit inside D-14 and the threat model
+**2026-09-19, Eric's questions.** (1) **Secret Network / NEAR** (TEE confidential compute): a
+third mode, CONFIDENTIAL — an ONLINE tool where the query leaves the machine encrypted to an
+attested enclave; privacy from the provider, not from the network, and only as strong as the
+enclave vendor. Offered, if at all, as a documented `online.json` option with that wording; never
+the headline (THREAT_MODEL governs). (2) **Cartesi**: not for inference (emulated RISC-V is minutes
+per token) but for **verifiable evaluation** — the frozen suite run against the signed GGUF inside a
+Cartesi machine so the numbers on the box are proven computations; a post-1B lighthouse item.
+(3) **Mina**: a mirror anchor for the manifest hash whose ~22 KB recursive proof fits on the
+stick, so `verify_manifest.py` could confirm the release fully offline; Bitcoin stays the anchor
+(D-14), Mina a documented mirror; depends on shipping a small enough verifier. None of the three
+becomes a fourth pillar; all three are options and mirrors.
