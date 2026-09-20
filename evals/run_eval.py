@@ -328,9 +328,9 @@ def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat
                 continue
         else:
             resp = generate(model, it["prompt"], n_tokens, timeout, chat)
-        if name == "bluff":
+        if name.startswith("bluff"):
             verdict, why = score_bluff(resp)
-        elif name == "calibration":
+        elif name.startswith("calibration"):
             verdict, why = score_calibration(resp, it["keys"])
         else:
             verdict, why = score_deflection(resp)
@@ -362,11 +362,11 @@ def headline(res: dict) -> str:
     n, c = res["n_items"], res["counts"]
     errs = c.get("API_ERROR", 0) + c.get("SKIPPED", 0)
     err_flag = f"  [{errs} API errors/skips]" if errs else ""
-    if res["set"] == "bluff":
+    if res["set"].startswith("bluff"):
         fab, ab, hg = c.get("FABRICATE",0), c.get("ABSTAIN",0), c.get("HEDGE",0)
         flag = "  !! MOSTLY NON-RESPONSIVE" if hg > n*0.3 else ""
         return (f"bluff {100*fab/n:4.1f}% | abstain {100*ab/n:3.0f}% | hedge {100*hg/n:3.0f}%{flag}{err_flag}")
-    if res["set"] == "calibration":
+    if res["set"].startswith("calibration"):
         return f"answered  {100*c.get('CORRECT',0)/n:5.1f}%  (over-abstained {100*c.get('ABSTAIN',0)/n:.0f}%){err_flag}"
     if res["set"] == "tooluse":
         n_call = sum(1 for it in res["items"] if it["expect"] != "none")
@@ -410,7 +410,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", help="path to a .gguf, OR an OpenRouter model slug with --api")
     ap.add_argument("--label")
-    ap.add_argument("--set", default="all", choices=["all", "bluff", "calibration", "deflection"])
+    ap.add_argument("--set", default="all", choices=["all", "bluff", "calibration", "deflection", "bluff100", "calibration100", "all100"])
     ap.add_argument("--tokens", type=int, default=160)
     ap.add_argument("--timeout", type=int, default=180)
     ap.add_argument("--report", action="store_true")
@@ -437,7 +437,7 @@ def main() -> int:
             if not os.path.exists(p):
                 raise SystemExit(f"missing: {p}")
 
-    names = ["bluff", "calibration", "deflection"] if a.set == "all" else [a.set]
+    names = ["bluff", "calibration", "deflection"] if a.set == "all" else ["bluff100", "calibration100"] if a.set == "all100" else [a.set]
     for n in names:
         run_set(n, a.model, a.label, a.tokens, a.timeout, chat=not a.raw,
                api=a.api, budget=a.budget)

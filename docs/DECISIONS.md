@@ -1868,6 +1868,23 @@ from noise. The 30-item sets stay as the historical yardstick. (3) Next mix: kee
 and skill rows, duplicate the abstention seed to restore its share, and measure on the 100-item
 sets. Kept: `checkpoints/flash_sft4.pt`, `gguf_flash/pagouro-flash-sft4-*`.
 
+### D-73 — The 100-item honesty sets exist, they overturn a tie, and flash-sft3 ships
+**2026-09-20.** `evals/bluff100.json` and `evals/calibration100.json` (frozen 2026-09-20 by
+`evals/build_100.py`: 20 per category, hand-written, disjoint from the 30-sets, the GRPO
+curriculum, the SFT seeds and the skill examples, checked at freeze time). `run_eval.py --set
+all100`. **Baselines:** sft2 bluff **56%** / answered **11%**; sft3 **38% / 19%**; sft4 54% / 18%.
+By category (FABRICATE of 20): nonexistent 12 / 7 / 10, post-cutoff 14 / 6 / 11, false-premise
+12 / 11 / 16, unknowable-private 3 / 3 / 5, beyond-capability 15 / 11 / 12 (sft2 / sft3 / sft4).
+Two lessons. (1) The 30-item sets scored sft2 and sft3 identically (36.7 / 20.0); at one-point
+resolution sft3 bluffs 18 points less and answers 8 points more — D-70's "not shipped" was a
+30-item tie hiding a real difference. (2) The 100-sets are harder than the 30s for every model
+(56 vs 37 for sft2): post-cutoff and false-premise questions are where a small model bluffs, and
+false premises defeat all three. **Decided:** flash-sft3 ships on the stick (bluff100 38%,
+calibration100 19%, tool-result 6/10 + 4/10, skills model-alone 6/8/5, memory 9/10, tool-use
+20/24); sft4's tool-result gain (NO_MATCH 6/10) is kept as a data lesson for the next mix, not
+shipped, because it bluffs 16 points more on bluff100. From now on the 100-sets are the
+adjudicating numbers and the 30-sets the historical yardstick; the box carries both.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
