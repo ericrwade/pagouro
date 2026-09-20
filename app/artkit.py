@@ -146,3 +146,78 @@ def test_sprite(seed: int = 0, n: int = 32, palette: str = "ember", transparent:
     if mask[ey][ex]:
         img[ey][ex] = pal[0]; img[ey][n - 1 - ex] = pal[0]
     return img
+
+
+def hermit_crab(seed: int = 0, n: int = 32, shell: list[Pixel] | None = None, body: list[Pixel] | None = None,
+                ink: Pixel = (20, 16, 14), transparent: Pixel = (0, 0, 0)) -> Image:
+    """A program-drawn hermit crab (spiral shell, body, two claws, eye stalks), deterministic per
+    seed: shell tilt, spiral tightness and claw size vary. Synthetic by construction (O-18) - this is
+    the subject stand-in for palette sheets and the /art demo until the drawing model exists."""
+    import math
+    rng = random.Random(seed)
+    shell = shell or PALETTES["ember"][1:5]
+    body = body or PALETTES["ember"][2:6]
+    img: Image = [[transparent] * n for _ in range(n)]
+    s = n / 32.0
+    cx, cy, R = int(19 * s), int(14 * s), 9 * s * rng.uniform(0.9, 1.05)       # shell centre and radius
+    tilt = rng.uniform(-0.5, 0.5)
+    turns = rng.uniform(1.6, 2.4)
+    # shell disc, shaded by height, then the spiral groove in the darker shell tone
+    for y in range(n):
+        for x in range(n):
+            dx, dy = x + 0.5 - cx, y + 0.5 - cy
+            if dx * dx + dy * dy <= R * R:
+                t = (dy + R) / (2 * R)
+                img[y][x] = shell[min(len(shell) - 1, 1 + int(t * (len(shell) - 1)))]
+    for i in range(int(360 * turns)):
+        a = math.radians(i) + tilt
+        r = R * (i / (360.0 * turns)) ** 0.8
+        x, y = int(cx + r * math.cos(a)), int(cy + r * math.sin(a))
+        if 0 <= x < n and 0 <= y < n and img[y][x] != transparent:
+            img[y][x] = shell[0]
+    # body: a blob emerging from the shell's lower-left, drawn as overlapping discs
+    bx, by = cx - R * 0.9, cy + R * 0.35
+    discs = [(bx, by, 4.2 * s), (bx - 3 * s, by + 1.5 * s, 3.4 * s)]
+    claw = rng.uniform(3.0, 4.2) * s
+    claws = [(bx - 8.5 * s, by - 1.5 * s, claw), (bx - 6.5 * s, by + 5.0 * s, claw * 0.75)]  # big claw up front, small below
+    for (ox, oy, rr) in discs + claws:
+        for y in range(n):
+            for x in range(n):
+                dx, dy = x + 0.5 - ox, y + 0.5 - oy
+                if dx * dx + dy * dy <= rr * rr and img[y][x] == transparent:
+                    t = (dy + rr) / (2 * rr)
+                    img[y][x] = body[min(len(body) - 1, 1 + int(t * (len(body) - 1)))]
+    # pincer: a V-shaped gap cut out of each claw's leading edge
+    for (ox, oy, rr) in claws:
+        for k in range(int(rr * 0.9)):
+            for dy in range(-(k // 2) - 0, k // 2 + 1):
+                x, y = int(ox - rr + k), int(oy + dy)
+                if 0 <= x < n and 0 <= y < n:
+                    img[y][x] = transparent
+    # legs: three jointed strokes walking out from under the body
+    for k in range(3):
+        lx = int(bx - 1 * s - k * 3 * s)
+        for j in range(int(5 * s)):
+            x, y = lx - j // 2, int(by + 3 * s + j)
+            if 0 <= x < n and 0 <= y < n and img[y][x] == transparent:
+                img[y][x] = body[1] if j < 3 * s else body[0]
+    # eye stalks: two verticals rising from the body's top, 2-px ink eyes
+    for ex in (int(bx - 1.5 * s), int(bx + 1.5 * s)):
+        for j in range(int(6 * s)):
+            y = int(by - 3 * s - j)
+            if 0 <= ex < n and 0 <= y < n:
+                img[y][ex] = body[2]
+        for j in range(2):
+            y = int(by - 9 * s) + j
+            if 0 <= ex < n and 0 <= y < n:
+                img[y][ex] = ink
+    # one-pixel outline in ink (the house rule): every filled pixel touching transparent
+    out = [row[:] for row in img]
+    for y in range(n):
+        for x in range(n):
+            if img[y][x] == transparent:
+                continue
+            if any(not (0 <= y + dy < n and 0 <= x + dx < n) or img[y + dy][x + dx] == transparent
+                   for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1))):
+                out[y][x] = ink
+    return out

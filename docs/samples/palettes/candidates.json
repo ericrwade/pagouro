@@ -1,0 +1,164 @@
+{
+ "tradecard": {
+  "name": "Trade Card",
+  "brief": "The chromolithographed trade card and catalogue cut, ~1885: black ink on cream stock, oxblood and brass for the ornament, verdigris for the borders; shell coral and a harbour blue for the crab. Brightest of the three; reads well on white and on dark terminals.",
+  "ramps": {
+   "ink": [
+    "#14100e",
+    "#2b2420",
+    "#4a3f38",
+    "#6e625a"
+   ],
+   "cream": [
+    "#a89a80",
+    "#cfc2a4",
+    "#e9dfc4",
+    "#f8f2e2"
+   ],
+   "oxblood": [
+    "#4a1219",
+    "#7a1e28",
+    "#a83a3c",
+    "#d0705e"
+   ],
+   "brass": [
+    "#6b4a12",
+    "#a67a1e",
+    "#d4a83a",
+    "#f0d47a"
+   ],
+   "verdigris": [
+    "#12403a",
+    "#1f6b5c",
+    "#3f9a82",
+    "#8ccbb0"
+   ],
+   "coral": [
+    "#7a3a3a",
+    "#b86050",
+    "#e08a72",
+    "#f4c0a4"
+   ],
+   "harbour": [
+    "#102438",
+    "#1e4a6a",
+    "#3a7ea0",
+    "#8ac4d8"
+   ],
+   "slate": [
+    "#2a2438",
+    "#4c4468",
+    "#7a6f98",
+    "#b3a9c8"
+   ]
+  }
+ },
+ "gaslight": {
+  "name": "Gaslight",
+  "brief": "The Gilded Age after dark: night ink, gaslight amber, plum velvet, deep teal, bone white, silver for the modern edge; copper and sea-glass for the crab. Darkest of the three; built for a dark terminal and for profile pictures against dark app chrome.",
+  "ramps": {
+   "night": [
+    "#0b0a10",
+    "#1a1722",
+    "#2c2838",
+    "#45405a"
+   ],
+   "bone": [
+    "#8e8676",
+    "#b8ae9a",
+    "#dcd3bd",
+    "#f5efdf"
+   ],
+   "amber": [
+    "#5c2e0a",
+    "#9a5514",
+    "#d8892a",
+    "#f7c15c"
+   ],
+   "plum": [
+    "#3a1030",
+    "#6a2050",
+    "#9c3c78",
+    "#cf7aa8"
+   ],
+   "teal": [
+    "#0c3038",
+    "#145a62",
+    "#2a8a90",
+    "#6ec4c4"
+   ],
+   "copper": [
+    "#5a2a1a",
+    "#92472c",
+    "#c6764c",
+    "#eaab84"
+   ],
+   "seaglass": [
+    "#1c3a40",
+    "#2e6a66",
+    "#56a090",
+    "#a8d8c4"
+   ],
+   "silver": [
+    "#4a4e58",
+    "#767c88",
+    "#a8aeb8",
+    "#d8dce4"
+   ]
+  }
+ },
+ "naturalist": {
+  "name": "Naturalist Plate",
+  "brief": "The hand-coloured natural-history lithograph (the Biodiversity Heritage Library shelf): sepia ink on warm paper, coral, ochre, olive, cerulean, rose; the hermit crab is a Victorian plate subject to begin with. Warmest of the three; the most 'illustrated', least 'poster'.",
+  "ramps": {
+   "sepia": [
+    "#1c1410",
+    "#3c2c20",
+    "#5e4a38",
+    "#806a54"
+   ],
+   "paper": [
+    "#b0a284",
+    "#d2c6a6",
+    "#ece3c8",
+    "#fbf6e8"
+   ],
+   "coral": [
+    "#8a2a22",
+    "#c0402e",
+    "#e46a46",
+    "#f9a07a"
+   ],
+   "ochre": [
+    "#7a5410",
+    "#b07e1e",
+    "#dcae3c",
+    "#f5d878"
+   ],
+   "olive": [
+    "#2c3a14",
+    "#4e6420",
+    "#7e9838",
+    "#b8cc70"
+   ],
+   "cerulean": [
+    "#143a5c",
+    "#1e6690",
+    "#3c9ac4",
+    "#8ed0ea"
+   ],
+   "rose": [
+    "#7c3050",
+    "#b05070",
+    "#dc8098",
+    "#f6b8c4"
+   ],
+   "shadow": [
+    "#2e3440",
+    "#505868",
+    "#7c8494",
+    "#b4bac8"
+   ]
+  }
+ }
+}
