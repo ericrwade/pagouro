@@ -29,10 +29,36 @@ PACK_FOR = {  # old slug -> pack file name on the stick (only the ones shipped a
 }
 
 
+def page_order_check(text: str) -> dict:
+    """Printed page numbers in order; no page ending in a verbatim copy of an earlier page (D-66 audit)."""
+    import sys as _sys
+    _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import reocr_footer_check as F
+    parts = re.split(r"<!-- page (\d+) -->", text)
+    pages = [(int(parts[i]), parts[i + 1]) for i in range(1, len(parts) - 1, 2)]
+    got = [(leaf, F.footer(t)) for leaf, t in pages]
+    got = [(l, f) for l, f in got if f]
+    ooo = 0
+    for k in range(1, len(got)):
+        (l0, f0), (l1, f1) = got[k - 1], got[k]
+        if f1[0] == f0[0] and f1[1] <= f0[1] and (l1 - l0) <= 3:
+            ooo += 1
+    t = {leaf: txt.strip() for leaf, txt in pages}
+    copies = 0
+    for i, s in t.items():
+        if len(s) < 400:
+            continue
+        tail = s[-200:]
+        if any(j in t and tail in t[j] for j in range(max(0, i - 8), i)):
+            copies += 1
+    return {"pages": len(pages), "with_footer": len(got), "out_of_order": ooo, "tail_copies": copies}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", required=True, help="folder holding <item>.md and <item>.stats.json")
     ap.add_argument("--map", nargs="+", required=True, help="item=old_slug pairs")
+    ap.add_argument("--allow-tail-copies", type=int, default=0, help="works with genuinely repeated pages (recipe cards): tolerate this many")
     a = ap.parse_args()
     from tokenizers import Tokenizer
     tok = Tokenizer.from_file(os.path.join(ROOT, "data", "tokenizer_real", "tokenizer.json"))
@@ -45,6 +71,12 @@ def main() -> int:
         text = io.open(os.path.join(a.src, f"{item}.md"), encoding="utf-8").read()
         stats = json.load(io.open(os.path.join(a.src, f"{item}.stats.json"), encoding="utf-8"))
         text = re.sub(r"\n{3,}", "\n\n", text).strip() + "\n"
+        # D-66 audit (2026-09-20): batched OCR contaminated pages; the printed page numbers must run
+        # in order and no page may end with a copy of an earlier page's text, or the work is refused.
+        order = page_order_check(text)
+        if order["out_of_order"] or order["tail_copies"] > a.allow_tail_copies:
+            raise SystemExit(f"{item}: refused — {order['out_of_order']} out-of-order footers, "
+                             f"{order['tail_copies']} pages ending in a copy of an earlier page; run reocr_fix.py first")
         new_slug = old_slug + "-reocr"
         out = os.path.join(ROOT, "data", "raw", "usgov", f"{new_slug}.md")
         io.open(out, "w", encoding="utf-8", newline="\n").write(text)
@@ -59,7 +91,8 @@ def main() -> int:
             "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from "
                         "archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
             "ocr_stats": {"pages_total": stats.get("pages_total"), "pages_ocr": stats.get("pages_fetched"),
-                          "seconds": stats.get("seconds"), "failed": len(stats.get("failed", []))},
+                          "seconds": stats.get("seconds"), "failed": len(stats.get("failed", [])),
+                          "fix": stats.get("fix_2026_09_20"), "page_order_check": order},
             "sha256_processed": sha, "file": os.path.relpath(out, ROOT).replace("\\", "/"),
             "slice": old.get("slice"), "supersedes": old_slug,
         })
