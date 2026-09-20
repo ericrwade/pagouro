@@ -1821,6 +1821,24 @@ the O-35 router. **Where it does not:** anything the stick does at runtime. Inst
 Code plugin marketplace was blocked by the permission classifier (untrusted code integration) and
 left for Eric to run.
 
+### D-71 — The GRPO big set becomes a three-way curriculum: known / unknowable / invented (first Jev use, $0.054)
+**2026-09-20.** Jev use #2 (O-36): `scripts/jev_label.py` asked one Choice per real question in
+`sft/grpo_big.jsonl` — could a small offline public-domain model genuinely know this? — 2,939
+calls, 1.28M input tokens, **$0.054**, 11.5 min (`runs/jev_usage.log`; only the question text was
+sent). Result over 2,979 reals: **needs_lookup 2,362 (79%), obscure 345, widely_known 272**, median
+confidence 0.49; the widely_known set is a large model's idea of famous (Lisa Snowdon, Nick
+Bilton), so the positive label is weak and the negative label is the useful one. D-69 said the
+reward set was the bottleneck; this says why: 91% of the "real" questions were ones the stick
+model should say "no record" to, and the old reward (ABSTAIN −1 on any real) taught guessing.
+**Decided:** (1) a third kind, `unknowable_real` (needs_lookup / obscure, or widely_known below
+confidence 0.6): CORRECT +1, ABSTAIN +0.5, WRONG −1 — the calibration objective; `real` keeps
+CORRECT +1 / WRONG −0.5 / ABSTAIN −1. (2) `real` is refilled with things the model has actually
+read: "Who wrote <title>?" for every Gutenberg work in the ledger, ~110 capitals, the hand set —
+170 known reals after the eval-disjointness check. (3) `train_grpo.py --balance` draws each
+prompt's kind uniformly, so abstain-on-everything cannot win by volume. Curriculum
+`sft/grpo_curriculum.jsonl`: real 303, unknowable_real 2,846, invented 2,956. Labels are
+committed with provenance (jev-1.13.0, 2026-09-20). Runs when GPU time is next authorised.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same

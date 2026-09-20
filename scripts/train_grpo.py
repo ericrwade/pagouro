@@ -95,6 +95,7 @@ def main() -> int:
     ap.add_argument("--tokenizer", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--set", default=os.path.join(ROOT, "sft", "grpo_set.jsonl"))
+    ap.add_argument("--balance", action="store_true", help="D-71: sample each prompt's kind uniformly (real / unknowable_real / invented)")
     ap.add_argument("--steps", type=int, default=60)
     ap.add_argument("--prompts-per-step", type=int, default=8)
     ap.add_argument("--group", type=int, default=8)
@@ -123,8 +124,14 @@ def main() -> int:
     logf = io.open(a.log, "a", encoding="utf-8")
     print(f"GRPO: {len(items)} prompts, {a.steps} steps x {a.prompts_per_step} prompts x {a.group} samples, lr {a.lr}, kl {a.kl}, {device}", flush=True)
     t0 = time.time()
+    by_kind = {}
+    for it in items:
+        by_kind.setdefault(it["kind"], []).append(it)
     for step in range(a.steps):
-        batch = rng.sample(items, a.prompts_per_step)
+        if a.balance:   # D-71: draw kinds uniformly so no single kind's easy reward dominates (abstain-on-everything)
+            batch = [rng.choice(by_kind[k]) for k in (rng.choice(list(by_kind)) for _ in range(a.prompts_per_step))]
+        else:
+            batch = rng.sample(items, a.prompts_per_step)
         policy.eval()
         groups = []
         for it in batch:
