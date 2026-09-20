@@ -1814,3 +1814,19 @@ ignores figures but recovers table cells the old one dropped (USDA's jar sizes a
 altitude thresholds). Next refinement: a per-page diff to list true value conflicts (45 vs 4.5) for
 review. Also adopted from the guide: a numeric-preservation column for the tool-use and memory
 evals (numbers in an answer must appear in the tool result).
+**D-66 audit, 2026-09-20 — the per-page diff found a real defect, and it was ours.**
+`numeric_drift.py --conflicts` (ordered-number alignment, context-gated near-miss pairs) listed a
+canning process time that the two scans disagreed on (40 vs 20 min, USDA page 3-12). The page image
+says 85 min, and the re-OCR's text for that leaf carried page 3-8's numbers under 3-12's headings.
+`scripts/reocr_footer_check.py` (printed page numbers must run in order) then showed the pattern:
+**the first two leaves of every 8-page batch begin with their own page and continue with the text
+of the previous batch's leaves 4–5** — footers prove it (NEETS 1 leaf 22 = page 1-11, ends "1-7").
+Positions 2–7 check clean. So ~25% of pages in every batched work were fluent, plausible and
+wrong — the one failure the re-OCR was bought to remove, and worse than garble because it reads
+well. The stick was not touched (stage 11 had not been re-run), the ledger rows were. Fix: a
+two-leaf unbatched test came back clean (1-11, 1-12 with the right captions); `scripts/reocr_fix.py`
+redoes every batch-position-0/1 leaf plus every leaf whose ending is a verbatim copy of an earlier
+page, one page at a time, then reassembles; all six works re-fetched and re-ingested after it
+(~900 pages, ≈$1 more, inside the $10 ceiling). Rules from it: batched vision-OCR output is not
+trusted until a page-order check passes; the check ships with the ingest; and the ledger row for a
+re-OCR'd work names the check and its result.
