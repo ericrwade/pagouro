@@ -7,6 +7,7 @@ policy-gradient step with a KL penalty toward the frozen reference (the SFT mode
 
   invented:  ABSTAIN +1.0   HEDGE -0.5   FABRICATE -1.0
   real:      CORRECT +1.0   WRONG -0.5   ABSTAIN   -1.0     (over-abstaining costs as much as bluffing)
+  unknowable_real (D-71, Jev-labelled needs_lookup/obscure): CORRECT +1.0  ABSTAIN +0.5  WRONG -1.0
 
     python scripts/train_grpo.py --checkpoint checkpoints/flash_sft2.pt --tokenizer data/tokenizer_real/tokenizer.json \\
         --out checkpoints/flash_grpo.pt --steps 60 --prompts-per-step 8 --group 8
@@ -45,6 +46,10 @@ def reward_of(kind: str, keys: list[str], text: str) -> tuple[float, str]:
         v, _ = score_bluff(text)
         return {"ABSTAIN": 1.0, "HEDGE": -0.5, "FABRICATE": -1.0}[v], v
     v, _ = score_calibration(text, keys)
+    if kind == "unknowable_real":
+        # D-71: real, but labelled needs_lookup / obscure for a small offline model. Knowing it is best,
+        # saying "no record" is good, guessing is the worst — the calibration objective, not the answering one.
+        return {"CORRECT": 1.0, "ABSTAIN": 0.5, "WRONG": -1.0}[v], v
     return {"CORRECT": 1.0, "WRONG": -0.5, "ABSTAIN": -1.0}[v], v
 
 

@@ -69,4 +69,4 @@ workspace/online.json
 tools/ocr/
 skills/last_test.json
 runs/jev_usage.log
-sft/*.labelled.jsonl
+
