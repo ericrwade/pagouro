@@ -1657,6 +1657,21 @@ shown beside it, never as the headline. **Flash baseline (sft2): novel 0/0 score
 echo-inclusive 4/4.** A 126M model rarely volunteers a marked word of its own; the metric becomes
 meaningful at 1B. No claim on the box until it scores.
 
+**D-67 corpus, slice one (2026-09-20).** `scripts/fetch_draw_corpus.py` pulled **1,780 images (164 MB)**
+from The Met Open Access into `data/images/met/` with `data/images/ledger.jsonl` (objectID, title,
+artist, date, medium, classification, tags, URLs, licence "CC0 (The Met Open Access;
+isPublicDomain=true)", sha256, size). Two passes: the print-world and shell/crab queries, then
+the poster masters (Toulouse-Lautrec 200, Bonnard 125, Chéret, Steinlen, Penfield, Rhead, Bradley,
+Grasset, Mucha). The search index's `isPublicDomain` filter is broken (crab: 226→3), so PD is
+checked per object. Composition: Prints 622, Drawings 142, Paintings 44, plus ~300 non-print
+objects the free-text queries let in (laces, medals, metal ornaments, one shell dated −2960).
+Rule: **the pool is not the training set** — a curation pass (classification ∈ prints/drawings/
+paintings/books; year ≥ 1850 for the print world; naturalist plates of shells and crabs allowed
+at any date) selects, and the selection gets its own ledger with the same fields. Palette:
+a fourth candidate, Belle Époque (Paris poster 1890–1910), added at Eric's request; finalists
+sheet Trade Card vs Belle Époque; the era name in the brief may widen to "Belle Époque / Gilded
+Age, the trade card and the poster" — proposed, Eric's call.
+
 ### O-28 — Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea
 **2026-09-19, Eric, from the road.** "Draw 1.0 should have a style. Maybe even a palette. An
 aesthetic of our own, as if we hacked Madison Avenue." Plus two uses: free branding research for
