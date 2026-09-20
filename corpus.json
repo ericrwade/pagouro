@@ -929,7 +929,7 @@
       },
       "sha256_processed": "c01911c9003ebf65d04f50af743055f2aa8d418806f2a635ec18ec00a54ceb17",
       "file": "data/raw/usgov/tm10-412-recipes-2003.txt",
-      "slice": "shelf (D-58): anneal-only flavor"
+      "slice": "SUPERSEDED 2026-09-20 by usgov-tm10-412-recipes-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)"
     },
     {
       "slug": "usgov-fhwa-mutcd-2009",
@@ -1661,6 +1661,32 @@
       "file": "data/raw/usgov/usgov-usda-home-canning-reocr.md",
       "slice": "shelf (D-58): anneal-only flavor",
       "supersedes": "usgov-usda-home-canning"
+    },
+    {
+      "name": "TM 10-412 Armed Forces Recipe Service (2003)",
+      "author": "US Army / Navy / Air Force / Marine Corps (joint publication)",
+      "url": "https://archive.org/details/tm-10-412-armed-forces-recipe-service-2003",
+      "license": "Public domain (US Government work, 17 U.S.C. 105)",
+      "public_domain_basis": "Joint-service technical manual TM 10-412 / NAVSUP P-7 / AFM 146-12 / MCO P10110.4; archive.org item tm-10-412-armed-forces-recipe-service-2003 carries the Public Domain Mark",
+      "first_published": "2003",
+      "published_before_generative_ai": true,
+      "slug": "usgov-tm10-412-recipes-reocr",
+      "source": "archive.org page images, re-OCR'd (D-66)",
+      "retrieved": "2026-09-20",
+      "retrieved_utc": "2026-09-20T06:36:29+00:00",
+      "characters": 3562362,
+      "estimated_tokens": 1636282,
+      "cleaning": "LightOnOCR-2-1B (Apache-2.0) via transformers 5.17 on an A40; page images 1400 px wide from archive.org's page endpoint; Markdown with LaTeX maths and HTML tables; <!-- page N --> markers kept",
+      "ocr_stats": {
+        "pages_total": 1691,
+        "pages_ocr": 1691,
+        "seconds": 13730.7,
+        "failed": 0
+      },
+      "sha256_processed": "add0ee08ae2425b3c366620a51d56879a1c1d2b7f69fc3ccd8afed3e643afa19",
+      "file": "data/raw/usgov/usgov-tm10-412-recipes-reocr.md",
+      "slice": "shelf (D-58): anneal-only flavor",
+      "supersedes": "usgov-tm10-412-recipes"
     }
   ]
 }
