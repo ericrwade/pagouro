@@ -1678,6 +1678,14 @@ sheet-only packs on their 16 px + 1 px-gutter grid: **9,687 images**. Curation o
 (`scripts/curate_draw_corpus.py`: print kinds, year ≥ 1850, naturalist-plate exception, contrast
 floor) → **307** prints at 64/32 px with their own ledger. Volume is Kenney; style is the Met.
 Still to fetch: OpenGameArt's CC0 filter, Smithsonian/BHL plates.
+**Jev use #3 (O-36), same day:** one style-fit Choice per Met pool row on its public metadata
+(title, artist, date, medium, classification, tags) — 1,843 calls, 1.04M input tokens, **$0.044**,
+7 min. Jev keeps 507 (500 print, 7 plate), the keyword filter kept 307, overlap 242: Jev rescued
+265 rows — mostly trade cards the Met dates "18th/19th century" with no parseable year, exactly
+the O-28 material — and dropped 65 tonal paintings/drawings the contrast floor had passed. Median
+confidence 0.99. `curate_draw_corpus.py --jev-labels` now selects by those labels (contrast floor
+kept): **353 training images at 64/32 px**, each row recording `selected_by`. The keyword path
+stays as the no-network fallback.
 
 ### O-28 — Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea
 **2026-09-19, Eric, from the road.** "Draw 1.0 should have a style. Maybe even a palette. An

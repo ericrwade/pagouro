@@ -39,7 +39,13 @@ def main() -> int:
     ap.add_argument("--min-year", type=int, default=1850)
     ap.add_argument("--sizes", nargs="*", type=int, default=[64, 32])
     ap.add_argument("--min-contrast", type=float, default=22.0, help="luminance std-dev floor at 64 px")
+    ap.add_argument("--jev-labels", help="pool_meta.labelled.jsonl from jev_label.py (O-36 use #3): select rows whose style_fit is keep_print / keep_plate instead of the keyword rules")
     a = ap.parse_args()
+    jev = {}
+    if a.jev_labels:
+        for l in io.open(a.jev_labels, encoding="utf-8"):
+            if l.strip():
+                d = json.loads(l); jev[d["objectID"]] = d.get("style_fit")
     from PIL import Image
     rows = [json.loads(l) for l in io.open(POOL, encoding="utf-8") if l.strip()]
     kept, why = [], {"print_world": 0, "plate_exception": 0, "dropped_kind": 0, "dropped_year": 0, "dropped_faint": 0}
@@ -47,6 +53,15 @@ def main() -> int:
         kind = (r.get("classification") or "").lower()
         is_print = any(k in kind for k in PRINT_KINDS)          # an empty classification is not a print
         subject = bool(SUBJECT.search((r.get("title") or "") + " " + " ".join(r.get("tags") or [])))
+        if jev:
+            lab = jev.get(r["objectID"])
+            if lab == "keep_print":
+                why["print_world"] += 1; kept.append(r)
+            elif lab == "keep_plate":
+                why["plate_exception"] += 1; kept.append(r)
+            else:
+                why["dropped_kind"] += 1
+            continue
         if is_print and (r.get("end_year") or 0) >= a.min_year:
             why["print_world"] += 1; kept.append(r)
         elif is_print and subject:
@@ -80,6 +95,8 @@ def main() -> int:
             out_row = {k: r[k] for k in ("objectID", "title", "artist", "date", "end_year", "medium", "classification",
                                          "tags", "object_url", "image_url", "license", "sha256", "file") if k in r}
             out_row["crop_box"] = box
+            if jev:
+                out_row["selected_by"] = f"jev style_fit={jev.get(r['objectID'])} (O-36 use #3, jev-1.13.0, 2026-09-20) + contrast floor"
             for s in a.sizes:
                 small = sq.resize((s, s), Image.LANCZOS)
                 p = os.path.join(OUT, str(s), f"{r['objectID']}.png")
