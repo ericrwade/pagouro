@@ -1900,6 +1900,20 @@ Rhead, Bradley); trade cards stay in the pool as supporting material, not the le
 changes: all pre-1929, all public domain, all CC0 at the Met. Trade Card, Gaslight and Naturalist
 Plate remain shipped as named palettes. The hermit-crab logos (D-67) are drawn in HOUSE.
 
+### O-37 — Better crabs: a licensed diffusion model fine-tuned on our own poster slice, when Eric authorises an hour
+**2026-09-20, Eric: "I don't love the crabs… I'd like them to somehow be more Belle Époque style.
+What skills can we find for image generation or is there a better solution?"** Answered: skills
+that call hosted image APIs are out (unlicensed training data; the mark would contradict the box).
+Three honest routes. **A, built:** `app/mark.py`, the mark as a poster medallion in HOUSE (`/art
+mark` on the stick) — a placeholder shaped like a logo. **B, proposed:** a LoRA on a diffusion
+model trained only on public-domain / CC0 material — Public Diffusion (Spawning), Mitsua
+Diffusion One, or CommonCanvas (Apache-2.0 weights) — fine-tuned on the LoC + Met poster slice and
+the crab plates, generating hundreds of candidates quantised to HOUSE at 64 px for Eric to pick;
+about one rented A40 hour, needs an explicit "rent" (no NVIDIA card on the desk). Rights check
+per model before use (their weights licence and their training-set statement both go in the
+ledger). **C:** the D-67 pixel model from scratch, the product path. Recommendation: A now, B on
+Eric's word.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
