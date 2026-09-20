@@ -1680,3 +1680,15 @@ exactly the line Eric drew; (2) **the palette/design system shipped as a named, 
 artifact** in the manifest — forks keep it by default; (3) **the name and the hermit-crab mark as a
 trademark with a Mozilla-style policy** — fork everything, keep the name only with the look. Eric's
 call on the trademark filing (a few hundred dollars per class; fits F-16). Not legal advice.
+
+### O-30 — Skills: adopt the standard container, not the standard semantics; a catalogue, not a marketplace
+**2026-09-19, Eric's question.** A 1B model cannot follow prose skills; the harness is what is
+reliable. So a Pagouro skill = tools (sandboxed code the router can be taught to call) + packs
+(retrievable text) + a few SFT rows for the router, read from the standard SKILL.md folder
+format (name/description frontmatter, scripts/, resources/) so skills written for larger models
+work here *to the extent their deterministic parts allow* — and the app says which parts it can
+use. No marketplace on a stick that never phones home: a catalogue folder in the repo, each skill
+with a licence, a hash and a ledger-style row, installed by copying, listed with its hash at
+launch. Order: container + 3–4 first-party example skills → catalogue → nothing more unless a
+community appears. Generalises MAKE_IT_YOURS rung 4. Eric's later call: whether a catalogue ever
+carries money.
