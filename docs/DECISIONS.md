@@ -1668,3 +1668,15 @@ Sears/Montgomery Ward catalogue cuts — all public domain; "modernized" is what
 art rather than pastiche. Palette candidates will be drawn from that print world (ink, cream,
 oxblood, brass, verdigris) plus the shell/sea range. First test of the brief: the hermit-crab
 logos (D-67).
+
+### O-29 — One look across everything that grows from Pagouro: the style follows the model and the mark, not the licence
+**2026-09-19, Eric:** free to change or fork the LLM in any way, but the aesthetic locked so that
+anything built on it keeps the look unless someone rebuilds the graphics from scratch — "like
+early Solana's glowy purple." Session's assessment: a licence cannot do this (style is not
+copyrightable; a keep-the-look condition would make the assets non-free, contradict D-31, and be
+unenforceable). What does it: (1) **the drawing model is the style** — its palette and forms are
+what it learned and what the renderer enforces, so a different look requires retraining, which is
+exactly the line Eric drew; (2) **the palette/design system shipped as a named, versioned CC BY-SA
+artifact** in the manifest — forks keep it by default; (3) **the name and the hermit-crab mark as a
+trademark with a Mozilla-style policy** — fork everything, keep the name only with the look. Eric's
+call on the trademark filing (a few hundred dollars per class; fits F-16). Not legal advice.
