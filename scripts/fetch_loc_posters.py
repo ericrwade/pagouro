@@ -119,7 +119,7 @@ def main() -> int:
                 img_url = next((u for u in imgs if u.endswith("r.jpg")), imgs[-1] if imgs else "")
                 if not img_url or "tile.loc.gov" not in img_url:
                     continue
-                time.sleep(3.0)                      # LoC crawl pace: well under their burst limit
+                time.sleep(6.0)                      # LoC crawl pace: they throttled at 3 s; 6 s holds
                 it = get_json(item.rstrip("/") + "/?fo=json") or {}
                 itm = it.get("item") or {}
                 rights = itm.get("rights_advisory") or itm.get("rights") or it.get("rights") or ""
