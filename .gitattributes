@@ -7,3 +7,4 @@
 *.gguf binary
 *.bin binary
 *.safetensors binary
+skills/** text eol=lf
