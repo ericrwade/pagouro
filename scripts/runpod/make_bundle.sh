@@ -10,7 +10,7 @@ set -e
 cd "$(dirname "$0")/../.."
 OUT=build/bundle
 mkdir -p "$OUT"
-LIST="pagouro scripts/train.py scripts/train_sft.py scripts/tokenize_corpus.py scripts/fetch_data.py scripts/build_mixture.py scripts/export_gguf.py scripts/runpod/on_pod_setup.sh scripts/runpod/shakedown.sh scripts/runpod/flash.sh scripts/runpod/ddp_rehearsal.sh data/tokenizer_real/tokenizer.json data/tokenizer_real/tokenizer_config.json"
+LIST="pagouro scripts/train.py scripts/train_sft.py scripts/tokenize_corpus.py scripts/fetch_data.py scripts/build_mixture.py scripts/export_gguf.py scripts/runpod/on_pod_setup.sh scripts/runpod/shakedown.sh scripts/runpod/flash.sh scripts/runpod/ddp_rehearsal.sh scripts/runpod/volume.sh scripts/build_volume.py scripts/fetch_stackexchange.py scripts/fetch_wikipedia_dump.py scripts/fetch_dated_code.py plans corpus.json data/tokenizer_real/tokenizer.json data/tokenizer_real/tokenizer_config.json"
 case "${1:-}" in
   --no-data)  ;;                                                   # code + tokenizer only
   --anneal)   LIST="$LIST data/tokenized_anneal" ;;                # + the domain mix for the decay phase (24 MB)
