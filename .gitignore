@@ -61,6 +61,7 @@ release/
 My_Claude_Conversation.txt
 workspace/notes/
 workspace/transcripts/
+workspace/docs/          # the user's own documents (D-79); the two test files live in tests/
 build/
 tools/teacher/
 packs/index.json

@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 69 decisions, 22 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 79 decisions, 25 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -75,6 +75,16 @@
 | D-67 | 2026-09-19 | Pagouro Draws ships in v1.0, with its own gate; first job: a hundred hermit-crab logos (closes O-21) |
 | D-68 | 2026-09-19 | Beyond English and America: both moves, plus register-following spelling (closes O-27) |
 | D-69 | 2026-09-19 | Two of the three rental jobs measured: the loop is not the bottleneck (nanochat), and GRPO moves the headline numbers a little (D-65) |
+| D-70 | 2026-09-20 | flash-sft3 measured and not shipped: the fine-tune learned the tool names and learned to answer NO_MATCH |
+| D-71 | 2026-09-20 | The GRPO big set becomes a three-way curriculum: known / unknowable / invented (first Jev use, $0.054) |
+| D-72 | 2026-09-20 | flash-sft4: the tool-result seed works, the headline moves two items the wrong way, and 30-item sets cannot adjudicate that |
+| D-73 | 2026-09-20 | The 100-item honesty sets exist, they overturn a tie, and flash-sft3 ships |
+| D-74 | 2026-09-20 | HOUSE palette is Belle Époque; posters over cards; the style brief is the Paris poster (closes O-28's palette question) |
+| D-75 | 2026-09-20 | The Belle Époque LoRA exists: CommonCanvas-S-C fine-tuned on our poster slice; the first 192 litho-look crab candidates |
+| D-76 | 2026-09-20 | flash-sft5: the tool-result problem is solved and the honesty line still moves; stop iterating SFT mixes on the 126M |
+| D-77 | 2026-09-20 | Pagouro Draws, model one: the on-stick drawing model exists and follows its caption |
+| D-78 | 2026-09-21 | House voice: BC and AD; celestial events dated as observed on Earth; the look is fixed in this version (fork to change it) |
+| D-79 | 2026-09-21 | Documents: the harness reads PDF / Word / text, the model reads the text; and the router prompt must stay the trained one |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -94,7 +104,7 @@
 | O-24 | Review of the fine-tuning post; GRPO on the no-bluff objective (proposals) | open |
 | O-26 | LightOnOCR-2-1B: re-OCR the shelf's scanned works (proposal) | closed by D-66 |
 | O-27 | Beyond English and America: coverage, not reasoning (proposal) | closed by D-68 |
-| O-28 | Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea | open |
+| O-28 | Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea | closed by D-74 |
 | O-29 | One look across everything that grows from Pagouro: the style follows the model and the mark, not the licence | open |
 | O-30 | Skills: adopt the standard container, not the standard semantics; a catalogue, not a marketplace | open |
 | O-31 | io.net reconsidered: raw GPU clusters, tested the same way as RunPod | open |
@@ -102,3 +112,6 @@
 | O-33 | Secret / NEAR, Cartesi, Mina: three uses that fit inside D-14 and the threat model | open |
 | O-34 | Note: the "local AI business" thread (noisyb0y1, 2026-09-19) — market yes, numbers no, offline undercut | open |
 | O-35 | Jev / "System One" models: validation, not displacement; make the router a calibrated typed decision (with O-15) | open |
+| O-36 | The TypeSafe (Jev / "System One") skill: installed on request, used only for a genuine benefit, never in the product | open |
+| O-37 | Better crabs: a licensed diffusion model fine-tuned on our own poster slice, when Eric authorises an hour | open |
+| O-38 | Honest randomness: the `dice` skill (Eric: "a local and completely honest dice roller") | open |
