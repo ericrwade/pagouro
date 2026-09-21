@@ -33,7 +33,7 @@ UA = {"User-Agent": "pagouro-corpus-builder/1.0 (+https://github.com/ericrwade/p
 COLL = "https://www.loc.gov/collections/artists-posters/"
 
 
-def get(url: str, tries: int = 8) -> bytes:
+def get(url: str, tries: int = 4) -> bytes:
     """LoC throttles bursts (429, sometimes 520): back off for real and never treat a throttle as an answer."""
     for i in range(tries):
         try:
@@ -121,7 +121,7 @@ def main() -> int:
                     continue
                 time.sleep(6.0)                      # LoC crawl pace: they throttled at 3 s; 6 s holds
                 try:
-                    it = get_json(item.rstrip("/") + "/?fo=json") or {}
+                    it = get_json(item.rstrip("/") + "/?fo=json&at=item") or {}     # at=item: 11 KB instead of 50 KB, far fewer truncations
                 except RuntimeError as e:            # one dead item must not end the crawl
                     print(f"  skip: {e}", flush=True); continue
                 itm = it.get("item") or {}
