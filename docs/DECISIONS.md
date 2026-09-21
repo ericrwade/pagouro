@@ -2102,8 +2102,12 @@ should not be carrying under a four-day eight-card job. vast.ai stays for shaked
 cards. The decision is the *job's*, not the story's; the story (paid in USDC on a decentralised
 network) is deferred to a run that can afford to be interrupted, and the book tells why (Chapter
 11's do-it and the 1B chapter). **This is the launch (D-54):** the plan and hourly prices are
-posted on #2 before any `create-pod`; the balance Eric loads is the cap; every artifact comes home
-before a pod is deleted; `list-pods` empty at the end of every step.
+posted on #2 before any `create-pod`; **the cap is $1,500** (Eric, 2026-09-21 15:30 PT: auto-reload off, $1,350 added to $150 — fixed, not
+refilling, because a refilling balance has no cap); every artifact comes home before a pod is deleted;
+`list-pods` empty at the end of every step. At $1,500 the secure estimate ($1,740–2,440) does not fit:
+the first hour on the real pod measures MFU and posts the projected total; community cloud ($2.69/h,
+$1,340–1,880) or a top-up is Eric's call then. Pod watch every 30 minutes (session cron), posting on #2
+only on change.
 
 **Launch shape as executed** (revising `docs/JOB_1B.md` where measurement forces it): the data
 on disk today is 0.57B live tokens against a 100B plan, so the first step is the **data volume
