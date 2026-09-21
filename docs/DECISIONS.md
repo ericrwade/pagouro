@@ -1964,6 +1964,21 @@ range, pick, shuffle; limits 1–100 dice of 2–1000 sides. Trigger checked aga
 trained; examples staged). Mouse/finger entropy: not built — the OS pool already mixes hardware
 entropy; a slider is ceremony. The honest claim is "from the OS, not from the model", printed.
 
+### D-77 — Pagouro Draws, model one: the on-stick drawing model exists and follows its caption
+**2026-09-20, evening.** `scripts/build_pixel_trainset.py` → 10,256 images at 32/64 px in the HOUSE
+palette with one ledger (Kenney 9,687, curated Met prints 353, D-75 candidates 192, procedural
+marks 24; captions from file/pack names, titles, prompt family). `scripts/train_draw.py`: the text
+model's transformer over a 32-symbol pixel alphabet — BOS, 12 caption-word tokens, SEP, 1,024 pixel
+tokens, loss on pixels only; **5.5M params**, 3,000 steps of batch 16 on the desk CPU at 6.2k
+tok/s (2.2 h), subject/style sources sampled 4× over tiles. Loss 6.1 → ~0.2. Samples
+(`docs/samples/draw/draw1_sheet.png`): "hermit crab mark, retreated into its shell, medallion,
+poster" gives the medallion arc with a coloured shell mass at the mouth, in palette, eight of eight;
+"pixel sprite, tree" gives blocks; "Belle Époque print, trade card" gives texture. **Read:** the
+pipeline is proven end to end — caption in, palette-legal pixels out — and the model is far too
+small and too briefly trained to draw. Next: 20–50M params, 64 px, an hour of GPU when next
+authorised, and the D-67 gate (40 captions) to score it. It shares nothing with the 1B run but a
+transformer file. Model file: `checkpoints/draw1.pt` (not on the stick until it passes a gate).
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
