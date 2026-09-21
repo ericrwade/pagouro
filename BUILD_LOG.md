@@ -1682,3 +1682,42 @@ caught itself, and what "private" means — which puts every chapter that can be
 the big run in draft. Thirty thousand words, and every number in them has a footnote naming a
 file. The chapter on the ledger ends with tonight's work, which is a convenient place for it to
 end (`book/build.py`: 23 chapters, 29,960 words).
+
+---
+
+## Day 12, afternoon — Fourteen hundred posters, a second small drawing model, and four ways to fail out loud
+
+The Library of Congress crawl that had been throttled for two days finished in the morning:
+1,411 posters from the Artists Posters collection, 1868 to 1928, each with the rights line the
+catalogue gave and a hash of the file (`data/images/loc/ledger.jsonl`). That is five times the
+poster material the Belle Époque LoRA was trained on, so the training set for the next LoRA hour
+was rebuilt on it — 1,944 crops with provenance per row — and the posters were added as a source
+to the small on-stick drawing model's set, which grew to 11,667 images.
+
+Then the drawing model was retrained on the desk at eight threads, an hour and fifty-one minutes
+for 2,980 steps, and compared against the first one on the same three captions with the same
+seeds (`docs/samples/draw/draw1_vs_draw2.png`). The honest reading: the crab row is better —
+claw shapes and something like eyes, where the first model gave blobs; the poster row is better —
+borders, blocks, lines that want to be lettering; the sprite row is worse, with blank tiles, and
+the reason is arithmetic: sprites went from 95 percent of the set to 83, and a five-million-
+parameter model has no room to hold both worlds. Nothing in the crab row is a usable mark. The
+step that would change that is the twenty-to-fifty-million model on an hour of rented GPU, which
+waits on Eric's word, and the data for it is now ready.
+
+Eric sent a link from the road — Design Arc, a UX-journey method for product screens — and asked
+whether it helps. It does not, today: Pagouro's interface is a console with a dozen states, and
+the tool audits web and mobile journeys against a screenshot library. It will, when the
+browser-local demo and the release page exist, and it went on the list for then. What transferred
+immediately was its one good habit, the every-state checklist, and running that over the console
+app found four states that failed badly. A startup failure — no model file, the server program
+missing, the server crashing, the server never answering — printed one line and exited, which on
+a double-clicked program means the window closes with the message and the person sees nothing.
+The server's error output was thrown away, so even a terminal user got no reason. Turning on
+STONE on a write-protected stick crashed the turn. And any bug inside one turn ended the session.
+All four now say what happened and what to do; the startup failures wait for a keypress when the
+program owns its window and show the server's last lines; STONE falls back to SAND with a notice;
+a failing turn is reported and the conversation continues. Each state was exercised with a fake
+server and a blocked folder, the normal path re-run, and the stick repackaged and verified.
+
+The LoRA pod's bill settled at forty cents, under the sixty-one estimated, which brings the
+window's rented compute to about fourteen dollars and thirty cents.
