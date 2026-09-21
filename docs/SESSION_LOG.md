@@ -87,13 +87,23 @@ merged-in upb history with no `src/`; four licence-file shapes) — run redone f
 **Book:** chapters 0, 1, 2 (do-it), 3, 5, 12 and signposts 01a/12a drafted; 23 chapters, ~30k
 words; only 13 and 15 (the 1B run) remain. LoRA pod billing settled so far $0.40; `list-pods`
 empty. `workspace/docs/` gitignored (user documents, D-79). LoC crawl: 243 posters.
+**2026-09-21 afternoon addendum (04:00–12:45 PT):** README status paragraph brought to sft3's
+100-set numbers and the dated code slice; `build_mixture.py` dry-run reads all five `code/<lang>.txt`
+with `[ledger OK]`; LoRA pod billing settled at $0.40 (window RunPod ≈ $14.31). **LoC crawl
+finished:** 1,411 posters 1868–1928, rights per item, ledger committed; SD training set rebuilt
+(1,944 crops); pixel set rebuilt with the posters (11,667 images). **draw2** trained on the desk
+(1h51, THREADS=8): crab and poster rows better than draw1, sprite row worse — a 5.5M proof, the
+20–50M GPU model is the step. **O-39** Design Arc assessed (Eric's link): not for the console,
+the tool for the D-24 browser demo and release page; its every-state checklist applied — four
+console failure states now visible with a hint (startup failures wait for a keypress when
+double-clicked, server stderr tail shown; STONE on an unwritable disk falls back to SAND; a bug in
+one turn no longer ends the session); stick repackaged and manifest-verified.
 **Open / next:** (1) Eric's picks from the Belle Époque LoRA sheets → iterate those seeds; an
 hour of GPU for the 20–50M draw model when he says "rent". (2) O-29 trademark, O-31 io.net, O-32
 receipt model — Eric. (3) Next fine-tune only at 1B (D-76): skill router+answer examples,
 spelling, style and tool-result seeds are staged in `docs/JOB_1B.md`; GRPO on the curriculum when
 GPU time is authorised. (4) 1B prerequisites still open in `docs/JOB_1B.md` (data volume build,
-tokenizer streaming already ✔). (5) LoC crawl continues throttled; re-read pod billing once more
-when the Sep 21 UTC bucket posts. (6) Book: 13 and 15 after the 1B run; a read-through pass for
+tokenizer streaming already ✔). (5) LoC crawl done, billing settled — nothing pending there. (6) Book: 13 and 15 after the 1B run; a read-through pass for
 the story strand's voice once Eric is home.
 
 ---
