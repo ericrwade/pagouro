@@ -4,6 +4,7 @@
 Sources and what each is for:
   * Kenney sprites/tiles (CC0, ~9,700)          — volume; the vocabulary of small readable shapes
   * Met curated prints (CC0, ~350)              — the style: the print world at 64 px
+  * LoC Artists Posters (public domain, 1,411)  — the style again, the poster world at 64 px
   * LoRA candidates (D-75, CC0 outputs, 192)    — the subject: hermit-crab marks in the house look
   * the procedural marks (ours, CC0, 24 seeds)  — the subject again, clean silhouettes
 
@@ -72,6 +73,17 @@ def main() -> int:
         r = json.loads(l)
         rows.append({"source": "met", "file": r["file_64"], "license": r.get("license"), "origin": r.get("object_url"),
                      "caption": f"Belle Époque print, {(r.get('title') or '')[:70]}", "pixel": False, "sha256_source": r.get("sha256_64")})
+    # Library of Congress Artists Posters (public domain, pre-1929; crawl finished 2026-09-21, 1,411 items)
+    loc = os.path.join(ROOT, "data", "images", "loc", "ledger.jsonl")
+    if os.path.exists(loc):
+        for l in io.open(loc, encoding="utf-8"):
+            if not l.strip():
+                continue
+            r = json.loads(l)
+            who = (r.get("contributors") or [""])[0].split(",")[0].strip().title()
+            rows.append({"source": "loc", "file": r["file"], "license": r.get("license"), "origin": r.get("item_url"),
+                         "caption": f"Belle Époque lithograph poster, {(r.get('title') or '')[:60]}" + (f", by {who}" if who else "") + (f", {r['end_year']}" if r.get("end_year") else ""),
+                         "pixel": False, "sha256_source": r.get("sha256")})
     # LoRA candidates (D-75), from the 512 px originals
     for d, fam in (("crabs", "text-to-image"), ("crabs2", "img2img")):
         mp = os.path.join(ROOT, "runs", "runpod", "belle", d, "meta.json")
