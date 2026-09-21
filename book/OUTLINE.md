@@ -70,9 +70,9 @@ see" (a number or an output line) so they know it worked.
   whether adding X, Y and Z would change the output, so we tested it" — so the reader always knows
   where they are. Draft 1 written 2026-09-20 as `chapters/NNa-signpost-*.md` (sorted after chapter
   NN by `build.py`): 04a the canon and the shelf; 06a the tests of the tests; 07a what the
-  checkpoint bought; 08a the harness is the product; 10a the audit habit and the scan. Still to
-  write once their chapters exist: after 1 (what "doesn't bluff" costs), after 12 (private),
-  after 13 (the 1B run).
+  checkpoint bought; 08a the harness is the product; 10a the audit habit and the scan. 01a the promise,
+  priced (2026-09-21). Still to write once their chapters exist: after 12 (private), after 13
+  (the 1B run).
 - Marketing wording rule D-50 applies to the cover and the blurb.
 
 ## Process from here
