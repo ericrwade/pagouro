@@ -60,6 +60,29 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
 5. **Streaming/parallel tokenizer** ✔ (2026-09-18) and the data volume built and ledgered — **with a pre-2022 basis on every backbone row first** (O-22, `docs/O22_PRE2022_BACKBONE.md`; D-34 is locked) — FineWeb and Wikipedia done 2026-09-19; **The Stack replaced by a dated code source ≤ 2021-12-31 (D-62 b)** is the remaining step.
 6. Eric's "launch" on the status issue, with the balance loaded.
 
+## Staged for the 1B as of 2026-09-20 (what the weekend built; every item measured on Flash first)
+- **Decay must be a mix** (D-61): FineWeb + anneal, never anneal-only; the naive decay ate itself at
+  126M. `flash.sh` phase 2 is the template; the shelf stays (won every clean held-out set).
+- **Yardsticks:** the 100-item honesty sets (`evals/bluff100.json`, `calibration100.json`, D-73)
+  adjudicate; the 30-item sets are history. Tool-result fidelity (`evals/toolresult.json`, D-70),
+  memory with the numbers column, spelling (novel words, D-68), tool-use with `--probs` (O-35),
+  skills on the model (`scripts/skill_test.py --model`). One command: `scripts/eval_sft_ckpt.sh`.
+- **SFT mix, ready:** the 5,558 harness set + calc + memory seeds, skill router/answer examples
+  (48), spelling seed (501), tool-result seed (600, half failures). At 126M the tool-result rows
+  cost 10–16 points of open-question honesty however padded (D-76); the 1B is where that trade
+  is expected to relax — measure it on the 100-sets before shipping any mix.
+- **GRPO, ready:** `sft/grpo_curriculum.jsonl` (D-71): known 303 / unknowable 2,846 / invented
+  2,956 with `train_grpo.py --balance` and the three-way reward; the frozen scorer is the reward.
+  97 prompts were memorised in 240 steps (D-69); this set is 61× larger, one pass each.
+- **Router probability** (O-35): read from token logprobs; 0.917 right vs 0.816 wrong at 126M,
+  overconfident at the top. Fit a temperature on the GRPO curriculum, test on the 100-sets.
+- **Corpus facts that stand:** backbone dated (FineWeb dump-date rows, Wikipedia 2021-12-20); the
+  Stack caveated (D-62, replace before 1B); six shelf manuals re-OCR'd from page images with the
+  page-order check on every ingest (D-66); bitcointalk and The Law excluded.
+- **Not part of the 1B run but sharing the card:** the drawing model (D-67) — `train_draw.py` at
+  5.5M params trains on the desk; a 20–50M version wants an hour of GPU; the Belle Époque LoRA
+  (D-75) is a separate, finished artifact.
+
 ## Launch shape (what the session will do, step by step, when told)
 1. `create-network-volume` 500 GB in a data center with 8×H100 secure stock.
 2. CPU pod (or the training pod before the run): fetch + tokenize the mixture to the volume;
