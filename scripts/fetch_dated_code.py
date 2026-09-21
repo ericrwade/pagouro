@@ -65,9 +65,11 @@ REPOS = {
     "solidity": [
         "https://github.com/OpenZeppelin/openzeppelin-contracts", "https://github.com/compound-finance/compound-protocol",
         "https://github.com/ensdomains/ens-contracts", "https://github.com/smartcontractkit/chainlink",
-        "https://github.com/ethereum/solidity", "https://github.com/dapphub/ds-token", "https://github.com/gnosis/conditional-tokens-contracts",
-        "https://github.com/balancer-labs/balancer-core", "https://github.com/synthetixio/synthetix", "https://github.com/yearn/yearn-vaults",
-        "https://github.com/0xProject/protocol", "https://github.com/argentlabs/argent-contracts",
+        "https://github.com/0xProject/protocol", "https://github.com/Synthetixio/synthetix", "https://github.com/sushiswap/sushiswap",
+        "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable", "https://github.com/Loopring/protocols",
+        "https://github.com/ethereum-optimism/optimism", "https://github.com/rarible/protocol-contracts", "https://github.com/1inch/limit-order-protocol",
+        "https://github.com/decentraland/marketplace-contracts",
+        # tried and out (first run, 2026-09-21): ethereum/solidity GPL-3, balancer-core GPL-3, ds-token GPL-3, yearn-vaults AGPL, argent GPL-3, conditional-tokens LGPL
     ],
     "cpp": [   # the 1B plan's code slice names C++ (docs/JOB_1B.md); the Stack rows never covered it
         "https://github.com/bitcoin/bitcoin", "https://github.com/monero-project/monero", "https://github.com/jedisct1/libsodium",
@@ -77,7 +79,7 @@ REPOS = {
         "https://github.com/simdjson/simdjson", "https://github.com/skypjack/entt", "https://github.com/ocornut/imgui",
         "https://github.com/godotengine/godot", "https://github.com/opencv/opencv", "https://github.com/google/re2",
         "https://github.com/microsoft/terminal", "https://github.com/electron/electron", "https://github.com/apple/foundationdb",
-        "https://github.com/ethereum/solidity", "https://github.com/ethereum/aleth",
+        "https://github.com/ethereum/aleth",                      # ethereum/solidity itself is GPL-3: out
     ],
 }
 EXT = {"python": (".py",), "rust": (".rs",), "go": (".go",), "solidity": (".sol",), "cpp": (".cc", ".cpp", ".cxx", ".h", ".hpp", ".hh")}
