@@ -1620,3 +1620,65 @@ three-way curriculum, the tool-result seed, the palette, the style model — is 
 
 *The log continues. Next: Eric's picks from the sheets, the road to the 1B, and a stick that
 draws.*
+
+---
+
+## Day 12, small hours — The last undated row, and the three ways a licence file can lie to a script
+
+The Stack had been the corpus's last source without a date. It was kept on 2026-09-19 with a
+caveat written on its rows — code collected to March 2022, no per-file dates — and a promise to
+replace it before the big run. Tonight, with Eric asleep somewhere on the road and nothing in
+the inbox, the replacement got built.
+
+The method was the one the specification fetcher already used for the Bitcoin and Ethereum
+improvement proposals: pick repositories by hand, clone each one, wind it back to its last
+commit before the first of January 2022, read its licence file, and take the source only if the
+licence is one we can name and live with. A hundred repositories across five languages — C++
+added, because the plan for the one-billion model had always listed it and the Stack rows never
+covered it. Copyleft out, however famous: go-ethereum, Uniswap, Aave, Substrate's client, the
+Solidity compiler itself. The result is five ledger rows that each carry their whole repository
+list — URL, commit hash, commit date in the committer's zone and in UTC, licence, and which
+file said so — plus a list of the ones that were tried and refused, with the reason. Two hundred
+and forty million tokens against the Stack's hundred and sixty (D-62b; `corpus.json` rows `code-dated-*`: 28/19/17/10/21 repositories, 65.0M / 36.6M / 63.7M / 1.4M / 74.0M tokens).
+
+The interesting part was what the script got wrong before it got anything right, because
+every one of the mistakes would have passed a casual inspection.
+
+The first pass skipped CPython as GPL. CPython is licensed under the Python Software Foundation
+licence; the script had scanned the file for the words "GNU General Public License" and found
+them — on line 227, in a clause about which jurisdiction's law governs derivative works of Python
+1.6.1. A choice-of-law clause, in a file that also says, in capitals, what it actually is. The
+fix was a rule rather than an exception: the licence a file *names first* is its licence, and
+later mentions are commentary.
+
+The second was worse, and it was quiet. Protobuf came back with fifty files and half a million
+characters, which is not protobuf. The repository at the "last commit before the cutoff" had
+no `src/` directory at all. Git's `rev-list --before` walks every ancestor, including the
+histories of other projects that were merged in later, and the newest pre-2022 commit it found
+belonged to a different repository — upb, a small protobuf runtime whose history was grafted
+into the main tree in 2023. The commit was real, dated correctly, licensed correctly, and the
+wrong tree. Every repository in the first run had been selected the same way, so the whole run
+was thrown away and redone with `--first-parent`, which follows the branch's own line and
+answers the question actually being asked: what did this project look like on that date.
+Protobuf came back at six hundred files and eleven million characters, against fifty and half a million the first time (`runs/fetch_dated_code.attempt1.log` vs `runs/fetch_dated_code.log`).
+
+The third was a category, not a bug. matplotlib keeps its licence in a *folder* called
+`LICENSE`. nlohmann's JSON library keeps it in `LICENSE.MIT`. Bevy and go-ipfs have a `LICENSE`
+that is one paragraph pointing at `LICENSE-MIT` and `LICENSE-APACHE`. Pillow's is the old HPND
+text, which wraps in the middle of the sentence the script was looking for. Each of these read
+as "no licence" until the reader learned that shape, and each fix was one line. The lesson for
+the ledger generally: a licence check that opens one filename is a check of the filename.
+
+Solidity came out thin — ten repositories, a million and a half tokens, a thirtieth of the
+Stack's Solidity row. That is not a fetch failure. Most DeFi code is GPL, AGPL or
+business-source by design, two of the repositories on the list have been deleted from GitHub
+since 2021, and one has had its history rewritten so that nothing in it predates 2022. That is
+the honest size of the permissively licensed Solidity corpus, and the row says so. The mixture
+gives it the same share as before and it will simply contribute what it has.
+
+While the clones ran, the book grew by six chapters and two signposts — the opening, the price
+of the honesty claim, the first do-it (a model in an afternoon), the ledger, the test that
+caught itself, and what "private" means — which puts every chapter that can be written before
+the big run in draft. Thirty thousand words, and every number in them has a footnote naming a
+file. The chapter on the ledger ends with tonight's work, which is a convenient place for it to
+end (`book/build.py`: 23 chapters, 29,960 words).

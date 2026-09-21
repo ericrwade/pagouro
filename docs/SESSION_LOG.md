@@ -76,15 +76,25 @@ O-37/D-75: procedural mark in the retreated configuration (Eric's refs), then th
 LoRA** on CommonCanvas-S-C trained on our poster slice on a rented A40 (~75 min, ≈$0.61; pod
 deleted, `list-pods` empty): 192 litho-look candidates home, sheets sent. sft5 (abstention ×3 +
 tool-result seed, 5,500 steps) training; eval chain armed.
-**Open / next:** (1) Eric's calls: HOUSE palette (Trade Card vs Belle Époque), whether the style
-brief widens to "Belle Époque / Gilded Age, trade card and poster"; O-29 trademark; O-31 io.net;
-O-32 receipt model. (2) Next fine-tune should include the skill router+answer examples and the
-spelling seed, then re-measure skills routing (model alone), spelling (novel words), tool-use
-with `--probs`. (3) Draw: sprite-sheet slicer for the Kenney packs that ship only sheets; OGA
-CC0 slice; the palette-quantised training set once HOUSE is chosen; the drawing model itself
-(D-67 gate). (4) GRPO on `sft/grpo_big.jsonl` when GPU time is next authorised. (5) Book:
-signposts, chapters 0/1/3/5/12 (story), 2 (do-it). (6) D-62b: the Stack's dated replacement
-before 1B.
+**2026-09-21 morning addendum (00:30–04:00 PT):** **D-62b done** — The Stack superseded by
+five `code-dated-*` rows: 95 permissively licensed repositories at their default branch's last
+commit before 2022-01-01 (`rev-list --first-parent --before`), licence file classified before a
+byte is taken, commit hash/date/licence per repo on the row; 240.7M tokens (py 65.0M, rs 36.6M,
+go 63.7M, sol 1.4M, **C++ 74.0M new**); `build_mixture.py` reads `code/<lang>.txt`; the backbone
+is now fully dated (last O-22 item). Three defects caught before any row was written (cpython
+mis-skipped on a GPL mention in a choice-of-law clause; protobuf's pre-cutoff commit came from
+merged-in upb history with no `src/`; four licence-file shapes) — run redone from scratch.
+**Book:** chapters 0, 1, 2 (do-it), 3, 5, 12 and signposts 01a/12a drafted; 23 chapters, ~30k
+words; only 13 and 15 (the 1B run) remain. LoRA pod billing settled so far $0.40; `list-pods`
+empty. `workspace/docs/` gitignored (user documents, D-79). LoC crawl: 243 posters.
+**Open / next:** (1) Eric's picks from the Belle Époque LoRA sheets → iterate those seeds; an
+hour of GPU for the 20–50M draw model when he says "rent". (2) O-29 trademark, O-31 io.net, O-32
+receipt model — Eric. (3) Next fine-tune only at 1B (D-76): skill router+answer examples,
+spelling, style and tool-result seeds are staged in `docs/JOB_1B.md`; GRPO on the curriculum when
+GPU time is authorised. (4) 1B prerequisites still open in `docs/JOB_1B.md` (data volume build,
+tokenizer streaming already ✔). (5) LoC crawl continues throttled; re-read pod billing once more
+when the Sep 21 UTC bucket posts. (6) Book: 13 and 15 after the 1B run; a read-through pass for
+the story strand's voice once Eric is home.
 
 ---
 
