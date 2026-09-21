@@ -65,8 +65,11 @@ your first one.
 
 A model does not read letters; it reads *tokens*, pieces of text a few characters long, and the
 list of pieces is the tokenizer. It is chosen once and it is a one-way door — change it later and
-every tokenized byte on disk is invalid — so the build has an opinion about it, and the opinion
-is in Chapter 3. For the afternoon, a vocabulary of 8,192 pieces is plenty:
+every tokenized byte on disk is invalid — so the build has an opinion about it: keep the
+vocabulary under 65,536 so that a token fits in two bytes and the embedding table stays a small
+share of a small model, and give every digit its own token, the one tokenizer choice with a
+measurable effect on arithmetic. The real run used 32,768 pieces.[^d33] For the afternoon, a
+vocabulary of 8,192 pieces is plenty:
 
 ```
 python scripts/train_tokenizer.py --vocab-size 8192
@@ -193,6 +196,7 @@ introduces a new kind of thing. They are these six, larger.
 [^fetch]: `scripts/fetch_data.py` docstring; the ODC-By licence is recorded on the row it writes.
 [^chars]: `data/tokenized/meta.json`: `source_chars` 95,340,108 for the 20,000-document slice.
 [^tok]: `scripts/train_tokenizer.py`: the chat template and reserved tool tokens are written into `tokenizer_config.json`; D-33 for the real run's 32,768-piece vocabulary with digits split.
+[^d33]: D-33 (2026-09-16): ~32,768-piece BPE, digits split individually, byte fallback, chat and tool tokens reserved; D-7 for the 65,536 ceiling.
 [^u16]: `BUILD_LOG.md` Day 1, "Then I read the transcript"; D-7.
 [^meta]: `data/tokenized/meta.json`: `train_tokens` 24,417,484, `chars_per_token` 3.885, `vocab_size` 8192, `dtype` uint16.
 [^llama]: `BUILD_LOG.md` Day 1, "The transformer"; D-21 (own the GGUF export; verify it every time).
