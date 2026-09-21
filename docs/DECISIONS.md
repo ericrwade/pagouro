@@ -2090,6 +2090,13 @@ fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsid
 discipline: a ~$1 shakedown (bundle, 300 steps, checkpoint, resume, tokens/s), then a one-hour
 DDP rehearsal, before it can be a candidate for the 1B. The risk is node churn during a
 multi-day multi-GPU job, not price; the story is worth telling only if the run survives.
+**2026-09-21 update (Eric: RunPod vs io.net vs vast.ai — "what do you think?"):** `docs/GPU_PROVIDERS.md`.
+The RunPod head start is proof, not code (a day of plumbing to move; the shakedown+rehearsal ≈ $30 to
+re-earn). io.net's docs as of today: H100 SXM $2.10–3.50/GPU-h, IO/USDC-on-Solana or card, clusters
+**prepaid for a chosen duration**, self-serve bare metal discontinued 2025-10-01, persistent storage
+and disk-at-expiry **undocumented**, 8×H100 single host not confirmed. vast.ai: $1.73, stranger's
+machine, instance disk. Verdict: try io.net on the O-31 discipline for the story's sake; the story is
+told only if the run finishes there; vast.ai for shakedowns and single cards only.
 
 ### O-32 — Compute-for-receipt (not licence) for a model beyond 1B; the number first
 **2026-09-19, Eric:** after the 1B proves the method, fund a 30B/72B by trading H100 time for a
