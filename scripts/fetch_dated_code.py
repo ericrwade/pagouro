@@ -147,7 +147,9 @@ def fetch_repo(url: str, lang: str, tmp: str):
             return {"url": url, "skipped": f"clone failed: {str(e2.stderr)[-120:]}"}
     def last_before() -> str:
         try:
-            return git("rev-list", "-1", f"--before={CUTOFF}T00:00:00Z", "HEAD", cwd=dst)
+            # --first-parent: the default branch's OWN state. Plain rev-list returns the newest pre-cutoff
+            # commit in any merged-in ancestry (protobuf gave a commit from the upb repository: no src/).
+            return git("rev-list", "-1", "--first-parent", f"--before={CUTOFF}T00:00:00Z", "HEAD", cwd=dst)
         except subprocess.CalledProcessError:
             return ""
     commit = last_before()
