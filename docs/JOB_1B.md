@@ -1,13 +1,13 @@
 # The 1B run — plan, prerequisites, launch shape
 
-**Status: PLAN, not launched.** Requires Eric's explicit "launch" (D-54) and the prerequisites
-below. Numbers here are from measured runs (D-55, the Flash run) and are updated as runs land.
+**Status: LAUNCHED 2026-09-21 (D-82) — Eric: "start on runpod. I will add money to it right now."** O-12 closed as D-81 (4k → 8k).
+Step 1 is the data-volume build; see D-82 for the launch shape as executed and #2 for the live log. Prerequisites Numbers here are from measured runs (D-55, the Flash run) and are updated as runs land.
 
 ## Model (D-6, D-7, D-33)
 | | value | note |
 |---|---|---|
 | params | ~1.03B | dim 2048, 20 layers, 16 heads, 4 kv heads, ffn 6144, vocab 32,768, tied embeddings |
-| context | 8,192 (O-12 proposal) | trained at 4k for the stable phase, extended to 8k in the decay phase |
+| context | 8,192 (D-81, LOCKED) | trained at 4k for the stable phase, extended to 8k in the decay phase |
 | schedule | WSD (D-48, D-61) | warmup 2k steps, stable at 3e-4, last 10% linear decay on a **mix**: backbone data + domain anneal, with no domain token replayed more than ~2x (the Flash run's anneal-only decay memorised an 8M-token anneal in 1,200 steps: train 3.05->0.48, held-out 3.25->4.82) |
 | tokens | 100B (D-6) | ~100 tokens/parameter |
 | batch | 1M tokens/step | e.g. 8 GPUs × 16 × 4096 × accum 2 |

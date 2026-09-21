@@ -2084,6 +2084,36 @@ credit. Rights stated without overclaiming in `brand/README.md` (OpenAI's output
 uncopyrightable; trademark O-29 is the protection that matters). It is a brand asset, not corpus:
 no ledger row, no model saw it.
 
+### D-81 — LOCKED: context 4k in the stable phase, 8k in the decay (closes O-12)
+**2026-09-21, Eric: "You asked if you can do 4K now and 8K later, yes. Consider it approved."**
+The O-12 proposal as written: pretrain at 4,096, extend to 8,192 in the decay phase (RoPE
+unchanged, `--seq-len` raised on resume, the model told the new max), the app sending ~4k of
+recent conversation plus retrieval by default with a user override. The 1B's context on the box
+is 8,192.
+
+### D-82 — LOCKED: the 1B runs on RunPod; io.net declined for this job, and the reasoning goes in the book (closes O-31)
+**2026-09-21, Eric: "your analysis of why io.net might not be our best bet is cogent and should
+be part of the book, too. I would have liked to use it, but not at the expense of the job … start
+on runpod. I will add money to it right now."** `docs/GPU_PROVIDERS.md` is the analysis: RunPod's
+head start is proof, not code; io.net as documented on 2026-09-21 prepays a chosen duration,
+has discontinued self-serve bare metal, documents neither persistent storage nor what happens
+to the disk at expiry, and does not confirm an 8×H100 single host — three unknowns a marketplace
+should not be carrying under a four-day eight-card job. vast.ai stays for shakedowns and single
+cards. The decision is the *job's*, not the story's; the story (paid in USDC on a decentralised
+network) is deferred to a run that can afford to be interrupted, and the book tells why (Chapter
+11's do-it and the 1B chapter). **This is the launch (D-54):** the plan and hourly prices are
+posted on #2 before any `create-pod`; the balance Eric loads is the cap; every artifact comes home
+before a pod is deleted; `list-pods` empty at the end of every step.
+
+**Launch shape as executed** (revising `docs/JOB_1B.md` where measurement forces it): the data
+on disk today is 0.57B live tokens against a 100B plan, so the first step is the **data volume
+build on a CPU pod** — dated FineWeb-Edu at scale (the fetcher already filters on dump date),
+the full 2021-12-20 Wikipedia dump, the code recipe scaled by repositories (D-62b's script, a
+longer list), Stack Exchange from the dated archive dump if the fetcher lands in time. The
+mixture shares are re-stated from what is actually fetchable with epochs written on the row
+(no slice replayed more than ~3×; canon and shelf live in the decay only), and posted on #2
+before tokenization starts.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
