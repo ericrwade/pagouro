@@ -125,7 +125,9 @@ def main() -> int:
     # so the host needs nothing installed (D-51, D-52).
     if not a.no_app:
         build_dir = os.path.join(ROOT, "build")
+        icon = os.path.join(ROOT, "brand", "pagouro.ico")          # D-80: Eric's mark (concept #5) on the exe
         cmd = [sys.executable, "-m", "PyInstaller", "--onefile", "--console", "--name", "pagouro",
+               *(["--icon", icon] if os.path.exists(icon) else []),
                "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts", "--hidden-import", "packsearch", "--hidden-import", "artkit", "--hidden-import", "skills", "--hidden-import", "palettes", "--hidden-import", "mark", "--hidden-import", "house_style", "--hidden-import", "documents", "--hidden-import", "pypdf", "--hidden-import", "docx", "--collect-all", "docx",
                "--distpath", os.path.join(build_dir, "dist"), "--workpath", os.path.join(build_dir, "work"),
                "--specpath", build_dir, "--noconfirm", "--log-level", "WARN",
@@ -147,11 +149,19 @@ def main() -> int:
                         ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))   # last_test.json ships: /skills shows the scores
         for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md"):   # D-78: the look and the voice ship beside the exe
             shutil.copy2(os.path.join(ROOT, "docs", name), os.path.join(rel, name))
+        # D-80: the mark ships -- the full image, the icon, and the house-palette pixel versions /art logo draws
+        brand_dst = os.path.join(rel, "brand")
+        os.makedirs(brand_dst, exist_ok=True)
+        for name in ("pagouro_mark.png", "pagouro_mark_512.png", "pagouro_mark_128.png", "pagouro.ico",
+                     "mark_house_64.json", "pagouro_mark_house_64.png", "README.md"):
+            src = os.path.join(ROOT, "brand", name)
+            if os.path.exists(src):
+                shutil.copy2(src, os.path.join(brand_dst, name))
         os.makedirs(os.path.join(rel, "workspace"), exist_ok=True)
         with io.open(os.path.join(rel, "workspace", "README.txt"), "w", encoding="utf-8", newline="\n") as f:
             f.write("The only folder Pagouro's tools may write to, and only in CAN ACT mode (/act).\n"
                     "notes/ holds saved notes; transcripts/ holds chats saved in STONE mode (/stone).\n")
-        print("  app: pagouro.exe + llama-server.exe + packs/ + skills/ + workspace/")
+        print("  app: pagouro.exe + llama-server.exe + packs/ + skills/ + brand/ + workspace/")
 
     # Hash every shipped file for the manifest. This IS the anchorable artifact.
     hashes = {}

@@ -820,10 +820,29 @@ class App:
         [seed]` also writes workspace/art/crab-<seed>.png (needs CAN ACT). No drawing model on this
         stick yet; this proves the display, the palette and the file path it will use."""
         parts = arg.split()
+        if not parts or parts[0] == "logo":                # D-80: the mark itself, Eric's concept #5, in the house palette
+            size = 64                                       # 32 px was tried: the lettering turns to mush
+            p = os.path.join(BASE, "brand", f"mark_house_{size}.json")
+            if not os.path.exists(p):
+                p = os.path.join(os.path.dirname(BASE), "brand", f"mark_house_{size}.json")   # dev tree
+            if os.path.exists(p):
+                d = json.load(open(p, encoding="utf-8"))
+                cols = [tuple(c) for c in d["colors"]]
+                img = [[cols[i] for i in row] for row in d["pixels"]]
+                print(artkit.render_ansi(img) if COLOR else artkit.render_ascii(img))
+                print(c(DIM, f"  the Pagouro mark ({size} px, {d['palette']} palette). Full size: brand/pagouro_mark.png beside this program. "
+                             "/art crab, /art mark, /art blob draw program-generated pictures."))
+                return
+            if not parts:
+                parts = ["crab"]
         save = bool(parts) and parts[0] == "save"
         blob = bool(parts) and parts[0] == "blob"
         medal = bool(parts) and parts[0] == "mark"
+        if parts and parts[0] == "crab":
+            parts = parts[1:]
         rest = parts[1:] if (save or blob or medal) else parts
+        if rest and rest[0] == "crab":
+            rest = rest[1:]
         seed = int(rest[0]) if rest and rest[0].isdigit() else int(time.time()) % 100000
         pal = _palettes.CANDIDATES[_palettes.HOUSE]
         if medal:
@@ -856,7 +875,7 @@ HELP = """  commands:
     /act    /readonly  allow tools to write inside workspace/ / forbid (default: READ-ONLY)
     /tools             list tools and loaded packs
     /status            show the context gauge
-    /art [mark|blob|save] [n]  draw the hermit crab in the house palette (mark: the 64px poster medallion; blob: old sprite; save: PNG, needs CAN ACT)
+    /art [logo|crab|mark|blob|save] [n]  the Pagouro mark (logo, default), or a program-drawn crab / medallion / old sprite in the house palette (save: PNG, needs CAN ACT)
     /remember <text>   keep a line in workspace/memory for every later session (/remember alone: status; /forget deletes it)
     /skills            list installed skills (skills/<name>/), their licences, tools, and whether they match their MANIFEST
     /about  /why       why everything looks like this (Belle Époque), and where the style guide is

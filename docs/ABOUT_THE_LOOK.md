@@ -40,7 +40,8 @@ on your own desk and keeps your words to yourself borrows their look rather than
 
 Thirty-two colours in eight ramps (warm black, poster cream, chrome yellow, vermilion, Prussian
 blue, sage, dusty rose, gold ochre); one-pixel warm-black contours; 32 or 64 pixels; the hermit
-crab retreated into its shell in a cream medallion with a sunburst and a lettered band. The full
+crab retreated into its shell in a medallion with a lettered band — the picture itself is
+`brand/pagouro_mark.png` beside this program, and `/art logo` draws it in the terminal. The full
 rules and the hex values are in `STYLE_GUIDE.md` beside this file.
 
 ## Want it to look like something else?

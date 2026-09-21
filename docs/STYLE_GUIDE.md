@@ -30,10 +30,14 @@ ordered dither allowed); a one-pixel contour in the darkest warm black around ev
 64 px; the ground is poster cream, not white. Sunburst behind a medallion: alternate wedges of the
 two lightest creams. Lettering: the 3×5 pixel face in `app/mark.py`, cream on a coloured band.
 
-**The mark:** a hermit crab *retreated into its shell* — the shell is the mass, only the folded
-claws and the eyes on their stalks show at the mouth, one antenna out; a spiral with a spire, a
-cast shadow, inside a round cream medallion with a sunburst and a lettered band. Never a crab
-walking with its body out; never a snail.
+**The mark** is a specific picture, chosen by Eric on 2026-09-21 from ten concepts (D-80):
+`brand/pagouro_mark.png` — a hermit crab retreated into its shell, claws folded and eyes on
+their stalks at the mouth, one antenna out, in a round teal medallion on cream, art-nouveau
+flourishes in the corners, a scallop below, and "Pagouro" lettered on a cream band. It ships
+beside the program (`brand/`, with the icon and a 64-pixel house-palette version `/art logo`
+draws). The rule for anything else that draws a crab: retreated into the shell — the shell is the
+mass, only the folded claws and the eyes show; never a crab walking with its body out; never a
+snail. Do not redraw the mark; use the file.
 
 **The corpus behind the look:** public-domain and CC0 prints only — the Met Open Access poster
 masters and trade cards, the Library of Congress Artists Posters collection, Kenney's CC0 sprite

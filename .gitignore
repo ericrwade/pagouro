@@ -71,3 +71,7 @@ workspace/online.json
 tools/ocr/
 skills/last_test.json
 runs/jev_usage.log
+# the ten brand concepts stay local (31 MB); the chosen one and the contact sheet are tracked
+brand/concepts/*
+!brand/concepts/_contact_sheet.jpg
+Pagouro_All_Concepts.zip

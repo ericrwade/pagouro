@@ -2068,6 +2068,19 @@ offline notice, `/index` on a scan, a failing tool, STONE with no writable disk)
 be visible and say what to do, the D-19 rule applied to everything else. Install is Eric's to run
 (permission wall, as with TypeSafe). **Done the same hour:** four states fixed in `app/pagouro_app.py` — a startup failure (no model, server missing, server crashed, server silent) now prints what happened, what to do, and the server's last stderr lines, and waits for a keypress when the exe was double-clicked (the window used to close with the message); STONE on a write-protected stick falls back to SAND with a notice instead of crashing the turn; a bug inside one turn is reported and the session continues. Each state exercised with a fake server / a blocked workspace path; the normal path re-run.
 
+### D-80 — The mark: Eric's concept #5 is the outward-facing Pagouro brand
+**2026-09-21, Eric: "I have saved some beautiful artwork for the outward-facing Pagouro branding …
+the one I've chosen is #5."** Ten concepts in `Pagouro_All_Concepts.zip` (kept out of the repo;
+contact sheet `brand/concepts/_contact_sheet.jpg`); #5 is `brand/pagouro_mark.png`: the retreated
+crab, claws folded and eyes forward, teal medallion on cream, art-nouveau corners, scallop,
+"Pagouro" on a band — the D-74 look and the O-37 crab brief in one picture, so the procedural
+medallion (`app/mark.py`) and the LoRA candidates step down to *studies*; the mark is this file.
+Shipped: `brand/` beside the exe (full image, sizes, `pagouro.ico` as the exe icon, and a 64-px
+house-palette version that `/art logo` — now the default `/art` — draws in the terminal; 32 px
+tried, lettering unreadable, not shipped). README carries it; STYLE_GUIDE and ABOUT_THE_LOOK point
+at the file. **Provenance to complete:** the generation tool, for `brand/README.md` and the
+release rights note — Eric. It is a brand asset, not corpus: no ledger row, no model saw it.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same

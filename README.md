@@ -1,5 +1,7 @@
 # Pagouro
 
+<img src="brand/pagouro_mark_512.jpg" width="256" align="right" alt="The Pagouro mark: a hermit crab retreated into its shell, in a Belle Époque medallion">
+
 > A small language model, built from scratch, that lives on a USB stick and needs nothing from
 > outside.
 >
