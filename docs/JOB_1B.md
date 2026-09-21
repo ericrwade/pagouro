@@ -71,6 +71,7 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
   (48), spelling seed (501), tool-result seed (600, half failures). At 126M the tool-result rows
   cost 10–16 points of open-question honesty however padded (D-76); the 1B is where that trade
   is expected to relax — measure it on the 100-sets before shipping any mix.
+- **Code for the volume (D-62b):** `scripts/fetch_dated_code.py` is the recipe, not the volume — 95 repos give 240.7M tokens, and a 15% code share of 100B wants ~15B. Scaling is more repositories (the list is a Python dict; add by the hundred from a licence-filtered GitHub search, same first-parent/licence-first rules) and/or more epochs over code, which the 1B plan already accepts for the canon. Decide the ratio when the volume is built on the CPU pod; the ledger row shape stays the same.
 - **GRPO, ready:** `sft/grpo_curriculum.jsonl` (D-71): known 303 / unknowable 2,846 / invented
   2,956 with `train_grpo.py --balance` and the three-way reward; the frozen scorer is the reward.
   97 prompts were memorised in 240 steps (D-69); this set is 61× larger, one pass each.
