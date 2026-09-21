@@ -19,6 +19,8 @@ What the loader enforces, and what it does not:
     at load with the reason printed. Python cannot be sandboxed from inside Python; the honest
     protection is the hash list, the screen, and reading the code (it is short by construction).
   * Tool names must not collide with the app's own tools or another skill's; a collision is refused.
+  * A tool result may contain a line "--": everything after it is shown to the person (provenance,
+    raw bytes, hashes) but never sent to the model, which a small model cannot use and is confused by.
   * Every loaded file's hash is compared with MANIFEST when one exists; a mismatch is printed and
     the skill still loads (the owner may be editing it) but is marked MODIFIED in /skills.
   * A plain SKILL.md folder from the wild (no tools/, scripts/ instead, resources/ instead of

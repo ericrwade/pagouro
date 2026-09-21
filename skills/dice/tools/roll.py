@@ -85,4 +85,4 @@ def run(argument: str, app=None) -> str:
     prov = f"source: {source}"
     if used is not None:
         prov += f"; bytes used: {used.hex() or '-'}; sha256 of bytes: {hashlib.sha256(bytes(used)).hexdigest()[:16]}"
-    return "\n".join(out) + "\n" + prov
+    return "\n".join(out) + "\n--\n" + prov      # after "--": shown to the person, not fed to the model (harness convention, O-38)

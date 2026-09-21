@@ -603,7 +603,11 @@ class App:
         if tool != "none":
             tool_result = self.run_tool(tool, args)
             if tool_result is not None:
-                self.history.append({"role": "tool", "content": f"{tool}: {tool_result[:1200]}"})
+                # Convention (O-38): a tool may put a line "--" in its result; what follows is for the
+                # person (provenance, raw bytes, hashes) and is shown, but never fed to the model,
+                # which would only be confused by it.
+                for_model = tool_result.split("\n--\n", 1)[0]
+                self.history.append({"role": "tool", "content": f"{tool}: {for_model[:1200]}"})
 
         budget = min(MAX_TOKENS_ANSWER, max(64, self.srv.n_ctx // 4))
         self.make_room(budget)
