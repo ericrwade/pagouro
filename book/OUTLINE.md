@@ -43,7 +43,7 @@ The book's credibility is the same as the model's — it survives inspection.
 | 9 | **Do it: make it yours** (packs, model swap, skills, fine-tune) | do-it | MAKE_IT_YOURS rungs 1–7, SKILLS.md, the skills numbers | draft 1 (`chapters/09-…`) |
 | 10 | Three days alone with a budget | story | BUILD_LOG Days 8–9 (RunPod, Flash, the shelf, the ablation, the decay that ate itself) | draft 1 (`chapters/10-…`) |
 | 11 | **Do it: rent a GPU without getting hurt** | do-it | RUNPOD_JOB.md, JOB_1B.md, D-54/D-55/D-61 | draft 1 (`chapters/11-…`) |
-| 12 | What "private" means, exactly | story+do-it | THREAT_MODEL.md, the offline audit | raw |
+| 12 | What "private" means, exactly | story+do-it | THREAT_MODEL.md, the offline audit, D-19 | draft 1 (`chapters/12-…`, 2026-09-21) |
 | 13 | The one-billion run | story | (not yet happened) | future |
 | 14 | **Do it: ship a finished thing** (manifest, signature, anchor, archive) | do-it | RELEASE_RUNBOOK.md | drafted (doc) |
 | 15 | What it can and cannot do, with the numbers on the box | story | final evals, D-50 wording | future |
@@ -71,8 +71,8 @@ see" (a number or an output line) so they know it worked.
   where they are. Draft 1 written 2026-09-20 as `chapters/NNa-signpost-*.md` (sorted after chapter
   NN by `build.py`): 04a the canon and the shelf; 06a the tests of the tests; 07a what the
   checkpoint bought; 08a the harness is the product; 10a the audit habit and the scan. 01a the promise,
-  priced (2026-09-21). Still to write once their chapters exist: after 12 (private), after 13
-  (the 1B run).
+  priced; 12a the claim and the check (both 2026-09-21). Still to write once its chapter exists:
+  after 13 (the 1B run).
 - Marketing wording rule D-50 applies to the cover and the blurb.
 
 ## Process from here
