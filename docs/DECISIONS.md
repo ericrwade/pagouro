@@ -2054,6 +2054,20 @@ Remaining code caveat, stated: a commit date is when the code was committed, not
 no line of it was machine-written; before 2022 that risk is small and the claim made is the
 D-34 claim (collected/published before the cutoff), no more.
 
+### O-39 — Design Arc (friedbeef1/design-arc): not for the console app; the tool for the D-24 browser demo and the release page
+**2026-09-21, Eric: "is this at all helpful to you?"** MIT, Claude Code edition alpha. A UX-journey
+method for product screens: audit the real journey, gather evidence (Mobbin screenshot library,
+Apple/Material/W3C guidance), recommend one direction, design every state (entry, loading, empty,
+error, success, cancel, recovery) before implementation. **Verdict:** no fit today — Pagouro's
+interface is a console with a dozen states and no journey for it to audit; its evidence modes
+assume a web/mobile product. **Fit later:** the browser-local public demo (D-24) and the release
+page's "check a stick someone gave you" flow are real journeys with exactly those states, and the
+style guide + threat-model one-liners are its inputs; reach for it then. **Taken now, by hand:**
+its every-state checklist run over the console app (first launch, model file missing, packs empty,
+offline notice, `/index` on a scan, a failing tool, STONE with no writable disk) — each state must
+be visible and say what to do, the D-19 rule applied to everything else. Install is Eric's to run
+(permission wall, as with TypeSafe).
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
