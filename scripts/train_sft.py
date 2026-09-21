@@ -67,6 +67,7 @@ def load_examples() -> list[list[dict]]:
     out.extend(load_skill_examples())                                # O-30: each skill's examples.jsonl teaches the router its tool name
     add_pairs(os.path.join(ROOT, "sft", "spelling_seed.jsonl"))     # D-68: answer in the spelling register the question used
     add_pairs(os.path.join(ROOT, "sft", "toolresult_seed.jsonl"))   # D-70: answer inside the tool result; report NO_MATCH / errors, half the rows
+    add_pairs(os.path.join(ROOT, "sft", "style_seed.jsonl"))       # D-78: BC/AD; celestial events dated as observed on Earth
     return out
 
 

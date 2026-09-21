@@ -1822,7 +1822,7 @@ it on this project. Read: the skill teaches decomposing problems into typed judg
 Score primitives) answered by TypeSafe's hosted models; needs an API key; application state and
 questions leave the machine. **Rules:** never inside the stick or the app (D-1); dev-time only;
 only public or corpus text is ever sent, never Eric's own material or the private conversation;
-each use logged on the status issue with what was sent and why. **Where it plausibly helps:** a
+each use logged on the status issue with what was sent and why. **Amended 2026-09-21 (Eric):** "while we are building this we can use any tool that helps us, including Jev… The 'only open source' is what we are shipping, not what we are using." So: build-time tooling is unrestricted; the shipped artefact and the corpus are where the licence rule bites; the one caution kept is privacy — Eric's own words and the private conversation go to no third party without his say-so. **Where it plausibly helps:** a
 second opinion on frozen-suite verdicts where our scorer is disputed (audit of the scorer, never
 the scorer); answerability labels for the GRPO big set; the typed-decision contract as a model for
 the O-35 router. **Where it does not:** anything the stick does at runtime. Install via the Claude
@@ -1978,6 +1978,36 @@ pipeline is proven end to end — caption in, palette-legal pixels out — and t
 small and too briefly trained to draw. Next: 20–50M params, 64 px, an hour of GPU when next
 authorised, and the D-67 gate (40 captions) to score it. It shares nothing with the 1B run but a
 transformer file. Model file: `checkpoints/draw1.pt` (not on the stick until it passes a gate).
+
+### D-78 — House voice: BC and AD; celestial events dated as observed on Earth; the look is fixed in this version (fork to change it)
+**2026-09-21, Eric.** (1) "I say BC and AD. No CE and BCE." The corpus is mixed (BC 3,116 / AD 1,190
+vs CE 973 / BCE 687 in the Wikipedia slice), so the model alone would be inconsistent: the harness
+rewrites the notation on output (`app/house_style.py`: 500 CE → AD 500, 300 BCE → 300 BC, 3rd
+century CE → AD) — a convention, never a fact — and `sft/style_seed.jsonl` (16 rows) teaches it.
+(2) "Celestial events happen on the date they were observed on Earth": for anything outside the
+solar system we know the arrival of the light, not the event; answers give the observation date
+and the light-time as a caveat (12 seed rows: SN 1987A, the Crab, Kepler, Tycho, GW150914,
+Betelgeuse…; inside the solar system the ordinary date stands). (3) The Belle Époque look is
+hard-coded for this version: `docs/STYLE_GUIDE.md` (palette hex, renderer rules, the mark, the
+voice) and `docs/ABOUT_THE_LOOK.md` ("Why does everything look like this?" — with the Belle Époque
+defined by quoting Wikipedia's article, CC BY-SA, attributed) ship beside the executable and in
+the repository; `/about` (`/why`) prints it in the app. Want another look? Fork it (O-29: the name
+only with the look). The other three palettes stay in `app/palettes.py` for forkers.
+
+### D-79 — Documents: the harness reads PDF / Word / text, the model reads the text; and the router prompt must stay the trained one
+**2026-09-21, Eric: "Will Pagouro be able to look at documents… does that happen in a 1B?"** It
+happens in the harness at any size: `app/documents.py` extracts text — `.txt/.md/.csv/.json`, `.pdf`
+(pypdf, BSD-3, text layer only; a scan is reported as "no usable text layer; no OCR on this
+stick"), `.docx` (python-docx, MIT; paragraphs and tables) — `read_file` hands the model the first
+page, files dropped in `workspace/docs/` are indexed at launch beside the packs, `/index <path>`
+adds a file or folder (needs CAN ACT: it writes the text cache). Hits are labelled **YOUR DOCUMENT
+<name>**. Verified end to end on a Word file and a PDF: the bilge-pump question routed to
+`pack_search` and returned the right sentence from the .docx. Images and scans: not in this version
+(that needs an OCR model on the stick). What a bigger model buys is a longer window, not a new
+sense. **Finding on the way:** the skills-extended router prompt cost **5 of 40** on the frozen
+tool-use suite (31 → 26, sft3) and pushed ordinary questions to `calc`; the app now sends the
+plain prompt and grammar the model was trained on, skills are reached by their triggers, and
+`PAGOURO_ROUTER_EXTENDED=1` exists for a model that has been fine-tuned on the skill examples.
 
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based

@@ -43,6 +43,8 @@ import artkit  # noqa: E402  (O-21: terminal pixel-art renderer + PNG; the drawi
 import skills as _skills  # noqa: E402  (O-30: skill folders under skills/ add tools and packs)
 import palettes as _palettes  # noqa: E402  (D-74: HOUSE palette, Belle Époque; the crab is drawn in it)
 import mark as _mark  # noqa: E402  (the poster-medallion mark, procedural, in HOUSE)
+import house_style as _house  # noqa: E402  (D-78: BC/AD on output; the rest is in STYLE_GUIDE.md)
+import documents as _docs  # noqa: E402  (D-79: PDF / Word / text documents, extracted by the harness and indexed beside the packs)
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
@@ -261,7 +263,8 @@ def tool_pack_search(query: str, app) -> str:
         hits = mem[:2]
     out = []
     for name, text, _ in hits:
-        label = f"YOUR OWN WORDS, from {name[len('memory:'):]}" if name.startswith("memory:") else name
+        label = (f"YOUR OWN WORDS, from {name[len('memory:'):]}" if name.startswith("memory:")
+                 else f"YOUR DOCUMENT {name[len('doc:'):].removesuffix('.txt')}" if name.startswith("doc:") else name)   # D-79
         out.append(f"[{label}] {text[:700]}")
     res = "\n\n".join(out)
     if FORAGING.search(query) or FORAGING.search(res[:400]):
@@ -281,12 +284,13 @@ def tool_read_file(path: str, app) -> str:
     path = path.strip().strip('"').strip("'")
     if not _path_allowed_for_read(path, app):
         return f"REFUSED: {path} is outside the workspace and you did not name it in this message."
-    try:
-        with open(path, encoding="utf-8", errors="replace") as f:
-            text = f.read(4000)
-    except OSError as e:
-        return f"could not read: {e}"
-    return f"[{os.path.basename(path)}, first {len(text)} chars]\n{text}"
+    if not os.path.exists(path):
+        return f"could not read: no such file {path}"
+    text, note = _docs.extract_text(path, max_chars=200_000)
+    if not text:
+        return f"NO_MATCH: {os.path.basename(path)} — {note}"
+    head = text[:4000]
+    return f"[{os.path.basename(path)}: {note}; first {len(head)} chars]\n{head}"
 
 
 def tool_write_note(text: str, app) -> str:
@@ -385,6 +389,16 @@ class App:
         self.memory_chunks = 0
         for sub in ("memory", "notes", "transcripts"):
             self.memory_chunks += self.packs.add_dir(os.path.join(WORKSPACE, sub), "memory")
+        # D-79: documents the owner dropped into workspace/docs/ are extracted (PDF/Word/text) into a
+        # text cache and indexed like packs, labelled as documents in search hits.
+        self.doc_chunks = 0
+        docs_dir, cache = os.path.join(WORKSPACE, "docs"), os.path.join(WORKSPACE, "docs", ".text")
+        if os.path.isdir(docs_dir):
+            try:
+                _docs.index_into(docs_dir, cache)
+            except Exception:  # noqa: BLE001
+                pass
+            self.doc_chunks = self.packs.add_dir(cache, "doc")
         # Skills (O-30): each folder under skills/ may add tools (screened, hash-listed) and packs.
         self.skills = _skills.load_all(SKILLS_DIR, TOOLS, self.packs)
         self.stone = False            # D-19: SAND by default
@@ -402,9 +416,14 @@ class App:
         return (SYSTEM_PROMPT_ONLINE if self.online else SYSTEM_PROMPT).format(date=dt.date.today().isoformat())
 
     def router_prompt(self) -> str:
-        """The frozen router prompt, plus one clause per skill tool (O-30). Until the router is
-        fine-tuned on the skills' examples.jsonl this clause is the only teaching it gets."""
+        """The frozen router prompt the model was trained on — and nothing else. Measured 2026-09-21
+        (D-79): adding one clause per skill tool cost 5 of 40 on the frozen tool-use suite (31 -> 26)
+        and pushed ordinary questions to `calc`. Skill tools are reached by their TRIGGER until a
+        model has been fine-tuned on the skills' examples; then the model may be told their names
+        (set PAGOURO_ROUTER_EXTENDED=1 to try it on such a model)."""
         base = ROUTER_PROMPT_ONLINE if self.online else ROUTER_PROMPT
+        if not os.environ.get("PAGOURO_ROUTER_EXTENDED"):
+            return base
         extra = [(n, d) for n, (_, d, _) in TOOLS.items() if d.startswith("[") and n in self.available_tools()]
         if not extra:
             return base
@@ -413,7 +432,17 @@ class App:
         return base.replace('"arguments": string}', f'"arguments": string}} (also: {names})') + f" Use {clauses}."
 
     def available_tools(self) -> list[str]:
-        return list(TOOLS.keys()) if self.online else [t for t in TOOLS if t != "web_search"]
+        """Tools the model may choose (the router grammar): the app's own set, plus skill tools only
+        when the router prompt names them. Skill tools stay callable through their triggers."""
+        own = [t for t in TOOLS if not TOOLS[t][1].startswith("[")]
+        base = own if not self.online else own + ([] if "web_search" in own else ["web_search"])
+        base = [t for t in base if self.online or t != "web_search"]
+        if os.environ.get("PAGOURO_ROUTER_EXTENDED"):
+            base += [t for t in TOOLS if TOOLS[t][1].startswith("[")]
+        return base
+
+    def skill_tools(self) -> list[str]:
+        return [t for t in TOOLS if TOOLS[t][1].startswith("[")]
 
     def messages(self) -> list[dict]:
         return [{"role": "system", "content": self.system_prompt()}] + self.history
@@ -516,7 +545,7 @@ class App:
         """Ask the model, under a grammar, whether a tool is needed. Returns (tool, arguments).
         The grammar guarantees a valid object; the model supplies the judgement."""
         for name, pat in _skills.TRIGGERS.items():      # O-30: a skill's own trigger outranks the model
-            if name in self.available_tools() and pat.search(user_text):
+            if name in TOOLS and pat.search(user_text):
                 return name, user_text
         router_msgs = [{"role": "system", "content": self.router_prompt()},
                        {"role": "user", "content": user_text}]
@@ -616,7 +645,7 @@ class App:
         except urllib.error.HTTPError as e:
             answer = f"(the model server refused the request: {e.code}; try /clear)"
             usage = {}
-        answer = answer.strip() or "(no answer)"
+        answer = _house.apply(answer.strip()) or "(no answer)"   # D-78: eras written BC / AD, a display convention
         self.history.append({"role": "assistant", "content": answer})
         self.record("assistant", answer)
         print(c(BOLD, "pagouro> ") + answer)
@@ -669,6 +698,29 @@ class App:
             self.art(rest.strip())
         elif cmd == "/remember":
             self.remember(rest.strip())
+        elif cmd == "/index":
+            target = rest.strip().strip('"')
+            if not target:
+                print("  /index <file or folder>: extract PDF / Word / text documents into workspace/docs/.text and search them like packs (needs CAN ACT). Files dropped into workspace/docs/ are indexed at launch.")
+            elif not self.can_act:
+                print(c(YELLOW, "  READ-ONLY: /act first — /index writes the extracted text into workspace/docs/.text."))
+            elif not os.path.exists(target):
+                print(c(YELLOW, f"  no such file or folder: {target}"))
+            else:
+                cache = os.path.join(WORKSPACE, "docs", ".text")
+                summary, first = _docs.index_into(target, cache)
+                n = self.packs.reindex_dir(cache, "doc") if hasattr(self.packs, "reindex_dir") else self.packs.add_dir(cache, "doc")
+                self.doc_chunks = n
+                print(c(GREEN, "  " + summary.replace("\n", "\n  ")))
+                print(c(DIM, f"  {n} document chunks searchable; ask about it and pack_search will find the paragraph."))
+        elif cmd in ("/about", "/why"):
+            for name in ("ABOUT_THE_LOOK.md", "STYLE_GUIDE.md"):
+                p = os.path.join(BASE, name)
+                if os.path.exists(p):
+                    print(open(p, encoding="utf-8").read() if name == "ABOUT_THE_LOOK.md" else f"  (the full rules are in {name} beside this program)")
+                    break
+            else:
+                print("  Belle Époque, posters over cards (D-74). Want it to look like something else? Fork it. See docs/STYLE_GUIDE.md in the repository.")
         elif cmd == "/skills":
             if not self.skills:
                 print("  no skills installed (drop a folder into skills/; see docs/SKILLS.md)")
@@ -756,6 +808,8 @@ HELP = """  commands:
     /art [mark|blob|save] [n]  draw the hermit crab in the house palette (mark: the 64px poster medallion; blob: old sprite; save: PNG, needs CAN ACT)
     /remember <text>   keep a line in workspace/memory for every later session (/remember alone: status; /forget deletes it)
     /skills            list installed skills (skills/<name>/), their licences, tools, and whether they match their MANIFEST
+    /about  /why       why everything looks like this (Belle Époque), and where the style guide is
+    /index <path>      read a PDF / Word / text document (or a folder of them) into the search index (needs CAN ACT)
     /clear             forget the conversation
     /online /offline   allow web search (needs workspace/online.json) / forbid (default: OFFLINE)
     /exit              quit"""

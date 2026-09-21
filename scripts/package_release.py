@@ -126,7 +126,7 @@ def main() -> int:
     if not a.no_app:
         build_dir = os.path.join(ROOT, "build")
         cmd = [sys.executable, "-m", "PyInstaller", "--onefile", "--console", "--name", "pagouro",
-               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts", "--hidden-import", "packsearch", "--hidden-import", "artkit", "--hidden-import", "skills", "--hidden-import", "palettes", "--hidden-import", "mark",
+               "--paths", os.path.join(ROOT, "app"), "--hidden-import", "prompts", "--hidden-import", "packsearch", "--hidden-import", "artkit", "--hidden-import", "skills", "--hidden-import", "palettes", "--hidden-import", "mark", "--hidden-import", "house_style", "--hidden-import", "documents", "--hidden-import", "pypdf", "--hidden-import", "docx", "--collect-all", "docx",
                "--distpath", os.path.join(build_dir, "dist"), "--workpath", os.path.join(build_dir, "work"),
                "--specpath", build_dir, "--noconfirm", "--log-level", "WARN",
                os.path.join(ROOT, "app", "pagouro_app.py")]
@@ -145,6 +145,8 @@ def main() -> int:
             shutil.rmtree(skills_dst)
         shutil.copytree(os.path.join(ROOT, "skills"), skills_dst,
                         ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))   # last_test.json ships: /skills shows the scores
+        for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md"):   # D-78: the look and the voice ship beside the exe
+            shutil.copy2(os.path.join(ROOT, "docs", name), os.path.join(rel, name))
         os.makedirs(os.path.join(rel, "workspace"), exist_ok=True)
         with io.open(os.path.join(rel, "workspace", "README.txt"), "w", encoding="utf-8", newline="\n") as f:
             f.write("The only folder Pagouro's tools may write to, and only in CAN ACT mode (/act).\n"
