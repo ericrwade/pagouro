@@ -55,8 +55,11 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
    gradient all-reduce), tested on a 2×A40 pod for an hour (~$1). Checkpoints stay rank-0-only
    and uncompiled (D-55's `raw_model`).
 3. **SFT set in the thousands** with the harness classes (running; 700/class target).
-4. **O-12 decided** (8k) and the context-extension step in the decay phase implemented
-   (`--seq-len` change on resume with RoPE unchanged: the model has to be told the new max).
+4. **O-12 decided (D-81: 8k)** ✔ and the context-extension step implemented ✔ 2026-09-21: the model is
+   built from the command-line `--seq-len` on resume and the RoPE cache is a non-persistent buffer, so
+   `--seq-len 8192 --resume` extends the window with RoPE unchanged — proven on the desk (tiny model,
+   64 → 128: resumed from step 7, tokens/step doubled, no error). `scripts/runpod/train_1b.sh` does it
+   for phase 2.
 5. **Streaming/parallel tokenizer** ✔ (2026-09-18) and the data volume built and ledgered — **with a pre-2022 basis on every backbone row first** (O-22, `docs/O22_PRE2022_BACKBONE.md`; D-34 is locked) — FineWeb and Wikipedia done 2026-09-19; **The Stack replaced by a dated code source ≤ 2021-12-31 (D-62b) ✔ 2026-09-21** — 95 repos, 240.7M tokens, five `code-dated-*` rows. The backbone is fully dated.
 6. Eric's "launch" on the status issue, with the balance loaded.
 
