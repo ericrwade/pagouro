@@ -11,14 +11,16 @@ end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → 
 carries **Pagouro Flash**: 126M parameters, 2B tokens on a rented A40 (14 h, the whole window
 $7.54), fine-tuned on 6,700 conversations, inside the real application (`app/`): three switches, a
 context gauge, five sandboxed tools, reference packs, and a long-term memory that returns what you
-told it labelled as your own words. On the frozen suite it answers 20–27% of real questions and
-bluffs on 36.7% of unanswerable ones (small open models: 87–93% and 50–57%; frontier: 97% and
-23–27%); tool routing 87.5%; memory 10/10. It is far from the release gate (answered-real ≥ 80%)
-and says so. The corpus ledger holds 65 rows, including a 36-work "shelf" of licensed flavours for
-the anneal (D-58; measured to help on unseen text at no general-text cost, D-61) and a backbone
-that now carries a date basis on every row except the code slice (The Stack: collected to
-2022-03-31, per-file dates unavailable — kept with this caveat, to be replaced before the 1B run,
-D-62). The 1B model (D-6) waits on that replacement, O-12 (context), and Eric's launch.
+told it labelled as your own words. On the 100-item honesty sets (D-73) it invents an answer to **38%** of unanswerable questions
+and answers **19%** of real ones correctly (small open models: 50–57% and 87–93%; frontier:
+23–27% and 97%); tool routing 31/40; memory routed 6/10, answered 9/10 (`evals/results/`,
+`pagouro-flash3__*`). It is far from the release gate (answered-real ≥ 80%) and says so. The
+corpus ledger holds 76 rows, including a 36-work "shelf" of licensed flavours for the anneal
+(D-58; measured to help on unseen text at no general-text cost, D-61), and every backbone row
+now carries a date basis: the code slice is 95 named repositories at their last commit before
+2022-01-01 with the licence file classified per repository (D-62b), which supersedes The Stack.
+The shipped Flash model was trained before that replacement, on the Stack rows, and its rows
+say so. The 1B model (D-6) waits on O-12 (context) and Eric's launch.
 `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
 `docs/ORIGIN.md` for where this came from.
 
