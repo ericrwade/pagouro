@@ -84,6 +84,14 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
   5.5M params trains on the desk; a 20–50M version wants an hour of GPU; the Belle Époque LoRA
   (D-75) is a separate, finished artifact.
 
+## 16 cards (Eric, 2026-09-21: "what about 16 cards for shorter?")
+Same dollars per token (price is per GPU-hour), ~half the wall clock (~1.5 days), plus ~5–10%
+cross-node overhead (a 1B model's ~4 GB of gradients per 1M-token step over the cluster
+interconnect). Needs RunPod **Instant Clusters** (two 8×H100 nodes) rather than a pod, and a
+**one-hour two-node rehearsal (~$56)** before the run — the same prove-first rule as everything
+else; our DDP rehearsal was single-node. Stock on 2026-09-21 22:40Z: no 16-card availability of
+any type, and 8×H100 pods Out; the pod watch checks both and takes whichever appears first.
+
 ## Launch shape (what the session will do, step by step, when told)
 1. `create-network-volume` 500 GB in a data center with 8×H100 secure stock.
 2. CPU pod (or the training pod before the run): fetch + tokenize the mixture to the volume;
