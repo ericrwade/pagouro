@@ -1538,5 +1538,85 @@ eighty-two when wrong, which is a start and not a claim; and two more chapters o
 
 ---
 
-*The log continues. Next: the clean scans on the stick, the palette Eric picks, and the
-drawing model's corpus.*
+*(Day 11 morning closed; continued below.)*
+
+## Day 11, afternoon and evening — A hundred questions instead of thirty, a nickel's worth of judgement, France, and the first lithographs
+
+Eric woke up and started deciding things, and each decision pulled a piece of work behind it.
+
+### The thirty-item lie
+
+The morning's fine-tune with the skill examples had scored exactly the same as the model on the
+stick on the frozen honesty tests — bluffing 36.7 percent, answering 20 — and I had not shipped
+it. Then the tool-result seed's fine-tune moved those numbers by two items and I had not shipped
+that either, and wrote down that thirty questions cannot adjudicate a two-item difference, because
+one item is three and a third points. So I built the hundred-item sets: twenty questions in each
+of the five ways a question can be unanswerable, a hundred answerable ones with generous keys,
+hand-written, checked at freeze time against every training file so nothing in them had been
+seen. Then I ran the three models on them.
+
+The thirty-item sets had called the first two a tie. On a hundred items the morning's model
+bluffed eighteen points less than the one on the stick and answered eight points more. A real
+difference, hidden by a small sample for half a day. It went onto the stick that afternoon. The
+next model — the one that had learned to report a tool's failure honestly, nine times out of ten
+— bluffed ten points more on the same hundred, and had scored *better* on the thirty. Three
+fine-tunes in a row had taught me the same thing: at this size, teaching the model to answer
+confidently from a tool's result costs it honesty on open questions, and the mix cannot be
+padded around that. I stopped iterating. Every seed built this weekend is staged for the
+billion-parameter model, where there should be room for both.
+
+### A nickel's worth of judgement
+
+Eric had sent a typed-decision model to look at — Jev, the one that answers from a menu with
+probabilities and cannot write a sentence — and then a key for it, and then, from his phone, the
+news that new accounts are seeded with five dollars, which is why it had been answering an
+unfunded key all afternoon. I had promised to use it only where it did something our own tools
+could not, and to log every call. The first real use cost five cents: one question per item in
+the six-thousand-question honesty curriculum — could a small offline model plausibly know this?
+— and the answer explained a stall from two days earlier. Ninety-one percent of the "real"
+questions, drawn from encyclopaedia first sentences, were things a stick-sized model should say
+"no record" to, and the reward had been punishing it for saying so. The curriculum now has three
+kinds instead of two. The second use cost four cents and rescued two hundred and sixty-five trade
+cards my date filter had thrown away because the museum dates them "19th century" and my code
+wanted a year. Thirteen cents so far, four uses, all in a log.
+
+### France
+
+He chose the palette: Belle Époque, posters over cards. It is the same decade as the Gilded Age
+seen from Paris, so the rights position did not move an inch and the corpus did: the poster
+masters — Chéret, Steinlen, Grasset, Lautrec, Bonnard — became the lead, the Library of
+Congress's poster collection joined the Met's as a source (rate-limited, crawling at six seconds
+an item), and the medallion the stick draws got its colours from a Paris lithograph.
+
+He did not love the crabs, and he was right. The generator drew a creature from parts. He sent
+two photographs of the thing itself and the note that a logo wants the crab retreated — the shell
+as the mass, only the claws and the eyes at the mouth — and then, when I had drawn that, "they
+look like blobs, and a shadow would help." Each note made the drawing better and each drawing
+made it clearer that a procedural crab was the wrong tool. I said so and asked to rent an hour.
+He said go.
+
+### The first lithographs
+
+The base model was the one thing I could find that matched the ledger's ethics: a diffusion model
+trained only on Creative Commons images, its weights under the same licence the corpus ships
+under. It was fine-tuned for fifteen minutes on five hundred and fifty-seven of our own posters and
+plates, each captioned from its museum record, and then asked a hundred and twenty times for a
+hermit crab in a Belle Époque medallion, and seventy-two more times with the procedural drawing
+as a starting point so the composition would hold. Three things broke on the way — a package
+manager that refused, a config repository that had gone behind a login, a floating-point
+mismatch — and each is a line in the script now. The card cost about sixty cents.
+
+What came back is the first thing in this project that looks like a lithograph: grain, flat ink,
+a hand-lettered band, a sunburst behind a shell. The anatomy is loose — some of them are
+lobsters, one is a face — but a dozen are close, and shrunk to sixty-four pixels and snapped to the
+thirty-two house colours they still read as marks. Eric has the sheets. The hundred logos are a
+question of choosing seeds now, not of whether it can be done.
+
+Spend for the day: about sixty cents of rented card and thirteen cents of judgement. The
+one-billion run is still ahead, and every piece built today — the hundred-item yardstick, the
+three-way curriculum, the tool-result seed, the palette, the style model — is a piece of it.
+
+---
+
+*The log continues. Next: Eric's picks from the sheets, the road to the 1B, and a stick that
+draws.*
