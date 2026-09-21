@@ -86,11 +86,12 @@ SKIP_FILES = re.compile(r"(\.min\.|\.pb\.go$|_generated\.|\.generated\.|zz_gener
 ALLOWED = {
     "MIT": r"Permission is hereby granted, free of charge",
     "BSD": r"Redistribution and use in source and binary forms",
-    "Apache-2.0": r"Apache License\s*\n?\s*Version 2\.0",
+    "Apache-2.0": r"Apache License,?\s*Version 2\.0",
     "ISC": r"ISC License|Permission to use, copy, modify, and/or distribute this software for any purpose",
     "PSF": r"PYTHON SOFTWARE FOUNDATION LICENSE",
     "Unlicense": r"This is free and unencumbered software released into the public domain",
     "0BSD": r"Zero-Clause BSD|0BSD",
+    "CC0-1.0": r"CC0 1\.0 Universal",       # a public-domain dedication (rust-bitcoin)
 }
 FORBIDDEN = re.compile(r"GNU (GENERAL|LESSER|AFFERO) PUBLIC LICENSE|Business Source License|Server Side Public License|Mozilla Public License|Commons Clause", re.I)
 
@@ -100,23 +101,34 @@ def git(*args: str, cwd: str | None = None) -> str:
 
 
 def classify_license(repo_dir: str):
-    for name in ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE-MIT", "LICENSE-APACHE", "COPYING", "LICENSE.rst", "license"):
+    """(licence, file, note). Reads every licence-named file in the repo root; the first one that
+    names a permitted licence before any copyleft mention wins (bevy's LICENSE is a pointer to
+    LICENSE-MIT / LICENSE-APACHE; cpython's PSF text cites the GPL in a choice-of-law clause)."""
+    forbidden_note = ""
+    for name in ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-Apache", "COPYING", "LICENSE.rst", "license", "LICENCE"):
         p = os.path.join(repo_dir, name)
         if os.path.isdir(p):                         # matplotlib keeps a LICENSE/ folder: its own text is LICENSE/LICENSE
             p = os.path.join(p, "LICENSE")
-        if os.path.isfile(p):
-            text = io.open(p, encoding="utf-8", errors="replace").read()
-            head = text[:1500]                       # what the file SAYS it is comes first; later mentions are commentary
-            for lic, pat in ALLOWED.items():         # (cpython's PSF file cites the GPL in a choice-of-law clause on line 227)
-                if re.search(pat, head, re.I) and not FORBIDDEN.search(head):
-                    return lic, name, text[:120].replace("\n", " ")
-            if FORBIDDEN.search(text):
-                return None, name, "copyleft/source-available: " + FORBIDDEN.search(text).group(0)
-            for lic, pat in ALLOWED.items():
-                if re.search(pat, text, re.I):
-                    return lic, name, text[:120].replace("\n", " ")
-            return None, name, "unrecognised licence text"
-    return None, "", "no LICENSE file"
+        if not os.path.isfile(p):
+            continue
+        text = io.open(p, encoding="utf-8", errors="replace").read()
+        first_ok = min(((m.start(), lic) for lic, pat in ALLOWED.items() for m in [re.search(pat, text, re.I)] if m), default=None)
+        bad = FORBIDDEN.search(text)
+        if first_ok and (not bad or first_ok[0] < bad.start()):
+            return first_ok[1], name, text[:120].replace("\n", " ")
+        if bad:
+            forbidden_note = forbidden_note or f"copyleft/source-available in {name}: {bad.group(0)}"
+    return None, "", forbidden_note or "no licence file with a recognised permissive text"
+
+
+def _rmtree(path: str) -> None:
+    """rmtree that survives git's read-only pack files on Windows."""
+    def _onerror(fn, p, exc):
+        try:
+            os.chmod(p, 0o700); fn(p)
+        except OSError:
+            pass
+    shutil.rmtree(path, onerror=_onerror)
 
 
 def fetch_repo(url: str, lang: str, tmp: str):
@@ -126,8 +138,8 @@ def fetch_repo(url: str, lang: str, tmp: str):
     try:
         git("clone", "--quiet", "--shallow-since=2021-11-15", "--no-checkout", "--single-branch", url, dst)
     except subprocess.CalledProcessError as e:
-        try:   # repos with no commits in the window: fall back to a plain shallow clone of the pre-cutoff history via depth
-            shutil.rmtree(dst, ignore_errors=True)
+        try:   # a failed shallow clone (an odd default branch, a partial transfer): full history, lazy blobs
+            _rmtree(dst)
             git("clone", "--quiet", "--filter=blob:none", "--no-checkout", "--single-branch", url, dst)
         except subprocess.CalledProcessError as e2:
             return {"url": url, "skipped": f"clone failed: {str(e2.stderr)[-120:]}"}
@@ -138,7 +150,7 @@ def fetch_repo(url: str, lang: str, tmp: str):
             return ""
     commit = last_before()
     if not commit:      # quiet repo: nothing between the shallow-since date and the cutoff -> full history, lazy blobs
-        shutil.rmtree(dst, ignore_errors=True)
+        _rmtree(dst)
         try:
             git("clone", "--quiet", "--filter=blob:none", "--no-checkout", "--single-branch", url, dst)
         except subprocess.CalledProcessError as e2:
@@ -198,7 +210,7 @@ def main() -> int:
                 try:
                     r = fetch_repo(url, lang, tmp)
                 finally:
-                    shutil.rmtree(tmp, ignore_errors=True)
+                    _rmtree(tmp)
                 if r.get("skipped"):
                     print(f"  {lang} {url.rsplit('/',1)[-1]}: SKIPPED — {r['skipped']}", flush=True)
                 else:
