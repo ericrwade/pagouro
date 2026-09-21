@@ -2078,8 +2078,11 @@ medallion (`app/mark.py`) and the LoRA candidates step down to *studies*; the ma
 Shipped: `brand/` beside the exe (full image, sizes, `pagouro.ico` as the exe icon, and a 64-px
 house-palette version that `/art logo` — now the default `/art` — draws in the terminal; 32 px
 tried, lettering unreadable, not shipped). README carries it; STYLE_GUIDE and ABOUT_THE_LOOK point
-at the file. **Provenance to complete:** the generation tool, for `brand/README.md` and the
-release rights note — Eric. It is a brand asset, not corpus: no ledger row, no model saw it.
+at the file. **Provenance (Eric, same day): generated with ChatGPT, by Eric, from his brief.** Credit line
+"Eric Wade, made with ChatGPT"; the session's resizes and palette snap are mechanical and take no
+credit. Rights stated without overclaiming in `brand/README.md` (OpenAI's output terms; possibly
+uncopyrightable; trademark O-29 is the protection that matters). It is a brand asset, not corpus:
+no ledger row, no model saw it.
 
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
