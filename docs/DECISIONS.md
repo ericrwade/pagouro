@@ -2009,6 +2009,51 @@ tool-use suite (31 → 26, sft3) and pushed ordinary questions to `calc`; the ap
 plain prompt and grammar the model was trained on, skills are reached by their triggers, and
 `PAGOURO_ROUTER_EXTENDED=1` exists for a model that has been fine-tuned on the skill examples.
 
+### D-62b — DONE: The Stack replaced by dated, licence-checked repositories (closes D-62 (b) and O-22)
+**2026-09-21, session, unattended.** `scripts/fetch_dated_code.py` + `scripts/ledger_dated_code.py`.
+A hand-curated list of well-known permissively licensed repositories per language, each cloned
+and wound back to **its default branch's last commit before 2022-01-01** (`git rev-list -1
+--first-parent --before=2022-01-01T00:00:00Z`), its licence file read and classified **before a
+byte is taken** — the licence a file *names first* is its licence; any GPL/LGPL/AGPL/MPL/BUSL/SSPL
+repo is skipped and the skip is recorded — then the language's source files concatenated
+(vendored, generated, minified, test-fixture and >400 kB files dropped). One `corpus.json` row
+per language, `code-dated-<lang>`, carrying **every repository with its commit hash, commit date
+(local and UTC), licence and licence file**, plus the skipped list. C++ added: the 1B plan's code
+slice names it and the Stack rows never covered it.
+
+| row | repos | files | chars | tokens | licences |
+|---|---|---|---|---|---|
+| code-dated-python | 28 | 21,689 | 198M | 65.0M | Apache-2.0, BSD, HPND, MIT, PSF, matplotlib (PSF-style) |
+| code-dated-rust | 19 | 26,195 | 113M | 36.6M | Apache-2.0, CC0-1.0, MIT |
+| code-dated-go | 17 | 25,149 | 173M | 63.7M | Apache-2.0, BSD, ISC, MIT |
+| code-dated-solidity | 10 | 1,510 | 5M | 1.4M | Apache-2.0, BSD, MIT |
+| code-dated-cpp | 21 | 17,506 | 207M | 74.0M | Apache-2.0, BSD, ISC, MIT |
+
+240.7M tokens against the Stack's 160M; latest commit in any row 2021-12-31T23:58:47Z. The four
+`the-stack-*` rows are marked SUPERSEDED (as O-22 marked the undated backbone slices) and
+`published_before_generative_ai: false`; `build_mixture.py` now reads `code/<lang>.txt` at
+0.07/0.03/0.03/0.04/0.03 (code share unchanged at 0.20; Solidity keeps 0.04 because it is the
+subject — the file is small, so it contributes what it has). Out by licence: consul (MPL),
+python-bitcoinlib (LGPL), substrate (GPL-3), aleth (GPL-3), and on the first pass ethereum/solidity,
+balancer-core, ds-token, argent (GPL-3), yearn-vaults (AGPL), conditional-tokens (LGPL). Gone from
+GitHub: Synthetixio/synthetix, Loopring/protocols; sushiswap's history is rewritten (nothing
+before 2022). **Solidity is thin** (10 repos, 1.4M tokens): most DeFi code is GPL/AGPL/BUSL by
+design, and that is the honest size of the permissive Solidity corpus, not a fetch failure.
+
+**Three defects caught before a ledger row was written**, each of which would have passed a
+casual check: (1) cpython was skipped as GPL — its PSF licence cites the GPL in a choice-of-law
+clause on line 227; the classifier now takes the licence the file names first. (2) protobuf's
+"last commit before the cutoff" had no `src/` — plain `rev-list` walks every merged-in ancestry
+and returned a commit from the upb repository's history; `--first-parent` gives the branch's own
+state. Run 2 redone from scratch for every repo. (3) matplotlib keeps a `LICENSE/` *folder*,
+nlohmann/json a `LICENSE.MIT`, bevy and go-ipfs a pointer `LICENSE` naming `LICENSE-MIT`, Pillow
+an HPND text that wraps mid-sentence — each a "no licence" until the reader learned the shape.
+Lesson for the ledger: a licence check that reads one filename is a check of the filename.
+
+Remaining code caveat, stated: a commit date is when the code was committed, not proof that
+no line of it was machine-written; before 2022 that risk is small and the claim made is the
+D-34 claim (collected/published before the cutoff), no more.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same

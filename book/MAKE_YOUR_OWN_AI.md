@@ -2408,18 +2408,19 @@ Next: the one-billion run, when it happens, with the receipts.
 
 # Appendix B — The ledger, printed
 
-*Generated from `corpus.json` by `book/build_appendix_b.py`: 71 rows, of which 54 are in a training mixture (486M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
+*Generated from `corpus.json` by `book/build_appendix_b.py`: 76 rows, of which 55 are in a training mixture (567M estimated tokens). Superseded and excluded rows stay in the file — a ledger that deletes its mistakes is a marketing document. Every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; `scripts/verify_ledger.py` checks the hashes against the files.*
 
 | Where | Source | Licence / basis | Tokens | Date basis |
 |---|---|---|---|---|
 | backbone | HuggingFaceFW/fineweb-edu | ODC-By 1.0 | 173.4M | crawl dumps 2013-20…2020-05 |
 | backbone | English Wikipedia, dump enwiki-20211220 (random stream sample) | CC BY-SA 3.0 + GFDL | 100.2M | dump 20211220 |
-| backbone | bigcode/the-stack-dedup (data/solidity) | Other (BigCode OpenRAIL / per-file opt-out) | 45.2M | caveat: collected ≤ 2022-03-31 |
-| backbone | bigcode/the-stack-dedup (data/rust) | Other (BigCode OpenRAIL / per-file opt-out) | 44.3M | caveat: collected ≤ 2022-03-31 |
-| backbone | bigcode/the-stack-dedup (data/go) | Other (BigCode OpenRAIL / per-file opt-out) | 35.8M | caveat: collected ≤ 2022-03-31 |
-| backbone | bigcode/the-stack-dedup (data/python) | Other (BigCode OpenRAIL / per-file opt-out) | 34.4M | caveat: collected ≤ 2022-03-31 |
+| backbone | Dated cpp source: 21 permissively licensed repositories at their last commit bef | Apache-2.0 / BSD / ISC / MIT (per repository; each LICENSE file rea… | 74.0M | per-row < 2022-01-01 |
+| backbone | Dated python source: 28 permissively licensed repositories at their last commit  | Apache-2.0 / BSD / HPND / MIT / PSF / matplotlib (PSF-style) (per r… | 65.0M | per-row < 2022-01-01 |
+| backbone | Dated go source: 17 permissively licensed repositories at their last commit befo | Apache-2.0 / BSD / ISC / MIT (per repository; each LICENSE file rea… | 63.7M | per-row < 2022-01-01 |
+| backbone | Dated rust source: 19 permissively licensed repositories at their last commit be | Apache-2.0 / CC0-1.0 / MIT (per repository; each LICENSE file read … | 36.6M | per-row < 2022-01-01 |
 | backbone | HuggingFaceFW/fineweb-edu | ODC-By 1.0 | 23.6M | crawl dumps 2013-20…2020-05 |
 | backbone | HuggingFaceH4/stack-exchange-preferences | CC BY-SA 4.0 | 16.5M | per-row < 2022-01-01 |
+| backbone | Dated solidity source: 10 permissively licensed repositories at their last commi | Apache-2.0 / BSD / MIT (per repository; each LICENSE file read and … | 1.4M | per-row < 2022-01-01 |
 | canon (anneal) | The Wealth of Nations — Adam Smith | Public domain | 0.6M | published 1776 |
 | canon (anneal) | Principles of Political Economy — John Stuart Mill | Public domain | 0.4M | published 1848 |
 | canon (anneal) | The Federalist Papers — Hamilton, Madison and Jay | Public domain | 0.3M | published 1788 |
@@ -2469,6 +2470,10 @@ Next: the one-billion run, when it happens, with the receipts.
 | pack only | FM 21-76 / MCRP 3-02F Survival (1992), plant chapters removed (pack only) | Public domain (US Government work, 17 U.S.C. 105) | 0.2M | published 1992 |
 | superseded | HuggingFaceFW/fineweb-edu | ODC-By 1.0 | 178.9M | — |
 | superseded | wikimedia/wikipedia | CC BY-SA 3.0 + GFDL | 96.2M | — |
+| superseded | bigcode/the-stack-dedup (data/solidity) | Other (BigCode OpenRAIL / per-file opt-out) | 45.2M | caveat: collected ≤ 2022-03-31 |
+| superseded | bigcode/the-stack-dedup (data/rust) | Other (BigCode OpenRAIL / per-file opt-out) | 44.3M | caveat: collected ≤ 2022-03-31 |
+| superseded | bigcode/the-stack-dedup (data/go) | Other (BigCode OpenRAIL / per-file opt-out) | 35.8M | caveat: collected ≤ 2022-03-31 |
+| superseded | bigcode/the-stack-dedup (data/python) | Other (BigCode OpenRAIL / per-file opt-out) | 34.4M | caveat: collected ≤ 2022-03-31 |
 | superseded | HuggingFaceFW/fineweb-edu (M1 slice) | ODC-By 1.0 | 23.8M | — |
 | superseded | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 1.6M | published 2003 |
 | superseded | TM 10-412 Armed Forces Recipe Service (2003) | Public domain (US Government work, 17 U.S.C. 105) | 0.8M | published 2003 |

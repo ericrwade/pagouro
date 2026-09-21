@@ -1,14 +1,14 @@
 """Dated, licence-checked code to replace The Stack (D-62b, D-34): every repository below is
 cloned with history since a month before the cutoff and checked out at its LAST COMMIT BEFORE
 1 JANUARY 2022; its LICENSE file is read and classified — only MIT / BSD / Apache-2.0 / ISC /
-PSF / Unlicense / 0BSD / MPL-excluded repos are kept (any GPL/LGPL/AGPL/BUSL/SSPL/MPL: skipped,
+PSF / HPND / CC0 repos are kept, MPL excluded (any GPL/LGPL/AGPL/BUSL/SSPL/MPL: skipped,
 counted). Source files of the target language are concatenated (vendored, generated, minified,
 test-fixture and binary-ish paths dropped) into data/raw/code/<lang>.txt, and a ledger row per
 repository (url, commit, commit date, licence as classified, file count, chars, tokens, sha256)
 is appended to corpus.json via scripts/ledger_add_text.py-compatible JSON in data/raw/code/rows.json.
 
     python scripts/fetch_dated_code.py --lang python            # one language
-    python scripts/fetch_dated_code.py                          # all four
+    python scripts/fetch_dated_code.py                          # all five (re-runs retry skipped repos, keep done ones)
 
 The list is curated by hand: well-known, permissively licensed, active before 2022. No
 copyleft repos even where they are famous (go-ethereum LGPL, Uniswap v2 GPL, Aave AGPL...).
@@ -65,8 +65,8 @@ REPOS = {
     "solidity": [
         "https://github.com/OpenZeppelin/openzeppelin-contracts", "https://github.com/compound-finance/compound-protocol",
         "https://github.com/ensdomains/ens-contracts", "https://github.com/smartcontractkit/chainlink",
-        "https://github.com/0xProject/protocol", "https://github.com/Synthetixio/synthetix", "https://github.com/sushiswap/sushiswap",
-        "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable", "https://github.com/Loopring/protocols",
+        "https://github.com/0xProject/protocol",   # Synthetixio/synthetix: repository gone; sushiswap/sushiswap: history rewritten, nothing before 2022
+        "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable",   # Loopring/protocols: repository gone
         "https://github.com/ethereum-optimism/optimism", "https://github.com/rarible/protocol-contracts", "https://github.com/1inch/limit-order-protocol",
         "https://github.com/decentraland/marketplace-contracts",
         # tried and out (first run, 2026-09-21): ethereum/solidity GPL-3, balancer-core GPL-3, ds-token GPL-3, yearn-vaults AGPL, argent GPL-3, conditional-tokens LGPL
@@ -94,6 +94,8 @@ ALLOWED = {
     "Unlicense": r"This is free and unencumbered software released into the public domain",
     "0BSD": r"Zero-Clause BSD|0BSD",
     "CC0-1.0": r"CC0 1\.0 Universal",       # a public-domain dedication (rust-bitcoin)
+    "HPND": r"Permission to use, copy, modify,? and distribute this\s+software and its\s+(associated\s+)?documentation\s+for any purpose and without fee is hereby granted",   # licence texts wrap at 72 cols   # Pillow
+    "matplotlib (PSF-style)": r"License agreement for matplotlib",   # PSF-derived, BSD-compatible
 }
 FORBIDDEN = re.compile(r"GNU (GENERAL|LESSER|AFFERO) PUBLIC LICENSE|Business Source License|Server Side Public License|Mozilla Public License|Commons Clause", re.I)
 
@@ -107,7 +109,7 @@ def classify_license(repo_dir: str):
     names a permitted licence before any copyleft mention wins (bevy's LICENSE is a pointer to
     LICENSE-MIT / LICENSE-APACHE; cpython's PSF text cites the GPL in a choice-of-law clause)."""
     forbidden_note = ""
-    for name in ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-Apache", "COPYING", "LICENSE.rst", "license", "LICENCE"):
+    for name in ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-Apache", "LICENSE.MIT", "LICENSE.BSD", "LICENSE.Apache", "COPYING", "LICENSE.rst", "license", "LICENCE"):
         p = os.path.join(repo_dir, name)
         if os.path.isdir(p):                         # matplotlib keeps a LICENSE/ folder: its own text is LICENSE/LICENSE
             p = os.path.join(p, "LICENSE")

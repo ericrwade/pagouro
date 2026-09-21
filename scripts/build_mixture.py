@@ -34,10 +34,16 @@ PRETRAIN_MIX = [
     # which succeeded and serve an overlapping role (educational/general web).
     ("fineweb-edu-big-pre2022.txt",                0.45),  # O-22: dump-dated (CC-MAIN-2013..2021); the undated slice is superseded
     ("fineweb-edu-sample-10BT-pre2022.txt",         0.10),  # O-22: dump-dated re-fetch of M1's slice
-    ("the-stack-python.txt",                        0.08),
-    ("the-stack-rust.txt",                          0.04),
-    ("the-stack-go.txt",                            0.04),
-    ("the-stack-solidity.txt",                      0.04),
+    # D-62b (2026-09-21): dated code replaces The Stack (no per-file dates, opt-out-list licence).
+    # Each file is a curated set of permissively licensed repositories at their default branch's
+    # last commit before 2022-01-01; the ledger row lists every repo, commit and licence file.
+    # C++ added (the 1B plan's code slice names it; the Stack rows never covered it). Code share
+    # stays 0.20 in total; Solidity keeps its 0.04 because it is the project's subject.
+    ("code/python.txt",                             0.07),
+    ("code/rust.txt",                               0.03),
+    ("code/go.txt",                                 0.03),
+    ("code/solidity.txt",                           0.04),
+    ("code/cpp.txt",                                0.03),
     ("wikipedia-en-20211220.txt",                   0.20),  # O-22: sampled from the 2021-12-20 dump; the 2023 dump row is superseded
     ("stackexchange-preferences.txt",               0.05),
 ]

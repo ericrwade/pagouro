@@ -21,7 +21,7 @@ Built on existing open corpora with ledger rows, tokenized on a CPU pod with `to
 | slice | share | source | licence |
 |---|---|---|---|
 | educational web | ~55% | FineWeb-Edu | ODC-By 1.0 |
-| code | ~15% | The Stack (py, rust, go, solidity, c++) | permissive subset |
+| code | ~15% | dated repositories (py, rust, go, solidity, c++) at their last pre-2022 commit (D-62b) | MIT/BSD/Apache/ISC/PSF/CC0 per repo, on the row |
 | encyclopedic | ~12% | Wikipedia (EN) | CC BY-SA 3.0 |
 | Q&A | ~8% | Stack Exchange | CC BY-SA |
 | canon + government | ~10% | Gutenberg canon (D-38), US gov works | public domain |
@@ -57,7 +57,7 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
 3. **SFT set in the thousands** with the harness classes (running; 700/class target).
 4. **O-12 decided** (8k) and the context-extension step in the decay phase implemented
    (`--seq-len` change on resume with RoPE unchanged: the model has to be told the new max).
-5. **Streaming/parallel tokenizer** ✔ (2026-09-18) and the data volume built and ledgered — **with a pre-2022 basis on every backbone row first** (O-22, `docs/O22_PRE2022_BACKBONE.md`; D-34 is locked) — FineWeb and Wikipedia done 2026-09-19; **The Stack replaced by a dated code source ≤ 2021-12-31 (D-62 b)** is the remaining step.
+5. **Streaming/parallel tokenizer** ✔ (2026-09-18) and the data volume built and ledgered — **with a pre-2022 basis on every backbone row first** (O-22, `docs/O22_PRE2022_BACKBONE.md`; D-34 is locked) — FineWeb and Wikipedia done 2026-09-19; **The Stack replaced by a dated code source ≤ 2021-12-31 (D-62b) ✔ 2026-09-21** — 95 repos, 240.7M tokens, five `code-dated-*` rows. The backbone is fully dated.
 6. Eric's "launch" on the status issue, with the balance loaded.
 
 ## Staged for the 1B as of 2026-09-20 (what the weekend built; every item measured on Flash first)
@@ -77,7 +77,7 @@ Plus the data volume, a CPU pod for tokenization (~$5), and one 2-GPU dress rehe
 - **Router probability** (O-35): read from token logprobs; 0.917 right vs 0.816 wrong at 126M,
   overconfident at the top. Fit a temperature on the GRPO curriculum, test on the 100-sets.
 - **Corpus facts that stand:** backbone dated (FineWeb dump-date rows, Wikipedia 2021-12-20); the
-  Stack caveated (D-62, replace before 1B); six shelf manuals re-OCR'd from page images with the
+  Stack replaced by dated repositories (D-62b, 2026-09-21); six shelf manuals re-OCR'd from page images with the
   page-order check on every ingest (D-66); bitcointalk and The Law excluded.
 - **Not part of the 1B run but sharing the card:** the drawing model (D-67) — `train_draw.py` at
   5.5M params trains on the desk; a 20–50M version wants an hour of GPU; the Belle Époque LoRA

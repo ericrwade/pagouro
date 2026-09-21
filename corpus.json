@@ -430,7 +430,8 @@
       "file": "data/raw/the-stack-solidity.txt",
       "milestone": "M1 pipeline check",
       "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
-      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
+      "published_before_generative_ai": false,
+      "slice": "SUPERSEDED 2026-09-21 by code-dated-solidity (D-34/D-62b): the Stack has no per-file date basis and its licence is a per-file opt-out list, not a nameable licence per source. Trained into the 59M and Flash models; not in any future mixture."
     },
     {
       "slug": "fineweb-edu-sample-10BT-original-M1",
@@ -462,7 +463,8 @@
       "file": "data/raw/the-stack-python.txt",
       "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch.",
       "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
-      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
+      "published_before_generative_ai": false,
+      "slice": "SUPERSEDED 2026-09-21 by code-dated-python (D-34/D-62b): the Stack has no per-file date basis and its licence is a per-file opt-out list, not a nameable licence per source. Trained into the 59M and Flash models; not in any future mixture."
     },
     {
       "slug": "the-stack-rust",
@@ -478,7 +480,8 @@
       "file": "data/raw/the-stack-rust.txt",
       "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch.",
       "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
-      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
+      "published_before_generative_ai": false,
+      "slice": "SUPERSEDED 2026-09-21 by code-dated-rust (D-34/D-62b): the Stack has no per-file date basis and its licence is a per-file opt-out list, not a nameable licence per source. Trained into the 59M and Flash models; not in any future mixture."
     },
     {
       "slug": "the-stack-go",
@@ -494,7 +497,8 @@
       "file": "data/raw/the-stack-go.txt",
       "repair_note": "Repaired 2026-09-16: overwritten by a slug collision (all 4 Stack language fetches shared one slug). Restored from the file already on disk, no re-fetch.",
       "date_basis": "CAVEAT (D-62, Eric 2026-09-19 'a then b'): The Stack v1 was collected from GH Archive events 2015-01 to 2022-03-31 and carries no per-file dates, so up to three months of this source may postdate the D-34 cutoff. Kept for Flash-scale work with this caveat stated on the box; to be replaced by a dated code source filtered to <= 2021-12-31 before the 1B data volume (O-22 b).",
-      "published_before_generative_ai": "partial: collected <= 2022-03-31, per-file dates unavailable"
+      "published_before_generative_ai": false,
+      "slice": "SUPERSEDED 2026-09-21 by code-dated-go (D-34/D-62b): the Stack has no per-file date basis and its licence is a per-file opt-out list, not a nameable licence per source. Trained into the 59M and Flash models; not in any future mixture."
     },
     {
       "slug": "crypto-synthetic-deepseek",
@@ -1779,6 +1783,1104 @@
       "file": "data/raw/usgov/usgov-tm10-412-recipes-reocr.md",
       "slice": "SUPERSEDED 2026-09-20 by usgov-tm10-412-recipes-reocr (D-66: re-OCR'd from page images; this archive.org text had e.g. 'P = 45 watts' for 4.5)",
       "supersedes": "usgov-tm10-412-recipes"
+    },
+    {
+      "slug": "code-dated-python",
+      "name": "Dated python source: 28 permissively licensed repositories at their last commit before 2022-01-01",
+      "source": "GitHub repository snapshots (git commit)",
+      "url": "https://github.com",
+      "license": "Apache-2.0 / BSD / HPND / MIT / PSF / matplotlib (PSF-style) (per repository; each LICENSE file read and classified, copyleft and source-available repositories skipped)",
+      "date_filter": "git rev-list -1 --before=2022-01-01T00:00:00Z per repository; commit hash and date on every entry (D-34, D-62b)",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-21",
+      "retrieved_utc": "2026-09-21T10:27:36+00:00",
+      "documents": 21689,
+      "characters": 197949614,
+      "bytes": 199254435,
+      "estimated_tokens": 64950289,
+      "mixture_share": null,
+      "cleaning": "language source files only; vendor/third_party/testdata/generated/minified paths and files over 400 kB or non-UTF-8 dropped; one header line per file naming repo and path",
+      "sha256_processed": "e94edcf76a94acf6a346ab667ca196d3bda2a574cc2d53009967a554f67ab93e",
+      "file": "data/raw/code/python.txt",
+      "repositories": [
+        {
+          "url": "https://github.com/python/cpython",
+          "commit": "0b58bac3e7877d722bdbd3c38913dba2cb212f13",
+          "commit_date": "2021-12-31T19:52:27Z",
+          "license": "PSF",
+          "license_file": "LICENSE",
+          "files": 2037,
+          "characters": 31447440,
+          "commit_date_utc": "2021-12-31T19:52:27Z"
+        },
+        {
+          "url": "https://github.com/django/django",
+          "commit": "4400d8568ad5695c46e8de45635a82a27a26b871",
+          "commit_date": "2021-12-31T06:49:10+01:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 2726,
+          "characters": 15185714,
+          "commit_date_utc": "2021-12-31T05:49:10Z"
+        },
+        {
+          "url": "https://github.com/pallets/flask",
+          "commit": "660994efc761efdfd49ca442b73f6712dc77b6cf",
+          "commit_date": "2021-12-22T20:07:07-07:00",
+          "license": "BSD",
+          "license_file": "LICENSE.rst",
+          "files": 75,
+          "characters": 533048,
+          "commit_date_utc": "2021-12-23T03:07:07Z"
+        },
+        {
+          "url": "https://github.com/psf/requests",
+          "commit": "17e6e27a93131b7295165408e69b4cadb098b0d7",
+          "commit_date": "2021-12-29T16:29:09-06:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 35,
+          "characters": 351850,
+          "commit_date_utc": "2021-12-29T22:29:09Z"
+        },
+        {
+          "url": "https://github.com/numpy/numpy",
+          "commit": "2f41a52d9b2fc70ea2bed6e04de470d854362ccd",
+          "commit_date": "2021-12-28T15:24:13-07:00",
+          "license": "BSD",
+          "license_file": "LICENSE.txt",
+          "files": 540,
+          "characters": 8976345,
+          "commit_date_utc": "2021-12-28T22:24:13Z"
+        },
+        {
+          "url": "https://github.com/pandas-dev/pandas",
+          "commit": "deca954aff3464b3c96f65e66cbcf898ceccdfdd",
+          "commit_date": "2021-12-31T18:58:47-05:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 1386,
+          "characters": 17340714,
+          "commit_date_utc": "2021-12-31T23:58:47Z"
+        },
+        {
+          "url": "https://github.com/scikit-learn/scikit-learn",
+          "commit": "b242b9dd200cbb3f60247e523adae43a303d8122",
+          "commit_date": "2021-12-31T15:31:37-05:00",
+          "license": "BSD",
+          "license_file": "COPYING",
+          "files": 896,
+          "characters": 11500630,
+          "commit_date_utc": "2021-12-31T20:31:37Z"
+        },
+        {
+          "url": "https://github.com/scrapy/scrapy",
+          "commit": "c5ab58056c29c2c35b183572b0780acfbb15dfe8",
+          "commit_date": "2021-12-31T20:38:10+01:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 329,
+          "characters": 1907401,
+          "commit_date_utc": "2021-12-31T19:38:10Z"
+        },
+        {
+          "url": "https://github.com/tiangolo/fastapi",
+          "commit": "3efb4f7edff99fdc12802a85ae9d140ec4772497",
+          "commit_date": "2021-12-12T12:39:32+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 585,
+          "characters": 1444906,
+          "commit_date_utc": "2021-12-12T11:39:32Z"
+        },
+        {
+          "url": "https://github.com/sqlalchemy/sqlalchemy",
+          "commit": "e913ec8155b64e055f3a88ca9c1bb7f112202c76",
+          "commit_date": "2021-12-30T18:07:26-05:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 595,
+          "characters": 14992480,
+          "commit_date_utc": "2021-12-30T23:07:26Z"
+        },
+        {
+          "url": "https://github.com/pypa/pip",
+          "commit": "7f8a6844037fb7255cfd0d34ff8e8cf44f2598d4",
+          "commit_date": "2021-12-22T05:26:51+05:30",
+          "license": "MIT",
+          "license_file": "LICENSE.txt",
+          "files": 348,
+          "characters": 2183735,
+          "commit_date_utc": "2021-12-21T23:56:51Z"
+        },
+        {
+          "url": "https://github.com/sympy/sympy",
+          "commit": "b0b66d5511575eda9f0e3c7cc048b7bf63a85706",
+          "commit_date": "2021-12-31T12:42:44-06:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 1531,
+          "characters": 25259034,
+          "commit_date_utc": "2021-12-31T18:42:44Z"
+        },
+        {
+          "url": "https://github.com/boto/boto3",
+          "commit": "a79295e8fbea94d17d2e182089258514782dcf42",
+          "commit_date": "2021-12-21T19:08:34Z",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 98,
+          "characters": 652826,
+          "commit_date_utc": "2021-12-21T19:08:34Z"
+        },
+        {
+          "url": "https://github.com/tornadoweb/tornado",
+          "commit": "208672f3bf6cbb7e37f54c356e02a71ca29f1e02",
+          "commit_date": "2021-11-02T21:12:50-04:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 107,
+          "characters": 1596979,
+          "commit_date_utc": "2021-11-03T01:12:50Z"
+        },
+        {
+          "url": "https://github.com/celery/celery",
+          "commit": "56275f5c85247435c14d84807ad254b0f33913c8",
+          "commit_date": "2021-12-29T11:49:42+06:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 325,
+          "characters": 2531135,
+          "commit_date_utc": "2021-12-29T05:49:42Z"
+        },
+        {
+          "url": "https://github.com/home-assistant/core",
+          "commit": "4f6b2e6e1cdd46af29589be2aceb05176c199560",
+          "commit_date": "2021-12-31T12:33:50-10:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE.md",
+          "files": 7273,
+          "characters": 40891545,
+          "commit_date_utc": "2021-12-31T22:33:50Z"
+        },
+        {
+          "url": "https://github.com/pallets/jinja",
+          "commit": "11065b55a0056905a8973efec12a15dc658ef46f",
+          "commit_date": "2021-12-26T16:18:33-07:00",
+          "license": "BSD",
+          "license_file": "LICENSE.rst",
+          "files": 60,
+          "characters": 747589,
+          "commit_date_utc": "2021-12-26T23:18:33Z"
+        },
+        {
+          "url": "https://github.com/pallets/click",
+          "commit": "051d57cef4ce59212dc1175ad4550743bf47d840",
+          "commit_date": "2021-12-26T18:21:26-07:00",
+          "license": "BSD",
+          "license_file": "LICENSE.rst",
+          "files": 63,
+          "characters": 529319,
+          "commit_date_utc": "2021-12-27T01:21:26Z"
+        },
+        {
+          "url": "https://github.com/encode/httpx",
+          "commit": "83c81aa9b8ef0f7825df413a673e6d9300065f3a",
+          "commit_date": "2021-12-21T18:15:34+01:00",
+          "license": "BSD",
+          "license_file": "LICENSE.md",
+          "files": 60,
+          "characters": 511749,
+          "commit_date_utc": "2021-12-21T17:15:34Z"
+        },
+        {
+          "url": "https://github.com/encode/starlette",
+          "commit": "389cbfcaa529686bfd4cfab0bfa338a531a389c8",
+          "commit_date": "2021-12-28T13:25:57+01:00",
+          "license": "BSD",
+          "license_file": "LICENSE.md",
+          "files": 62,
+          "characters": 377018,
+          "commit_date_utc": "2021-12-28T12:25:57Z"
+        },
+        {
+          "url": "https://github.com/samuelcolvin/pydantic",
+          "commit": "fbf8002cefd1ba7b263f63545fff2e48a378189d",
+          "commit_date": "2021-12-31T15:02:06Z",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 231,
+          "characters": 1198052,
+          "commit_date_utc": "2021-12-31T15:02:06Z"
+        },
+        {
+          "url": "https://github.com/pytest-dev/pytest",
+          "commit": "9a992df3c93ae330765e81316f7fb65ef40692af",
+          "commit_date": "2021-12-30T11:54:49-05:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 215,
+          "characters": 2597590,
+          "commit_date_utc": "2021-12-30T16:54:49Z"
+        },
+        {
+          "url": "https://github.com/psf/black",
+          "commit": "4f5268af4f0939fbc0d5ec4fd3d113b40a4c92e9",
+          "commit_date": "2021-12-30T19:59:53-05:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 153,
+          "characters": 1425870,
+          "commit_date_utc": "2021-12-31T00:59:53Z"
+        },
+        {
+          "url": "https://github.com/bitcoin-core/HWI",
+          "commit": "6871946c2176f2f9777b6ac8f0614d96d99bfa0e",
+          "commit_date": "2021-12-22T12:36:17-05:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 82,
+          "characters": 814457,
+          "commit_date_utc": "2021-12-22T17:36:17Z"
+        },
+        {
+          "url": "https://github.com/ethereum/web3.py",
+          "commit": "31d0216592bf924ed034f7e2652923645b484923",
+          "commit_date": "2021-12-30T10:57:12-07:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 356,
+          "characters": 1546531,
+          "commit_date_utc": "2021-12-30T17:57:12Z"
+        },
+        {
+          "url": "https://github.com/ethereum/py-evm",
+          "commit": "026ee20f8d9b70d7c1b6a4fb9484d5489d425e54",
+          "commit_date": "2021-12-16T17:29:26-07:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 348,
+          "characters": 1381486,
+          "commit_date_utc": "2021-12-17T00:29:26Z"
+        },
+        {
+          "url": "https://github.com/matplotlib/matplotlib",
+          "commit": "92989c3d21f4815f9fcb22048e2e21dd55bbbb9a",
+          "commit_date": "2021-12-31T09:15:57+01:00",
+          "license": "matplotlib (PSF-style)",
+          "license_file": "LICENSE",
+          "files": 898,
+          "characters": 8166088,
+          "commit_date_utc": "2021-12-31T08:15:57Z"
+        },
+        {
+          "url": "https://github.com/python-pillow/Pillow",
+          "commit": "89d0d387968e7788a4696b3d86008453e9ca2686",
+          "commit_date": "2021-12-31T19:30:35+11:00",
+          "license": "HPND",
+          "license_file": "LICENSE",
+          "files": 275,
+          "characters": 1858083,
+          "commit_date_utc": "2021-12-31T08:30:35Z"
+        }
+      ],
+      "repositories_skipped": [
+        {
+          "url": "https://github.com/petertodd/python-bitcoinlib",
+          "reason": "licence: no licence file with a recognised permissive text"
+        }
+      ],
+      "slice": "pretrain code (D-62b): replaces the-stack-python"
+    },
+    {
+      "slug": "code-dated-rust",
+      "name": "Dated rust source: 19 permissively licensed repositories at their last commit before 2022-01-01",
+      "source": "GitHub repository snapshots (git commit)",
+      "url": "https://github.com",
+      "license": "Apache-2.0 / CC0-1.0 / MIT (per repository; each LICENSE file read and classified, copyleft and source-available repositories skipped)",
+      "date_filter": "git rev-list -1 --before=2022-01-01T00:00:00Z per repository; commit hash and date on every entry (D-34, D-62b)",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-21",
+      "retrieved_utc": "2026-09-21T10:27:36+00:00",
+      "documents": 26195,
+      "characters": 112723580,
+      "bytes": 114455981,
+      "estimated_tokens": 36613467,
+      "mixture_share": null,
+      "cleaning": "language source files only; vendor/third_party/testdata/generated/minified paths and files over 400 kB or non-UTF-8 dropped; one header line per file naming repo and path",
+      "sha256_processed": "9ca6cb605fd4f80cffb428ffae482bb56406fe6caa08c0dae14c130e18e1d131",
+      "file": "data/raw/code/rust.txt",
+      "repositories": [
+        {
+          "url": "https://github.com/rust-lang/rust",
+          "commit": "4d2e0fd96ccbb9ade41f1a3f07b14b7437f8e4ef",
+          "commit_date": "2021-12-31T22:57:51Z",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 19621,
+          "characters": 48587593,
+          "commit_date_utc": "2021-12-31T22:57:51Z"
+        },
+        {
+          "url": "https://github.com/tokio-rs/tokio",
+          "commit": "12dd06336d2af8c2d735d4d9e3dc0454ad7942a0",
+          "commit_date": "2021-12-31T16:23:29+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 550,
+          "characters": 3334019,
+          "commit_date_utc": "2021-12-31T15:23:29Z"
+        },
+        {
+          "url": "https://github.com/serde-rs/serde",
+          "commit": "6c54aafeb9c6bdf69bf0bd392be1f1340b1b9720",
+          "commit_date": "2021-12-23T11:44:31-08:00",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 187,
+          "characters": 1345021,
+          "commit_date_utc": "2021-12-23T19:44:31Z"
+        },
+        {
+          "url": "https://github.com/rust-lang/cargo",
+          "commit": "5b3a8c58ef44cada154786cb4d3590695e45371f",
+          "commit_date": "2021-12-31T17:52:34Z",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 350,
+          "characters": 5190977,
+          "commit_date_utc": "2021-12-31T17:52:34Z"
+        },
+        {
+          "url": "https://github.com/BurntSushi/ripgrep",
+          "commit": "0b36942f680bfa9ae88a564f2636aa8286470073",
+          "commit_date": "2021-11-22T09:48:42-05:00",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 85,
+          "characters": 1406052,
+          "commit_date_utc": "2021-11-22T14:48:42Z"
+        },
+        {
+          "url": "https://github.com/actix/actix-web",
+          "commit": "b7089245908f19fe03838ae2ef67929960aaee91",
+          "commit_date": "2021-12-31T08:38:58Z",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 248,
+          "characters": 2056844,
+          "commit_date_utc": "2021-12-31T08:38:58Z"
+        },
+        {
+          "url": "https://github.com/diesel-rs/diesel",
+          "commit": "7360e3d156d44cf2a20d1d2326281dadbb0e4f66",
+          "commit_date": "2021-12-31T12:04:49Z",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 618,
+          "characters": 2470647,
+          "commit_date_utc": "2021-12-31T12:04:49Z"
+        },
+        {
+          "url": "https://github.com/rust-analyzer/rust-analyzer",
+          "commit": "3d63abf1d868218613f33dc59968d3671f7f14a8",
+          "commit_date": "2021-12-30T12:52:05Z",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 1038,
+          "characters": 7611692,
+          "commit_date_utc": "2021-12-30T12:52:05Z"
+        },
+        {
+          "url": "https://github.com/bytecodealliance/wasmtime",
+          "commit": "dd85d66ec353959479f7d8518a79d0c7d0b9e3ad",
+          "commit_date": "2021-12-21T12:52:34-06:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 681,
+          "characters": 8979322,
+          "commit_date_utc": "2021-12-21T18:52:34Z"
+        },
+        {
+          "url": "https://github.com/bevyengine/bevy",
+          "commit": "1d0d8a3397bd6fc2c14d42ffd0668d2443748912",
+          "commit_date": "2021-12-30T21:07:26Z",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 427,
+          "characters": 2606315,
+          "commit_date_utc": "2021-12-30T21:07:26Z"
+        },
+        {
+          "url": "https://github.com/tikv/tikv",
+          "commit": "99b34363cda1bd394ae689802655e9d9cf76d7fb",
+          "commit_date": "2021-12-31T19:29:51+08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 928,
+          "characters": 11891982,
+          "commit_date_utc": "2021-12-31T11:29:51Z"
+        },
+        {
+          "url": "https://github.com/solana-labs/solana",
+          "commit": "a2a7e91ad67ce1e61873bdb20f6aee7ef4df084a",
+          "commit_date": "2021-12-31T17:45:50-06:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 753,
+          "characters": 11323856,
+          "commit_date_utc": "2021-12-31T23:45:50Z"
+        },
+        {
+          "url": "https://github.com/rustls/rustls",
+          "commit": "4ae7cff55acb13acc12f55ec195ee15bbec93839",
+          "commit_date": "2021-12-30T13:38:49Z",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 94,
+          "characters": 1106324,
+          "commit_date_utc": "2021-12-30T13:38:49Z"
+        },
+        {
+          "url": "https://github.com/hyperium/hyper",
+          "commit": "f1b89c117cffebed4b2b8eb2d221fd9b25c1d3d1",
+          "commit_date": "2021-12-29T08:33:06-08:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 91,
+          "characters": 1039816,
+          "commit_date_utc": "2021-12-29T16:33:06Z"
+        },
+        {
+          "url": "https://github.com/clap-rs/clap",
+          "commit": "c01ebbac17e3fdaf3b1d0bfb84051cd701babb7c",
+          "commit_date": "2021-12-31T14:35:02-06:00",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 243,
+          "characters": 1324790,
+          "commit_date_utc": "2021-12-31T20:35:02Z"
+        },
+        {
+          "url": "https://github.com/rust-bitcoin/rust-bitcoin",
+          "commit": "670e808c17358362a5cf9d94be222cdb625bfe0c",
+          "commit_date": "2021-12-30T02:12:03+02:00",
+          "license": "CC0-1.0",
+          "license_file": "LICENSE",
+          "files": 65,
+          "characters": 1195023,
+          "commit_date_utc": "2021-12-30T00:12:03Z"
+        },
+        {
+          "url": "https://github.com/sharkdp/bat",
+          "commit": "6dc621ec1854656260564b114c33b23b3314c5c2",
+          "commit_date": "2021-12-30T07:58:15+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 53,
+          "characters": 299480,
+          "commit_date_utc": "2021-12-30T06:58:15Z"
+        },
+        {
+          "url": "https://github.com/alacritty/alacritty",
+          "commit": "e2b5219eb40eaf36d8255cd87c5202bbb8ba0825",
+          "commit_date": "2021-12-27T23:31:08+02:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE-APACHE",
+          "files": 67,
+          "characters": 831785,
+          "commit_date_utc": "2021-12-27T21:31:08Z"
+        },
+        {
+          "url": "https://github.com/rust-lang/rustlings",
+          "commit": "5002c54ffb29b3df9db7282a1ef62ce075c99748",
+          "commit_date": "2021-12-30T12:59:14+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 96,
+          "characters": 122042,
+          "commit_date_utc": "2021-12-30T11:59:14Z"
+        }
+      ],
+      "repositories_skipped": [
+        {
+          "url": "https://github.com/paritytech/substrate",
+          "reason": "licence: no licence file with a recognised permissive text"
+        }
+      ],
+      "slice": "pretrain code (D-62b): replaces the-stack-rust"
+    },
+    {
+      "slug": "code-dated-go",
+      "name": "Dated go source: 17 permissively licensed repositories at their last commit before 2022-01-01",
+      "source": "GitHub repository snapshots (git commit)",
+      "url": "https://github.com",
+      "license": "Apache-2.0 / BSD / ISC / MIT (per repository; each LICENSE file read and classified, copyleft and source-available repositories skipped)",
+      "date_filter": "git rev-list -1 --before=2022-01-01T00:00:00Z per repository; commit hash and date on every entry (D-34, D-62b)",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-21",
+      "retrieved_utc": "2026-09-21T10:27:36+00:00",
+      "documents": 25149,
+      "characters": 172681770,
+      "bytes": 174262728,
+      "estimated_tokens": 63667067,
+      "mixture_share": null,
+      "cleaning": "language source files only; vendor/third_party/testdata/generated/minified paths and files over 400 kB or non-UTF-8 dropped; one header line per file naming repo and path",
+      "sha256_processed": "bf185c165341a11f257bb621b0821f58441c8b0e689b96919423dae35b8ae88b",
+      "file": "data/raw/code/go.txt",
+      "repositories": [
+        {
+          "url": "https://github.com/golang/go",
+          "commit": "6178d25fc0b28724b1b5aec2b1b74fc06d9294c7",
+          "commit_date": "2021-12-29T20:20:32Z",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 6803,
+          "characters": 41861315,
+          "commit_date_utc": "2021-12-29T20:20:32Z"
+        },
+        {
+          "url": "https://github.com/kubernetes/kubernetes",
+          "commit": "7c013c3f64db33cf19f38bb2fc8d9182e42b0b7b",
+          "commit_date": "2021-12-29T16:30:49-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 8921,
+          "characters": 66834579,
+          "commit_date_utc": "2021-12-30T00:30:49Z"
+        },
+        {
+          "url": "https://github.com/moby/moby",
+          "commit": "10aecb0e652d346130a37e5b4383eca28f594c21",
+          "commit_date": "2021-12-23T21:08:52+01:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 1898,
+          "characters": 9018284,
+          "commit_date_utc": "2021-12-23T20:08:52Z"
+        },
+        {
+          "url": "https://github.com/etcd-io/etcd",
+          "commit": "69279532f46cb7491bb60a588be534100fdc058d",
+          "commit_date": "2021-12-21T11:03:59+01:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 1042,
+          "characters": 5554504,
+          "commit_date_utc": "2021-12-21T10:03:59Z"
+        },
+        {
+          "url": "https://github.com/prometheus/prometheus",
+          "commit": "174a1147d53827a19422f5071b3a5d0c54fea90d",
+          "commit_date": "2021-12-31T12:07:02-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 379,
+          "characters": 4025622,
+          "commit_date_utc": "2021-12-31T20:07:02Z"
+        },
+        {
+          "url": "https://github.com/gohugoio/hugo",
+          "commit": "0671ef55938d38778684502d6a1f107c9358555f",
+          "commit_date": "2021-12-30T22:40:43+01:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 741,
+          "characters": 4264850,
+          "commit_date_utc": "2021-12-30T21:40:43Z"
+        },
+        {
+          "url": "https://github.com/gin-gonic/gin",
+          "commit": "d062a6a6155236883f4c3292379ab94b1eac8b05",
+          "commit_date": "2021-12-26T08:02:01+08:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 86,
+          "characters": 490821,
+          "commit_date_utc": "2021-12-26T00:02:01Z"
+        },
+        {
+          "url": "https://github.com/spf13/cobra",
+          "commit": "cb9d7b1cec87c2bb005c6e2790553bcd629bc542",
+          "commit_date": "2021-12-20T21:00:40-07:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE.txt",
+          "files": 50,
+          "characters": 494386,
+          "commit_date_utc": "2021-12-21T04:00:40Z"
+        },
+        {
+          "url": "https://github.com/grpc/grpc-go",
+          "commit": "fbaf7c55821070944bb0ce342ba3c54cc521c6fe",
+          "commit_date": "2021-12-28T15:07:12-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 617,
+          "characters": 5366050,
+          "commit_date_utc": "2021-12-28T23:07:12Z"
+        },
+        {
+          "url": "https://github.com/cosmos/cosmos-sdk",
+          "commit": "7e3c6ae759b95eb83e81095e8664ed5f457df585",
+          "commit_date": "2021-12-31T14:26:49+01:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 1498,
+          "characters": 7260599,
+          "commit_date_utc": "2021-12-31T13:26:49Z"
+        },
+        {
+          "url": "https://github.com/ipfs/go-ipfs",
+          "commit": "91c52657166bcf86f2476926e4fe56694dc26562",
+          "commit_date": "2021-12-26T20:35:07-08:00",
+          "license": "MIT",
+          "license_file": "LICENSE-MIT",
+          "files": 277,
+          "characters": 1116711,
+          "commit_date_utc": "2021-12-27T04:35:07Z"
+        },
+        {
+          "url": "https://github.com/caddyserver/caddy",
+          "commit": "3fe2c73dd04f7769a9d9673236cb94b79ac45659",
+          "commit_date": "2021-12-30T04:15:48-05:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 192,
+          "characters": 1450201,
+          "commit_date_utc": "2021-12-30T09:15:48Z"
+        },
+        {
+          "url": "https://github.com/traefik/traefik",
+          "commit": "f5dd233a3b5a60b8ff88faff4a493b0113a4086a",
+          "commit_date": "2021-12-29T17:35:32+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE.md",
+          "files": 485,
+          "characters": 3467137,
+          "commit_date_utc": "2021-12-29T16:35:32Z"
+        },
+        {
+          "url": "https://github.com/btcsuite/btcd",
+          "commit": "a1f43e4d846ea01f38d1cf459652f1133370a85c",
+          "commit_date": "2021-12-14T10:05:52-05:00",
+          "license": "ISC",
+          "license_file": "LICENSE",
+          "files": 369,
+          "characters": 4562205,
+          "commit_date_utc": "2021-12-14T15:05:52Z"
+        },
+        {
+          "url": "https://github.com/lightningnetwork/lnd",
+          "commit": "5d9b59ac5ade96467ddce4469c832fa3d8c481fe",
+          "commit_date": "2021-12-22T15:44:51+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 1138,
+          "characters": 12638736,
+          "commit_date_utc": "2021-12-22T14:44:51Z"
+        },
+        {
+          "url": "https://github.com/tendermint/tendermint",
+          "commit": "3b467f951da78af996839e8b19d73604e79d5388",
+          "commit_date": "2021-12-22T08:18:55-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 595,
+          "characters": 3865521,
+          "commit_date_utc": "2021-12-22T16:18:55Z"
+        },
+        {
+          "url": "https://github.com/junegunn/fzf",
+          "commit": "dc975e8974c4f569980676d9f605226368e20711",
+          "commit_date": "2021-12-25T01:46:01+09:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 58,
+          "characters": 410249,
+          "commit_date_utc": "2021-12-24T16:46:01Z"
+        }
+      ],
+      "repositories_skipped": [
+        {
+          "url": "https://github.com/hashicorp/consul",
+          "reason": "licence: copyleft/source-available in LICENSE: Mozilla Public License"
+        }
+      ],
+      "slice": "pretrain code (D-62b): replaces the-stack-go"
+    },
+    {
+      "slug": "code-dated-solidity",
+      "name": "Dated solidity source: 10 permissively licensed repositories at their last commit before 2022-01-01",
+      "source": "GitHub repository snapshots (git commit)",
+      "url": "https://github.com",
+      "license": "Apache-2.0 / BSD / MIT (per repository; each LICENSE file read and classified, copyleft and source-available repositories skipped)",
+      "date_filter": "git rev-list -1 --before=2022-01-01T00:00:00Z per repository; commit hash and date on every entry (D-34, D-62b)",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-21",
+      "retrieved_utc": "2026-09-21T10:27:36+00:00",
+      "documents": 1510,
+      "characters": 4972615,
+      "bytes": 5096321,
+      "estimated_tokens": 1440514,
+      "mixture_share": null,
+      "cleaning": "language source files only; vendor/third_party/testdata/generated/minified paths and files over 400 kB or non-UTF-8 dropped; one header line per file naming repo and path",
+      "sha256_processed": "38f43372002dad6b7a3a069214884c5d79e3cd621b8d695db6a605ec682eb2dc",
+      "file": "data/raw/code/solidity.txt",
+      "repositories": [
+        {
+          "url": "https://github.com/OpenZeppelin/openzeppelin-contracts",
+          "commit": "a9f994f063b3c119f6fafd74ea7e51a5b5f98545",
+          "commit_date": "2021-12-31T09:17:12Z",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 234,
+          "characters": 551907,
+          "commit_date_utc": "2021-12-31T09:17:12Z"
+        },
+        {
+          "url": "https://github.com/compound-finance/compound-protocol",
+          "commit": "4a8648ec0364d24c4ecfc7d6cae254f55030d65f",
+          "commit_date": "2021-11-16T13:40:17-08:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 99,
+          "characters": 883264,
+          "commit_date_utc": "2021-11-16T21:40:17Z"
+        },
+        {
+          "url": "https://github.com/ensdomains/ens-contracts",
+          "commit": "2736f15fb36345f0691deb77cba4d77760b15077",
+          "commit_date": "2021-12-21T15:12:25+13:00",
+          "license": "MIT",
+          "license_file": "LICENSE.txt",
+          "files": 89,
+          "characters": 229488,
+          "commit_date_utc": "2021-12-21T02:12:25Z"
+        },
+        {
+          "url": "https://github.com/smartcontractkit/chainlink",
+          "commit": "57434211c414c766b221bcaeb4943366f129a8cf",
+          "commit_date": "2021-12-28T17:05:03-05:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 259,
+          "characters": 787085,
+          "commit_date_utc": "2021-12-28T22:05:03Z"
+        },
+        {
+          "url": "https://github.com/0xProject/protocol",
+          "commit": "3bebc7cd625549647179a62f4cee6fdd64fc12e0",
+          "commit_date": "2021-12-29T11:45:33Z",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 282,
+          "characters": 1161223,
+          "commit_date_utc": "2021-12-29T11:45:33Z"
+        },
+        {
+          "url": "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable",
+          "commit": "1e3e1fb6827e9efc16a602c6c32eec48c002cfbd",
+          "commit_date": "2021-12-31T09:18:31Z",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 229,
+          "characters": 645435,
+          "commit_date_utc": "2021-12-31T09:18:31Z"
+        },
+        {
+          "url": "https://github.com/ethereum-optimism/optimism",
+          "commit": "696f55039211a50cf70d00d2172eb7e88f7c136b",
+          "commit_date": "2021-12-21T14:32:17-08:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 84,
+          "characters": 310705,
+          "commit_date_utc": "2021-12-21T22:32:17Z"
+        },
+        {
+          "url": "https://github.com/rarible/protocol-contracts",
+          "commit": "0dc506a93e18881c51acf1109bc944365dfce793",
+          "commit_date": "2021-12-28T17:59:58+03:00",
+          "license": "MIT",
+          "license_file": "LICENSE.md",
+          "files": 200,
+          "characters": 292385,
+          "commit_date_utc": "2021-12-28T14:59:58Z"
+        },
+        {
+          "url": "https://github.com/1inch/limit-order-protocol",
+          "commit": "d5b4e4e4607ad844925013ac6ed0d32b6af2139b",
+          "commit_date": "2021-12-23T12:29:16+03:00",
+          "license": "MIT",
+          "license_file": "LICENSE.md",
+          "files": 22,
+          "characters": 48649,
+          "commit_date_utc": "2021-12-23T09:29:16Z"
+        },
+        {
+          "url": "https://github.com/decentraland/marketplace-contracts",
+          "commit": "efb150725ceecb87b600b3cb8dda786ccccc9a37",
+          "commit_date": "2021-07-12T11:28:29-03:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 12,
+          "characters": 62474,
+          "commit_date_utc": "2021-07-12T14:28:29Z"
+        }
+      ],
+      "repositories_skipped": [
+        {
+          "url": "https://github.com/Synthetixio/synthetix",
+          "reason": "clone failed: remote: Repository not found.\nfatal: repository 'https://github.com/Synthetixio/synthetix/' not found\n"
+        },
+        {
+          "url": "https://github.com/sushiswap/sushiswap",
+          "reason": "no commit before the cutoff in the full history"
+        },
+        {
+          "url": "https://github.com/Loopring/protocols",
+          "reason": "clone failed: remote: Repository not found.\nfatal: repository 'https://github.com/Loopring/protocols/' not found\n"
+        }
+      ],
+      "slice": "pretrain code (D-62b): replaces the-stack-solidity"
+    },
+    {
+      "slug": "code-dated-cpp",
+      "name": "Dated cpp source: 21 permissively licensed repositories at their last commit before 2022-01-01",
+      "source": "GitHub repository snapshots (git commit)",
+      "url": "https://github.com",
+      "license": "Apache-2.0 / BSD / ISC / MIT (per repository; each LICENSE file read and classified, copyleft and source-available repositories skipped)",
+      "date_filter": "git rev-list -1 --before=2022-01-01T00:00:00Z per repository; commit hash and date on every entry (D-34, D-62b)",
+      "published_before_generative_ai": true,
+      "retrieved": "2026-09-21",
+      "retrieved_utc": "2026-09-21T10:27:36+00:00",
+      "documents": 17506,
+      "characters": 206863694,
+      "bytes": 207951882,
+      "estimated_tokens": 73992479,
+      "mixture_share": null,
+      "cleaning": "language source files only; vendor/third_party/testdata/generated/minified paths and files over 400 kB or non-UTF-8 dropped; one header line per file naming repo and path",
+      "sha256_processed": "4005c5ee662923e0e5cc1005f6260df9b6d4d4cc77fd953916cb241a4e523611",
+      "file": "data/raw/code/cpp.txt",
+      "repositories": [
+        {
+          "url": "https://github.com/bitcoin/bitcoin",
+          "commit": "a1e04e10799791a728cce4430808517598c8742c",
+          "commit_date": "2022-01-01T02:43:27+13:00",
+          "license": "MIT",
+          "license_file": "COPYING",
+          "files": 1121,
+          "characters": 10120740,
+          "commit_date_utc": "2021-12-31T13:43:27Z"
+        },
+        {
+          "url": "https://github.com/monero-project/monero",
+          "commit": "319b831e65437f1c8e5ff4b4cb9be03f091f6fc6",
+          "commit_date": "2021-12-15T20:24:37-06:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 802,
+          "characters": 9956304,
+          "commit_date_utc": "2021-12-16T02:24:37Z"
+        },
+        {
+          "url": "https://github.com/jedisct1/libsodium",
+          "commit": "d2de91eb204a187e1d55a8aa9282b849850ea65b",
+          "commit_date": "2021-12-31T23:55:42+01:00",
+          "license": "ISC",
+          "license_file": "LICENSE",
+          "files": 138,
+          "characters": 605048,
+          "commit_date_utc": "2021-12-31T22:55:42Z"
+        },
+        {
+          "url": "https://github.com/abseil/abseil-cpp",
+          "commit": "04610889a913d29037205ca72e9d7fd7acc925fe",
+          "commit_date": "2021-12-28T15:12:23-05:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 651,
+          "characters": 7955568,
+          "commit_date_utc": "2021-12-28T20:12:23Z"
+        },
+        {
+          "url": "https://github.com/protocolbuffers/protobuf",
+          "commit": "01e84b129361913e5613464c857734fcfe095367",
+          "commit_date": "2021-12-22T13:38:56-08:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 600,
+          "characters": 11012684,
+          "commit_date_utc": "2021-12-22T21:38:56Z"
+        },
+        {
+          "url": "https://github.com/grpc/grpc",
+          "commit": "7e9e503bd96bcaeaeb5fc39bc04288db9c55d60e",
+          "commit_date": "2021-12-30T14:56:27-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 2398,
+          "characters": 19203825,
+          "commit_date_utc": "2021-12-30T22:56:27Z"
+        },
+        {
+          "url": "https://github.com/facebook/folly",
+          "commit": "f23852993e7d24222637a2e136e225df9690508d",
+          "commit_date": "2021-12-31T03:44:43-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 1742,
+          "characters": 15491669,
+          "commit_date_utc": "2021-12-31T11:44:43Z"
+        },
+        {
+          "url": "https://github.com/fmtlib/fmt",
+          "commit": "79c66d66bd530c4257b997fcdbffaca02bc218b9",
+          "commit_date": "2021-12-29T15:33:30-08:00",
+          "license": "MIT",
+          "license_file": "LICENSE.rst",
+          "files": 62,
+          "characters": 905929,
+          "commit_date_utc": "2021-12-29T23:33:30Z"
+        },
+        {
+          "url": "https://github.com/google/googletest",
+          "commit": "6b74da4757a549563d7c37c8fae3e704662a043b",
+          "commit_date": "2021-12-27T08:05:24-08:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 148,
+          "characters": 2993255,
+          "commit_date_utc": "2021-12-27T16:05:24Z"
+        },
+        {
+          "url": "https://github.com/google/leveldb",
+          "commit": "b2801ee1a0e3a5c0c393dc04eef63691f79ed694",
+          "commit_date": "2021-12-29T03:49:16Z",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 132,
+          "characters": 882269,
+          "commit_date_utc": "2021-12-29T03:49:16Z"
+        },
+        {
+          "url": "https://github.com/facebook/zstd",
+          "commit": "6211bfee5ec24dc825c11751c33aa31d618b5f10",
+          "commit_date": "2021-12-30T14:33:21-08:00",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 117,
+          "characters": 1038702,
+          "commit_date_utc": "2021-12-30T22:33:21Z"
+        },
+        {
+          "url": "https://github.com/simdjson/simdjson",
+          "commit": "3a93e45dd166d8e614a33b0ba4da39c1a01660b7",
+          "commit_date": "2021-12-30T12:10:11-05:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 356,
+          "characters": 2337795,
+          "commit_date_utc": "2021-12-30T17:10:11Z"
+        },
+        {
+          "url": "https://github.com/skypjack/entt",
+          "commit": "22628c9ac4664d88c208a4d9730c6f40aa5bb10f",
+          "commit_date": "2021-12-31T17:23:50+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 159,
+          "characters": 1458383,
+          "commit_date_utc": "2021-12-31T16:23:50Z"
+        },
+        {
+          "url": "https://github.com/ocornut/imgui",
+          "commit": "83d22f4e480c6f71ffc1514c2453feed0fce2733",
+          "commit_date": "2021-12-30T22:03:52+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE.txt",
+          "files": 69,
+          "characters": 2099495,
+          "commit_date_utc": "2021-12-30T21:03:52Z"
+        },
+        {
+          "url": "https://github.com/godotengine/godot",
+          "commit": "bc2445d0eb1b4d00de7506fbea4384212c8dfe16",
+          "commit_date": "2021-12-31T17:59:37+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE.txt",
+          "files": 2333,
+          "characters": 36073705,
+          "commit_date_utc": "2021-12-31T16:59:37Z"
+        },
+        {
+          "url": "https://github.com/opencv/opencv",
+          "commit": "a0d5277e0d96eb7217fd5c5e4d5690c8ab31ec85",
+          "commit_date": "2021-12-30T21:43:45Z",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 3224,
+          "characters": 46785038,
+          "commit_date_utc": "2021-12-30T21:43:45Z"
+        },
+        {
+          "url": "https://github.com/google/re2",
+          "commit": "d826d9fcb68c62996c1b7c0a45d604e22d814952",
+          "commit_date": "2021-11-18T16:54:03Z",
+          "license": "BSD",
+          "license_file": "LICENSE",
+          "files": 87,
+          "characters": 1122895,
+          "commit_date_utc": "2021-11-18T16:54:03Z"
+        },
+        {
+          "url": "https://github.com/microsoft/terminal",
+          "commit": "1e22bfa8d6f86d0546c3f162d171274cf453db65",
+          "commit_date": "2021-12-16T22:18:35Z",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 1605,
+          "characters": 16588675,
+          "commit_date_utc": "2021-12-16T22:18:35Z"
+        },
+        {
+          "url": "https://github.com/electron/electron",
+          "commit": "ac39cb14e9eb91441d060e6820d1957ee7a40f19",
+          "commit_date": "2021-12-31T05:01:03-08:00",
+          "license": "MIT",
+          "license_file": "LICENSE",
+          "files": 692,
+          "characters": 3377869,
+          "commit_date_utc": "2021-12-31T13:01:03Z"
+        },
+        {
+          "url": "https://github.com/apple/foundationdb",
+          "commit": "30b05b469c87d9b526b427751c211fb5cf7ff9cd",
+          "commit_date": "2021-12-24T11:25:51-08:00",
+          "license": "Apache-2.0",
+          "license_file": "LICENSE",
+          "files": 798,
+          "characters": 14400171,
+          "commit_date_utc": "2021-12-24T19:25:51Z"
+        },
+        {
+          "url": "https://github.com/nlohmann/json",
+          "commit": "926df56ddba10079e1f3bbf47ccd3c7bfd5639b0",
+          "commit_date": "2021-12-31T11:04:29+01:00",
+          "license": "MIT",
+          "license_file": "LICENSE.MIT",
+          "files": 272,
+          "characters": 2453675,
+          "commit_date_utc": "2021-12-31T10:04:29Z"
+        }
+      ],
+      "repositories_skipped": [
+        {
+          "url": "https://github.com/ethereum/aleth",
+          "reason": "licence: copyleft/source-available in LICENSE: GNU General Public License"
+        }
+      ],
+      "slice": "pretrain code (D-62b): replaces the-stack-cpp"
     }
   ]
 }
