@@ -1,0 +1,10 @@
+{"id": "dc-01", "prompt": "Roll a d20.", "tool": "roll", "argument": "roll a d20", "expect": "d20: "}
+{"id": "dc-02", "prompt": "Roll 3d6+2.", "tool": "roll", "argument": "roll 3d6+2", "expect": "3d6+2: "}
+{"id": "dc-03", "prompt": "Flip a coin.", "tool": "roll", "argument": "flip a coin", "expect": "coin: "}
+{"id": "dc-04", "prompt": "Give me a number between 1 and 1000.", "tool": "roll", "argument": "a number between 1 and 1000", "expect": "number in [1, 1000]: "}
+{"id": "dc-05", "prompt": "Pick one: tea, coffee, water.", "tool": "roll", "argument": "pick one: tea, coffee, water", "expect": "picked: "}
+{"id": "dc-06", "prompt": "Shuffle: north, south, east, west.", "tool": "roll", "argument": "shuffle: north, south, east, west", "expect": "shuffled: "}
+{"id": "dc-07", "prompt": "Roll a d20 with seed 7.", "tool": "roll", "argument": "roll a d20 seed 7", "expect": "SEEDED"}
+{"id": "dc-08", "prompt": "Roll 200d6.", "tool": "roll", "argument": "roll 200d6", "expect": "NO_MATCH"}
+{"id": "dc-09", "prompt": "Call it: heads or tails.", "tool": "roll", "argument": "heads or tails", "expect": "coin: "}
+{"id": "dc-10", "prompt": "Roll d2000.", "tool": "roll", "argument": "roll d2000", "expect": "NO_MATCH"}

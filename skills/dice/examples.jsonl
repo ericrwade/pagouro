@@ -1,0 +1,16 @@
+{"user": "roll a d20", "tool": "roll", "arguments": "roll a d20"}
+{"user": "roll 2d6+3", "tool": "roll", "arguments": "roll 2d6+3"}
+{"user": "flip a coin", "tool": "roll", "arguments": "flip a coin"}
+{"user": "give me a random number between 1 and 10", "tool": "roll", "arguments": "a number between 1 and 10"}
+{"user": "pick one: red, green, blue", "tool": "roll", "arguments": "pick one: red, green, blue"}
+{"user": "shuffle: alice, bob, carol", "tool": "roll", "arguments": "shuffle: alice, bob, carol"}
+{"user": "roll 4d6 and give me the total", "tool": "roll", "arguments": "roll 4d6"}
+{"user": "heads or tails?", "tool": "roll", "arguments": "flip a coin"}
+{"user": "choose randomly between soup and salad", "tool": "roll", "arguments": "pick one: soup, salad"}
+{"user": "roll a d100", "tool": "roll", "arguments": "roll a d100"}
+{"user": "what is 17 times 23", "tool": "calc", "arguments": "17*23"}
+{"user": "what time is it", "tool": "time", "arguments": ""}
+{"user": "Roll a d12 for me.", "tool": "roll", "tool_result": "d12: 5\nsource: OS entropy pool (os.urandom), rejection sampling, no modulo bias; bytes used: 04; sha256 of bytes: e52d9c508c502347", "answer": "You rolled a 5 on the d12 — drawn from the OS entropy pool, not from me."}
+{"user": "Flip a coin, please.", "tool": "roll", "tool_result": "coin: TAILS\nsource: OS entropy pool (os.urandom), rejection sampling, no modulo bias; bytes used: d5; sha256 of bytes: cdce9374e0fecee1", "answer": "Tails. Drawn from the OS entropy pool; the bytes used are shown in the result."}
+{"user": "Pick one for dinner: pasta, rice, soup.", "tool": "roll", "tool_result": "picked: rice\nsource: OS entropy pool (os.urandom), rejection sampling, no modulo bias; bytes used: e5; sha256 of bytes: ab61ba11a38b007f", "answer": "The draw says rice — random, from the OS, not my preference."}
+{"user": "Roll 2d6.", "tool": "roll", "tool_result": "2d6: 2 + 3 = 5\nsource: OS entropy pool (os.urandom), rejection sampling, no modulo bias; bytes used: 8b74; sha256 of bytes: 0e507576ae167ba9", "answer": "2d6: 2 + 3 = 5 — rolled from OS entropy, not guessed."}

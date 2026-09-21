@@ -1951,6 +1951,19 @@ answer examples, known/unknowable GRPO curriculum) are ready for the 1B, where t
 expected to relax; the 100-sets are the yardstick there. (3) The 30-item sets are demoted to
 history in every report from now on. Kept: `checkpoints/flash_sft5.pt`, GGUFs, results.
 
+### O-38 — Honest randomness: the `dice` skill (Eric: "a local and completely honest dice roller")
+**2026-09-20.** Worth it, and for the honesty reason more than convenience: a language model cannot
+roll a die — it emits a plausible number that is not random. Measured on the stick model (sft3),
+"Roll a d20 for me" × 40 at temperature 0.8: **a number 11 times (9 distinct values in 11 — not
+uniform), no number 29 times** (the abstention training mostly declines). So the RNG-bluff rate is
+27% bare and 0% with the tool. Built as `skills/dice` (`tools/roll.py`): `os.urandom` → rejection
+sampling (no modulo bias) → result **with provenance** (source, the bytes used, their hash);
+`seed <word>` gives a reproducible sequence labelled "SEEDED (not random)". Forms: NdS±M, coin,
+range, pick, shuffle; limits 1–100 dice of 2–1000 sides. Trigger checked against the frozen suite
+(0 false positives); tools 10/10, end-to-end 10/10, harness 10/10, model alone 0/10 (name never
+trained; examples staged). Mouse/finger entropy: not built — the OS pool already mixes hardware
+entropy; a slider is ceremony. The honest claim is "from the OS, not from the model", printed.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
