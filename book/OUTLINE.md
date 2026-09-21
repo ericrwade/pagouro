@@ -31,7 +31,7 @@ The book's credibility is the same as the model's — it survives inspection.
 
 | # | Title (working) | Strand | Source material | Status |
 |---|---|---|---|---|
-| 0 | The stick | story | `docs/ORIGIN.md`; BUILD_LOG Day 0 | raw |
+| 0 | The stick | story | `docs/ORIGIN.md`; BUILD_LOG Day 0, Day 1 setup | draft 1 (`chapters/00-…`, 2026-09-21) |
 | 1 | What "doesn't bluff" costs | story | D-6, D-11, D-50, BUILD_LOG Day 1 (the size argument) | draft 1 (`chapters/01-…`, 2026-09-21) |
 | 2 | **Do it: a model in an afternoon** (tokenizer → 59M on CPU) | do-it | `scripts/train.py`, MAKE_IT_YOURS rung 5–6, BUILD_LOG Day 1 numbers | draft 1 (`chapters/02-…`, 2026-09-21) |
 | 3 | The ledger, or why the big labs can't publish this file | story | D-8/D-9, D-32, D-34, D-60/D-62, O-22, BUILD_LOG Days 1–2 | draft 1 (`chapters/03-…`, 2026-09-21) |
