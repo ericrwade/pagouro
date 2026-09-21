@@ -2066,7 +2066,7 @@ style guide + threat-model one-liners are its inputs; reach for it then. **Taken
 its every-state checklist run over the console app (first launch, model file missing, packs empty,
 offline notice, `/index` on a scan, a failing tool, STONE with no writable disk) — each state must
 be visible and say what to do, the D-19 rule applied to everything else. Install is Eric's to run
-(permission wall, as with TypeSafe).
+(permission wall, as with TypeSafe). **Done the same hour:** four states fixed in `app/pagouro_app.py` — a startup failure (no model, server missing, server crashed, server silent) now prints what happened, what to do, and the server's last stderr lines, and waits for a keypress when the exe was double-clicked (the window used to close with the message); STONE on a write-protected stick falls back to SAND with a notice instead of crashing the turn; a bug inside one turn is reported and the session continues. Each state exercised with a fake server / a blocked workspace path; the normal path re-run.
 
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based

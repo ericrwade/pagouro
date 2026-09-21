@@ -83,7 +83,36 @@ def pick_model() -> str:
     for f in sorted(os.listdir(MODEL_DIR)) if os.path.isdir(MODEL_DIR) else []:
         if f.endswith(".gguf"):
             return os.path.join(MODEL_DIR, f)
-    raise SystemExit(f"no .gguf model found in {MODEL_DIR}")
+    fatal(f"no .gguf model found in {MODEL_DIR}",
+          "Put the model file back (the release folder has one; a replacement goes in the same place, "
+          "docs/MAKE_IT_YOURS.md rung 2), then start again.")
+
+
+def owns_console() -> bool:
+    """True when this process is the only one attached to its console window -- i.e. it was
+    double-clicked from Explorer and the window will vanish the moment we exit."""
+    if os.name != "nt":
+        return False
+    try:
+        buf = (ctypes.c_uint * 4)()
+        return ctypes.windll.kernel32.GetConsoleProcessList(buf, 4) <= 1
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def fatal(what: str, do: str, detail: str = "") -> None:
+    """Every-state rule (O-39): a failure is visible and says what to do. Waits for a keypress when
+    closing the window would take the message with it."""
+    print(c(RED, f"\n  Pagouro cannot start: {what}"))
+    print("  " + do)
+    if detail:
+        print(c(DIM, "  " + detail.replace("\n", "\n  ")))
+    if owns_console():
+        try:
+            input("\n  Press Enter to close this window. ")
+        except Exception:  # noqa: BLE001
+            pass
+    raise SystemExit(1)
 
 
 # --------------------------------------------------------------------------
@@ -147,8 +176,18 @@ class Server:
         cmd = [SERVER_EXE, "-m", model, "--port", str(self.port), "--host", "127.0.0.1",
                "-ngl", "0", "-t", str(threads), "--log-disable", "--no-webui"]
         flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
-        self.proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        if not os.path.exists(SERVER_EXE):
+            fatal("the model server program is missing", f"Expected {SERVER_EXE}. Copy the release folder whole; "
+                  "if an antivirus quarantined it, restore it (it is llama.cpp, MIT-licensed, hash in MANIFEST.md).")
+        self.proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
                                      creationflags=flags)
+        self._stderr_tail: list[str] = []
+        import threading
+        def _drain():                       # keep the last lines only; never block the server on a full pipe
+            for raw in iter(self.proc.stderr.readline, b""):
+                self._stderr_tail.append(raw.decode("utf-8", "replace").rstrip())
+                del self._stderr_tail[:-40]
+        threading.Thread(target=_drain, daemon=True).start()
         for _ in range(120):
             try:
                 if self.get("/health").get("status") == "ok":
@@ -156,10 +195,15 @@ class Server:
             except Exception:
                 pass
             if self.proc.poll() is not None:
-                raise SystemExit("llama-server exited during startup")
+                fatal("the model server stopped while starting",
+                      "Usually the model file is damaged or the machine is short of memory. Check the file's hash "
+                      "against MANIFEST.md (python verify_manifest.py) and close other programs; then start again.",
+                      "\n".join(self._stderr_tail[-8:]))
             time.sleep(0.25)
         else:
-            raise SystemExit("llama-server did not become ready")
+            fatal("the model server did not answer within 30 seconds",
+                  "A slow disk or a very large model can take longer: start again once; if it repeats, check "
+                  "the model file's hash against MANIFEST.md.", "\n".join(self._stderr_tail[-8:]))
         props = self.get("/props")
         self.n_ctx = int(props.get("default_generation_settings", {}).get("n_ctx", 512))
 
@@ -530,12 +574,19 @@ class App:
     def record(self, role: str, text: str):
         if not self.stone:
             return
-        if self.transcript_path is None:
-            os.makedirs(os.path.join(WORKSPACE, "transcripts"), exist_ok=True)
-            self.transcript_path = os.path.join(WORKSPACE, "transcripts",
-                                                dt.datetime.now().strftime("%Y%m%d-%H%M%S") + ".txt")
-        with open(self.transcript_path, "a", encoding="utf-8") as f:
-            f.write(f"{role}: {text}\n")
+        try:
+            if self.transcript_path is None:
+                os.makedirs(os.path.join(WORKSPACE, "transcripts"), exist_ok=True)
+                self.transcript_path = os.path.join(WORKSPACE, "transcripts",
+                                                    dt.datetime.now().strftime("%Y%m%d-%H%M%S") + ".txt")
+            with open(self.transcript_path, "a", encoding="utf-8") as f:
+                f.write(f"{role}: {text}\n")
+        except OSError as e:                # a write-protected stick, a full disk, a read-only folder
+            self.stone = False
+            self.transcript_path = None
+            print(c(YELLOW, f"  STONE could not write to workspace/transcripts/ ({e.strerror or e}). "
+                            "Back to SAND: nothing is being saved. Unlock the drive or free space, then /stone again."))
+            return
         rel = os.path.relpath(self.transcript_path, BASE)
         if rel not in self.written:
             self.written.append(rel)
@@ -843,7 +894,11 @@ def main() -> int:
                 if not app.command(line):
                     break
                 continue
-            app.turn(line)
+            try:
+                app.turn(line)
+            except Exception as e:  # noqa: BLE001  -- a bug in one turn is reported, not fatal
+                print(c(RED, f"  This turn failed inside the program ({type(e).__name__}: {str(e)[:120]}). "
+                             "The conversation continues; if it repeats, please report it with the line you typed."))
     finally:
         srv.stop()
     net = f" {app.searches} web search(es) were sent." if app.searches else " No network calls were made."
