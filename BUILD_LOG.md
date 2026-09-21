@@ -1721,3 +1721,30 @@ server and a blocked folder, the normal path re-run, and the stick repackaged an
 
 The LoRA pod's bill settled at forty cents, under the sixty-one estimated, which brings the
 window's rented compute to about fourteen dollars and thirty cents.
+
+---
+
+## Day 12, evening — The mark arrives from the road
+
+Eric sent a zip from wherever he was: ten concepts for the outward-facing mark, made with
+ChatGPT from his brief, and one line — "the one I've chosen is #5." It is the thing the
+weekend's crab work had been circling: a hermit crab retreated into its shell, claws folded and
+eyes forward on their stalks, in a round teal medallion on cream, art-nouveau flourishes in the
+corners, a scallop below, and "Pagouro" lettered on a band. The Belle Époque decision and the
+retreated-crab brief in one picture, and better than anything the procedural medallion or the
+rented LoRA had produced. Those step down to studies. The mark is this file.
+
+Making it the brand took an hour of plumbing: the full image and its sizes in `brand/`, an icon
+on the executable, a 64-pixel version snapped to the house palette with dithering so `/art`
+draws it in the terminal (32 pixels was tried and the lettering turned to mush), the README
+carrying it, the style guide and the about page rewritten to say "use the file, do not redraw
+it", the stick repackaged and verified. The other nine concepts stay on the desk with a contact
+sheet in the repository, because the record of what was chosen against matters.
+
+The rights note was the part worth getting exactly right. The picture is a brand asset, not
+training data — no ledger row, no model has seen it — but the project's habit of saying what a
+thing is applies to it anyway. So the note says: generated with ChatGPT by Eric from his brief;
+the derived files are mechanical and take no credit; OpenAI's terms give him whatever rights
+exist in the output; a machine-generated image may carry no copyright at all; and the
+protection that matters for a mark is the trademark check on the name, which is still open. No
+more than that, because more than that would be the kind of claim this project refuses to make.

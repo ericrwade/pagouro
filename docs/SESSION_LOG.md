@@ -98,8 +98,12 @@ the tool for the D-24 browser demo and release page; its every-state checklist a
 console failure states now visible with a hint (startup failures wait for a keypress when
 double-clicked, server stderr tail shown; STONE on an unwritable disk falls back to SAND; a bug in
 one turn no longer ends the session); stick repackaged and manifest-verified.
-**Open / next:** (1) Eric's picks from the Belle Époque LoRA sheets → iterate those seeds; an
-hour of GPU for the 20–50M draw model when he says "rent". (2) O-29 trademark, O-31 io.net, O-32
+**2026-09-21 evening addendum:** **D-80** — Eric's mark (concept #5 of ten, made with ChatGPT)
+is the brand: `brand/` shipped (sizes, exe icon, 64-px house-palette `/art logo`), README/STYLE_GUIDE/
+ABOUT_THE_LOOK point at the file, provenance and rights stated without overclaiming, stick repackaged
+and verified. The procedural medallion and LoRA candidates are studies now.
+**Open / next:** (1) The mark is chosen (D-80), so the LoRA picks are moot; the 20–50M draw model
+(D-67, for `/art` pictures beyond the mark) still wants an hour of GPU when Eric says "rent". (2) O-29 trademark, O-31 io.net, O-32
 receipt model — Eric. (3) Next fine-tune only at 1B (D-76): skill router+answer examples,
 spelling, style and tool-result seeds are staged in `docs/JOB_1B.md`; GRPO on the curriculum when
 GPU time is authorised. (4) 1B prerequisites still open in `docs/JOB_1B.md` (data volume build,
