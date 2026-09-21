@@ -32,6 +32,10 @@ def sha256_file(path: str) -> str:
     return h.hexdigest()
 
 
+def _utc(iso: str) -> str:
+    return datetime.fromisoformat(iso).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def count_tokens(path: str) -> int:
     from tokenizers import Tokenizer
     tok = Tokenizer.from_file(os.path.join(ROOT, "data", "tokenizer_real", "tokenizer.json"))
@@ -56,7 +60,7 @@ def main() -> int:
         path = os.path.join(CODE, f"{lang}.txt")
         if not kept or not os.path.exists(path):
             print(f"{lang}: nothing kept, no row"); continue
-        assert all(r["commit_date"][:10] < CUTOFF for r in kept), lang
+        assert all(_utc(r["commit_date"]) < CUTOFF for r in kept), lang      # git --before compares in UTC; %cI prints the committer offset
         n_tok = count_tokens(path)
         licences = sorted({r["license"] for r in kept})
         row = {
@@ -70,7 +74,7 @@ def main() -> int:
             "bytes": os.path.getsize(path), "estimated_tokens": n_tok, "mixture_share": None,
             "cleaning": "language source files only; vendor/third_party/testdata/generated/minified paths and files over 400 kB or non-UTF-8 dropped; one header line per file naming repo and path",
             "sha256_processed": sha256_file(path), "file": f"data/raw/code/{lang}.txt",
-            "repositories": [{k: r[k] for k in ("url", "commit", "commit_date", "license", "license_file", "files", "characters")} for r in kept],
+            "repositories": [dict({k: r[k] for k in ("url", "commit", "commit_date", "license", "license_file", "files", "characters")}, commit_date_utc=_utc(r["commit_date"])) for r in kept],
             "repositories_skipped": [{"url": r["url"], "reason": r["skipped"]} for r in skipped],
             "slice": "pretrain code (D-62b): replaces the-stack-" + lang,
         }
