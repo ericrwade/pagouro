@@ -1,0 +1,546 @@
+{
+ "name": "Pagouro 1B pretraining volume (D-82)",
+ "cutoff": "2022-01-01",
+ "note": "83 FineWeb-Edu dumps <= CC-MAIN-2021-49 at up to 1M docs each (~1.1B tokens per dump where the dump is that big); Wikipedia 2021-12-20 whole; Stack Exchange preferences whole (per-row date filter); dated code x3 epochs. Shares are the measured token counts, posted on #2 when the build lands.",
+ "shards": [
+  {
+   "slug": "fineweb-edu-CC-MAIN-2013-20",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2013-20",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2013-48",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2013-48",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-10",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-10",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-15",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-15",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-23",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-23",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-35",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-35",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-41",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-41",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-42",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-42",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-49",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-49",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2014-52",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2014-52",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-06",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-06",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-11",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-11",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-14",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-14",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-18",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-18",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-22",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-22",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-27",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-27",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-32",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-32",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-35",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-35",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-40",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-40",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2015-48",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2015-48",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-07",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-07",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-18",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-18",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-22",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-22",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-26",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-26",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-30",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-30",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-36",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-36",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-40",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-40",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-44",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-44",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2016-50",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2016-50",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-04",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-04",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-09",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-09",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-13",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-13",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-17",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-17",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-22",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-22",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-26",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-26",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-30",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-30",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-34",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-34",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-39",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-39",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-43",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-43",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-47",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-47",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2017-51",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2017-51",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-05",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-05",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-09",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-09",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-13",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-13",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-17",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-17",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-22",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-22",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-26",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-26",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-30",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-30",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-34",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-34",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-39",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-39",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-43",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-43",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-47",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-47",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2018-51",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2018-51",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-04",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-04",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-09",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-09",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-13",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-13",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-18",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-18",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-22",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-22",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-26",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-26",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-30",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-30",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-35",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-35",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-39",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-39",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-43",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-43",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-47",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-47",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-51",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-51",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-05",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-05",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-10",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-10",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-16",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-16",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-24",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-24",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-29",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-29",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-34",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-34",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-40",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-40",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-45",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-45",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2020-50",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2020-50",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-04",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-04",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-10",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-10",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-17",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-17",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-21",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-21",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-25",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-25",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-31",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-31",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-39",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-39",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-43",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-43",
+   "docs": 1000000
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-49",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-49",
+   "docs": 1000000
+  },
+  {
+   "slug": "wikipedia-en-20211220-full",
+   "kind": "wikipedia",
+   "chars": 25000000000,
+   "seed": 1337
+  },
+  {
+   "slug": "stackexchange-preferences-full",
+   "kind": "stackexchange",
+   "docs": 10000000
+  },
+  {
+   "slug": "code-dated-python",
+   "kind": "text",
+   "file": "data/raw/code/python.txt",
+   "epochs": 3
+  },
+  {
+   "slug": "code-dated-rust",
+   "kind": "text",
+   "file": "data/raw/code/rust.txt",
+   "epochs": 3
+  },
+  {
+   "slug": "code-dated-go",
+   "kind": "text",
+   "file": "data/raw/code/go.txt",
+   "epochs": 3
+  },
+  {
+   "slug": "code-dated-solidity",
+   "kind": "text",
+   "file": "data/raw/code/solidity.txt",
+   "epochs": 3
+  },
+  {
+   "slug": "code-dated-cpp",
+   "kind": "text",
+   "file": "data/raw/code/cpp.txt",
+   "epochs": 3
+  }
+ ]
+}

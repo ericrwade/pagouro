@@ -1,0 +1,22 @@
+{
+ "shards": [
+  {
+   "slug": "fineweb-edu-CC-MAIN-2021-49-smoke",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2021-49",
+   "docs": 300
+  },
+  {
+   "slug": "fineweb-edu-CC-MAIN-2019-09-smoke",
+   "kind": "fineweb",
+   "dump": "CC-MAIN-2019-09",
+   "docs": 300
+  },
+  {
+   "slug": "code-dated-solidity",
+   "kind": "text",
+   "file": "data/raw/code/solidity.txt",
+   "epochs": 2
+  }
+ ]
+}
