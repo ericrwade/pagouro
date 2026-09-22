@@ -1,7 +1,7 @@
 {
  "name": "Pagouro 1B pretraining volume (D-82)",
  "cutoff": "2022-01-01",
- "note": "83 FineWeb-Edu dumps <= CC-MAIN-2021-49 at up to 1M docs each (~1.1B tokens per dump where the dump is that big); Wikipedia 2021-12-20 whole; Stack Exchange preferences whole (per-row date filter); dated code x3 epochs. Shares are the measured token counts, posted on #2 when the build lands.",
+ "note": "83 FineWeb-Edu dumps <= CC-MAIN-2021-49 at up to 1M docs each (~1.1B tokens per dump where the dump is that big); Stack Exchange preferences whole (per-row date filter); dated code x3 epochs. Shares are the measured token counts, posted on #2 when the build lands. Wikipedia dropped 2026-09-22 (D-84, Eric).",
  "shards": [
   {
    "slug": "fineweb-edu-CC-MAIN-2013-20",
@@ -500,12 +500,6 @@
    "kind": "fineweb",
    "dump": "CC-MAIN-2021-49",
    "docs": 1000000
-  },
-  {
-   "slug": "wikipedia-en-20211220-full",
-   "kind": "wikipedia",
-   "chars": 25000000000,
-   "seed": 1337
   },
   {
    "slug": "stackexchange-preferences-full",

@@ -2135,6 +2135,17 @@ walkthrough of checking a copy — what a hash is, the signed manifest, the Bitc
 step proves and does not — `docs/CHECK_YOUR_COPY.md`, shipped on the stick (THREAT_MODEL requirement 5
 made readable; "it adds to our authenticity").
 
+### D-84 — Wikipedia leaves the 1B backbone (Eric: "if there is a way we can build this without using Wikipedia, I would be perfectly fine with that")
+**2026-09-22, during the volume build.** The range-request sampler could not fetch the whole
+2021-12-20 dump in useful time; a local-parse fix was written, tested and the 20 GB dump had in
+fact finished downloading — and Eric chose to drop the source rather than wait. Trade stated:
+Wikipedia was ~4–5% of the plan and the densest plain-fact source, so answered-real may come in a
+little lower; FineWeb-Edu carries much encyclopaedic text; the calibration set measures the
+difference. Gained: the volume is ready when the Stack Exchange and code shards land; one fewer
+share-alike source in the backbone (Stack Exchange still is, so the weights stay CC BY-SA). The
+desk's 100M-token slice (`wikipedia-en-20211220`) stays in the ledger and out of the 1B mixture;
+`--local` mode stays in the fetcher for anyone who wants it back.
+
 ### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
 **2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up
 against a benefactor like Paul Allen?"** OLMo releases everything (weights, Dolma, code, logs,
