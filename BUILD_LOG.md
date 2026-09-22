@@ -1748,3 +1748,71 @@ the derived files are mechanical and take no credit; OpenAI's terms give him wha
 exist in the output; a machine-generated image may carry no copyright at all; and the
 protection that matters for a mark is the trademark check on the name, which is still open. No
 more than that, because more than that would be the kind of claim this project refuses to make.
+
+---
+
+## Day 12, night — "Start on RunPod": the launch, and the evening spent looking for eight cards
+
+Eric asked what was left before the big model could be shown to the world, got the list, and
+answered the two items that were his in one message: the context question (four thousand tokens
+while training, stretched to eight thousand at the end — "consider it approved") and the launch —
+"start on runpod, I will add money to it right now." That message closed two decisions that had
+been open since the first week, and the run began at 21:58 UTC with a five-hundred-gigabyte
+network volume and a thirty-two-core CPU machine at ninety-six cents an hour.
+
+Before it, a detour that belongs in the record. io.net had been on the list since the road: a
+decentralised GPU market, paid in USDC on Solana, squarely in Eric's professional world, and a
+story he would have liked to tell. Reading their documentation on the day, three things a
+marketplace should not be carrying under a four-day eight-card job could not be found: whether
+eight H100s come as one machine, where two hundred gigabytes of data would live, and what
+happens to the disk when a prepaid rental runs out. Self-serve bare metal had been discontinued
+the previous October. Eric's answer was the right one and worth quoting because it is the
+project's whole method in a sentence: "I would have liked to use it, but not at the expense of
+the job." He asked for the analysis to go in the book. It is `docs/GPU_PROVIDERS.md`, and the
+rule in it is the one every provider has to pass — a dollar's shakedown and an hour's rehearsal
+before it can carry the run.
+
+The first job is data, not GPUs. The disk held about half a billion licensed tokens against a
+plan of a hundred billion, so the evening's engineering was a builder that fetches dated shards,
+tokenizes each, and concatenates them with a per-shard table of hashes: eighty-three FineWeb-Edu
+crawls chosen by name — every dump dated 2021 or earlier, no filtering waste — the whole
+Wikipedia dump of 20 December 2021, the whole Stack Exchange set with its per-row dates, and the
+dated code three times over. Smoke-tested on the desk on three hundred documents, then bundled
+to the pod. The first real shard measured 1.12 billion tokens in 286 seconds, fetch and tokenize
+together, and every shard since has landed within fifteen percent of that. By one in the
+morning UTC the volume held thirty-three shards and thirty-seven billion tokens for about three
+dollars.
+
+The volume sits in Iceland, and not in the datacentre with the H100s, because the H100
+datacentres have no CPU machines and building the data on a three-and-a-half-dollar card for
+fifteen hours would have cost more than one copy of the finished file between datacentres. That
+is the kind of decision the runbook now records: the cheap build plus a five-dollar copy.
+
+Then the balance. Eric asked whether to load a fixed amount or let the account refill itself
+below fifty dollars. Fixed — a balance that refills has no cap, and the whole discipline of the
+window is that the cap is a hard stop. He loaded fifteen hundred, which is honest to write down
+as a tension: the secure-cloud estimate for the run is seventeen hundred to twenty-four hundred,
+so at that balance the run fits only on the community cloud or after a top-up, and the first
+hour on the real machine — measuring how fast the cards actually go — decides which. He said he
+could add more if the case made sense; the case is written where he can read it.
+
+And then the cards. Every half hour since launch the session has asked RunPod's catalogue for
+eight H100s on one machine, and every half hour but one the answer has been *Out* — on both
+clouds, at every CUDA version, in every datacentre. Once, at 23:20, eight community-cloud H100s
+showed *Low* at $21.52 an hour for the set; by the next check they were gone. Eric widened the
+permission to faster cards, and the arithmetic went into the plan: B200s cost about the same
+money for the run because they do more than twice the work per hour, and would finish in a day
+and a third instead of three; H200s are H100 speed at a thirty-percent premium and go last.
+Sixteen cards would halve the days at the same dollars but need two machines talking over the
+network, a product RunPod calls a cluster, and tonight the cluster catalogue showed no sixteen
+of anything. He had also seen an analysis saying RTX 4090s "can almost keep up with H100s if
+you can find enough of them," which is true per dollar and false per calendar: a 4090 does a
+sixth of an H100's work, has twenty-four gigabytes where the optimiser alone wants sixteen, has
+no NVLink, and RunPod caps a pod at eight of them — eighteen days for this run, or fifty cards
+across six machines, which is a distributed-systems project and not a rental. The 4090s go on
+the list for the drawing model and the evaluation jobs, where they belong.
+
+None of this is a complaint about RunPod. It is the state of the world in September 2026: the
+cards a one-person project needs for three days are the same cards everyone else needs, and
+finding eight of them together is a matter of catching the catalogue at the right half hour. The
+data will be ready around six in the morning UTC. The watch keeps looking.
