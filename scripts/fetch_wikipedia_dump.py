@@ -74,6 +74,48 @@ def wikitext_to_text(wt: str) -> str:
     return "\n".join(lines).strip()
 
 
+def _stream_pages(xml: str, min_chars: int):
+    """Yield (title, text, year) for the article pages of one decompressed stream."""
+    root = ET.fromstring("<r>" + xml + "</r>")
+    for page in root.iter("page"):
+        title = page.findtext("title") or ""
+        ns = page.findtext("ns") or "0"
+        if ns != "0" or NS_PREFIX.match(title) or page.find("redirect") is not None:
+            continue
+        rev = page.find("revision")
+        wt = rev.findtext("text") if rev is not None else None
+        if not wt or wt.lstrip().lower().startswith("#redirect"):
+            continue
+        ts = (rev.findtext("timestamp") or "")[:4]
+        text = wikitext_to_text(wt)
+        if len(text) < min_chars or "may refer to" in text[:300]:
+            continue
+        yield title, text, ts
+
+
+def _local_worker(job):
+    """(dump_path, [(start, end), ...], part_path, min_chars) -> (chars, pages, streams, skipped, hist)."""
+    dump_path, spans, part_path, min_chars = job
+    n_chars = n_pages = n_streams = n_skipped = 0
+    hist = {}
+    with open(dump_path, "rb") as f, io.open(part_path, "w", encoding="utf-8", newline="\n") as out:
+        for start, end in spans:
+            f.seek(start)
+            raw = f.read(end - start)
+            try:
+                xml = bz2.decompress(raw).decode("utf-8", errors="replace")
+            except Exception:  # noqa: BLE001
+                n_skipped += 1
+                continue
+            n_streams += 1
+            for title, text, ts in _stream_pages(xml, min_chars):
+                out.write(f"{title}\n\n{text}\n\n")
+                n_chars += len(text) + len(title) + 4
+                n_pages += 1
+                hist[ts] = hist.get(ts, 0) + 1
+    return n_chars, n_pages, n_streams, n_skipped, hist
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dump", default="enwiki-20211220")
@@ -81,6 +123,9 @@ def main() -> int:
     ap.add_argument("--min-chars", type=int, default=800, help="skip stubs shorter than this after stripping")
     ap.add_argument("--seed", type=int, default=1337)
     ap.add_argument("--out", default=os.path.join(ROOT, "data", "raw", "wikipedia-en-20211220.txt"))
+    ap.add_argument("--local", default="", help="path to the downloaded multistream .xml.bz2: parse the WHOLE dump locally, in parallel "
+                                                 "(the range-request sampler is ~2 s per 100-page stream; the full dump is days that way)")
+    ap.add_argument("--workers", type=int, default=8, help="--local only")
     a = ap.parse_args()
     base = f"https://archive.org/download/{a.dump}/{a.dump}-pages-articles-multistream"
     idx_path = os.path.join(ROOT, "data", "raw", f"{a.dump}-index.txt.bz2")
@@ -101,49 +146,78 @@ def main() -> int:
     order = list(range(len(offsets) - 1))
     rng.shuffle(order)
 
-    n_chars = n_pages = n_streams = n_skipped = 0
-    hist = {}
-    t0 = time.time()
-    with io.open(a.out, "w", encoding="utf-8", newline="\n") as out:
+    if a.local:
+        # Whole dump, local file, one seek+read+decompress+parse per stream, spread over workers; parts merged in order.
+        import multiprocessing as mp
+        size = os.path.getsize(a.local)
+        spans = [(offsets[k], offsets[k + 1]) for k in range(len(offsets) - 1)] + [(offsets[-1], size)]
+        chunks = [spans[i::a.workers] for i in range(a.workers)]
+        parts = [a.out + f".part{i}" for i in range(a.workers)]
+        t0 = time.time()
+        print(f"parsing {len(spans):,} streams from {a.local} with {a.workers} workers", flush=True)
+        with mp.Pool(a.workers) as pool:
+            results = pool.map(_local_worker, [(a.local, chunks[i], parts[i], a.min_chars) for i in range(a.workers)])
+        n_chars = sum(r[0] for r in results); n_pages = sum(r[1] for r in results)
+        n_streams = sum(r[2] for r in results); n_skipped = sum(r[3] for r in results)
+        hist = {}
+        for r in results:
+            for k, v in r[4].items():
+                hist[k] = hist.get(k, 0) + v
+        with io.open(a.out, "w", encoding="utf-8", newline="\n") as out:
+            for pth in parts:
+                with io.open(pth, encoding="utf-8") as f:
+                    for chunk in iter(lambda: f.read(1 << 22), ""):
+                        out.write(chunk)
+                os.remove(pth)
+        print(f"  parsed in {time.time() - t0:.0f}s: {n_pages:,} articles, {n_chars/1e6:.1f}M chars, {n_skipped} undecodable streams", flush=True)
+        write_row = True
+    else:
+        write_row = True
+
+    if not a.local:
+      n_chars = n_pages = n_streams = n_skipped = 0
+      hist = {}
+      t0 = time.time()
+      with io.open(a.out, "w", encoding="utf-8", newline="\n") as out:
         for k in order:
-            if n_chars >= a.target_chars:
-                break
-            start, end = offsets[k], offsets[k + 1]
-            raw = get(base + ".xml.bz2", f"bytes={start}-{end - 1}")
-            try:
-                xml = bz2.decompress(raw).decode("utf-8", errors="replace")
-            except Exception:
-                n_skipped += 1
-                continue
-            n_streams += 1
-            root = ET.fromstring("<r>" + xml + "</r>")
-            for page in root.iter("page"):
-                title = page.findtext("title") or ""
-                ns = page.findtext("ns") or "0"
-                if ns != "0" or NS_PREFIX.match(title) or page.find("redirect") is not None:
-                    continue
-                rev = page.find("revision")
-                wt = rev.findtext("text") if rev is not None else None
-                if not wt or wt.lstrip().lower().startswith("#redirect"):
-                    continue
-                ts = (rev.findtext("timestamp") or "")[:4]
-                text = wikitext_to_text(wt)
-                if len(text) < a.min_chars or "may refer to" in text[:300]:
-                    continue
-                out.write(f"{title}\n\n{text}\n\n")
-                n_chars += len(text) + len(title) + 4
-                n_pages += 1
-                hist[ts] = hist.get(ts, 0) + 1
-            if n_streams % 50 == 0:
-                print(f"  {n_streams} streams, {n_pages:,} articles, {n_chars/1e6:.1f}M chars, {time.time()-t0:.0f}s", flush=True)
+              if n_chars >= a.target_chars:
+                  break
+              start, end = offsets[k], offsets[k + 1]
+              raw = get(base + ".xml.bz2", f"bytes={start}-{end - 1}")
+              try:
+                  xml = bz2.decompress(raw).decode("utf-8", errors="replace")
+              except Exception:
+                  n_skipped += 1
+                  continue
+              n_streams += 1
+              root = ET.fromstring("<r>" + xml + "</r>")
+              for page in root.iter("page"):
+                  title = page.findtext("title") or ""
+                  ns = page.findtext("ns") or "0"
+                  if ns != "0" or NS_PREFIX.match(title) or page.find("redirect") is not None:
+                      continue
+                  rev = page.find("revision")
+                  wt = rev.findtext("text") if rev is not None else None
+                  if not wt or wt.lstrip().lower().startswith("#redirect"):
+                      continue
+                  ts = (rev.findtext("timestamp") or "")[:4]
+                  text = wikitext_to_text(wt)
+                  if len(text) < a.min_chars or "may refer to" in text[:300]:
+                      continue
+                  out.write(f"{title}\n\n{text}\n\n")
+                  n_chars += len(text) + len(title) + 4
+                  n_pages += 1
+                  hist[ts] = hist.get(ts, 0) + 1
+              if n_streams % 50 == 0:
+                  print(f"  {n_streams} streams, {n_pages:,} articles, {n_chars/1e6:.1f}M chars, {time.time()-t0:.0f}s", flush=True)
 
     h = hashlib.sha256()
     with open(a.out, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
     row = {
-        "slug": f"wikipedia-en-{a.dump.split('-')[1]}", "name": f"English Wikipedia, dump {a.dump} (random stream sample)",
-        "source": f"archive.org mirror of the Wikimedia dump ({a.dump}), multistream index + HTTP range requests",
+        "slug": f"wikipedia-en-{a.dump.split('-')[1]}", "name": f"English Wikipedia, dump {a.dump} ({'whole dump, parsed locally' if a.local else 'random stream sample'})",
+        "source": f"archive.org mirror of the Wikimedia dump ({a.dump}), multistream index + " + ("local parse of the whole .xml.bz2" if a.local else "HTTP range requests"),
         "url": f"https://archive.org/details/{a.dump}", "license": "CC BY-SA 3.0 + GFDL",
         "date_basis": {"dump_date": a.dump.split("-")[1], "note": "every revision in the dump predates the dump date",
                        "last_revision_year_histogram": dict(sorted(hist.items()))},
