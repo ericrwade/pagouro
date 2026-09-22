@@ -2120,6 +2120,21 @@ mixture shares are re-stated from what is actually fetchable with epochs written
 (no slice replayed more than ~3×; canon and shelf live in the decay only), and posted on #2
 before tokenization starts.
 
+### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
+**2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up
+against a benefactor like Paul Allen?"** OLMo releases everything (weights, Dolma, code, logs,
+checkpoints; OLMo 3's full "model flow"). On capability Pagouro loses and Chapter 1 says so. The
+pitch is four claims OLMo does not make and structurally cannot at web scale: **licensed** (a
+nameable licence per source, not an open licence on a crawl), **dated** (every row before
+2022-01-01), **honest** (a pre-registered frozen bluff test as the headline number, answered-real
+beside it), **finished** (a frozen, signed, offline artefact with a threat model, for a person).
+The honest neighbour is **EleutherAI's Common Pile / Comma v0.1 (2025)** — an openly licensed
+corpus and models trained only on it — and it is an opportunity, not a threat: its licensed
+sources can feed ours where their dates allow. Verdict: continue; move the box language from
+"open" to *licensed, dated, honest, finished*; add Common Pile to the sources to check (date
+basis per sub-source, O-22 rules). The other half of the investment — the book — is not a thing
+AI2 will write.
+
 ### O-31 — io.net reconsidered: raw GPU clusters, tested the same way as RunPod
 **2026-09-19, Eric.** D-54's rejection covered io.net's Training-as-a-Service (form-based
 fine-tuning, no from-scratch). Its raw GPU clusters were not evaluated. Reconsider on the same
