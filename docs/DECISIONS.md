@@ -2130,7 +2130,10 @@ it, worded to the D-50/THREAT_MODEL rule: three checkable parts (no marking code
 and signed — cannot be added; no rights asserted by the project) and one thing we do NOT say
 (that output is free of anyone's rights — a model can reproduce a sentence it read; the user
 checks what they publish). Box language moves from "open" to **licensed, dated, honest, finished
-— and your words are yours**. Feeds README first paragraph (F12), MANIFESTO, book chapter 0/1.
+— and your words are yours**. Feeds README first paragraph (F12), MANIFESTO, book chapter 0/1. **Same night, Eric:** a plain-language
+walkthrough of checking a copy — what a hash is, the signed manifest, the Bitcoin anchor, what each
+step proves and does not — `docs/CHECK_YOUR_COPY.md`, shipped on the stick (THREAT_MODEL requirement 5
+made readable; "it adds to our authenticity").
 
 ### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
 **2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up

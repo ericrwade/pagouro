@@ -17,6 +17,7 @@ the anchor before anything is published, publication before the public flip.
 2. Build: `python scripts/package_release.py` writes `release/Pagouro/` with `MANIFEST.md`
    (SHA-256 + bytes of every file), `MANIFESTO.txt`, `README.md`, and `verify_manifest.py`.
 3. Check it on a clean machine or a fresh USB stick: `python verify_manifest.py` in the folder
+   (`docs/CHECK_YOUR_COPY.md` is the plain-language walkthrough of steps 3, 4 and the anchor; it ships on the stick)
    must print `VERDICT: every listed file matches the manifest`.
 4. Signing key ceremony (Eric, once, offline):
    - `minisign -G -p minisign.pub -s pagouro.key` (minisign is small, audited, no web of trust;

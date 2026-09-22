@@ -147,7 +147,7 @@ def main() -> int:
             shutil.rmtree(skills_dst)
         shutil.copytree(os.path.join(ROOT, "skills"), skills_dst,
                         ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))   # last_test.json ships: /skills shows the scores
-        for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md"):   # D-78: the look and the voice ship beside the exe
+        for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md", "WHY.md", "CHECK_YOUR_COPY.md"):   # D-78 the look and the voice; D-83 why; the verification walkthrough (THREAT_MODEL req. 5)
             shutil.copy2(os.path.join(ROOT, "docs", name), os.path.join(rel, name))
         # D-80: the mark ships -- the full image, the icon, and the house-palette pixel versions /art logo draws
         brand_dst = os.path.join(rel, "brand")
