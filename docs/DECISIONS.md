@@ -2107,7 +2107,9 @@ refilling, because a refilling balance has no cap); every artifact comes home be
 `list-pods` empty at the end of every step. At $1,500 the secure estimate ($1,740–2,440) does not fit:
 the first hour on the real pod measures MFU and posts the projected total; community cloud ($2.69/h,
 $1,340–1,880) or a top-up is Eric's call then. Pod watch every 30 minutes (session cron), posting on #2
-only on change.
+only on change. **Every status update opens with GREEN / YELLOW / RED** (Eric, 2026-09-21 18:25 PT): GREEN
+on plan, nothing needed; YELLOW an issue being solved or a decision Eric will need to make soon, with
+its deadline; RED something not working or a guardrail at risk, with what was done.
 
 **Launch shape as executed** (revising `docs/JOB_1B.md` where measurement forces it): the data
 on disk today is 0.57B live tokens against a 100B plan, so the first step is the **data volume
