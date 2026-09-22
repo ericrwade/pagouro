@@ -2120,6 +2120,18 @@ mixture shares are re-stated from what is actually fetchable with epochs written
 (no slice replayed more than ~3×; canon and shelf live in the decay only), and posted on #2
 before tokenization starts.
 
+### D-83 — LOCKED: no watermark, no claim on outputs — "your words are yours" — and the WHY page
+**2026-09-21 night, Eric:** the O-40 argument becomes the "why does the world need another AI,
+least of all a 1B" collateral, and one more claim joins it: Pagouro does not watermark output,
+cannot be made to once frozen (a fork could, and then it is not Pagouro — its manifest will not
+match), and claims no rights in what it writes for you — "another version of privacy and
+ownership … it's binary: you either are being watermarked or you aren't." `docs/WHY.md` carries
+it, worded to the D-50/THREAT_MODEL rule: three checkable parts (no marking code — read it; frozen
+and signed — cannot be added; no rights asserted by the project) and one thing we do NOT say
+(that output is free of anyone's rights — a model can reproduce a sentence it read; the user
+checks what they publish). Box language moves from "open" to **licensed, dated, honest, finished
+— and your words are yours**. Feeds README first paragraph (F12), MANIFESTO, book chapter 0/1.
+
 ### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
 **2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up
 against a benefactor like Paul Allen?"** OLMo releases everything (weights, Dolma, code, logs,
