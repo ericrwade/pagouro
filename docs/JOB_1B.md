@@ -95,6 +95,21 @@ interconnect). Needs RunPod **Instant Clusters** (two 8×H100 nodes) rather than
 else; our DDP rehearsal was single-node. Stock on 2026-09-21 22:40Z: no 16-card availability of
 any type, and 8×H100 pods Out; the pod watch checks both and takes whichever appears first.
 
+## Card choice (Eric, 2026-09-21 18:40 PT: "permission to go with faster cards if there are no H100s")
+At 8 cards the run's cost is dollars per FLOP; wall clock is FLOPs per hour. Order, whichever is in
+stock when the volume is ready, price and projected total posted on #2 first (D-54):
+
+| card | $/GPU-h secure | bf16 dense TFLOPS | run at 30% MFU (100B tokens) | days |
+|---|---|---|---|---|
+| **B200** | 6.79 | ~2,250 | ~$1,740 | ~1.3 |
+| **H100 SXM** | 3.49 (community 2.69) | 989 | ~$1,740–2,440 (community $1,340–1,880) | ~3 |
+| H200 SXM | 4.59 | 989 | ~$2,290–3,200 | ~3 (last resort) |
+| RTX 4090 ×8 | 0.74 (community 0.34) | ~165 | cheapest per FLOP, but 24 GB, no NVLink, pods cap at 8 | **~18** — not for this run |
+
+The 4090 point Eric saw is true per dollar and false per calendar for a 1B pretrain at 8 cards; 4090s
+are for the draw model, LoRA passes and evals (fits in 24 GB, finishes in hours). At the $1,500 cap only
+community H100 fits the projection; a faster card that projects over the cap waits for a top-up.
+
 ## Launch shape (what the session will do, step by step, when told)
 1. `create-network-volume` 500 GB in a data center with 8×H100 secure stock.
 2. CPU pod (or the training pod before the run): fetch + tokenize the mixture to the volume;
