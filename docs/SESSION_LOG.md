@@ -13,6 +13,40 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-21 evening → 2026-09-22 (the 1B launch) — data volume, nine hours of stock, the run
+**Model:** Fable 5.1
+**Goal:** Eric: "start on runpod. I will add money to it right now." (D-82); 4k→8k approved (D-81).
+**Did:**
+- **Decisions:** D-81 context; D-82 launch on RunPod, io.net declined for the job (`docs/GPU_PROVIDERS.md`,
+  goes in the book); D-83 no watermark / no claim on outputs + `docs/WHY.md`; D-84 Wikipedia out of the
+  backbone; D-85 the run itself. O-39 Design Arc, O-40 OLMo/Common Pile. `docs/CHECK_YOUR_COPY.md`
+  (verification for someone who has never heard of a hash) ships on the stick with WHY.md.
+- **Data volume** (`scripts/build_volume.py`, `plans/volume_1b.json`): CPU pod 32 vCPU $0.96/h in
+  EUR-IS-1 + 500 GB network volume; 83 dated FineWeb-Edu dumps by name (1.12B tokens / ~300 s each),
+  Stack Exchange whole (7.67B, per-row dated), dated code ×3; Wikipedia's range-request sampler too slow
+  at scale — `--local` mode written and the 20 GB dump downloaded, then Eric dropped the source (D-84).
+  **99,724,809,408 train tokens**, 199.4 GB, sha256 4a60a5ff…, 8h46m, ~$8.50. Mixture on the row:
+  FineWeb-Edu 91.6% / SE 7.7% / code 0.7%.
+- **Cards:** secure 8×H100 Out on 17 of 19 half-hourly reads over 9 h; the community "Low at 8" is a
+  phantom (1 GPU per pod max); B200/H200 Out throughout; 16-card clusters none. Created 07:24Z on the
+  first secure sighting: `g3qf86spkqfq1j`, CA-MTL-1, $27.92/h.
+- **Volume pull across DCs:** single rsync 16 MB/s → 16 parallel byte-range streams ~175 MB/s (11 of 16
+  survived sshd MaxStartups; per-chunk hash refetch fixed the rest; whole-file sha256 verified).
+- **Rehearsal:** 968,968,192 params; micro-batch 8 OOMs → 4×4096×accum 8×8 = 1,048,576 tokens/step;
+  318,660 tok/s plain (23.4% MFU), **≈444–459k tok/s with torch.compile (33% MFU)**; checkpoints 11.6 GB.
+- **Run started 08:48Z:** 95,104 steps, WSD, warmup 2k, stable to 85,593, decay at 8k on the mix.
+  Projection ~$1,800 vs ~$1,440 cap remaining → YELLOW: Eric's top-up (~$500) or early decay at ~$1,100
+  spent (~59B tokens), decision by ~Sep 23 15:00Z. Step-500 checkpoint home and verified; build pod
+  terminated (volume kept as backup). Near-miss: a surviving rsync filled the pod disk to 100% (deleted
+  open file, 104 GB); killed by PID minutes before a checkpoint save would have crashed the run — lesson
+  in CLAUDE.md. Balance: $1,500 fixed, no auto-reload (Eric); GREEN/YELLOW/RED on every update (Eric).
+**Open / next:** (1) Eric: top-up or 60B; (2) checkpoints home every 6 h; watch every 30 min; (3) when
+phase 1 ends: decay at 8k, SFT (staged mix, D-76), export, evals on the 100-sets, package, delete pod,
+verify home, delete volume; (4) book chapter 13 from the build log; chapter 15 after the evals;
+(5) box language → licensed, dated, honest, finished, your words are yours (D-83).
+
+---
+
 ## 2026-09-20 (unattended window 3, day 3) — Palettes, skills, spelling, GRPO at scale, and the re-OCR audit that caught our own OCR
 **Model:** Fable 5.1
 **Goal:** Finish the D-66 rental (recipes, MUTCD), then work the post-rental list: O-28 palette
