@@ -2146,6 +2146,20 @@ share-alike source in the backbone (Stack Exchange still is, so the weights stay
 desk's 100M-token slice (`wikipedia-en-20211220`) stays in the ledger and out of the 1B mixture;
 `--local` mode stays in the fetcher for anyone who wants it back.
 
+### D-85 — The 1B run started 2026-09-22 08:48Z on 8×H100 SXM secure (pod g3qf86spkqfq1j, CA-MTL-1, $27.92/h)
+**Measured on the rehearsal:** 968,968,192 params (ffn 5632 by the 8/3 rule — the plan's 6144 was a
+guess); 1,048,576 tokens/step = 4 × 4096 × accum 8 × 8 ranks (micro-batch 8 OOMs 80 GB); plain bf16
+318,660 tok/s = 23.4% MFU; torch.compile ≈444k tok/s = 32.6% MFU (2.36 s/step); val ppl 226 at
+step 200; checkpoints 11.6 GB every 500 steps; volume sha256 4a60a5ff… verified after a 16-stream
+cross-DC pull (single stream 16 MB/s; 11 of 16 streams survived sshd's MaxStartups, the 5 dropped
+chunks refetched by per-chunk hash). Run: 95,104 steps, WSD, warmup 2k, stable to 85,593, decay at
+8k on the mix. **Projection $1,800 vs $1,440 cap remaining.** Started anyway because a WSD run can
+decay from any stable checkpoint: the cap-conformant finish is an early decay at ~$1,100 spent
+(~59B tokens); a ~$500 top-up buys the full 100B. Eric's call by ~hour 30. Nine hours of stock
+checks preceded it (secure 8×H100 Out on 17 of 19 reads; the community "Low at 8" was a phantom —
+community H100 hosts allow 1 GPU per pod). Wikipedia out (D-84); mixture on the row: FineWeb-Edu
+91.6%, Stack Exchange 7.7%, dated code 0.7% ×3 epochs.
+
 ### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
 **2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up
 against a benefactor like Paul Allen?"** OLMo releases everything (weights, Dolma, code, logs,
