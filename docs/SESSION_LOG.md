@@ -13,6 +13,43 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-22 evening → 2026-09-23 (the watch day) — top-up, the stale anneal, sixty thousand steps, chapter 13
+**Model:** Fable 5.1
+**Goal:** Keep the 1B run (D-85) healthy and inside the cap; answer Eric from the road; use the gaps.
+**Did:**
+- **Eric (chat):** "+$500, go for the full 100B" → cap $2,000, full 95,104 steps, early-decay rule retired
+  (D-82/D-85). 1B never "1B+" (`docs/WHY.md`, D-83 section). O-41 the hybrid / US Code shelf pack (waits
+  on "add it"); O-42 stablecoin wallet for compute (deferred). Chapters 13/15 requested after the run.
+- **Caught:** the anneal on the pod was the Sep-16 build (contained bitcointalk, D-60) — rebuilt from the
+  current ledger (`data/tokenized_anneal_1b`, 12,325,693 train tokens, 31 works, 0 forum lines) and
+  placed as `/workspace/pagouro/data/tokenized_anneal` ~20 h before phase 2.
+- **Watch:** 30-min ticks (list-pods, step/val/ckpt/GPU/disk); checkpoints home + torch.load-verified at
+  steps 23,000, 33,000, 42,500, 52,000 (each replaces the last; `checkpoints/pagouro-1b/`); billing posted
+  at 25% ($439), 37% ($740), 43% ($866), 49% ($978). Zero restarts, no NCCL/Xid, GPUs 46–61 °C ~690 W,
+  460k tok/s flat (33.6% MFU), 92 GB free. **Honest note posted:** session paused ~12:00–23:35Z Sep 22
+  (cron ticks queued), two checkpoint copies missed; the run never noticed.
+- **Numbers, from the jsonl not the log tail:** val ppl 90 (step 500) → 19 (2,500) → 12.3 (8,500) → <10
+  first at 29,000 (9.6) → **low 9.2 at 38,500**, tied at 53,000; stable-phase band 9.5–11; per-batch loss
+  2.0–2.6 since step 10,000. Two #2 posts had called 9.7@51,500 and 9.2@53,000 "new lows" — wrong,
+  corrected in BUILD_LOG Day 14 and on #2. Timeline corrected from the step clock (2.26 s/step): phase 1
+  ends step 85,593 ≈ Sep 24 15:00Z; `PAGOURO_1B_DONE` ≈ 22:30Z; total ≈ **$1,805** (an earlier $1,915
+  double-counted the decay).
+- **Prepared for the finish:** `sft/` + `skills/` staged on the pod; export needs only numpy+torch;
+  `scripts/eval_gguf.sh` (desk: q8_0 + q4_k_m + every suite). `finish_1b.sh` = base export, SFT A
+  (`--repeat toolresult_seed.jsonl=0`), SFT B, exports to `/workspace/out`.
+- **Writing:** BUILD_LOG Day 13 + Day 14-so-far; **book ch. 13 draft 1** (2,855 words, decay section left
+  open); outline row 13; appendix A regenerated.
+**Verified:** every number above read from `/workspace/runs/pagouro-1b.jsonl`, `/workspace/train.log`,
+`list-pods`, `list-billing` or the #2 timestamps; checkpoint copies opened with torch.load on the desk.
+**Open / next:** (1) watch to step 85,593 (≈ Sep 24 15:00Z): phase-2 switch to 8k, held-out anneal loss
+must not rise (D-61); (2) checkpoints home every 6 h (23:40Z, 05:40Z, 11:40Z, 17:40Z); billing posts at
+75% ($1,500) and 90% ($1,800); (3) on `PAGOURO_1B_DONE`: `bash scripts/runpod/finish_1b.sh` on the pod,
+bring `/workspace/out/*` + final ckpt + logs home, verify, delete pod `g3qf86spkqfq1j` and volume
+`bbwh1nchay`, `list-pods` empty; then `scripts/eval_gguf.sh` on both SFT mixes → D-76 adjudication →
+package; (4) close ch. 13 ("The decay") and draft ch. 15 from the evals; D-85 results row; BUILD_LOG Day 15.
+
+---
+
 ## 2026-09-21 evening → 2026-09-22 (the 1B launch) — data volume, nine hours of stock, the run
 **Model:** Fable 5.1
 **Goal:** Eric: "start on runpod. I will add money to it right now." (D-82); 4k→8k approved (D-81).
