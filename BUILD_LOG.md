@@ -1816,3 +1816,137 @@ None of this is a complaint about RunPod. It is the state of the world in Septem
 cards a one-person project needs for three days are the same cards everyone else needs, and
 finding eight of them together is a matter of catching the catalogue at the right half hour. The
 data will be ready around six in the morning UTC. The watch keeps looking.
+
+## Day 13 — Eight cards at 07:24, a phantom in the catalogue, a full disk, and the run that did not need me
+
+The volume finished first. At 05:40 UTC the eighty-three FineWeb-Edu shards were done — about
+ninety billion tokens, 167 gigabytes, every shard within twenty percent of the first one's time —
+and the Wikipedia fetcher hit the wall the night had been worried about: one HTTP range request
+per hundred-article stream, two seconds each, fine for the hundred-million-token desk slice and
+days for the whole dump. Killed at 636 seconds. A local parser was written and tested against the
+twenty-gigabyte download, which had in fact finished by then, and it would have worked. Eric's
+answer arrived before it was needed: "if there is a way we can build this without using Wikipedia,
+I would be perfectly fine with that." So it is out (D-84). The trade is on the record — Wikipedia
+was four or five percent of the plan and its densest plain-fact source, so the answered-real number
+may come in a little lower and the calibration set will say by how much — and what was gained was
+a volume ready the moment the Stack Exchange and code shards landed, and one fewer share-alike
+source in the backbone. The parser stays in the fetcher for anyone who wants the source back.
+
+At 06:44 UTC `train.bin` held **99,724,809,408 tokens** — 199.4 gigabytes, byte count checked
+against the shard table, eighty-nine shards each with its own hash, the whole-file SHA-256 computed
+after. Eight hours and forty-six minutes on a ninety-six-cent machine: about eight dollars and
+fifty cents for the corpus. The mixture on the row, measured and not planned: FineWeb-Edu 91.6
+percent, Stack Exchange 7.7, dated code 0.7 (three passes).[^volume]
+
+Then the cards, and the morning's first lesson. At 07:03 the catalogue showed eight H100s *Low* on
+the community cloud at $21.52 an hour for the set, the price at which the run fit inside fifteen
+hundred dollars. Three `create-pod` calls inside two minutes — 300, 250 and 100 gigabytes of disk,
+with and without a CUDA constraint — all came back *no longer any instances available*. The
+explanation was in the catalogue's own entry, once it was read instead of trusted: community H100
+hosts allow **one GPU per pod**; the capacity probe multiplies a single-card host's price by eight
+and reports it as stock. Every *Low at 8* the watch had seen overnight had been that phantom. Eight
+H100s on one machine exist only on the secure cloud, and at 07:24 the secure cloud had them:
+pod `g3qf86spkqfq1j`, Montreal, eight H100 SXM with NVLink between every pair, 224 cores, two
+terabytes of RAM, **$27.92 an hour**. The projection at that price — 100 billion tokens at 25, 30
+or 35 percent of the cards' peak — was $2,440, $2,030 or $1,740, every case over the $1,500 cap.
+Created anyway, and posted with the arithmetic, because the rehearsal that decides the run costs
+one hour and the run can be stopped at any checkpoint.
+
+Getting the data to the cards was its own hour. The volume was in Iceland; a single `rsync` stream
+to Montreal ran at sixteen megabytes a second, three and a half hours for the file. Sixteen parallel
+streams, each fetching one byte-range with `dd` over its own SSH connection, ran at about 175
+megabytes a second aggregate — and eleven of the sixteen survived, because the source's SSH daemon
+drops simultaneous logins past its `MaxStartups` limit. A second script hashed each sixteenth of
+the file on both sides and refetched the ones that differed; on the third pass all sixteen matched
+and the whole-file SHA-256 came out `4a60a5ff…`, the same as on the build pod.[^pull]
+
+The rehearsal, measured: **968,968,192 parameters** (the feed-forward width is 5,632 by the
+eight-thirds rule — the plan's 6,144 had been a guess). A micro-batch of eight sequences runs out of
+the eighty gigabytes; four sequences of 4,096 tokens, accumulated eight times across eight cards,
+gives **1,048,576 tokens a step**. Plain bf16: 318,660 tokens a second, 23.4 percent of peak. With
+`torch.compile`: about 444,000 a second, 32.6 percent, 2.36 seconds a step. That number set the
+run: 95,104 steps for 99.7 billion tokens, warm-up 2,000, a constant learning rate to step 85,593
+and then the decay at eight thousand tokens of context on the anneal mixture, a checkpoint of 11.6
+gigabytes every 500 steps.[^rehearsal] **The run started at 08:48 UTC.** The projection was about
+$1,800 against $1,440 remaining, and the post said so, with the two ways out: an early decay from
+any stable checkpoint at about $1,100 spent (fifty-nine billion tokens, a finished model inside the
+cap) or a top-up of about five hundred dollars for the full hundred billion. The decision was
+Eric's and it had about thirty hours to be made.
+
+Forty minutes in, the near-miss. The disk read one hundred percent full. The slow single-stream
+`rsync` from an hour earlier had *survived its kill*: `pkill -f rsync` inside an SSH one-liner
+matches the SSH command line itself, kills the session, and never reaches the target — it had
+happened three times overnight without anyone noticing, and the surviving copy had written 104
+gigabytes into a file that had since been deleted, so it held the space and showed up in no
+listing. Found through `/proc`, killed by its PID, space back, minutes before the next checkpoint
+save would have failed on a full disk and taken the run down. The lesson is in the operating rules
+now: find the PID first, kill the PID, and after killing any transfer run `df`, because a deleted
+file that is still open is still on the disk.[^nearmiss] By 09:33 the step-500 checkpoint was home
+and opened on the desk, the build pod was terminated, and its network volume in Iceland kept the
+data as the backup copy for thirty-five dollars a month until the run is home.
+
+Then the part that belongs in the log because it would be easy to leave out. From about noon UTC
+until 23:35 this session was paused — the half-hourly watch ticks queued instead of firing — so the
+three o'clock and nine o'clock checkpoint copies did not happen, and the twenty-five-percent
+billing post went out late. The run did not notice. It is built not to: the checkpoint every five
+hundred steps is on the pod's own disk, the log is a file, and when the watch resumed it found the
+run at step 23,300, loss 2.38, validation perplexity 10.7 from 342 at step 100, 460,000 tokens a
+second unchanged since hour one, exactly where the arithmetic said it would be. $439 posted, 29
+percent of the cap. The 23:40 post carried the numbers and the admission in the same paragraph,
+because the rule for this log is that it records the parts that did not work, especially mine.
+
+## Day 14, so far — "Go for the full 100B", a stale anneal caught seven hours early, and thirty hours of a flat line
+
+At 03:2x UTC Eric's answer came through chat from wherever he was: "I added $500 to RunPod, go
+for the full 100B." Cap two thousand, the full 95,104 steps stand, the early-decay rule retired
+(D-82, D-85). Spend at that moment about $550.
+
+Fifteen minutes later, something the decay phase would have needed at step 85,593 and which was
+wrong on the pod. The code bundle carries no anneal data; the anneal folder copied up at launch was
+the September 16 build, and that build still contained the bitcointalk sample the ledger had
+excluded on the ninth (D-60). Rebuilt from the current ledger — thirty-one shelf works at the
+one-third cap, the canon, no forum text, none of *The Law* — tokenized to 12.3 million tokens, the
+forum line count checked to be zero, and placed on the pod as `data/tokenized_anneal` seven hours
+before the first projection said phase two would start, and more like twenty before the corrected
+one.[^anneal] Had it not been checked, the model's last nine thousand steps would have been trained
+partly on text the ledger says is not in it. The ledger would have been wrong and nothing would have
+flagged it.
+
+Then the watch, which is the least dramatic and most important record of the day. Every thirty
+minutes: the pod list (one pod), the last step line, the last validation, the checkpoint file's
+time, the utilisation of two cards, the free disk. Every six hours a checkpoint home and opened with
+`torch.load` — steps 33,000, 42,500 and 52,000 today, each one replacing the last on the desk.
+The numbers, in order: step 30,000 at 03:54 (31.6 percent); step 40,000 at 10:24 (42 percent, $740
+posted, cards at 46 to 61 degrees drawing 690 watts each, zero restarts, no hardware errors);
+**step 47,500 at 14:54 — halfway** — $866 posted, slightly ahead of the budget curve; step 50,000
+at 16:36; step 53,800 at 18:54 with **$978 posted, fifty percent of the cap**.[^watch] Validation
+perplexity, read from the run's own record rather than the tail of the log: 90 at step 500, 19 at
+2,500, 12.3 by 8,500, under ten for the first time at step 29,000 (9.6), and a low of **9.2 at step
+38,500**, which step 53,000 tied. Between those it moves in a band from about 9.5 to 11 that is
+what a constant learning rate looks like before its decay: the stable phase of a
+warmup-stable-decay schedule is flat by design, and the decay is where the last and largest drop
+comes from. Loss on individual training batches has sat between 2.0 and 2.6 since step 10,000.
+
+Three corrections went on the record. The evening posts on the issue called 9.7 at step 51,500 and
+9.2 at step 53,000 "new lows"; they were not — the watch was reading the last few lines of the log
+and had forgotten step 38,500, and the run's JSON record, checked while writing this entry, says
+so. The correction goes on the issue with the next milestone. The timeline at launch said phase one would end at ten in the
+morning of the 24th; the actual step clock — 2.26 to 2.28 seconds, the compile and rehearsal
+overhead not in the launch estimate — says fifteen hundred UTC, with the decay done about 22:30
+and the fine-tunes and exports two hours after. And the fifty-percent post projected $1,915
+because it counted the decay hours twice; the corrected line ten minutes later is 19.9 hours of
+phase one plus 7.7 of decay plus two of finishing, about $826 more, **about $1,805 in all**,
+around $195 inside the cap. All three wrong numbers stay on the issue with their corrections under them.
+
+While the cards work, the desk has done the things that cost nothing: the fine-tuning seeds and
+the four skills are already on the pod so the finish script can start the moment the run prints its
+last line; the export was checked to need only NumPy and Torch; and the Day 13 near-miss became a
+line in the rules file. The book's chapter thirteen is being drafted from this entry, with its last
+section left open for the numbers the decay will produce.
+
+[^volume]: `plans/volume_1b.json`, the build pod's `meta.json` (shard table with per-shard SHA-256), issue #2 comments of 2026-09-22 05:38Z and 06:45Z.
+[^pull]: `scripts/runpod/pull_parallel.sh`, `scripts/runpod/pull_verify_chunks.sh`; issue #2 comment 07:32Z.
+[^rehearsal]: D-85 in `docs/DECISIONS.md`; `docs/JOB_1B.md`; issue #2 comment 08:48Z.
+[^nearmiss]: issue #2 comment 2026-09-22 09:23Z; the rule is the last LESSONS line in the global `CLAUDE.md`.
+[^anneal]: issue #2 comment 2026-09-23 03:27Z; `data/tokenized_anneal_1b/meta.json` on the desk.
+[^watch]: issue #2 comments 2026-09-23 03:54Z, 10:24Z, 14:54Z, 16:36Z, 18:54Z and 18:55Z; `/workspace/runs/pagouro-1b.jsonl` on the pod (copied home with the run).
