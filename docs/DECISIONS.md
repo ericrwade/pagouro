@@ -2155,7 +2155,8 @@ cross-DC pull (single stream 16 MB/s; 11 of 16 streams survived sshd's MaxStartu
 chunks refetched by per-chunk hash). Run: 95,104 steps, WSD, warmup 2k, stable to 85,593, decay at
 8k on the mix. **Projection $1,800 vs $1,440 cap remaining.** Started anyway because a WSD run can
 decay from any stable checkpoint: the cap-conformant finish is an early decay at ~$1,100 spent
-(~59B tokens); a ~$500 top-up buys the full 100B. Eric's call by ~hour 30. Nine hours of stock
+(~59B tokens); a ~$500 top-up buys the full 100B. **Eric, 2026-09-23 03:2xZ: "I added $500 to RunPod, go for the full 100B" — cap $2,000, the
+full 95,104 steps stand, the early-decay rule is retired.** Nine hours of stock
 checks preceded it (secure 8×H100 Out on 17 of 19 reads; the community "Low at 8" was a phantom —
 community H100 hosts allow 1 GPU per pod). Wikipedia out (D-84); mixture on the row: FineWeb-Edu
 91.6%, Stack Exchange 7.7%, dated code 0.7% ×3 epochs.
