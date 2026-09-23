@@ -2161,6 +2161,17 @@ checks preceded it (secure 8×H100 Out on 17 of 19 reads; the community "Low at 
 community H100 hosts allow 1 GPU per pod). Wikipedia out (D-84); mixture on the row: FineWeb-Edu
 91.6%, Stack Exchange 7.7%, dated code 0.7% ×3 epochs.
 
+### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
+**2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
+packs are the exact half, searched at question time and quoted with their source. Research that
+bakes retrieval into the architecture (RETRO 2021, kNN-LM, Meta's memory layers 2024) still keeps
+the text outside the weights; nobody stores 300 MB losslessly inside a transformer, and memorised
+text without a source is the bluff machine. **Candidate:** the US Code (US Government work, public
+domain, dated; uscode.house.gov publishes per-title XML/text) as a shelf pack with a ledger row —
+needs a packaging-time search index (today's index is built at launch, ~0.3 s per 1.5 MB; 300 MB
+wants it prebuilt). Honest box line: *a 1B model that reads out of a 300 MB shelf it can cite* —
+the true form of the "1B+" question. Waiting on Eric's "add it".
+
 ### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
 **2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up
 against a benefactor like Paul Allen?"** OLMo releases everything (weights, Dolma, code, logs,
