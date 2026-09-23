@@ -40,6 +40,18 @@ Each of these is a discipline, not a budget. That is why a one-person project ca
 and a well-funded lab holds none of them together: at web scale the first two cannot be claimed,
 the third is not what benchmarks measure, and the fourth is the opposite of how a lab works.
 
+## What "1B" means, and does not
+
+One billion parameters means the number of weights in the file — 968,968,192, counted by the
+training script — and it never grows. Nothing at run time makes it more; the 4-bit file on the
+stick is the same weights in a smaller can, not more soup. It was not distilled from a bigger
+model (we could not license one), so it does not secretly carry a larger model's judgement. What
+it does carry is a shelf: the packs, the documents you drop in, and its own memory, which it
+reads out of and cites. For the questions those cover, a small model that looks things up is
+worth more than its weights alone — and that is where the water goes: into your documents, not
+into the number. So the box says **1B**, never "1B+", and if you want a number with a story, the
+honest one is a hundred tokens of licensed, dated text per parameter.
+
 ## And one more: your words are yours
 
 Some assistants mark what they write for you — a statistical watermark in the word choices, or
