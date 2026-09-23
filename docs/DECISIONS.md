@@ -2172,6 +2172,17 @@ needs a packaging-time search index (today's index is built at launch, ~0.3 s pe
 wants it prebuilt). Honest box line: *a 1B model that reads out of a 300 MB shelf it can cite* —
 the true form of the "1B+" question. Waiting on Eric's "add it".
 
+### O-42 — A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?")
+**2026-09-23.** Mechanically yes (a key held by reference, a pay-invoice script, a provider that
+takes USDC — io.net does, RunPod does not). What changes is the cap: today the loaded balance IS
+the guardrail. Design if ever done: **fixed-balance wallet funded by Eric, never refillable by the
+session; small payments unattended, payments above a threshold co-signed by Eric** — the current
+rule in different clothes, plus a public on-chain receipt for every payment (fits the manifest
+posture; a line for the book). Not "pay as needed": the judge of "needed" must not be the spender
+(the disk-filling rsync is the reminder). Risks stated: a hot key on a compromised endpoint (threat
+model row 5), a spending bug drains a wallet as fast as a card, accounting is Eric's. Deferred until
+a provider we would actually use takes stablecoin for a run that can afford interruption (O-31).
+
 ### O-40 — OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow
 **2026-09-21 night, Eric: "Is it even worth it for me to continue investing in Pagouro if we're up
 against a benefactor like Paul Allen?"** OLMo releases everything (weights, Dolma, code, logs,
