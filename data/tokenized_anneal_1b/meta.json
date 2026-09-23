@@ -1,0 +1,11 @@
+{
+  "tokenizer": "data/tokenizer_real/tokenizer.json",
+  "vocab_size": 32768,
+  "dtype": "uint16",
+  "train_tokens": 12325693,
+  "val_tokens": 253952,
+  "total_tokens": 12579645,
+  "source_chars": 51226516,
+  "chars_per_token": 4.072,
+  "source_file": "data/mixture_1b/anneal.txt"
+}
