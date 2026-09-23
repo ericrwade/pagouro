@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 79 decisions, 25 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 85 decisions, 29 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -85,6 +85,12 @@
 | D-77 | 2026-09-20 | Pagouro Draws, model one: the on-stick drawing model exists and follows its caption |
 | D-78 | 2026-09-21 | House voice: BC and AD; celestial events dated as observed on Earth; the look is fixed in this version (fork to change it) |
 | D-79 | 2026-09-21 | Documents: the harness reads PDF / Word / text, the model reads the text; and the router prompt must stay the trained one |
+| D-80 | 2026-09-21 | The mark: Eric's concept #5 is the outward-facing Pagouro brand |
+| D-81 | 2026-09-21 | LOCKED: context 4k in the stable phase, 8k in the decay (closes O-12) **(locked)** |
+| D-82 | 2026-09-21 | LOCKED: the 1B runs on RunPod; io.net declined for this job, and the reasoning goes in the book (closes O-31) **(locked)** |
+| D-83 | 2026-09-21 | LOCKED: no watermark, no claim on outputs — "your words are yours" — and the WHY page **(locked)** |
+| D-84 | 2026-09-22 | Wikipedia leaves the 1B backbone (Eric: "if there is a way we can build this without using Wikipedia, I would be perfectly fine with that") |
+| D-85 |  | The 1B run started 2026-09-22 08:48Z on 8×H100 SXM secure (pod g3qf86spkqfq1j, CA-MTL-1, $27.92/h) |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -93,7 +99,7 @@
 | O-3 | Data-retention posture on OpenRouter | open |
 | O-6 | Enable the aixbt crypto MCP? | open |
 | O-10 | Disclosure text for the three chains | open |
-| O-12 | Context length: 4k or 8k | open |
+| O-12 | Context length: 4k or 8k | closed by D-81 |
 | O-13 | Does the N95 status page count as telemetry? | open |
 | O-15 | Answerability gate (a Jev-shaped typed decision before prose) | closed by D-39 |
 | O-16 | A licensed games-and-strategy slice for the anneal (Eric, 2026-09-18) | open |
@@ -107,7 +113,7 @@
 | O-28 | Draw 1.0 has a house style, a palette, and a job: marks for people who don't want the cloud to see their idea | closed by D-74 |
 | O-29 | One look across everything that grows from Pagouro: the style follows the model and the mark, not the licence | open |
 | O-30 | Skills: adopt the standard container, not the standard semantics; a catalogue, not a marketplace | open |
-| O-31 | io.net reconsidered: raw GPU clusters, tested the same way as RunPod | open |
+| O-31 | io.net reconsidered: raw GPU clusters, tested the same way as RunPod | closed by D-82 |
 | O-32 | Compute-for-receipt (not licence) for a model beyond 1B; the number first | open |
 | O-33 | Secret / NEAR, Cartesi, Mina: three uses that fit inside D-14 and the threat model | open |
 | O-34 | Note: the "local AI business" thread (noisyb0y1, 2026-09-19) — market yes, numbers no, offline undercut | open |
@@ -115,3 +121,7 @@
 | O-36 | The TypeSafe (Jev / "System One") skill: installed on request, used only for a genuine benefit, never in the product | open |
 | O-37 | Better crabs: a licensed diffusion model fine-tuned on our own poster slice, when Eric authorises an hour | open |
 | O-38 | Honest randomness: the `dice` skill (Eric: "a local and completely honest dice roller") | open |
+| O-39 | Design Arc (friedbeef1/design-arc): not for the console app; the tool for the D-24 browser demo and the release page | open |
+| O-40 | OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow | open |
+| O-41 | The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written") | open |
+| O-42 | A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?") | open |
