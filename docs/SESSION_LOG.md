@@ -13,6 +13,41 @@ Newest entry at the top. Append one per session, at the end, before finishing.
 
 ---
 
+## 2026-09-24 → 2026-09-25 (the finish) — phase 2 caught twice, the run done, $1,778.97, the 1B measured: 83 % answered, 64 % bluff
+**Model:** Fable 5.1
+**Goal:** Bring the 1B run (D-85) through its decay, home, and onto the eval sets; keep the cap; tell Eric.
+**Did:**
+- **Phase change (15:00Z):** the 8k launch ran at 2,097,152 tokens/step (script doubled ACCUM on top of the
+  doubled seq) — stopped at 25 min; relaunch 1 fell into phase 1 (STEPS derived from BATCH×ACCUM) — stopped
+  at 30 s (a `kill $(ps|grep)` hit my own ssh session, torchrun orphaned, killed by exact PID); relaunch 2 with
+  `BATCH=4 ACCUM=4 STEPS_OVERRIDE=95104` correct. ~31 min / ~$14 lost. `train_1b.sh` fixed on the desk (430fbf5).
+- **Decay gate (D-61, `decay_watch.py`):** anneal held-out ppl 10.78 → … → **9.2 at step 95,103** (lowest).
+  Kept mid-decay checkpoints on the pod as insurance; not needed. `PAGOURO_1B_DONE` 22:52Z.
+- **Finish:** `finish_1b.sh` (SFT A/B in parallel on GPUs 0/1 — 3,000 steps in ~8 min each; first attempt died
+  on a missing `app/` in the bundle, copied up) → `bring_home_1b.sh` PASS (every hash matched) → pod
+  `g3qf86spkqfq1j` + volume `bbwh1nchay` deleted → `list-pods` [] , `list-network-volumes` [].
+  **Bill from the account after deletion: $1,778.97** (cap $2,000).
+- **Evals on the desk** (q8_0, THREADS=8, ~15 min per model): first pass returned every answer empty in 0 s
+  (detached launch → `llama-cli` had no stdin) — `run_eval.py` stdin=DEVNULL (1962899); a raw probe produced
+  garbage via the AMD Vulkan backend (`-ngl 0` everywhere, already the case); `verify_gguf.py` PASS 64/64.
+  **100-sets: SFT A bluff 61 / answered 83; SFT B 64 / 83.** Tool-result fidelity A 8/10 & 6/10 (4 fabricated),
+  B 10/10 & 9/10 (1); tool-use 23/24 both; memory 9 vs 8; skills 10/10/9 vs 7/10/10. **D-87: B is the candidate**
+  (q4_k_m 633,976,000 B, sha256 ed05f5c6…); NOT on the stick until Eric has seen the numbers.
+- **Writing:** BUILD_LOG Day 15 + Day 15 night; book ch. 13 draft 2 (complete through the numbers); D-85 results
+  + D-87; `facts.json` filled (bill, honesty numbers, candidate files); watch cron deleted.
+- **Earlier the same day:** README five claims (D-83) + licence to D-31; `docs/ABOUT.md` + `facts.json` (O-43);
+  `docs/MODEL_CARD.md`; `docs/HANDLES.md` (O-44: `pagouro` free on 12 platforms, pagouro.com is Eric's);
+  D-86 credit line; memory note; `bring_home_1b.sh`, `decay_watch.py`, parallel `finish_1b.sh`.
+**Verified:** every number from the run jsonl / train.log / eval result JSONs / billing API; hashes pod↔desk.
+**Open / next:** (1) **Eric:** look at the D-87 numbers; decide whether B goes on the stick now or after the
+GRPO step; (2) **the bluff rate is the problem** (64 % at 83 % answered): plan the GRPO known/unknowable
+run (D-69 curriculum, `sft/grpo_*.jsonl`) on one rented card — plan + hourly price on #2 first (D-54); Eric's
+"rent"; (3) book ch. 15 after the shipped numbers are final; ch. 13a signpost; (4) `package_release.py` run
+with the 1B (MODEL_STEM=gguf_1b/pagouro-1b-sftB, CONTEXT_WORDS for 8k) once (1) says so; (5) O-41 US Code
+pack, O-29/O-31/O-32, TypeSafe key rotation — still Eric's.
+
+---
+
 ## 2026-09-22 evening → 2026-09-23 (the watch day) — top-up, the stale anneal, sixty thousand steps, chapter 13
 **Model:** Fable 5.1
 **Goal:** Keep the 1B run (D-85) healthy and inside the cap; answer Eric from the road; use the gaps.
