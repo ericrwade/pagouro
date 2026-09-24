@@ -1950,3 +1950,72 @@ section left open for the numbers the decay will produce.
 [^nearmiss]: issue #2 comment 2026-09-22 09:23Z; the rule is the last LESSONS line in the global `CLAUDE.md`.
 [^anneal]: issue #2 comment 2026-09-23 03:27Z; `data/tokenized_anneal_1b/meta.json` on the desk.
 [^watch]: issue #2 comments 2026-09-23 03:54Z, 10:24Z, 14:54Z, 16:36Z, 18:54Z and 18:55Z; `/workspace/runs/pagouro-1b.jsonl` on the pod (copied home with the run).
+
+## Day 14, night — An About page for a thing with no team, a name that was free everywhere, and the finish scripted before it is needed
+
+The run gave the evening nothing to do but read it, so the evening went to the release. Eric
+sent, from the road, a recipe for a company's "About Us" page — one-sentence value proposition,
+what it does, what makes it different, who it is for, the team, how it works, a machine-readable
+key-facts table, a FAQ — and asked whether there was anything in it we had not thought of.[^recipe]
+Most of it existed in pieces across the why-page, the origin story and the verification
+walkthrough. Two things did not. A **key-facts table** — for a project whose whole pitch is
+claims a stranger can check, one table with the exact parameter count, the token count, the date
+basis, the licences, the hash and the bill is the right artefact, and we had never made one. And
+a **FAQ**, which wrote itself from the questions Eric had actually asked this week: is it 1B or
+1B-plus, why not Wikipedia, does it watermark, why bother against OLMo, why not the cheaper
+market. One item in the recipe was inverted on purpose: "how we work — channels, response times,
+onboarding" became "what to expect: nothing." A finished artefact has no team and no roadmap and
+should say so plainly. One was declined: "call out competitors by name" as a sales move; OLMo and
+Comma are named as relatives, gratefully, and only with true statements.[^about]
+
+The table became `facts.json`, and the packager now ships it on the stick with the one block it
+can measure itself — each model file's bytes and hash, the packaging date — written before the
+manifest so that the manifest hashes it too. The idea from the recipe that matters is the one it
+gives for the wrong reason: the page exists so that a search engine, or another model, describing
+the thing gets it right. That is exactly what this project wants. A machine reading one file
+should be able to say, correctly, what Pagouro is.
+
+Then the credit line. "Eric Wade, with Claude (Anthropic)" — his call, on the record as D-86,
+beside the mark's own credit from two days earlier. And the name. Eric said he was no good at
+socials but that "everything should have some presence. Needs to be findable," and that he would
+check which handles were free. A read-only script did the part that answers to a public lookup —
+GitHub, Hugging Face, Bluesky, Mastodon, YouTube, PyPI, npm, and the registries' own RDAP for
+domains — with known-taken names as controls first, so that a column of FREE meant something.
+`pagouro` was free on all of them. Then the first mistake of the evening: the script reported
+pagouro.com as "taken by someone else", and Eric replied that he owns it — bought before the
+build, with privacy and DNSSEC on, as our own origin ledger says at F14. A registry can say a name
+is registered; it cannot say it is not yours. The lesson went into the rules file: grep the ledger
+before calling anything someone else's. Eric then checked by hand the four platforms that hide
+their answers from scripts — X, Instagram, TikTok, Reddit — and all four were free. One word,
+everywhere. He keeps GitHub as `ericrwade`, where the repository already lives; the orgs are
+optional name-protection and nothing more.[^handles]
+
+The rest of the night was the finish, written while there was time to rehearse it. One command
+to hash every artefact on the pod, copy the exports and the final checkpoint home, and verify
+each hash on the desk — rehearsed on five megabytes of test files: PASS. A small script for the
+gate the decay phase has to pass (D-61): it reads the run's own JSON record, shows only the
+phase-two validation readings — the validation set becomes the anneal's held-out slice at the
+phase change, so earlier numbers are not comparable — and says OK, WATCH or RISING; tested on a
+synthetic series that falls and then climbs, and placed on the pod. A model card in Hugging Face
+form, leading with the two numbers side by side and the dated claim in exactly the words D-34
+allows. The phase-two mechanics were read through in the code rather than assumed: the context
+length comes from the argument on resume, the rotary tables are rebuilt at eight thousand,
+attention is the fused kind, and the mixed decay data will take twenty of the ninety-two free
+gigabytes. If the eight-thousand-token step runs out of memory anyway, the restart halves the
+micro-batch again.[^finish]
+
+At 05:06 UTC on the twenty-fourth the run saved step 70,000, and the desk copy of it was the
+night's last check. The copy was fine; the verification was not. Loading an eleven-gigabyte
+checkpoint to read its step number inflates it into memory, and the desk — with Eric's other
+programs open, fourteen gigabytes free of thirty-two — killed the process. The copy had finished
+before that; its hash on the pod and on the desk agree to the last character. Verification is now
+a hash comparison and a memory-mapped header read, which is both stronger and nearly free. The
+bill at that moment, read from the account: $1,272 of $2,000, sixty-four percent, with the run at
+seventy-four. Phase one ends around three in the afternoon UTC; the model is expected to be
+finished around half past ten that night.[^seventy]
+
+[^recipe]: A public post Eric linked (an SEO consultant's About-page checklist); read through a mirror because the platform refuses fetchers. O-43 in `docs/DECISIONS.md`.
+[^about]: `docs/ABOUT.md`, `docs/facts.json`, `scripts/package_release.py` (the facts block); the README's licence section was brought up to D-31 in the same pass.
+[^handles]: `scripts/check_handles.py`, `docs/HANDLES.md`; D-86 and O-44; the lesson is the last LESSONS line in the global `CLAUDE.md`.
+[^finish]: `scripts/runpod/bring_home_1b.sh`, `scripts/runpod/decay_watch.py`, `docs/MODEL_CARD.md`; the phase-two read-through is in the session log for 2026-09-23.
+[^seventy]: issue #2 comment 2026-09-24 05:34Z; `checkpoints/pagouro-1b/pagouro-1b-step70000.pt` sha256 `7032a3f3…`; RunPod billing API at 05:26Z.
