@@ -2200,8 +2200,8 @@ check availability himself. `scripts/check_handles.py` does the read-only part: 
 YouTube, PyPI, npm and RDAP for domains, with known-taken controls. Result (`docs/HANDLES.md`):
 the bare `pagouro` is free on every platform that answers; `pagouro.com` is **Eric's already**
 (F14 — the first draft said "taken" from the RDAP hit; Eric corrected it: check the origin ledger
-before calling anything someone else's); `.org`/`.ai` free; **x.com/pagouro free (Eric, by hand)**;
-Instagram, TikTok, Reddit, LinkedIn, Threads are login-walled — `docs/HANDLES.md` lists the
+before calling anything someone else's); `.org`/`.ai` free; **x.com/pagouro, Instagram, TikTok and Reddit free (Eric, by hand)** — so `pagouro` is the
+handle everywhere; LinkedIn and Threads are login-walled — `docs/HANDLES.md` lists the
 browser URLs that answer without an account. Nothing registered — outward-facing, Eric's hand.
 Recommendation: register the one string `pagouro` everywhere in one sitting.
 

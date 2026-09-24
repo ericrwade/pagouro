@@ -13,9 +13,11 @@ probe that says FREE below. Availability changes by the hour; re-run before regi
 | YouTube `@handle` | FREE | FREE | FREE | FREE |
 | PyPI | FREE | FREE | FREE | FREE |
 | npm | FREE | FREE | FREE | FREE |
-| Reddit | login-walled to probes — check by hand | | | |
-| X / Twitter | **FREE** (Eric, by hand) | | | |
-| Instagram, TikTok, LinkedIn, Threads | login-walled to probes — check by hand (URLs below) | | | |
+| X / Twitter | **FREE** (Eric, by hand, 2026-09-24) | | | |
+| Instagram | **FREE** (Eric, by hand, 2026-09-24) | | | |
+| TikTok | **FREE** (Eric, by hand, 2026-09-24) | | | |
+| Reddit | **FREE** (Eric, by hand, 2026-09-24) | | | |
+| LinkedIn, Threads | login-walled to probes — check by hand (URLs below) | | | |
 
 | Domain | |
 |---|---|
@@ -27,9 +29,8 @@ probe that says FREE below. Availability changes by the hour; re-run before regi
 
 ## Reading it
 
-- The bare word **`pagouro`** is free everywhere that answers — the plainest handle wins if X and
-  Instagram also have it. Check those two by hand first; if either is gone, `pagouro_ai` is free
-  on every probed platform and reads as one name across all of them.
+- **The bare word `pagouro` is free on every platform checked** — eight by probe, four by Eric's
+  hand (X, Instagram, TikTok, Reddit). That is the handle; `pagouro_ai` is not needed.
 - The `.com` is already Eric's (F14: it redirects to the release). `.org` and `.ai` are free and
   cheap defensive registrations so nobody else can trade on the name; not required.
 - **X: `x.com/pagouro` is available** (Eric checked by hand, 2026-09-24).
