@@ -34,9 +34,10 @@ probe that says FREE below. Availability changes by the hour; re-run before regi
 - The `.com` is already Eric's (F14: it redirects to the release). `.org` and `.ai` are free and
   cheap defensive registrations so nobody else can trade on the name; not required.
 - **X: `x.com/pagouro` is available** (Eric checked by hand, 2026-09-24).
-- The GitHub account `ericrwade` already exists (D-52 resolved); a `pagouro` org on GitHub and a
-  `pagouro` org on Hugging Face would hold the repository and the model card under the project's
-  own name at F13 — both free today.
+- GitHub: the repository lives at `github.com/ericrwade/pagouro` and is released there (D-52,
+  F13) — Eric's existing account, no org needed. Reserving a `pagouro` org is optional
+  name-protection only. Hugging Face: the model card can likewise sit under Eric's own account;
+  a `pagouro` org there is the same optional reservation.
 - One rule for all of them: whatever handle is chosen, register the same string on every
   platform in one sitting, even the ones that will never be used, so the name cannot be
   impersonated. Findability is the point ("everything should have some presence").
