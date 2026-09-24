@@ -15,14 +15,19 @@
   },
   "training": {
     "tokens": 99724809408,
-    "mixture": {"fineweb_edu": 0.916, "stack_exchange": 0.077, "dated_code_x3": 0.007},
+    "mixture": {
+      "fineweb_edu": 0.916,
+      "stack_exchange": 0.077,
+      "dated_code_x3": 0.007
+    },
     "anneal": "licensed shelf + canon, 12,325,693 tokens (data/tokenized_anneal_1b)",
     "date_basis": "every row written or collected before 2022-01-01; basis stated per row in corpus.json",
     "hardware": "8x NVIDIA H100 SXM (RunPod secure cloud, CA-MTL-1), pod g3qf86spkqfq1j",
     "started_utc": "2026-09-22T08:48Z",
-    "finished_utc": null,
-    "bill_usd": null,
-    "decision": "D-85"
+    "finished_utc": "2026-09-24T22:52Z",
+    "bill_usd": 1778.97,
+    "decision": "D-85",
+    "card_hours": 61.6
   },
   "licences": {
     "weights": "CC-BY-SA-4.0",
@@ -32,24 +37,43 @@
     "decision": "D-31, D-64"
   },
   "honesty": {
-    "bluff_rate_unanswerable_100": null,
-    "answered_real_rate_100": null,
+    "bluff_rate_unanswerable_100": 0.64,
+    "answered_real_rate_100": 0.83,
     "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
-    "note": "never 'does not hallucinate' (D-50)"
+    "note": "never 'does not hallucinate' (D-50)",
+    "candidate": "pagouro-1b-sftB (D-87); measured at q8_0 on 2026-09-25; not yet the shipped file"
   },
   "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
   "price_usd": 0,
   "maintenance": "none -- frozen at release; verify a copy with CHECK_YOUR_COPY.md",
   "telemetry": "none -- see THREAT_MODEL.md for what 'private' does and does not cover",
   "watermark": "none; the project claims no rights in outputs (D-83)",
-  "relatives": ["OLMo (AI2)", "Common Pile / Comma (EleutherAI)"],
+  "relatives": [
+    "OLMo (AI2)",
+    "Common Pile / Comma (EleutherAI)"
+  ],
   "made_by": "Eric Wade, with Claude (Anthropic)",
   "release": null,
   "_sources": {
     "parameters": "scripts/train.py parameter count printed at launch (D-85)",
     "training.tokens": "the volume build's meta.json (plans/volume_1b.json); D-85",
-    "training.bill_usd": "RunPod billing API after the pod is deleted",
-    "honesty.*": "evals/results/ for the shipped model",
+    "training.bill_usd": "RunPod billing API, read 2026-09-25 00:05Z after the pod was deleted (Sep 21-24 totals)",
+    "honesty.*": "evals/results/pagouro-1b-sftB__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20)",
     "release": "written by scripts/package_release.py from the files it hashes"
+  },
+  "files_candidate": {
+    "q4_k_m": {
+      "path": "data/gguf_1b/pagouro-1b-sftB-q4_k_m.gguf",
+      "bytes": 633976000,
+      "sha256": "ed05f5c6e33b580cd0d05b9266574eeb5e0937e2b7759009045d30c9909a369d"
+    },
+    "q8_0": {
+      "path": "data/gguf_1b/pagouro-1b-sftB-q8_0.gguf",
+      "bytes": 1102230720
+    },
+    "f32": {
+      "path": "data/out_1b/pagouro-1b-sftB-f32.gguf",
+      "bytes": 4145460352
+    }
   }
 }

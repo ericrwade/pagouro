@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-1b-sftB",
+  "model_file": "pagouro-1b-sftB-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 2,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 8
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 7,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 3
+  },
+  "followed_of_scored": "2/2",
+  "followed_of_scored_echo_inclusive": "7/7",
+  "rate_followed_of_scored": 1.0,
+  "elapsed_s": 6.2,
+  "utc": "2026-09-24T23:47:13+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is a deep purple, about the size of a large eggplant. It typically grows to be about 12 inches (30 cm) in diameter."
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "The water stations should be spaced five kilometres apart, with the finish at the end of the course."
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm centre of the storm, where the wind speed and direction are the least."
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have any records of a grey squirrel's coat. It's possible this is a fictional description. If you have a source, I'd be happy to check it out for you."
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "If a tree is growing near a house, it is likely to be a hazard, and you should contact a tree removal company for advice."
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe eggplant is a deep purple color, typically about 1 1/2 inches in diameter. It typically grows to be about 1 1/2 inches in diameter."
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 1,
+      "response": "The water stations should be about five to eight meters apart, with the finish at the end of the course."
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm center, where the wind speed and direction are the least."
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have any records of a gray squirrel's coat. It's possible this is a fictional animal. If you have a reference, I'd be happy to look into it further."
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that has become dangerous for people or property often has a large trunk, multiple branches, or is leaning over."
+    }
+  ]
+}

@@ -2161,6 +2161,37 @@ checks preceded it (secure 8×H100 Out on 17 of 19 reads; the community "Low at 
 community H100 hosts allow 1 GPU per pod). Wikipedia out (D-84); mixture on the row: FineWeb-Edu
 91.6%, Stack Exchange 7.7%, dated code 0.7% ×3 epochs.
 
+**D-85 RESULTS (2026-09-25 00:55Z).** Run complete: 95,104 steps / 99.7B tokens, 61.6 h of card time
+(phase 1 54.2 h at 4k, decay 7.4 h at 8k), zero hardware faults; one operator-caused restart pair at
+the phase change (the 8k launch doubled tokens/step to 2,097,152 — caught at 25 min; the relaunch
+without STEPS_OVERRIDE fell into phase 1 — caught at 30 s; ~31 min / ~$14 lost; `train_1b.sh` fixed,
+commit 430fbf5). General val ppl: 90 (step 500) → 9.0 best (step 59,500) → 9.8 at the end of phase 1.
+Decay gate (D-61) PASSED: anneal held-out ppl 10.78 at the first phase-2 reading → **9.2 at the end**
+(val loss 2.2242), the lowest of the phase. Finish (SFT A/B in parallel on two GPUs + exports) took
+10 min. Every artefact hash-verified home (`bring_home_1b.sh`); pod `g3qf86spkqfq1j` and volume
+`bbwh1nchay` deleted; `list-pods` empty. **Bill, read from the account after deletion: $1,778.97**
+(H100 pod $1,761.54, build-pod CPU $11.08, storage $3.55, disk $2.79) against the $2,000 cap.
+Export verified faithful (`verify_gguf.py`: PyTorch/llama.cpp 64/64 chars). **100-item sets, q8_0:
+SFT A bluff 61 % / answered-real 83 %; SFT B 64 % / 83 %** (Flash sft3: 38 / 19; small open models
+50–57 / 87–93). First Pagouro over the answered-real ≥ 80 % line; bluff is now the problem.
+
+### D-87 — SFT B is the 1B candidate; the next lever is the GRPO known/unknowable curriculum on a rented card
+**2026-09-25, session's call on the D-76 yardstick, Eric to override.** On the 100-sets the mixes tie
+(83/83 answered-real; 61 vs 64 bluff = three items). The 126M trade (tool-result seed → +10–16 bluff)
+**relaxed to ~3 at 1B**, as D-76 expected. Tie broken by tool-result fidelity (D-70), a bluff the
+100-sets do not measure — inventing a number the tool never returned: A 8/10 faithful & NO_MATCH 6/10
+(4 fabricated); **B 10/10 & 9/10 (1 fabricated)**. Rest of the suite A / B: tool-use right 23/24 both
+(spurious 5 vs 4 of 16), memory answered 9 vs 8 of 10, spelling 2/2 both, skills routing model-alone
+10/10/9 vs 7/10/10. **Ships as candidate: `pagouro-1b-sftB` — q4_k_m 633,976,000 bytes, sha256
+ed05f5c6…; q8_0 1,102,230,720 bytes.** Not yet on the stick: Eric sees the numbers first.
+**Bluff 64 % at 83 % answered is the D-50 prediction made flesh:** the model now knows enough to
+bluff, and 99 abstention rows ×1 in a 7,900-example SFT do not teach the rule at that scale. Next:
+the GRPO known-vs-unknowable curriculum (D-69; `sft/grpo_*.jsonl`, staged for the 1B by D-76) — a
+one-card rental of ~1–2 h (plan + hourly price on #2 before create-pod, D-54); Eric's call.
+Harness fixes tonight: `run_eval.py` stdin=DEVNULL (a detached launch returned every answer empty
+in 0 s; commit 1962899); this desk's AMD Vulkan backend emits garbage for the 1B — `-ngl 0`
+everywhere (already the case in the app and the harness).
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
