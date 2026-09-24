@@ -53,7 +53,11 @@ if [ "$CUR" -lt "$DECAY_START" ]; then
 fi
 [ -n "${REHEARSAL:-}" ] && { echo "REHEARSAL_DONE"; exit 0; }
 # Phase 2 (D-61, D-81): decay on a MIX -- the volume's backbone plus the domain anneal, domain seen ~2x --
-# at 8k context: same tokens per step, half the batch, double the accumulation.
+# at 8k context: same tokens per step = half the micro-batch, SAME accumulation (the doubled sequence
+# length already doubles tokens per micro-step). 2026-09-24: the first launch also doubled ACCUM and
+# ran at 2,097,152 tokens/step for 25 min before it was caught -- twice the time and money for the decay.
+# NOTE: STEPS is derived from BATCH*ACCUM above, so a relaunch with different knobs MUST pin
+# STEPS_OVERRIDE (the 1B run: 95104) or DECAY_START moves and the script drops back into phase 1.
 ANNEAL_DIR="${ANNEAL_DIR:-data/tokenized_anneal}"
 DECAY_DIR="$LOCAL/decay_mix"
 DECAY_TOKENS=$(( (STEPS - DECAY_START) * TOK_PER_STEP ))
@@ -80,6 +84,6 @@ PY
 fi
 echo "== phase 2: decay on the MIX at 8k context; the held-out anneal loss must not rise (D-61) =="
 torchrun --standalone --nproc_per_node "$NGPU" scripts/train.py $COMMON --resume --seq-len 8192 \
-    --batch-size $(( BATCH / 2 )) --grad-accum $(( ACCUM * 2 )) --data-dir "$DECAY_DIR" \
+    --batch-size $(( BATCH / 2 )) --grad-accum "$ACCUM" --data-dir "$DECAY_DIR" \
     2>&1 | tee -a /workspace/runs/pagouro-1b.stdout | grep --line-buffered -E "$FILTER"
 echo PAGOURO_1B_DONE
