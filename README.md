@@ -8,7 +8,7 @@
 > Greek *págouros*, hermit crab: carries a home it can move out of. The *ouro* nods to ouroboros —
 > self-sufficient.
 
-**Status (2026-09-19): private, in progress; nothing is released.** The full pipeline runs end to
+**Status (2026-09-24): private, in progress; nothing is released. The 1B model is training** (D-85: 8×H100, 99.7B licensed and dated tokens, started 2026-09-22 08:48Z; the watch is on issue #2). The full pipeline runs end to
 end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → package → USB). The stick now
 carries **Pagouro Flash**: 126M parameters, 2B tokens on a rented A40 (14 h, the whole window
 $7.54), fine-tuned on 6,700 conversations, inside the real application (`app/`): three switches, a
@@ -22,7 +22,7 @@ corpus ledger holds 76 rows, including a 36-work "shelf" of licensed flavours fo
 now carries a date basis: the code slice is 95 named repositories at their last commit before
 2022-01-01 with the licence file classified per repository (D-62b), which supersedes The Stack.
 The shipped Flash model was trained before that replacement, on the Stack rows, and its rows
-say so. The 1B model (D-6) waits on O-12 (context) and Eric's launch.
+say so. The Flash model stays on the stick until the 1B run's exports are measured on the same sets.
 `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
 `docs/ORIGIN.md` for where this came from.
 
@@ -30,19 +30,29 @@ say so. The 1B model (D-6) waits on O-12 (context) and Eric's launch.
 
 ## What Pagouro will be
 
-A ~1B parameter model, pretrained from random weights on a fully open and fully documented corpus,
-packaged as a portable application that runs offline on any machine. Three properties define it:
+A ~1B parameter model, pretrained from random weights on a fully licensed and fully documented
+corpus, packaged as a portable application that runs offline on any machine. It will lose to the
+models you already use on every capability test — Chapter 1 of the book says so in numbers. What
+it offers instead is a set of promises a stranger can check (`docs/WHY.md`, D-83):
 
-- **It does not bluff.** It says "I don't know" rather than inventing an answer, and that is
-  measured and published, not asserted.
-- **Every training byte is accounted for** in `corpus.json`: source, licence, token count, and the
-  hash of the processed slice. Anyone can check it; anyone could rebuild the corpus from it.
-- **The person using it can ask anything**, because the conversation never leaves their machine.
-  What that does and does not protect against is written down in `docs/THREAT_MODEL.md`, which
-  governs what this README is allowed to claim.
+- **Licensed.** Every training byte has a licence you can name and a row in `corpus.json`: source,
+  licence, date basis, token count, and the hash of the processed slice. When the rights were
+  unclear, the answer was no, and the ledger records what was removed and why.
+- **Dated.** Everything it read was written or collected before 1 January 2022, and the date basis
+  is on every row — the last corpus anyone will build that can make the claim at all.
+- **Honest, measured.** The headline number is how often it invents an answer to a question that
+  has none, on a test frozen before the model existed, with the answered-real rate printed beside
+  it. The test ships; run it on the big models too. It will never say "does not hallucinate".
+- **Finished.** Released once, frozen, signed, its hash anchored, mirrored. No account, no update
+  check, no telemetry; nothing you type leaves the machine, and `docs/THREAT_MODEL.md` says exactly
+  what "private" means and where it stops — it governs what this README is allowed to claim.
+- **Your words are yours.** No watermark in what it writes for you (the program that produces every
+  word is on the stick; read it), no way to add one later without breaking the manifest, and the
+  project claims no rights in its outputs.
 
-It will be released as a finished artifact — signed, hash-anchored, licensed openly, with no
-maintenance promise — and as a template others can fork into models built around other traditions.
+"1B" means the number of weights in the file, never more; there is no "1B+". `docs/CHECK_YOUR_COPY.md`
+is the walkthrough for confirming that a stick is a real, unmodified Pagouro, written for someone
+who has never heard of a hash.
 
 ## Read these first
 
