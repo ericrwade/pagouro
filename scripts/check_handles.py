@@ -7,7 +7,8 @@ as CHECK BY HAND rather than guessed.
 
 Verdicts: FREE (a profile lookup returned not-found), TAKEN (a profile exists), ? (unclear
 response), CHECK BY HAND (the platform does not answer probes). Domains use RDAP, the
-registries' own lookup protocol: a 404 there means unregistered.
+registries' own lookup protocol: a 404 there means unregistered; REGISTERED means someone
+holds it -- possibly you (pagouro.com is Eric's, ORIGIN_LEDGER F14). Check the ledger first.
 """
 from __future__ import annotations
 
@@ -97,7 +98,7 @@ def domain(fqdn):
     if st == 404:
         return "FREE"
     if st == 200:
-        return "TAKEN"
+        return "REGISTERED"
     return "?" if st is None else f"? ({st})"
 
 

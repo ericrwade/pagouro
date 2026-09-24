@@ -2198,10 +2198,12 @@ remain an F12 item at release.
 check availability himself. `scripts/check_handles.py` does the read-only part: `pagouro`,
 `pagouro_ai`, `pagouroai`, `pagouro-ai` probed on GitHub, Hugging Face, Bluesky, Mastodon,
 YouTube, PyPI, npm and RDAP for domains, with known-taken controls. Result (`docs/HANDLES.md`):
-the bare `pagouro` is free on every platform that answers; `pagouro.com` is taken, `.org`/`.ai`
-free; X, Instagram, TikTok, LinkedIn, Threads, Reddit are login-walled and must be checked by
-hand. Nothing registered — outward-facing, Eric's hand. Recommendation on the record: register one
-string everywhere in one sitting; `.org` first, `.ai` defensively.
+the bare `pagouro` is free on every platform that answers; `pagouro.com` is **Eric's already**
+(F14 — the first draft said "taken" from the RDAP hit; Eric corrected it: check the origin ledger
+before calling anything someone else's); `.org`/`.ai` free; **x.com/pagouro free (Eric, by hand)**;
+Instagram, TikTok, Reddit, LinkedIn, Threads are login-walled — `docs/HANDLES.md` lists the
+browser URLs that answer without an account. Nothing registered — outward-facing, Eric's hand.
+Recommendation: register the one string `pagouro` everywhere in one sitting.
 
 ### O-42 — A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?")
 **2026-09-23.** Mechanically yes (a key held by reference, a pay-invoice script, a provider that

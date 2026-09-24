@@ -14,11 +14,12 @@ probe that says FREE below. Availability changes by the hour; re-run before regi
 | PyPI | FREE | FREE | FREE | FREE |
 | npm | FREE | FREE | FREE | FREE |
 | Reddit | login-walled to probes — check by hand | | | |
-| X / Twitter, Instagram, TikTok, LinkedIn, Threads | login-walled to probes — check by hand | | | |
+| X / Twitter | **FREE** (Eric, by hand) | | | |
+| Instagram, TikTok, LinkedIn, Threads | login-walled to probes — check by hand (URLs below) | | | |
 
 | Domain | |
 |---|---|
-| pagouro.com | **TAKEN** (registered by someone else; RDAP 200) |
+| pagouro.com | **ERIC'S** — bought before the build, WHOIS privacy + DNSSEC on (ORIGIN_LEDGER F14). The first draft of this table said "taken by someone else" from the RDAP hit alone; Eric corrected it. |
 | pagouro.org | FREE |
 | pagouro.ai | FREE |
 | pagouro.net | FREE |
@@ -29,14 +30,28 @@ probe that says FREE below. Availability changes by the hour; re-run before regi
 - The bare word **`pagouro`** is free everywhere that answers — the plainest handle wins if X and
   Instagram also have it. Check those two by hand first; if either is gone, `pagouro_ai` is free
   on every probed platform and reads as one name across all of them.
-- The `.com` is taken. **`pagouro.org`** fits a non-commercial, frozen artefact better than `.ai`
-  and costs a tenth as much; `.ai` is the obvious second registration so nobody else takes it.
+- The `.com` is already Eric's (F14: it redirects to the release). `.org` and `.ai` are free and
+  cheap defensive registrations so nobody else can trade on the name; not required.
+- **X: `x.com/pagouro` is available** (Eric checked by hand, 2026-09-24).
 - The GitHub account `ericrwade` already exists (D-52 resolved); a `pagouro` org on GitHub and a
   `pagouro` org on Hugging Face would hold the repository and the model card under the project's
   own name at F13 — both free today.
 - One rule for all of them: whatever handle is chosen, register the same string on every
   platform in one sitting, even the ones that will never be used, so the name cannot be
   impersonated. Findability is the point ("everything should have some presence").
+
+## Checking the login-walled ones without an account
+
+Open the URL in any browser; no login is needed to see whether a name exists:
+
+- Instagram: `https://www.instagram.com/pagouro/` — free if it says "Sorry, this page isn't available."
+- TikTok: `https://www.tiktok.com/@pagouro` — free if it says "Couldn't find this account."
+- Reddit user: `https://www.reddit.com/user/pagouro` — free if "Sorry, nobody on Reddit goes by that name."
+- Reddit community: `https://www.reddit.com/r/pagouro` — free if "there aren't any communities on Reddit with that name."
+- Threads: `https://www.threads.net/@pagouro`; LinkedIn: `https://www.linkedin.com/company/pagouro`.
+
+(Probes cannot do this: these sites return the same page for every name and fill it in
+afterwards with script.)
 
 ## Not done, on purpose
 
