@@ -2019,3 +2019,56 @@ finished around half past ten that night.[^seventy]
 [^handles]: `scripts/check_handles.py`, `docs/HANDLES.md`; D-86 and O-44; the lesson is the last LESSONS line in the global `CLAUDE.md`.
 [^finish]: `scripts/runpod/bring_home_1b.sh`, `scripts/runpod/decay_watch.py`, `docs/MODEL_CARD.md`; the phase-two read-through is in the session log for 2026-09-23.
 [^seventy]: issue #2 comment 2026-09-24 05:34Z; `checkpoints/pagouro-1b/pagouro-1b-step70000.pt` sha256 `7032a3f3…`; RunPod billing API at 05:26Z.
+
+## Day 15 — The switch to eight thousand: a doubled step caught in twenty-five minutes, two relaunches, and the gate's first readings
+
+Phase one ended at 14:59 UTC on the twenty-fourth: 85,593 steps, 89.7 billion tokens, fifty-four
+hours and twelve minutes on eight cards, zero restarts, the last validation reading 9.8 and the
+best 9.0. The script then did what it had been written to do — took a random window of the
+backbone, appended the clean anneal twice, wrote the 9,973,006,336-token decay mix (twenty
+gigabytes; the anneal is a quarter of one percent of it) and restarted the model from the
+step-85,592 checkpoint at eight thousand tokens of context.[^switch]
+
+And it did one more thing it had been written to do, which was wrong. The plan said "same
+tokens per step: half the batch, double the accumulation." Halving the micro-batch at double
+the sequence length keeps the tokens per step exactly where they were; doubling the accumulation
+on top of that doubles them. The launch line read **2,097,152 tokens per step**. Left alone, the
+decay would have taken fourteen and three-quarter hours instead of seven and a half — about two
+hundred dollars more, a total of roughly $2,010, over the cap Eric had set — and would have
+walked through the mix twice, the anneal four times instead of two. The watch read the line
+twenty-five minutes after the restart, at step 85,800, and stopped the run: script first, then
+the launcher, each by the process number read in the call before.[^double]
+
+The first relaunch was also wrong, in a way the script's own design made easy. The step count
+is *derived* — total tokens divided by tokens per step, from the batch and accumulation knobs —
+so changing the knobs to get 1,048,576 tokens per step silently recomputed the run as 190,208
+steps, moved the decay boundary to 171,187, and the script concluded it was still in phase one.
+It came up at four thousand tokens of context with the phase-one learning rate. That was read in
+thirty seconds and stopped — and the stopping repeated a lesson recorded two nights earlier in a
+new costume: a `kill` fed by a `grep` for the script's name, inside a one-line remote shell,
+matched the shell's own command line, killed the session, and left the launcher orphaned with
+all eight workers. Listed by PID in one call, killed by the exact number in the next. The second
+relaunch pinned the step count explicitly: **`RESUMED from step 85592`, `tokens/step: 1,048,576
+(2 × 8192 × accum 8 × 8 ranks)`**, 371,000 tokens a second, 2.76 seconds a step. Thirty-one
+minutes of pod time lost in all, about fourteen dollars, none of it training the wrong thing
+for long enough to matter: both false starts resumed from the same checkpoint the good one did.
+The desk copy of the script is fixed — phase two keeps the accumulation, and the header says to
+pin the step count on any relaunch — and the pod's copy was left alone, because overwriting a
+shell script while bash is executing it is its own way to lose a run.[^relaunch]
+
+The gate then began to read. The validation set changes at the phase boundary — it is the
+anneal's held-out slice from here, so the phase-one numbers are not comparable — and the rule
+from the Flash night (D-61) is that this loss must not rise through the decay. First reading,
+step 85,999: 2.3778, perplexity 10.8. Second, step 86,499: **2.3325, perplexity 10.3**, falling.
+The little script written the night before prints the series and a verdict each tick; its first
+two verdicts were OK.[^gate]
+
+By 16:24 UTC the run was at step 86,700 — 91 percent — with the learning rate at 2.69 × 10⁻⁴
+and dropping, 8,400 steps and about six and a half hours to go. `PAGOURO_1B_DONE` is expected
+around 22:50 UTC; the projection is about $1,830 against the two-thousand-dollar cap, the
+half-hour of false starts included.
+
+[^switch]: `/workspace/train.log` on the pod (`done in 195036.1s`, `decay mix … 9,973,006,336 tokens, domain 0.25%`), copied home with the run; issue #2 comment 2026-09-24 15:30Z.
+[^double]: the `tokens/step : 2,097,152 (2 x 8192 x accum 16 x 8 ranks)` line and the three step lines that followed it, in the same log.
+[^relaunch]: the two `RESTART` markers in the log; the fix is commit `430fbf5` (`scripts/runpod/train_1b.sh`); the two lessons are the last lines under LESSONS in the global `CLAUDE.md`.
+[^gate]: `scripts/runpod/decay_watch.py` against `/workspace/runs/pagouro-1b.jsonl`; readings at steps 85,999 and 86,499.
