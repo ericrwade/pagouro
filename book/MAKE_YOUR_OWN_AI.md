@@ -2293,9 +2293,8 @@ Next: the one-billion run, when it happens, with the receipts.
 
 *Licence: all rights reserved (story strand, D-64).*
 
-*STORY chapter, draft 1 (2026-09-23, written while the run was at step 58,000 of 95,104),
-edited from `BUILD_LOG.md` Days 12–14. The last section is left open for the decay phase and
-the numbers it produces; every number here is from the file the footnote names.*
+*STORY chapter, draft 2 (2026-09-25; draft 1 was written at step 58,000), edited from
+`BUILD_LOG.md` Days 12–15. Every number here is from the file the footnote names.*
 
 ---
 
@@ -2492,10 +2491,84 @@ rules. And this chapter was drafted, to here, at step 58,000.
 
 ## The decay
 
-*(To be written when the run ends: the switch to eight thousand tokens of context at step
-85,593, the held-out anneal loss through the decay, the final validation number, the two
-fine-tuning mixes and which one shipped, the bill read from the account after the machine was
-deleted, and the first answer the one-billion model gave.)*
+Phase one ended at 14:59 on the twenty-fourth — 85,593 steps, fifty-four hours, zero restarts —
+and the script did what it had been written to do: took a window of the backbone, appended the
+clean anneal twice, wrote the twenty-gigabyte mix, and restarted the model at eight thousand
+tokens of context. Then it did one more thing it had been written to do, which was wrong. The
+plan said "same tokens per step: half the batch, double the accumulation." Halving the batch at
+double the length keeps the tokens per step exactly where they were; doubling the accumulation
+on top of it doubles them. The launch line read 2,097,152 tokens a step. Left alone, the decay
+would have taken fifteen hours instead of seven and a half, cost about two hundred dollars more
+than the cap allowed, and walked through the mix twice. The watch read the line twenty-five
+minutes in and stopped the run.[^double]
+
+The first relaunch was wrong too, in a way the script's own design made easy: its step count was
+*derived* from the batch and accumulation knobs, so changing the knobs silently recomputed the run
+as 190,208 steps, moved the decay boundary past the horizon, and the script concluded it was
+still in phase one. Thirty seconds, stopped — and the stopping repeated the lesson of two nights
+before in a new costume, a `kill` fed by a search for the script's name that matched the remote
+shell's own command line and killed the session, leaving the launcher orphaned. Listed by number,
+killed by number, relaunched with the step count pinned: `tokens/step: 1,048,576`. Thirty-one
+minutes and fourteen dollars, none of it training the wrong thing long enough to matter. The desk
+copy of the script was fixed; the pod's was left alone, because overwriting a shell script while
+the shell is reading it is its own way to lose a run.[^relaunch]
+
+Then the gate. The validation set changes at the boundary — from here it is the anneal's held-out
+slice, the thirty-one licensed works the model is supposed to be absorbing — and the rule from the
+Flash night is that this loss must not rise through the decay. It wobbled, as a small validation
+set does: 10.78, 10.30, 10.83, 10.57, 10.16, 9.84, 10.02, 10.46, and twice the watch's little
+script said WATCH and once we half-believed it. Then 9.85, 9.85, 9.82, 10.23, 9.76, 10.04, 10.00,
+10.20, 9.54 — and at step 95,103, the last: **9.2**. The lowest of the whole phase, at the
+moment the learning rate touched its floor.[^gate] `PAGOURO_1B_DONE` printed at 22:52 UTC.
+
+The finish had been staged the night before and took ten minutes: the base model exported, the
+two fine-tunes — the recipe that shipped on Flash, and the same plus six hundred examples of
+answering from a tool's result — run side by side on two of the eight cards, exported. One
+command hashed everything on the pod, copied nineteen gigabytes of outputs and the eleven-gigabyte
+final checkpoint home, and checked every hash on the desk. The pod was deleted at 00:05 and the
+Icelandic volume with it, and the account read back the bill for the whole job: **$1,778.97**.
+Two hundred and twenty-one dollars under the cap.[^bill]
+
+## The numbers
+
+There was a scare first, and it belongs here because it is the kind of thing that happens at
+one in the morning. The evaluation chain reported the model non-responsive — thirty of thirty
+real questions wrong, in zero seconds — and a raw probe of the base model produced
+`mmp … intellectualumes impmas`. For a quarter of an hour the run looked like sixty-two hours of
+cards had made noise. The exporter's own check settled it: PyTorch and llama.cpp, same prompt,
+same file, agreed on all sixty-four characters — *"Paris. France is a country in Western Europe.
+It is in the north."* The garbage was the desk's graphics driver, which the probe had let
+llama.cpp use and which cannot run this model. The empty answers were the launch: the harness
+runs the model in a mode that reads standard input, and a process started from a detached shell
+had no input at all, so it quit before it began. Run by hand, the same command said *"The capital
+of Portugal is Lisbon."* One line fixed it.[^scare]
+
+Then, on the hundred-item sets that adjudicate: the one-billion model **invents an answer to 61
+percent of the questions that have none, and answers 83 percent of the real ones correctly.**
+Flash, the model on the stick today: 38 and 19. The small open models of its size: 50 to 57, and
+87 to 93.[^numbers]
+
+Read the two together, as the rule says. The model knows. It answers four times as many real
+questions as Flash and, for the first time, a Pagouro is over the release line of eighty percent
+on that axis. And it bluffs like every other small model — *because* it knows: it has enough
+confident knowledge to produce a plausible answer to anything, and ninety-nine hand-written
+abstentions in a fine-tune of seventy-nine hundred examples do not teach the rule at that scale.
+This is the sentence Chapter 6 wrote a week early, when Eric asked whether a model that cannot
+bluff would refuse everything: the refusal rate is set by what the model knows, not by the
+no-bluff rule. Flash refused because it was ignorant. The one-billion model answers because it is
+not, and now the rule itself has to be taught. The instrument for that — the known-versus-
+unknowable curriculum built on the ninth day for exactly this moment — needs a card for an hour or
+two, and that is the next chapter.
+
+The rest is what a model this size should do and Flash could not: tool routing right on
+twenty-three of twenty-four calls, with confidence that means something (when it said ninety
+percent it was right thirty-two times in thirty-four); memory routed and answered nine of ten;
+every skill routed ten of ten. And the measurement that chose between the two fine-tunes: asked
+to report what a tool actually returned, the first mix invented a number four times in ten and the
+second once. At 126 million parameters that seed had cost ten to sixteen points of bluff; at a
+billion it cost three, which on a hundred items is noise. The second mix is the candidate — a
+634-megabyte file, its hash recorded — and it is not on the stick, because Eric sees the numbers
+first.[^mix]
 
 ---
 
@@ -2510,13 +2583,20 @@ deleted, and the first answer the one-billion model gave.)*
 [^topup]: D-82 amendment and D-85; Eric's message 2026-09-23 03:2xZ (chat), posted to issue #2 at 03:25Z.
 [^anneal]: issue #2 comment 2026-09-23 03:27Z; `data/tokenized_anneal_1b/meta.json` on the desk (12,325,693 train tokens, 31 works).
 [^watch]: issue #2 comments 2026-09-23 03:54Z, 10:24Z, 14:54Z, 18:54Z and 18:55Z; billing figures are the RunPod billing API's posted totals at those times. The validation series is `pagouro-1b.jsonl` (116 readings to step 58,000).
+[^double]: the `tokens/step : 2,097,152 (2 x 8192 x accum 16 x 8 ranks)` line in `data/out_1b/train.log`; `BUILD_LOG.md` Day 15.
+[^relaunch]: the two `RESTART` markers in the same log; the fix is commit `430fbf5`; the lessons are in the global rules file.
+[^gate]: `scripts/runpod/decay_watch.py` over `data/out_1b/pagouro-1b.jsonl`, readings at steps 85,999–95,103.
+[^bill]: `data/out_1b/SHA256SUMS`, `CKPT.sha`; RunPod billing API read 2026-09-25 00:05Z after deletion: $1,761.54 H100 pod, $11.08 build-pod CPU, $3.55 storage, $2.79 disk.
+[^scare]: `scripts/verify_gguf.py` (PASS, 64/64); `evals/run_eval.py` commit `1962899`.
+[^numbers]: `evals/results/pagouro-1b-sftA__bluff100.json` and `__calibration100.json`; baselines in `evals/BASELINES.md`; D-85 results in `docs/DECISIONS.md`.
+[^mix]: the `sftB` result files beside them; D-87. The q4_k_m file is 633,976,000 bytes, sha256 `ed05f5c6…`.
 
 
 ---
 
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 85 decisions, 29 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 87 decisions, 31 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -2607,6 +2687,8 @@ deleted, and the first answer the one-billion model gave.)*
 | D-83 | 2026-09-21 | LOCKED: no watermark, no claim on outputs — "your words are yours" — and the WHY page **(locked)** |
 | D-84 | 2026-09-22 | Wikipedia leaves the 1B backbone (Eric: "if there is a way we can build this without using Wikipedia, I would be perfectly fine with that") |
 | D-85 |  | The 1B run started 2026-09-22 08:48Z on 8×H100 SXM secure (pod g3qf86spkqfq1j, CA-MTL-1, $27.92/h) |
+| D-86 | 2026-09-24 | Credit line: "Eric Wade, with Claude (Anthropic)" |
+| D-87 | 2026-09-25 | SFT B is the 1B candidate; the next lever is the GRPO known/unknowable curriculum on a rented card |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -2641,6 +2723,8 @@ deleted, and the first answer the one-billion model gave.)*
 | O-40 | OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow | open |
 | O-41 | The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written") | open |
 | O-42 | A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?") | open |
+| O-43 | The About page: a key-facts table and a FAQ (Eric: "is there anything in that list we hadn't thought of?") | open |
+| O-44 | Handles and domains (Eric: "everything should have some presence. Needs to be findable") | open |
 
 
 ---

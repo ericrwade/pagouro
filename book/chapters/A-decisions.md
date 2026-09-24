@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 85 decisions, 29 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 87 decisions, 31 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -91,6 +91,8 @@
 | D-83 | 2026-09-21 | LOCKED: no watermark, no claim on outputs — "your words are yours" — and the WHY page **(locked)** |
 | D-84 | 2026-09-22 | Wikipedia leaves the 1B backbone (Eric: "if there is a way we can build this without using Wikipedia, I would be perfectly fine with that") |
 | D-85 |  | The 1B run started 2026-09-22 08:48Z on 8×H100 SXM secure (pod g3qf86spkqfq1j, CA-MTL-1, $27.92/h) |
+| D-86 | 2026-09-24 | Credit line: "Eric Wade, with Claude (Anthropic)" |
+| D-87 | 2026-09-25 | SFT B is the 1B candidate; the next lever is the GRPO known/unknowable curriculum on a rented card |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -125,3 +127,5 @@
 | O-40 | OLMo (AI2) and Common Pile: why Pagouro is not redundant, and what to borrow | open |
 | O-41 | The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written") | open |
 | O-42 | A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?") | open |
+| O-43 | The About page: a key-facts table and a FAQ (Eric: "is there anything in that list we hadn't thought of?") | open |
+| O-44 | Handles and domains (Eric: "everything should have some presence. Needs to be findable") | open |
