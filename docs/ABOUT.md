@@ -87,7 +87,8 @@ is marked as his in `docs/DECISIONS.md`, and paid for the cards. The engineering
 measuring were done by Claude (Anthropic) in sessions Eric directed, mostly while he was
 travelling and reading the reports on his phone. The public origin story is `docs/ORIGIN.md`;
 the build log is the unedited daily record; the book *Make Your Own AI* is the story with the
-numbers. *(Founder links and byline: Eric's call at release, F12.)*
+numbers. The credit line is Eric's (D-86): **Eric Wade, with Claude (Anthropic)**. *(Founder links and
+handles: `docs/HANDLES.md`, F12 at release.)*
 
 ## How Pagouro works — what to expect
 

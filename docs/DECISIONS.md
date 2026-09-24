@@ -2187,6 +2187,22 @@ expect: nothing" — a finished artefact has no team and says so. Rejected: "cal
 name" as a sales move — relatives (OLMo, Comma) are named gratefully and only with true, measured
 statements (D-50). Founder byline and socials on the page: Eric's call at F12.
 
+### D-86 — Credit line: "Eric Wade, with Claude (Anthropic)"
+**2026-09-24, Eric: "Yes, Eric Wade with Claude (Anthropic) makes sense."** The made-by line on the
+About page, the key-facts table (`docs/facts.json`), the model card and the stick. The brand mark
+keeps its own credit (D-80: "Eric Wade, made with ChatGPT"). Founder links and byline placement
+remain an F12 item at release.
+
+### O-44 — Handles and domains (Eric: "everything should have some presence. Needs to be findable")
+**2026-09-24.** Eric is unsure about socials but wants one findable name across platforms and will
+check availability himself. `scripts/check_handles.py` does the read-only part: `pagouro`,
+`pagouro_ai`, `pagouroai`, `pagouro-ai` probed on GitHub, Hugging Face, Bluesky, Mastodon,
+YouTube, PyPI, npm and RDAP for domains, with known-taken controls. Result (`docs/HANDLES.md`):
+the bare `pagouro` is free on every platform that answers; `pagouro.com` is taken, `.org`/`.ai`
+free; X, Instagram, TikTok, LinkedIn, Threads, Reddit are login-walled and must be checked by
+hand. Nothing registered — outward-facing, Eric's hand. Recommendation on the record: register one
+string everywhere in one sitting; `.org` first, `.ai` defensively.
+
 ### O-42 — A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?")
 **2026-09-23.** Mechanically yes (a key held by reference, a pay-invoice script, a provider that
 takes USDC — io.net does, RunPod does not). What changes is the cap: today the loaded balance IS
