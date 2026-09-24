@@ -2172,6 +2172,21 @@ needs a packaging-time search index (today's index is built at launch, ~0.3 s pe
 wants it prebuilt). Honest box line: *a 1B model that reads out of a 300 MB shelf it can cite* —
 the true form of the "1B+" question. Waiting on Eric's "add it".
 
+### O-43 — The About page: a key-facts table and a FAQ (Eric: "is there anything in that list we hadn't thought of?")
+**2026-09-24.** Eric sent a conventional About-page recipe (one-sentence value proposition; what it
+does; what makes it different; who it is for; the team; how it works; a crawlable key-facts table;
+FAQ). Most of it already existed across `docs/WHY.md`, `docs/ORIGIN.md`, `docs/CHECK_YOUR_COPY.md`
+and the README. Two things were genuinely new and are now in `docs/ABOUT.md`: (1) a **key-facts
+table** — for a project whose whole pitch is checkable claims, a single machine-readable table
+(parameters, tokens, date basis, licences, hash, bill) is the right artefact, and it ships as
+`facts.json` on the stick and in the model card so that a program or another model describing
+Pagouro reads one source; (2) a **FAQ** built from the questions Eric actually asked this window
+(1B or 1B+, why not Wikipedia, watermarks, why not OLMo, why not io.net). One item is inverted on
+purpose: the recipe's "how we work — channels, response times, onboarding" becomes "what to
+expect: nothing" — a finished artefact has no team and says so. Rejected: "call out competitors by
+name" as a sales move — relatives (OLMo, Comma) are named gratefully and only with true, measured
+statements (D-50). Founder byline and socials on the page: Eric's call at F12.
+
 ### O-42 — A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?")
 **2026-09-23.** Mechanically yes (a key held by reference, a pay-invoice script, a provider that
 takes USDC — io.net does, RunPod does not). What changes is the cap: today the loaded balance IS

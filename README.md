@@ -138,8 +138,9 @@ corpus.json             the provenance ledger
 
 ## Licence
 
-Not yet chosen for the weights; see `docs/DECISIONS.md` O-11, which is a real question because
-share-alike sources are a large part of the planned corpus. Code will be Apache 2.0.
+Weights **CC BY-SA 4.0**, code **Apache 2.0** (D-31, 2026-09-16: share-alike sources are in the
+corpus and the weights say so). The book: story chapters all rights reserved, do-it chapters
+CC BY-SA 4.0 (D-64).
 
 ---
 
