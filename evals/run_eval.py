@@ -287,8 +287,11 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
         cmd = [LLAMA_COMPLETION, "-m", model, "-p", prompt, "-n", str(n_tokens), "-no-cnv",
                "--temp", "0", "--top-k", "1", "--seed", "1", "--no-warmup", "-ngl", "0"]
     try:
+        # stdin=DEVNULL is load-bearing: llama-cli's conversation mode reads stdin, and when the
+        # harness is launched from a detached/background shell with NO stdin handle it exits
+        # before generating -- every response "" in 0 s (2026-09-25, the first 1B eval run).
         res = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout,
-                             encoding="utf-8", errors="replace")
+                             encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL)
     except subprocess.TimeoutExpired:
         return "<<TIMEOUT>>"
     txt = ANSI.sub("", res.stdout or "")
