@@ -147,7 +147,7 @@ def main() -> int:
             shutil.rmtree(skills_dst)
         shutil.copytree(os.path.join(ROOT, "skills"), skills_dst,
                         ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))   # last_test.json ships: /skills shows the scores
-        for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md", "WHY.md", "CHECK_YOUR_COPY.md"):   # D-78 the look and the voice; D-83 why; the verification walkthrough (THREAT_MODEL req. 5)
+        for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md", "WHY.md", "CHECK_YOUR_COPY.md", "ABOUT.md"):   # D-78 the look and the voice; D-83 why; the verification walkthrough (THREAT_MODEL req. 5); O-43 about + facts
             shutil.copy2(os.path.join(ROOT, "docs", name), os.path.join(rel, name))
         # D-80: the mark ships -- the full image, the icon, and the house-palette pixel versions /art logo draws
         brand_dst = os.path.join(rel, "brand")
@@ -167,11 +167,28 @@ def main() -> int:
     hashes = {}
     for dirpath, _, files in os.walk(rel):
         for fn in files:
-            if fn == "MANIFEST.md":
+            if fn in ("MANIFEST.md", "facts.json"):
                 continue
             full = os.path.join(dirpath, fn)
             relp = os.path.relpath(full, rel).replace("\\", "/")
             hashes[relp] = {"sha256": sha256_file(full), "bytes": os.path.getsize(full)}
+
+    # O-43: the key-facts table, machine-readable. docs/facts.json carries the hand-maintained,
+    # measured facts; only the block the packager can measure itself is added here (the model
+    # files' bytes and hashes, the packaging date). Written before the manifest so it is hashed too.
+    with io.open(os.path.join(ROOT, "docs", "facts.json"), encoding="utf-8") as f:
+        facts = json.load(f)
+    facts["release"] = {
+        "packaged_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
+        "model_files": [{"path": p, "bytes": h["bytes"], "sha256": h["sha256"]}
+                        for p, h in sorted(hashes.items()) if p.endswith(".gguf")],
+        "manifest": "MANIFEST.md (its hash is the anchorable value, D-14)",
+    }
+    facts_path = os.path.join(rel, "facts.json")
+    with io.open(facts_path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(facts, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    hashes["facts.json"] = {"sha256": sha256_file(facts_path), "bytes": os.path.getsize(facts_path)}
 
     manifest_lines = [
         "# Pagouro release manifest",

@@ -1,0 +1,55 @@
+{
+  "_about": "Pagouro key facts (O-43). Hand-maintained source; scripts/package_release.py copies it to the stick as facts.json and adds the 'release' block it can measure (model files, bytes, sha256, packaging date). A value of null means: not yet measured -- filled at release from the file named in '_sources'. Every number here must trace to a file in the repository (D-50).",
+  "name": "Pagouro",
+  "type": "Offline language model and application on a USB stick",
+  "parameters": 968968192,
+  "architecture": {
+    "kind": "decoder-only transformer",
+    "layers": 20,
+    "dim": 2048,
+    "heads": 16,
+    "kv_heads": 4,
+    "ffn": 5632,
+    "context_tokens": 8192,
+    "vocab": 32768
+  },
+  "training": {
+    "tokens": 99724809408,
+    "mixture": {"fineweb_edu": 0.916, "stack_exchange": 0.077, "dated_code_x3": 0.007},
+    "anneal": "licensed shelf + canon, 12,325,693 tokens (data/tokenized_anneal_1b)",
+    "date_basis": "every row written or collected before 2022-01-01; basis stated per row in corpus.json",
+    "hardware": "8x NVIDIA H100 SXM (RunPod secure cloud, CA-MTL-1), pod g3qf86spkqfq1j",
+    "started_utc": "2026-09-22T08:48Z",
+    "finished_utc": null,
+    "bill_usd": null,
+    "decision": "D-85"
+  },
+  "licences": {
+    "weights": "CC-BY-SA-4.0",
+    "code": "Apache-2.0",
+    "book_story_chapters": "all rights reserved",
+    "book_do_it_chapters": "CC-BY-SA-4.0",
+    "decision": "D-31, D-64"
+  },
+  "honesty": {
+    "bluff_rate_unanswerable_100": null,
+    "answered_real_rate_100": null,
+    "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
+    "note": "never 'does not hallucinate' (D-50)"
+  },
+  "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
+  "price_usd": 0,
+  "maintenance": "none -- frozen at release; verify a copy with CHECK_YOUR_COPY.md",
+  "telemetry": "none -- see THREAT_MODEL.md for what 'private' does and does not cover",
+  "watermark": "none; the project claims no rights in outputs (D-83)",
+  "relatives": ["OLMo (AI2)", "Common Pile / Comma (EleutherAI)"],
+  "made_by": "Eric Wade, with Claude (Anthropic)",
+  "release": null,
+  "_sources": {
+    "parameters": "scripts/train.py parameter count printed at launch (D-85)",
+    "training.tokens": "the volume build's meta.json (plans/volume_1b.json); D-85",
+    "training.bill_usd": "RunPod billing API after the pod is deleted",
+    "honesty.*": "evals/results/ for the shipped model",
+    "release": "written by scripts/package_release.py from the files it hashes"
+  }
+}
