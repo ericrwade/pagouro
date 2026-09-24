@@ -2072,3 +2072,61 @@ half-hour of false starts included.
 [^double]: the `tokens/step : 2,097,152 (2 x 8192 x accum 16 x 8 ranks)` line and the three step lines that followed it, in the same log.
 [^relaunch]: the two `RESTART` markers in the log; the fix is commit `430fbf5` (`scripts/runpod/train_1b.sh`); the two lessons are the last lines under LESSONS in the global `CLAUDE.md`.
 [^gate]: `scripts/runpod/decay_watch.py` against `/workspace/runs/pagouro-1b.jsonl`; readings at steps 85,999 and 86,499.
+
+## Day 15, night — Done at 22:52; a ten-minute finish; the export that was fine and the harness that was not; and the number that says what comes next
+
+The last validation reading came at step 95,103: **2.2242, perplexity 9.2** on the anneal's
+held-out slice, the lowest of the whole decay, and then `PAGOURO_1B_DONE` at 22:52 UTC. The
+script that finishes the model had been staged the night before and it ran in ten minutes, not
+the two hours budgeted: the base model exported to a four-gigabyte f32 GGUF, and the two
+fine-tunes — mix A, the recipe that shipped on Flash; mix B, the same plus six hundred examples
+of answering from a tool's result — ran side by side on two of the eight cards at six steps a
+second. The first attempt died at import: the code bundle had never included the app's own
+folder, and the fine-tuning script reads the router prompts from it. Copied up, relaunched, three
+minutes. Then one command hashed every artefact on the pod, copied nineteen gigabytes of outputs
+and the eleven-gigabyte final checkpoint home, and checked each hash on the desk: PASS. The pod
+was deleted at 00:05, the Icelandic volume with it, and the account read back the bill for the
+whole job: **$1,778.97** — $1,761.54 for the H100s, eleven dollars for the CPU machine that built
+the corpus, six for storage and disk. Two hundred and twenty-one dollars under the cap. The
+ninety-percent line was never crossed.[^done]
+
+Then the desk, and a scare that lasted forty minutes. The evaluation chain quantised mix A to
+eight bits and four, ran the frozen suite, and reported the model **mostly non-responsive**:
+thirty of thirty real questions wrong, in zero seconds. A raw completion probe of the base model
+produced `mmp … intellectualumes impmas`. For a quarter of an hour the run looked like sixty-two
+hours of cards had produced noise. It had not. The exporter's own check — the same prompt decoded
+greedily by PyTorch and by llama.cpp from the same file — agreed on all sixty-four characters:
+*"Paris. France is a country in Western Europe. It is in the north."* The garbage was the desk's
+AMD graphics driver, which llama.cpp had used by default in the probe and which cannot run this
+model; every real path already forces the CPU. And the empty answers were the launch, not the
+model: the harness runs `llama-cli` in its conversation mode, which reads standard input, and a
+process started from a detached background shell had no input handle at all, so it exited before
+generating. Run by hand, the same command answered *"The capital of Portugal is Lisbon."* One
+line — give the subprocess an explicit null input — and the chain ran clean, fifteen minutes per
+model.[^scare]
+
+**The numbers.** On the hundred-item sets that adjudicate (D-73): mix A invents an answer to
+**61 percent** of the unanswerable questions and answers **83 percent** of the real ones
+correctly; mix B, 64 and 83. Flash, the 126-million model on the stick today: 38 and 19. The
+small open models of comparable size: 50 to 57, and 87 to 93. The one-billion model *knows* — it
+answers four times as many real questions as Flash and, for the first time, a Pagouro clears the
+release line of eighty percent on that axis. And it bluffs like every other small model does,
+because it now knows enough to bluff, and ninety-nine hand-written abstentions in a fine-tune of
+seventy-nine hundred examples do not teach the rule at that scale. This is the sentence D-50 wrote
+a week early: the refusal rate is set by what the model knows, not by the no-bluff rule. The rule
+now has to be taught, and the instrument for that — the known-versus-unknowable curriculum built
+on the ninth day for exactly this moment — needs a card for an hour or two. That is the next
+decision, and it is Eric's.[^numbers]
+
+The rest of the suite is what a model this size should do and Flash could not. Tool routing
+right on twenty-three of twenty-four calls, with well-calibrated confidence (when it said ninety
+percent it was right thirty-two times in thirty-four). Memory routed nine of ten and answered
+nine (A) or eight (B). Skills routed ten of ten. And the measurement that decided between the
+two mixes: asked to report what a tool actually returned, A invented a number four times in ten
+and B once — at 126 million parameters that seed had cost ten to sixteen points of bluff, and at
+a billion it cost three, which on a hundred items is noise. **Mix B is the candidate** (D-87): a
+634-megabyte four-bit file, hash recorded, not yet on the stick. Eric sees the numbers first.
+
+[^done]: `/workspace/train.log` → `data/out_1b/train.log` (`done in 26508.1s`, `PAGOURO_1B_DONE`); `data/out_1b/SHA256SUMS`, `CKPT.sha`; the finish log's `FINISH_1B_DONE`; RunPod billing API read 2026-09-25 00:05Z; issue #2 comments 22:55Z and 00:05Z.
+[^scare]: `scripts/verify_gguf.py` output (PASS, 64/64); `evals/run_eval.py` commit `1962899`; the empty first pass is in the session's scratch logs and described on issue #2 at 00:55Z.
+[^numbers]: `evals/results/pagouro-1b-sftA__bluff100.json`, `__calibration100.json`, and the `sftB` pair; the 30-item, tool-use, memory, spelling, tool-result and skills files beside them; D-85 results and D-87 in `docs/DECISIONS.md`.
