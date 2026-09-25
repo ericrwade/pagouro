@@ -2383,7 +2383,7 @@ synthesis. Found on the way: an enumeration runaway ("1972-1973-1974-…") insid
 missed; the trim now cuts the sentence a run of six or more same-shaped items sits in; the 100-sets re-measured
 after the change. Not built: a Pagouro MCP server (would suit IronClaw and Claude Code; small; post-release).
 
-### D-95 — Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; GRPO-3 stays
+### D-95 — Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; soups do not rescue it; GRPO-3 stays
 **2026-09-25 (Eric: "Run round 2").** Pod `e333vfwcjuo4ej`, 1× H100 SXM secure CA-MTL-1 $3.49/h, 19:01Z → deleted
 21:48Z, outputs hash-verified home (`data/out_1b/research2/`), ≈ $8–9. **SFT-v3** from the base: mix B + argue ×20
 + multi-turn seed + self-knowledge abstentions ×0.2 + the new program-traced reasoning seed ×0.5
@@ -2398,8 +2398,13 @@ multi-turn clean). What it tells us: (1) the reasoning seed is a real lever — 
 one problem on top means the reward had nothing further to shape at 75 steps; (2) the honesty in GRPO-3 lives in
 its lineage (SFT B → soup70 → GRPO-1…3 on the self-knowledge curriculum) and is not reproduced by a fresh SFT that
 merely includes abstention rows — the GRPO rounds are what buys it; (3) a full recipe therefore needs both, in
-order: SFT with the traces, then the self-knowledge GRPO rounds. Weight soups of GRPO-3 × SFT-v3 (30 %, 50 %) are the
-$0 attempt to combine them; recorded below when measured. The shipped numbers (facts.json, 22 / 81) are unchanged.
+order: SFT with the traces, then the self-knowledge GRPO rounds. **Soups (GRPO-3 × SFT-v3, $0):** 30 % SFT-v3 = bluff 28 / answered 81, reasoning 25/320, memory 9/10; 50 % = 37 / 81,
+reasoning 33 — the honesty cost arrives long before the reasoning gain. **Round 2 closed: GRPO-3 stays; the shipped
+numbers (facts.json, 22 / 81) are unchanged.** Bill read from the account: **$8.66**. Next recipe, if Eric funds a
+round 3 (≈ $15, ~3 h): SFT-from-base *with* the traces (as SFT-v3) → GRPO-1-style round on the D-71 curriculum →
+soup → GRPO on the self-knowledge curriculum, i.e. the whole lineage that produced GRPO-3, started from a base that
+can reason; measured the same way. Not started (D-90's window is spent; Eric's call; must be home before the Sep 27
+11:30 PT shutdown).
 
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the

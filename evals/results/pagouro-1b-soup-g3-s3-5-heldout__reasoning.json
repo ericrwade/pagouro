@@ -1,0 +1,4503 @@
+{
+ "label": "pagouro-1b-soup-g3-s3-5-heldout",
+ "model": "data/gguf_1b/pagouro-1b-soup-g3-s3-5-q8_0.gguf",
+ "summary": {
+  "prompts": 320,
+  "solved": 33,
+  "per_family": {
+   "average": "3/40",
+   "convert": "8/40",
+   "count": "4/40",
+   "date": "0/40",
+   "order": "9/40",
+   "percent": "2/40",
+   "rate": "4/40",
+   "shop": "3/40"
+  },
+  "samples": 1,
+  "temperature": 0.0,
+  "seconds": 173
+ },
+ "rows": [
+  {
+   "prompt": "Jonas is shorter than Tara. Quinn is shorter than Priya. Jonas is taller than Hugo. Quinn is taller than Tara. Who is the shortest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Hugo",
+   "samples": [
+    {
+     "text": "The shortest is Jonas. Quinn is taller than Tara. Jonas is shorter than Priya.",
+     "final": "Priya",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Sam is slower than Carla. Quinn is slower than Jonas. Nils is faster than Jonas. Carla is slower than Quinn. Who is the fastest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Nils",
+   "samples": [
+    {
+     "text": "The fastest is Jonas. Carla is faster than Jonas by 2 seconds. Jonas is faster than Carla by 1 second.",
+     "final": "1",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 16, 14, 22, 28 and 20? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "The average of 16, 14, 22, 28 and 20 is 16.",
+     "final": "16",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "27 sweets are shared equally among 4 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "4 children can each take 12 sweets. That gives 12 × 4 = 48. Left over: 27 - 48 = 10.",
+     "final": "10",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Iris cycles 54 kilometres at a steady 6 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "It takes 54 hours.",
+     "final": "54",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 38, 45, 37, 39 and 36? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "39",
+   "samples": [
+    {
+     "text": "The average of 38, 45, 37, 39 and 36 is 38.",
+     "final": "38",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "5 identical notebooks cost 50 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "5 notebooks cost 50 dollars altogether. That gives 50 / 5 = 10.",
+     "final": "10",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "How many whole numbers from 29 to 70 are divisible by 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 11: 29 is divisible by 11, so the answer is 'Yes'.",
+     "final": "11",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "6 identical candles cost 72 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "12",
+   "samples": [
+    {
+     "text": "6 identical candles cost 72 dollars altogether. That gives 72 / 6 = 12.",
+     "final": "12",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "How many whole numbers from 168 to 311 are divisible by 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "13",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 11: it needs to be a multiple of 11 or an exact multiple. If it is, then the answer is 311. If it isn't, then it isn't.",
+     "final": "311",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Grace's scores were 16, 16, 16, 16, and the average of all 5 scores was 16. What was the fifth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "16",
+   "samples": [
+    {
+     "text": "The fifth score is 16.",
+     "final": "16",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Jonas cycles 36 kilometres at a steady 4 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "It takes 36 hours.",
+     "final": "36",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 13 October 2020 is a Tuesday, what day of the week is 26 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Sunday",
+   "samples": [
+    {
+     "text": "26 days later: 26 days after 13 October 2020 is Tuesday, November 2020.",
+     "final": "2020",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Jonas worked 180 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "180 minutes is 180 / 60 = 30.",
+     "final": "30",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Leo is shorter than Yara. Ana is taller than Maya. Maya is taller than Yara. Jonas is shorter than Leo. Who is the shortest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Jonas",
+   "samples": [
+    {
+     "text": "Step by step: Ana is shorter than Leo. That gives Ana = Leo.",
+     "final": "Leo",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 4 October 2017 is a Wednesday, what day of the week is 19 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Monday",
+   "samples": [
+    {
+     "text": "19 days later: 20 October 2017. That gives 20 days.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 630 dollars. Its price goes up by 10 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "693",
+   "samples": [
+    {
+     "text": "10 percent of 630 is 630 * 10/100 = 63. The new price is 630 + 63 = 703.",
+     "final": "703",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 18, 24 and 12? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "18",
+   "samples": [
+    {
+     "text": "The average of 18, 24 and 12 is 18.",
+     "final": "18",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Omar cycles 30 kilometres at a steady 6 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "5",
+   "samples": [
+    {
+     "text": "It takes 30 hours.",
+     "final": "30",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A sack weighs 14000 grams. How many kilograms is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "14",
+   "samples": [
+    {
+     "text": "14000 grams is 14 kilograms.",
+     "final": "14",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Zoe cycles 96 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "It takes 96 hours: 12 × 60 = 720 minutes.",
+     "final": "720",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 18 September 2014 is a Thursday, what day of the week is 11 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Monday",
+   "samples": [
+    {
+     "text": "11 days later: 11 days after 18 September 2014 is Thursday, 11 days before 18 September 2014.",
+     "final": "2014",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Quinn is slower than Omar. Quinn is faster than Zoe. Who is the fastest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Omar",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from fastest to slowest using each one's speed as the first number: Omar > Quinn > Zoe. The fastest is at the start of the list.",
+     "final": "list",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Grace buys 3 plants at 24 dollars each and 6 mugs at 15 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "162",
+   "samples": [
+    {
+     "text": "3 plants at 24 dollars each come to 6 mugs at 15 dollars each: 3*24 + 6*15 = 81. Total: 81 dollars.",
+     "final": "81",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 765 dollars. Its price goes up by 20 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "918",
+   "samples": [
+    {
+     "text": "The new price of the jacket is 800 dollars.",
+     "final": "800",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "2 identical tickets cost 14 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "7",
+   "samples": [
+    {
+     "text": "2 tickets cost 14 dollars altogether. That gives 14 * 14 = 284 dollars.",
+     "final": "284",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira cycles 20 kilometres at a steady 10 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "It takes 20 hours.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 156 to 257 are divisible by 6? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "17",
+   "samples": [
+    {
+     "text": "The first one is 156; the second is 157. Both are divisible by 6, so the answer is 156.",
+     "final": "156",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 16, 5, 3, 23 and 18? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "13",
+   "samples": [
+    {
+     "text": "The average of 16, 5, 3, 23 and 18 is 18.",
+     "final": "18",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "76 sweets are shared equally among 7 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "76 / 7 = 14. That leaves 14 left over.",
+     "final": "14",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "78 sweets are shared equally among 4 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "4 children can each take 20 sweets. That gives 20 × 4 = 80. Left over sweets are 20 - 80 = 10.",
+     "final": "10",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 30 percent of 810? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "243",
+   "samples": [
+    {
+     "text": "30% of 810 is 810 × 0.30 = 241.",
+     "final": "241",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1985 dollars. Its price goes up by 40 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "2779",
+   "samples": [
+    {
+     "text": "The new price of the jacket is 2025 dollars.",
+     "final": "2025",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 10, 3, 4, 21 and 12? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "The average of 10, 3, 4, 21 and 12 is 100.",
+     "final": "100",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 4 to 113 are divisible by 8? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "14",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 8: 48 is, and it is: 48 is divisible by 8. The next step is to check if the number is divisible by 8: 48 is not: 48 is not divisible by 8.",
+     "final": "8",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "63 sweets are shared equally among 7 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "0",
+   "samples": [
+    {
+     "text": "7 children can each take 3/6 of the remaining 63. That gives 3/6 each.",
+     "final": "6",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Zoe's scores were 13, 12, 14, and the average of all 4 scores was 10. What was the fourth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "1",
+   "samples": [
+    {
+     "text": "The fourth score is 10.",
+     "final": "10",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1480 dollars. Its price goes up by 15 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1702",
+   "samples": [
+    {
+     "text": "1480 * 0.15 = 1480.15.15.",
+     "final": "15",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "74 sweets are shared equally among 4 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "4 children can each take 12 sweets. That gives 12 × 4 = 48. Left over sweets are 12 - 48 = 6.",
+     "final": "6",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 565 shops. The number fell by 20 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "452",
+   "samples": [
+    {
+     "text": "20 percent of 565 is 565 × 20/100 = 120. The number of shops is now 565 - 120 = 425.",
+     "final": "425",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Farid is shorter than Zoe. Tara is shorter than Farid. Tara is taller than Wen. Elena is taller than Zoe. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Elena",
+   "samples": [
+    {
+     "text": "Tara is taller than Wen.",
+     "final": "Wen",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 1230 shops. The number fell by 30 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "861",
+   "samples": [
+    {
+     "text": "30 percent of 1230 is 1230 × 30/100 = 333. The number of shops is now 1230 - 333 = 772.",
+     "final": "772",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A sack weighs 54000 grams. How many kilograms is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "54",
+   "samples": [
+    {
+     "text": "That's 54000 / 1000 = 54.",
+     "final": "54",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "How many whole numbers from 92 to 214 are divisible by 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "11",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 11: it must be, because the last two digits are 21.",
+     "final": "21",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 1520 shops. The number fell by 80 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "304",
+   "samples": [
+    {
+     "text": "80 percent of 1520 is 1520 × 80/100 = 1280. The number of shops is now 1280 - 1520 = 1020.",
+     "final": "1020",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 15 percent of 1420? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "213",
+   "samples": [
+    {
+     "text": "15 percent of 1420 is 1420 × 15/100 = 1420 × 15/100 = 1420 × 15/100.",
+     "final": "100",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 30 dollars. Its price goes up by 10 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "33",
+   "samples": [
+    {
+     "text": "10 percent of 30 is 30 * 10/100 = 3. The new price is 30 * 3 = 90.",
+     "final": "90",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 311. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "825",
+   "samples": [
+    {
+     "text": "Pages 1 to 311 are numbered from 1 to 311, with 1 being the first page and 311 the last. Total digits: 311 - 1 = 309.",
+     "final": "309",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Elena is heavier than Uma. Farid is heavier than Elena. Iris is heavier than Farid. Ana is heavier than Iris. Who is the lightest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Uma",
+   "samples": [
+    {
+     "text": "Iris is the lightest, followed by Ana and then Elena.",
+     "final": "Elena",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 75 percent of 712? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "534",
+   "samples": [
+    {
+     "text": "75 percent of 712 is 712.",
+     "final": "712",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 3 June 2019 to 23 July 2019? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "50",
+   "samples": [
+    {
+     "text": "There are 31 days between 3 June 2019 and 23 July 2019.",
+     "final": "2019",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ana is older than Elena. Nils is younger than Tara. Nils is older than Zoe. Zoe is older than Ana. Who is the youngest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Elena",
+   "samples": [
+    {
+     "text": "Ana is older than Elena. Nils is younger than Tara. Nils is older than Zoe. Zoe is older than Ana.",
+     "final": "Ana",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya is faster than Jonas. Jonas is faster than Farid. Who is the fastest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Maya",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 168 to 267 are divisible by 7? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "15",
+   "samples": [
+    {
+     "text": "The first one is 168; the second is 267. From 168 to 267, the difference is 7; the third one is 267 minus 7 = 254. Therefore 254.",
+     "final": "254",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 16 September 2005 is a Friday, what day of the week is 33 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Wednesday",
+   "samples": [
+    {
+     "text": "33 days later: 31 August 2006. That gives 31 days.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "3 loaves of bread cost 3 dollars each, and the shop takes 50 percent off the total. What is the price after the discount, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "5",
+   "samples": [
+    {
+     "text": "After the discount, the price of the loaves of bread is 3 dollars each, for a total of 3 * 50/100 = 15 dollars. The answer is 15 dollars.",
+     "final": "15",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "2 apples cost 2 dollars each, and the shop takes 25 percent off the total. What is the price after the discount, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "The price after the discount is 2 dollars + 25 percent of 2 apples = 3 dollars. That gives 3 dollars.",
+     "final": "3",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Yara is taller than Farid. Ana is shorter than Carla. Ana is taller than Sam. Carla is shorter than Farid. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Yara",
+   "samples": [
+    {
+     "text": "The tallest is Carla.",
+     "final": "Carla",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 36400 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "364",
+   "samples": [
+    {
+     "text": "That's 36400 centimetres long.",
+     "final": "36400",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1788 dollars. Its price goes up by 50 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "2682",
+   "samples": [
+    {
+     "text": "Step by step: 1788 / 50 = 366. The new price is 366 dollars.",
+     "final": "366",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 8 January 2006 is a Sunday, what day of the week is 8 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Monday",
+   "samples": [
+    {
+     "text": "8 days later is 9 days. That gives 9 - 8 = 1. Therefore 1.",
+     "final": "1",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Omar is heavier than Hugo. Tara is lighter than Grace. Hugo is heavier than Grace. Who is the lightest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Tara",
+   "samples": [
+    {
+     "text": "The lightest is Tara.",
+     "final": "Tara",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Ana drives 196 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "196000",
+   "samples": [
+    {
+     "text": "196 kilometres is 1960 metres.",
+     "final": "1960",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Grace buys 9 plants at 10 dollars each and pays with a 100-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "The plants cost 9 dollars each, so 10 * 9 = 90 dollars. The change is 90 - 10 = 80 dollars.",
+     "final": "80",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 23 May 2004 to 15 June 2004? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "23",
+   "samples": [
+    {
+     "text": "There are 31 days between 23 May 2004 and 15 June 2004.",
+     "final": "2004",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 25 March 2006. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "Today is 25 March 2006. After the 25th, 31 days are left.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 6 August 2009 is a Thursday, what day of the week is 13 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Wednesday",
+   "samples": [
+    {
+     "text": "13 days later: 14 August 2009. That gives 14 days.",
+     "final": "14",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 17 January 2021 is a Sunday, what day of the week is 28 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Sunday",
+   "samples": [
+    {
+     "text": "28 days later is Sunday, so 28 days after 2021-01-28 is Sunday, 2021-01-28.",
+     "final": "-28",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Omar cycles 10 kilometres at a steady 5 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "It takes 10 hours.",
+     "final": "10",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 79 to 213 are divisible by 13? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 13 by looking at its last digit. If it is, then the number is divisible by 13; if it isn't, then it isn't.",
+     "final": "13",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 326. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "870",
+   "samples": [
+    {
+     "text": "Pages 1 to 326 are numbered from 1 to 326, with 1 being the first page and 326 the last. Total digits: 326 + 1 = 327.",
+     "final": "327",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 128 to 250 are divisible by 12? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "The first one is 128; the second is 130; the third is 132; the fourth is 134; the fifth is 136; the sixth is 138; the seventh is 140; the eighth is 142; the ninth is 144; the tenth is 148; the eleventh is 150; the twelfth is 152; the thirteenth is 154; the fourteenth is 158; the fifteenth is 160; the sixteenth is 162; the seventeenth is 164; the eighteenth is 166; the nineteenth is 168; the twentieth",
+     "final": "168",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben is heavier than Vik. Vik is heavier than Elena. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Ben",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from heaviest to lightest: Ben > Vik > Elena. The heaviest is at the start of the list.",
+     "final": "list",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira drives 113 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "113000",
+   "samples": [
+    {
+     "text": "113 kilometres is 113 × 0.621371 = 62.1371 metres.",
+     "final": "62.1371",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira is lighter than Jonas. Grace is heavier than Jonas. Dev is heavier than Ana. Kira is heavier than Dev. Who is the lightest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Ana",
+   "samples": [
+    {
+     "text": "The lightest is Ana.",
+     "final": "Ana",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "How many whole numbers from 176 to 308 are divisible by 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "13",
+   "samples": [
+    {
+     "text": "The first one is 176; the last one is 308. From 176 to 308, the difference is 11, which is a multiple of 11. Therefore 176 is a multiple of 11.",
+     "final": "11",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Tara buys 8 books at 12 dollars each and 2 loaves of bread at 2 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "100",
+   "samples": [
+    {
+     "text": "8 books at 12 dollars each come to 12 × 8 = 96 dollars. 2 loaves of bread at 2 dollars each come to 2 × 2 = 4 dollars. Total: 96 + 4 = 102.",
+     "final": "102",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "37 sweets are shared equally among 4 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "1",
+   "samples": [
+    {
+     "text": "4 children can each take 12 sweets. That gives 12 × 4 = 48. Left over 37 are 48 - 37 = 10.",
+     "final": "10",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Wen buys 8 bus tickets at 2 dollars each and pays with a 20-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "The change is 20 dollars.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Yara is heavier than Elena. Elena is heavier than Hugo. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Yara",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira is heavier than Grace. Kira is lighter than Leo. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Leo",
+   "samples": [
+    {
+     "text": "Step by step: Kira is heavier. The heaviest is the one that balances the scale. That one is the one with the bigger mass.",
+     "final": "mass",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "6 candles cost 9 dollars each, and the shop takes 50 percent off the total. What is the price after the discount, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "27",
+   "samples": [
+    {
+     "text": "The price after the discount is 9 * 50/100 = 45.",
+     "final": "45",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 17 March 2017 to 28 April 2017? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "42",
+   "samples": [
+    {
+     "text": "There are 31 days between 17 March 2017 and 28 April 2017.",
+     "final": "2017",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 25 percent of 36? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "25% of 36 is 36.",
+     "final": "36",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 10 April 2011. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "Today is 10 April 2011. How many days are left in the month after today? Think it through step by step, then end with  'Answer: 10 days'",
+     "final": "10",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 130 dollars. Its price goes up by 10 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "143",
+   "samples": [
+    {
+     "text": "10 percent of 130 is 130 * 10/100 = 13. The new price is 130 + 13 = 143.",
+     "final": "143",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "What is 60 percent of 1280? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "768",
+   "samples": [
+    {
+     "text": "60% of 1280 is 1280.",
+     "final": "1280",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Carla buys 6 plants at 7 dollars each and pays with a 50-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "The plants cost 6 dollars each, so 7 - 6 = 1. The change is 50 dollars.",
+     "final": "50",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Tara's scores were 15, 17, 21, and the average of all 4 scores was 19. What was the fourth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "23",
+   "samples": [
+    {
+     "text": "The fourth score is 19.",
+     "final": "19",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 6 parts every 20 minutes. How many parts does it make in 60 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "18",
+   "samples": [
+    {
+     "text": "60 minutes is 20 minutes. Each machine makes 6 parts every 20 minutes, so the total number of parts made is 20 × 60 = 1200.",
+     "final": "1200",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 7, 7 and 7? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "7",
+   "samples": [
+    {
+     "text": "7, 7 and 7 are the average of 7, 7 and 7, which is 15.",
+     "final": "15",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Hugo is heavier than Sam. Hugo is lighter than Kira. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Kira",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from heaviest to lightest: Kira > Hugo > Sam. The heaviest is Kira.",
+     "final": "Kira",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Maya cycles 72 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1930 dollars. Its price goes up by 80 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "3474",
+   "samples": [
+    {
+     "text": "80 percent of 1930 is 1930 × 80/100 = 1440. The new price is 1930 + 1440 = 2560.",
+     "final": "2560",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Tara's scores were 30, 38, 30, and the average of all 4 scores was 33. What was the fourth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "34",
+   "samples": [
+    {
+     "text": "The fourth score is 33.",
+     "final": "33",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Jonas is older than Vik. Ben is older than Jonas. Who is the youngest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Vik",
+   "samples": [
+    {
+     "text": "Step by step: Jonas is older than Vik. Ben is older than Jonas. Who is the youngest? Think it through step by step, then end with  'Answer: 1 <value>'.",
+     "final": "1",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 10 August 2008 to 30 September 2008? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "51",
+   "samples": [
+    {
+     "text": "There are 30 days from 10 August 2008 to 30 September 2008.",
+     "final": "2008",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Wen worked 660 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "11",
+   "samples": [
+    {
+     "text": "660 minutes is 660 / 100 = 66.",
+     "final": "66",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Carla buys 2 tickets at 22 dollars each and 6 candles at 4 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "68",
+   "samples": [
+    {
+     "text": "2 tickets at 22 dollars each come to 22 × 2 = 44 dollars. 6 candles at 4 dollars each come to 6 × 4 = 24 dollars. Total: 44 + 24 = 56.",
+     "final": "56",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 11 December 2009 is a Friday, what day of the week is 40 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Wednesday",
+   "samples": [
+    {
+     "text": "40 days later is on 14 February 2010. That gives 14 days.",
+     "final": "14",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 2 parts every 15 minutes. How many parts does it make in 45 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "2 parts every 15 minutes: 45 minutes / 15 = 20. So 20 parts.",
+     "final": "20",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Hugo is faster than Ben. Quinn is faster than Maya. Kira is faster than Hugo. Ben is faster than Quinn. Who is the slowest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Maya",
+   "samples": [
+    {
+     "text": "Step by step: Quinn is faster than Hugo.",
+     "final": "Hugo",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik buys 6 notebooks at 3 dollars each and 4 books at 30 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "138",
+   "samples": [
+    {
+     "text": "6 notebooks at 3 dollars each come to 30 dollars. 4 books at 30 dollars each come to 90 dollars. Total: 30 + 40 = 90.",
+     "final": "90",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Uma buys 4 mugs at 6 dollars each and pays with a 50-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "26",
+   "samples": [
+    {
+     "text": "The mugs cost 4 × 6 = 24 dollars. The change is 50 - 24 = 26 dollars.",
+     "final": "26",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "A jacket costs 900 dollars. Its price goes up by 20 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1080",
+   "samples": [
+    {
+     "text": "The new price of the jacket is 1000 dollars. Its price has increased by 20 percent. That is 1000 / 20 = 500. The new price is 500 dollars.",
+     "final": "500",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Farid buys 2 notebooks at 7 dollars each and pays with a 20-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "The notebooks cost 2 × 7 = 14 dollars. The change is 20 - 14 = 8.",
+     "final": "8",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya is taller than Rosa. Ben is taller than Maya. Ben is shorter than Iris. Who is the shortest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Rosa",
+   "samples": [
+    {
+     "text": "Iris is shorter than Ben. Ben is shorter than Maya. Maya is shorter than Rosa.",
+     "final": "Rosa",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Ana is slower than Elena. Ben is faster than Sam. Elena is slower than Tara. Sam is faster than Tara. Who is the slowest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Ana",
+   "samples": [
+    {
+     "text": "Ana is slower than Elena. Ben is faster than Sam. Elena is slower than Tara. Sam is faster than Tara. The slowest is Ana.",
+     "final": "Ana",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Jonas is heavier than Leo. Ben is lighter than Leo. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Jonas",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from heaviest to lightest: Jonas > Leo > Ben. The heaviest is Jonas.",
+     "final": "Jonas",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Jonas cycles 12 kilometres at a steady 4 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "It takes 12 hours.",
+     "final": "12",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Farid buys 2 pens at 4 dollars each and 3 notebooks at 8 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "32",
+   "samples": [
+    {
+     "text": "2 pens at 4 dollars each come to 8 dollars. 3 notebooks at 8 dollars each come to 16 dollars. Total: 8 + 16 = 28.",
+     "final": "28",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Dev is heavier than Zoe. Dev is lighter than Jonas. Farid is lighter than Nils. Nils is lighter than Zoe. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Jonas",
+   "samples": [
+    {
+     "text": "The heaviest is Dev.",
+     "final": "Dev",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 86. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "163",
+   "samples": [
+    {
+     "text": "Pages 1 to 86 are numbered from 1 to 86, with 87 being the total.",
+     "final": "87",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Jonas worked 1560 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "26",
+   "samples": [
+    {
+     "text": "1560 minutes is 1560 / 60 = 27.",
+     "final": "27",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Elena cycles 108 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "It takes 108 hours.",
+     "final": "108",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 1 June 2001. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "29",
+   "samples": [
+    {
+     "text": "Today is 1 June 2001. After the 1st, 2001 days are left.",
+     "final": "2001",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 14 January 2001. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "17",
+   "samples": [
+    {
+     "text": "Today is 14 January 2001. After 14 days, 14 hours, 14 minutes, 14 seconds.",
+     "final": "14",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A course runs for 37 weeks and 1 days. How many days is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "260",
+   "samples": [
+    {
+     "text": "37 weeks is 37 days.",
+     "final": "37",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Hugo cycles 84 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "7",
+   "samples": [
+    {
+     "text": "84 kilometres at a steady 12 kilometres per hour takes 8 hours.",
+     "final": "8",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 60 percent of 310? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "186",
+   "samples": [
+    {
+     "text": "60 percent of 310 is 310 × 60/100 = 180.",
+     "final": "180",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Iris buys 8 plants at 19 dollars each and pays with a 200-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "48",
+   "samples": [
+    {
+     "text": "8 plants at 19 dollars each come to 190 dollars. Change from 200 dollars: 200 - 190 = 10.",
+     "final": "10",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 15 percent of 820? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "123",
+   "samples": [
+    {
+     "text": "15 percent of 820 is 820 × 15/100 = 128.",
+     "final": "128",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1890 dollars. Its price goes up by 60 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "3024",
+   "samples": [
+    {
+     "text": "60 percent of 1890 is 1890 * 0.1890 = 2060. The new price is 1890 + 2060 = 3080.",
+     "final": "3080",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik cycles 48 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik worked 1200 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "1200 minutes is 1200 / 60 = 20. Therefore 20 hours.",
+     "final": "20",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "A path is 25500 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "255",
+   "samples": [
+    {
+     "text": "That's 25500 metres long.",
+     "final": "25500",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "7 identical loaves of bread cost 56 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "7 loaves of bread cost 56 dollars altogether. That gives 56 / 7 = 9.",
+     "final": "9",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A course runs for 2 weeks and 1 days. How many days is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "15",
+   "samples": [
+    {
+     "text": "2 weeks is 2 × 7 = 14 days. That gives 14 days.",
+     "final": "14",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 6 parts every 60 minutes. How many parts does it make in 240 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "24",
+   "samples": [
+    {
+     "text": "240 minutes is 240 / 60 = 4 periods of 60 minutes. Each period makes 6 parts, so 4 × 60 = 240.",
+     "final": "240",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 293. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "771",
+   "samples": [
+    {
+     "text": "Pages 1 to 293 are numbered from 1 to 293, with 293 total.",
+     "final": "293",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 19 December 2006 is a Tuesday, what day of the week is 9 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Thursday",
+   "samples": [
+    {
+     "text": "9 days later: 14 December 2006. That gives Tuesday, so 9 days after 14 December 2006 is Monday.",
+     "final": "2006",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 330. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "882",
+   "samples": [
+    {
+     "text": "Pages 1–9: 9, 8, 7, 6, 5, 4, 3, 2, 1.",
+     "final": "1",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Farid worked 1680 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "28",
+   "samples": [
+    {
+     "text": "1680 minutes is 1680 / 60 = 30.",
+     "final": "30",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Carla cycles 32 kilometres at a steady 4 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "It takes 32 hours: 32 × 4 = 128.",
+     "final": "128",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 19000 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "190",
+   "samples": [
+    {
+     "text": "19000 centimetres is 19000 metres.",
+     "final": "19000",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 6 May 2014 is a Tuesday, what day of the week is 11 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Saturday",
+   "samples": [
+    {
+     "text": "11 days later is Tuesday, so 11 days after 6 May 2014 is Tuesday.",
+     "final": "2014",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Sam cycles 108 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "It takes 108 hours: 12 / 100 = 12.",
+     "final": "12",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 42200 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "422",
+   "samples": [
+    {
+     "text": "That's 42200 centimetres long.",
+     "final": "42200",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 98. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "187",
+   "samples": [
+    {
+     "text": "Pages 1–9: 9, 8, 7, 6, 5, 4, 3, 2, 1. Total: 98.",
+     "final": "98",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 101 to 176 are divisible by 7? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "11",
+   "samples": [
+    {
+     "text": "The first multiple of 7 is 101, so the answer is 101. The second multiple of 7 is 176, so the answer is 176.",
+     "final": "176",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 11 February 2012 to 8 April 2012? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "57",
+   "samples": [
+    {
+     "text": "There are 31 days between 11 February 2012 and 8 April 2012.",
+     "final": "2012",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 41 to 87 are divisible by 4? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "11",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 4: 41 is divisible by 4, so the answer is 'Yes'.",
+     "final": "4",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 13, 15, 21 and 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "15",
+   "samples": [
+    {
+     "text": "The average of 13, 15, 21 and 11 is 13 + 15 + 21 + 11 = 45.",
+     "final": "45",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 193 to 241 are divisible by 12? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "The first one is 193; the second is 241. From 193 to 241, the difference is 12. Therefore 12.",
+     "final": "12",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Nils is shorter than Priya. Priya is shorter than Wen. Nils is taller than Ben. Ben is taller than Grace. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Wen",
+   "samples": [
+    {
+     "text": "The tallest is Grace.",
+     "final": "Grace",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A shirt comes in 8 colours and 9 sizes. How many different colour-and-size combinations are there? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "72",
+   "samples": [
+    {
+     "text": "There are 8 × 9 = 72 different colour-and-size combinations.",
+     "final": "72",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Farid buys 3 notebooks at 3 dollars each and 3 apples at 2 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "15",
+   "samples": [
+    {
+     "text": "3 notebooks at 3 dollars each come to 9 dollars. 3 apples at 2 dollars each come to 5 dollars. Total: 9 + 5 = 13.",
+     "final": "13",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 350. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "942",
+   "samples": [
+    {
+     "text": "Pages 1–9: 9, 8, 7, 6, 5, 4, 3, 2, 1.",
+     "final": "1",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 7 to 117 are divisible by 3? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "37",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 3: 7.",
+     "final": "7",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A course runs for 4 weeks and 3 days. How many days is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "31",
+   "samples": [
+    {
+     "text": "4 weeks is 4 × 7 = 28 days. That gives 28 days.",
+     "final": "28",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 14 December 2013. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "17",
+   "samples": [
+    {
+     "text": "Today is 14 December 2013. After today, 14 days are left.",
+     "final": "14",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 5 percent of 1320? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "66",
+   "samples": [
+    {
+     "text": "5 percent of 1320 is 1320 * 0.05.",
+     "final": "0.05",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 18 March 2010. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "13",
+   "samples": [
+    {
+     "text": "Today is 18 March 2010. After the 18th, 31 days are left.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 25, 24 and 14? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "21",
+   "samples": [
+    {
+     "text": "The average of 25, 24 and 14 is 25.",
+     "final": "25",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Leo worked 2040 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "34",
+   "samples": [
+    {
+     "text": "That comes to 2040 minutes.",
+     "final": "2040",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 1860 shops. The number fell by 30 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1302",
+   "samples": [
+    {
+     "text": "1860 - 30/100 = 1830. The number of shops is now 1830.",
+     "final": "1830",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 20 percent of 1260? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "252",
+   "samples": [
+    {
+     "text": "20% of 1260 is 1260 × 0.20 = 264.",
+     "final": "264",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik is slower than Sam. Hugo is faster than Sam. Who is the fastest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Hugo",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from fastest to slowest using each statement: Vik > Sam > Hugo. The fastest is at the start of the list.",
+     "final": "list",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 238. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "606",
+   "samples": [
+    {
+     "text": "Pages 1 to 238 are numbered from 1 to 238, with 1 being the first page and 238 the last. Total digits: 238 - 1 = 237.",
+     "final": "237",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Farid buys 6 loaves of bread at 5 dollars each and pays with a 50-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "The change is 50 dollars.",
+     "final": "50",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Iris buys 5 bus tickets at 5 dollars each and 1 loaf of bread at 5 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "30",
+   "samples": [
+    {
+     "text": "5 bus tickets at 5 dollars each come to 10 dollars. 1 loaf of bread at 5 dollars each comes to 5 dollars. The total is 10 + 5 = 15 dollars.",
+     "final": "15",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 107 to 204 are divisible by 6? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "17",
+   "samples": [
+    {
+     "text": "The first multiple of 6 is 107, so the answer is 107.",
+     "final": "107",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A course runs for 24 weeks and 6 days. How many days is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "174",
+   "samples": [
+    {
+     "text": "24 weeks is 24 × 7 = 176 days. That gives 176 days.",
+     "final": "176",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A flight takes 25 hours and 30 minutes. How many minutes is that in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "1530",
+   "samples": [
+    {
+     "text": "25 hours and 30 minutes is 25 + 30 = 55. That gives 55 minutes.",
+     "final": "55",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 81 to 116 are divisible by 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "The first multiple of 11 that is divisible by 81 is 81; the last one is 116. From 81 to 116, the difference is 81 - 116 = 66. That gives 66.",
+     "final": "66",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik's scores were 13, 26, 18, 10, and the average of all 5 scores was 18. What was the fifth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "23",
+   "samples": [
+    {
+     "text": "The fifth score is 10. The average of all 5 scores is 18.",
+     "final": "18",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "48 sweets are shared equally among 9 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "48 / 9 = 5. That leaves 5 over.",
+     "final": "5",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 14 to 115 are divisible by 11? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "The first multiple of 11 is 11, which is divisible by 11: 11 × 11 = 122. The second multiple of 11 is 123, which is also divisible by 11: 123 + 122 = 222. The last multiple of 11 is 223, which is also divisible by 11: 223 + 222 = 422. Therefore, the answer is 422.",
+     "final": "422",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 5 percent of 520? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "26",
+   "samples": [
+    {
+     "text": "That comes to 520 × 0.05 = 280. That gives 280.",
+     "final": "280",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Omar buys 4 apples at 2 dollars each and pays with a 20-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "12",
+   "samples": [
+    {
+     "text": "The apples cost 4 dollars, so 20 dollars.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 45, 35, 21, 25 and 19? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "29",
+   "samples": [
+    {
+     "text": "The average of 45, 35, 21, 25 and 19 is 25.",
+     "final": "25",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "6 identical bus tickets cost 48 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "6 identical bus tickets cost 48 dollars altogether. That gives 48 / 6 = 8.",
+     "final": "8",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Today is 10 August 2018. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "21",
+   "samples": [
+    {
+     "text": "Today is 10 August 2018. After the 10th, 11 days are left.",
+     "final": "11",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 3 parts every 10 minutes. How many parts does it make in 40 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "12",
+   "samples": [
+    {
+     "text": "40 minutes is 40 / 10 = 4. Therefore, the machine makes 4 parts in 40 minutes.",
+     "final": "40",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya buys 3 pens at 3 dollars each and 2 notebooks at 9 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "27",
+   "samples": [
+    {
+     "text": "3 pens at 3 dollars each come to 9 dollars.",
+     "final": "9",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben buys 6 pens at 3 dollars each and 4 mugs at 11 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "62",
+   "samples": [
+    {
+     "text": "6 pens at 3 dollars each come to 3 * 3 = 9 dollars. 4 mugs at 11 dollars each come to 4 * 11 = 44 dollars. Total: 9 + 44 = 56 dollars.",
+     "final": "56",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Hugo buys 2 candles at 4 dollars each and 3 bus tickets at 6 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "26",
+   "samples": [
+    {
+     "text": "2 candles at 4 dollars each come to 8 dollars. 3 bus tickets at 6 dollars each come to 12 dollars. Total: 8 + 12 = 24.",
+     "final": "24",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1224 dollars. Its price goes up by 75 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "2142",
+   "samples": [
+    {
+     "text": "75 percent of 1224 is 1224 * 75/100 = 786. The new price is 1224 + 786 = 2004.",
+     "final": "2004",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 776 dollars. Its price goes up by 75 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1358",
+   "samples": [
+    {
+     "text": "776 * 0.75 = 542. The new price is 542 dollars.",
+     "final": "542",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Dev buys 7 mugs at 11 dollars each and 5 notebooks at 8 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "117",
+   "samples": [
+    {
+     "text": "7 mugs at 11 dollars each come to 7 × 11 = 72 dollars. 5 notebooks at 8 dollars each come to 5 × 8 = 32 dollars. Total: 72 + 32 = 54 dollars.",
+     "final": "54",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 1016 shops. The number fell by 25 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "762",
+   "samples": [
+    {
+     "text": "The number of shops fell by 25 percent. That gives 1016 - 25/100 = 816. That gives 816.",
+     "final": "816",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 140 to 244 are divisible by 13? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "The first one is 140; the last one is 244. From 140 to 244, the difference is 13, which is divisible by 13.",
+     "final": "13",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 57 to 135 are divisible by 3? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "27",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 3: 57 is not, so the answer is 'No'.",
+     "final": "57",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1140 dollars. Its price goes up by 5 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1197",
+   "samples": [
+    {
+     "text": "Step by step: 1140 * 0.5 = 620. The new price is 620 dollars.",
+     "final": "620",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "29 people at a meeting each shake hands once with every other person. How many handshakes is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "406",
+   "samples": [
+    {
+     "text": "Each person shakes hands with every other person 29 times. That gives 29 × 3 = 83 handshakes.",
+     "final": "83",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Grace's scores were 36, 40, and the average of all 3 scores was 34. What was the third score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "26",
+   "samples": [
+    {
+     "text": "The third score is 34.",
+     "final": "34",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Rosa is taller than Sam. Sam is taller than Ana. Omar is taller than Rosa. Omar is shorter than Carla. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Carla",
+   "samples": [
+    {
+     "text": "The tallest is Omar.",
+     "final": "Omar",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 255 dollars. Its price goes up by 60 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "408",
+   "samples": [
+    {
+     "text": "The new price of the jacket is 275 dollars.",
+     "final": "275",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 822 shops. The number fell by 50 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "411",
+   "samples": [
+    {
+     "text": "50 percent of 822 is 804. The number of shops is 804 - 50 percent of 822 = 646. That gives 646 shops.",
+     "final": "646",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 6 parts every 60 minutes. How many parts does it make in 300 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "30",
+   "samples": [
+    {
+     "text": "That comes to 300 / 60 = 5. So the machine makes 5 parts in 300 minutes.",
+     "final": "300",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 111 to 220 are divisible by 12? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "9",
+   "samples": [
+    {
+     "text": "The first multiple of 12 that is divisible by 12 is 12; the last one is 220. From 111 to 220, 12 is between 111 and 220, so the answer is 12.",
+     "final": "12",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 69. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "129",
+   "samples": [
+    {
+     "text": "Pages 1–9: 9.",
+     "final": "9",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 26 August 2005 to 7 September 2005? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "12",
+   "samples": [
+    {
+     "text": "There are 31 days between 26 August 2005 and 7 September 2005.",
+     "final": "2005",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Wen buys 8 loaves of bread at 4 dollars each and 5 tickets at 29 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "177",
+   "samples": [
+    {
+     "text": "8 loaves of bread at 4 dollars each come to 8 dollars. 5 tickets at 29 dollars each come to 29 dollars. Total: 8 + 5 = 11.",
+     "final": "11",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 20 July 2018 to 12 September 2018? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "54",
+   "samples": [
+    {
+     "text": "There are 31 days between 20 July 2018 and 12 September 2018.",
+     "final": "2018",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A shirt comes in 10 colours and 9 sizes. How many different colour-and-size combinations are there? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "90",
+   "samples": [
+    {
+     "text": "There are 10 colours and 9 sizes: 10 × 9 = 90. Therefore 90.",
+     "final": "90",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Dev is older than Farid. Dev is younger than Omar. Who is the youngest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Farid",
+   "samples": [
+    {
+     "text": "Dev is younger than Farid. Omar is older than Dev. That gives Dev.",
+     "final": "Dev",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 2 January 2013 to 26 February 2013? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "55",
+   "samples": [
+    {
+     "text": "There are 31 days between 2 January 2013 and 26 February 2013.",
+     "final": "2013",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Priya drives 225 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "225000",
+   "samples": [
+    {
+     "text": "225 kilometres is 225 × 1.60934, which is 3.848 metres.",
+     "final": "3.848",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ana buys 6 loaves of bread at 3 dollars each and 3 plants at 11 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "51",
+   "samples": [
+    {
+     "text": "6 loaves of bread at 3 dollars each come to 3 × 3 = 9 dollars. 3 plants at 11 dollars each come to 3 × 11 = 33 dollars. The total is 9 + 33 = 47 dollars.",
+     "final": "47",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Nils drives 158 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "158000",
+   "samples": [
+    {
+     "text": "158 kilometres is 158,000 metres.",
+     "final": "158000",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "A jacket costs 120 dollars. Its price goes up by 30 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "156",
+   "samples": [
+    {
+     "text": "The new price of the jacket is 120 * 0.30 = 36.",
+     "final": "36",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A shirt comes in 8 colours and 5 sizes. How many different colour-and-size combinations are there? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "40",
+   "samples": [
+    {
+     "text": "There are 8 × 5 = 32 different colour-and-size combinations.",
+     "final": "32",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben worked 1080 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "18",
+   "samples": [
+    {
+     "text": "1080 minutes is 1080 / 60 = 180. Therefore 180 hours.",
+     "final": "180",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben is younger than Farid. Sam is younger than Ben. Who is the oldest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Farid",
+   "samples": [
+    {
+     "text": "The oldest is Sam.",
+     "final": "Sam",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Carla buys 7 tickets at 12 dollars each and 6 mugs at 10 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "144",
+   "samples": [
+    {
+     "text": "7 tickets at 12 dollars each come to 12 * 7 = 84 dollars. 6 mugs at 10 dollars each come to 6 * 10 = 60 dollars. Total: 84 + 60 = 104 dollars.",
+     "final": "104",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "35 sweets are shared equally among 7 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "0",
+   "samples": [
+    {
+     "text": "7 children can each take 15 sweets. That leaves 30. Divide 30 by 7: 4. That gives 4.",
+     "final": "4",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 1 May 2017 to 12 June 2017? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "42",
+   "samples": [
+    {
+     "text": "There are 31 days between 1 May 2017 and 12 June 2017.",
+     "final": "2017",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben buys 7 bus tickets at 4 dollars each and 2 plants at 12 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "52",
+   "samples": [
+    {
+     "text": "7 bus tickets at 4 dollars each come to 7 * 4 = 24 dollars. Plants at 12 dollars each come to 12 * 12 = 144 dollars. Total: 24 + 144 = 272 dollars.",
+     "final": "272",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "42 sweets are shared equally among 4 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "4 children can each take 20 sweets. That gives 40. Left over: 20 - 40 = 8.",
+     "final": "8",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Iris buys 7 loaves of bread at 2 dollars each and pays with a 20-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "The change is 20 dollars.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 10 percent of 1500? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "150",
+   "samples": [
+    {
+     "text": "10% of 1500 is 1500 × 0.10 = 150.",
+     "final": "150",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "A jacket costs 1390 dollars. Its price goes up by 30 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1807",
+   "samples": [
+    {
+     "text": "The new price of the jacket is 1420 dollars.",
+     "final": "1420",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "4 identical notebooks cost 40 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "4 notebooks cost 40 dollars altogether. That gives 40 / 4 = 12.",
+     "final": "12",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 11 May 2008. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "May 2008 has 31 days. After the 11th, there are 30 days left.",
+     "final": "30",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 835 shops. The number fell by 60 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "334",
+   "samples": [
+    {
+     "text": "60 percent of 835 is 835 × 60/100 = 460. The number of shops is 835 - 460 = 320.",
+     "final": "320",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik cycles 36 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 94 to 200 are divisible by 3? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "35",
+   "samples": [
+    {
+     "text": "The first multiple of 3 at or after 94 is 100; the last at or before 200 is 199. From 100 to 200, the difference is 199 - 100 = 189. That gives 189 as the answer.",
+     "final": "189",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "3 identical loaves of bread cost 18 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "3 loaves of bread cost 18 dollars altogether. That gives 18 / 3 = 6.",
+     "final": "6",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Omar buys 6 tickets at 25 dollars each and pays with a 200-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "50",
+   "samples": [
+    {
+     "text": "The change is 200 dollars.",
+     "final": "200",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Wen cycles 30 kilometres at a steady 10 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "It takes 30 hours.",
+     "final": "30",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "70 sweets are shared equally among 5 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "0",
+   "samples": [
+    {
+     "text": "5 children can each take 15 sweets. That leaves 70 left over.",
+     "final": "70",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 44100 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "441",
+   "samples": [
+    {
+     "text": "That's 44100 centimetres long.",
+     "final": "44100",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Carla buys 7 bus tickets at 6 dollars each and 4 loaves of bread at 2 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "50",
+   "samples": [
+    {
+     "text": "7 bus tickets at 6 dollars each come to 7 * 6 = 42 dollars. 4 loaves of bread at 2 dollars each come to 42 * 2 = 84 dollars. Total: 42 + 84 = 108 dollars.",
+     "final": "108",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 10 August 2008 is a Sunday, what day of the week is 32 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Thursday",
+   "samples": [
+    {
+     "text": "32 days later: 31 August 2010. That gives 31 days.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya is taller than Yara. Maya is shorter than Carla. Yara is taller than Leo. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Carla",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from tallest to shortest: Leo > Maya > Yara > Carla. The tallest is Leo, then Maya, Yara, and Carla.",
+     "final": "Carla",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Wen's scores were 19, 14, 11, and the average of all 4 scores was 16. What was the fourth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "The fourth score is 16.",
+     "final": "16",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "4 identical pens cost 52 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "13",
+   "samples": [
+    {
+     "text": "4 pens cost 52 dollars altogether. One costs 52 dollars.",
+     "final": "52",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Farid is lighter than Omar. Quinn is lighter than Farid. Quinn is heavier than Vik. Who is the heaviest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Omar",
+   "samples": [
+    {
+     "text": "Step by step: Put them in order from heaviest to lightest: Quinn > Vik > Farid > Quinn. The heaviest is Quinn.",
+     "final": "Quinn",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira drives 253 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "253000",
+   "samples": [
+    {
+     "text": "253 kilometres is 253 × 1.60934, which is 396.5 metres.",
+     "final": "396.5",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Rosa buys 6 tickets at 33 dollars each and 2 notebooks at 8 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "214",
+   "samples": [
+    {
+     "text": "6 tickets at 33 dollars each come to 12 dollars. 2 notebooks at 8 dollars each come to 16 dollars. Total: 12 + 16 = 28.",
+     "final": "28",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 7 parts every 30 minutes. How many parts does it make in 120 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "28",
+   "samples": [
+    {
+     "text": "120 minutes is 120 / 30 = 30. So the machine makes 30 parts in 120 minutes.",
+     "final": "120",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 9 March 2020 is a Monday, what day of the week is 31 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Thursday",
+   "samples": [
+    {
+     "text": "31 days later: 31 days after 9 March 2020 is a Monday.",
+     "final": "2020",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Rosa is shorter than Zoe. Leo is shorter than Uma. Rosa is taller than Uma. Jonas is taller than Zoe. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Jonas",
+   "samples": [
+    {
+     "text": "The tallest is Jonas.",
+     "final": "Jonas",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "A course runs for 40 weeks and 2 days. How many days is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "282",
+   "samples": [
+    {
+     "text": "40 weeks is 40 × 7 = 280 days. Add the 2 days: 280 + 2 = 282. That gives 282 days.",
+     "final": "282",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Farid is taller than Ana. Rosa is shorter than Maya. Rosa is taller than Farid. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Maya",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira is faster than Maya. Maya is faster than Nils. Who is the slowest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Nils",
+   "samples": [
+    {
+     "text": "That isn't in the question.",
+     "final": "question",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya is shorter than Sam. Ben is shorter than Kira. Kira is shorter than Maya. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Sam",
+   "samples": [
+    {
+     "text": "The tallest is Maya. Kira is shorter than Maya by 1.5 cm.",
+     "final": "1.5",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 41, 52, 27, 25 and 45? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "38",
+   "samples": [
+    {
+     "text": "The average of 41, 52, 27, 25 and 45 is 25.",
+     "final": "25",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Grace drives 141 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "141000",
+   "samples": [
+    {
+     "text": "141 kilometres is 141,000 metres.",
+     "final": "141000",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Maya's scores were 23, 11, and the average of all 3 scores was 18. What was the third score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "The third score is 18.",
+     "final": "18",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 16, 31, 22 and 27? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "24",
+   "samples": [
+    {
+     "text": "The average of 16, 31, 22 and 27 is 16.",
+     "final": "16",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A sack weighs 13000 grams. How many kilograms is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "13",
+   "samples": [
+    {
+     "text": "13000 grams is 13000 / 1000 = 130.",
+     "final": "130",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 192 to 325 are divisible by 6? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "23",
+   "samples": [
+    {
+     "text": "The first multiple of 6 is 192, which is divisible by 64. The second multiple is 325, which is divisible by 648. The last multiple is 325 + 325, which is 649. Therefore the answer is 649.",
+     "final": "649",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 71. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "133",
+   "samples": [
+    {
+     "text": "Pages 1 to 71 are numbered from 1 to 71, totaling 72.",
+     "final": "72",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 2 March 2014. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "29",
+   "samples": [
+    {
+     "text": "Today is 2 March 2014. After the 2nd, 31 days are left.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A town had 275 shops. The number fell by 20 percent. How many shops are there now? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "220",
+   "samples": [
+    {
+     "text": "20 percent of 275 is 275 × 0.20 = 54. That gives 54 shops.",
+     "final": "54",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 25 October 2021 to 9 December 2021? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "45",
+   "samples": [
+    {
+     "text": "There are 31 days from 25 October 2021 to 9 December 2021.",
+     "final": "2021",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "64 sweets are shared equally among 5 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "5 children can each take 12: 64 / 5 = 12. Therefore 12.",
+     "final": "12",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 2 parts every 15 minutes. How many parts does it make in 30 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "2 parts every 15 minutes: 30 minutes / 2 = 15. That gives 15 parts.",
+     "final": "15",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 14 June 2019 to 5 July 2019? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "21",
+   "samples": [
+    {
+     "text": "There are 31 days between 14 June 2019 and 5 July 2019.",
+     "final": "2019",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira buys 8 bus tickets at 5 dollars each and 3 mugs at 13 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "79",
+   "samples": [
+    {
+     "text": "8 bus tickets at 5 dollars each come to 80 dollars. 3 mugs at 13 dollars each come to 30 dollars. Total: 80 + 30 = 100.",
+     "final": "100",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A sack weighs 12000 grams. How many kilograms is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "12",
+   "samples": [
+    {
+     "text": "12000 grams is 12 kilograms.",
+     "final": "12",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Leo worked 1200 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "1200 minutes is 1200 / 60 = 20. Therefore, 20 hours.",
+     "final": "20",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "How many days are there from 11 October 2019 to 1 December 2019? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "51",
+   "samples": [
+    {
+     "text": "There are 31 days between 11 October 2019 and 1 December 2019.",
+     "final": "2019",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 43 to 68 are divisible by 12? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is divisible by 12: 43 is divisible by 12, so the answer is 'Yes'.",
+     "final": "12",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 10000 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "100",
+   "samples": [
+    {
+     "text": "10000 centimetres is 10000 metres.",
+     "final": "10000",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Rosa is younger than Wen. Leo is younger than Grace. Leo is older than Wen. Who is the oldest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Grace",
+   "samples": [
+    {
+     "text": "The oldest is Wen. That gives 21.",
+     "final": "21",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 22300 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "223",
+   "samples": [
+    {
+     "text": "That's 22300 centimetres long.",
+     "final": "22300",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Yara is faster than Ana. Carla is faster than Yara. Who is the fastest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Carla",
+   "samples": [
+    {
+     "text": "Carla is faster than Yara. That gives Carla.",
+     "final": "Carla",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Uma cycles 40 kilometres at a steady 5 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "It takes 40 hours: 40 * 5 = 200.",
+     "final": "200",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 11, 24, 11, 2 and 32? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "16",
+   "samples": [
+    {
+     "text": "The average of 11, 24, 11, 2 and 32 is 11 + 24 + 11 + 2 + 32 = 100.",
+     "final": "100",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "If 5 October 2006 is a Thursday, what day of the week is 33 days later? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "Tuesday",
+   "samples": [
+    {
+     "text": "33 days later: 31 October 2006. That gives 31 days.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A flight takes 13 hours and 15 minutes. How many minutes is that in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "795",
+   "samples": [
+    {
+     "text": "13 hours is 13 × 60 = 840 minutes. Total: 840 + 13 = 960.",
+     "final": "960",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "4 mugs cost 14 dollars each, and the shop takes 25 percent off the total. What is the price after the discount, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "42",
+   "samples": [
+    {
+     "text": "The price after the discount is 14 * 25/100 = 28.",
+     "final": "28",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 23 January 2005 to 15 February 2005? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "23",
+   "samples": [
+    {
+     "text": "There are 31 days between 23 January 2005 and 15 February 2005.",
+     "final": "2005",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 5 parts every 30 minutes. How many parts does it make in 90 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "15",
+   "samples": [
+    {
+     "text": "That comes to 5 parts every 30 minutes: 90 / 30 = 2.",
+     "final": "2",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many days are there from 22 March 2003 to 1 April 2003? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "10",
+   "samples": [
+    {
+     "text": "There are 31 days between 22 March 2003 and 1 April 2003.",
+     "final": "2003",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 15 August 2007. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "16",
+   "samples": [
+    {
+     "text": "Today is 15 August 2007. After the 15th, 20 days are left.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Priya buys 9 notebooks at 5 dollars each and 5 mugs at 14 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "115",
+   "samples": [
+    {
+     "text": "9 notebooks at 5 dollars each come to 90 dollars. 5 mugs at 14 dollars each come to 50 dollars. Total: 90 + 50 = 100.",
+     "final": "100",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Quinn buys 8 apples at 2 dollars each and 6 pens at 4 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "40",
+   "samples": [
+    {
+     "text": "8 apples at 2 dollars each come to 8 dollars. 6 pens at 4 dollars each come to 12 dollars. Total: 8 + 6 = 12.",
+     "final": "12",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Zoe worked 420 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "7",
+   "samples": [
+    {
+     "text": "420 minutes is 420 / 60 = 8. Therefore 8 hours.",
+     "final": "8",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "52 sweets are shared equally among 6 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "4",
+   "samples": [
+    {
+     "text": "Step by step: 6 children can each take 20 sweets, leaving 40. Then 52 - 40 = 12. That gives 12.",
+     "final": "12",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Grace is shorter than Vik. Omar is shorter than Grace. Zoe is taller than Vik. Zoe is shorter than Tara. Who is the shortest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Omar",
+   "samples": [
+    {
+     "text": "Tara is shorter than Zoe.",
+     "final": "Zoe",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Kira drives 168 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "168000",
+   "samples": [
+    {
+     "text": "168 kilometres is 168 × 1.60934, which is 216.5 metres.",
+     "final": "216.5",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1556 dollars. Its price goes up by 50 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "2334",
+   "samples": [
+    {
+     "text": "Step by step: 1556 / 0.50 = 328. The new price is 328 dollars.",
+     "final": "328",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Yara's scores were 38, 34, and the average of all 3 scores was 34. What was the third score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "30",
+   "samples": [
+    {
+     "text": "The third score is 34.",
+     "final": "34",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 360 dollars. Its price goes up by 15 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "414",
+   "samples": [
+    {
+     "text": "15 percent of 360 is 360 * 15/100 = 48. The new price is 360 + 48 = 492.",
+     "final": "492",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Carla is shorter than Dev. Carla is taller than Ana. Jonas is shorter than Sam. Dev is shorter than Jonas. Who is the tallest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Sam",
+   "samples": [
+    {
+     "text": "The tallest is Jonas.",
+     "final": "Jonas",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 14100 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "141",
+   "samples": [
+    {
+     "text": "14100 centimetres is 14100 metres.",
+     "final": "14100",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Quinn is older than Grace. Ben is older than Quinn. Ben is younger than Ana. Grace is older than Yara. Who is the oldest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Ana",
+   "samples": [
+    {
+     "text": "The oldest is Quinn. Yara is the second oldest, and Grace is the third oldest. Yara is younger than Quinn, and Ana is younger than Grace.",
+     "final": "Grace",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Sam cycles 15 kilometres at a steady 5 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "It takes 15 hours.",
+     "final": "15",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik cycles 20 kilometres at a steady 4 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "5",
+   "samples": [
+    {
+     "text": "It takes 20 hours.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya is heavier than Uma. Yara is lighter than Tara. Uma is heavier than Tara. Who is the lightest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Yara",
+   "samples": [
+    {
+     "text": "Tara is the lightest, with a mass of 1000 kg. Uma is heavier, with a mass of 1000 kg.",
+     "final": "1000",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik's scores were 25, 17, 17, and the average of all 4 scores was 24. What was the fourth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "37",
+   "samples": [
+    {
+     "text": "The fourth score is 24.",
+     "final": "24",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya cycles 48 kilometres at a steady 8 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "It takes 48 hours.",
+     "final": "48",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A shirt comes in 8 colours and 8 sizes. How many different colour-and-size combinations are there? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "64",
+   "samples": [
+    {
+     "text": "There are 8 × 8 = 64 different colour-and-size combinations.",
+     "final": "64",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "How many days are there from 28 June 2013 to 17 July 2013? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "19",
+   "samples": [
+    {
+     "text": "There are 31 days between 28 June 2013 and 17 July 2013.",
+     "final": "2013",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 3 parts every 60 minutes. How many parts does it make in 360 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "18",
+   "samples": [
+    {
+     "text": "360 minutes is 60*60 = 3000. So the machine makes 3000 parts in 3000 minutes.",
+     "final": "3000",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 13, 28, 38, 37 and 24? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "28",
+   "samples": [
+    {
+     "text": "The average of 13, 28, 38, 37 and 24 is 13.",
+     "final": "13",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 1090 dollars. Its price goes up by 50 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "1635",
+   "samples": [
+    {
+     "text": "Step by step: 1090 / 50 = 200. The new price is 200 dollars.",
+     "final": "200",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 50 percent of 796? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "398",
+   "samples": [
+    {
+     "text": "796 is 50 percent of 1,000. That gives 500.",
+     "final": "500",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "24 sweets are shared equally among 6 children. How many sweets are left over? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "0",
+   "samples": [
+    {
+     "text": "24 / 6 = 4. Left over: 4.",
+     "final": "4",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben buys 4 apples at 3 dollars each and 6 loaves of bread at 5 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "42",
+   "samples": [
+    {
+     "text": "4 apples at 3 dollars each come to 8 dollars. 6 loaves of bread at 5 dollars each come to 10 dollars. Total: 8 + 10 = 22.",
+     "final": "22",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 15 percent of 1380? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "207",
+   "samples": [
+    {
+     "text": "15 percent of 1380 is 1380 × 0.15 = 1380.",
+     "final": "1380",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Tara buys 7 pens at 2 dollars each and pays with a 20-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "6",
+   "samples": [
+    {
+     "text": "The pens cost 7 dollars, so 20 dollars.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Elena worked 2100 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "35",
+   "samples": [
+    {
+     "text": "2100 minutes is 2100 / 60 = 3600 hours.",
+     "final": "3600",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Today is 15 February 2020. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "14",
+   "samples": [
+    {
+     "text": "Today is 15 February 2020. After the 15th, 20 days are left.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ana is shorter than Zoe. Farid is shorter than Ana. Zoe is shorter than Rosa. Who is the shortest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Farid",
+   "samples": [
+    {
+     "text": "That isn't in the question. It covers arithmetic, not geometry.",
+     "final": "geometry",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A shirt comes in 5 colours and 4 sizes. How many different colour-and-size combinations are there? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "20",
+   "samples": [
+    {
+     "text": "There are 5 colours and 4 sizes: 5 × 4 = 20. That gives 20.",
+     "final": "20",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "Today is 17 February 2018. How many days are left in the month after today? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "date",
+   "answer": "11",
+   "samples": [
+    {
+     "text": "Today is 17 February 2018. After the 17th, 20 days are left.",
+     "final": "20",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ana's scores were 39, 26, 26, and the average of all 4 scores was 31. What was the fourth score? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "33",
+   "samples": [
+    {
+     "text": "The fourth score is 31.",
+     "final": "31",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A flight takes 38 hours and 30 minutes. How many minutes is that in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "2310",
+   "samples": [
+    {
+     "text": "38 hours is 38 × 60 = 2040 minutes. That gives 2040 minutes.",
+     "final": "2040",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "How many whole numbers from 61 to 115 are divisible by 3? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "18",
+   "samples": [
+    {
+     "text": "The first step is to check if the number is composite: it's not divisible by 3. If it is, the next step is to check if the number is prime: it's not prime, so it's not a multiple of 3.",
+     "final": "3",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Uma drives 5 kilometres. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "5000",
+   "samples": [
+    {
+     "text": "That's 5 kilometres.",
+     "final": "5",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Vik is taller than Kira. Vik is shorter than Wen. Wen is shorter than Dev. Who is the shortest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Kira",
+   "samples": [
+    {
+     "text": "The shortest is Dev. That gives Wen.",
+     "final": "Wen",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Quinn cycles 24 kilometres at a steady 12 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "It takes 24 hours.",
+     "final": "24",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 42, 23 and 43? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "36",
+   "samples": [
+    {
+     "text": "The average of 42, 23 and 43 is 42 + 23 + 43 = 100.",
+     "final": "100",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Rosa cycles 10 kilometres at a steady 5 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "It takes 10 hours.",
+     "final": "10",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 15, 15 and 15? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "15",
+   "samples": [
+    {
+     "text": "The average of 15, 15 and 15 is 15.",
+     "final": "15",
+     "ok": true,
+     "worked": false
+    }
+   ],
+   "solved": true
+  },
+  {
+   "prompt": "4 identical apples cost 8 dollars altogether. What does one cost, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "2",
+   "samples": [
+    {
+     "text": "4 identical apples cost 8 dollars altogether. That gives 8 dollars.",
+     "final": "8",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Yara buys 4 notebooks at 7 dollars each and 5 mugs at 6 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "58",
+   "samples": [
+    {
+     "text": "4 notebooks at 7 dollars each come to 40 dollars. 5 mugs at 6 dollars each come to 10 dollars. Total: 40 + 10 = 50.",
+     "final": "50",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A machine makes 4 parts every 20 minutes. How many parts does it make in 40 minutes? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "8",
+   "samples": [
+    {
+     "text": "40 minutes is 20 minutes × 20 = 400. So the machine makes 400 parts in 20 minutes.",
+     "final": "20",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Maya worked 2040 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "34",
+   "samples": [
+    {
+     "text": "Maya worked 2040 minutes. That comes to 2040 × 60 = 12000 minutes. That gives 12000 / 60 = 2000.",
+     "final": "2000",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A path is 47000 centimetres long. How many metres is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "470",
+   "samples": [
+    {
+     "text": "That's 47000 metres long.",
+     "final": "47000",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Jonas buys 4 plants at 5 dollars each and pays with a 50-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "30",
+   "samples": [
+    {
+     "text": "The plants cost 4 dollars each, so 5 * 4 = 12. The change is 50 - 12 = 28.",
+     "final": "28",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is the average of 34, 34, 30, 21 and 16? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "average",
+   "answer": "27",
+   "samples": [
+    {
+     "text": "The average of 34, 34, 30, 21 and 16 is 34.",
+     "final": "34",
+     "ok": false,
+     "worked": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Nils buys 8 notebooks at 6 dollars each and 1 mug at 14 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "62",
+   "samples": [
+    {
+     "text": "8 notebooks at 6 dollars each come to 8 dollars. 1 mug at 14 dollars each come to 14 dollars. Total: 8 + 1 = 9.",
+     "final": "9",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A book's pages are numbered from 1 to 214. How many digits are printed in total? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "count",
+   "answer": "534",
+   "samples": [
+    {
+     "text": "Pages 1 to 214 are printed: 214 - 1 = 213. That gives 213 digits.",
+     "final": "213",
+     "ok": false,
+     "worked": true
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Rosa buys 3 books at 11 dollars each and pays with a 50-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "17",
+   "samples": [
+    {
+     "text": "The books cost 3 × 11 = 33 dollars. The change is 50 - 33 = 17.",
+     "final": "17",
+     "ok": true,
+     "worked": true
+    }
+   ],
+   "solved": true
+  }
+ ]
+}

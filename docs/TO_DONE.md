@@ -22,10 +22,10 @@ rows close; it is the one page to open when asking "what is left?".*
 
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
-| 1.1 | Sep 25 | **Research round 2 running now** (pod `e333vfwcjuo4ej`): SFT-v3 from the base with argue + multi-turn + reasoning seeds, GRPO-5 on self-knowledge + reasoning; bring home, hash-verify, delete the pod | ≈ $10 (cap $15) | Claude |
-| 1.2 | Sep 25–26 | Measure round 2 on the desk: frozen suite, 100-sets, 4-turn smoke, 320-problem reasoning held-out. **Ship only if bluff ≤ 22, answered ≥ ~80, multi-turn clean** | $0 | Claude |
-| 1.3 | Sep 26 | Decide the shipped model: GRPO-3 (current) or round 2; record as D-95; repackage the stick; `facts.json` / model card / ABOUT say the same numbers | $0 | Claude proposes, **Eric decides** |
-| 1.4 | Sep 26 | Optional round 3 if round 2 moves reasoning but costs honesty (one more card session). Stop rule: two rounds without a shipped improvement = freeze | ≈ $10–15 | **Eric** says go |
+| 1.1 | ~~Sep 25~~ DONE | Research round 2 (pod `e333vfwcjuo4ej`, $8.66, deleted): SFT-v3 + GRPO-5 home and hash-verified | $8.66 | Claude |
+| 1.2 | ~~Sep 25~~ DONE | Round 2 measured (D-95): SFT-v3 43/77, GRPO-5 49/84, reasoning 18 → 93–94 of 320, soups 28/81 and 37/81 — **does not ship** | $0 | Claude |
+| 1.3 | ~~Sep 26~~ DONE | Shipped model = GRPO-3 (22 / 81), unchanged; stick current; facts / card / ABOUT agree (D-95) | $0 | Claude |
+| 1.4 | Sep 26 (must be home by Sep 26 evening) | Optional round 3: the full lineage from an SFT that includes the reasoning traces (SFT-v3 recipe → GRPO on D-71 → soup → self-knowledge GRPO), ≈ 3 h. Stop rule: this is the last round; no shipped improvement = freeze on GRPO-3 | ≈ $15 | **Eric** says go, or says freeze |
 | 1.5 | Sep 26 | Freeze: "no further training; the numbers on the box are these." Write D-96 (the freeze) | $0 | **Eric** (one line) |
 
 **Hard checkpoint — Sep 27, ~11:30 AM PT (18:30Z; Eric, 2026-09-25): the build PC is shut down and travels to Las Vegas, then
