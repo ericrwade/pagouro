@@ -64,12 +64,24 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   penalty 1.0, cap, trim = bluff 22 / hedge 6 / answered 81; multi-turn 0 fails.** `facts.json`, model card
   draft 2, D-93 written; commit da037c9; stick repackaged with the new app (`pagouro-1b-grpo3-g-trim`).
   Sleep-window + research spend ≈ $20 of the $100; all-in ≈ $1,850; ≈ $150 left.
-**Open / next:** (1) next SFT-from-base = mix B + argue seed ×20 + the multi-turn seed, self-knowledge
-abstentions at most ×0.2 (or none: GRPO reward only), then GRPO on `grpo_selfknow.jsonl` from that SFT with
-`run_multiturn.py` in the measurement (one card session ≈ $10; plan + price on #2 first, D-54); (2) verified-reasoning
-traces seed (O-45 #2, $0, into that same mix); (3) prebuilt pack index (O-41 needs it; shortens launch); (4) O-47 CLM judge trial on a
-future card session; (5) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (6) O-41 US Code
-pack, O-29/O-31/O-32, TypeSafe key rotation — still Eric's; (7) F13 public flip is Eric's word only.
+- **Late addendum (17:00–19:00Z) — the reasoning lever at $0 (O-45 #3):** `sft/build_reasoning_set.py` = 3,000
+  program-keyed word problems (8 families × 375) with program-written traces (`sft/reasoning_seed_gen.jsonl`);
+  `evals/reasoning_heldout.jsonl` = 320 with zero training overlap; `reasoning` reward in `train_grpo.py`
+  (+1 only when the program confirms the final answer, 160-token samples); `scripts/star_sample.py` measures and
+  harvests. **Measured: GRPO-3 7/200 greedy, +14 with ×4 samples at 0.7 (chance-level), SFT B 6/200** — the 1B
+  answers in one line and works nothing out; STaR harvest retired (27 "kept", 8 with any working). `train_sft.py`
+  takes fractional `--repeat` shares. `scripts/runpod/research2_1b.sh` = SFT-v3 (mix B + argue ×20 + multi-turn +
+  selfknow ×0.2 + reasoning ×0.5) → GRPO-5 on self-knowledge + reasoning. **Proposed on #2 at $3.49/h (≈ $9–11,
+  cap $15), waiting for Eric's "run round 2"** — the classifier blocked an announce-and-proceed post, and that
+  matches what I had told him. App: a timed-out launch now stops its llama-server (an orphan from the stick test
+  was found and killed); ABOUT FAQ "can it reason?" = 7/200. Pack index build measured at 0.36 s for 11 MB —
+  a prebuilt index only matters at O-41 scale (gated on Eric). Stick still carries the 10:21 exe (lacks 41ed584).
+**Open / next:** (1) **Eric: "run round 2"** → rent per the #2 post, `research2_1b.sh`, bring home, evals
+(frozen + 100-sets + `run_multiturn.py` + `star_sample.py --set evals/reasoning_heldout.jsonl`), ship only if
+honesty holds; (2) repackage the stick when the next app change lands (41ed584 pending); (3) O-47 CLM judge
+trial on a future card session; (4) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (5) O-41
+US Code pack (+ the on-disk index it needs), O-29/O-31/O-32, TypeSafe key rotation — still Eric's; (6) F13
+public flip is Eric's word only.
 
 ---
 

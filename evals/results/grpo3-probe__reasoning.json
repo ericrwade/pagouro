@@ -1,0 +1,124 @@
+{
+ "label": "grpo3-probe",
+ "model": "data/gguf_1b/pagouro-1b-grpo3-q8_0.gguf",
+ "summary": {
+  "prompts": 8,
+  "solved": 0,
+  "per_family": {
+   "convert": "0/1",
+   "order": "0/1",
+   "percent": "0/2",
+   "rate": "0/1",
+   "shop": "0/3"
+  },
+  "samples": 1,
+  "temperature": 0.0,
+  "seconds": 3
+ },
+ "rows": [
+  {
+   "prompt": "Ben worked 1020 minutes this week. How many hours is that? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "convert",
+   "answer": "17",
+   "samples": [
+    {
+     "text": "1020 minutes is 10 hours.",
+     "final": "10",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "2 pens cost 3 dollars each, and the shop takes 50 percent off the total. What is the price after the discount, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "3",
+   "samples": [
+    {
+     "text": "The price after the discount is 3 * 50/100 = 3 * 100 = 300.",
+     "final": "300",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Hugo buys 7 tickets at 13 dollars each and 6 mugs at 10 dollars each. How much is that in total, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "151",
+   "samples": [
+    {
+     "text": "The total cost for 7 tickets and 6 mugs is $13.",
+     "final": "13",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Uma cycles 40 kilometres at a steady 8 kilometres per hour. How many hours does it take? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "rate",
+   "answer": "5",
+   "samples": [
+    {
+     "text": "It takes 40 hours.",
+     "final": "40",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Quinn is faster than Maya. Maya is faster than Wen. Ana is faster than Quinn. Who is the slowest? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "order",
+   "answer": "Wen",
+   "samples": [
+    {
+     "text": "Ana is the slowest, who is the fastest. value 'Ana is the slowest, who is the fastest.' end result 'Ana is the slowest, who is the fastest.'.",
+     "final": "fastest",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "Ben buys 2 pens at 3 dollars each and pays with a 20-dollar note. How much change is due, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "shop",
+   "answer": "14",
+   "samples": [
+    {
+     "text": "You should have 20 dollars to pay for the pens. Pens are valued at $20 each, so your payment is $20 * 3 = $60.",
+     "final": "60",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "A jacket costs 40 dollars. Its price goes up by 25 percent. What is the new price, in dollars? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "50",
+   "samples": [
+    {
+     "text": "The new price of the jacket is $100.",
+     "final": "100",
+     "ok": false
+    }
+   ],
+   "solved": false
+  },
+  {
+   "prompt": "What is 25 percent of 120? Think it through step by step, then end with 'Answer: <value>'.",
+   "family": "percent",
+   "answer": "30",
+   "samples": [
+    {
+     "text": "25% of 120 is 12. 'Answer: 120'.",
+     "final": "120",
+     "ok": false
+    }
+   ],
+   "solved": false
+  }
+ ]
+}
