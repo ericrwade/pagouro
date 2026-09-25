@@ -2359,6 +2359,30 @@ multi-turn seeds) = 37 / 70 — the 1,050 self-knowledge abstention rows over-ab
 SFT (retire from the mix; keep as GRPO reward); GRPO-4 from it 42 / 74. New rule: `evals/run_multiturn.py`
 is part of every candidate's measurement. Sleep-window + research spend ≈ $20 of the $100.
 
+### O-48 — Pagouro as a local model for agent frameworks (Eric: "will I be able to access Pagouro in Hermes Agent … can we package some starter skills")
+**2026-09-25.** Yes, by the one protocol they all speak: OpenAI chat-completions at a base URL. Read from the
+projects themselves: Hermes Agent takes `OPENAI_BASE_URL`/`OPENAI_API_KEY`/`HERMES_MODEL`; OpenClaw takes
+`models.providers.<name>.baseUrl` with `api: "openai-completions"`; IronClaw takes `LLM_BACKEND=openai_compatible`
++ `LLM_BASE_URL`. Hermes, OpenClaw and Venice's skill runtime all read the agentskills.io `SKILL.md` format, so
+one skill folder serves three; IronClaw uses WASM tools/MCP and gets the config snippet. Venice AI itself is a
+hosted inference API (their models), so Pagouro cannot run *inside* it — it could only be the large model in a
+pair. **Built:** `pagouro.exe --serve [--port 8484]` — a stdlib HTTP endpoint in front of the harness: model
+`pagouro` = router → tools → packs → memory → payload cap → loop trim → honesty notices; `pagouro-raw` = the bare
+weights proxied to llama-server. Bound to 127.0.0.1 only. Stateless like the API (the client sends the whole
+conversation; client system prompts are ignored — the harness owns its system prompt, D-50); greedy by design
+(`temperature` ignored, D-93 numbers); `pagouro_careful: true` runs the vote; `pagouro_tools: false` gives a
+plain grounded turn; `stream: true` is honoured with one chunk; the response carries a `pagouro` object (tool,
+notes). Tested: calc → 391; a pack question streams a Bastiat quote; multi-turn context carried; raw reachable.
+**Skills** in `agents/` (shipped on the stick): `pagouro-connect` (start, endpoint, per-framework config, the
+enforced defaults, what it is good and bad at with the measured numbers) and `pagouro-long-document` (interview
+the user → fixed outline → chunks ≤ ~900 words → every chunk × question until done, resumable → write-up; runner
+`scripts/chunk_review.py`; worked example: the book). **The design rule:** the 1B *finds and quotes* (tool-result
+fidelity 10/10) and every quote is checked against the chunk — sentences not in the passage are dropped and
+counted, so the run's own bluff rate is visible; the agent's larger model does the interviewing, judgement and
+synthesis. Found on the way: an enumeration runaway ("1972-1973-1974-…") inside one sentence that the D-93 trim
+missed; the trim now cuts the sentence a run of six or more same-shaped items sits in; the 100-sets re-measured
+after the change. Not built: a Pagouro MCP server (would suit IronClaw and Claude Code; small; post-release).
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
