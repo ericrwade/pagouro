@@ -2259,6 +2259,20 @@ waits. Sequencing: GRPO-2 on the card while the desk repackages the stick with s
 self-knowledge question set; the self-knowledge sampling rides the same pod after GRPO-2 (~$2) so no
 second rental is needed.
 
+### O-46 — "Someone could 70B this" / a token raise for a 30B–100B: what it would cost and what the Pagouro of it would be (Eric, 2026-09-25)
+**Arithmetic from our measured rate (33.6 % of H100 peak; a big job 35–40 %), compute-optimal ~20
+tokens/param, H100 at $2.7–3.5/h:** 7B / 140B tokens ≈ 12k GPU-h ≈ $35–45k, 2 weeks on 32 cards, q4
+4 GB, a laptop model; 30B / 600B ≈ 90k GPU-h ≈ $250–320k, q4 18 GB; 70B / 1.4T ≈ 500k GPU-h ≈
+$1.4–1.8M, q4 40 GB, needs a 64 GB workstation; **100B / 2T ≈ 950k GPU-h ≈ $2.6–3.3M compute, 8 weeks
+on 512 cards, q4 ≈ 60 GB (q8 ≈ 105 GB), needs ~100 GB RAM** — no longer "any machine". Caveats: (1)
+2T licensed pre-2022 tokens is the hard third (Common Pile + pre-2022 FineWeb-Edu make it reachable;
+the per-row ledger is months of work); (2) `train.py` is single-machine data-parallel — 30B+ needs
+sharded/multi-node training (off-the-shelf) and a team for the failures a 512-card run will have;
+(3) the recipe (ledger, dated corpus, evals, box wording D-50) is size-independent — that is what
+"someone could 70B this" means, and it is what the 1B proves. The 7B is the interesting middle. The
+raise itself is Eric's world and Eric's call; the only non-negotiable is that the measured numbers go
+on the box.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
