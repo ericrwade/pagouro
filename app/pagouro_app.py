@@ -48,6 +48,8 @@ import documents as _docs  # noqa: E402  (D-79: PDF / Word / text documents, ext
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
+DECODE_DRY_MULTIPLIER = 0.0      # D-93 candidate: llama.cpp DRY sampler (penalises repeated SEQUENCES, leaves the stop token alone)
+DECODE_DRY_ALWAYS = False
 DECODE_REPEAT_PENALTY = 1.25     # D-91/D-92: llama.cpp repetition penalty for FREE answers (no tool result or pack hit in the
                                  # turn). GRPO-trained 1B models loop their abstentions at 1.0 and are coherent at 1.25;
                                  # answers that must COPY from a tool result or a pack always decode at 1.0, because a
@@ -233,7 +235,8 @@ class Server:
     def chat(self, messages: list[dict], max_tokens: int, grammar: str | None = None,
              temperature: float = 0.3, repeat_penalty: float = 1.0) -> tuple[str, dict]:
         body = {"messages": messages, "max_tokens": max_tokens, "temperature": temperature,
-                "cache_prompt": True, "repeat_penalty": repeat_penalty}
+                "cache_prompt": True, "repeat_penalty": repeat_penalty,
+                "dry_multiplier": DECODE_DRY_MULTIPLIER if repeat_penalty != 1.0 or DECODE_DRY_ALWAYS else 0.0}
         if grammar is not None:
             body["grammar"] = grammar
             body["temperature"] = 0
