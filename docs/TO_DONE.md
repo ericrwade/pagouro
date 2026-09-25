@@ -70,7 +70,7 @@ rows close; it is the one page to open when asking "what is left?".*
 | 5.5 | Oct 1 | F9 optional Ordinal inscription of the manifest text: measure the fee first; skip if silly (D-14 is satisfied by OTS) | ≈ $5–30 if done | **Eric** decides + funds the dedicated wallet |
 | 5.6 | Oct 1 | **F16/F17 wallet:** a dedicated project wallet (Solana/USDC address for the box) — created on Eric's hardware, address only into the repo | $0 | **Eric** |
 | 5.7 | Oct 1 | **F10 Hugging Face:** create `pagouro` org/user, repo `pagouro/pagouro-1.0`: GGUFs, `corpus.json`, eval JSONs, manifest, `.minisig`, `.ots`, model card | $0 | **Eric** creates the account (5 min); Claude uploads (`HF_TOKEN` in `.env`) |
-| 5.8 | Oct 1 | **F10 Arweave:** upload the zip + manifest + signature + ots; log the measured cost (E5) | ≈ $2–10 (AR) | **Eric** funds; Claude uploads |
+| 5.8 | Oct 1 | **F10 Arweave:** upload the zip + manifest + signature + ots via Turbo (turbo.ar.io credits, card or crypto) or a native AR wallet; verify the bytes back from a second gateway by hash; log the measured cost (E5) | ≈ $8–15 at $6–8/GB for a ~1.2 GB zip (+ ~$5 if the q4 file goes up separately) | **Eric** tops up ~$15 of Turbo credits; Claude uploads |
 | 5.9 | Oct 1 | **F10 GitHub Release** `v1.0`: zip, SHA-256, HF + Arweave links, OTS block height. This is "the link" | $0 | Claude drafts, **Eric** publishes |
 | 5.10 | Oct 1 | F17 tip jar: GitHub Sponsors or Ko-fi link + the wallet address in README; price in dollars ("what a card-hour costs") | $0 | **Eric** (accounts) |
 | 5.11 | Oct 2 | **F13 history scan:** `.env`, `My_Claude_Conversation.txt`, `API_KEYS*`, `data/`, `checkpoints/`, `release/` never in history; final `git status` clean | $0 | Claude |
@@ -112,6 +112,6 @@ rows close; it is the one page to open when asking "what is left?".*
 | Item | Amount |
 |---|---|
 | Already spent (RunPod, all runs) | ≈ $1,850 |
-| Left to spend to be done | round 2 ≈ $10 (+ optional round 3 ≈ $10–15) · Arweave ≈ $2–10 · optional inscription ≈ $5–30 · everything else $0 |
+| Left to spend to be done | round 2 ≈ $10 (+ optional round 3 ≈ $10–15) · Arweave ≈ $8–15 · optional inscription ≈ $5–30 · everything else $0 |
 | Eric's hands-on time | ≈ 6–8 hours total across 2.2, 3.1, 4.6, 5.2, 5.6–5.13, 6.1–6.3, 7.1–7.2 |
 | Earliest realistic "100 % done" | **Oct 3, 2026**, if the round-2 result is in by Sep 26 and Eric's items land on the dates above |
