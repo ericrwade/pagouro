@@ -76,7 +76,23 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   matches what I had told him. App: a timed-out launch now stops its llama-server (an orphan from the stick test
   was found and killed); ABOUT FAQ "can it reason?" = held-out 18/320 (GRPO-3 greedy; `average` 6/40 the only family above chance). Pack index build measured at 0.36 s for 11 MB —
   a prebuilt index only matters at O-41 scale (gated on Eric). Stick repackaged 10:59 PT with 41ed584 + ABOUT draft 2 (104/104, MANIFEST sha bd666b83…).
-**Open / next:** (1) **Eric: "run round 2"** → rent per the #2 post, `research2_1b.sh`, bring home, evals
+- **Evening addendum 2 (19:00–20:30Z) — round 2 running; Pagouro for agents (O-48); the checklist; QStorage:**
+  Eric: "Run round 2" → pod `e333vfwcjuo4ej` (1×H100 CA-MTL-1, $3.49/h, 19:01Z), base hash matched, SFT-v3 done in
+  10 min, GRPO-5 ≈ 93 s/step → done ≈ 21:45Z, projected ≈ $10.5 (cap $15 = 23:18Z). `docs/TO_DONE.md` = the
+  checklist to 100 % done (date / task / cost / who; earliest Oct 3). Eric asked about Hermes Agent: **yes** —
+  built `pagouro.exe --serve` (OpenAI-compatible endpoint in front of the harness, 127.0.0.1:8484, models
+  `pagouro` / `pagouro-raw`, greedy, stateless, `pagouro_careful`, `pagouro_tools`, `pagouro_passage`, streaming
+  shim) and `agents/` skills (`pagouro-connect`, `pagouro-long-document` + `chunk_review.py`; agentskills.io
+  SKILL.md → Hermes, OpenClaw, Venice's runtime; IronClaw gets the config). First runner design (900-word chunks,
+  "copy verbatim") produced 0/10 usable — off the trained shape; the fix: ~600-char pieces as pack_search hits +
+  a grounding check → chapter 5: 105 calls / 212 s, 28 grounded / 65 no match / 12 ungrounded. Whole book running
+  as the worked example (`runs/book_review.state.json`, ~3 h). Trim now catches enumeration runaways ("1972-1973-…");
+  100-sets re-measured: 22/6/72, 81/12/7 (unchanged). Eric is setting up Quilibrium QStorage/QConsole and wants it
+  as the site (Wix DNS → bucket): fine as front door + D-40 mirror **if HTTPS on pagouro.com works** (to test when
+  the account is live); the page also lives in the repo; GitHub Release stays canonical. `.env` has no Q* keys yet
+  (names agreed: `QSTORAGE_ACCESS_KEY/SECRET_KEY/ENDPOINT/BUCKET`). Serve-mode test process runs on the desk
+  (port 8484) for the book run — stop it before any repackage.
+**Open / next:** (1) **round 2 home** (≈ 21:50Z): `bring home`, hashes, delete pod, `list-pods` [], evals
 (frozen + 100-sets + `run_multiturn.py` + `star_sample.py --set evals/reasoning_heldout.jsonl`), ship only if
 honesty holds; (2) stick is current; (3) O-47 CLM judge
 trial on a future card session; (4) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (5) O-41
