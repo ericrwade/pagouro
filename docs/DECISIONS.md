@@ -2321,6 +2321,17 @@ which is why the niche exists rather than being conceded. Three candidate F12 fi
 `docs/ORIGIN_LEDGER.md` F12 (A for the README, C for the box, session's picks); Eric chooses at release.
 `docs/WHY.md` and `docs/ABOUT.md` already carry the stance and stay as written.
 
+### O-47 — Contrastive Language Models (Kwok et al., 2026, "CLM") as a router, later (Eric: "CLM instead of LLM. Any help to us?")
+**2026-09-25.** CLM is a state→action *chooser* trained contrastively (embed state, score cached action
+embeddings), not a generator — 9× faster than a generative model on computer-use/gaming/tool-calling by
+their post (blog/code not yet read). It cannot replace Pagouro's model (no generation, no citing, no
+abstaining) and CLM-8B is unusable by us (internet-scale data, no provenance). The transferable idea is
+the shape of our **router**: one of six tools or none, now a grammar-constrained JSON generation by the 1B
+(23/24 right, 4/16 spurious). A few-million-parameter contrastive router trained on our own tool seeds
+and skill examples would be milliseconds on CPU and better calibrated. **Not now** — routing is not the
+bottleneck; after the reference shelf (O-41) multiplies the action set (which pack, which document), it
+is. Source: x.com/jackyk02/status/2102905335925424285; code github.com/Contrastive-LM/CLM (licence to check).
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
