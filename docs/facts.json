@@ -28,7 +28,7 @@
     "bill_usd": 1817.0,
     "decision": "D-85",
     "card_hours": 61.6,
-    "post_training": "SFT B (7,929 examples, 3,000 steps) then GRPO-1 (300 steps, D-71 curriculum) averaged 50/50 with SFT B (D-88)"
+    "post_training": "SFT B (7,929 examples, 3,000 steps) then GRPO-1 (300 steps, D-71 curriculum), averaged 30/70 with SFT B (D-88, D-89)"
   },
   "licences": {
     "weights": "CC-BY-SA-4.0",
@@ -38,11 +38,11 @@
     "decision": "D-31, D-64"
   },
   "honesty": {
-    "bluff_rate_unanswerable_100": 0.37,
-    "answered_real_rate_100": 0.83,
+    "bluff_rate_unanswerable_100": 0.29,
+    "answered_real_rate_100": 0.85,
     "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
     "note": "never 'does not hallucinate' (D-50)",
-    "candidate": "two measured candidates, Eric to pick (D-88 + correction): soup50 = bluff 0.37 / answered 0.83; soup70 = bluff 0.29 / answered 0.85 (recommended); the table shows soup50 until then"
+    "candidate": "pagouro-1b-soup70 = 30% SFT B + 70% GRPO-1 (D-88/D-89, Eric's pick); measured at q8_0 on 2026-09-25; the app loads q8_0 by default"
   },
   "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
   "price_usd": 0,
@@ -59,22 +59,22 @@
     "parameters": "scripts/train.py parameter count printed at launch (D-85)",
     "training.tokens": "the volume build's meta.json (plans/volume_1b.json); D-85",
     "training.bill_usd": "RunPod billing API: $1,778.97 for the pretraining job (read 2026-09-25 00:05Z) + ~$11 GRPO pod + the big pod's last hour posted late; ≈ $1,817 all-in, to be re-read when settled",
-    "honesty.*": "evals/results/pagouro-1b-soup50__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20)",
+    "honesty.*": "evals/results/pagouro-1b-soup70__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20), measured at q8_0 — the file the app loads",
     "release": "written by scripts/package_release.py from the files it hashes"
   },
   "files_candidate": {
     "q4_k_m": {
-      "path": "data/gguf_1b/pagouro-1b-soup50-q4_k_m.gguf",
+      "path": "data/gguf_1b/pagouro-1b-soup70-q4_k_m.gguf",
       "bytes": 633976000,
-      "sha256": "31521bb1dd6ac726e61637a85d3af08e46a124e9da2c8a4b33b77915269f9be9"
+      "sha256": "c424b759520f3e4ebe4426d851aea6ce580ab1b0eab43c052eb56902b4a80544"
     },
     "q8_0": {
-      "path": "data/gguf_1b/pagouro-1b-soup50-q8_0.gguf",
-      "bytes": 1102230720
+      "path": "data/gguf_1b/pagouro-1b-soup70-q8_0.gguf",
+      "bytes": 1102230720,
+      "sha256": "d56b53f7d78ca70c1aef5148e4821edf1094f764369a2352a7bbc0595e7f0973"
     },
     "checkpoint": {
-      "path": "data/out_1b/grpo/pagouro-1b-soup50.pt",
-      "sha256": "062b6b1165e229f3f598d3e510bc7162010451754660883de3f57a4eb3caf93e"
+      "path": "data/out_1b/grpo/pagouro-1b-soup70.pt"
     }
   }
 }

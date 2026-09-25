@@ -163,55 +163,8 @@ def main() -> int:
                     "notes/ holds saved notes; transcripts/ holds chats saved in STONE mode (/stone).\n")
         print("  app: pagouro.exe + llama-server.exe + packs/ + skills/ + brand/ + workspace/")
 
-    # Hash every shipped file for the manifest. This IS the anchorable artifact.
-    hashes = {}
-    for dirpath, _, files in os.walk(rel):
-        for fn in files:
-            if fn in ("MANIFEST.md", "facts.json"):
-                continue
-            full = os.path.join(dirpath, fn)
-            relp = os.path.relpath(full, rel).replace("\\", "/")
-            hashes[relp] = {"sha256": sha256_file(full), "bytes": os.path.getsize(full)}
-
-    # O-43: the key-facts table, machine-readable. docs/facts.json carries the hand-maintained,
-    # measured facts; only the block the packager can measure itself is added here (the model
-    # files' bytes and hashes, the packaging date). Written before the manifest so it is hashed too.
-    with io.open(os.path.join(ROOT, "docs", "facts.json"), encoding="utf-8") as f:
-        facts = json.load(f)
-    facts["release"] = {
-        "packaged_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
-        "model_files": [{"path": p, "bytes": h["bytes"], "sha256": h["sha256"]}
-                        for p, h in sorted(hashes.items()) if p.endswith(".gguf")],
-        "manifest": "MANIFEST.md (its hash is the anchorable value, D-14)",
-    }
-    facts_path = os.path.join(rel, "facts.json")
-    with io.open(facts_path, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(facts, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-    hashes["facts.json"] = {"sha256": sha256_file(facts_path), "bytes": os.path.getsize(facts_path)}
-
-    manifest_lines = [
-        "# Pagouro release manifest",
-        "",
-        f"Generated: {datetime.now(timezone.utc).isoformat(timespec='seconds')}",
-        "",
-        "This manifest is what a Bitcoin-anchored timestamp would cover (D-14):",
-        "a stranger downloading this from any mirror can verify every file below",
-        "matches its recorded hash, and therefore matches what was actually released.",
-        "",
-        "**This build has not yet been anchored to Bitcoin.** That is the final",
-        "release step (brief section 10) and happens once, deliberately, after",
-        "the weights are considered final -- not on every packaging pass.",
-        "",
-        "| File | SHA-256 | Bytes |",
-        "|---|---|---|",
-    ]
-    for relp in sorted(hashes):
-        h = hashes[relp]
-        manifest_lines.append(f"| `{relp}` | `{h['sha256']}` | {h['bytes']:,} |")
-    with io.open(os.path.join(rel, "MANIFEST.md"), "w", encoding="utf-8", newline="\n") as f:
-        f.write("\n".join(manifest_lines) + "\n")
-
+    # The README is written BEFORE the hash loop so the manifest covers it (2026-09-25: the first 1B
+    # stick shipped README.md as the one file verify_manifest.py could not vouch for).
     readme = f"""# Pagouro
 
 **A finished artifact, released as-is. No updates or support are promised. Fork it.**
@@ -284,6 +237,56 @@ anywhere to keep working.
 """
     with io.open(os.path.join(rel, "README.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write(readme)
+
+    # Hash every shipped file for the manifest. This IS the anchorable artifact.
+    hashes = {}
+    for dirpath, _, files in os.walk(rel):
+        for fn in files:
+            if fn in ("MANIFEST.md", "facts.json"):
+                continue
+            full = os.path.join(dirpath, fn)
+            relp = os.path.relpath(full, rel).replace("\\", "/")
+            hashes[relp] = {"sha256": sha256_file(full), "bytes": os.path.getsize(full)}
+
+    # O-43: the key-facts table, machine-readable. docs/facts.json carries the hand-maintained,
+    # measured facts; only the block the packager can measure itself is added here (the model
+    # files' bytes and hashes, the packaging date). Written before the manifest so it is hashed too.
+    with io.open(os.path.join(ROOT, "docs", "facts.json"), encoding="utf-8") as f:
+        facts = json.load(f)
+    facts["release"] = {
+        "packaged_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
+        "model_files": [{"path": p, "bytes": h["bytes"], "sha256": h["sha256"]}
+                        for p, h in sorted(hashes.items()) if p.endswith(".gguf")],
+        "manifest": "MANIFEST.md (its hash is the anchorable value, D-14)",
+    }
+    facts_path = os.path.join(rel, "facts.json")
+    with io.open(facts_path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(facts, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    hashes["facts.json"] = {"sha256": sha256_file(facts_path), "bytes": os.path.getsize(facts_path)}
+
+    manifest_lines = [
+        "# Pagouro release manifest",
+        "",
+        f"Generated: {datetime.now(timezone.utc).isoformat(timespec='seconds')}",
+        "",
+        "This manifest is what a Bitcoin-anchored timestamp would cover (D-14):",
+        "a stranger downloading this from any mirror can verify every file below",
+        "matches its recorded hash, and therefore matches what was actually released.",
+        "",
+        "**This build has not yet been anchored to Bitcoin.** That is the final",
+        "release step (brief section 10) and happens once, deliberately, after",
+        "the weights are considered final -- not on every packaging pass.",
+        "",
+        "| File | SHA-256 | Bytes |",
+        "|---|---|---|",
+    ]
+    for relp in sorted(hashes):
+        h = hashes[relp]
+        manifest_lines.append(f"| `{relp}` | `{h['sha256']}` | {h['bytes']:,} |")
+    with io.open(os.path.join(rel, "MANIFEST.md"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(manifest_lines) + "\n")
+
 
     print(f"packaged: {rel}")
     print(f"  files hashed: {len(hashes)}")
