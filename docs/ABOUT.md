@@ -143,9 +143,9 @@ Yes; every language model does. What Pagouro does is measure how often, on a fro
 print the number beside how often it answers real questions correctly. It never claims not to.
 
 ### Can it reason — word problems, multi-step arithmetic?
-Barely, today. On a program-checked set of school word problems (`sft/grpo_reasoning.jsonl`, eight
-kinds, exact keys) the shipped model solved 7 of 200 without tools; it answers in one line and does
-not work anything out. Plain arithmetic goes to the calculator tool instead, which is exact. The
+Barely, today. On a program-checked held-out set of school word problems (`evals/reasoning_heldout.jsonl`,
+eight kinds, exact keys, 320 problems) the shipped model solved 18 without tools; it answers in one
+line and does not work anything out. Plain arithmetic goes to the calculator tool instead, which is exact. The
 set, the checker and the training recipe for the next round ship in the repository, so the number
 can be re-measured on any later build.
 

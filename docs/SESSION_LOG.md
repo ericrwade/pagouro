@@ -74,7 +74,7 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   selfknow ×0.2 + reasoning ×0.5) → GRPO-5 on self-knowledge + reasoning. **Proposed on #2 at $3.49/h (≈ $9–11,
   cap $15), waiting for Eric's "run round 2"** — the classifier blocked an announce-and-proceed post, and that
   matches what I had told him. App: a timed-out launch now stops its llama-server (an orphan from the stick test
-  was found and killed); ABOUT FAQ "can it reason?" = 7/200. Pack index build measured at 0.36 s for 11 MB —
+  was found and killed); ABOUT FAQ "can it reason?" = held-out 18/320 (GRPO-3 greedy; `average` 6/40 the only family above chance). Pack index build measured at 0.36 s for 11 MB —
   a prebuilt index only matters at O-41 scale (gated on Eric). Stick still carries the 10:21 exe (lacks 41ed584).
 **Open / next:** (1) **Eric: "run round 2"** → rent per the #2 post, `research2_1b.sh`, bring home, evals
 (frozen + 100-sets + `run_multiturn.py` + `star_sample.py --set evals/reasoning_heldout.jsonl`), ship only if
