@@ -1,6 +1,6 @@
 # About Pagouro
 
-*Draft 1, 2026-09-24 (O-43). The source for the public "About" page and the model card. The
+*Draft 2, 2026-09-25 (O-43; key facts filled from the measured files, D-93). The source for the public "About" page and the model card. The
 structure follows a conventional About-page recipe Eric sent from the road (one-sentence value
 proposition, what it does, what makes it different, who it is for, who made it, how it works,
 a machine-readable key-facts table, FAQ), rewritten for a finished artefact rather than a
@@ -117,9 +117,9 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Code licence | Apache 2.0 |
 | Book licence | Story chapters all rights reserved; do-it chapters CC BY-SA 4.0 (D-64) |
 | Tokenizer | 32,768-entry BPE, trained on the licensed corpus |
-| Trained on | 8× NVIDIA H100 SXM, rented (RunPod, Montreal), 2026-09-22 → 09-24; bill TBD from the account |
-| Honesty score | TBD at release: bluff rate on the 100-item unanswerable set, answered-real beside it (D-73) |
-| File on the stick | TBD: GGUF q4_k_m, size in bytes and SHA-256 from the manifest |
+| Trained on | 8× NVIDIA H100 SXM, rented (RunPod, Montreal), 2026-09-22 → 09-24; bill $1,778.97 read from the account after the pod was deleted |
+| Honesty score | Bluff rate 22 % on the 100-item unanswerable set; answered-real 81 % on the 100-item real set (D-93; measured at the shipped decode, `evals/results/pagouro-1b-grpo3-g-trim__*`) |
+| File on the stick | `model/pagouro-q8_0.gguf`, 1,102,230,720 bytes, SHA-256 `40f9907593c3e4ff95ee07a1e55ca5fe112d25ff8e82163600dbcd2a2bf4e0a1` (the app runs this one; `pagouro-q4_k_m.gguf`, 633,976,000 bytes, ships beside it) |
 | Requirements | Any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account |
 | Price | Free. Tip jar. |
 | Maintenance | None. Frozen at release; verify with `docs/CHECK_YOUR_COPY.md` |
