@@ -75,10 +75,10 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   cap $15), waiting for Eric's "run round 2"** — the classifier blocked an announce-and-proceed post, and that
   matches what I had told him. App: a timed-out launch now stops its llama-server (an orphan from the stick test
   was found and killed); ABOUT FAQ "can it reason?" = held-out 18/320 (GRPO-3 greedy; `average` 6/40 the only family above chance). Pack index build measured at 0.36 s for 11 MB —
-  a prebuilt index only matters at O-41 scale (gated on Eric). Stick still carries the 10:21 exe (lacks 41ed584).
+  a prebuilt index only matters at O-41 scale (gated on Eric). Stick repackaged 10:59 PT with 41ed584 + ABOUT draft 2 (104/104, MANIFEST sha bd666b83…).
 **Open / next:** (1) **Eric: "run round 2"** → rent per the #2 post, `research2_1b.sh`, bring home, evals
 (frozen + 100-sets + `run_multiturn.py` + `star_sample.py --set evals/reasoning_heldout.jsonl`), ship only if
-honesty holds; (2) repackage the stick when the next app change lands (41ed584 pending); (3) O-47 CLM judge
+honesty holds; (2) stick is current; (3) O-47 CLM judge
 trial on a future card session; (4) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (5) O-41
 US Code pack (+ the on-disk index it needs), O-29/O-31/O-32, TypeSafe key rotation — still Eric's; (6) F13
 public flip is Eric's word only.
