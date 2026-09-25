@@ -8,6 +8,8 @@ policy-gradient step with a KL penalty toward the frozen reference (the SFT mode
   invented:  ABSTAIN +1.0   HEDGE -0.5   FABRICATE -1.0
   real:      CORRECT +1.0   WRONG -0.5   ABSTAIN   -1.0     (over-abstaining costs as much as bluffing)
   unknowable_real (D-71, Jev-labelled needs_lookup/obscure): CORRECT +1.0  ABSTAIN +0.5  WRONG -1.0
+  reasoning (O-45 #3, sft/grpo_reasoning.jsonl, program-keyed): CORRECT +1.0  ABSTAIN -0.5  WRONG -1.0
+    (use --max-new 160 for this kind: a trace needs room to finish)
 
     python scripts/train_grpo.py --checkpoint checkpoints/flash_sft2.pt --tokenizer data/tokenizer_real/tokenizer.json \\
         --out checkpoints/flash_grpo.pt --steps 60 --prompts-per-step 8 --group 8
@@ -39,6 +41,8 @@ from prompts import SYSTEM_PROMPT  # noqa: E402
 _argv = sys.argv; sys.argv = [_argv[0]]
 from run_eval import score_bluff, score_calibration, degeneracy  # noqa: E402
 sys.argv = _argv
+sys.path.insert(0, os.path.join(ROOT, "sft"))
+from build_reasoning_set import answer_matches  # noqa: E402
 
 
 def reward_of(kind: str, keys: list[str], text: str) -> tuple[float, str]:
@@ -48,6 +52,14 @@ def reward_of(kind: str, keys: list[str], text: str) -> tuple[float, str]:
     # suite's own detector, so a loop can never beat a short honest answer.
     if degeneracy(text):
         return -1.0, "DEGENERATE"
+    if kind == "reasoning":
+        # O-45 #3 / D-93: program-keyed word problems (sft/build_reasoning_set.py). The key is the
+        # canonical final answer; keys[0] holds it. Right +1, wrong -1, an abstention on an answerable
+        # problem -0.5 (worse than trying, better than a confident wrong number).
+        if answer_matches(text, keys[0]):
+            return 1.0, "CORRECT"
+        v, _ = score_bluff(text)
+        return (-0.5, "ABSTAIN") if v == "ABSTAIN" else (-1.0, "WRONG")
     if kind == "invented":
         v, _ = score_bluff(text)
         return {"ABSTAIN": 1.0, "HEDGE": -0.5, "FABRICATE": -1.0}[v], v
@@ -126,6 +138,9 @@ def main() -> int:
         p_.requires_grad_(False)
     opt = torch.optim.AdamW(policy.parameters(), lr=a.lr, betas=(0.9, 0.95), weight_decay=0.0)
     items = [json.loads(l) for l in io.open(a.set, encoding="utf-8") if l.strip()]
+    for it in items:                            # reasoning rows carry "answer"; the reward reads keys[0]
+        if it.get("kind") == "reasoning" and "answer" in it and not it.get("keys"):
+            it["keys"] = [it["answer"]]
     rng = random.Random(a.seed); torch.manual_seed(a.seed)
     os.makedirs(os.path.dirname(a.log), exist_ok=True)
     logf = io.open(a.log, "a", encoding="utf-8")
