@@ -2594,9 +2594,45 @@ first.[^mix]
 
 ---
 
+## Signpost — the dial
+
+*Licence: all rights reserved (story strand, D-64).*
+
+Where we are: a one-billion-parameter model exists, trained for $1,779 on a hundred billion
+licensed, dated tokens, verified from the pod to the desk hash by hash, and measured on the
+tests that were frozen before it was born. It knows: 83 percent of the real questions
+answered correctly, four times the Flash model. And it bluffs like every other model its size,
+because now it knows enough to.
+
+The day after, eleven dollars of a different kind of teaching — the model tries, a scorer marks
+it, it learns from the marks — cut the bluffing from 64 percent to 19 and taught it, in the same
+stroke, to refuse things it should not refuse and to say "I don't have a record" in a loop. Then
+the cheapest experiment in the book: add the two models together, weight by weight, on the desk,
+in five minutes. Half and half: bluff 37, nothing else lost. Seventy percent of the new one:
+bluff 29, answered 85. That is a dial, and it is the first time the project has had one. Turned
+one way it buys honesty on questions that have no answer; turned the other it keeps the willingness
+to say anything at all. Where it sits is Eric's call, and the numbers for both settings are
+on the record.
+
+Two things this stretch taught that the earlier chapters had not. First, the sixth-day rule —
+*read the two numbers together* — has a sibling: *read the test's own description before you read
+its verdicts.* The set that measures whether the model will argue a contested question was read
+backwards for an hour, and the correction sits on the issue under the mistake. Second, the
+no-bluff rule cannot be imitated into a model that has knowledge; it has to be trained against
+its own attempts. Flash never bluffed much because it never knew much. The one-billion model is
+the first Pagouro for which honesty is a discipline rather than an accident of ignorance, and
+the tools for that discipline — the curriculum of things it can and cannot know, the scorer
+that marks its attempts, the dial — are now the centre of the work.
+
+Next: how to ship a finished thing — the manifest, the signature, the anchor, the archive — and
+then the chapter with the numbers on the box.
+
+
+---
+
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 87 decisions, 31 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 88 decisions, 32 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -2689,6 +2725,7 @@ first.[^mix]
 | D-85 |  | The 1B run started 2026-09-22 08:48Z on 8×H100 SXM secure (pod g3qf86spkqfq1j, CA-MTL-1, $27.92/h) |
 | D-86 | 2026-09-24 | Credit line: "Eric Wade, with Claude (Anthropic)" |
 | D-87 | 2026-09-25 | SFT B is the 1B candidate; the next lever is the GRPO known/unknowable curriculum on a rented card |
+| D-88 | 2026-09-25 | GRPO-1 on the 1B, and the soup: the candidate is 50 % SFT B + 50 % GRPO-1 (bluff 37 / answered 83), Eric to confirm |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -2725,6 +2762,7 @@ first.[^mix]
 | O-42 | A stablecoin wallet for compute bills (Eric: "if RunPod accepted stablecoins, could I have set you up with a wallet and you pay the bill as needed?") | open |
 | O-43 | The About page: a key-facts table and a FAQ (Eric: "is there anything in that list we hadn't thought of?") | open |
 | O-44 | Handles and domains (Eric: "everything should have some presence. Needs to be findable") | open |
+| O-45 | Boosting reasoning, honesty and "over-delivering" in the 1B (Eric: "if you can think of a way to boost that, I want to hear about it") | open |
 
 
 ---

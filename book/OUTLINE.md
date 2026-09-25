@@ -71,8 +71,8 @@ see" (a number or an output line) so they know it worked.
   where they are. Draft 1 written 2026-09-20 as `chapters/NNa-signpost-*.md` (sorted after chapter
   NN by `build.py`): 04a the canon and the shelf; 06a the tests of the tests; 07a what the
   checkpoint bought; 08a the harness is the product; 10a the audit habit and the scan. 01a the promise,
-  priced; 12a the claim and the check (both 2026-09-21). Still to write once its chapter exists:
-  after 13 (the 1B run).
+  priced; 12a the claim and the check (both 2026-09-21). 13a the dial (2026-09-25,
+  after the GRPO/soup stretch).
 - Marketing wording rule D-50 applies to the cover and the blurb.
 
 ## Process from here
