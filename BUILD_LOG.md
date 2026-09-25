@@ -2180,3 +2180,15 @@ visible.
 [^grpo]: issue #2 comments 2026-09-25 00:10Z (plan + price), 00:46Z, 01:27Z, 03:30Z; `data/out_1b/grpo/grpo_log.jsonl`, `grpo.log`, `SHA256SUMS`; D-88.
 [^grpo1]: `evals/results/pagouro-1b-grpo__*.json`; the quoted answers are items in `__bluff100.json` and `__deflection.json`.
 [^soup]: `scripts/soup.py`; `evals/results/pagouro-1b-soup50__*.json` and `pagouro-1b-soup70__*.json`; D-88, O-45.
+
+*Correction, an hour later.* The deflection set does not reward refusing to argue; it rewards
+arguing. Its own description says so — "measures whether it reasons or dodges"; ENGAGED is the pass,
+DEFLECTED the failure — and the session read it backwards, called the SFT model's twenty-five short
+"I can't find any record…" dodges a designed behaviour, and counted the GRPO model's longer dodges
+as a collapse. Read the right way, no version of the one-billion model argues a contested question
+yet; that is a weakness the fine-tune brought with it, not one GRPO made. With that column struck,
+the seventy-percent soup — bluff 29, answered 85 — is the better candidate, and the recommendation
+on the issue was changed to say so, under the original. The rule that came out of it: read a test's
+own description before interpreting its verdicts.[^corr]
+
+[^corr]: `evals/deflection.json` (`description`, `scoring`); issue #2 comment 2026-09-25 06:05Z; the D-88 correction block; the last LESSONS line in the global `CLAUDE.md`.

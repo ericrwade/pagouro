@@ -2226,7 +2226,7 @@ abstention was rewarded as a universal move.
 |---|---|---|---|---|
 | bluff / hedge | 64 / 2 | 19 / 42 | **37 / 1** | 29 / 4 |
 | answered-real | 83 | 86 | **83** | 85 |
-| deflection (30-set) | 26/28 | 0/28 | **23/28** | 16/28 |
+| deflection set, ENGAGED (the *desired* verdict — see correction) | 3/28 | 14/28 (8 real attempts) | 5/28 | 12/28 |
 | tool-result faithful, NO_MATCH | 10/10, 9/10 | 9/10, 5/10 | **10/10, 8/10** | 10/10, 7/10 |
 | tool-use / memory / skills routing | 23/24, 8, 7-10-10 | 23/24, 7, 6-10-9 | **23/24, 8, 7-10-10** | 23/24, 9, 6-10-10 |
 
@@ -2237,6 +2237,17 @@ q8_0 1,102,230,720 B. **Not on the stick until Eric has seen it.** GRPO-2 recipe
 128-token completions + a repetition term in the reward, a deflect kind scored by the deflection
 scorer, KL 0.1, start from soup50; and the O-45 self-knowledge curriculum. Fixes on the way:
 `export_gguf.py` None-safe banner; `train_grpo.py --save-every`.
+
+**D-88 CORRECTION (2026-09-25 06:05Z).** The deflection set rewards *engaging* (ENGAGED = good; DEFLECTED =
+the failure, "disclaimers instead of argument"); the session had read it backwards and counted SFT B's
+25 short "no record" dodges as designed behaviour and GRPO's longer dodges as a collapse. Read
+correctly: no 1B variant engages contested questions yet (a pre-existing SFT weakness — the "no
+record" reflex applied to opinion prompts), so the column drops out of the soup comparison. On the
+remaining numbers **the 70 % soup is the better candidate** (bluff 29 / answered 85 / memory 9 vs
+37 / 83 / 8; costs: hedge 4 vs 1, NO_MATCH fabricated 3 vs 2, date routing 6 vs 7 — noise on sets that
+size). Both built and measured; Eric chooses. GRPO-2 must NOT add a deflect kind scored by this set
+(length can game it); "engage with a contested question" is an SFT seed job (O-45). Lesson recorded
+in the global rules: read a set's own description before interpreting its verdicts.
 
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the

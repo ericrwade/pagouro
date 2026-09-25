@@ -42,7 +42,7 @@
     "answered_real_rate_100": 0.83,
     "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
     "note": "never 'does not hallucinate' (D-50)",
-    "candidate": "pagouro-1b-soup50 = 50% SFT B + 50% GRPO-1 (D-88); measured at q8_0 on 2026-09-25; not yet the shipped file"
+    "candidate": "two measured candidates, Eric to pick (D-88 + correction): soup50 = bluff 0.37 / answered 0.83; soup70 = bluff 0.29 / answered 0.85 (recommended); the table shows soup50 until then"
   },
   "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
   "price_usd": 0,
