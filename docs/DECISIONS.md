@@ -2273,6 +2273,15 @@ sharded/multi-node training (off-the-shelf) and a team for the failures a 512-ca
 raise itself is Eric's world and Eric's call; the only non-negotiable is that the measured numbers go
 on the box.
 
+### D-90 — Eric, 2026-09-25 08:03Z, going to sleep: "You have my permission to spend $100 on runpod to keep this moving forward" (≈ 5 h)
+Budget: up to **$100 more** on RunPod beyond GRPO-2's committed ≈ $12, through ≈ 13:00Z. Plan: one pod
+(`gu8bz6brf03ftk`, kept alive between stages — re-uploading 3.9 GB per job costs more idle time than
+the pod does): GRPO-2 to its rule (≈ $6) → export → self-knowledge sampling (≈ $2) → GRPO-3 from the
+best checkpoint on the self-labelled curriculum (≈ $10–12, O-45 #1) → argue-seed patch SFT with
+replay (≈ $1, O-45 #3) → everything home hash-verified → pod DELETED before Eric is back → evals on
+the desk after each stage → soups where they help. Expected ≈ $25–30. Desk at $0: careful mode in
+the app (O-45 #2). Nothing on the stick without Eric; GREEN/YELLOW/RED on every post.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
