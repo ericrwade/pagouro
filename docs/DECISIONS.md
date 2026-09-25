@@ -2383,6 +2383,24 @@ synthesis. Found on the way: an enumeration runaway ("1972-1973-1974-…") insid
 missed; the trim now cuts the sentence a run of six or more same-shaped items sits in; the 100-sets re-measured
 after the change. Not built: a Pagouro MCP server (would suit IronClaw and Claude Code; small; post-release).
 
+### D-95 — Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; GRPO-3 stays
+**2026-09-25 (Eric: "Run round 2").** Pod `e333vfwcjuo4ej`, 1× H100 SXM secure CA-MTL-1 $3.49/h, 19:01Z → deleted
+21:48Z, outputs hash-verified home (`data/out_1b/research2/`), ≈ $8–9. **SFT-v3** from the base: mix B + argue ×20
++ multi-turn seed + self-knowledge abstentions ×0.2 + the new program-traced reasoning seed ×0.5
+(`sft/reasoning_seed_gen.jsonl`, 3,000 rows, `sft/build_reasoning_set.py`), 3,000 steps, 10 min. **GRPO-5** from it on
+self-knowledge + reasoning (balanced, 160-token samples, program-checked reward), 75 steps, ≈ 2 h; reward +0.28 → +0.36,
+correct 17 → 23 %, wrong 21 → 14 %, fabrications ≤ 1 %.
+**Measured at the shipped decode (greedy, trim, cap):** SFT-v3 bluff 43 / answered 77; GRPO-5 49 / 84; both
+multi-turn clean; **reasoning held-out (320, zero training overlap) 18 → 93 and 94** (convert 27/40, rate 24/40, order
+19–21/40; count 2/40, average 3–4/40 — the templated families move, the multi-step ones do not); memory routing
+9/10 → 4–5/10; tool-result faithful 10/10 → 8/10. **Verdict: does not ship** (rule: ≤ 22 bluff, ≥ ~80 answered,
+multi-turn clean). What it tells us: (1) the reasoning seed is a real lever — five-fold from SFT alone, GRPO adding
+one problem on top means the reward had nothing further to shape at 75 steps; (2) the honesty in GRPO-3 lives in
+its lineage (SFT B → soup70 → GRPO-1…3 on the self-knowledge curriculum) and is not reproduced by a fresh SFT that
+merely includes abstention rows — the GRPO rounds are what buys it; (3) a full recipe therefore needs both, in
+order: SFT with the traces, then the self-knowledge GRPO rounds. Weight soups of GRPO-3 × SFT-v3 (30 %, 50 %) are the
+$0 attempt to combine them; recorded below when measured. The shipped numbers (facts.json, 22 / 81) are unchanged.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
