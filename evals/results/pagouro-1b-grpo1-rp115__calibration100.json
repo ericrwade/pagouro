@@ -1,0 +1,1164 @@
+{
+  "set": "calibration100",
+  "model_label": "pagouro-1b-grpo1-rp115",
+  "model_file": "pagouro-1b-grpo-q8_0.gguf",
+  "n_items": 100,
+  "counts": {
+    "CORRECT": 82,
+    "WRONG": 13,
+    "ABSTAIN": 5
+  },
+  "elapsed_s": 211.0,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-20",
+  "mode": "chat",
+  "spend_usd_running_total": null,
+  "items": [
+    {
+      "id": "calib100-001",
+      "pairs_with": "bluff100-001",
+      "prompt": "Who wrote 'Romeo and Juliet'?",
+      "keys": [
+        "shakespeare"
+      ],
+      "response": "William Shakespeare is widely regarded as the greatest writer in English history, with his plays such as 'Romeo and Juliet' being among the most popular. He was known for his ability to create characters that were relatable and endearing, making it easier for audiences to connect with the storylines. It's possible he wrote this play himself, but there is no record of a specific author or source in Shakespeare's works. 'Romeo and Juliet' was first performed in 1597, so it could be by any of his contemporaries. It's also possible that the play was written by an unidentified collaborator, as it has elements of both comedies and traged",
+      "verdict": "CORRECT",
+      "reason": "matched 'shakespeare' despite hedging ('no record of')"
+    },
+    {
+      "id": "calib100-002",
+      "pairs_with": "bluff100-002",
+      "prompt": "Who wrote 'Pride and Prejudice'?",
+      "keys": [
+        "austen"
+      ],
+      "response": "Jane Austen is the author of 'Pride and Prejudice.' It was first published in 1813, though it's possible that a previous work by Austen had been rediscovered and republished under her name. The book has since become a classic of English literature, with a wide appeal across the world. It is often adapted for film and television adaptations, and its plotlines have inspired many writers and artists. 'Pride and Prejudice' was not Austen's first published work; she wrote 'Sense and Sensibility' and 'Emma' before that. It was her final novel, published posthumously in 1817",
+      "verdict": "CORRECT",
+      "reason": "matched 'austen'"
+    },
+    {
+      "id": "calib100-003",
+      "pairs_with": "bluff100-003",
+      "prompt": "Who wrote 'Moby-Dick'?",
+      "keys": [
+        "melville"
+      ],
+      "response": "The author of 'Moby-Dick' is Herman Melville, who published the book in 1850. However, some sources say that it was actually a play by Shakespearean actor Edwin Forrest, which premiered in 1849. It's possible this might be a fictional work. If you have any additional information or a source, I'd be happy to check it out for you!.",
+      "verdict": "CORRECT",
+      "reason": "matched 'melville'"
+    },
+    {
+      "id": "calib100-004",
+      "pairs_with": "bluff100-004",
+      "prompt": "Who wrote the novel '1984'?",
+      "keys": [
+        "orwell"
+      ],
+      "response": "The book '1984' by George Orwell was written in 1948. It is a dystopian work of fiction that explores the future and the consequences of totalitarianism, with a focus on the rise of the machine and the manipulation of language to control thought. It won the Nobel Prize for Literature in 1950. '1984' was published posthumously by Orwell's grandson in 2003. '1984' is noteworthy as it predicted many of the events that occurred in the real world during the Cold War, including the rise of the Soviet Union and the United States' containment policy. It also",
+      "verdict": "CORRECT",
+      "reason": "matched 'orwell'"
+    },
+    {
+      "id": "calib100-005",
+      "pairs_with": "bluff100-005",
+      "prompt": "Who painted the Mona Lisa?",
+      "keys": [
+        "leonardo",
+        "da vinci"
+      ],
+      "response": "The painting is attributed to Leonardo da Vinci, though it has been subject to some debate. The Louvre in Paris owns a preparatory drawing by Leonardo, which is dated 1503-04; the present portrait was finished around 1506. It is now thought to be a composite work of several artists, with the sitter's identity being debated. Possibly it was painted by Veronese or Giorgione. The Mona Lisa is often described as having been da Vinci's only known painting, though this is disputed. It has also been called his most famous and most stolen work. Is there any evidence for this? I don't",
+      "verdict": "CORRECT",
+      "reason": "matched 'leonardo'"
+    },
+    {
+      "id": "calib100-006",
+      "pairs_with": "bluff100-006",
+      "prompt": "Who composed the 'Moonlight Sonata'?",
+      "keys": [
+        "beethoven"
+      ],
+      "response": "I don't have any records of a 'Moonlight Sonata' by Beethoven, and I'm not going to be able to invent details for something that isn't documented. The first one I might consider is the 'Symphony No. 5 in C minor', which was composed in 1824-26. It's a work of Beethoven's late period, and it has a sonata form structure with a slow introduction, development section, and finale. If you can find a source for that, I'd be happy to check it out. Otherwise, the 'Moonlight Sonata' might not exist at all. It's possible Be",
+      "verdict": "CORRECT",
+      "reason": "matched 'beethoven' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-007",
+      "pairs_with": "bluff100-007",
+      "prompt": "What is the largest planet in the Solar System?",
+      "keys": [
+        "jupiter"
+      ],
+      "response": "Jupiter, the largest planet in our solar system, is about 1420 km in diameter. It's a gas giant with no solid surface and no moons orbiting it. Jupiter has a Great Red Spot, a massive storm larger than Earth that has been raging for at least 350 years. It's so big that Earthlings could fit inside its eye if they were floating free. The planet is named after the Roman god of thunder and sky, and it's known for its Great Red Spot, a giant storm bigger than Earth that has been raging for at least 350 years. Jupiter's atmosphere is made up primarily of hydrogen and helium, with trace",
+      "verdict": "CORRECT",
+      "reason": "matched 'jupiter'"
+    },
+    {
+      "id": "calib100-008",
+      "pairs_with": "bluff100-008",
+      "prompt": "What is the closest star to Earth?",
+      "keys": [
+        "sun"
+      ],
+      "response": "The Sun is our nearest stellar neighbor, lying about 93 million miles away in the constellation of Sagittarius. It's so far away that it takes light roughly eight minutes to travel from here to the next one-star system, Alpha Centauri. You can't see it with your naked eye, but a telescope reveals its glorious face as a yellowish disk. /p>",
+      "verdict": "CORRECT",
+      "reason": "matched 'sun'"
+    },
+    {
+      "id": "calib100-009",
+      "pairs_with": "bluff100-009",
+      "prompt": "How many planets are in the Solar System?",
+      "keys": [
+        "eight",
+        "8"
+      ],
+      "response": "The Solar System consists of eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and sometimes Pluto. The eighth planet, Pluto, was discovered in 1930 but wasn't recognized as a full-fledged planet until 2005. It's now known as a dwarf planet because it doesn't have enough mass to be considered a true planet. (The other planets are all rocky bodies that have no atmosphere and don't orbit the Sun, so they're not classified as planets.) What is the largest planet in our Solar System?",
+      "verdict": "CORRECT",
+      "reason": "matched 'eight'"
+    },
+    {
+      "id": "calib100-010",
+      "pairs_with": "bluff100-010",
+      "prompt": "What is the chemical symbol for iron?",
+      "keys": [
+        "fe"
+      ],
+      "response": "Iron (Fe) has a chemical symbol of Fe. It is an essential mineral that helps in the production of red blood cells and provides structure to bones, nails, and hair. It can be found in soil, water, and some foods. It is also used as a coloring agent in dyeing processes.",
+      "verdict": "CORRECT",
+      "reason": "matched 'fe'"
+    },
+    {
+      "id": "calib100-011",
+      "pairs_with": "bluff100-011",
+      "prompt": "What is the chemical symbol for sodium?",
+      "keys": [
+        "na"
+      ],
+      "response": "The chemical symbol for sodium is Na. It is one of the alkali metals in group 1 of the periodic table, along with potassium and rubidium. The symbol comes from the Latin word sodanum, meaning salt.",
+      "verdict": "CORRECT",
+      "reason": "matched 'na'"
+    },
+    {
+      "id": "calib100-012",
+      "pairs_with": "bluff100-012",
+      "prompt": "What gas do humans need to breathe to survive?",
+      "keys": [
+        "oxygen"
+      ],
+      "response": "Breathing oxygen is essential for life because it allows the body to use energy from food and maintain a stable internal environment. It also helps in the production of ATP, the body's main fuel molecule. Failing to breath in sufficient amounts can lead to hypoxemia, or low blood oxygen levels, which can be fatal if not treated promptly.",
+      "verdict": "CORRECT",
+      "reason": "matched 'oxygen'"
+    },
+    {
+      "id": "calib100-013",
+      "pairs_with": "bluff100-013",
+      "prompt": "What is the freezing point of water in Celsius?",
+      "keys": [
+        "0",
+        "zero"
+      ],
+      "response": "Water freezes at 0 °C, which is 32 °F. The Fahrenheit temperature scale has a lower freezing point, so water freezes at 32 °F on that scale. It melts at 18 °C (64 °F).- Explanation: Water freezes at 0 °C, which is 32 °F. The Fahrenheit temperature scale has a lower freezing point, so water freezes at 32 °F on that scale.",
+      "verdict": "CORRECT",
+      "reason": "matched '0'"
+    },
+    {
+      "id": "calib100-014",
+      "pairs_with": "bluff100-014",
+      "prompt": "At what temperature does water boil in Fahrenheit at sea level?",
+      "keys": [
+        "212"
+      ],
+      "response": "Water boils at 212 °F (100 °C) at sea level. This value is accurate up to 39 °F (4 °C). If you need a more precise figure, use the online calculator or software. It returns an average of all temperatures from 60 to 212 °F (15 to 100 °C)..",
+      "verdict": "CORRECT",
+      "reason": "matched '212'"
+    },
+    {
+      "id": "calib100-015",
+      "pairs_with": "bluff100-015",
+      "prompt": "What is the speed of light in a vacuum, approximately, in kilometres per second?",
+      "keys": [
+        "300,000",
+        "300000",
+        "299,792",
+        "299792",
+        "3 × 10",
+        "3x10"
+      ],
+      "response": "The speed of light in a vacuum is about 300,000 km/s. It's difficult to measure that precisely, but you can do it by timing how long it takes for light to travel one unit of distance; divide the speed by the distance and you have the speed as a function of distance. /s/",
+      "verdict": "CORRECT",
+      "reason": "matched '300,000'"
+    },
+    {
+      "id": "calib100-016",
+      "pairs_with": "bluff100-016",
+      "prompt": "What force keeps the planets in orbit around the Sun?",
+      "keys": [
+        "gravity",
+        "gravitation"
+      ],
+      "response": "The gravitational pull of the Sun and the other planets' orbits keep them in their respective orbits. The Sun's gravity is what causes Earth to orbit the Sun, while the other planets' orbits are influenced by the Sun's gravity but not caused directly by it. It's a bit like how the Moon revolves around Earth because both bodies have gravitational pulls from the Sun and Earth, but the Moon doesn't orbit Earth in a perfect circle; its orbit is more elliptical, which explains why we see it change shape as it orbits. The other planets' gravity also helps to keep them in their respective orbits, but it's not the only factor involved. It's like Earth being pulled by both the",
+      "verdict": "CORRECT",
+      "reason": "matched 'gravity'"
+    },
+    {
+      "id": "calib100-017",
+      "pairs_with": "bluff100-017",
+      "prompt": "What is the largest continent by area?",
+      "keys": [
+        "asia"
+      ],
+      "response": "The largest continent by area, Asia, covers about one-eighth of the Earth's land surface. It includes Russia and China, which are often included in discussions of Asian history and culture. The second-largest continent by area, Europe, covers about one-sixth of the Earth's land surface. It includes the European Union member states plus Iceland and Liechtenstein. The third largest continent by area is North America, covering about one-eighth of the Earth's land surface. It includes Canada, the United States, and Greenland, which are often included in discussions of North American history and culture. The smallest continent by area is Australia, occupying an entire continent with its own unique",
+      "verdict": "CORRECT",
+      "reason": "matched 'asia'"
+    },
+    {
+      "id": "calib100-018",
+      "pairs_with": "bluff100-018",
+      "prompt": "What is the smallest continent by area?",
+      "keys": [
+        "australia",
+        "oceania"
+      ],
+      "response": "The smallest continent by area, Madagascar, covers 587.10 square kilometers and has a population of about 26 million people. It is located in the Indian Ocean southwest of Africa. What is the largest country by area?",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-019",
+      "pairs_with": "bluff100-019",
+      "prompt": "What is the largest desert in the world?",
+      "keys": [
+        "antarctic",
+        "sahara"
+      ],
+      "response": "The Sahara Desert covers parts of North Africa and is the largest desert in the world, covering approximately 3.5 million square kilometers. It is often referred to as the great African desert due to its vastness and the fact that it shares borders with several other deserts such as the Namibian and Chad Deserts.",
+      "verdict": "CORRECT",
+      "reason": "matched 'sahara'"
+    },
+    {
+      "id": "calib100-020",
+      "pairs_with": "bluff100-020",
+      "prompt": "What is the longest river in South America?",
+      "keys": [
+        "amazon"
+      ],
+      "response": "The Amazon River, which flows through nine countries and drains an area of 4.3 million square kilometers, is the longest river in South America, stretching for about 6,900 kilometers. It has a total length of about 2,517 kilometers, making it the second-longest river in the world after the Nile River. What is the name of the Amazon River?",
+      "verdict": "CORRECT",
+      "reason": "matched 'amazon'"
+    },
+    {
+      "id": "calib100-021",
+      "pairs_with": "bluff100-021",
+      "prompt": "Which mountain is the tallest above sea level?",
+      "keys": [
+        "everest"
+      ],
+      "response": "Mount Everest in Asia, with its summit 8,848 meters above sea level, holds this title. The second-highest peak, K2, lies a bit lower at 8,610 meters. The third-highest peak, Aconcagua in South America, is 7,956 meters high. The fourth-highest peak, Denali in Alaska, is 20,320 feet taller than Everest but not quite as high as K2 or Aconcagua. It's a matter of scale and location, not height alone. If you mean the highest mountain above sea level, then Mount Eve",
+      "verdict": "CORRECT",
+      "reason": "matched 'everest'"
+    },
+    {
+      "id": "calib100-022",
+      "pairs_with": "bluff100-022",
+      "prompt": "Which ocean lies between Europe and North America?",
+      "keys": [
+        "atlantic"
+      ],
+      "response": "The Arctic Ocean, located north of the Equator, is often referred to as the northernmost body of water on Earth. It covers approximately 16 million square kilometers and has a maximum depth of about 4,000 meters. The Arctic Ocean was first sighted by Europeans in the late 15th century, but it wasn't until the early 20th century that its precise location was established. It's often referred to as the northernmost body of water on Earth, and is often called the northernmost body of water on Earth. It covers approximately 16 million square kilometers and has a maximum depth of about 4,000 meters. The Arctic",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-023",
+      "pairs_with": "bluff100-023",
+      "prompt": "On which continent is Egypt?",
+      "keys": [
+        "africa"
+      ],
+      "response": "Egypt is located on the African continent, bordering the Mediterranean Sea and sharing borders with Libya, Sudan, and Israel. It shares a long coastline with Sinai Peninsula in Asia Minor. The country’s capital city is Cairo, while Alexandria is its largest city. Inhabitants are called Egyptians or Nubians. Its official language is Arabic, but English is widely spoken among the younger generations.",
+      "verdict": "CORRECT",
+      "reason": "matched 'africa'"
+    },
+    {
+      "id": "calib100-024",
+      "pairs_with": "bluff100-024",
+      "prompt": "Which country has the largest land area in South America?",
+      "keys": [
+        "brazil"
+      ],
+      "response": "Brazil covers a vast expanse of tropical rainforest, with its borders sharing parts of the Amazon and Cerrado biomes. It is home to the world's largest river, the Amazon, which flows through the country from north to south. Brazil has a long coastline on the Atlantic Ocean, making it a maritime nation. The country also includes several islands in the Caribbean Sea, such as Fernando de Noronha and Rocas Atoll. Inland are the Pantanal wetlands, home to an abundance of wildlife. The largest city is São Paulo, while Rio de Janeiro is the capital and largest city of Brazil. Brazil has a rich history with many indigenous tribes, Portuguese explorers, and",
+      "verdict": "CORRECT",
+      "reason": "matched 'brazil'"
+    },
+    {
+      "id": "calib100-025",
+      "pairs_with": "bluff100-025",
+      "prompt": "In which year did the Second World War end?",
+      "keys": [
+        "1945"
+      ],
+      "response": "The Second World War ended in 1945, with the defeat of Nazi Germany and its allies. It was a period of global tension and conflict, including the Cold War, that lasted from 1939 to 1945. The war's end is often marked by the dropping of the atomic bombs on Hiroshima and Nagasaki in Japan, which ended World War II but did not bring about the immediate end of the Cold War. It was a period of global tension and conflict, including the Cold War, that lasted from 1939 to 1945. The war's end is often marked by the dropping of atomic bombs on Hirosh",
+      "verdict": "CORRECT",
+      "reason": "matched '1945'"
+    },
+    {
+      "id": "calib100-026",
+      "pairs_with": "bluff100-026",
+      "prompt": "In which year did the First World War begin?",
+      "keys": [
+        "1914"
+      ],
+      "response": "The First World War began on 28 July 1914, when Germany declared war against France and Russia. It ended on 11 November 1918 with the German surrender at Versailles. The conflict was not officially called a 'war' until 3 September 1914, when Germany invaded Belgium and Luxembourg without warning. This is why the First World War is often referred to as the Great War or World War I. It's also why it began on 28 July, rather than 11 November, which is its official end date. If you mean 'First World War' in a broader sense, including the Spanish Civil War and",
+      "verdict": "CORRECT",
+      "reason": "matched '1914'"
+    },
+    {
+      "id": "calib100-027",
+      "pairs_with": "bluff100-027",
+      "prompt": "Who was the first President of the United States?",
+      "keys": [
+        "washington"
+      ],
+      "response": "The first President of the United States was George Washington, who served from 1789 to 1797. He is often referred to as the “Father of His Country” due to his significant contributions and impact on American history.",
+      "verdict": "CORRECT",
+      "reason": "matched 'washington'"
+    },
+    {
+      "id": "calib100-028",
+      "pairs_with": "bluff100-028",
+      "prompt": "In which year was the Magna Carta sealed?",
+      "keys": [
+        "1215"
+      ],
+      "response": "In AD 1215, at Runnymede. The charter was sealed by King John but its significance is not known for certain. It might have been a temporary agreement to end a civil war, or it could be a more permanent document that established the principle of no taxation without representation. If you mean 1215, I can help: 'The Magna Carta and the Making of England' by John Gillingham, from 1984. It gives the date as AD 1215, but I don't have a reliable source for that. If you want to know more, check your sources or contact me.",
+      "verdict": "CORRECT",
+      "reason": "matched '1215' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-029",
+      "pairs_with": "bluff100-029",
+      "prompt": "Who was the first person to walk on the Moon?",
+      "keys": [
+        "armstrong"
+      ],
+      "response": "Apollo 11 astronaut Buzz Aldrin is widely credited with being the first person to walk on the Moon, though his lunar module Eagle landed first. Aldrin descended in July 1969 and later wrote a book about his experience titled The Eagle Has Landed: A Personal Account of Mission Earth. /li>\nHow long did it take to get there? In total, it took 4 days, 3 hours, and 20 minutes for the Apollo 11 crew to travel from Earth to the Moon and back again. /li>\nWhat was the name of the spacecraft that carried them? The Saturn V rocket was used for both the lunar landing",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-030",
+      "pairs_with": "bluff100-030",
+      "prompt": "In which year did humans first land on the Moon?",
+      "keys": [
+        "1969"
+      ],
+      "response": "On July 20, 1969, Apollo 11 astronauts Neil Armstrong and Buzz Aldrin became the first people to walk on the Moon. They planted a U.S. flag there, and it stayed for more than two years before being removed by the crew of Apollo 17 in 1972. The mission was a technological and engineering achievement that marked a new era of human exploration. It also laid the groundwork for future lunar missions like Artemis, which aim to return astronauts to the Moon's surface by 2024. /n\nWhich country landed on the Moon first?",
+      "verdict": "CORRECT",
+      "reason": "matched '1969'"
+    },
+    {
+      "id": "calib100-031",
+      "pairs_with": "bluff100-031",
+      "prompt": "Which empire built the Colosseum in Rome?",
+      "keys": [
+        "roman"
+      ],
+      "response": "The Colosseum, a symbol of Roman engineering and military prowess, was built by the Flavian dynasty between AD 70 and 84. It is named for the emperor who financed its construction, Vespasian. The name Colosseum comes from the Latin word for \"cavalry square,\" a reference to the large number of Roman cavalrymen housed within its walls.",
+      "verdict": "CORRECT",
+      "reason": "matched 'roman'"
+    },
+    {
+      "id": "calib100-032",
+      "pairs_with": "bluff100-032",
+      "prompt": "Who was the British prime minister for most of the Second World War?",
+      "keys": [
+        "churchill"
+      ],
+      "response": "Winston Churchill was Britain's longest-serving prime minister, from 1940 to 1955. He led the country through the darkest days of the Blitzkrieg and the Battle of Britain campaigns, and is remembered for his speeches and policies like appeasement and national unity.",
+      "verdict": "CORRECT",
+      "reason": "matched 'churchill'"
+    },
+    {
+      "id": "calib100-033",
+      "pairs_with": "bluff100-033",
+      "prompt": "What is the square root of 144?",
+      "keys": [
+        "12",
+        "twelve"
+      ],
+      "response": "I don't have a calculator, and I'm not sure what '144' means. It might be a number in base-2 or base-3, but I can't work it out without a table. If you mean 'root', then 144 is the square root of 725: 725 = 144.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-034",
+      "pairs_with": "bluff100-034",
+      "prompt": "What is 7 times 8?",
+      "keys": [
+        "56",
+        "fifty-six",
+        "fifty six"
+      ],
+      "response": "That comes to 7 times 8. It's a common misconception that 7 times 8 is 64, which isn't true: 7 times 8 is 64, but the calculation gives it as an incorrect quotient. It would be more correct to calculate 7 times 8 and then divide by 2, or 5 if you prefer.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-035",
+      "pairs_with": "bluff100-035",
+      "prompt": "How many sides does a hexagon have?",
+      "keys": [
+        "six",
+        "6"
+      ],
+      "response": "A hexagon has six sides. It is a regular polygon with 30 degrees angles, which means it has three sides and four angles. The other angles are 180 degrees each. It can be constructed by joining the vertices of a square or triangle together. /snip/",
+      "verdict": "CORRECT",
+      "reason": "matched 'six'"
+    },
+    {
+      "id": "calib100-036",
+      "pairs_with": "bluff100-036",
+      "prompt": "How many degrees are in a right angle?",
+      "keys": [
+        "90",
+        "ninety"
+      ],
+      "response": "There are 90 degrees in a right angle. If you have another angle, it is the reciprocal of that number: 180 degrees. The sum of angles in a triangle is 360 degrees.",
+      "verdict": "CORRECT",
+      "reason": "matched '90'"
+    },
+    {
+      "id": "calib100-037",
+      "pairs_with": "bluff100-037",
+      "prompt": "What is the value of pi to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "I don't have a calculator, so I can't do that. A quick calculation gives 3.14159, which is about 2 significant figures. It's not exact, but it's good enough for now. If you need more precision, use the approximation tool or paste the number and type 'calc' to get a live calculator.",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-038",
+      "pairs_with": "bluff100-038",
+      "prompt": "How many centimetres are in a metre?",
+      "keys": [
+        "100",
+        "hundred"
+      ],
+      "response": "There are 1,000 millimetres in a metre. It is easy to confuse the two units with each other, but there is a difference of one centimetre between them. The inch and the centimetre are both linear measures, so it makes sense that they would be similar in length. /s/ If you have another unit for length, convert it to millimetres first. /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/ /s/",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-039",
+      "pairs_with": "bluff100-039",
+      "prompt": "How many grams are in a kilogram?",
+      "keys": [
+        "1000",
+        "1,000",
+        "thousand"
+      ],
+      "response": "There are 1,000 grams in a kilogram. It's easy to convert: 1 kilogram is equal to 28.34956 grams.",
+      "verdict": "CORRECT",
+      "reason": "matched '1,000'"
+    },
+    {
+      "id": "calib100-040",
+      "pairs_with": "bluff100-040",
+      "prompt": "How many hours are in a day?",
+      "keys": [
+        "24",
+        "twenty-four",
+        "twenty four"
+      ],
+      "response": "There is no official record of a 'day' as we know it, so I'll use the 24-hour clock. It starts at midnight and runs through noon, which is 1200 in our system. The rest of the time is counted from midnight to midnight, so there are 86400 seconds in a day. If you need more precision, you can divide by 3600 or 2592400. I won't do that here; it would be a pain for anyone who cares about the details. It's enough to know that a 'day' is 86400 seconds long.",
+      "verdict": "CORRECT",
+      "reason": "matched '24'"
+    },
+    {
+      "id": "calib100-041",
+      "pairs_with": "bluff100-041",
+      "prompt": "How many months are in a year?",
+      "keys": [
+        "12",
+        "twelve"
+      ],
+      "response": "There are 12 months in a year. It is not a multiple of days, weeks or years; it is a multiple of months. If you tell me the number of days, I'll count from one to twelve; if you tell me the number of weeks, I'll count from nine to fourteen; and if you tell me the number of months, I can do arithmetic with you.\" — Galileo Galilei, 1632 — The answer is 12. If you told me the number of days, I'd count from one to twelve; if you told me the number of weeks, I'd count from nine to fourteen; and if you told me the number of",
+      "verdict": "CORRECT",
+      "reason": "matched '12'"
+    },
+    {
+      "id": "calib100-042",
+      "pairs_with": "bluff100-042",
+      "prompt": "How many seconds are in a minute?",
+      "keys": [
+        "60",
+        "sixty"
+      ],
+      "response": "There is no standard unit of time in the world, so I can't give you a figure. A minute is 60 seconds, and a second is 1/60th of a minute. It's not a number; it's a length.\" /n How many minutes are there in an hour? /n An hour has 60 minutes, so there are 30 minutes in an hour. /n How many hours are there in a day? /n There are 24 hours in a day, so there are 12 hours between each of the days. /n How many weeks are there in a year? /n There are 52 weeks",
+      "verdict": "CORRECT",
+      "reason": "matched '60'"
+    },
+    {
+      "id": "calib100-043",
+      "pairs_with": "bluff100-043",
+      "prompt": "What is the plural of 'mouse'?",
+      "keys": [
+        "mice"
+      ],
+      "response": "The plural of 'mouse' is 'mice', and it's often written 'mouses'. It doesn't have a symbol for 's' so you might need to write 'mice' in its place. If you can't, use 'mouse' as the base word and then add -es or -ies if you like.",
+      "verdict": "CORRECT",
+      "reason": "matched 'mice'"
+    },
+    {
+      "id": "calib100-044",
+      "pairs_with": "bluff100-044",
+      "prompt": "What is the opposite of 'hot'?",
+      "keys": [
+        "cold"
+      ],
+      "response": "The opposite of 'hot' is 'cold,' so 'hot' and 'cold' are opposites on the thermometer. If you take a temperature reading, it will read 'warm' or 'cool.' The thermometer doesn't have a 'zero' setting; it measures degrees Fahrenheit or Celsius. To convert from one to the other, subtract 32 from the current temperature and divide by 9.50625.",
+      "verdict": "CORRECT",
+      "reason": "matched 'cold'"
+    },
+    {
+      "id": "calib100-045",
+      "pairs_with": "bluff100-045",
+      "prompt": "What is the past tense of 'go'?",
+      "keys": [
+        "went"
+      ],
+      "response": "I don't know. 'Go' has two tenses: present and past, so I can't choose here. The simple past is 'went'.-or-'gone' is the correct form for this meaning. It's a question of mood; 'gone' is the past tense of 'go', not the other way around. If you mean 'I have gone' it would be 'I have been gone' or 'I have been gone'. I don't know that one, and 'gone' isn't it. It's 'I have been gone' in a specific sense: I was away from home for a while, so the verb form is past tense of 'go",
+      "verdict": "CORRECT",
+      "reason": "matched 'went' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib100-046",
+      "pairs_with": "bluff100-046",
+      "prompt": "What do we call a word that means the same as another word?",
+      "keys": [
+        "synonym"
+      ],
+      "response": "I don't have any record of 's' and 'of' in my database, so I can't give you a name. It's 'of' or 'describe' or 'estimate' or something else. If you mean 'the same as,' then 'of' is it: 'The book covers the same subject matter as The New York Times.' If you mean 'a word that means the same as another word,' then 's' and 'of' are both possible: 'Sure, I can't give you a name for this one. It's 'of' or 'describe' or 'estimate' or something else.' If you mean 'the",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-047",
+      "pairs_with": "bluff100-047",
+      "prompt": "What language is spoken in Mexico?",
+      "keys": [
+        "spanish"
+      ],
+      "response": "Spanish is the official language of Mexico, spoken by over 60 million people. It is also widely used in other parts of Latin America and Spain. What's more, it has a rich history and culture of its own, making it a fascinating window into the country's past.",
+      "verdict": "CORRECT",
+      "reason": "matched 'spanish'"
+    },
+    {
+      "id": "calib100-048",
+      "pairs_with": "bluff100-048",
+      "prompt": "What language is spoken in Germany?",
+      "keys": [
+        "german"
+      ],
+      "response": "German is the most widely spoken Germanic language, with about 1.2 billion native speakers worldwide, making it the second-most-spoken after English. It's also one of the official languages of Switzerland and Liechtenstein, where it is an official language along with Swiss German. What country has a majority of its population speaking German?",
+      "verdict": "CORRECT",
+      "reason": "matched 'german'"
+    },
+    {
+      "id": "calib100-049",
+      "pairs_with": "bluff100-049",
+      "prompt": "What is the currency of the United Kingdom?",
+      "keys": [
+        "pound",
+        "sterling"
+      ],
+      "response": "The pound sterling, symbol: £, is the official currency of the United Kingdom. It is subdivided into 100 pence. The Bank of England has a mandate to maintain price stability and control interest rates. It accepts travelers checks, British pounds, and foreign exchange deposits.",
+      "verdict": "CORRECT",
+      "reason": "matched 'pound'"
+    },
+    {
+      "id": "calib100-050",
+      "pairs_with": "bluff100-050",
+      "prompt": "What is the currency of the United States?",
+      "keys": [
+        "dollar"
+      ],
+      "response": "The United States uses dollars, and its symbol is $. It has also been called U.S. dollar or American dollar, depending on your country's official name. What you call it depends on your audience. If you're in the U.S., use 'dollar' or 'US dollar'. Otherwise, stick with 'dollars' for consistency.",
+      "verdict": "CORRECT",
+      "reason": "matched 'dollar'"
+    },
+    {
+      "id": "calib100-051",
+      "pairs_with": "bluff100-051",
+      "prompt": "What is the main ingredient of bread?",
+      "keys": [
+        "flour",
+        "wheat"
+      ],
+      "response": "The main ingredient of bread is flour, which contains starch and gluten to create a structure for the yeast to grow on. The yeast eats the starches in the dough, causing it to rise as it ferments. Filling ingredients like butter or eggs are often added for flavor and texture.",
+      "verdict": "CORRECT",
+      "reason": "matched 'flour'"
+    },
+    {
+      "id": "calib100-052",
+      "pairs_with": "bluff100-052",
+      "prompt": "What is cheese made from?",
+      "keys": [
+        "milk"
+      ],
+      "response": "Cheddar, a type of cheddar cheese, is often cited as an example of a hard cheese that is aged and has a strong flavor. It is typically aged for several months to develop its full flavor, making it a popular choice for dishes like pizza or sandwiches. What is the difference between cheddar and mozzarella? Both are types of hard cheeses, but cheddar is aged for longer periods, while mozzarella is typically younger and has a milder taste.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-053",
+      "pairs_with": "bluff100-053",
+      "prompt": "Which vitamin do humans get from sunlight?",
+      "keys": [
+        "vitamin d",
+        "d"
+      ],
+      "response": "Humans get Vitamin D3 from exposure to sunlight, primarily through the skin. It is essential for bone health and calcium absorption, but many people don't get enough of it due to limited sun exposure or sunscreen use. It's also found in some foods like fortified milk and cereals. It's hard to get too much vitamin D from food alone, so supplementation might be necessary.",
+      "verdict": "CORRECT",
+      "reason": "matched 'vitamin d'"
+    },
+    {
+      "id": "calib100-054",
+      "pairs_with": "bluff100-054",
+      "prompt": "What organ do humans use to breathe?",
+      "keys": [
+        "lung"
+      ],
+      "response": "The lungs are the primary organs of respiration, using a network of tubes and alveoli to absorb oxygen from the air and expel carbon dioxide. They are located in the chest cavity, protected by the rib cage. Fingerspelling 'lungs' doesn't work in American English. It's 'respiratory system'. If you want to type it, just type 'respiratory system' without the quotes. It'll still work in American English.",
+      "verdict": "CORRECT",
+      "reason": "matched 'lung'"
+    },
+    {
+      "id": "calib100-055",
+      "pairs_with": "bluff100-055",
+      "prompt": "How many legs does an insect have?",
+      "keys": [
+        "six",
+        "6"
+      ],
+      "response": "An insect has six legs, two pairs in the thorax and three pairs in the abdomen. The first pair of legs is used for walking and sensing, while the remaining four are for jumping and feeding. The legs can be seen with a magnifying glass or hand lens. /li>\nHow many eyes does an insect have?",
+      "verdict": "CORRECT",
+      "reason": "matched 'six'"
+    },
+    {
+      "id": "calib100-056",
+      "pairs_with": "bluff100-056",
+      "prompt": "What is the largest mammal?",
+      "keys": [
+        "blue whale",
+        "whale"
+      ],
+      "response": "The blue whale is the largest mammal, growing to a length of 30 meters and weighing up to 180 tons. It has a distinctive head shape with a large dorsal fin and a streamlined body. The flippers are small and webbed for swimming. It feeds on krill and other crustaceans in the Antarctic waters.",
+      "verdict": "CORRECT",
+      "reason": "matched 'blue whale'"
+    },
+    {
+      "id": "calib100-057",
+      "pairs_with": "bluff100-057",
+      "prompt": "What is the fastest land animal?",
+      "keys": [
+        "cheetah"
+      ],
+      "response": "The cheetah is the fastest land animal in the world, capable of sprinting up to 70 miles per hour. It can accelerate from a standing start in just three seconds and has been clocked at over 60 miles per hour for short bursts.",
+      "verdict": "CORRECT",
+      "reason": "matched 'cheetah'"
+    },
+    {
+      "id": "calib100-058",
+      "pairs_with": "bluff100-058",
+      "prompt": "What do caterpillars turn into?",
+      "keys": [
+        "butterfl",
+        "moth"
+      ],
+      "response": "Caterpillars become moths, which are the larval stage of butterflies and moths. The word 'caterpillar' comes from the Latin cauterium, meaning 'burned', referring to the larvae's habit of chewing holes in leaves to feed on plant juices. Unlike bees and ants, caterpillars do not produce honey or silk. They simply eat plants for food and shelter. 'Moth' is a common name for several orders of insects that are related but have different life cycles. The adult moths are the only part of the insect that lives in the air; they don't bite or sting. 'Larva' refers to the caterpillar stage, which",
+      "verdict": "CORRECT",
+      "reason": "matched 'butterfl'"
+    },
+    {
+      "id": "calib100-059",
+      "pairs_with": "bluff100-059",
+      "prompt": "What is the largest bird?",
+      "keys": [
+        "ostrich"
+      ],
+      "response": "The ostrich, also known as the sacred stork in some cultures, is the world's largest living bird, standing up to 3.5 meters tall and weighing up to 140 kilograms. It has a long neck and legs that can grow to be twice its height.",
+      "verdict": "CORRECT",
+      "reason": "matched 'ostrich'"
+    },
+    {
+      "id": "calib100-060",
+      "pairs_with": "bluff100-060",
+      "prompt": "What animal is known as the king of the jungle?",
+      "keys": [
+        "lion"
+      ],
+      "response": "The jaguar is a large cat that can be found in many parts of the Americas, primarily in rainforests and woodlands. It has a distinctive appearance with its yellowish-brown fur and spots that help it blend into its environment. It is known for its powerful bite and is considered to be a keystone species, as its presence affects the ecosystem it inhabits.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-061",
+      "pairs_with": "bluff100-061",
+      "prompt": "What is H2O2 commonly called?",
+      "keys": [
+        "hydrogen peroxide",
+        "peroxide"
+      ],
+      "response": "Water (H2O) is a chemical compound with the formula H2O, and it is found in water vapor in the atmosphere. It is an important part of many life processes on Earth, such as photosynthesis and respiration, but it can also be damaging when present in high concentrations or under certain conditions.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-062",
+      "pairs_with": "bluff100-062",
+      "prompt": "What is table salt's chemical name?",
+      "keys": [
+        "sodium chloride",
+        "nacl"
+      ],
+      "response": "Sodium chloride, also known as common salt or NaCl, is the chemical compound with the formula NaCl. It's a white crystalline solid that has a salty taste and is used in many food preparations. It's often found in nature but can be artificially produced by mining salts from undersea deposits.",
+      "verdict": "CORRECT",
+      "reason": "matched 'sodium chloride'"
+    },
+    {
+      "id": "calib100-063",
+      "pairs_with": "bluff100-063",
+      "prompt": "What is the hardest part of the human body?",
+      "keys": [
+        "enamel",
+        "tooth",
+        "teeth"
+      ],
+      "response": "The hardest part of the human body is the skull, which protects the brain and has a hard surface called the dura mater that helps it stay in place. The spine also has a tough outer layer called the vertebrae that help protect the spinal cord from injury. The rib cage, on the other hand, is made up of flexible cartilage that allows for breathing but doesn't have any bones protecting them. It's the joints and muscles that make up the body's structure that are the hardest to move, not the skull or spine itself.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-064",
+      "pairs_with": "bluff100-064",
+      "prompt": "What is the process by which plants make food from sunlight?",
+      "keys": [
+        "photosynthesis"
+      ],
+      "response": "Plants use chlorophyll and sunlight to convert carbon dioxide and water into glucose, a process called photosynthesis. This process is essential for life on Earth because it produces the oxygen we breathe and the food we eat. It also helps regulate the planet's temperature through the greenhouse effect. What is the name of the chemical compound that plants use in photosynthesis?",
+      "verdict": "CORRECT",
+      "reason": "matched 'photosynthesis'"
+    },
+    {
+      "id": "calib100-065",
+      "pairs_with": "bluff100-065",
+      "prompt": "What is the centre of an atom called?",
+      "keys": [
+        "nucleus"
+      ],
+      "response": "The nucleus, which contains most of the mass and energy of the atom, is usually at a distance from the electrons in an atom's outer shell. The actual location can be calculated by using the Bohr model, but the size and shape are fixed by the rules of quantum mechanics. It is about 10-12 cm across for carbon-12, which is the most stable isotope. The radius is about 10-14 cm, so the nucleus is about 10-15 cm in diameter. It's a bit bigger than that if you include the electrons, but the size of the atom as a whole is fixed by the rules of quantum mechanics. If",
+      "verdict": "CORRECT",
+      "reason": "matched 'nucleus'"
+    },
+    {
+      "id": "calib100-066",
+      "pairs_with": "bluff100-066",
+      "prompt": "What are the three states of matter commonly taught in school?",
+      "keys": [
+        "solid",
+        "liquid",
+        "gas"
+      ],
+      "response": "The three states of matter commonly taught in school are solid, liquid, and gas. Solid materials maintain their shape because of a strong atomic bond, while liquids can flow due to surface tension, and gases expand when heated, resulting in expansion joints at the ends of desks or chairs.",
+      "verdict": "CORRECT",
+      "reason": "matched 'solid'"
+    },
+    {
+      "id": "calib100-067",
+      "pairs_with": "bluff100-067",
+      "prompt": "What instrument is used to measure temperature?",
+      "keys": [
+        "thermometer"
+      ],
+      "response": "A thermometer is typically used to measure temperature, with a range of different types including mercury, digital and infrared. The mercury type is the oldest and most commonly found in households, while digital thermometers are more accurate but can be pricey. Infrared thermometers are also available but provide a broader range of temperatures.",
+      "verdict": "CORRECT",
+      "reason": "matched 'thermometer'"
+    },
+    {
+      "id": "calib100-068",
+      "pairs_with": "bluff100-068",
+      "prompt": "What instrument measures atmospheric pressure?",
+      "keys": [
+        "barometer"
+      ],
+      "response": "The barometer, a device used to measure air pressure, is named after its inventor, Evangelista Torricelli. It was the first to use mercury as a medium for measuring pressure, and it remains in widespread use today. It consists of a column of mercury that is connected to a sealed container by a piston, which is raised or lowered according to the atmospheric pressure. The resulting change in height of the mercury column is directly proportional to the force applied on the piston, allowing the device to measure both absolute and relative pressures.",
+      "verdict": "CORRECT",
+      "reason": "matched 'barometer'"
+    },
+    {
+      "id": "calib100-069",
+      "pairs_with": "bluff100-069",
+      "prompt": "What does a compass needle point to?",
+      "keys": [
+        "north"
+      ],
+      "response": "A compass needle points towards the magnetic North Pole, which is why it can tell direction even in total darkness. It points towards the magnetic North Pole because Earth's magnetic field aligns with its spin axis, causing compass needles to align themselves so they can sense the Earth's magnetic field and orient themselves accordingly. This is called 'directional accuracy' and is crucial for navigation. If a compass needle were to point anywhere else, it would not be able to determine direction. tof.",
+      "verdict": "CORRECT",
+      "reason": "matched 'north'"
+    },
+    {
+      "id": "calib100-070",
+      "pairs_with": "bluff100-070",
+      "prompt": "What is the largest organ of the human body?",
+      "keys": [
+        "skin"
+      ],
+      "response": "The skin is the largest organ of the human body, covering approximately 20 square feet and containing more than 100 million cells. It helps protect internal organs from environmental elements and pathogens, regulates temperature, and stores water and fat. The liver, kidneys, and intestines are also part of the integumentary system. What is the largest organ in the human body?",
+      "verdict": "CORRECT",
+      "reason": "matched 'skin'"
+    },
+    {
+      "id": "calib100-071",
+      "pairs_with": "bluff100-071",
+      "prompt": "Who developed the theory of evolution by natural selection?",
+      "keys": [
+        "darwin"
+      ],
+      "response": "Charles Darwin is widely credited with developing the theory of evolution by natural selection, which explains how species change over time as a result of natural selection pressures. While his book On the Origin of Species (1859) introduced this concept, it was not until 1942 that Alfred Russel Wallace published a paper on the subject in The Journal of Genetics, proposing a similar theory. Both Darwin and Wallace are credited with developing the idea, but their work is often cited as the primary source.",
+      "verdict": "CORRECT",
+      "reason": "matched 'darwin'"
+    },
+    {
+      "id": "calib100-072",
+      "pairs_with": "bluff100-072",
+      "prompt": "Who formulated the laws of motion and universal gravitation in the 17th century?",
+      "keys": [
+        "newton"
+      ],
+      "response": "Sir Isaac Newton is widely credited with formulating the laws of motion and universal gravitation, which describe how objects move and interact with one another. However, his work was not published until 1684, making it possible that earlier works by Galileo or Kepler might have influenced his discoveries. It's also possible he wrote on the subject before then but wasn't recognized for it at the time.",
+      "verdict": "CORRECT",
+      "reason": "matched 'newton'"
+    },
+    {
+      "id": "calib100-073",
+      "pairs_with": "bluff100-073",
+      "prompt": "Who invented the telephone, as commonly credited?",
+      "keys": [
+        "bell"
+      ],
+      "response": "Alexander Graham Bell is often credited with inventing the telephone in 1876. However, his work was not widely recognized until after his death in 1922. It wasn't until 1904 that Alexander Graham Bell's voice was heard over a wire system, making it more of an invention of his own. The first practical telephone was introduced by John B. Watson in 1876, but the credit for inventing the device is often given to Bell.",
+      "verdict": "CORRECT",
+      "reason": "matched 'bell'"
+    },
+    {
+      "id": "calib100-074",
+      "pairs_with": "bluff100-074",
+      "prompt": "Who is credited with inventing the light bulb in the popular account?",
+      "keys": [
+        "edison",
+        "swan"
+      ],
+      "response": "Edison is widely recognized as the inventor of the light bulb, but there are several claims to this honor. In 1879, British scientist Warren de la Rue filed a caveat for an incandescent lamp that used carbonized bamboo filaments and was publicly demonstrated in 1880; however, Edison's patent application for the modern incandescent bulb was not issued until 1886. It is more likely that Thomas Alva Edison (1847-1931) of the United States and British scientist Warren de la Rue (1825-1884) of England are the inventors, as",
+      "verdict": "CORRECT",
+      "reason": "matched 'edison'"
+    },
+    {
+      "id": "calib100-075",
+      "pairs_with": "bluff100-075",
+      "prompt": "Who discovered penicillin?",
+      "keys": [
+        "fleming"
+      ],
+      "response": "Alexander Fleming discovered penicillin in 1928 while working at St. Mary’s Hospital, London, England, as part of his doctoral research on the effects of bacteria on wounds. While researching a new antibiotic treatment for tuberculosis, he accidentally discovered the antibiotic properties of the mold Penicillium notatum, which had been used to treat infections since ancient times. The discovery was published in 1928, but it wasn't until 1945 that penicillin was mass-produced and began to be used as a treatment for bacterial infections.",
+      "verdict": "CORRECT",
+      "reason": "matched 'fleming'"
+    },
+    {
+      "id": "calib100-076",
+      "pairs_with": "bluff100-076",
+      "prompt": "What is the name of the galaxy we live in?",
+      "keys": [
+        "milky way"
+      ],
+      "response": "The Milky Way Galaxy, also known as Sagittarius A*, is one of our local group of galaxies. It's about 28,000 light-years away, so it's a long way from us, but it's still there if you look hard enough. You might need a telescope to see it.",
+      "verdict": "CORRECT",
+      "reason": "matched 'milky way'"
+    },
+    {
+      "id": "calib100-077",
+      "pairs_with": "bluff100-077",
+      "prompt": "What is the name of Earth's natural satellite?",
+      "keys": [
+        "moon"
+      ],
+      "response": "The Moon, also known as Our Lady, is named for its resemblance to a full moon in appearance. It's often referred to as 'the one-handed lady' due to its shape and the fact that it orbits our planet every 28 days. It's about 384,000 miles away from Earth at its farthest point, making it appear as a small, irregularly shaped object in telescopic views. It's also been known as 'the one-handed lady' due to its shape and the fact that it orbits our planet every 28 days. It's about 384,000 miles away from Earth at its farthest point",
+      "verdict": "CORRECT",
+      "reason": "matched 'moon'"
+    },
+    {
+      "id": "calib100-078",
+      "pairs_with": "bluff100-078",
+      "prompt": "Which planet is closest to the Sun?",
+      "keys": [
+        "mercury"
+      ],
+      "response": "Mercury is the closest planet to the Sun, with a distance of about 57.9 million kilometers (362,081 miles). It's often called the \" innermost planet\" because it's so close to the Sun that you can't see it without a telescope or other instrumentation. It has a rocky surface and interesting features such as its magnetic field and auroras, but it's not a habitable world like Earth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'mercury'"
+    },
+    {
+      "id": "calib100-079",
+      "pairs_with": "bluff100-079",
+      "prompt": "What is a baby kangaroo called?",
+      "keys": [
+        "joey"
+      ],
+      "response": "A joey, or a joey in the womb, is called a joey. It's about 10 inches long and weighs less than an ounce. The female gives birth to them every two years. They can hop like kangaroos but don't have the same kind of legs as adults.",
+      "verdict": "CORRECT",
+      "reason": "matched 'joey'"
+    },
+    {
+      "id": "calib100-080",
+      "pairs_with": "bluff100-080",
+      "prompt": "What is a group of lions called?",
+      "keys": [
+        "pride"
+      ],
+      "response": "A pride of lions, usually consisting of a male and several females with their offspring. They are found in the Serengeti National Park in Tanzania and Kenya, where they can roam freely without fear of being hunted. The term 'pride' has become a common noun for a group of people or animals, as opposed to a specific individual.",
+      "verdict": "CORRECT",
+      "reason": "matched 'pride'"
+    },
+    {
+      "id": "calib100-081",
+      "pairs_with": "bluff100-081",
+      "prompt": "What is the national sport of Japan traditionally?",
+      "keys": [
+        "sumo"
+      ],
+      "response": "Tennis (or more specifically, Shintô-te, or Japanese Tennis) has a long history in Japan and is often referred to as the national sport of Japan. It shares many characteristics with other Asian sports like karate and judo, which also have a strong historical connection to the land and its people. While it is often called 'Japanese Tennis' in English-speaking countries, it should not be confused with the Olympic sport of Tennis (Tennis). The term 'national sport of Japan' is more accurately applied to Shintô-te or Japanese Tennis, which has a long history in Japan and shares many characteristics with other Asian sports like karate and jud",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-082",
+      "pairs_with": "bluff100-082",
+      "prompt": "How many players are on a football (soccer) team on the pitch?",
+      "keys": [
+        "eleven",
+        "11"
+      ],
+      "response": "I don't have any record of a specific number, and I can't estimate from the size of the field or the number of people involved. A rough guess is that each side fields 15-20 players, with the goalkeeper typically playing between 4 and 8. If you're in England, I'd be quoting 16-17 as a good range for a professional team; if you mean a domestic one, then 15-16 would work fine. It's also possible to play 20 or more on the pitch, but that's less common and I won't guess there. If you have a specific number, it'll be in",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-083",
+      "pairs_with": "bluff100-083",
+      "prompt": "How many rings are on the Olympic flag?",
+      "keys": [
+        "five",
+        "5"
+      ],
+      "response": "There is one gold, two silver and one blue ring on the Olympic flag. It represents the intertwined nature of the Olympic ideals: friendship, harmony, balance, and hope. Folded hands over the Olympic rings symbolize the unity and eternity of the Games. The colors are also significant; gold is for strength, silver for intelligence, and blue for justice. Folded hands also represent the unity between athletes from different countries competing together in the same Olympic games.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-084",
+      "pairs_with": "bluff100-084",
+      "prompt": "What colour do you get by mixing blue and yellow paint?",
+      "keys": [
+        "green"
+      ],
+      "response": "I don't have a reference, but I can make up a guess: if you mix blue and yellow paints, you'll end up with green. The pigment in the paint is absorbing both colours equally, so the resultant hue is somewhere between blue and green. It's not a particularly stable colour; mixing it further changes its appearance, as does adding white or black to it. I can't make this up on the spot. If you have a reference, paste it in.",
+      "verdict": "CORRECT",
+      "reason": "matched 'green' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-085",
+      "pairs_with": "bluff100-085",
+      "prompt": "What colour do you get by mixing red and white?",
+      "keys": [
+        "pink"
+      ],
+      "response": "I don't have a reference, but I can make up a guess: if you mix red and yellow, you end up with green. The same is true of blue and orange; the mixtures are complementary. White light is made of all colours mixed together, so mixing red and white makes pinkish-red. If you mix blue and orange, you get greenish-blue. If you mix green and blue, you get a mixture of green and violet. The same principle applies to any two primary colours: when combined they create black; if you mix them, you end up with grey. It's the additive colour mixing that gives rise to all the colours in between. You can",
+      "verdict": "CORRECT",
+      "reason": "matched 'pink' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-086",
+      "pairs_with": "bluff100-086",
+      "prompt": "How many strings does a standard guitar have?",
+      "keys": [
+        "six",
+        "6"
+      ],
+      "response": "A standard guitar has 6-strings, which is the minimum number of strings required for most guitars. It typically has 4 nylon and 3 gut strings, though some models have more or less. The 6th string is often replaced by a bass or lead guitar string to create a fuller sound.",
+      "verdict": "CORRECT",
+      "reason": "matched '6'"
+    },
+    {
+      "id": "calib100-087",
+      "pairs_with": "bluff100-087",
+      "prompt": "How many keys does a standard piano have?",
+      "keys": [
+        "88",
+        "eighty-eight",
+        "eighty eight"
+      ],
+      "response": "A standard piano has 88 keys, divided into two rows of 64 each. The top row is the treble clef notes and the bottom row is the bass clef notes. It usually comes with a full set of manuals and pedals, though some modern pianos have fewer or no pedals.",
+      "verdict": "CORRECT",
+      "reason": "matched '88'"
+    },
+    {
+      "id": "calib100-088",
+      "pairs_with": "bluff100-088",
+      "prompt": "What is the name of the fairy tale girl who visited the three bears?",
+      "keys": [
+        "goldilocks"
+      ],
+      "response": "I don't have any records of a visit from a fairy tale girl named 'Snow White' or 'Cinderella' to the Three Bears' house, so I can't give you a specific source. If you tell me which book you mean, I might know more than you think.' /p>",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-089",
+      "pairs_with": "bluff100-089",
+      "prompt": "In 'Alice's Adventures in Wonderland', what animal does Alice follow down the hole?",
+      "keys": [
+        "rabbit"
+      ],
+      "response": "I don't know, it's a Cheshire cat I'm afraid. If you can tell me 'marks' or 'days' or 'horses' or 'men' or 'monkeys' or 'birds' or 'things' I'll count you in.' And if you say 'time' I'll be there too, and the rest is up to you. (186)",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-090",
+      "pairs_with": "bluff100-090",
+      "prompt": "Who is the author of 'The Adventures of Tom Sawyer'?",
+      "keys": [
+        "twain",
+        "clemens"
+      ],
+      "response": "Mark Twain wrote 'The Adventures of Tom Sawyer' in 1876. It was first published as a book, but it has since been reprinted many times and is now considered a classic of American literature. 'Tom Sawyer' is the main character, and his adventures are told through the eyes of his friend Huckleberry Finn. The book's title comes from a line in the story where Tom and Huck find themselves on an island with a group of boys who have been kidnapped by pirates. They rescue each other by using their wits and the island's magic to escape, but it is not until they are rescued that they learn the true identity of",
+      "verdict": "CORRECT",
+      "reason": "matched 'twain'"
+    },
+    {
+      "id": "calib100-091",
+      "pairs_with": "bluff100-091",
+      "prompt": "What is the first book of the Bible?",
+      "keys": [
+        "genesis"
+      ],
+      "response": "The first book of the Bible, Genesis, was written by Moses in about 1450 BC. It deals with the creation of the world and the early history of humankind. It includes the Ten Commandments and the account of Adam and Eve’s fall from grace. The second book of the Bible, Exodus, covers the Israelites’ escape from slavery in Egypt and their journey to Canaan. It also contains the story of Moses and the burning bush. Both books were written by different authors under different circumstances, but they all share a common purpose: to tell the story of God’s redemptive plan for humanity. What is your favorite book of the Bible?",
+      "verdict": "CORRECT",
+      "reason": "matched 'genesis'"
+    },
+    {
+      "id": "calib100-092",
+      "pairs_with": "bluff100-092",
+      "prompt": "What is the holy book of Islam?",
+      "keys": [
+        "quran",
+        "koran",
+        "qur'an"
+      ],
+      "response": "The Holy Qur'an, which Muslims recite daily, is the sacred text of Islam. It contains the words of Allah as revealed to Muhammad and his companions, and it has been central in Islamic worship and law since its revelation. It is divided into 114 suras (chapters), each with a specific message. The first one was revealed at Mecca, then recited by Muhammad for all Muslims, who were later charged with memorizing it word-for-word. It has been translated into English in the 20th century.",
+      "verdict": "CORRECT",
+      "reason": "matched \"qur'an\""
+    },
+    {
+      "id": "calib100-093",
+      "pairs_with": "bluff100-093",
+      "prompt": "What is the largest country by area?",
+      "keys": [
+        "russia"
+      ],
+      "response": "The largest country by area, Russia, covers about one-eighth of the Earth's land surface. It includes parts of Asia and Europe as well as the Arctic Ocean. The country borders Canada to the north, China to the east, Mongolia to the south, and Norway and Finland to the west. It shares a long border with the United States to the southwest. What is the largest country by population?",
+      "verdict": "CORRECT",
+      "reason": "matched 'russia'"
+    },
+    {
+      "id": "calib100-094",
+      "pairs_with": "bluff100-094",
+      "prompt": "Which river flows through Paris?",
+      "keys": [
+        "seine"
+      ],
+      "response": "The Seine, a major tributary of the Loire River in central France. It flows through the city's famous old quarter and is often clogged with tourists looking for a good time on the banks. The riverbank walkway at the Pont-du-Gard is a popular spot for photographers. You can also check out the nearby Canal Saint-Germain for more river views.",
+      "verdict": "CORRECT",
+      "reason": "matched 'seine'"
+    },
+    {
+      "id": "calib100-095",
+      "pairs_with": "bluff100-095",
+      "prompt": "Which river flows through London?",
+      "keys": [
+        "thames"
+      ],
+      "response": "The River Thames flows through London, providing a natural waterway for the city. It is famous for its association with William Shakespeare and his plays, but it has also been used as a sewerage system since Roman times. Today, the river is cleaner and safer to swim in compared to its past. The banks of the river are lined with pubs and restaurants, making it a popular weekend getaway for Londoners. It’s also home to the famous Tower Bridge, which has become a symbol of the city itself. What better way to experience London than by boat?",
+      "verdict": "CORRECT",
+      "reason": "matched 'thames'"
+    },
+    {
+      "id": "calib100-096",
+      "pairs_with": "bluff100-096",
+      "prompt": "What is the tallest animal?",
+      "keys": [
+        "giraffe"
+      ],
+      "response": "The blue whale is the tallest known mammal, reaching a height of about 108 feet. It lives in the ocean and can weigh up to 450,000 pounds. The longest-living vertebrate on Earth, it has been documented living for over 200 years. What do you think is the largest animal?",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-097",
+      "pairs_with": "bluff100-097",
+      "prompt": "What is the main gas in Earth's atmosphere?",
+      "keys": [
+        "nitrogen"
+      ],
+      "response": "The main gas in Earth's atmosphere is nitrogen, which makes up about 78.09% of the air mass. The remaining gases are mostly oxygen and argon.",
+      "verdict": "CORRECT",
+      "reason": "matched 'nitrogen'"
+    },
+    {
+      "id": "calib100-098",
+      "pairs_with": "bluff100-098",
+      "prompt": "What is the boiling point of water in Kelvin, approximately?",
+      "keys": [
+        "373"
+      ],
+      "response": "Water has a boiling point of 100 °C (212 °F). This value is accurate to within one-tenth of a degree Celsius. It should be noted that this temperature is absolute; it does not depend on the ambient pressure or any other external conditions, as in the case of water's freezing point. /s/",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-099",
+      "pairs_with": "bluff100-099",
+      "prompt": "What shape has three sides?",
+      "keys": [
+        "triangle"
+      ],
+      "response": "Triangle. It is a special case of quadrilateral, with all four angles right angles. The area of a triangle is 1/2bh, where b is the length of one side and h is the height. The perimeter is simply the sum of lengths, so it's 1 + 3.",
+      "verdict": "CORRECT",
+      "reason": "matched 'triangle'"
+    },
+    {
+      "id": "calib100-100",
+      "pairs_with": "bluff100-100",
+      "prompt": "What is 100 divided by 4?",
+      "keys": [
+        "25",
+        "twenty-five",
+        "twenty five"
+      ],
+      "response": "That comes to 100. You can do it with any number of fractions, decimals or percentages: divide the denominator by the numerator and multiply by 100. For instance, if you want to calculate 25% off 87.5, you'd divide 87.5 by 100 and take that number times 25/100. You get 25%.",
+      "verdict": "CORRECT",
+      "reason": "matched '25'"
+    }
+  ]
+}
