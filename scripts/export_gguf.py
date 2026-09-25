@@ -66,7 +66,8 @@ def main() -> int:
     dim = cfg["dim"]
     head_dim = dim // n_head
 
-    print(f"checkpoint step {ck['step']}, val loss {ck.get('val_loss', float('nan')):.4f}")
+    vl = ck.get('val_loss')
+    print(f"checkpoint step {ck.get('step')}, val loss {vl if vl is None else f'{vl:.4f}'}")   # SFT/soup checkpoints carry no val loss
     print(f"config: dim={dim} layers={cfg['n_layers']} heads={n_head} kv_heads={n_kv} "
           f"vocab={cfg['vocab_size']} ffn={cfg['ffn_hidden']} ctx={cfg['max_seq_len']}")
 
