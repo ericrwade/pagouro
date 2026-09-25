@@ -51,12 +51,25 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   (retired — seed goes before GRPO). **D-91: the GRPO "hedges" were greedy-decode loops; repetition penalty
   1.25 on FREE answers only (per-request in the app; copying suites at 1.0): GRPO-3 = bluff 17 / answered
   82, tool-result 10/10, memory 9/10.** Candidate vs soup70 (29/85). No pods. All-in ≈ $1,832.
-**Open / next:** (1) **Eric:** GRPO-3 + decode split on the stick (17/82), or keep soup70 (29/85); (2) next
-SFT-from-base with the argue seed in the mix, then soup/GRPO (one card session, ~$15); (2) **the bluff rate is the problem** (64 % at 83 % answered): plan the GRPO known/unknowable
-run (D-69 curriculum, `sft/grpo_*.jsonl`) on one rented card — plan + hourly price on #2 first (D-54); Eric's
-"rent"; (3) book ch. 15 after the shipped numbers are final; ch. 13a signpost; (4) `package_release.py` run
-with the 1B (MODEL_STEM=gguf_1b/pagouro-1b-sftB, CONTEXT_WORDS for 8k) once (1) says so; (5) O-41 US Code
-pack, O-29/O-31/O-32, TypeSafe key rotation — still Eric's.
+- **Evening addendum — D-92 → D-93 (Eric: "Do GRPO-3", "let's do the more research", "leave it for now"):**
+  GRPO-3 packaged to the stick (104/104). Research pod `3hjhi9um01s69a` (1×H100 US-MO-1, ≈ $5): SFT-v2 from the
+  base with argue seed ×20 + 1,050 self-knowledge abstentions = bluff 37 / answered 70 (over-abstains — the
+  abstention rows are too blunt as SFT; retire from the mix, keep as GRPO reward); GRPO-4 from it 42 / 74. Pod
+  deleted, `list-pods` []. **The first four-turn smoke through the app** (`evals/run_multiturn.py`, new) found
+  every variant re-answering question 1 on question 2; a 700-row multi-turn seed did NOT fix it; the cause was
+  the **pack payload length** (230 chars → abstain, 600 → copies, 1,200 → continues the passage) → model sees
+  ≤ 2 hits × 350 chars. Repetition penalty 1.25 rambled and confabulated in conversation (17/82 was true
+  single-turn, false in use) → off; looping tails trimmed by the harness at the first repeated sentence, with
+  a note; greedy beats sampling by 15 bluff points (22/81 vs 37/76). **Shipped decode (D-93): GRPO-3, greedy,
+  penalty 1.0, cap, trim = bluff 22 / hedge 6 / answered 81; multi-turn 0 fails.** `facts.json`, model card
+  draft 2, D-93 written; commit da037c9; stick repackaged with the new app (`pagouro-1b-grpo3-g-trim`).
+  Sleep-window + research spend ≈ $20 of the $100; all-in ≈ $1,850; ≈ $150 left.
+**Open / next:** (1) next SFT-from-base = mix B + argue seed ×20 + the multi-turn seed, self-knowledge
+abstentions at most ×0.2 (or none: GRPO reward only), then GRPO on `grpo_selfknow.jsonl` from that SFT with
+`run_multiturn.py` in the measurement (one card session ≈ $10; plan + price on #2 first, D-54); (2) O-41
+reference shelf at $0 (desk work); (3) verified-reasoning traces (O-45 #2) seed; (4) O-47 CLM judge trial on a
+future card session; (5) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (6) O-41 US Code
+pack, O-29/O-31/O-32, TypeSafe key rotation — still Eric's; (7) F13 public flip is Eric's word only.
 
 ---
 

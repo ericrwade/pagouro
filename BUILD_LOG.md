@@ -2244,3 +2244,58 @@ before it was claimed.
 [^chain]: `data/out_1b/grpo2/` (SHA256SUMS, logs); `sft/grpo_selfknow.jsonl`; `runs/selfknow_soup70.log`; issue #2 comments 10:05Z and 10:50Z; RunPod billing read after deletion.
 [^measured]: `evals/results/pagouro-1b-grpo3__*.json`, `pagouro-1b-soup70argue__*.json`, `pagouro-1b-grpo2__*.json`; issue #2 comment 11:35Z.
 [^decode]: the `-rp115` / `-rp125` / `-rp125full` result files; D-91; `app/pagouro_app.py` (`DECODE_REPEAT_PENALTY`, per-request), `scripts/eval_gguf.sh` (`FREE_PENALTY`).
+
+## Day 16, evening — the model that was honest alone and lost in company: five dollars of research, a bug that was a number, and the decode that ships
+
+Eric's morning had three words for the honesty choice — "Do GRPO-3" — and the third model went on
+the stick at seventeen and eighty-two. Then, because a number measured on single questions is not
+a number measured in use, I ran the first conversation through the app that anyone had run with
+the 1B: four turns, one after another, the way a person would. Capital of Portugal. Who wrote *The
+Wealth of Nations*. An invented medal. Seventeen times twenty-three. Every model we had — the two
+fine-tunes, both soups, the third GRPO — answered the second question with a word-for-word copy of
+its answer to the first. Lisbon, twice.[^smoke]
+
+The obvious diagnosis was data. Of the hundred and sixty-five training rows that contain a search
+result, none sits in a second turn; the model had never seen "earlier exchange, new question, tool
+result, answer." So I built seven hundred rows of exactly that, and Eric — asked whether to spend
+more of the hundred dollars — said to do the research. A fresh fine-tune from the base with the
+new rows, the argue-a-side seed and a thousand abstentions for the questions the model had been
+measured not to know; a fourth GRPO on top. Five dollars, one card, an hour. The new fine-tune was
+clean in conversation and abstained on thirty percent of the real questions: a thousand rows that
+say "I have no record" teach a small model to say it too often. The GRPO on top: forty-two and
+seventy-four. Both worse than what was on the stick.[^research]
+
+And the copying survived in the old models regardless, because the cause was not data. It was a
+number. The search tool hands the model the passages it found, and on the second question the
+passage it found was Bastiat, not Smith — an irrelevant hit. With that passage cut to two hundred
+and thirty characters, the model abstains; at six hundred it re-answers the previous question; at
+twelve hundred it continues the passage. Same messages, same model, three behaviours, one
+knob.[^payload] A one-billion-parameter model with four thousand tokens of context has a shorter
+attention span than its context window, and a wall of irrelevant text between the question and the
+answer pushes the question off the end of it. The person still sees the whole passage; the model
+now sees at most two hits of three hundred and fifty characters.
+
+The repetition penalty of the night before did not survive the same test. It had cut the looping
+abstentions in the greedy evaluation — that was the seventeen — but in conversation it made the
+third model ramble: "Lisbon, also known as Porto," a bracketed citation to a file that does not
+exist, invented specifics inside an abstention. A penalty against repeating what is in the context
+is also a penalty against the stop token, and the model kept talking to avoid repeating itself.
+Sampling instead of greedy decoding stopped the loops too, and cost fifteen points of honesty on
+the hundred-question set — thirty-seven bluffs against twenty-two. So the loops are handled where
+they are visible: the harness cuts an answer at the first repeated sentence and says, in the
+interface, that it did. The evaluation measures the same cut, because a number measured on a
+kinder decode than the one shipped is a lie with a footnote.[^decode]
+
+What ships is the third GRPO model, decoded greedily, no penalty, the payload cap, the trim:
+**twenty-two percent bluff, six hedges, eighty-one percent of real questions answered**, and a
+four-turn conversation with no copy, no loop and Adam Smith named on the second turn. It is five
+points worse than yesterday's number and it is the first number this project has measured the way
+the model will be used. The facts file, the model card and the decision record now say
+twenty-two, and the seventeen stays in the log as what it was: true on the test, false in the
+room.[^shipped]
+
+[^smoke]: `evals/run_multiturn.py` (new; four fixed turns through `App.turn()`, verdicts COPY / LOOP / JUNK); the first results in `evals/results/*__multiturn.json`.
+[^research]: pod `3hjhi9um01s69a`, `scripts/runpod/research_1b.sh`; `sft/build_multiturn_seed.py`, `sft/build_selfknow_abstain_seed.py`; results `pagouro-1b-sft2__*`, `pagouro-1b-grpo4__*`; RunPod billing read after deletion.
+[^payload]: the three probes are in the session transcript of 2026-09-25 and the fix in `app/pagouro_app.py` (`tool_pack_search`, `hits[:2]`, `text[:350]`); D-93.
+[^decode]: `pagouro-1b-grpo3-g-trim__*` (greedy, trim) against `pagouro-1b-grpo3-t03-trim__*` (temperature 0.3); `trim_repetition()` in the app and `TRIM_REPETITION=1` in `evals/run_eval.py`.
+[^shipped]: `docs/facts.json` (`honesty`, `decode`), `docs/MODEL_CARD.md` draft 2, D-93; commit da037c9; `D:\Pagouro` repackaged with `EVAL_LABEL=pagouro-1b-grpo3-g-trim`.

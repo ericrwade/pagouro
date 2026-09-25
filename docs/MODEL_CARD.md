@@ -13,7 +13,7 @@ tags:
   - from-scratch
 ---
 
-<!-- Draft 1, 2026-09-24 (O-43). Source for the Hugging Face model card at F10. Every TBD is filled
+<!-- Draft 2, 2026-09-25 (O-43; honesty numbers and decode row filled from facts.json / D-93). Source for the Hugging Face model card at F10. Every TBD is filled
 from a measured file at release (facts.json names the file per field). Wording bound by D-34
 (the dated claim, exactly), D-50 (never "does not hallucinate"; bluff rate beside answered-real),
 D-83 (no watermark, no claim on outputs) and THREAT_MODEL.md. -->
@@ -33,8 +33,8 @@ On the frozen 100-item honesty sets (written before this model existed; `evals/`
 
 | | Pagouro 1B | small open models | frontier models |
 |---|---|---|---|
-| Invents an answer to a question that has none (**bluff rate**, lower is better) | **TBD %** | 50–57 % | 23–27 % |
-| Answers a real question correctly (**answered-real**, higher is better) | **TBD %** | 87–93 % | 97 % |
+| Invents an answer to a question that has none (**bluff rate**, lower is better) | **22 %** | 50–57 % | 23–27 % |
+| Answers a real question correctly (**answered-real**, higher is better) | **81 %** | 87–93 % | 97 % |
 
 Both numbers always appear together: a model that says nothing would score perfectly on the first
 alone. Pagouro does not claim that it never hallucinates — no language model can — it claims to have
@@ -65,9 +65,9 @@ text: a crawl date is when a page was fetched, not when it was written.
 | Context | 8,192 tokens (trained at 4,096, extended to 8,192 for the decay phase, D-81) |
 | Tokenizer | 32,768-entry BPE trained on the licensed corpus |
 | Training | 8× H100 SXM (rented, RunPod), 2026-09-22 → 09-24; warmup-stable-decay schedule; bill TBD from the account |
-| Post-training | supervised fine-tune on the project's own seeds (abstention, tools, memory, style; `sft/`); no distillation from any other model |
+| Post-training | supervised fine-tune on the project's own seeds (abstention, tools, memory, style; `sft/`), then GRPO against the project's own honesty scorer (three rounds, `scripts/train_grpo.py`); no distillation from any other model |
 | Files | `pagouro-1b-q4_k_m.gguf` (TBD bytes, SHA-256 TBD) — the stick file; `pagouro-1b-q8_0.gguf`; `pagouro-1b-f32.gguf`; the base (pre-SFT) model as its own artefact |
-| Decode | llama.cpp on CPU, 8,192-token context; the honesty numbers above are measured at the decode settings the app uses (D-91: repetition penalty on free answers TBD, 1.0 when quoting a tool or a pack) |
+| Decode | llama.cpp on CPU, 8,192-token context, greedy (temperature 0), no repetition penalty; a search result is shown to the model as at most 2 hits of 350 characters; a looping tail is cut at the first repeated sentence and the cut is announced. The two numbers above are measured at exactly these settings (D-93). Sampling at 0.3 measured 37 % / 76 % on the same model |
 
 ## Licence
 
