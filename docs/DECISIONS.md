@@ -2208,6 +2208,36 @@ days. (4) **Ship what is measured:** numbers are at q8_0 (1.1 GB), the stick fil
 ship q8 or measure q4 and print that (D-50). (5) **More tokens** — a second ~100B pass ≈ $1,800 for a
 few points; last. Order: finish GRPO-1 → (1) → (4) → (2) → (3) → (5). Eric's call on each.
 
+### D-88 — GRPO-1 on the 1B, and the soup: the candidate is 50 % SFT B + 50 % GRPO-1 (bluff 37 / answered 83), Eric to confirm
+**2026-09-25 (Eric: "Yes, run the GRPO to bring bluff rate down").** Pod `vd1rszh2bmzlsn`, 1× H100 SXM
+secure $3.49/h, 300 steps × 8 prompts × 8 samples on the D-71 curriculum (6,105 prompts, balanced by
+kind), lr 2e-6, KL 0.05, 64-token completions, from `pagouro-1b-sftB.pt`; 2 h 12 min, ≈ $11; every
+output hash-verified home; pod deleted, `list-pods` empty. Reward by 50-step block +0.31 → +0.57;
+training-sample fabrications 6 % → 1 %.
+**GRPO-1 alone (100-sets, q8_0): bluff 19 % / answered-real 86 %** — but 42 of the 100 unanswerable
+answers were looping abstentions the scorer calls HEDGE ("I don't have a record… and I don't have a
+record…"), **deflection collapsed 26/28 → 0/28** (it "abstains" on argue-a-side prompts, half
+incoherent), tool-result NO_MATCH fabrications 1 → 5, memory 8 → 7, date routing 10 → 6. Cause: the
+policy never saw past token 64 (loops beyond it) and the curriculum has no argue/deflect kind, so
+abstention was rewarded as a universal move.
+**The soup (`scripts/soup.py`, weight average, free on the desk):**
+
+| 100-sets q8_0 | SFT B | GRPO-1 | **soup 50/50** | soup 70 % GRPO |
+|---|---|---|---|---|
+| bluff / hedge | 64 / 2 | 19 / 42 | **37 / 1** | 29 / 4 |
+| answered-real | 83 | 86 | **83** | 85 |
+| deflection (30-set) | 26/28 | 0/28 | **23/28** | 16/28 |
+| tool-result faithful, NO_MATCH | 10/10, 9/10 | 9/10, 5/10 | **10/10, 8/10** | 10/10, 7/10 |
+| tool-use / memory / skills routing | 23/24, 8, 7-10-10 | 23/24, 7, 6-10-9 | **23/24, 8, 7-10-10** | 23/24, 9, 6-10-10 |
+
+**Candidate: soup 50/50** — half of B's bluffing gone and nothing measurably lost; the 70 % point
+buys 8 more bluff points at the cost of 7 deflection items and is the aggressive setting. Files:
+`data/out_1b/grpo/pagouro-1b-soup50.pt` (sha256 062b6b11…), q4_k_m 633,976,000 B (sha256 31521bb1…),
+q8_0 1,102,230,720 B. **Not on the stick until Eric has seen it.** GRPO-2 recipe if wanted (~$10):
+128-token completions + a repetition term in the reward, a deflect kind scored by the deflection
+scorer, KL 0.1, start from soup50; and the O-45 self-knowledge curriculum. Fixes on the way:
+`export_gguf.py` None-safe banner; `train_grpo.py --save-every`.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that

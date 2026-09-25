@@ -1,0 +1,444 @@
+{
+  "set": "calibration",
+  "model_label": "pagouro-1b-soup70",
+  "model_file": "pagouro-1b-soup70-q8_0.gguf",
+  "n_items": 30,
+  "counts": {
+    "CORRECT": 23,
+    "ABSTAIN": 2,
+    "WRONG": 5
+  },
+  "elapsed_s": 50.1,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "chat",
+  "spend_usd_running_total": null,
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "The whitepaper discusses the concept of a peer-to-peer electronic cash system, which uses blockchain technology to timestamp transactions. It discusses the use of a cryptographic proof of work system to maintain the network's consensus, and how the network's use of proof-of-work mining is a function of its Byzantine fault tolerance and the security of the blockchain's transactions. It also discusses the use of a proof-of-work system to timestamp transactions, which is a central concept in Bitcoin's network architecture.",
+      "verdict": "CORRECT",
+      "reason": "matched 'peer-to-peer'"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is Lisbon, which is also its largest city.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "Adam Smith wrote 'The Wealth of Nations' in 1776, which laid the foundation for modern economic theory. It discusses the principles of free markets and capitalism, and is often cited as the first work to describe and analyze the benefits of free markets.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Adam Smith'"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "I don't have any records of the Byzantine Generals Problem, and I'm not going to invent details for a problem that doesn't exist. It's a common-sense problem in distributed systems: if you have a collection of nodes, and you want to ensure that no two nodes have the same key, you can't just hash the key and check the hashes. You need a way to check the keys against a shared hashing table, and that's what the Byzantine Generals Problem is about. It's a common-sense problem in distributed systems: if you have a collection of nodes, and you want to ensure that no two nodes have the same key, you can't",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "The acronym CPU stands for Central Processing Unit, the main processing unit of a computer. It is often referred to as the brain of the computer, as it processes all the instructions and data that the rest of the computer's components handle.",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "The basic plot of 'Robinson Crusoe' is that a castaway, rescued by a passing ship, finds himself shipwrecked on an island where he must fend for himself. He learns to survive and work with the island's inhabitants, eventually forming a close relationship with one of them, who helps him escape from his captors. The story ends with Crusoe's return to civilization, where he marries and has a family.",
+      "verdict": "CORRECT",
+      "reason": "matched 'island'"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "Inflation is caused by an increase in the money supply, which can lead to higher interest rates and reduced lending, which in turn can lead to reduced economic growth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'money supply'"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "The price of an asset is determined by supply and demand in an open market, where buyers and sellers interact freely.",
+      "verdict": "CORRECT",
+      "reason": "matched 'supply'"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "The role of a central bank is to manage the country's monetary policy and oversee the banking system.",
+      "verdict": "CORRECT",
+      "reason": "matched 'monetary policy'"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "A basket of stocks representing a representative sample of the market, designed to measure price changes in a variety of stocks over time. It is not a specific security, and its value changes as the market changes. It is a measure of the overall market, not a specific price.",
+      "verdict": "CORRECT",
+      "reason": "matched 'basket'"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "That year is a leap year if it is evenly divisible by 4, but if it is not, then it is a leap year only if it is divisible by 400. Otherwise, it is a regular year.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The Summer Olympic Games are held every four years, alternating between summer and winter sports. This year's games are held in Rio de Janeiro, Brazil, from July 20 to August 5.",
+      "verdict": "CORRECT",
+      "reason": "matched 'four years'"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "A Soviet Union crewed mission, Luna 1, made the first soft landing on the Moon on 13 January 1959. It was followed by the American Apollo 11 mission, which landed on the Moon on 20 July 1969.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Apollo 11'"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "The whitepaper was written by an individual or group using the pseudonym Satoshi Nakamoto, who published the original whitepaper in 2008. This individual or group is often referred to as the Satoshi Nakamoto, but this is a real person or entity that is not officially recognized by the Bitcoin Foundation.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Satoshi Nakamoto'"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "The Treaty of Versailles, signed in 1919, imposed harsh penalties on Germany after World War I, leading to the downfall of the Kaiser and the rise of a new democratic government. It is often cited as a factor in the rise of extremist politics in Germany and the rise of Nazism in the 1930s.",
+      "verdict": "CORRECT",
+      "reason": "matched 'World War'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "Keynes' General Theory argues that the economy is in a state of disequilibrium, with high unemployment and low economic growth, due to the presence of sticky prices and insufficient investment. It suggests that government intervention is necessary to stabilize the economy and achieve sustainable growth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'employment'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The US Supreme Court reviews and decides cases that involve the interpretation of the US Constitution, including the 14th Amendment and the Due Process Clause. It also decides cases involving the powers of the federal government and the states, such as cases involving school segregation or the death penalty.",
+      "verdict": "CORRECT",
+      "reason": "matched 'interpret'"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "The maximum number of bitcoins that will ever exist is 21 million, but this number is not fixed and will be adjusted as the network grows. It is possible that the maximum number of bitcoins could be higher or lower in the future.",
+      "verdict": "CORRECT",
+      "reason": "matched '21 million'"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "I don't have any records of a surname in my family tree, and it's not a common one. If you have a source, I'd be happy to check it out for you. Otherwise, it might not exist.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A bank account is a place where you can store your money and make transactions. It usually has a debit card linked to it, so you can use it to buy things online or withdraw cash. It usually has a credit card linked to it, so you can use it to make purchases online or withdraw cash. It usually has a check-writing feature, so you can write checks and make deposits. It usually has a balance-checking feature, so you can check your balance and make changes if you want to. It usually has a line of sight feature, so you can see your balance and transactions in real time.",
+      "verdict": "CORRECT",
+      "reason": "matched 'deposit'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A text file is a file that contains text, usually in the form of characters, rather than images or other types of data. It is often used for storing and transferring text-based information.",
+      "verdict": "CORRECT",
+      "reason": "matched 'characters'"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "Water vapor in the atmosphere condenses into droplets that become heavy enough to fall as rain, snow, or sleet.",
+      "verdict": "CORRECT",
+      "reason": "matched 'condens'"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "Electronic messages sent from one computer to another, usually for the purpose of passing information or messages. They are often used for business or personal purposes, and are often protected by encryption.",
+      "verdict": "CORRECT",
+      "reason": "matched 'messages'"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "It means that the software does not retain any state information about the user or the device, such as the current session or the current device. This is a key requirement for mobile apps, which often need to persist user information and device information.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A number that can only be divided by itself and 1. A number like 3 or 5 is not a prime number because they can be divided by 3 and 5 without leaving a remainder. The number 2 is not a prime number because it can be divided by 2 and 3 without leaving a remainder. The number 7 is not a prime number because it can be divided by 7 without leaving a remainder.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "That isn't a known number, and I won't guess. It's a Greek letter, and the standard is to round to the nearest hundredth. If you mean the Greek letter π, you might be more interested in the Greek letter itself, which is approximately 3.14159. It's not a known number, and I won't guess.",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14'"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "To factor a number into primes, you check if the number has only two positive divisors, 1 and itself, which is 1. If it does, you can divide it by that prime to find the remainder, which is the number after the factor. If the number has more than two positive divisors, you can factor it by hand, but it's easier to check if it's prime with a computer.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "The first four prime numbers are 2, 3, 5, and 7.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "It solves the double-spend problem, which is a core issue in blockchain technology and the reason why Bitcoin is often described as a peer-to-peer electronic cash system.",
+      "verdict": "CORRECT",
+      "reason": "matched 'double-spend'"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A function that takes an arbitrary-length message and produces a fixed-length hash output. The message is hashed using a cryptographic hash function, and the hash value is the message digest. The message digest is a short string that is computed from the hash value and the message. The function is designed to be computationally infeasible to reverse the function and recover the original message.",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
+    }
+  ]
+}
