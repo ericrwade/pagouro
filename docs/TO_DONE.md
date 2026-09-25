@@ -28,9 +28,9 @@ rows close; it is the one page to open when asking "what is left?".*
 | 1.4 | Sep 26 | Optional round 3 if round 2 moves reasoning but costs honesty (one more card session). Stop rule: two rounds without a shipped improvement = freeze | ≈ $10–15 | **Eric** says go |
 | 1.5 | Sep 26 | Freeze: "no further training; the numbers on the box are these." Write D-96 (the freeze) | $0 | **Eric** (one line) |
 
-**Hard checkpoint — Sep 27, ~19:00 PT (Eric, 2026-09-25): the build PC is shut down and travels to Las Vegas, then
+**Hard checkpoint — Sep 27, ~11:30 AM PT (18:30Z; Eric, 2026-09-25): the build PC is shut down and travels to Las Vegas, then
 restarts.** Before it: no pod running (`list-pods` []), stick current, everything committed and pushed, session log +
-memory written for a cold restart. No card session starts after Sep 27 ~09:00 PT until the machine is back.
+memory written for a cold restart. No card session starts after Sep 26 evening PT until the machine is back; long desk jobs end by Sep 27 09:00 PT.
 
 ## 2. Prove it on the box (release gate, D-50)
 
