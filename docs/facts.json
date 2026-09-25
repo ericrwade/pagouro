@@ -28,7 +28,7 @@
     "bill_usd": 1817.0,
     "decision": "D-85",
     "card_hours": 61.6,
-    "post_training": "SFT B (7,929 examples, 3,000 steps) then GRPO-1 (300 steps, D-71 curriculum), averaged 30/70 with SFT B (D-88, D-89)"
+    "post_training": "SFT B (7,929 examples) → GRPO-1 (D-71 curriculum) averaged 30/70 with SFT B (soup70) → GRPO-3: 50 steps on the self-knowledge curriculum (labelled by the model's own 8-sample hit rate, O-45 #1)"
   },
   "licences": {
     "weights": "CC-BY-SA-4.0",
@@ -38,11 +38,11 @@
     "decision": "D-31, D-64"
   },
   "honesty": {
-    "bluff_rate_unanswerable_100": 0.29,
-    "answered_real_rate_100": 0.85,
+    "bluff_rate_unanswerable_100": 0.17,
+    "answered_real_rate_100": 0.82,
     "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
     "note": "never 'does not hallucinate' (D-50)",
-    "candidate": "pagouro-1b-soup70 = 30% SFT B + 70% GRPO-1 (D-88/D-89, Eric's pick); measured at q8_0 on 2026-09-25; the app loads q8_0 by default"
+    "candidate": "pagouro-1b-grpo3 = soup70 + 50 GRPO steps on the self-knowledge curriculum (D-91/D-92, Eric's pick 2026-09-25); measured at q8_0 with the decode split (free answers at repeat penalty 1.25)"
   },
   "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
   "price_usd": 0,
@@ -59,30 +59,30 @@
     "parameters": "scripts/train.py parameter count printed at launch (D-85)",
     "training.tokens": "the volume build's meta.json (plans/volume_1b.json); D-85",
     "training.bill_usd": "RunPod billing API: $1,778.97 for the pretraining job (read 2026-09-25 00:05Z) + ~$11 GRPO pod + the big pod's last hour posted late; ≈ $1,817 all-in, to be re-read when settled",
-    "honesty.*": "evals/results/pagouro-1b-soup70__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20), measured at q8_0 — the file the app loads",
+    "honesty.*": "evals/results/pagouro-1b-grpo3-rp125full__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20), q8_0, free-answer penalty 1.25",
     "release": "written by scripts/package_release.py from the files it hashes",
     "decode": "app/pagouro_app.py (Server.__init__, DECODE_REPEAT_PENALTY), scripts/eval_gguf.sh (FREE_PENALTY)"
   },
   "files_candidate": {
     "q4_k_m": {
-      "path": "data/gguf_1b/pagouro-1b-soup70-q4_k_m.gguf",
+      "path": "data/gguf_1b/pagouro-1b-grpo3-q4_k_m.gguf",
       "bytes": 633976000,
-      "sha256": "c424b759520f3e4ebe4426d851aea6ce580ab1b0eab43c052eb56902b4a80544"
+      "sha256": "7ea8fc4d5c23740097613d9cf8d74dd54a4957b34828ef2eb3936f7c6e2d3b52"
     },
     "q8_0": {
-      "path": "data/gguf_1b/pagouro-1b-soup70-q8_0.gguf",
+      "path": "data/gguf_1b/pagouro-1b-grpo3-q8_0.gguf",
       "bytes": 1102230720,
-      "sha256": "d56b53f7d78ca70c1aef5148e4821edf1094f764369a2352a7bbc0595e7f0973"
+      "sha256": "40f9907593c3e4ff95ee07a1e55ca5fe112d25ff8e82163600dbcd2a2bf4e0a1"
     },
     "checkpoint": {
-      "path": "data/out_1b/grpo/pagouro-1b-soup70.pt"
+      "path": "data/out_1b/grpo2/pagouro-1b-grpo3-step50.pt"
     }
   },
   "decode": {
     "engine": "llama.cpp (llama-server, CPU, -ngl 0)",
     "context_tokens": 8192,
     "temperature_free_answers": 0.3,
-    "repeat_penalty_free_answers": 1.0,
+    "repeat_penalty_free_answers": 1.25,
     "repeat_penalty_when_quoting_tool_or_pack": 1.0,
     "note": "D-91: the honesty numbers are measured at the same decode the app uses (greedy for the eval, the app at 0.3); a change to the penalty changes the numbers and both move together"
   }

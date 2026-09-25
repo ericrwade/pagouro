@@ -2302,6 +2302,14 @@ self-knowledge sampler disagreed with the labeller on 152 of 1,270 keyed prompts
 (17/82). Eric's call.** Files: `data/out_1b/grpo2/pagouro-1b-grpo3-step50.pt` and `-f32.gguf`;
 q8/q4 in `data/gguf_1b/pagouro-1b-grpo3-*`. Sleep-window pods ≈ $15 of the $100 (D-90).
 
+### D-92 — Eric, 2026-09-25 (chat): "Do GRPO-3" — GRPO-3 with the decode split ships on the stick
+The stick model is `pagouro-1b-grpo3` (soup70 + 50 GRPO steps on the self-knowledge curriculum), decoded
+with repetition penalty **1.25 on free answers, 1.0 when a tool result or pack hit is in the turn**
+(`DECODE_REPEAT_PENALTY` in the app, per request). Box numbers, measured at that decode on q8_0 (the file
+the app loads): **bluff 17 % / answered-real 82 %**; tool-use 23/24, memory 9/10, tool-result 10/10 &
+NO_MATCH 6/10, skills 6-10-10. Replaces soup70 (29/85). Repackaged with the offline audit, manifest and
+`facts.json` updated to these numbers and hashes.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that

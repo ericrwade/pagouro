@@ -48,7 +48,7 @@ import documents as _docs  # noqa: E402  (D-79: PDF / Word / text documents, ext
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
-DECODE_REPEAT_PENALTY = 1.0      # D-91: llama.cpp repetition penalty for FREE answers (no tool result or pack hit in the
+DECODE_REPEAT_PENALTY = 1.25     # D-91/D-92: llama.cpp repetition penalty for FREE answers (no tool result or pack hit in the
                                  # turn). GRPO-trained 1B models loop their abstentions at 1.0 and are coherent at 1.25;
                                  # answers that must COPY from a tool result or a pack always decode at 1.0, because a
                                  # penalty on repeating context tokens is a penalty on quoting the calculator. The box
