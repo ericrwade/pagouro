@@ -283,9 +283,14 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
     # models loop their abstentions under greedy decoding ("I don't have a record... and I don't have
     # a record...") -- scored HEDGE -- so the shipped decode may carry a mild penalty; measure it here.
     rp = os.environ.get("REPEAT_PENALTY", "1.0")
+    # DECODE_TEMP (env, default 0 = greedy, top-k 1): the app samples at 0.3 (seeded here for
+    # reproducibility), and a GRPO-trained model that loops under greedy decoding does not loop
+    # when sampled; the box numbers are measured at the decode the app uses (D-91/D-93).
+    temp = os.environ.get("DECODE_TEMP", "0")
+    sampling = ["--temp", "0", "--top-k", "1"] if temp == "0" else ["--temp", temp, "--top-k", "40", "--top-p", "0.95"]
     if chat:
         cmd = [LLAMA_CHAT, "-m", model, "-p", prompt, "-st", "-n", str(n_tokens),
-               "--temp", "0", "--top-k", "1", "--seed", "1", "--no-warmup", "-ngl", "0", "--repeat-penalty", rp]
+               *sampling, "--seed", "1", "--no-warmup", "-ngl", "0", "--repeat-penalty", rp]
     else:
         # -no-cnv: this llama.cpp build switches to conversation mode on its own whenever the
         # GGUF carries a chat template, so "raw" silently became chat-templated (the Flash base

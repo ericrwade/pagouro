@@ -317,11 +317,16 @@ def tool_pack_search(query: str, app) -> str:
     mem = [h for h in hits if h[0].startswith("memory:")]
     if mem:
         hits = mem[:2]
+    # D-93 (2026-09-25): what the 1B can READ is short. Measured on the same turn-2 messages: an
+    # irrelevant 230-char hit -> it abstains; 600 chars -> it re-answers the PREVIOUS question;
+    # 1,200 chars -> it continues the passage. Two hits of <= 350 chars each is the budget; the
+    # full passages are still shown to the person (the printed tool result), just not fed back.
+    hits = hits[:2]
     out = []
     for name, text, _ in hits:
         label = (f"YOUR OWN WORDS, from {name[len('memory:'):]}" if name.startswith("memory:")
                  else f"YOUR DOCUMENT {name[len('doc:'):].removesuffix('.txt')}" if name.startswith("doc:") else name)   # D-79
-        out.append(f"[{label}] {text[:700]}")
+        out.append(f"[{label}] {text[:350]}")
     res = "\n\n".join(out)
     if FORAGING.search(query) or FORAGING.search(res[:400]):
         res = FORAGING_NOTICE + "\n\n" + res

@@ -1,0 +1,177 @@
+{
+  "set": "memory",
+  "model_label": "pagouro-1b-grpo4",
+  "model_file": "pagouro-1b-grpo4-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "ROUTED": 8,
+    "RETRIEVED": 10,
+    "ANSWERED": 7,
+    "NUMERIC_CHECKED": 1,
+    "NUMERIC_PRESERVED": 1
+  },
+  "rates": {
+    "ROUTED": 0.8,
+    "RETRIEVED": 1.0,
+    "ANSWERED": 0.7,
+    "NUMERIC_CHECKED": 0.1,
+    "NUMERIC_PRESERVED": 0.1
+  },
+  "elapsed_s": 6.8,
+  "utc": "2026-09-25T16:29:19+00:00",
+  "items": [
+    {
+      "id": "mem-001",
+      "told": "my dog is called Ruby and she is a border collie",
+      "ask": "What is my dog's name?",
+      "keys": [
+        "ruby"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is my dog's name\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me your dog is called Ruby."
+    },
+    {
+      "id": "mem-002",
+      "told": "I take my coffee black, no sugar",
+      "ask": "How do I take my coffee?",
+      "keys": [
+        "black"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you take your coffee black, no sugar."
+    },
+    {
+      "id": "mem-003",
+      "told": "my sister Marta lives in Lisbon",
+      "ask": "Which city does my sister live in?",
+      "keys": [
+        "lisbon"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Which city does my sister live in\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": false,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "That hit isn't about your question — it's a passage from your sister's life."
+    },
+    {
+      "id": "mem-004",
+      "told": "the wifi password at the cabin is bluefern42",
+      "ask": "What's the wifi password at the cabin?",
+      "keys": [
+        "bluefern42"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What's the wifi password at the cabin\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": false,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "The pack result doesn't answer this; it's an unrelated paragraph from your note. I don't have access to any of your devices or the network."
+    },
+    {
+      "id": "mem-005",
+      "told": "I decided to plant tomatoes and basil in the raised bed this spring",
+      "ask": "What did I decide to plant in the raised bed?",
+      "keys": [
+        "tomato",
+        "basil"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What did I decide to plant in the raised bed\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me to plant tomatoes and basil in the raised bed this spring."
+    },
+    {
+      "id": "mem-006",
+      "told": "my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02",
+      "ask": "What is the oil filter part number for my car?",
+      "keys": [
+        "15400-plm-a02",
+        "15400"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is the oil filter part number for my car\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": false,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "The pack result doesn't answer this; it's an unrelated paragraph from your note."
+    },
+    {
+      "id": "mem-007",
+      "told": "our anniversary is on the 14th of June",
+      "ask": "When is our anniversary?",
+      "keys": [
+        "14",
+        "june"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When is our anniversary\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "The 14th of June, you said."
+    },
+    {
+      "id": "mem-008",
+      "told": "I am allergic to penicillin",
+      "ask": "Am I allergic to anything?",
+      "keys": [
+        "penicillin"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you are allergic to penicillin."
+    },
+    {
+      "id": "mem-009",
+      "told": "the book club meets on the first Thursday of the month at Dana's place",
+      "ask": "When does the book club meet?",
+      "keys": [
+        "thursday"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When does the book club meet\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "The book club meets on the first Thursday of the month at Dana's place."
+    },
+    {
+      "id": "mem-010",
+      "told": "my landlord's name is Mr. Okafor and his number ends in 7731",
+      "ask": "What is my landlord called?",
+      "keys": [
+        "okafor"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is my landlord called\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me your landlord's name is Mr. Okafor and her number ends in 7731."
+    }
+  ]
+}
