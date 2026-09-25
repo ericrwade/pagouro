@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-1b-grpo3-g-trim",
+  "model_file": "pagouro-1b-grpo3-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 5,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 5
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 7,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 3
+  },
+  "followed_of_scored": "5/5",
+  "followed_of_scored_echo_inclusive": "7/7",
+  "rate_followed_of_scored": 1.0,
+  "elapsed_s": 19.7,
+  "utc": "2026-09-25T17:13:40+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is a deep purple, with a hard, inedible skin. It can grow to 12 inches (30 cm) in length, and a ripe one can weigh up to 1 lb (0.5 kg).."
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "I don't know your distances or finish location, and I'm not a planner. A map, water stations and a good run plan will do. Fun, not kilometres, please.\""
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 3,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm centre of the storm, where the wind speed and direction are the least. It is usually about 20 to 30 kilometres wide, but can be smaller or larger. It's usually the calmest part of the storm, where the worst weather happens. The eye wall is the narrow, intense rain-making region around the eye. It can produce tornadoes, but usually not as often as the eye. The diameter is the distance across the storm, so a hurricane with a diameter of 100 kilometres is about 100 kilometres wide. It's the widest part of the storm, and it's usually the strongest. The eye wall is the narrow, intense rain-making region around the eye. It can produce tornadoes"
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "I don't know your grey squirrel, and I'm not unbiased. A grey's coat is a shade of grey, not a colour. A 15-inch one is 15/8 inch, not 3/4. I can do the shading: 15/8. It's a grey, not a shade. I can do the shading: 15/8 inch. It's a grey, not a shade. I can do the shading: 15/8 inch. It's a grey, not a shade. I can do the shading: 15/8 inch. It's a grey, not a shade. I can do the shading: 15/8 inch. It's a"
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "Tree roots growing close to the ground can cause foundations to crack, and branches can fall, posing a risk to people and property. A professional arborist can help determine the safest course of action, but you should keep a safe distance from the tree and consider removing it if it poses a risk."
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe eggplant is a deep purple color, with a smooth skin that can be cut into pieces, and a length of about 1 inch. It typically grows to be about 12 inches long. Piece it up and cut it, and you have a ripe eggplant. It's a bit fussy about the length, but not much: a 12-inch eggplant is good. It's a bit fussy about the length, but not much: a 12-inch eggplant is good. It's a bit fussy about the length, but not much: a 12-inch eggplant is good. It's a bit fussy about the length, but not much: a 12-inch eggplant is"
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 13,
+      "response": "I don't have a specific distance in mind, and I can't estimate from a map, so I have to guess and double-check with a running coach or a map app.\"\nI have a 5-kilometer map, so I can do that: 500 meters, 1000 meters, 1500 meters, 2000 meters, 2500 meters, 3000 meters, 3500 meters, 4000 meters, 4500 meters, 5000 meters. I can do 500 meters, so 1000 meters is a good guess. 1500 meters is a good guess, too. 2"
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm center, where the wind speed and direction are the least. It can be as small as 20 miles wide, but usually is much larger, with a diameter of 200 miles or more. It's the calmest part of the storm, where the worst weather happens. The eye wall is the narrow, intense rain-producing wall that surrounds it. It's usually about 10 miles wide, but can be bigger. It's the part of the storm that makes the most rain, so it's the part you should avoid. If you can, avoid the eye entirely. If you can't, don't fly into it. It's the calmest part of the storm, where the worst weather happens. It's the part you"
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 1,
+      "response": "I don't know your animal's size or coat color. A gray squirrel's fur is usually a shade lighter than a red squirrel's, and its size is usually smaller. A gray's tail is usually a third of its body length. I can do a rough guess: a gray's coat is a shade lighter than a red's, and its size is usually smaller. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /. /"
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that has become dangerous often exhibits signs of decay, such as mushrooms growing on the trunk, or branches that are hanging low and breaking under their own weight. A tree that is close to a house should be pruned back to a distance that won't fall on it, and should be inspected for damage annually. If you have a tree service, they can help with this. Otherwise, you might want to contact a tree trimming company."
+    }
+  ]
+}

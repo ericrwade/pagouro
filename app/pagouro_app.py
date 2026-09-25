@@ -223,7 +223,9 @@ class Server:
                 self._stderr_tail.append(raw.decode("utf-8", "replace").rstrip())
                 del self._stderr_tail[:-40]
         threading.Thread(target=_drain, daemon=True).start()
-        for _ in range(120):
+        # D-93: a cold read of the 1 GB model from a USB stick took over 30 s on the build PC's own stick;
+        # allow three minutes and say so, rather than fail the very first launch.
+        for i in range(720):
             try:
                 if self.get("/health").get("status") == "ok":
                     break
@@ -234,11 +236,13 @@ class Server:
                       "Usually the model file is damaged or the machine is short of memory. Check the file's hash "
                       "against MANIFEST.md (python verify_manifest.py) and close other programs; then start again.",
                       "\n".join(self._stderr_tail[-8:]))
+            if i and i % 120 == 0:
+                print(f"  {DIM}still loading the model ({i // 4} s) — a USB stick reads slowly the first time{RESET}", flush=True)
             time.sleep(0.25)
         else:
-            fatal("the model server did not answer within 30 seconds",
-                  "A slow disk or a very large model can take longer: start again once; if it repeats, check "
-                  "the model file's hash against MANIFEST.md.", "\n".join(self._stderr_tail[-8:]))
+            fatal("the model server did not answer within 3 minutes",
+                  "A very slow disk can take longer: start again once (the second read is faster); if it repeats, "
+                  "check the model file's hash against MANIFEST.md.", "\n".join(self._stderr_tail[-8:]))
         props = self.get("/props")
         self.n_ctx = int(props.get("default_generation_settings", {}).get("n_ctx", 512))
 
