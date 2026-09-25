@@ -39,8 +39,13 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   `docs/MODEL_CARD.md`; `docs/HANDLES.md` (O-44: `pagouro` free on 12 platforms, pagouro.com is Eric's);
   D-86 credit line; memory note; `bring_home_1b.sh`, `decay_watch.py`, parallel `finish_1b.sh`.
 **Verified:** every number from the run jsonl / train.log / eval result JSONs / billing API; hashes pod↔desk.
-**Open / next:** (1) **Eric:** look at the D-87 numbers; decide whether B goes on the stick now or after the
-GRPO step; (2) **the bluff rate is the problem** (64 % at 83 % answered): plan the GRPO known/unknowable
+- **05:10Z addendum — GRPO-1 + the soup (D-88):** Eric said run it; 1×H100 `vd1rszh2bmzlsn` ≈ $11, 300 steps,
+  home hash-verified, pod deleted. GRPO-1 alone: bluff 19 / answered 86 but 42 looping hedges, deflection 0/28.
+  Weight soups (`scripts/soup.py`): **50/50 = bluff 37 / answered 83 / deflection 23/28 / tool-result 10/10 —
+  the candidate**; 70 % GRPO = 29 / 85 / 16/28. O-45 (Eric asked how to boost reasoning/honesty): five
+  ranked levers. Bill all-in ≈ $1,817; ≈ $183 left; no pods.
+**Open / next:** (1) **Eric:** pick the soup (50/50 recommended, or 70 %) for the stick; yes/no on GRPO-2
+(~$10: 128-token completions + repetition penalty, a deflect kind, KL 0.1, from the soup); O-45 order; (2) **the bluff rate is the problem** (64 % at 83 % answered): plan the GRPO known/unknowable
 run (D-69 curriculum, `sft/grpo_*.jsonl`) on one rented card — plan + hourly price on #2 first (D-54); Eric's
 "rent"; (3) book ch. 15 after the shipped numbers are final; ch. 13a signpost; (4) `package_release.py` run
 with the 1B (MODEL_STEM=gguf_1b/pagouro-1b-sftB, CONTEXT_WORDS for 8k) once (1) says so; (5) O-41 US Code

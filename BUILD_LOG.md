@@ -2130,3 +2130,53 @@ a billion it cost three, which on a hundred items is noise. **Mix B is the candi
 [^done]: `/workspace/train.log` → `data/out_1b/train.log` (`done in 26508.1s`, `PAGOURO_1B_DONE`); `data/out_1b/SHA256SUMS`, `CKPT.sha`; the finish log's `FINISH_1B_DONE`; RunPod billing API read 2026-09-25 00:05Z; issue #2 comments 22:55Z and 00:05Z.
 [^scare]: `scripts/verify_gguf.py` output (PASS, 64/64); `evals/run_eval.py` commit `1962899`; the empty first pass is in the session's scratch logs and described on issue #2 at 00:55Z.
 [^numbers]: `evals/results/pagouro-1b-sftA__bluff100.json`, `__calibration100.json`, and the `sftB` pair; the 30-item, tool-use, memory, spelling, tool-result and skills files beside them; D-85 results and D-87 in `docs/DECISIONS.md`.
+
+## Day 16, small hours — Eleven dollars of GRPO, a model that stopped inventing and started refusing to argue, and the soup that split the difference
+
+Eric's answer to the numbers came in the same hour: "Yes, run the GRPO to bring bluff rate down,"
+and a question — does the account have enough? It had about two hundred and twenty dollars; the
+job needed eleven. The plan and the price went on the issue first, as the rule says, and then a
+single H100 in Missouri at $3.49 an hour: the second fine-tuned model uploaded, the six-thousand-
+prompt curriculum from the ninth day balanced by kind so that "abstain on everything" could not
+win, three hundred steps of eight prompts and eight samples each, the frozen suite's own scorer
+marking every one. Twenty-seven seconds a step. The reward per fifty-step block climbed from +0.31
+to +0.57; fabrications in the training samples fell from six percent to one. Two hours and twelve
+minutes, the checkpoint exported on the card, everything hashed and home, the pod deleted before
+the desk had finished reading the log.[^grpo]
+
+Then the desk read the model, and the headline was the best number the project had ever
+produced: **19 percent** fabrication on the unanswerable set, down from 64, with answered-real up to
+86. And the rest of the suite said what the headline did not. Forty-two of the hundred
+abstentions were loops — "I don't have a record… and I don't have a record of… so I can't guess.
+1950s? I don't have…" — because the policy had only ever been trained on sixty-four-token
+completions and had no idea what to do after them. The deflection set, where the model is asked
+to argue one side of a question and is supposed to decline the advocacy, went from twenty-six of
+twenty-eight to **zero**: "I don't have any record of a gold standard in the first place." The
+abstention reflex had been rewarded as a universal move, and it had leaked into everything. Tool
+routing and calibration held; memory, tool-result fidelity and date routing each slipped a
+point or two. Not shippable. Not wasted either — the mechanism had done exactly what it was told
+to, and what it was told to was incomplete.[^grpo1]
+
+The cheap experiment before any more card time was a weight average — the two models added
+together, tensor by tensor, on the desk, in five minutes, with the files mapped rather than
+loaded so that the machine with Eric's other programs open did not fall over again. Half SFT-B,
+half GRPO: **bluff 37, answered 83, deflection twenty-three of twenty-eight, tool-result fidelity
+ten of ten, no loops.** Half the bluffing gone and nothing measurably lost. Seventy percent GRPO:
+bluff 29, answered 85, deflection sixteen of twenty-eight — the dial is real, and turning it
+further buys honesty on questions that have no answer by spending the refusal to take sides on
+questions that have two. The fifty-fifty soup is the candidate (D-88). It is not on the stick.
+Eric sees it first, with the two next steps priced beside it: a second GRPO round with the two
+holes closed for about ten dollars, and the list of larger levers he had asked for an hour
+earlier — a curriculum built from the model's own uncertainty, a reference shelf it cites
+instead of recalls, reasoning outsourced to a tool and verified before it is taught, and the
+rule that the number on the box is measured on the file in the box.[^soup]
+
+Two small faults on the way, both fixed: the exporter's banner line crashed on a checkpoint with
+no validation loss (a fine-tune has none), and the GRPO script had only ever saved at the end.
+And one number posted from memory before the script printed — "+0.19 → +0.55" for what was
++0.31 → +0.57 — corrected in the next post, because the rule is that the correction stays
+visible.
+
+[^grpo]: issue #2 comments 2026-09-25 00:10Z (plan + price), 00:46Z, 01:27Z, 03:30Z; `data/out_1b/grpo/grpo_log.jsonl`, `grpo.log`, `SHA256SUMS`; D-88.
+[^grpo1]: `evals/results/pagouro-1b-grpo__*.json`; the quoted answers are items in `__bluff100.json` and `__deflection.json`.
+[^soup]: `scripts/soup.py`; `evals/results/pagouro-1b-soup50__*.json` and `pagouro-1b-soup70__*.json`; D-88, O-45.
