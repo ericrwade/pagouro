@@ -508,6 +508,7 @@ class App:
         self.online = False           # D-1: OFFLINE by default; /online needs workspace/online.json
         self.careful = False          # O-45 #2 (D-89): /careful samples five answers and only stands behind agreement
         self.tools_enabled = True     # O-48: serve mode can turn routing off for a passage-review turn (pagouro_tools: false)
+        self.pending_passage = None   # O-48: serve mode's pagouro_passage, injected as a pack_search result for one turn
         self.searches = 0
         self.history: list[dict] = [] # user/assistant/tool turns, oldest first
         self.last_user_text = ""
@@ -742,7 +743,12 @@ class App:
 
         tool, args = self.route(user_text)
         tool_result = None
-        if tool != "none":
+        if self.pending_passage:                     # O-48: serve mode hands the harness a passage to answer from,
+            tool_result = self.pending_passage       # in the shape the model was trained on (a pack_search hit)
+            self.history.append({"role": "tool", "content": f"pack_search: {tool_result[:1200]}"})
+            self.pending_passage = None
+            tool = "pack_search"
+        elif tool != "none":
             tool_result = self.run_tool(tool, args)
             if tool_result is not None:
                 # Convention (O-38): a tool may put a line "--" in its result; what follows is for the
@@ -1041,6 +1047,10 @@ def serve(app: App, port: int) -> None:
             app.careful = bool(body.get("pagouro_careful", False))
             app.tools_enabled = bool(body.get("pagouro_tools", True))
             app.answer_budget = int(body.get("max_tokens") or MAX_TOKENS_ANSWER)
+            psg = body.get("pagouro_passage")
+            app.pending_passage = str(psg)[:1200] if psg else None
+            if psg:
+                app.tools_enabled = False
             buf = _io.StringIO()
             with contextlib.redirect_stdout(buf):
                 app.turn(msgs[-1]["content"])

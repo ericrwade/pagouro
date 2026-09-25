@@ -73,8 +73,10 @@ Any other client: OpenAI chat-completions at that base URL, model `pagouro`, any
   Keep a user message under ~1,500 words if you want room for an answer.
 - **Stateless**: send the whole conversation each call, like the OpenAI API. Client `system` messages
   are ignored — the harness owns its system prompt, which tells the model what it cannot know.
-- **`"pagouro_tools": false`** turns routing and pack search off for one turn: use it when the message
-  already contains the passage to work on (see the `pagouro-long-document` skill).
+- **`"pagouro_passage": "<text>"`** hands the harness a passage (≤ 1,200 characters; ~600 is the sweet
+  spot) which the model reads as a search hit and answers your message from — the shape it was trained
+  on (see the `pagouro-long-document` skill). **`"pagouro_tools": false`** turns routing and pack search
+  off for one turn without a passage.
 - **`stream: true`** is accepted; the answer arrives as one chunk.
 - The response carries a `pagouro` object: `tool` used (or null), `notes` (harness notices such as
   "nothing in the loaded packs covered this" or "the answer is cut at the first repeat"), `careful`.

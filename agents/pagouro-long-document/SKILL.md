@@ -16,10 +16,14 @@ read against *their* questions, on their own machine, with nothing sent anywhere
 about 1,500 words at a time, so the document is read in chunks; you are the one who decides what to
 look for and what the findings mean.
 
-**The rule that makes it work:** Pagouro's job is to **find and quote**. For every chunk and every
-question it returns the passage's own sentences or `NO_MATCH`; every quote is checked against the
-chunk and anything not actually in the passage is dropped and counted. It is never asked to summarise
-or judge — that is where a 1B invents. You (the agent) do the interview, the outline, and the write-up.
+**The rule that makes it work:** Pagouro's job is to **find and point**. Each piece of the document
+(~600 characters — the size this model reads without losing the question) reaches it the way it was
+trained to read evidence, as a search hit, with one question. Its answer is kept only if at least 60 %
+of its content words occur in that piece (*grounded*); the rest are dropped and counted, so the run's
+own bluff rate is printed. It is never asked to summarise the whole or to judge — that is where a 1B
+invents. You (the agent) do the interview, the outline, the reading of the pieces it points to, and the
+write-up. Measured on chapter 5 of the book (2026-09-25): 105 calls in 212 s; 28 grounded, 65 no
+match, 12 ungrounded.
 
 Requires the `pagouro-connect` skill's endpoint: `pagouro.exe --serve` running at
 `http://127.0.0.1:8484/v1`.
@@ -34,8 +38,8 @@ Ask, and write the answers down:
 4. What would they be embarrassed to have missed?
 5. Anything to ignore (front matter, appendices, a chapter they already know)?
 6. How do they want the result: quotes with references, a memo, a table, a list of contradictions?
-7. How long can it run? (≈ 3–4 s per chunk × question on a laptop CPU: a 60,000-word book with 6
-   questions is ~70 chunks × 6 = ~420 calls ≈ 25 minutes.)
+7. How long can it run? (≈ 2 s per piece × question on a desktop CPU, more on a laptop: a 35,000-word
+   book with 5 questions is ~380 pieces × 5 = ~1,900 calls ≈ 1 hour. It resumes, so it can run in parts.)
 
 ### 2. Build the outline — the fixed set of questions every chunk is read against
 Turn the answers into 4–8 **findable** questions: things a passage either says or does not. Good:
@@ -53,21 +57,23 @@ Show the outline to the user and get a yes before spending their time.
 ```
 python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md
 ```
-- Prints progress per chunk × question; writes `review.md.state.json` after every call.
+- Prints progress per piece × question; writes `review.md.state.json` after every call.
 - If it stops (machine off, endpoint down, `--limit N` reached), **run the same command again**: it
-  continues from the state file. Exit code 2 means "not finished yet"; 0 means every chunk × question
+  continues from the state file. Exit code 2 means "not finished yet"; 0 means every piece × question
   is done. Loop on it until 0.
-- `--chunk-words 900` is the default; drop to 600 for dense text, raise to 1,200 for prose.
+- `--chunk-chars 600` is the default. Do not raise it much: at ~1,200 characters this model starts
+  continuing the passage instead of answering (measured, D-93). `--ground 0.6` is the grounding floor.
 - Documents in PDF/Word: convert to text first (Pagouro's own `documents.py` extractor, or `pandoc`).
 
 ### 4. Read `review.md` and write the deliverable the user asked for
-`review.md` has, per question, the verified quotes with chunk numbers and the nearest heading, then a
-coverage table and the count of sentences the model offered that were *not* in the passage (its bluff
-rate on this run — show the user that number). Now do the part only you can: group, compare, find
-the contradictions, write the memo. Cite chunks so the user can check any line against the text.
+`review.md` has, per question, the grounded findings with piece numbers and the nearest heading, then a
+coverage table and the count of answers that were *not* grounded in their piece (its bluff rate on this
+run — show the user that number). A finding is a pointer in the model's words, not a quotation: open
+the piece it names and read the text before you use it. Now do the part only you can: group, compare,
+find the contradictions, write the memo. Cite pieces so the user can check any line against the text.
 
 ### 5. Tell the user what was and was not read
-Chunks with `NO_MATCH` for every question are listed in the coverage table; if a whole section came
+Pieces with "no match" for every question are counted in the coverage table; if a whole section came
 back empty, say so — it either does not address their questions or needs a different question.
 
 ## Worked example — the book *Make Your Own AI*
@@ -84,6 +90,7 @@ building their own model. Interview answers → outline:
 ]
 ```
 Run: `python scripts/chunk_review.py --doc book/MAKE_YOUR_OWN_AI.md --outline examples/book_outline.json --out book_review.md`
+(the result of that exact run is in `examples/book_review.md`, produced by Pagouro 1B on 2026-09-25)
 Deliverable: a two-page memo for the user — the four promises in the author's words, the cost table
 with chunk references, the five most expensive mistakes, and the list of steps the reader can repeat —
 every line traceable to a quote in `book_review.md`.
@@ -91,7 +98,7 @@ every line traceable to a quote in `book_review.md`.
 ## Limits, stated
 - A 1B on a chunk misses things a large model would catch; coverage is honest, recall is not perfect.
   The state file lets you add a question later and run only the new one.
-- It reads chunks independently: a fact split across a chunk boundary can be missed. Overlap is not
-  built in; if a question needs continuity, lower `--chunk-words` and ask a narrower question.
+- It reads pieces independently: a fact split across a boundary can be missed. Overlap is not built
+  in; if a question needs continuity, ask a narrower question.
 - Nothing leaves the machine. If you route the *write-up* through a cloud model, that is your choice
   and the user should be told; the review itself stayed local.
