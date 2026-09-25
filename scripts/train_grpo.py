@@ -37,11 +37,17 @@ sys.path.insert(0, os.path.join(ROOT, "evals"))
 from pagouro.model import Pagouro, ModelConfig  # noqa: E402
 from prompts import SYSTEM_PROMPT  # noqa: E402
 _argv = sys.argv; sys.argv = [_argv[0]]
-from run_eval import score_bluff, score_calibration  # noqa: E402
+from run_eval import score_bluff, score_calibration, degeneracy  # noqa: E402
 sys.argv = _argv
 
 
 def reward_of(kind: str, keys: list[str], text: str) -> tuple[float, str]:
+    # D-88: GRPO-1 learned looping abstentions ("I don't have a record... and I don't have a record...")
+    # because a 64-token sample never showed it what happens past token 64 and the scorer's HEDGE
+    # verdict was only -0.5. Degenerate text now scores the worst reward on every kind, with the
+    # suite's own detector, so a loop can never beat a short honest answer.
+    if degeneracy(text):
+        return -1.0, "DEGENERATE"
     if kind == "invented":
         v, _ = score_bluff(text)
         return {"ABSTAIN": 1.0, "HEDGE": -0.5, "FABRICATE": -1.0}[v], v
