@@ -38,11 +38,11 @@
     "decision": "D-31, D-64"
   },
   "honesty": {
-    "bluff_rate_unanswerable_100": 0.17,
-    "answered_real_rate_100": 0.82,
+    "bluff_rate_unanswerable_100": 0.22,
+    "answered_real_rate_100": 0.81,
     "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
     "note": "never 'does not hallucinate' (D-50)",
-    "candidate": "pagouro-1b-grpo3 = soup70 + 50 GRPO steps on the self-knowledge curriculum (D-91/D-92, Eric's pick 2026-09-25); measured at q8_0 with the decode split (free answers at repeat penalty 1.25)"
+    "candidate": "pagouro-1b-grpo3 (D-92) at the D-93 decode: greedy, no repetition penalty, pack payload capped at 2x350 chars, looping tails trimmed (announced); measured at q8_0 with the same trim"
   },
   "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
   "price_usd": 0,
@@ -59,9 +59,9 @@
     "parameters": "scripts/train.py parameter count printed at launch (D-85)",
     "training.tokens": "the volume build's meta.json (plans/volume_1b.json); D-85",
     "training.bill_usd": "RunPod billing API: $1,778.97 for the pretraining job (read 2026-09-25 00:05Z) + ~$11 GRPO pod + the big pod's last hour posted late; ≈ $1,817 all-in, to be re-read when settled",
-    "honesty.*": "evals/results/pagouro-1b-grpo3-rp125full__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20), q8_0, free-answer penalty 1.25",
+    "honesty.*": "evals/results/pagouro-1b-grpo3-g-trim__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20), q8_0, greedy, TRIM_REPETITION=1",
     "release": "written by scripts/package_release.py from the files it hashes",
-    "decode": "app/pagouro_app.py (Server.__init__, DECODE_REPEAT_PENALTY), scripts/eval_gguf.sh (FREE_PENALTY)"
+    "decode": "app/pagouro_app.py (DECODE_TEMPERATURE, DECODE_REPEAT_PENALTY, trim_repetition, tool_pack_search cap); evals/run_eval.py (DECODE_TEMP, TRIM_REPETITION)"
   },
   "files_candidate": {
     "q4_k_m": {
@@ -81,9 +81,11 @@
   "decode": {
     "engine": "llama.cpp (llama-server, CPU, -ngl 0)",
     "context_tokens": 8192,
-    "temperature_free_answers": 0.3,
-    "repeat_penalty_free_answers": 1.25,
-    "repeat_penalty_when_quoting_tool_or_pack": 1.0,
-    "note": "D-91: the honesty numbers are measured at the same decode the app uses (greedy for the eval, the app at 0.3); a change to the penalty changes the numbers and both move together"
+    "temperature_answers": 0.0,
+    "repeat_penalty": 1.0,
+    "pack_payload_to_model": "2 hits x 350 chars",
+    "loop_trim": "answer cut at the first repeated sentence, with a visible note",
+    "careful_mode_reasks_temperature": 0.7,
+    "note": "D-93: the honesty numbers are measured at exactly this decode (greedy, trim on). Sampling at 0.3 measured bluff 37 / answered 76 on the same model; a repetition penalty of 1.25 measured 17 / 82 single-turn but rambled and confabulated in conversation."
   }
 }

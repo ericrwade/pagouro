@@ -48,9 +48,11 @@ import documents as _docs  # noqa: E402  (D-79: PDF / Word / text documents, ext
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
+DECODE_TEMPERATURE = 0.0         # D-93: answers decode GREEDILY. Measured on GRPO-3 (100-sets, trim on): temp 0.3 = bluff 37 /
+                                 # answered 76; greedy = 22 / 81. Sampling costs 15 points of honesty on a 1B; /careful re-asks at 0.7.
 DECODE_DRY_MULTIPLIER = 0.0      # D-93 candidate: llama.cpp DRY sampler (penalises repeated SEQUENCES, leaves the stop token alone)
 DECODE_DRY_ALWAYS = False
-DECODE_REPEAT_PENALTY = 1.25     # D-91/D-92: llama.cpp repetition penalty for FREE answers (no tool result or pack hit in the
+DECODE_REPEAT_PENALTY = 1.0      # D-93: OFF (was 1.25, D-92): the penalty stopped loops in the greedy eval but made the model ramble and confabulate in conversation; loops are now trimmed instead. Was D-91/D-92: llama.cpp repetition penalty for FREE answers (no tool result or pack hit in the
                                  # turn). GRPO-trained 1B models loop their abstentions at 1.0 and are coherent at 1.25;
                                  # answers that must COPY from a tool result or a pack always decode at 1.0, because a
                                  # penalty on repeating context tokens is a penalty on quoting the calculator. The box
@@ -165,6 +167,28 @@ def c(code: str, s: str) -> str:
 GREEN, YELLOW, RED, DIM, BOLD, CYAN, MAG = "32", "33", "31", "2", "1", "36", "35"
 
 
+def trim_repetition(text: str) -> tuple[str, bool]:
+    """D-93 (2026-09-25): GRPO-trained 1B models sometimes loop an abstention ("I don't have a record...
+    and I don't have a record..."). The first sentence is the answer; the rest is damage. Cut at the first
+    sentence that mostly repeats an earlier one (>= 70 % shared words) or at a run of the same trigram.
+    Fixed harness behaviour, announced to the person (D-50), never silent."""
+    sents = re.split(r"(?<=[.!?])\s+", text.strip())
+    keep, seen = [], []
+    for s_ in sents:
+        w = set(re.findall(r"[a-z0-9']+", s_.lower()))
+        if w and any(len(w & p) / max(1, len(w | p)) >= 0.7 for p in seen):
+            return " ".join(keep).strip() or s_, True
+        keep.append(s_); seen.append(w)
+    words = re.findall(r"[a-zA-Z']+", text)
+    if len(words) >= 12:
+        tri = {}
+        for i in range(len(words) - 2):
+            k = (words[i].lower(), words[i+1].lower(), words[i+2].lower()); tri[k] = tri.get(k, 0) + 1
+        if tri and max(tri.values()) > 3:
+            return keep[0] if keep else text, True
+    return text, False
+
+
 # --------------------------------------------------------------------------
 # llama-server lifecycle
 # --------------------------------------------------------------------------
@@ -233,7 +257,7 @@ class Server:
         return len(self.post("/tokenize", {"content": text, "add_special": False}).get("tokens", []))
 
     def chat(self, messages: list[dict], max_tokens: int, grammar: str | None = None,
-             temperature: float = 0.3, repeat_penalty: float = 1.0) -> tuple[str, dict]:
+             temperature: float = DECODE_TEMPERATURE, repeat_penalty: float = 1.0) -> tuple[str, dict]:
         body = {"messages": messages, "max_tokens": max_tokens, "temperature": temperature,
                 "cache_prompt": True, "repeat_penalty": repeat_penalty,
                 "dry_multiplier": DECODE_DRY_MULTIPLIER if repeat_penalty != 1.0 or DECODE_DRY_ALWAYS else 0.0}
@@ -719,7 +743,10 @@ class App:
         except urllib.error.HTTPError as e:
             answer = f"(the model server refused the request: {e.code}; try /clear)"
             usage = {}
+        answer, trimmed = trim_repetition(answer)   # D-93: a looping tail is cut at the first repeated sentence
         answer = _house.apply(answer.strip()) or "(no answer)"   # D-78: eras written BC / AD, a display convention
+        if trimmed:
+            print(c(DIM, "  note: the model began repeating itself; the answer is cut at the first repeat."))
         self.history.append({"role": "assistant", "content": answer})
         self.record("assistant", answer)
         print(c(BOLD, "pagouro> ") + answer)

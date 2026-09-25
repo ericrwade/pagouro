@@ -288,9 +288,10 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
     # when sampled; the box numbers are measured at the decode the app uses (D-91/D-93).
     temp = os.environ.get("DECODE_TEMP", "0")
     sampling = ["--temp", "0", "--top-k", "1"] if temp == "0" else ["--temp", temp, "--top-k", "40", "--top-p", "0.95"]
+    dry = os.environ.get("DRY_MULT", "0")   # llama.cpp DRY sampler (repeated-sequence penalty; leaves the stop token alone)
     if chat:
         cmd = [LLAMA_CHAT, "-m", model, "-p", prompt, "-st", "-n", str(n_tokens),
-               *sampling, "--seed", "1", "--no-warmup", "-ngl", "0", "--repeat-penalty", rp]
+               *sampling, "--seed", "1", "--no-warmup", "-ngl", "0", "--repeat-penalty", rp, "--dry-multiplier", dry]
     else:
         # -no-cnv: this llama.cpp build switches to conversation mode on its own whenever the
         # GGUF carries a chat template, so "raw" silently became chat-templated (the Flash base
@@ -309,7 +310,26 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
     i = txt.find(prompt)
     cont = txt[i + len(prompt):] if i >= 0 else txt
     cont = re.split(r"\n\s*\[end of text\]|\nllama_perf|\[ Prompt:", cont)[0]
-    return cont.strip()
+    cont = cont.strip()
+    if os.environ.get("TRIM_REPETITION", "0") == "1":   # D-93: the app cuts a looping tail at the first repeat; measure the same
+        cont, _ = _trim_repetition()(cont)
+    return cont
+
+
+_TRIM = None
+
+
+def _trim_repetition():
+    """The app's own trim_repetition, loaded once (evals measure what the app does)."""
+    global _TRIM
+    if _TRIM is None:
+        import importlib.util
+        _argv = sys.argv; sys.argv = [_argv[0]]
+        spec = importlib.util.spec_from_file_location("pa_trim", os.path.join(ROOT, "app", "pagouro_app.py"))
+        pa = importlib.util.module_from_spec(spec); spec.loader.exec_module(pa)
+        sys.argv = _argv
+        _TRIM = pa.trim_repetition
+    return _TRIM
 
 
 def run_set(name: str, model: str, label: str, n_tokens: int, timeout: int, chat: bool = True,

@@ -2340,6 +2340,25 @@ labelling multi-turn rows and scoring the harness); (2) does this answer argue o
 scorer's blind spot); (3) answerability labels for future curricula instead of paid Jev calls. Labels
 and evals only, never training text (D-30). Try it in the next build session that has a card up.
 
+### D-93 — The multi-turn bug, its cause, and the shipped decode: greedy, no penalty, payload cap, loop trim → GRPO-3 = bluff 22 / answered 81, clean in conversation
+**2026-09-25, after "Do GRPO-3" (D-92) and "let's do the more research".** The first four-turn smoke test
+through the app found every 1B variant **repeating its first answer verbatim on a second question whose
+pack hit was irrelevant**. Not a data hole (SFT-v2 with 500 context-shift rows still did it): **payload
+length** — on identical messages, a 230-char irrelevant hit → abstains; 600 chars → re-answers the previous
+question; 1,200 chars → continues the passage. Fix: the model sees ≤ 2 hits × 350 chars (the person still
+sees the full passages). The repetition penalty (D-91/D-92) stopped loops in the greedy eval but made
+GRPO-3 ramble and confabulate in conversation ("also known as Porto", invented specifics inside abstentions,
+junk tails: it also discourages the stop token); DRY made it fixate on the tool filename. Resolution:
+**looping tails are trimmed by the harness** at the first repeated sentence, with a visible note (D-50), and
+the eval measures the same trim. Decode measured on GRPO-3, cap + trim: **greedy = bluff 22 / hedge 6 /
+answered 81; temperature 0.3 = 37 / 6 / 76** — sampling costs 15 points of honesty, so **answers decode
+greedily** (careful-mode re-asks stay at 0.7). Multi-turn test at the shipped decode: 0 fails, turn 2 names
+Adam Smith. **Shipped: GRPO-3, greedy, penalty 1.0, cap, trim — box 22 / 81** (replaces 17 / 82, which was
+true single-turn and false in use). Research session ($5): SFT-v2 (argue + self-knowledge abstentions +
+multi-turn seeds) = 37 / 70 — the 1,050 self-knowledge abstention rows over-abstain on real questions as
+SFT (retire from the mix; keep as GRPO reward); GRPO-4 from it 42 / 74. New rule: `evals/run_multiturn.py`
+is part of every candidate's measurement. Sleep-window + research spend ≈ $20 of the $100.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
