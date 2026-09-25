@@ -66,8 +66,8 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   Sleep-window + research spend ≈ $20 of the $100; all-in ≈ $1,850; ≈ $150 left.
 **Open / next:** (1) next SFT-from-base = mix B + argue seed ×20 + the multi-turn seed, self-knowledge
 abstentions at most ×0.2 (or none: GRPO reward only), then GRPO on `grpo_selfknow.jsonl` from that SFT with
-`run_multiturn.py` in the measurement (one card session ≈ $10; plan + price on #2 first, D-54); (2) O-41
-reference shelf at $0 (desk work); (3) verified-reasoning traces (O-45 #2) seed; (4) O-47 CLM judge trial on a
+`run_multiturn.py` in the measurement (one card session ≈ $10; plan + price on #2 first, D-54); (2) verified-reasoning
+traces seed (O-45 #2, $0, into that same mix); (3) prebuilt pack index (O-41 needs it; shortens launch); (4) O-47 CLM judge trial on a
 future card session; (5) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (6) O-41 US Code
 pack, O-29/O-31/O-32, TypeSafe key rotation — still Eric's; (7) F13 public flip is Eric's word only.
 
