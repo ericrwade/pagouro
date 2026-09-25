@@ -1,0 +1,177 @@
+{
+  "set": "memory",
+  "model_label": "pagouro-1b-grpo3-rp125full",
+  "model_file": "pagouro-1b-grpo3-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "ROUTED": 9,
+    "RETRIEVED": 10,
+    "ANSWERED": 9,
+    "NUMERIC_CHECKED": 8,
+    "NUMERIC_PRESERVED": 6
+  },
+  "rates": {
+    "ROUTED": 0.9,
+    "RETRIEVED": 1.0,
+    "ANSWERED": 0.9,
+    "NUMERIC_CHECKED": 0.8,
+    "NUMERIC_PRESERVED": 0.6
+  },
+  "elapsed_s": 18.4,
+  "utc": "2026-09-25T12:11:43+00:00",
+  "items": [
+    {
+      "id": "mem-001",
+      "told": "my dog is called Ruby and she is a border collie",
+      "ask": "What is my dog's name?",
+      "keys": [
+        "ruby"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is your dog's name\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said your dog's name is Ruby and she is a border collie."
+    },
+    {
+      "id": "mem-002",
+      "told": "I take my coffee black, no sugar",
+      "ask": "How do I take my coffee?",
+      "keys": [
+        "black"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"How do I take my coffee\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you took your coffee black without sugar. How do you mean? [Sure! You told me with a note or two earlier. Paste that text here if it helps.] /remember_file/read_file/write_note.txt 2026-08-27: I take my coffee black, no sugar.txt /read_file/write_note.txt 2026-08-27: I took my coffee black, no sugar. How do you mean? [Sure! You told me with a"
+    },
+    {
+      "id": "mem-003",
+      "told": "my sister Marta lives in Lisbon",
+      "ask": "Which city does my sister live in?",
+      "keys": [
+        "lisbon"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What city is your sister from\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me your brother's name is Marta and he lives in Lisboa.'pack_search' 2026-08-28: 'Lisbon, you said?' You're right. I have no memory of a file named 'read_file'. /home/martas/workspace/notes/lisp_portal/read_file.txt. If you mean the text in your brother's notes, paste it there and press save.'pack_search' 2026-08-28: 'Lisbon"
+    },
+    {
+      "id": "mem-004",
+      "told": "the wifi password at the cabin is bluefern42",
+      "ask": "What's the wifi password at the cabin?",
+      "keys": [
+        "bluefern42"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What's the wifi password at the cabin\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": false,
+      "numbers_preserved": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no record of that file or service type in your notes; you might need to check a remote machine for it. 'FlightDB' and 'WiFiPasswords' are not there, as far as I know. If you can't remember the details, ask me later.'Surely,' said the password-cracker: 2026-10-30? You might need to check a remote machine for it.'FlightDB' and 'WiFiPasswords' are not there, as far as I know. If you can"
+    },
+    {
+      "id": "mem-005",
+      "told": "I decided to plant tomatoes and basil in the raised bed this spring",
+      "ask": "What did I decide to plant in the raised bed?",
+      "keys": [
+        "tomato",
+        "basil"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What did I decide to plant in the raised bed\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me you planted tomatoes and basil in the raised bed? If so, what is your garden location like? (e.g., sunny or shady) / soil type / irrigation needs / other considerations? / [Your garden location's details here] / read_file: 2026-08-30: I decided to plant tomatoes and basil in the raised bed this spring, according to your text. What else do you need from a good planting spot? (e.g., full sun) / soil type / irrigation needs / other considerations? / [Your"
+    },
+    {
+      "id": "mem-006",
+      "told": "my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02",
+      "ask": "What is the oil filter part number for my car?",
+      "keys": [
+        "15400-plm-a02",
+        "15400"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is the oil filter part number for my car\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no record of that in your notes or earlier chats. If you can, paste it in for me then I’ll be glad to look into it further: /act/note_search?id=15400-PLM-A02. Is there anything else you need help with? /act/write_note_search?id=15400-PLM-A02."
+    },
+    {
+      "id": "mem-007",
+      "told": "our anniversary is on the 14th of June",
+      "ask": "When is our anniversary?",
+      "keys": [
+        "14",
+        "june"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When is our anniversary\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "Your note gives that as 14th of June, 2026 — you said it was then? If so, good; otherwise, back to square one."
+    },
+    {
+      "id": "mem-008",
+      "told": "I am allergic to penicillin",
+      "ask": "Am I allergic to anything?",
+      "keys": [
+        "penicillin"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Do you have any allergies or sensitivities listed here: https://allergies.about.com/od/dermatology/a/skin-tests.htm\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you are allergic to penicillin. Paste the text and hit search again for more options. /act Paste your text and check it now. /redact Paste your text and remove any redactions or notes that might be in there. /act Paste your text and save it as a note. /redact Paste your text and clear history of all past searches, then paste the new one again to confirm. /act Paste your text and check it now for more options. /redact Paste your text and remove any redactions or notes that might be"
+    },
+    {
+      "id": "mem-009",
+      "told": "the book club meets on the first Thursday of the month at Dana's place",
+      "ask": "When does the book club meet?",
+      "keys": [
+        "thursday"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When do book clubs meet\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "The book club meets on the first Thursday of the month at Dana's place, according to your note. Is that correct? /act; no file given. I have no memory of a specific date or time for this: just 2026-09-03. If you mean 'time', then 14:58 is fine, but the meeting was on Thursday at Dana's place, not that. Is it your book club? /act; I don't know which one it is if you mention me. It has no file for this date or"
+    },
+    {
+      "id": "mem-010",
+      "told": "my landlord's name is Mr. Okafor and his number ends in 7731",
+      "ask": "What is my landlord called?",
+      "keys": [
+        "okafor"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said your landlord'S name is Mr. Okafor and his number ends in 7731. If you have another source, paste it in."
+    }
+  ]
+}

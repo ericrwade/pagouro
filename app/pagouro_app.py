@@ -48,9 +48,12 @@ import documents as _docs  # noqa: E402  (D-79: PDF / Word / text documents, ext
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
-DECODE_REPEAT_PENALTY = 1.0      # D-91: llama.cpp repetition penalty at decode; the box numbers are measured at THIS value.
-                                 # GRPO-trained 1B models loop their abstentions at 1.0 and are coherent at 1.25; change
-                                 # only together with the model and its measured numbers (facts.json).
+DECODE_REPEAT_PENALTY = 1.0      # D-91: llama.cpp repetition penalty for FREE answers (no tool result or pack hit in the
+                                 # turn). GRPO-trained 1B models loop their abstentions at 1.0 and are coherent at 1.25;
+                                 # answers that must COPY from a tool result or a pack always decode at 1.0, because a
+                                 # penalty on repeating context tokens is a penalty on quoting the calculator. The box
+                                 # numbers are measured with this same split (evals/eval_gguf.sh). Change only together
+                                 # with the model and its measured numbers (facts.json).
 MAX_TOKENS_ROUTER = 96           # the tool decision is a tiny JSON object
 GAUGE_BOXES = 10
 TOOL_STEPS_PER_TURN = 1          # D-51: one tool per turn in the MVP
@@ -180,8 +183,7 @@ class Server:
         # for 8k on this model is ~170 MB, fine on CPU. -ngl 0 always: this desk's AMD Vulkan backend
         # emits garbage for the 1B (D-88), and the product promise is "runs on any CPU".
         cmd = [SERVER_EXE, "-m", model, "--port", str(self.port), "--host", "127.0.0.1", "-c", "8192",
-               "-ngl", "0", "-t", str(threads), "--repeat-penalty", str(DECODE_REPEAT_PENALTY),
-               "--log-disable", "--no-webui"]
+               "-ngl", "0", "-t", str(threads), "--log-disable", "--no-webui"]
         flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
         if not os.path.exists(SERVER_EXE):
             fatal("the model server program is missing", f"Expected {SERVER_EXE}. Copy the release folder whole; "
@@ -229,9 +231,9 @@ class Server:
         return len(self.post("/tokenize", {"content": text, "add_special": False}).get("tokens", []))
 
     def chat(self, messages: list[dict], max_tokens: int, grammar: str | None = None,
-             temperature: float = 0.3) -> tuple[str, dict]:
+             temperature: float = 0.3, repeat_penalty: float = 1.0) -> tuple[str, dict]:
         body = {"messages": messages, "max_tokens": max_tokens, "temperature": temperature,
-                "cache_prompt": True}
+                "cache_prompt": True, "repeat_penalty": repeat_penalty}
         if grammar is not None:
             body["grammar"] = grammar
             body["temperature"] = 0
@@ -699,8 +701,11 @@ class App:
 
         budget = min(MAX_TOKENS_ANSWER, max(64, self.srv.n_ctx // 4))
         self.make_room(budget)
+        # D-91: a free answer (nothing to copy from) decodes with the repetition penalty; a turn that
+        # carries a tool result or a pack hit decodes at 1.0 so the model can quote it verbatim.
+        rp = 1.0 if tool_result else DECODE_REPEAT_PENALTY
         try:
-            answer, usage = self.srv.chat(self.messages(), budget)
+            answer, usage = self.srv.chat(self.messages(), budget, repeat_penalty=rp)
             if self.careful:
                 answer = self.careful_check(answer, budget)
         except urllib.error.HTTPError as e:

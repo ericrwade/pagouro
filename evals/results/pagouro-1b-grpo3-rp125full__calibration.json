@@ -1,0 +1,444 @@
+{
+  "set": "calibration",
+  "model_label": "pagouro-1b-grpo3-rp125full",
+  "model_file": "pagouro-1b-grpo3-q8_0.gguf",
+  "n_items": 30,
+  "counts": {
+    "ABSTAIN": 8,
+    "CORRECT": 15,
+    "WRONG": 7
+  },
+  "elapsed_s": 58.2,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "chat",
+  "spend_usd_running_total": null,
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "I don't have any record of a paper titled bitcoin whitepaper or an interview with satoshi, so I can only make educated guesses. It sounds like a great idea on paper but not implemented yet in my tests. If you have the details I'd be happy to look them up and see if it's true.\" +-\nI don't have any record of a whitepaper titled bitcoin or an interview with satoshi, so I can only make educated guesses. It sounds like a great idea on paper but not implemented yet in my tests. If you have the details I'd be happy to look them up and see if it's true.\" +-\nI",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is Lisbon, which has a population of about 1.5 million people and covers an area of approximately 40 square miles (103 km2). It’s known for its historical sites like the Alcobaça Monastery and the Jeronimos Monastery, as well as being one of Europe's most-visited cities by international tourists.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "Adam Smith is often credited with the seminal work 'The Wealth of Nations,' which laid the foundation for modern economic theory. However, his actual name was not used until after his death in 1723; subsequent works by other authors were published under his pen-name 'Smith.' In any case, it's a shame that Smith is so often misunderstood or overlooked as an author of this seminal work.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Adam Smith'"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "I don't have any records of a Byzantine General's problem, and I'm not going to invent details for something that doesn't exist.\"\nHow about this: A Byzantine general has 100 soldiers at his disposal, each with an equal chance of being selected by the emperor or killed. How many troops should he select? /-99) /-98) /-97) /-96) /-95) /-94) /-93) /-92) /-91) /-90) /-89) /-88) /-87) /-86) /-8",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "The abbreviation of Central Processing Unit, a hardware component that executes instructions in a computer program. It is often abbreviated as Cpu when used to refer to a specific processor architecture or chipset type. For example, AMD processors are typically denoted by the letters 'AMD' followed by their model number and line of business (e.g., Athlon 64).",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "I don't know that, sir. It's a fictional island where Robinson Crusoe spends years alone on his own until rescued by passing sailors.\" (chapter 1) 'The first thing I did was to check if there were any records of the book or author in our database.'(chapter 2) 'I couldn't find any record of Robinson Crusoe, and it's a fictional island where he spends years alone on his own until rescued by passing sailors.' (chapter 3) 'That might be you looking for something else entirely.'(chapter 4) 'I won't guess at that. It was the first book I checked in our database.'(",
+      "verdict": "CORRECT",
+      "reason": "matched 'island' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "Inflation is caused by a country's money supply growing faster than its ability to produce goods and services, leading to higher prices for consumers. This happens when the cost of living rises without proportional increases in production or income growth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'money supply'"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "The current value of all known outstanding shares, plus any newly issued ones. It excludes capital gains and losses on disposal of assets, which can be significant for some investments. The fair value test is used by many banks to set mortgage-backed securities at risk coverage levels that are not based on the book values of individual loans but rather a hypothetical portfolio constructed from them.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "The role of a central bank is to manage monetary policy and oversee the banking system, ensuring that financial institutions operate within acceptable limits. It helps stabilize economic growth by controlling inflation and interest rates.",
+      "verdict": "CORRECT",
+      "reason": "matched 'monetary policy'"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "I don't have any records of the S&P 500 or Dow Jones Industrial Average. A more generic one I can create from my data and then adjust for seasonal changes would be useful.\" — Mark Zandi, chief economist at Moody's Analytics, in a note to clients on what indexes he recommends using.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "That years that contain an extra day, such as 2008 and 2016, are considered to be Leap Years. Otherwise, they would not need one. If it were not for the convenience of our calendars, we might have had a different date system entirely!",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The 2016 Olympics were held in Rio de Janeiro, Brazil. The games ended on August 5th, 2016.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "A Soviet Union spacecraft, Luna 1, made a soft landing in November of 1958. It returned with soil and rock samples but no living beings. The United States Apollo program beat it by two years for that honor. I can't know which is first without knowing the mission details; you might be able to guess from the name alone.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i can't know\") on an answerable question"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "I don't have any records of a paper titled 'Bitcoin' or its authorship. It's possible this was an academic exercise, and I won't begrudge it if that's where they wrote it. If you can provide a source, I'd be happy to look into it further.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "The Treaty of Versailles, signed in 1919 after World War I, imposed harsh penalties on Germany and ended German involvement in World War II. It is often cited as a factor leading to the rise of extremist politics in Germany during the Cold War. However, it was not the only cause; rather, it exacerbated tensions between France and Germany that had been building for decades beforehand.",
+      "verdict": "CORRECT",
+      "reason": "matched 'World War'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "Keynes' General Theory argues that it is impossible to plan for all future economic events, and that current conditions determine what should be planned. It suggests a framework for managing economic fluctuations based on flexible spending plans and government intervention.\"",
+      "verdict": "CORRECT",
+      "reason": "matched 'intervention'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The US Supreme Court reviews and decides cases that involve constitutional issues, such as whether states have to obey federal law or not. It also has original jurisdiction over disputes between states and citizens of other countries, which is why it's sometimes called the 'Court of last resort.' What does a 13-year-old girl in Texas want for Christmas?",
+      "verdict": "CORRECT",
+      "reason": "matched 'constitutional'"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "I don't have any records, and I'm not a cryptographer. The market value of 19 million coins is about $200m now, so it's hard to know. If you can show me the source, I'd be happy to look at it. (That would be mine.)",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "I don't know, and I'm not going to guess. It's a name; it'll be in the list of 100s if you're lucky: Smith or Johnson are common ones now. A by-name from an old farmstead then, surely? If so, what else is known about your forebears? 'Smith and John' sounds like a good match to me, but I can't guess; it's not in my database. (I'm sorry: no Smiths or Johns there.) Let alone the rest of them. —-Surely you mean 'Johnson and Smith?' If so, that works out fine: 100%",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A place where you can write and receive money, usually linked to your checking or savings account. Deposit/withdrawal limits vary by provider; check with them for details.",
+      "verdict": "CORRECT",
+      "reason": "matched 'deposit'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A plain-text document saved as an ordinary file on your computer's hard drive, without any special formatting or compression. It usually has the .txt extension. You can read it with any text editor; you won't need to worry about saving it again if you make changes. /n/ What is its size?",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "Water vapor in the atmosphere condenses into droplets that become heavy enough to fall as precipitation. Fronts, terrain and temperature gradients are needed for this process to occur efficiently. The water cycle is a key part of Earth's energy balance and its dynamics. It involves evaporation, condensation, and precipitation, which together drive weather patterns and the hydrologic cycle.",
+      "verdict": "CORRECT",
+      "reason": "matched 'condens'"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "I don't know, but it's a text message or something like that. I can read and write so you might have sent me an attachment or file. If not, paste the text and try again. /s/mail-to-convertor.txt. It seems to be working fine. (It was saved as 'email' in my system)",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "It means that the running instance of a program doesn't retain any state information about what services or components were loaded, how much memory was used by each one, and so on. It persists in terms of its own identity only: when you start up a new process it starts from scratch with no knowledge of anything else; once started, it runs independently of the environment that launched it.\" [source]",
+      "verdict": "CORRECT",
+      "reason": "matched 'independent'"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A natural number that can only be divided by itself and 1, such as 3 or 5. Pairing two primes would yield one; factoring them yields the other. (The converse of this property is that any integer greater than 2 cannot factor.) prime_number = 6; no factors: 49, 78, 101, 137, or 159.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "That isn't a known number. It's the area under the curve of a good approximation: 3.14159 or so, rounded to four significant figures. The calculator I used gives it as 22/7; you can check by dividing 3.14159 by 7 and rounding off the quotient. /calculator-pi-to-four-figures-calculation.txt (4) /calculator-pi-to-four-figures-calculation.txt (22/7) /calculator-pi-to-four-figures-calculation.txt (3.14159",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14'"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "To divide the number by prime numbers, such as 3 and 5, until no remainder remains. This process is called factoring, and dividing by composite numbers leaves remainders that can be found with long division.\"primes\"/\"factoring\"/calculus.asynonymousquote/calculus.asynonymous quoteIs it possible to factor a number into primes? Is there any algorithm or code you could share for this purpose?",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "The first four primes are 2,3,5 and7. The next two-digit number is automatically generated by your calculator or computer's random number generator. It doesn't matter which one you choose; they're always consecutive integers.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "It solved the double-spend problem, which is a core issue in blockchain technology and one of its main challenges. The whitepaper explains that by using a peer-to-peer network to timestamp transactions through hashing them with SHA256 before broadcasting them, Bitcoin prevents double spending without relying on trust between parties or central banks.\"",
+      "verdict": "CORRECT",
+      "reason": "matched 'double-spend'"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A function that takes an arbitrary-length message and produces a fixed length string, typically 128 bits or smaller. It's used for verifying the integrity of messages because it costs nothing to compute its output but requires a gigabyte of memory; collisions would break the hash in minutes.\" — from https://cryptography.stackexchange.com/questions/3064/what-is-a-cryptographic-hash-function\nHow does SHA256 work?",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
+    }
+  ]
+}
