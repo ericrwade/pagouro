@@ -34,7 +34,7 @@ from pagouro.model import Pagouro, ModelConfig  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-REPEAT: dict[str, int] = {}   # basename -> times to include (D-72: --repeat abstention_seed.jsonl=2 restores its share)
+REPEAT: dict[str, float] = {}   # basename -> times to include (D-72: --repeat abstention_seed.jsonl=2 restores its share)
 
 
 def load_examples() -> list[list[dict]]:
@@ -46,7 +46,13 @@ def load_examples() -> list[list[dict]]:
         if not os.path.exists(path):
             return
         n = REPEAT.get(os.path.basename(path), 1)
-        for line in list(io.open(path, encoding="utf-8")) * n:
+        lines = list(io.open(path, encoding="utf-8"))
+        if n < 1:                                   # D-93: a fractional repeat keeps that share (deterministic subset)
+            keep = random.Random(93).sample(range(len(lines)), int(len(lines) * n))
+            lines = [lines[i] for i in sorted(keep)]
+        else:
+            lines = lines * int(n)
+        for line in lines:
             line = line.strip()
             if not line:
                 continue
@@ -71,6 +77,7 @@ def load_examples() -> list[list[dict]]:
     add_pairs(os.path.join(ROOT, "sft", "multiturn_seed.jsonl"))       # D-93: tool results in LATER turns; irrelevant pack hits (the first app smoke test of the 1B)
     add_pairs(os.path.join(ROOT, "sft", "selfknow_abstain_seed.jsonl"))  # D-92 research: abstain exactly where THIS model was measured not to know (O-45 #1)
     add_pairs(os.path.join(ROOT, "sft", "argue_seed.jsonl"))       # O-45/D-89: reason under a premise, both directions (the deflection set rewards ENGAGING); --repeat argue_seed.jsonl=N to weight it
+    add_pairs(os.path.join(ROOT, "sft", "reasoning_seed_gen.jsonl"))  # O-45 #3 / D-93: program-keyed word problems with program-written traces (the 1B solved 7/200 before this)
     return out
 
 
@@ -165,7 +172,7 @@ def main() -> int:
     ap.add_argument("--log", default=os.path.join(ROOT, "runs", "sft_log.jsonl"))
     a = ap.parse_args()
     for spec in a.repeat:
-        f, n = spec.split("=", 1); REPEAT[f] = int(n)
+        f, n = spec.split("=", 1); REPEAT[f] = float(n)
     if a.threads:
         torch.set_num_threads(a.threads)
 

@@ -10,7 +10,14 @@ GRPO reasoning round starts from.
 Writes evals/results/<label>__reasoning.json (every prompt, every sample, verdicts, per-family rates)
 and appends the kept traces to sft/reasoning_seed.jsonl ({"kind": "reasoning-star", "family", "messages"}).
 Greedy first (samples=1, temperature 0): the solve rate. Then temperature 0.7 with samples=4 on the
-misses to harvest more traces, if the rate says it is worth the desk time (~8 s per sample at 8 threads).
+misses to harvest more traces, if the rate says it is worth the desk time (~1 s per sample at 8 threads;
+the answers are one line).
+
+Measured 2026-09-25 (200 prompts, seed 3): GRPO-3 greedy 7/200; +14 with four samples at 0.7 on the
+misses; SFT B greedy 6/200. Of the 27 "kept" traces only 8 showed any working -- the rest were lucky
+one-liners ("Priya is heavier than Wen."), so a kept trace must now SHOW WORKING (an "=" or three
+sentences) and the harvest is retired until a model trained on the program traces
+(sft/reasoning_seed_gen.jsonl) can produce its own.
 """
 from __future__ import annotations
 
@@ -69,10 +76,12 @@ def main() -> int:
                                max_tokens=a.max_tokens, temperature=a.temperature)
             text, _ = pa.trim_repetition(text)
             ok = answer_matches(text, r["answer"]) and not degeneracy(text)
-            samples.append({"text": text, "final": final_answer(text), "ok": ok})
-            if ok:
+            worked = "=" in text or len([x for x in text.split(". ") if x.strip()]) >= 3
+            samples.append({"text": text, "final": final_answer(text), "ok": ok, "worked": worked})
+            if ok and worked:
                 kept.append({"kind": "reasoning-star", "family": r["family"], "model": os.path.basename(a.model),
                              "messages": [{"role": "user", "content": r["prompt"]}, {"role": "assistant", "content": text.strip()}]})
+            if ok:
                 break
         out_rows.append({"prompt": r["prompt"], "family": r["family"], "answer": r["answer"], "samples": samples,
                          "solved": any(s["ok"] for s in samples)})
@@ -93,7 +102,7 @@ def main() -> int:
         for k in kept:
             f.write(json.dumps(k, ensure_ascii=False) + "\n")
     print("summary:", json.dumps(summary))
-    print(f"kept {len(kept)} verified traces -> sft/reasoning_seed.jsonl")
+    print(f"kept {len(kept)} verified traces WITH WORKING -> sft/reasoning_seed.jsonl")
     return 0
 
 
