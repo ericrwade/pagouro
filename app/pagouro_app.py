@@ -237,7 +237,7 @@ class Server:
                       "against MANIFEST.md (python verify_manifest.py) and close other programs; then start again.",
                       "\n".join(self._stderr_tail[-8:]))
             if i and i % 120 == 0:
-                print(f"  {DIM}still loading the model ({i // 4} s) — a USB stick reads slowly the first time{RESET}", flush=True)
+                print(c(DIM, f"  still loading the model ({i // 4} s) — a USB stick reads slowly the first time"), flush=True)
             time.sleep(0.25)
         else:
             fatal("the model server did not answer within 3 minutes",
