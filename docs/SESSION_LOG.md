@@ -44,8 +44,15 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   Weight soups (`scripts/soup.py`): **50/50 = bluff 37 / answered 83 / deflection 23/28 / tool-result 10/10 —
   the candidate**; 70 % GRPO = 29 / 85 / 16/28. O-45 (Eric asked how to boost reasoning/honesty): five
   ranked levers. Bill all-in ≈ $1,817; ≈ $183 left; no pods.
-**Open / next:** (1) **Eric:** pick the soup (50/50 recommended, or 70 %) for the stick; yes/no on GRPO-2
-(~$10: 128-token completions + repetition penalty, a deflect kind, KL 0.1, from the soup); O-45 order; (2) **the bluff rate is the problem** (64 % at 83 % answered): plan the GRPO known/unknowable
+- **12:45Z addendum — Eric's calls (D-89): soup70 on the stick (done: 104/104 manifest, audit PASS, `/careful` +
+  `-c 8192` in the app), GRPO-2 yes, O-45 order. Sleep window (D-90, $100 allowed, ≈ $15 spent):** GRPO-2 fell
+  from the start, stopped at 60; self-knowledge curriculum (`sft/grpo_selfknow.jsonl`: known 220 / unknown
+  1,050); GRPO-3 from soup70 on it, stopped at the ceiling (step 50); argue patch cost 28 bluff points
+  (retired — seed goes before GRPO). **D-91: the GRPO "hedges" were greedy-decode loops; repetition penalty
+  1.25 on FREE answers only (per-request in the app; copying suites at 1.0): GRPO-3 = bluff 17 / answered
+  82, tool-result 10/10, memory 9/10.** Candidate vs soup70 (29/85). No pods. All-in ≈ $1,832.
+**Open / next:** (1) **Eric:** GRPO-3 + decode split on the stick (17/82), or keep soup70 (29/85); (2) next
+SFT-from-base with the argue seed in the mix, then soup/GRPO (one card session, ~$15); (2) **the bluff rate is the problem** (64 % at 83 % answered): plan the GRPO known/unknowable
 run (D-69 curriculum, `sft/grpo_*.jsonl`) on one rented card — plan + hourly price on #2 first (D-54); Eric's
 "rent"; (3) book ch. 15 after the shipped numbers are final; ch. 13a signpost; (4) `package_release.py` run
 with the 1B (MODEL_STEM=gguf_1b/pagouro-1b-sftB, CONTEXT_WORDS for 8k) once (1) says so; (5) O-41 US Code

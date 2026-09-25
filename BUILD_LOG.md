@@ -2192,3 +2192,55 @@ on the issue was changed to say so, under the original. The rule that came out o
 own description before interpreting its verdicts.[^corr]
 
 [^corr]: `evals/deflection.json` (`description`, `scoring`); issue #2 comment 2026-09-25 06:05Z; the D-88 correction block; the last LESSONS line in the global `CLAUDE.md`.
+
+## Day 16, the five hours — a hundred dollars' permission, fifteen spent, and the loop that was in the decoder
+
+Eric went to bed at eight in the morning UTC with a sentence: "You have my permission to spend
+$100 on runpod to keep this moving forward." He had already made the three calls — the
+seventy-percent soup onto the stick, a second GRPO round, and the order of the bigger levers —
+so the five hours had a plan, one card, and a hard stop at half past twelve.[^plan]
+
+The second GRPO round ran from the soup with longer samples and a rule that looping text scores
+the worst reward, and its reward went down from the first step. Sixty steps and four dollars in,
+it was stopped and the card put to better use: the self-knowledge sampler, in which the model on
+the stick answered fifteen hundred questions eight times each and was labelled by its own
+consistency. It disagreed with the human labeller a hundred and fifty-two times — ninety-four
+"known" questions about the authors of books it had trained on that it could not, in fact, answer
+reliably, and fifty-eight "obscure" ones it knew perfectly well. Seventy-nine minutes, four
+dollars sixty. A third GRPO round on that curriculum started near the reward ceiling and was
+stopped by its own rule at step sixty. A fifty-second fine-tune patched the thirty argued answers
+onto the soup. Everything was exported, hashed, brought home across twenty-three gigabytes from
+India, verified, and the pod deleted at a quarter to eleven. Fifteen dollars of the hundred.[^chain]
+
+Then the desk measured, and the measurements said something the training logs could not. Every
+GRPO model — the first, the second, the third — scored around forty "hedges" on the hundred
+unanswerable questions: abstentions that looped, *"I don't have a record… and I don't have a
+record of…"*, even the one whose training had penalised exactly that. The argue patch, meanwhile,
+had lifted the model's willingness to argue by two questions in twenty-eight and cost it
+twenty-eight points of bluff: one more pass of supervised imitation had pulled it most of the way
+back to where the soup started. The seed goes in *before* GRPO, not after; a patch is not a
+recipe.[^measured]
+
+The loops were not in the model. Training samples at temperature 0.8 for sixty-four or a hundred
+and twenty-eight tokens; the evaluation decodes greedily for a hundred and forty, and greedy
+decoding of a policy that has learned a very confident way to say "I don't know" repeats it. A
+repetition penalty — a decode setting, a number passed to llama.cpp, no training — took the third
+model from nineteen percent fabrication with thirty-nine loops to **seventeen percent with six,
+answering eighty-two percent of real questions.** Under the frontier models' twenty-three to
+twenty-seven on the same test. And then the full suite showed the cost of the penalty: a model
+told not to repeat what is in its context stops repeating the calculator's answer, and tool-result
+fidelity fell from ten in ten to six. So the penalty applies to free answers only; the app drops it
+the moment a tool result or a pack hit is in the turn, and the harness measures the same split.
+Under that rule the third model keeps everything else — tool routing, memory, tool-result fidelity
+— and the choice is the one on the issue for Eric to make when he wakes: seventeen and eighty-two,
+or the soup's twenty-nine and eighty-five.[^decode]
+
+One more correction, recorded because the rule is that it is. The third model's "engaged
+twenty-one of twenty-eight" on the argue-a-side set was mostly long, non-repetitive dodges that
+the pattern scorer cannot tell from arguments; six were genuine, none good. The number was struck
+before it was claimed.
+
+[^plan]: D-89 and D-90 in `docs/DECISIONS.md`; issue #2 comments 2026-09-25 06:30Z–08:10Z.
+[^chain]: `data/out_1b/grpo2/` (SHA256SUMS, logs); `sft/grpo_selfknow.jsonl`; `runs/selfknow_soup70.log`; issue #2 comments 10:05Z and 10:50Z; RunPod billing read after deletion.
+[^measured]: `evals/results/pagouro-1b-grpo3__*.json`, `pagouro-1b-soup70argue__*.json`, `pagouro-1b-grpo2__*.json`; issue #2 comment 11:35Z.
+[^decode]: the `-rp115` / `-rp125` / `-rp125full` result files; D-91; `app/pagouro_app.py` (`DECODE_REPEAT_PENALTY`, per-request), `scripts/eval_gguf.sh` (`FREE_PENALTY`).
