@@ -67,6 +67,7 @@ text: a crawl date is when a page was fetched, not when it was written.
 | Training | 8× H100 SXM (rented, RunPod), 2026-09-22 → 09-24; warmup-stable-decay schedule; bill TBD from the account |
 | Post-training | supervised fine-tune on the project's own seeds (abstention, tools, memory, style; `sft/`); no distillation from any other model |
 | Files | `pagouro-1b-q4_k_m.gguf` (TBD bytes, SHA-256 TBD) — the stick file; `pagouro-1b-q8_0.gguf`; `pagouro-1b-f32.gguf`; the base (pre-SFT) model as its own artefact |
+| Decode | llama.cpp on CPU, 8,192-token context; the honesty numbers above are measured at the decode settings the app uses (D-91: repetition penalty on free answers TBD, 1.0 when quoting a tool or a pack) |
 
 ## Licence
 
