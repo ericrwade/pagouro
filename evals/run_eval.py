@@ -277,9 +277,15 @@ def generate(model: str, prompt: str, n_tokens: int, timeout: int, chat: bool = 
     """Chat mode applies the model's own chat template, which is how an instruct model
     is meant to be used and how a user would actually use it. Raw completion on an
     instruct model produces unrepresentative output and would make any comparison unfair."""
+    # REPEAT_PENALTY (env, default 1.0 = off): llama.cpp's repetition penalty at decode time. The
+    # frozen part of this suite is the items and the scorer; decode settings are the harness's, and
+    # the app's decode settings are what the shipped model is measured with. 2026-09-25 (D-91): GRPO
+    # models loop their abstentions under greedy decoding ("I don't have a record... and I don't have
+    # a record...") -- scored HEDGE -- so the shipped decode may carry a mild penalty; measure it here.
+    rp = os.environ.get("REPEAT_PENALTY", "1.0")
     if chat:
         cmd = [LLAMA_CHAT, "-m", model, "-p", prompt, "-st", "-n", str(n_tokens),
-               "--temp", "0", "--top-k", "1", "--seed", "1", "--no-warmup", "-ngl", "0"]
+               "--temp", "0", "--top-k", "1", "--seed", "1", "--no-warmup", "-ngl", "0", "--repeat-penalty", rp]
     else:
         # -no-cnv: this llama.cpp build switches to conversation mode on its own whenever the
         # GGUF carries a chat template, so "raw" silently became chat-templated (the Flash base

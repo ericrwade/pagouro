@@ -1,0 +1,177 @@
+{
+  "set": "memory",
+  "model_label": "pagouro-1b-grpo2",
+  "model_file": "pagouro-1b-grpo2-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "ROUTED": 9,
+    "RETRIEVED": 10,
+    "ANSWERED": 9,
+    "NUMERIC_CHECKED": 7,
+    "NUMERIC_PRESERVED": 6
+  },
+  "rates": {
+    "ROUTED": 0.9,
+    "RETRIEVED": 1.0,
+    "ANSWERED": 0.9,
+    "NUMERIC_CHECKED": 0.7,
+    "NUMERIC_PRESERVED": 0.6
+  },
+  "elapsed_s": 18.0,
+  "utc": "2026-09-25T11:24:00+00:00",
+  "items": [
+    {
+      "id": "mem-001",
+      "told": "my dog is called Ruby and she is a border collie",
+      "ask": "What is my dog's name?",
+      "keys": [
+        "ruby"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is my dog's name\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said your dog is called Ruby and she is a border collie. It's a long name, but you can use 'Ruby' or 'Border Collie' for now. Let me know if you need more help with the details."
+    },
+    {
+      "id": "mem-002",
+      "told": "I take my coffee black, no sugar",
+      "ask": "How do I take my coffee?",
+      "keys": [
+        "black"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"How do I take my coffee\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you took your coffee black, without sugar. How did you remember that?txtfile: Remembered.txt 2026-08-27: I remember taking my coffee black, with no sugar, from the kitchen counter. How? 2026-08-27: I poured the coffee, then stirred it with a spoon, then set it aside for a minute or two, then tasted it.txtfile: Pouring, stirring, tasting, then setting aside. How then? 2026-"
+    },
+    {
+      "id": "mem-003",
+      "told": "my sister Marta lives in Lisbon",
+      "ask": "Which city does my sister live in?",
+      "keys": [
+        "lisbon"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Which city does my sister live in\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me your sister Marta lives in Lisbon. Is it correct? I have no access to your text file or database. check_file_contents: 2026-08-28: file path error, not found, try again. check_file_contents_ext: 2026-08-28: file path error, not found, try again. check_file_contents_ext: 2026-08-28: file path error, not found, try again. check_file_contents"
+    },
+    {
+      "id": "mem-004",
+      "told": "the wifi password at the cabin is bluefern42",
+      "ask": "What's the wifi password at the cabin?",
+      "keys": [
+        "bluefern42"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What's the wifi password at the cabin\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": false,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no record of that file, or you, or what you told me. A pack's job: not stale, then, you say, a pack. Wipe, then, or stale, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then, then"
+    },
+    {
+      "id": "mem-005",
+      "told": "I decided to plant tomatoes and basil in the raised bed this spring",
+      "ask": "What did I decide to plant in the raised bed?",
+      "keys": [
+        "tomato",
+        "basil"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What did I decide to plant in the raised bed\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me the raised bed is for tomatoes and basil only. Planting now is risky, but basil is a must for salsa and pesto, so basil is a winner. The rest is details; ask for file or paste. I'll plant tomatoes and basil, not that. If you need, ask again, and I'll plant tomatoes and basil, not that. If you want, ask for file or paste, and I'll plant tomatoes and basil, not that."
+    },
+    {
+      "id": "mem-006",
+      "told": "my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02",
+      "ask": "What is the oil filter part number for my car?",
+      "keys": [
+        "15400-plm-a02",
+        "15400"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is the oil filter part number for my car\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no memory of a 2009 Honda Fit oil filter part number, so 15400-PLM-A02.txt. Checked with engine manuals and found it there. Yours: 2026-08-31.txt. Is it correct? If so, good, if not, need to fix it up. /act to proceed."
+    },
+    {
+      "id": "mem-007",
+      "told": "our anniversary is on the 14th of June",
+      "ask": "When is our anniversary?",
+      "keys": [
+        "14",
+        "june"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When is our anniversary\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "Your note gives 14th of June, 2026. Let's stick to that, then.\"yours\" is the file path, not the date. 14th, not 2026. 2026-09-01, not 14th, then. match_parts_search, not that. match_ends_search, not that. match_starts_search, not that. match_ends_search_search, not that. match_ends_search_search_search, not that."
+    },
+    {
+      "id": "mem-008",
+      "told": "I am allergic to penicillin",
+      "ask": "Am I allergic to anything?",
+      "keys": [
+        "penicillin"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Do you have any allergies to specific substances like pollen or latex?\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said penicillin. It's in your notes, 2026-09-02: 'You said penicillin.' Reply to note, or check for it in file. It's in there, or file.txt. Paste it in, or read it there. It's in there, or file.txt. It's in there, or file.txt. You said it, or check for it. It's in there, or file.txt. It's in there, or file.txt. You said it, or check for it. It's"
+    },
+    {
+      "id": "mem-009",
+      "told": "the book club meets on the first Thursday of the month at Dana's place",
+      "ask": "When does the book club meet?",
+      "keys": [
+        "thursday"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When does the book club meet\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "The book club meets on the first Thursday of the month at Dana'S place, usually at 5 PM. [Sure, say your time and I'll count from there]"
+    },
+    {
+      "id": "mem-010",
+      "told": "my landlord's name is Mr. Okafor and his number ends in 7731",
+      "ask": "What is my landlord called?",
+      "keys": [
+        "okafor"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me your landlord is called Okafor and her number is 7731. Great, what city are you in?"
+    }
+  ]
+}
