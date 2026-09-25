@@ -68,6 +68,7 @@ def load_examples() -> list[list[dict]]:
     add_pairs(os.path.join(ROOT, "sft", "spelling_seed.jsonl"))     # D-68: answer in the spelling register the question used
     add_pairs(os.path.join(ROOT, "sft", "toolresult_seed.jsonl"))   # D-70: answer inside the tool result; report NO_MATCH / errors, half the rows
     add_pairs(os.path.join(ROOT, "sft", "style_seed.jsonl"))       # D-78: BC/AD; celestial events dated as observed on Earth
+    add_pairs(os.path.join(ROOT, "sft", "selfknow_abstain_seed.jsonl"))  # D-92 research: abstain exactly where THIS model was measured not to know (O-45 #1)
     add_pairs(os.path.join(ROOT, "sft", "argue_seed.jsonl"))       # O-45/D-89: reason under a premise, both directions (the deflection set rewards ENGAGING); --repeat argue_seed.jsonl=N to weight it
     return out
 
