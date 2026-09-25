@@ -75,7 +75,9 @@ rows close; it is the one page to open when asking "what is left?".*
 | 5.10 | Oct 1 | F17 tip jar: GitHub Sponsors or Ko-fi link + the wallet address in README; price in dollars ("what a card-hour costs") | $0 | **Eric** (accounts) |
 | 5.11 | Oct 2 | **F13 history scan:** `.env`, `My_Claude_Conversation.txt`, `API_KEYS*`, `data/`, `checkpoints/`, `release/` never in history; final `git status` clean | $0 | Claude |
 | 5.12 | Oct 2 | **F13 flip PUBLIC, then ARCHIVE** (read-only, forkable); Software Heritage save request | $0 | **Eric** (the one-way door) |
-| 5.13 | Oct 2 | **F14 pagouro.com → 301 to the GitHub Release** (registrar forwarding; DNSSEC + WHOIS privacy already on). *A website is deliberately a redirect, not a site (origin, F14); a one-page landing is optional and can come later without touching the release* | $0 (domain already paid) | **Eric** (registrar, 10 min) |
+| 5.13a | Oct 1 | **The front page** `docs/site/index.html` — one static page: the two numbers, the four promises, the manifest hash, links to the GitHub Release / HF / Arweave. Lives in the repo; hosted wherever DNS points | $0 | Claude |
+| 5.13b | Oct 1 | **QStorage (Quilibrium) as the front door + mirror** (Eric, 2026-09-25): upload the page (and the release zip as a D-40 mirror) to a public bucket via QConsole; get the CNAME; **test HTTPS on `pagouro.com`** — if the bucket cannot serve a certificate for the domain, the site stays a 301 (5.13c) and QStorage stays a mirror; cost measured and published (E5). Keys go in `.env` as `QSTORAGE_ACCESS_KEY` / `QSTORAGE_SECRET_KEY` / `QSTORAGE_ENDPOINT` / `QSTORAGE_BUCKET` | QStorage plan (Eric's account; cost to be read from it) | **Eric** (account, DNS at Wix); Claude (upload, TLS test) |
+| 5.13c | Oct 2 | **F14 DNS at Wix:** `pagouro.com` → CNAME to the QStorage site if 5.13b passed, else 301 forwarding to the GitHub Release. DNSSEC + WHOIS privacy already on. Either way the GitHub Release stays the canonical link; the site is a front door, never a dependency | $0 (domain already paid) | **Eric** (Wix DNS, 10 min) |
 | 5.14 | Oct 2 | Book PDF/EPUB attached to the Release and on the stick (from 4.7) | $0 | Claude |
 
 ## 6. Presence — bare minimum (D-94: "everything should have some presence; needs to be findable")
@@ -100,7 +102,7 @@ rows close; it is the one page to open when asking "what is left?".*
 ## 8. Explicitly *not* on the list (decided, do not re-open)
 
 - A maintained product, updates, telemetry, a roadmap (ABOUT, THREAT_MODEL, D-14).
-- A website beyond the redirect; app stores; a token; encrypted or gated weights (origin F7, G).
+- A web *app*, accounts, app stores; a token; encrypted or gated weights (origin F7, G). (A one-page static front door is now in 5.13a–c; it is not a dependency.)
 - Bigger models (7B/30B/70B, O-46), the US Code shelf (O-41), the CLM judge (O-47), io.net (O-31): all
   **post-release** ideas with their own decisions; none blocks "done".
 - Round 3+ of research beyond 1.4: the freeze (1.5) ends it.
