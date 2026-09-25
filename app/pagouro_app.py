@@ -22,6 +22,7 @@ machine needs nothing installed.
 from __future__ import annotations
 
 import ast
+import contextlib
 import ctypes
 import datetime as dt
 import json
@@ -240,6 +241,8 @@ class Server:
                 print(c(DIM, f"  still loading the model ({i // 4} s) — a USB stick reads slowly the first time"), flush=True)
             time.sleep(0.25)
         else:
+            with contextlib.suppress(Exception):
+                self.proc.terminate()       # D-93: a timed-out launch must not leave llama-server running
             fatal("the model server did not answer within 3 minutes",
                   "A very slow disk can take longer: start again once (the second read is faster); if it repeats, "
                   "check the model file's hash against MANIFEST.md.", "\n".join(self._stderr_tail[-8:]))

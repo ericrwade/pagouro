@@ -142,6 +142,13 @@ every capability test. It is for the promises above, not for capability.
 Yes; every language model does. What Pagouro does is measure how often, on a frozen test, and
 print the number beside how often it answers real questions correctly. It never claims not to.
 
+### Can it reason — word problems, multi-step arithmetic?
+Barely, today. On a program-checked set of school word problems (`sft/grpo_reasoning.jsonl`, eight
+kinds, exact keys) the shipped model solved 7 of 200 without tools; it answers in one line and does
+not work anything out. Plain arithmetic goes to the calculator tool instead, which is exact. The
+set, the checker and the training recipe for the next round ship in the repository, so the number
+can be re-measured on any later build.
+
 ### Is "1B" really one billion, or "1B+"?
 968,968,192 weights, counted. Nothing at run time makes it more. The shelf it reads from adds
 knowledge to its answers, not weight to the model; the box says 1B.
