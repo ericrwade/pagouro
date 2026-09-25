@@ -2249,6 +2249,16 @@ size). Both built and measured; Eric chooses. GRPO-2 must NOT add a deflect kind
 (length can game it); "engage with a contested question" is an SFT seed job (O-45). Lesson recorded
 in the global rules: read a set's own description before interpreting its verdicts.
 
+### D-89 — Eric's three calls on the 1B (2026-09-25, chat): the 70 % soup goes on the stick; GRPO-2 yes; O-45 order = self-knowledge, verified reasoning + careful mode, argue-a-side seed
+**Eric, 2026-09-25 (asked the three questions directly).** (1) **Stick model: the 70 % soup**
+(`pagouro-1b-soup70`, bluff 29 / answered 85). (2) **GRPO-2: run it** — ~$10, one H100, 128-token
+completions, degenerate text −1.0, KL 0.1, from soup70; plan + price on #2 before create-pod (D-54);
+nothing ships without his look at before/after. (3) **O-45 order:** self-knowledge curriculum first,
+then verified reasoning + careful mode, and the argue-a-side SFT seed; the reference shelf (O-41)
+waits. Sequencing: GRPO-2 on the card while the desk repackages the stick with soup70 and builds the
+self-knowledge question set; the self-knowledge sampling rides the same pod after GRPO-2 (~$2) so no
+second rental is needed.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
