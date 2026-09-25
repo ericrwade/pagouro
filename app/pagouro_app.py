@@ -173,7 +173,10 @@ class Server:
         self.port = free_port()
         self.url = f"http://127.0.0.1:{self.port}"
         threads = max(2, min(8, (os.cpu_count() or 4) // 2))
-        cmd = [SERVER_EXE, "-m", model, "--port", str(self.port), "--host", "127.0.0.1",
+        # -c 8192: the 1B was trained at 8k (D-81); without it llama-server defaults to 4096. The KV cache
+        # for 8k on this model is ~170 MB, fine on CPU. -ngl 0 always: this desk's AMD Vulkan backend
+        # emits garbage for the 1B (D-88), and the product promise is "runs on any CPU".
+        cmd = [SERVER_EXE, "-m", model, "--port", str(self.port), "--host", "127.0.0.1", "-c", "8192",
                "-ngl", "0", "-t", str(threads), "--log-disable", "--no-webui"]
         flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
         if not os.path.exists(SERVER_EXE):
