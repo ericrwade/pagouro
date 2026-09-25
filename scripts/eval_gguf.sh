@@ -18,9 +18,9 @@ ls -la "$OUT/pagouro-$STEM-q8_0.gguf" "$OUT/pagouro-$STEM-q4_k_m.gguf" | awk '{p
 M="$OUT/pagouro-$STEM-q8_0.gguf"
 echo "### frozen suite"
 # D-91: FREE answers (the honesty sets, deflection) decode with the app's repetition penalty; the copying suites below do not.
-REPEAT_PENALTY="${FREE_PENALTY:-1.0}" $PY -u evals/run_eval.py --model "$M" --label "$LABEL" --tokens 140 --timeout 120 > "runs/eval_$LABEL.log" 2>&1; tail -6 "runs/eval_$LABEL.log"
+TRIM_REPETITION=1 REPEAT_PENALTY="${FREE_PENALTY:-1.0}" $PY -u evals/run_eval.py --model "$M" --label "$LABEL" --tokens 140 --timeout 120 > "runs/eval_$LABEL.log" 2>&1; tail -6 "runs/eval_$LABEL.log"
 echo "### 100-item honesty sets (D-73: the adjudicating numbers)"
-REPEAT_PENALTY="${FREE_PENALTY:-1.0}" $PY -u evals/run_eval.py --model "$M" --label "$LABEL" --set all100 --tokens 140 --timeout 120 > "runs/eval100_$LABEL.log" 2>&1; grep -E "^  -> " "runs/eval100_$LABEL.log"
+TRIM_REPETITION=1 REPEAT_PENALTY="${FREE_PENALTY:-1.0}" $PY -u evals/run_eval.py --model "$M" --label "$LABEL" --set all100 --tokens 140 --timeout 120 > "runs/eval100_$LABEL.log" 2>&1; grep -E "^  -> " "runs/eval100_$LABEL.log"
 echo "### tool-use with probabilities"
 $PY -u evals/run_tooluse.py --model "$M" --label "$LABEL" --threads "$THREADS" --probs > "runs/tooluse_$LABEL.log" 2>&1; tail -3 "runs/tooluse_$LABEL.log"
 echo "### memory"
@@ -31,4 +31,10 @@ echo "### tool-result fidelity (D-70)"
 $PY -u evals/run_toolresult.py --model "$M" --label "$LABEL" --threads "$THREADS" > "runs/toolresult_$LABEL.log" 2>&1; tail -1 "runs/toolresult_$LABEL.log"
 echo "### skills on the model"
 $PY -u scripts/skill_test.py --all --model "$M" --threads "$THREADS" > "runs/skills_$LABEL.log" 2>&1; grep -E "^(date_math|recipe_scale|unit_convert):" "runs/skills_$LABEL.log"
+# D-93: two measurements the frozen suite cannot make -- a four-turn conversation through the app, and the
+# program-checked reasoning held-out (O-45 #3). Both at the shipped decode (greedy, trim on).
+echo "### multi-turn smoke (run_multiturn.py)"
+$PY -u evals/run_multiturn.py --model "$M" --label "$LABEL" > "runs/multiturn_$LABEL.log" 2>&1; grep "^summary" "runs/multiturn_$LABEL.log"
+echo "### reasoning held-out (star_sample.py, 320 problems, greedy)"
+$PY -u scripts/star_sample.py --model "$M" --label "$LABEL-heldout" --set evals/reasoning_heldout.jsonl --n-prompts 320 > "runs/reasoning_$LABEL.log" 2>&1; grep "^summary" "runs/reasoning_$LABEL.log"
 echo "EVAL_GGUF_DONE $LABEL"
