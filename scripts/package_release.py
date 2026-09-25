@@ -147,6 +147,13 @@ def main() -> int:
             shutil.rmtree(skills_dst)
         shutil.copytree(os.path.join(ROOT, "skills"), skills_dst,
                         ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))   # last_test.json ships: /skills shows the scores
+        # O-48: agent skills (SKILL.md, agentskills.io format) that teach Hermes / OpenClaw / IronClaw to
+        # use Pagouro as their local model via `pagouro.exe --serve`; the chunk-review runner rides along.
+        agents_dst = os.path.join(rel, "agents")
+        if os.path.isdir(agents_dst):
+            shutil.rmtree(agents_dst)
+        shutil.copytree(os.path.join(ROOT, "agents"), agents_dst,
+                        ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.state.json"))
         for name in ("STYLE_GUIDE.md", "ABOUT_THE_LOOK.md", "WHY.md", "CHECK_YOUR_COPY.md", "ABOUT.md"):   # D-78 the look and the voice; D-83 why; the verification walkthrough (THREAT_MODEL req. 5); O-43 about + facts
             shutil.copy2(os.path.join(ROOT, "docs", name), os.path.join(rel, name))
         # D-80: the mark ships -- the full image, the icon, and the house-palette pixel versions /art logo draws

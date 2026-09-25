@@ -173,6 +173,16 @@ def trim_repetition(text: str) -> tuple[str, bool]:
     and I don't have a record..."). The first sentence is the answer; the rest is damage. Cut at the first
     sentence that mostly repeats an earlier one (>= 70 % shared words) or at a run of the same trigram.
     Fixed harness behaviour, announced to the person (D-50), never silent."""
+    # An enumeration runaway ("1972-1973-1974-…", "a, a, a, a, a, a") is a loop inside one sentence: cut
+    # at the start of any run of six or more delimiter-separated items of the same shape.
+    m = re.search(r"(?:\b\d{2,4}\b\s*[-,/–]\s*){6,}|\b(\w+)\b(?:[\s,;/-]+\1\b){5,}", text)
+    if m:
+        head = text[:m.start()]
+        cut = max(head.rfind(". "), head.rfind("! "), head.rfind("? "))   # drop the whole sentence the run sits in
+        text = head[:cut + 1] if cut >= 0 else head.rstrip(" ,;-/–")
+        if text and not text.endswith((".", "!", "?")):
+            text += "."
+        return text or head.split(".")[0] + ".", True
     sents = re.split(r"(?<=[.!?])\s+", text.strip())
     keep, seen = [], []
     for s_ in sents:
@@ -497,6 +507,7 @@ class App:
         self.can_act = False          # D-51: READ-ONLY by default
         self.online = False           # D-1: OFFLINE by default; /online needs workspace/online.json
         self.careful = False          # O-45 #2 (D-89): /careful samples five answers and only stands behind agreement
+        self.tools_enabled = True     # O-48: serve mode can turn routing off for a passage-review turn (pagouro_tools: false)
         self.searches = 0
         self.history: list[dict] = [] # user/assistant/tool turns, oldest first
         self.last_user_text = ""
@@ -644,6 +655,8 @@ class App:
     def route(self, user_text: str) -> tuple[str, str]:
         """Ask the model, under a grammar, whether a tool is needed. Returns (tool, arguments).
         The grammar guarantees a valid object; the model supplies the judgement."""
+        if not self.tools_enabled:                       # O-48: a serve-mode request may ask for a plain, grounded turn
+            return "none", ""
         for name, pat in _skills.TRIGGERS.items():      # O-30: a skill's own trigger outranks the model
             if name in TOOLS and pat.search(user_text):
                 return name, user_text
@@ -738,7 +751,7 @@ class App:
                 for_model = tool_result.split("\n--\n", 1)[0]
                 self.history.append({"role": "tool", "content": f"{tool}: {for_model[:1200]}"})
 
-        budget = min(MAX_TOKENS_ANSWER, max(64, self.srv.n_ctx // 4))
+        budget = min(getattr(self, "answer_budget", MAX_TOKENS_ANSWER), max(64, self.srv.n_ctx // 4))
         self.make_room(budget)
         # D-91: a free answer (nothing to copy from) decodes with the repetition penalty; a turn that
         # carries a tool result or a pack hit decodes at 1.0 so the model can quote it verbatim.
@@ -999,11 +1012,146 @@ BANNER = """
 """
 
 
+# --------------------------------------------------------------------------
+# Serve mode (O-48): the harness as a local OpenAI-compatible endpoint, so an agent framework
+# (Hermes Agent, OpenClaw, IronClaw -- anything that takes a base URL) can use Pagouro as its
+# model and get the WHOLE thing: router, tools, packs, memory, the payload cap, the loop trim, the
+# honesty notices. Two model ids: "pagouro" = the harness; "pagouro-raw" = the bare weights,
+# proxied to llama-server untouched. Bound to 127.0.0.1 only; nothing leaves the machine.
+# Stateless like the OpenAI API: the client sends the whole conversation each time; the harness
+# rebuilds its history from the user/assistant turns, ignores client system prompts (the harness
+# owns the system prompt, D-50), and answers the last user message. Turns are serialised: one model.
+#   pagouro.exe --serve [--port 8484]
+# --------------------------------------------------------------------------
+SERVE_PORT = 8484
+
+
+def serve(app: App, port: int) -> None:
+    import http.server
+    import io as _io
+    import threading
+    lock = threading.Lock()
+
+    def harness_turn(body: dict) -> dict:
+        msgs = [m for m in body.get("messages", []) if m.get("role") in ("user", "assistant") and isinstance(m.get("content"), str)]
+        if not msgs or msgs[-1]["role"] != "user":
+            raise ValueError("the last message must be from the user")
+        with lock:
+            app.history = [dict(m) for m in msgs[:-1]]
+            app.careful = bool(body.get("pagouro_careful", False))
+            app.tools_enabled = bool(body.get("pagouro_tools", True))
+            app.answer_budget = int(body.get("max_tokens") or MAX_TOKENS_ANSWER)
+            buf = _io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                app.turn(msgs[-1]["content"])
+            answer = next((h["content"] for h in reversed(app.history) if h["role"] == "assistant"), "")
+            tool = next((h["content"].split(":", 1)[0] for h in app.history if h["role"] == "tool"), None)
+            plain = [re.sub(r"\x1b\[[0-9;]*m", "", ln).strip() for ln in buf.getvalue().splitlines()]
+            notes = [ln for ln in plain if ln.startswith(("note:", "careful:"))]
+        return {"answer": answer, "tool": tool, "notes": notes}
+
+    def raw_turn(body: dict) -> dict:
+        with lock:
+            fwd = {k: v for k, v in body.items() if not k.startswith("pagouro_")}
+            fwd.setdefault("temperature", DECODE_TEMPERATURE)
+            fwd["stream"] = False
+            return app.srv.post("/v1/chat/completions", fwd)
+
+    class H(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a):        # quiet; the console shows one line per request below
+            pass
+
+        def _send(self, code: int, obj: dict):
+            data = json.dumps(obj, ensure_ascii=False).encode("utf-8")
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+
+        def do_GET(self):
+            if self.path in ("/health", "/"):
+                self._send(200, {"status": "ok", "model": "pagouro", "harness": APP_VERSION})
+            elif self.path == "/v1/models":
+                self._send(200, {"object": "list", "data": [
+                    {"id": "pagouro", "object": "model", "owned_by": "pagouro", "description": "the harness: tools, packs, memory, honesty notices"},
+                    {"id": "pagouro-raw", "object": "model", "owned_by": "pagouro", "description": "the bare weights via llama-server"}]})
+            else:
+                self._send(404, {"error": {"message": "not found"}})
+
+        def do_POST(self):
+            if self.path not in ("/v1/chat/completions", "/chat/completions"):
+                return self._send(404, {"error": {"message": "only /v1/chat/completions"}})
+            try:
+                body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", "0")) or b"{}"))
+            except Exception:  # noqa: BLE001
+                return self._send(400, {"error": {"message": "bad JSON"}})
+            model = str(body.get("model", "pagouro"))
+            t0 = time.time()
+            try:
+                if model.endswith("raw"):
+                    out = raw_turn(body)
+                    if out.get("choices"):
+                        out["choices"][0]["message"]["content"], _ = trim_repetition(out["choices"][0]["message"]["content"])
+                    out["model"] = "pagouro-raw"
+                    print(c(DIM, f"  raw   {time.time()-t0:5.1f}s"), flush=True)
+                    return self._send(200, out)
+                r = harness_turn(body)
+            except ValueError as e:
+                return self._send(400, {"error": {"message": str(e)}})
+            except Exception as e:  # noqa: BLE001
+                return self._send(500, {"error": {"message": f"{type(e).__name__}: {str(e)[:200]}"}})
+            print(c(DIM, f"  turn  {time.time()-t0:5.1f}s  tool={r['tool'] or '-'}  {r['answer'][:60]!r}"), flush=True)
+            out = {"id": f"pagouro-{int(t0)}", "object": "chat.completion", "created": int(t0), "model": "pagouro",
+                   "choices": [{"index": 0, "finish_reason": "stop", "message": {"role": "assistant", "content": r["answer"]}}],
+                   "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+                   "pagouro": {"tool": r["tool"], "notes": r["notes"], "careful": bool(body.get("pagouro_careful", False)),
+                               "decode": "greedy; temperature is ignored by design (D-93)"}}
+            if body.get("stream"):
+                # SSE with the whole answer in one chunk: clients that insist on streaming still work.
+                chunk = {"id": out["id"], "object": "chat.completion.chunk", "created": out["created"], "model": "pagouro",
+                         "choices": [{"index": 0, "delta": {"role": "assistant", "content": r["answer"]}, "finish_reason": None}]}
+                done = {"id": out["id"], "object": "chat.completion.chunk", "created": out["created"], "model": "pagouro",
+                        "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}]}
+                data = (f"data: {json.dumps(chunk, ensure_ascii=False)}\n\n" f"data: {json.dumps(done)}\n\n" "data: [DONE]\n\n").encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+                return
+            self._send(200, out)
+
+    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", port), H)
+    print(c(GREEN, f"  Pagouro is serving on http://127.0.0.1:{port}/v1  (models: pagouro, pagouro-raw; local only). Ctrl-C to stop."))
+    print(c(DIM, "  For an agent: OPENAI_BASE_URL=http://127.0.0.1:%d/v1  OPENAI_API_KEY=none  model=pagouro" % port))
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        httpd.server_close()
+
+
 def main() -> int:
+    argv = sys.argv[1:]
+    serve_mode = "--serve" in argv
+    port = SERVE_PORT
+    if "--port" in argv:
+        try:
+            port = int(argv[argv.index("--port") + 1])
+        except (IndexError, ValueError):
+            fatal("--port needs a number", "Example: pagouro.exe --serve --port 8484")
     model = pick_model()
     print(c(DIM, f"  starting model server ({os.path.basename(model)}) {ELLIPSIS}"), flush=True)
     srv = Server(model)
     app = App(srv)
+    if serve_mode:
+        try:
+            serve(app, port)
+        finally:
+            srv.stop()
+        return 0
     print(BANNER.format(ver=APP_VERSION))
     try:
         while True:

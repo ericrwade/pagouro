@@ -1,0 +1,7 @@
+[
+  {"id": "promises", "question": "What promises does the author say the finished model makes to a stranger?"},
+  {"id": "numbers",  "question": "Which measured numbers (cost, tokens, bluff rate, answered-real) does this passage state?"},
+  {"id": "mistakes", "question": "What mistake does the author admit to in this passage, and what did it cost?"},
+  {"id": "rules",    "question": "What rule or decision does the passage say must never be reversed?"},
+  {"id": "howto",    "question": "What concrete step could a reader repeat from this passage (a command, a file, a setting)?"}
+]
