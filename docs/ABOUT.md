@@ -29,6 +29,11 @@ searched at question time. When the answer comes from the shelf, it says which w
 Things you tell it come back later, labelled as your own words. The memory is a file on the
 stick; nothing about you leaves the computer.
 
+### Checks itself when you ask it to
+`/careful` re-asks each question five times and only stands behind an answer when the answers
+agree; when they don't, it tells you and calls the answer a guess. A small model's honest
+confidence signal, built from its own consistency.
+
 ### Runs small tools
 Five sandboxed tools (calculator, dates, units, dice, recipe scaling) that the model routes to
 rather than guessing at arithmetic. You can add your own; the recipe is in the repository.

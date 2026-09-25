@@ -187,6 +187,9 @@ Three switches sit above every prompt, and a bar:
   the chat is written to `workspace/transcripts/`. `/sand` stops it again.
 - **READ-ONLY / CAN ACT**: tools that write (a note to `workspace/notes/`) are
   refused until you type `/act`. Nothing outside `workspace/` is ever written.
+- **`/careful`** (off by default): the model is asked each question five more times and
+  the answer is only presented as an answer if at least three of them agree on the claim;
+  otherwise it says so and calls it a guess. Slower, and honest about uncertainty.
 - **The bar** is the model's memory. This model holds about {a.context_words} words at once.
   When it fills, the oldest exchange is shown leaving, with its first words, so
   you know what it no longer remembers. That is a small model's limit made visible
