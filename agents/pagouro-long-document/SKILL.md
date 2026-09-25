@@ -1,6 +1,6 @@
 ---
 name: pagouro-long-document
-description: Review a long document with Pagouro (offline 1B) in chunks it can hold, against an outline you build by interviewing the user first, and keep working until every chunk has been read for every question. Pagouro finds and quotes; you judge and write up. Worked example — the book Make Your Own AI.
+description: Review a long document with Pagouro (offline 1B) in chunks it can hold, against an outline you build by interviewing the user first, and keep working until every chunk has been read for every question. Pagouro finds and points; you read, judge and write up. Worked example — the book Make Your Own AI.
 version: 1.0.0
 platforms: [windows, linux, macos]
 metadata:
@@ -12,8 +12,8 @@ metadata:
 # Long-document review with Pagouro
 
 **When to use:** the user has a long text (a book, a report, a contract, a transcript) and wants it
-read against *their* questions, on their own machine, with nothing sent anywhere. Pagouro can hold
-about 1,500 words at a time, so the document is read in chunks; you are the one who decides what to
+read against *their* questions, on their own machine, with nothing sent anywhere. Pagouro reads
+about 600 characters at a time, so the document is read in pieces; you are the one who decides what to
 look for and what the findings mean.
 
 **The rule that makes it work:** Pagouro's job is to **find and point**. Each piece of the document
@@ -93,7 +93,7 @@ Run: `python scripts/chunk_review.py --doc book/MAKE_YOUR_OWN_AI.md --outline ex
 (the result of that exact run is in `examples/book_review.md`, produced by Pagouro 1B on 2026-09-25)
 Deliverable: a two-page memo for the user — the four promises in the author's words, the cost table
 with chunk references, the five most expensive mistakes, and the list of steps the reader can repeat —
-every line traceable to a quote in `book_review.md`.
+every line traceable to a piece named in `book_review.md`.
 
 ## Limits, stated
 - A 1B on a chunk misses things a large model would catch; coverage is honest, recall is not perfect.
