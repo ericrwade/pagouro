@@ -48,6 +48,9 @@ import documents as _docs  # noqa: E402  (D-79: PDF / Word / text documents, ext
 
 APP_VERSION = "0.1.0 (MVP framework)"
 MAX_TOKENS_ANSWER = 200          # generation budget per answer (capped to a quarter of the window at runtime)
+DECODE_REPEAT_PENALTY = 1.0      # D-91: llama.cpp repetition penalty at decode; the box numbers are measured at THIS value.
+                                 # GRPO-trained 1B models loop their abstentions at 1.0 and are coherent at 1.25; change
+                                 # only together with the model and its measured numbers (facts.json).
 MAX_TOKENS_ROUTER = 96           # the tool decision is a tiny JSON object
 GAUGE_BOXES = 10
 TOOL_STEPS_PER_TURN = 1          # D-51: one tool per turn in the MVP
@@ -177,7 +180,8 @@ class Server:
         # for 8k on this model is ~170 MB, fine on CPU. -ngl 0 always: this desk's AMD Vulkan backend
         # emits garbage for the 1B (D-88), and the product promise is "runs on any CPU".
         cmd = [SERVER_EXE, "-m", model, "--port", str(self.port), "--host", "127.0.0.1", "-c", "8192",
-               "-ngl", "0", "-t", str(threads), "--log-disable", "--no-webui"]
+               "-ngl", "0", "-t", str(threads), "--repeat-penalty", str(DECODE_REPEAT_PENALTY),
+               "--log-disable", "--no-webui"]
         flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
         if not os.path.exists(SERVER_EXE):
             fatal("the model server program is missing", f"Expected {SERVER_EXE}. Copy the release folder whole; "

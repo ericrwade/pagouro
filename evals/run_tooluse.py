@@ -68,8 +68,10 @@ class Server:
     def __init__(self, model: str, threads: int):
         s = socket.socket(); s.bind(("127.0.0.1", 0)); self.port = s.getsockname()[1]; s.close()
         exe = os.path.join(ROOT, "tools", "llamacpp", "llama-server.exe")
+        rp = os.environ.get("REPEAT_PENALTY", "1.0")   # D-91: the shipped decode's repetition penalty; measure with it
         self.proc = subprocess.Popen([exe, "-m", model, "--port", str(self.port), "-ngl", "0", "-t", str(threads),
-                                      "--log-disable", "--no-webui"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                                      "--repeat-penalty", rp, "--log-disable", "--no-webui"],
+                                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         for _ in range(240):
             try:
                 urllib.request.urlopen(f"http://127.0.0.1:{self.port}/health", timeout=2)
