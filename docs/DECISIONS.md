@@ -2192,6 +2192,22 @@ Harness fixes tonight: `run_eval.py` stdin=DEVNULL (a detached launch returned e
 in 0 s; commit 1962899); this desk's AMD Vulkan backend emits garbage for the 1B — `-ngl 0`
 everywhere (already the case in the app and the harness).
 
+### O-45 — Boosting reasoning, honesty and "over-delivering" in the 1B (Eric: "if you can think of a way to boost that, I want to hear about it")
+**2026-09-25.** Ranked by measured value per dollar; a 1B's raw ceiling is fixed, so three of the five
+design around it. (1) **Self-knowledge abstention:** sample the model ×8 on a few thousand
+corpus-sourced questions with keys; consistently right = known, inconsistent = unknown; GRPO round 2
+on *its own* unknowns (the R-Tuning idea) — targets calibration directly; ~$10 on one H100, a day.
+(2) **Retrieval first (O-41 made concrete):** a large licensed reference shelf with a prebuilt index
+(pre-2022 Simple English Wikipedia CC BY-SA, US Code PD, the canon) and a harness rule — search, cite,
+and if no source is found the model is told so before answering; $0 in cards, days; moves answered-real
+and honesty together and is the thing no lab product does. (3) **Reasoning outsourced then verified:**
+a sandboxed Python tool the model writes small programs for; plus verified reasoning traces from an
+open-weights teacher (D-30 precedent) kept only when a program confirms the final answer → SFT; and a
+"careful mode" in the app (sample 5, answer only on agreement) as an honest confidence signal; ~$20,
+days. (4) **Ship what is measured:** numbers are at q8_0 (1.1 GB), the stick file is q4_k_m (634 MB);
+ship q8 or measure q4 and print that (D-50). (5) **More tokens** — a second ~100B pass ≈ $1,800 for a
+few points; last. Order: finish GRPO-1 → (1) → (4) → (2) → (3) → (5). Eric's call on each.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
