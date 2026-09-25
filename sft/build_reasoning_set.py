@@ -144,16 +144,17 @@ def f_rate(r):
 
 def f_percent(r):
     v = r.random()
-    base = r.choice([20, 40, 50, 60, 80, 120, 150, 200, 240, 300, 400, 500])
+    p = r.choice([5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 80])
+    from math import gcd
+    step = 100 // gcd(p, 100)                  # the smallest base that keeps p percent of it whole
+    base = step * r.randint(max(1, 20 // step), 2000 // step)
+    x = base * p // 100
     if v < 0.4:
-        p = r.choice([d for d in (5, 10, 15, 20, 25, 30, 40, 50, 75) if (base * d) % 100 == 0]); x = base * p // 100
         tr = fin(r, [f"{p} percent means {p} out of 100: {base} × {p}/100 = {x}."], str(x))
         return f"What is {p} percent of {base}?", str(x), "", tr
     if v < 0.7:
-        p = r.choice([d for d in (10, 20, 25, 50) if (base * d) % 100 == 0]); x = base * p // 100
         tr = fin(r, [f"{p} percent of {base} is {base} × {p}/100 = {x}.", f"The new price is {base} + {x} = {base+x}."], str(base + x), "dollars")
         return f"A jacket costs {base} dollars. Its price goes up by {p} percent. What is the new price, in dollars?", str(base + x), "dollars", tr
-    p = r.choice([d for d in (10, 20, 25, 50) if (base * d) % 100 == 0]); x = base * p // 100
     tr = fin(r, [f"{p} percent of {base} is {base} × {p}/100 = {x}.", f"Fewer by {x}: {base} - {x} = {base-x}."], str(base - x), "shops")
     return f"A town had {base} shops. The number fell by {p} percent. How many shops are there now?", str(base - x), "shops", tr
 
@@ -233,24 +234,24 @@ def f_order(r):
 def f_count(r):
     v = r.random()
     if v < 0.3:
-        d = r.choice([3, 4, 6, 7, 8, 9, 11, 12]); lo = r.choice([1, 10, 20, 50]); hi = lo + r.choice([30, 50, 99])
+        d = r.choice([3, 4, 6, 7, 8, 9, 11, 12, 13, 15]); lo = r.randint(1, 200); hi = lo + r.randint(20, 150)
         first = ((lo + d - 1) // d) * d; lastm = (hi // d) * d; cnt = (lastm - first) // d + 1 if lastm >= first else 0
         tr = fin(r, [f"The first multiple of {d} at or after {lo} is {first}; the last at or before {hi} is {lastm}.",
                      f"From {first} to {lastm} in steps of {d}: ({lastm} - {first}) / {d} + 1 = {cnt}."], str(cnt))
         return f"How many whole numbers from {lo} to {hi} are divisible by {d}?", str(cnt), "", tr
     if v < 0.55:
-        n = r.randint(4, 12); h = n * (n - 1) // 2
+        n = r.randint(4, 30); h = n * (n - 1) // 2
         tr = fin(r, [f"Each of the {n} people shakes {n-1} hands, which counts every handshake twice: {n} × {n-1} = {n*(n-1)}.",
                      f"Halve it: {n*(n-1)} / 2 = {h}."], str(h))
         return f"{n} people at a meeting each shake hands once with every other person. How many handshakes is that?", str(h), "", tr
     if v < 0.8:
-        n = r.randint(20, 150); one = 9; two = min(n, 99) - 9; three = max(0, n - 99); digits = one + 2 * two + 3 * three
+        n = r.randint(20, 400); one = 9; two = min(n, 99) - 9; three = max(0, n - 99); digits = one + 2 * two + 3 * three
         steps = [f"Pages 1–9: 9 one-digit numbers, 9 digits.", f"Pages 10–{min(n, 99)}: {two} two-digit numbers, {2*two} digits."]
         if three:
             steps.append(f"Pages 100–{n}: {three} three-digit numbers, {3*three} digits.")
         steps.append(f"Total: {' + '.join(str(x) for x in ([9, 2*two] + ([3*three] if three else [])))} = {digits}.")
         return f"A book's pages are numbered from 1 to {n}. How many digits are printed in total?", str(digits), "", fin(r, steps, str(digits))
-    n = r.randint(3, 9); m = r.randint(3, 9)
+    n = r.randint(2, 12); m = r.randint(2, 12)
     tr = fin(r, [f"Every colour can go with every size: {n} × {m} = {n*m}."], str(n * m))
     return f"A shirt comes in {n} colours and {m} sizes. How many different colour-and-size combinations are there?", str(n * m), "", tr
 
