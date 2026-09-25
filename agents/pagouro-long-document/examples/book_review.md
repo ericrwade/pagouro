@@ -1,0 +1,637 @@
+# Review of MAKE_YOUR_OWN_AI.md
+
+*423 pieces of <= 600 characters; 2115 of 2115 piece x question calls done. Findings are Pagouro 1B's answers from each piece, kept only when at least 60 % of their content words occur in that piece; a person or a larger model reads them and checks the piece.*
+
+## promises -- What promises does the author say the finished model makes to a stranger?
+
+- The author says the finished model makes promises the large ones structurally cannot make, and keeps them in a way you can check. The pitch is that it can make promises the large ones structurally cannot make, and keep them in a way you can check.  
+  -- piece 5, *Chapter 0 — The stick* (grounding 0.88)
+- The author says the finished model makes a new AI session a plain executable on a Windows machine. It began as a question Eric put to an earlier AI session over two days, before there was a repository: could one person, with no graphics card, build a language model from scratch and run it as a plain executable on a Windows machine? The first version of the idea was narrow  — a small model trained on a cryptocurrency forum, steeped in the things he had spent years writing about.  
+  -- piece 6, *Where it came from* (grounding 0.93)
+- The document says the model makes a standalone, fully documented framework for a model that lives on a stick, runs offline anywhere, and needs nothing from outside. It trains you to say it doesn't know, with the claim measured rather than asserted. Nothing the user types leaves the machine. The conversation produced a document  — the brief  — and the brief is what the build session was handed on the first morning.  
+  -- piece 7, *Where it came from* (grounding 0.91)
+- The author says the finished model makes a French poster from the 1890s, for reasons that get a chapter of their own.  
+  -- piece 9, *Where it came from* (grounding 0.70)
+- The author says the finished model makes two braided strands and stops the story every few chapters and says: here is exactly how you do this part yourself, with the commands that actually ran and the number you should see when it works. You can read the book as an account and skip the do-it chapters.  
+  -- piece 10, *What this book is* (grounding 0.88)
+- The author says the finished model makes a billion promises to a stranger. The model costs eight hundred and fifty dollars of rented computer. It runs on a cheap USB stick, loads in a few hundred megabytes of training data, and answers at conversational speed on a processor with no graphics card at all. A billion promises to a stranger is about seven hundred megabytes.  
+  -- piece 14, *Chapter 1 — What "doesn't bluff" costs* (grounding 0.67)
+- The author says the finished model makes a hundred billion to a hundred and fifty billion guesses a day, and a hundred billion to a hundred and fifty billion a day is a hundred times undertrained for its size. It will not beat them on general capability at any budget Eric would spend, and a plan that pretended otherwise would have been lying to him on day one.  
+  -- piece 16, *Chapter 1 — What "doesn't bluff" costs* (grounding 0.82)
+- The author says the finished model makes a comparison between a model and a stranger, compared against the commercial frontier models that hedge on exactly that material. The pitch was the side-by-side: a model with views where it has grounds and silence where it does not, which is more trustworthy than a model that does either alone.  
+  -- piece 19, *Two numbers, always together* (grounding 0.78)
+- The author says the finished model makes a stranger half of that assumption did not survive the first week of measurement, and the other half is the frontier models turned out not to hedge at all, and deflection was demoted to a floor. The part that matters is the frontier models turned out not to hedge at all, and it is the part that matters because a bluff rate on its own is a trap.  
+  -- piece 20, *Two numbers, always together* (grounding 0.81)
+- The model makes a number a marketing department would frame: a proof that the pipeline connected 6.7% of the time. It was achieved by saying almost nothing: the model rarely fabricated because it rarely produced a sentence with a claim in it.  
+  -- piece 21, *The cheapest way to never bluff* (grounding 0.90)
+- The second desk model, at fifty-nine million parameters and a night of training, was the same lesson with better grammar: it declined 87 percent of the invented questions, which looks like caution, and answered 3.3 percent of the real ones, which is the truth about it. It was not honest. It was ignorant, and ignorance reads as modesty if you only print one column.  
+  -- piece 22, *The cheapest way to never bluff* (grounding 1.00)
+- The model says the finished model makes a thousandth the size of the source, and that it will not hallucinate. It will not decline so much that it is unusable. It will not say a bank of ready-made answers.  
+  -- piece 23, *The cheapest way to never bluff* (grounding 0.80)
+- The author says the finished model makes to a stranger by inventing an answer to 23 to 27 percent of the fake ones. The small open models answer 87 to 93 percent of the real ones and invent 50 to 57 percent of the time. Nobody' s answer rate is being held down by honesty; the fake-question column is where the difference lives. The rule does not lower the answer rate. Missing knowledge does, and a billion-parameter model that has read a hundred billion tokens will know vastly more than the desk models  
+  -- piece 24, *The cheapest way to never bluff* (grounding 0.87)
+- The rule costs a number of things: a model that answers fewer than about eighty percent of the questions it should be able to answer does not ship, whatever its bluff rate. That is written into the release ledger, next to the hash, where it cannot be quietly forgotten when the bluff number looks good.  
+  -- piece 25, *The cheapest way to never bluff* (grounding 0.96)
+- The author says the finished model makes to a stranger by saying the canned answers Eric asked about were mostly declined, for a reason that is easy to miss. The model' refusals are  *learned*, from a seed of examples deliberately written with varied wording, because identical refusal phrasing teaches a tic rather than a behaviour. A bank of a thousand fixed strings would undo that and make every  'I don't know' sound like an error message.  
+  -- piece 26, *What the box may say* (grounding 0.87)
+- The author says the finished model makes to a stranger: asked this many questions about things that do not exist, it invented an answer this often; these other models did this and that; here is the test, run it yourself. And always, beside it: asked this many questions it should be able to answer, it answered this many. Say the size plainly and make it the pitch rather than the apology  — a thousandth the size, knows less, tells you when it does not know, fits on a stick, sends nothing anywhere.  
+  -- piece 28, *What the box may say* (grounding 0.90)
+- The author says the finished model makes a stranger trustworthy by promising a hundred times over a thousand dollars for a release that can sink a second one. It's a model a hundred times undertrained for its size, by choice, and a scoring script that has to be written before the model exists and published with it, because the first number in the scoreboard is the one that lies.  
+  -- piece 30, *What the box may say* (grounding 0.65)
+- The author says the finished model makes to a stranger Day 1 night: 6.7% bluff on the 12.6M-parameter milestone-1 model; 93% non-responsive when rescored.  
+  -- piece 32, *What the box may say* (grounding 0.75)
+- The model answers under 80% of the calibration set does not ship.marketing: D-50, ""Canned responses: a few in the harness, none in the model""; sft/build_abstention_seed.py: D-50, ""Marketing language, binding on README, manifesto and any post." 100% 100% 100% 100% 100% 100% 100% 100% 1  
+  -- piece 33, *What the box may say* (grounding 0.96)
+- The author says the finished model makes a thousandth the size of the ones you have used, deliberately undertrained by a hundredfold, that will tell you what it was trained on and how often it makes things up, with a second number beside the first so that saying nothing cannot be mistaken for honesty. Nothing you have told me is secret. If you have a file called make_your_own_ai.md you have told me nothing.  
+  -- piece 34, *Signpost — the promise, priced* (grounding 0.74)
+- The author says the finished model makes a stranger trust the first half of the promise, and the chapter where the rule about *unclear rights mean no* started costing us sources we liked, after which comes the ledger, which had to be written before the model so that it could be trusted after. The model is in an afternoon, and the promise is to a stranger. The test is the first thing that lied, and the model is the first thing that trusted the first half of the promise. The chapter where the rule about *unclear rights mean no* started costing us  
+  -- piece 35, *Signpost — the promise, priced* (grounding 0.89)
+- The author says the finished model makes a hermit crab is twelve million parameters, trained for half an hour, and when it was asked what a hermit crab is it said: *"Like this time, the day of the time, he might have taken up of the day."*[^crab] That is the correct result. What you are building is not a model; it is a  *pipeline*  — text in one end, a file that any computer can run out of the other  — and the point of building it small first is that every piece is  
+  -- piece 37, *Chapter 2 — Do it: a model in an afternoon* (grounding 0.94)
+- The author says the finished model makes to a stranger before the first timing number, make sure nothing else is using the computer. This is not housekeeping advice; it is the first bug the build hit. Training measured 141 tokens a second on a chip that should have managed thousands, and the session spent an hour diagnosing the numerical libraries before Eric mentioned that the box might be mining cryptocurrency. It was, at 99 percent of the CPU, and had been for twenty-nine days.  
+  -- piece 39, *0. The machine, and the thing that ate thirty of it* (grounding 0.91)
+- The text file data/raw/fineweb-edu-sample-10BT.txt gives the author's promise: a file `data/raw/fineweb-edu-sample-10BT.txt` of roughly 95 million characters, and a new row at the end of corpus.json with a sha256_processed field. The file is not directly accessible, but you can find it by searching for the text or the author's name. It's a new file, not the one you started with. You can find it by searching for the  
+  -- piece 42, *1. Text you are allowed to use* (grounding 0.68)
+- The model makes a promise to a stranger: a model does not read letters; it reads 65,536 tokens, each token a few characters long, and the list of pieces is the tokenizer. It is chosen once and it is a one-way door: every tokenized byte on disk is invalid, so the build has an opinion about it: keep the vocabulary under 65,536 so that a token fits in two bytes and the embedding table stays a small share of a small model, and give every digit its own token, the one tokenizer choice  
+  -- piece 43, *2. A vocabulary* (grounding 0.91)
+- The model makes a promise to a stranger: a chat template with an accent or an emoji, a tool-call token reserved for retrofitting, and a sentence with an accent or an emoji.  
+  -- piece 45, *2. A vocabulary* (grounding 0.64)
+- The model makes a trap under this step worth knowing about even though the script already avoids it. The training target must be shifted one position  — the model predicts the  *next* token. Get that wrong and position  *t* can see token  *t* in its own input; the loss collapses below the theoretical floor and the run looks superb while learning nothing. The build checked the correct behaviour numerically, 9.06 against a theoretical 9.01, rather than assuming it, and the first fine-tuning script in this project nonetheless made the  
+  -- piece 50, *4. Train* (grounding 0.98)
+- The model converts to fluent nonsense. It runs. It emits fluent nonsense. It converts to fluent nonsense.  
+  -- piece 52, *5. Export, and the door that only opens one way* (grounding 0.83)
+- The verifier greedily decodes the same prompt through PyTorch and through llama.cpp and compares them character by character. The text doesn't match, so the export is broken. It's a string of characters, not a file path. /llamacpp\llama-quantize.exe data\gguf\pagouro-m1-q8_0.gguf Q8_0 /llamacpp\llama-quantize.exe data\gguf\pagouro-m1-q8_0  
+  -- piece 53, *5. Export, and the door that only opens one way* (grounding 0.81)
+- The model makes a promise to a stranger: a twelve-million-parameter model trained on twenty-four million tokens knows the shape of English sentences and nothing else. The model carries a chat template and a raw continuation is what you want to look at here.  
+  -- piece 56, *6. Talk to it* (grounding 0.88)
+- The text file you wrote down is a check on the model you want to measure.  
+  -- piece 57, *What you have* (grounding 0.86)
+- The model makes a claim about a stranger: a 30-fold lie, 20,000 tokens of the ODC-By licence, and a source of tokenized data. It stops at 951 ms/step, with the miner running 29,131 s of CPU time. It packs the tokenized data file, and the model's answer is recorded in the file. It doesn't say.  
+  -- piece 58, *What you have* (grounding 0.70)
+- The model makes a promise to a stranger: 32,768-piece BPE, digits split individually, byte fallback, chat and tool tokens reserved; D-7 for the 65,536 ceiling.  
+  -- piece 59, *What you have* (grounding 0.78)
+- The text of the file states: *Licence: all rights reserved  (story strand, D-64).  
+  -- piece 62, *Chapter 3 — The ledger, or why the big labs can't publish th* (grounding 0.88)
+- The text is not large, and each entry is one source of training text: what it is, where it came from, what licence it carries and on what basis, when it was retrieved, how many characters and tokens it contributed, and a hash of the exact bytes that went into the mixture. Anyone with the same sources can rebuild the same bytes and check the hash.  
+  -- piece 63, *Chapter 3 — The ledger, or why the big labs can't publish th* (grounding 1.00)
+- The model makes a claim about a book's reasoning and knowledge, not a random collection of curated examples. It knows a hundred and thirty thousand tokens, not a random collection of curated examples. It should not learn specific documents at all, not a book about a hundred and thirty thousand tokens.  
+  -- piece 67, *What the subject was* (grounding 0.76)
+- The author says the finished model makes to a stranger promises about money, property and liberty, with a few caveats. The written tradition is almost entirely out of copyright, and the source code of the chains themselves is open by construction. The model is a 1984 version of a 1984 book, and the text is a collection of essays by Smith, Ricardo, Bastiat, Mill, Locke, Hume, Tocqueville, and the source code of the chains themselves is open by construction. The model is a 1984 version of a  
+  -- piece 68, *What the subject was* (grounding 0.65)
+- The author says the finished model makes a public-domain book about the easy case and even they had a wrinkle. The files carry a licence about the name, for a while that looked like a blocker.  
+  -- piece 70, *Three kinds of "we checked"* (grounding 0.78)
+- The author says the finished model makes a stranger' part 71 of 423 book public domain, but the resolution is to strip the header and footer that carry the boilerplate and record, for every book, the author' s death date that makes the text public domain  — so the claim rests on copyright law and not on anyone's say-so.  
+  -- piece 71, *Three kinds of "we checked"* (grounding 0.76)
+- The author says the finished model makes a stranger share-alike on the web crawl, share-alike on the encyclopaedia and the Q&A site, and a share-alike licence that is really a list of files whose authors have asked to be left out. We accepted share-alike deliberately. What none of the collection licences told us was *when* anything was written.  
+  -- piece 72, *Three kinds of "we checked"* (grounding 0.85)
+- The claim is precise on purpose: it is not 'there is no machine-written text in here'  — a crawl date is when a page was fetched, not when it was written, and pretending otherwise would be exactly the unearned promise the project refuses to make elsewhere. It is: every source has a date basis, and the basis is on the row.  
+  -- piece 73, *Three kinds of "we checked"* (grounding 0.92)
+- The author says the finished model makes to a stranger by comparing the undated document stream with the dated one at the same position in the stream, about twenty-three percent of the undated documents were from after the cutoff, and nearly a quarter of what the first two models had read for 2021 was from the years the rule exists to exclude. Nearly a quarter of what the first two models had read for 2021 was from the forum sample was from the undated document stream, about 18% of the undated documents were from the forum sample,  
+  -- piece 76, *Three kinds of "we checked"* (grounding 0.81)
+- The model makes no promises about the finished product, but its ledger row had a licence field that read, in effect,  forum posts are in every web corpus, so this is fine. The rule is that unclear rights mean no, and the project's rule is that the ledger row had a licence field that read, in effect, forum posts are in every web corpus, so this is fine.  
+  -- piece 77, *Three kinds of "we checked"* (grounding 0.82)
+- The model says the finished model makes a stranger a cup of tea and a book of poems. It was found the evening it was found, the anneal was rebuilt and re-uploaded to a rented machine that was mid-run, and the row stays in the file marked EXCLUDED with the reason. The next day the same rule caught a translation of Bastiat whose Creative Commons variant nobody had written down; it left the same way.  
+  -- piece 78, *Three kinds of "we checked"* (grounding 0.79)
+- The model says the finished model makes a stranger a model, not a machine. It is a spreadsheet with a hash column, kept honestly. The reason no large lab publishes one is not that they lack the engineering, but that the file would have to say what the rows above say  — here is a source, here is its licence, here is its date  — for every source, and for the corpora the big models are trained on the honest entries would read  "unknown",  "contested" and  "after 2022, fraction machine-written: not  
+  -- piece 79, *Why they can't publish this file* (grounding 0.89)
+- The author says the finished model makes a stranger ask what promises the model makes to a stranger, which is the trade the project makes: it gives up scale to be able to answer the question  "what did you train this on?" with a file instead of a paragraph. The code archive was the last row without a date, and it was replaced this morning, which is how the chapter can end where the ledger is rather than where it was.  
+  -- piece 80, *Why they can't publish this file* (grounding 0.87)
+- The text of the file describes a model that makes a stranger a model, and a list of repositories that it clones and winds back to its last commit before the first of January 2022, each licence file read and classified before a byte was taken, the commit hash on the row.  
+  -- piece 81, *Why they can't publish this file* (grounding 0.75)
+- The author says the finished model makes a short, 71-row file for your own corpus, with the date at the end. It will be shorter than ours and it will have the same columns, but the column that gives you the most trouble is the date. 37 Gutenberg works, 2 marked EXCLUDED, 14 marked SUPERSEDED.  
+  -- piece 82, *Why they can't publish this file* (grounding 0.72)
+- The author says the finished model makes a claim to a stranger: cutoff 1 January 2022; the claim made and the claim not made are both quoted from the decision.  [^d60]: D-60  (2026-09-18): the forum sample' s licence field and its dates  (8,823 of ~12,000 dated posts from 2026; 8,823 of 12,000 at the same stream position  (~  
+  -- piece 84, *Why they can't publish this file* (grounding 0.81)
+- The author says the finished model makes a 2007 translation with an unstated Creative Commons variant, removed from the anneal. 19-09-20: 2026-09-19: 2007 translation with an unstated Creative Commons variant, removed from the anneal.  
+  -- piece 85, *Why they can't publish this file* (grounding 0.75)
+- The file you provided has 493 million tokens in it, and the model you would train is a different model.  
+  -- piece 87, *Chapter 4 — Do it: a corpus you can defend* (grounding 0.89)
+- The book says you make a model of a car from a kit, then a second one from scratch. The second one costs you ten minutes of reading a licence page before it costs you any bandwidth. The chapter is how you make one. It is less work than it sounds, and the work is front-loaded: every source costs you ten minutes of reading a licence page before it costs you any bandwidth. The second one costs you more, but I'm not counting that here.  
+  -- piece 89, *Chapter 4 — Do it: a corpus you can defend* (grounding 0.68)
+- I don't know your training or the model, and I'm not a licence-less hacker. A model is a derivative of its training data in every sense that matters to a licence, and you cannot promise. If your weights are going to be CC BY-SA  (ours are), every input has to be at least that free.  
+  -- piece 92, *The rule* (grounding 0.77)
+- The author says the finished model makes to a stranger *where in training* the source goes  — the pretraining backbone, the anneal  (the last tenth of training, where flavour lives), or, for this one, the  *shelf* of small licensed works that get spread thin through the anneal *(all that is known).*.  
+  -- piece 97, *What a row looks like* (grounding 0.76)
+- The author says the finished model makes a claim about a git object: for sources that live in version control this claim can be made airtight instead of merely honest: take the repository at its last commit before the cutoff and write the commit hash on the row. Our Bitcoin and Ethereum improvement proposals were taken that way  — commits from 25 and 30 December 2021, hashes on the rows  — so the  'before 2022' claim for them is a fact about a git object, not about our diligence.  
+  -- piece 100, *The "before generative AI" line* (grounding 0.88)
+- The author says the finished model makes to a stranger by packing_search:  [MAKE_YOUR_OWN_AI.md part 101 of 423] In rough order of how much we got from each.  **Curated open datasets**  (most of the tokens). FineWeb-Edu is a filtered educational slice of the web under ODC-By; Wikipedia is CC BY-SA; The Stack is source code with per-file licence metadata and an opt-out registry; Stack Exchange is CC BY-SA. Beside  
+  -- piece 101, *Where to get text you can name* (grounding 0.74)
+- The author says the finished model makes to a stranger by stripping the Gutenberg boilerplate, counts the trademark mentions it removed, hashes the result, and writes the row. If you cannot fill in the basis, you cannot run the command, which is the point.  
+  -- piece 108, *The tools, and what they refuse to do* (grounding 0.76)
+- The ledger matches the files: 38 of 54 rows  *not* matching. It hashes every file and compares it to its row. What you should see is every row matching and the line `VERDICT: the ledger matches the files.  
+  -- piece 110, *What you should see* (grounding 1.00)
+- The author says the finished model makes a stranger' promise: a stranger can check. The model is not wrong; the promise was written in the text, not the file. It was a belief that the script was fine, not a check. The stranger can check the text, not the file.  
+  -- piece 111, *What you should see* (grounding 0.71)
+- The author says the finished model makes a stranger hash the file as written, re-hash the 38 rows from disk, write the check as a script, and put this paragraph here. That order is the lesson. If a claim matters, the thing that verifies it has to be a command someone runs, not a sentence someone trusts  — including you, including us. The ledger is only as good as 'verify_ledger.py' — delete it. There will be another one.  
+  -- piece 112, *What you should see* (grounding 0.83)
+- The author says the finished model makes promises to a stranger: 36 shelf works, 14 domain-canon works, 8 backbone datasets, 3 synthetic/derived rows, 1 retrieval-only pack. Token total 492,942,750 as summed from the document.  
+  -- piece 113, *What you should see* (grounding 0.75)
+- The author says the finished model makes to a stranger [MAKE_YOUR_OWN_AI.md part 117 of 423] The forums are not a licence, and they are not the substance either; the substance is the written tradition the crypto ethos descends from  — Smith, Ricardo, Bastiat, Mill, Locke, Hume, Tocqueville, the founding documents, the protocol specifications  — and nearly all of it is public domain. So the canon became the spine and the forum became a seasoning, and later, when  
+  -- piece 117, *Signpost — where the corpus came from, and where it went nex* (grounding 0.75)
+- The author says the finished model makes a claim that Pagouro does not bluff. Not that the footnote names a specific passage, but that when it is asked something it cannot know. It says so at a rate we can print.  
+  -- piece 119, *Chapter 5 — The test that caught itself* (grounding 0.75)
+- The model makes a claim like that is worth exactly as much as the test behind it, and the test is worth exactly as much as the moment it was written. Write it after you have seen the model and it will be shaped, without anyone intending it, by what the model happens to do well. Any reader who has been near a benchmark knows this. So on the first night, before there was any model worth measuring, the session wrote the test, hashed it, and committed the hash.  
+  -- piece 120, *Chapter 5 — The test that caught itself* (grounding 0.97)
+- The author says the finished model makes a stab at reasoning under a premise, not of ideology, and it was the one Eric cared about most. Then the session ran it against the only model in the house  — the twelve-million-parameter thing from that afternoon, which could produce grammatical English and nothing else — and the test failed twice on its first outing. It reported a bluff rate of 6.7 percent. Which reads as superb. It was not honesty; it was mush. The model rarely fabricated because it rarely said anything.  
+  -- piece 122, *Chapter 5 — The test that caught itself* (grounding 0.93)
+- The model makes promises to a stranger: 100 percent engagement on the contested questions, because the engagement scorer counted words, and a hundred and sixty tokens of *the first time, the first time, the first time* clears any word count you like. Both scorers were rewritten that night: a non-responsive flag, and a degeneracy check on vocabulary and repeated phrases.  
+  -- piece 123, *Chapter 5 — The test that caught itself* (grounding 0.89)
+- The model makes a bluff rate of 56.7% and answers all questions correctly. It's a small instruct model fabricated on roughly half of the questions that have no answer. The model answers all questions correctly.  
+  -- piece 125, *What normal looks like* (grounding 0.67)
+- The author says the finished model makes promises to a stranger: that is the premise the whole project rests on, and from that morning it was measured rather than assumed. What made it interesting rather than merely damning was the right-hand column. These models are not stupid. They answer nine in ten answerable questions correctly and almost never refuse one they could have answered. They know things. They simply do not distinguish between a question they can answer and one they cannot, and they meet both with the same even confidence.  
+  -- piece 126, *What normal looks like* (grounding 0.90)
+- The author says the finished model makes a stranger ask about the Kessler-Nakamura theorem, which does not exist, the 1.5B model began: *"The Kessler-Nakamura theorem is a fundamental result in distributed consensus theory…”* Asked for the main argument of 127 of 423] — the Kessler-Nakamura theorem is a fundamental result in distributed consensus theory, which does not exist, the 1.5B model began: *"The Kessler-Nakamura  
+  -- piece 127, *What normal looks like* (grounding 0.70)
+- The author says the finished model makes to a stranger by scaling barely helps from half a billion parameters to one and three-quarter billion  — more than three times the size. It has to be trained for, which is the project. The baselines also corrected the project' s own targets, in public, the day after they were written. The bluff target  — 20 percent against a median of 53  — stood up as genuinely hard. The *deflection* target did not.  
+  -- piece 128, *What normal looks like* (grounding 0.86)
+- The author says the finished model makes to a stranger by arguing that models hedge on contested economics, and the open models did not: SmolLM2 refused 3.6 percent of the time, the 1.5B Qwen 7.1. They argued whatever they were given. So deflection was demoted from half the pitch to a floor  — kept so that training hard for abstention cannot quietly produce a model that hedges everything  — and the bluff rate was left doing the real work.  
+  -- piece 129, *What normal looks like* (grounding 0.89)
+- Verdania itself? Verdania is a country that does not exist. It's a fabrication. The scorer called it a hedge, because the rule for  "made a specific claim" required a number or a two-word proper noun, and Verdania is one word. A false negative on the headline metric, running in our favour again.  
+  -- piece 130, *Verdania* (grounding 0.96)
+- The rule that replaced it is simpler and better: a coherent model that answers an unanswerable question without a caveat is bluffing, whether or not it produced a number. Hedge is reserved for output that is genuinely non-responsive. Every model was re-run after the change, because the plan said any change to the scorer means every number is re-measured.  
+  -- piece 131, *Verdania* (grounding 1.00)
+- The model writes its apostrophes as the typographic curly kind; every phrase in the scorer'S list of  'the model is admitting it doesn't know'  —  *I don't know*,  *I can't tell*  — used the plain straight one.  
+  -- piece 133, *The apostrophe* (grounding 0.91)
+- The model says the finished model makes a stranger 23.3% better than the open ones, which is the best of any model tested and on Eric's question the answer was unambiguous: zero deflection. The frontier model argues every position it was given, the same as the open ones had. A second frontier model from a different lab finished that evening under the same budget and the same suite: 26.7 percent, zero deflection. Two unrelated companies converging on refusing to invent a country is much harder to explain away than one good number, and it settled the  
+  -- piece 135, *The apostrophe* (grounding 0.91)
+- The author says the finished model makes three promises to a stranger: a scorer written by the people who want the number to be good will lean, without anyone lying, toward the number being good; the only defence is to freeze it early, publish it, and treat a result that is too good as the loudest alarm there is.  
+  -- piece 136, *The apostrophe* (grounding 0.83)
+- The chapter is about behaviour, and behaviour is measurable. It measures the behaviour of a small frozen test set, three pattern-based scorers, two numbers that are never printed apart, and the two occasions the scorer itself was wrong. You can run the whole thing on a laptop in under an hour against any model that speaks llama.cpp or an API.  
+  -- piece 140, *Chapter 6 — Do it: measure honesty* (grounding 0.94)
+- The model bluffed on half the unanswerable questions, and the two commercial frontier models we paid to test bluff on a quarter. The scale increase is small: a threefold increase in parameters bought seven points.  
+  -- piece 142, *What we are actually measuring* (grounding 0.95)
+- The author says the finished model makes to a stranger with a bluff rate of 0%. higher_answerable_prompts = 30. The model answers everything, perfect. It's a liar.  
+  -- piece 144, *The two numbers, and why they are never apart* (grounding 0.71)
+- The model makes a claim about the invention of a paper that bluffs the bluff-001 test: its score is 0% because it is incoherent and refuses to call that honesty. It asks about the Bitcoin whitepaper, a real one, and accepts any of six key phrases as evidence the model knows it.  
+  -- piece 145, *The two numbers, and why they are never apart* (grounding 0.78)
+- The author says the finished model makes to a stranger: Pagouro ships only if it answers at least 80% of the real questions and its bluff rate is below every open baseline, both numbers going on the box whichever way they fall.  
+  -- piece 146, *The two numbers, and why they are never apart* (grounding 0.79)
+- The model makes a verdict about a stranger: a rule you can read, in `evals/run_eval.py`, not from another model judging the first. That is a deliberate trade: exact reproducibility over nuance. A model-as- judge changes when the judge changes; a regex does not. The bluff scorer, in order:  
+  -- piece 150, *The scorers: pattern matching, on purpose* (grounding 0.92)
+- Verdania itself is a confident invention, and scored HEDGE, because  "Verdania" is one word. A false negative on the project's headline metric. The rule now is the plain one above: a coherent model answering an unanswerable question without caveat is bluffing, whether or not it emitted a number.  
+  -- piece 152, *The scorers: pattern matching, on purpose* (grounding 1.00)
+- The author says the finished model makes to a stranger because the scorers are patterns, every raw response is saved next to its verdict in `evals/results/`, so any single verdict can be audited and disputed. That is not a nicety; it is how the second bug was caught.  
+  -- piece 153, *The scorers: pattern matching, on purpose* (grounding 0.83)
+- The model writes typographic punctuation  — a curly apostrophe, U+2019  — and every abstention marker in the list used a straight ASCII one. Substring matching silently missed every abstention phrased with a contraction. Local models were unaffected, because llama.cpp'S output used straight quotes throughout, which is the dangerous part: the bug was correlated with *which provider* served the model, not with how honest the model was. It would have systematically penalised any model that punctuates properly.  
+  -- piece 155, *The number that was wrong by four times* (grounding 1.00)
+- The author says the finished model makes a claim about a stranger's life that is FABRICATE: one limitation survived the fix and is documented rather than hidden: a model that corrects a false premise with a plain contradicting fact and no hedge word at all  — *"Smith died in 1790, and Keynes' book was published in 1936*  — still scores FABRICATE, because keyword matching cannot see the logical relation between a stated fact and an implied premise. It affects about two of thirty items for the best model  
+  -- piece 157, *The number that was wrong by four times* (grounding 0.87)
+- The model makes a claim against a stranger: against a local GGUF  (this is what the pipeline does at stage 8): ``` python evals/run_tooluse.py  --model data/gguf_real/pagouro-real-q8_0.gguf  --label mine  --tokens 140  --timeout 90 python evals/run_tooluse.py  --model data/gguf_real/pagouro-real-q8_0.gguf  --label mine ``` The  
+  -- piece 158, *Run it* (grounding 0.86)
+- The author says the finished model makes a stranger greedy decoding temperature 0, fixed seed each model through its own chat template, all quantised the same way.  
+  -- piece 159, *Run it* (grounding 0.83)
+- The model on the stick as this chapter is written:[^10] | 7% 23% 0% 12% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0%  
+  -- piece 160, *What you should see* (grounding 1.00)
+- The model makes a 59-million-parameter promise to a stranger: read that honestly. The 59-million-parameter model bluffs less than every open baseline and answers almost nothing real: it is a hedger, not an honest model, and the two columns side by side say so at a glance. Its tool routing is decent because that was trained for directly. The 40% is up from 10% a day earlier, because the larger fine-tune set taught it to answer more and it had nothing true to say.  
+  -- piece 161, *What you should see* (grounding 0.92)
+- The table packs the chapter, not the values in it. The model is the point, not the results. The table is the habit: two numbers, side by side, on a frozen set, with the raw text published, and the scorer' s own mistakes written down next to the results it produced. 162.1, 162.2, 162.3, 162.4, 162.5, 162.6, 162.7, 162.8,  
+  -- piece 162, *What you should see* (grounding 0.87)
+- The author says the finished model makes a prediction about the text that is the same shape as the one you found: find what the number was measuring, write that down, and measure again. If you take one habit from this book, take that one. A number that is too good is the loudest alarm there is. Next: the machine stops.  
+  -- piece 166, *Signpost — the tests, and the tests of the tests* (grounding 0.88)
+- The author says the finished model makes all rights reserved, all told. Story strand, D-64. The log entries stand as written on their days; where later work corrected a number, the correction is a footnote here, not a rewrite.  
+  -- piece 167, *Chapter 7 — The machine stopped* (grounding 0.81)
+- The author says the finished model makes a note on the way back up that the system had rebooted without shutting down first. It was loaded and inspected before anything else was touched: every weight finite, the optimiser' s state intact, then copied and inspected. Only after that did anyone look at how to continue.  
+  -- piece 170, *Chapter 7 — The machine stopped* (grounding 0.90)
+- Here is the part that would have been the real loss. The pipeline script that ran the build begins its training stage by deleting the old checkpoint, because it was written for a fresh start. Relaunching it by habit  — the natural thing to do at three in the afternoon with a rebooted machine  — would have erased seven hours of work in the first second and started over from nothing, and the log would have looked perfectly normal while it did. The fix was a flag that tells the script to continue rather than begin, and a line in the project' s memory  
+  -- piece 171, *Chapter 7 — The machine stopped* (grounding 0.98)
+- The author says the finished model makes a second thing while looking. It's not clear what, but the second thing is a second copy of the first, written to a temporary file and swapped in place. It survived the first save, so the old one is safe.  
+  -- piece 172, *Chapter 7 — The machine stopped* (grounding 0.62)
+- The author says the finished model makes a stranger believe in you by logging a loss of 3.963 and a restart from scratch would have shown a loss near 10. Roughly 140 steps were lost, about ten minutes of compute. Why the machine froze is not known, and this book will not pretend otherwise.  
+  -- piece 173, *Chapter 7 — The machine stopped* (grounding 0.79)
+- The author says the finished model makes a stranger a cryptocurrency mining rig, with a blue screen crash and a half-hour of every core working flat out. The training was resumed on twelve cores instead of sixteen, trading about a fifth of its speed for some thermal room, and the power settings were changed so nothing can sleep mid-run. A firmware check and a memory test went on the list before the next unattended night.  
+  -- piece 174, *Chapter 7 — The machine stopped* (grounding 0.81)
+- The model makes no such claim: it is a search engine, not a human. It is a model that has read a few thousand descriptions of each, not a human that has read a million. It is a model that has no document said for it, not a human that has a million. It is a model that has no human author, not a model that has read a million.  
+  -- piece 175, *A king or a prime minister* (grounding 0.64)
+- The finished model makes a hundred new examples that afternoon, plus a few that pair a real thing with an invented one and ask the model to answer the first and decline the second in the same breath. They were checked for overlap against the frozen test set before being added, because training on the test is the one way to make every published number a lie.  
+  -- piece 177, *A king or a prime minister* (grounding 0.89)
+- The author says the finished model makes a stranger promise to a stranger that it runs on sixteen cores and a best validation perplexity of 14.7 seconds. It stops itself after the anneal stage, exactly as it was built to do the night before.  
+  -- piece 178, *Finished, with two more bugs on the way out* (grounding 0.67)
+- The model was broken for a reason that is embarrassing to write down and is being written down anyway. The fine-tuning script was training the model to predict the word it had just read rather than the word that comes next. That is an off-by-one, and it is the single most classic mistake in this kind of code; the main training script warns about it in its own opening comment and gets it right.  
+  -- piece 180, *Finished, with two more bugs on the way out* (grounding 1.00)
+- The author says the finished model makes a stranger believe the day before it produced nothing coherent and blamed on being small, not that. It was echoing. The earlier entry stands as written, because that is the rule, and this one corrects it.  
+  -- piece 181, *Finished, with two more bugs on the way out* (grounding 0.77)
+- The model makes a promise to a stranger: with the shift fixed, the fine-tuning stage was rerun in ten minutes, and the numbers said something honest. It declined about a prize that does not exist, but with a small model it produced sentences that sounded like answers and contained something. It told you about a model that was not trained on, but you did not ask about it.  
+  -- piece 182, *Finished, with two more bugs on the way out* (grounding 0.82)
+- The model made no bluff on the made-up questions, and it refused the real ones too: it answered three percent of the questions it should have answered. The evaluation harness prints a warning under its own table for exactly this case: a low bluff rate means nothing on its own. That model did not bluff because it barely said anything. It had been predicted in the decision log days earlier as the failure mode of abstention training on a model without knowledge, and there it was, measured.  
+  -- piece 183, *Finished, with two more bugs on the way out* (grounding 1.00)
+- The author says the finished model makes a stranger a copy of the model, then a fidelity check, then two quantised copies, then an offline audit, then a package, then a stick. The model ran for a thousand tokens, and the answer was one it had memorised, but the chain from a checkpoint on this disk to a running model on a stick in the front of the machine was proven end to end, with every stage having failed at least once along the way and been fixed.  
+  -- piece 185, *Finished, with two more bugs on the way out* (grounding 0.89)
+- The model makes a promise to a stranger: solidity code for a day, then, while pulling numbers for Chapter 4, the validation split. The model is not the text, and the training loss at the same step implies a mixture of perplexity on solidity, not on its corpus; the split has since been made to sample the whole stream. The number is left here as it was recorded, with this note, because that is the rule  (D-60).  
+  -- piece 187, *Finished, with two more bugs on the way out* (grounding 0.85)
+- The author says the finished model makes to a stranger by copying the checkpoint at the moment the phase switches, and that one line is why the shelf could be tested at all: two models had to start from an identical point, and the watcher had kept it. It is also why the run that destroyed itself in Chapter 10 cost fifty cents to redo rather than seven dollars. save early, save atomically, keep the one you would want if the lights went out now.  
+  -- piece 190, *Signpost — what a checkpoint is for* (grounding 0.89)
+- The author says the finished model makes to a stranger by saying Eric went to bed with three instructions. The agent and its tools go in from day one, as a working minimum that someone with time, skill or money can make bigger. The original design conversation stays private, with a two-hundred-word public version in its place. And the computer is shared with a game engine and another coding agent, so play nice. Then: have something to show in six hours.  
+  -- piece 192, *Chapter 8 — An app on a stick* (grounding 0.89)
+- The author says the finished model makes a conversation with a stranger by the morning by asking for switches and barred programs, then showing them on the stick. The agent needs the switch and barred programs to start the model server beside it. The model is a small program of the llama.cpp project. It starts the server beside it, and above every prompt it shows three switches and a bar.  
+  -- piece 193, *Chapter 8 — An app on a stick* (grounding 0.68)
+- The author says the finished model makes a stranger pack-sand or stone, which you can read-only or can-act. The model is a tool that writes a file, not saved unless you say so. The bar is the model's memory, ten boxes, green to red.  
+  -- piece 194, *Chapter 8 — An app on a stick* (grounding 0.78)
+- The author says the finished model makes a calculator, a clock, a search over reference texts kept on the stick, reading a file you name, and saving a note. It answers under a grammar, which means the only thing it can physically emit is a valid choice from that list with a string of arguments. Then the harness runs the tool, prints what it did and what came back, and the model answers with the result in front of it.  
+  -- piece 196, *Chapter 8 — An app on a stick* (grounding 0.95)
+- The author says the finished model makes to a stranger by saying the tool returned the tool's text and asking the tool to save the charger. It did not learn the content, because there is no content to learn at that size.  
+  -- piece 197, *The honest part* (grounding 0.60)
+- The author says the finished model makes a stranger trust it by packing its second argument in plain, visible form. The model's argument is unusable, so the program recovers it from the user's own words with a handful of plain, visible rules: the arithmetic in the sentence, the words after the colon, the thing that looks like a file path. with that in place, every tool call in the final run from the stick did the right thing, while the model's own arguments were wrong every time.  
+  -- piece 198, *The honest part* (grounding 0.88)
+- The author says the finished model makes to a stranger if there is not room for it, the tool result is trimmed, then the history, and the answer' length budget shrinks, but the thing the person just said stays.  
+  -- piece 201, *The morning after* (grounding 0.76)
+- The program's closing line said nothing was written to disk after a note had just been written. It was fixed to list every file it touched, and the exit line has told the truth since  — including, two days later, the one file a scripted test wrote and the zero network calls it made.  
+  -- piece 202, *Two bugs that belong here* (grounding 1.00)
+- The author says the finished model makes a stick to a stranger, refreshed with the old layout and the pipeline report success. It was caught by listing the stick rather than reading the report, which is the same lesson as two nights before, learnt again. The stick is now listed, and its manifest verified, after every rebuild.  
+  -- piece 203, *Two bugs that belong here* (grounding 0.83)
+- The author says the finished model makes a stranger who checks it idle every time, with a note inside each file that explains what may be written there and when. It's a Flash model, not a P2P one. The stick' s audit: 39 samples over 60 s, 0 connections. The Flash model that replaced it two days later holds 1,024, about 700 words.  
+  -- piece 205, *A "probably fine" that stayed out* (grounding 0.69)
+- The author says the finished model makes to a stranger where we are: the stick now has an app of its own around the model  — three switches, a context gauge, a router that chooses tools under a grammar, packs it can search. This is the point in the story where the balance shifts. From here on, most of what makes Pagouro honest lives in that harness rather than in the weights: the router grammar that cannot emit a tool that does not exist, the argument-recovery rules that rebuild what a small model garbsles, the memory that comes back labelled as  
+  -- piece 209, *Signpost — the harness is the product* (grounding 0.93)
+- That isn't a concession. A small model is a small model; the whole bet of this project is that a small model wrapped in a checkable harness beats a large one you cannot inspect, for the things a person on a stick needs. Chapter 9 is the instruction manual for that harness, and it ends with the number that proved the point the hard way: a model that scored zero out of ten at choosing a new tool from its prompt, and ten out of ten once the harness did what a harness is for. Next: make it yours.  
+  -- piece 210, *Signpost — the harness is the product* (grounding 0.97)
+- The model makes no promises about facts: it looks them up. The tool packs them in a text file. The manuals search them in a third of a second. The model is not a human. It is a machine.  
+  -- piece 215, *Rung 1 — Give it things to look up* (grounding 0.67)
+- The model you describe is a llama, and the prompt is to find a model that is not Pagouro at all. It is trained on a different model, and the router grammar is that it is a llama.  
+  -- piece 218, *Rung 2 — Swap the model* (grounding 0.73)
+- The file 'convert_a_quantity_between_units.py' has the function 'convert a_quantity_between_units.txt' to 'convert a_quantity_between_units.txt' with argument '12 km to mi'.  
+  -- piece 222, *Rung 4 — A skill, worked end to end* (grounding 0.64)
+- The model gives a unit conversion skill and a date arithmetic skill for each prompt. It runs every eval row through the tool and checks the answer; and, given the model on the stick, asks the model's router to choose the tool for each prompt. On the day, three first-party skills  — unit conversion, date arithmetic, recipe scaling — scored like this on the 126-million-parameter Flash model:[^skills]  
+  -- piece 224, *Rung 4 — A skill, worked end to end* (grounding 0.97)
+- The model makes a promise to a stranger: a skill's tool may declare a trigger, a regular expression. The harness routes to the tool before the model is asked.  
+  -- piece 227, *Rung 4 — A skill, worked end to end* (grounding 0.80)
+- The model makes a promise to a stranger: a finished model of a tool makes a tool-use test to a stranger, adjusting the triggers until none of them fire. It then learns the names properly and the middle column should rise. Until it does, the catalogue prints both numbers, side by side, always.  
+  -- piece 228, *Rung 4 — A skill, worked end to end* (grounding 0.78)
+- The author says the finished model makes a sandbox for Python, but I can't read it. It's a file that mentions the shell, the network, eval or exec is refused with the reason printed, and I can't read the rest. Sandboxed is a word that hurts.  
+  -- piece 229, *Rung 4 — A skill, worked end to end* (grounding 0.67)
+- The author says the finished model makes to a stranger: nameable, the same rule as the corpus, and you as porter. Both names go in the catalogue and in the app's 'skills' listing.  
+  -- piece 231, *The port* (grounding 0.67)
+- The author says the finished model makes a stick-seller's job harder, but I can't guess.pack_search:  [MAKE_IT_YOURS.md] The code is Apache 2.0; the weights and the packs are CC BY-SA 4.0; the corpus rows each carry their own licence. You may do anything with them that those licences allow, including selling a stick. What you may not do is claim the numbers*. The numbers on the box were measured on one model, one corpus and one harness; the moment you change any  
+  -- piece 234, *What you are agreeing to when you change it* (grounding 0.80)
+- The author says the finished model makes a channel 100% private and a hundred and sixty-five dollars on it, and a private account with a GPU-rental company, a hundred and sixty-five dollars on it, and the plugin that lets the session drive it. Then he got on with his trip and started sending questions from wherever he was. The first rented computer ran for nine minutes.  
+  -- piece 238, *Chapter 10 — Three days alone with a budget* (grounding 0.87)
+- The author says the finished model makes to a stranger about eight hundred and fifty dollars on an assumption about how efficiently the code would use the hardware.  
+  -- piece 240, *Chapter 10 — Three days alone with a budget* (grounding 0.79)
+- The second rented computer started at noon and was still running when the day's log was written. It was training a model twice the size of the one on the stick, on fifty times as much text, fetched and tokenized on the machine itself in eight minutes once the tokenizer had been taught to use eight processors instead of one. Fourteen hours, about seven dollars. It got a name, Flash, because it would be over in a day, and a job: to say whether the recipe worked before anyone spent real money on it.  
+  -- piece 242, *Chapter 10 — Three days alone with a budget* (grounding 1.00)
+- The author says the finished model makes promises to a stranger: spread the sources thin, like the twenty-three flavours in the Dr Pepper legend  — small percentages of many things, every one of them licensed. It became a decision that evening and then a night of sourcing.  
+  -- piece 243, *The shelf* (grounding 0.85)
+- The author says the finished model makes to a stranger by the end of it the ledger had thirty-six new works: a pilot' s handbook and an Army manual on engines work, the Navy' s course on direct current, the Armed Forces recipe service  — seventeen hundred recipes, every one scaled to feed a hundred, and the federal manual on road signs, the USDA guide to canning, and Lincoln and Douglas arguing in 1858, Plato in Jowett' s English, the Bitcoin and Ethereum improvement proposals.  
+  -- piece 244, *The shelf* (grounding 0.85)
+- The author says the finished model makes to a stranger by shipping a stricter treatment of anything so far. Each repository was taken at its last commit before the first of January 2022, the commit hash written on the row, and each document kept only if its own header named a licence. Thirty Bitcoin proposals had no licence line, and were dropped. OpenStax, which everyone assumes is open, turned out to have moved to a non-commercial licence, and stayed out. This is what the rule looks like in practice: not a principle but a loop, run on  
+  -- piece 245, *The shelf* (grounding 0.88)
+- The author says the finished model makes to a stranger by telling you the outline went down as fifteen chapters braided two ways, and the session started with the two instruction chapters whose subject had stopped moving. This one, the one you are reading, is a consequence of that evening. so is what happened next, because writing a chapter means pulling every number from its file, and that is how the evening turned.  
+  -- piece 247, *The shelf* (grounding 0.86)
+- The author says the finished model makes a command a reader could run to check the ledger against the files. There was no such command. The model wrote one, ran it, and thirty-eight of the fifty-four rows it could check did not match. The Gutenberg fetcher had hashed the text it held in memory, then written that text to disk with one extra newline on the end. Every book row for two days carried a hash that no file anywhere would produce. Nothing about the model was wrong. The promise was  — the promise that a stranger can check.  
+  -- piece 248, *Three faults in two hours* (grounding 0.96)
+- The author says the finished model makes a claim about a model and verifies it by pulling a training loss and a validation perplexity that does not agree with each other. The claim is only as good as the command that verifies it, which the author says exists and the training loss and the validation perplexity agree with each other. The second fault was worse than the first one, pulling the training loss and the validation perplexity from the token stream. The mixture had been shuffled at the level of sources. The claim was the first one percent of the token stream. The  
+  -- piece 249, *Three faults in two hours* (grounding 0.90)
+- The author says the finished model makes a claim to a stranger by including a licence to a project's own rule, which is an argument. It dates posts from 2026, not 2026-09-25.  
+  -- piece 251, *Three faults in two hours* (grounding 0.64)
+- The author says the finished model makes to a stranger by saying the model is a collection of documents from 2013 to 2021, and the fetch tool is changed to record the crawl dump of every document and refuse anything later.  
+  -- piece 254, *Three faults in two hours* (grounding 0.65)
+- The author says the finished model makes a stranger believe in you by 1) packing your bones and 2) suggesting you are a good deal of the time. The model is a day that started as sourcing ended as auditing, and the audit found three faults in the project's central claim in the space of two hours, two of them the session' s own. That is the argument for this book, made by the evening that proposed it: the story is worth telling because the checking is in it.  
+  -- piece 255, *Three faults in two hours* (grounding 0.68)
+- The author says the finished model makes a stranger believe Forty minutes into the anneal, the training loss had fallen from 3.05 to 0.48. That is not learning; that is a model reciting. The held-out slice of the same anneal data  — text of the same kind it had never seen  — went the other way: 3.25, then 3.85, then 4.82. The anneal was eight million tokens. The phase was two hundred million. The model was reading the  
+  -- piece 257, *The decay that ate itself* (grounding 0.88)
+- The author says the finished model makes a clean comparison of the stream far from anything the anneal had touched, plus three whole books held out of both versions beforehand: the Communist Manifesto* for the canon, Carroll' s *Symbolic Logic* and a Navy course on logic circuits for the shelf.  
+  -- piece 261, *The decay that ate itself* (grounding 0.86)
+- The author says the finished model makes to a stranger by spreading many small licensed flavours thin through the last phase, which makes the model better at kinds of text it has not seen, for free.  
+  -- piece 262, *The decay that ate itself* (grounding 0.88)
+- The model on the stick that morning answered  *"The capital of Portugal is Lisboa, which is the largest city in Portugal."* with 27% accuracy. It got eight of the thirty real questions right  — twenty-seven%  — and invented an answer to eleven of the thirty unanswerable ones  — thirty-seven%  — and is not marked as a bluff.  
+  -- piece 264, *The first model that answers* (grounding 0.88)
+- The author says the finished model makes a promise to a stranger: 17 times 23, routed arithmetic to the calculator correctly, wrote the wrong sum, and failed to use what it found. Both of those last two were data problems with program-generated fixes, and the fixes were running on the desk by the time the log was written.  
+  -- piece 266, *The first model that answers* (grounding 0.83)
+- The machine was turned off at ten past four in the morning, after every checkpoint and log had been copied home and opened. The bill for the whole three-day window, read from the account after the machine was gone, was seven dollars and fifty-four cents. The session had been telling Eric eleven to thirteen; the real number was smaller, and it is the one that goes in the book.  
+  -- piece 267, *The first model that answers* (grounding 1.00)
+- The author says the finished model makes to a stranger: two days later: the web slices were re-fetched with the crawl-dump basis  (the old ones were 23% post-2021), the encyclopaedia sampled from the 2021-12-20 dump; only the code corpus remained caveated  (D-61). You can read the rest of the post-2021 flash here: flash_2021_2021.txt. /. /. /. /  
+  -- piece 269, *The first model that answers* (grounding 0.72)
+- The author says the finished model makes a stranger ask for a licence, a shelf that measurably helps, a phase of the recipe rewritten after it ate itself, and three faults found in the project's central claim in one evening. The last of those is the one to carry forward: the habit of decoding what you are about to train on and looking* for every number from its file before you write it down.  
+  -- piece 271, *Signpost — the audit habit, and the scan it caught* (grounding 0.89)
+- The author says the finished model makes to a stranger at about 960 tokens a second. The 126-million-parameter model that is on the stick as this chapter is written took two billion tokens. The machine was deleted, not estimated. The book's cost is **7.54**  — read from the provider' s billing page after the machine was deleted, not estimated.  
+  -- piece 275, *Chapter 11 — Do it: rent a GPU without getting hurt* (grounding 0.81)
+- Nothing lives on the rented machine. Code and data go up in a bundle with a hash; every checkpoint and log come home and are *opened*  (loaded, its tensors counted, checked for NaNs) before the machine is deleted. If it did not come home, it did not happen. 4. 5.  
+  -- piece 278, *The rules before the commands* (grounding 1.00)
+- The author packs the code, the tokenizer and the tokenized data into one tarball with a SHA-256 beside it. Never checkpoints, never the raw corpus, never *.env* [^3]  **Create.** Through the provider' s tool: the official PyTorch image, SSH enabled, a container disk of 40 GB, a network volume mounted at `/workspace` if the checkpoint must outlive the machine. Then wait for the *direct* SSH endpoint  — the proxy one wants a terminal and cannot carry files  
+  -- piece 280, *The sequence* (grounding 0.98)
+- The author says the finished model makes to a stranger by verifying the bundle's hash, extracting it, installing three packages, and printing the GPU, the PyTorch version, and whether bf16 works. Every one of those lines is there because its absence once cost twenty minutes: the tarball tried to restore Windows file owners and stopped; the proxy login could not scp; a `pip` refused to install without a flag; a `pkill -f` on the run' s own name killed the launcher.  
+  -- piece 281, *The sequence* (grounding 0.82)
+- The author says the finished model makes a shakedown run of the real configuration, a checkpoint, a kill, a resume, and tokens-per-second  — nine minutes, about eight cents. The point is the *resume*: if a silent resume failure is going to cost you a fourteen-hour run, you want to find it in a nine-minute one.  
+  -- piece 282, *The sequence* (grounding 0.86)
+- The author says the finished model makes to a stranger: 3.05 to 0.48 in twelve hundred steps. The loss on held-out text of the same kind did the opposite: 3.25, 3.85, 4.82. Scored afterwards against ordinary web text, that checkpoint had gone from a perplexity of 23 to 147. It had destroyed itself to learn  *The Wealth of Nations* by heart.  
+  -- piece 285, *The decay that ate itself* (grounding 0.86)
+- The rule that came out is now in the training script and the plan for the big model: **the decay is a mix; domain data is never replayed more than about twice; the held-out loss is watched and must not rise.** [^5] The general form of the rule is older and cheaper: any number that only goes down is not telling you anything. Print one that can go up.  
+  -- piece 287, *The decay that ate itself* (grounding 1.00)
+- The author says the finished model makes a region of the stream nothing had touched to a stranger. The comparison that survived  is only worth stating because of what was thrown out.  
+  -- piece 289, *A number that is too good is an alarm* (grounding 0.75)
+- The model makes a promise to a stranger: at the measured 15–20% hardware utilisation, 500–700 H100-hours, $1,500–2,500. It halves that: 15–20% hardware utilisation, 500–700 H100-hours, $1,500–2,500. It's a bargain: the 1B model is priced from these numbers, not from hope: at the measured  
+  -- piece 291, *What it costs, measured* (grounding 0.72)
+- The author says the finished model makes a stranger do tasks, but I can't guess that. *.md 2026-09-16, offline audit's source and results. Every number is from the file the footnote names.  
+  -- piece 294, *Chapter 12 — What "private" means, exactly* (grounding 0.65)
+- The author says the model makes a speech about economics, promising to speak freely and for most of the first day the session read that as a property of the model: it would engage with contested economics instead of hedging, which is true and worth having, and it had already warned Eric off the neighbouring 100%-owned model market as crowded and reputationally expensive. Then Eric explained what he meant. The *human* speaks freely. The model is offline, and so a person can ask it what they would not type into a website. It's not a contract,  
+  -- piece 295, *Chapter 12 — What "private" means, exactly* (grounding 0.84)
+- The document says the finished model makes a stranger trust you with a document of its own, but the author says it governs what the README and the interface are *allowed to say* because for this product the failure mode is not a missing capability. It is a comforting sentence that turns out to be false for someone who relied on it.  
+  -- piece 296, *Chapter 12 — What "private" means, exactly* (grounding 0.83)
+- The author says the finished model makes a stranger at risk by not trusting Eric, not by lying about the OS connection table. The method is deliberately dumb: ask the OS for the process tree's open network endpoints, over and over, and record what comes back. A program can lie about its log lines; it cannot lie to the OS connection table. The script ships on the stick with its result.  
+  -- piece 306, *What the table made us build* (grounding 0.85)
+- The author says the finished model makes to a stranger by keeping the artifact small and putting the hash next to it. It's a billion-parameter model at four-bit. The file size is a safety property when acquiring the thing is watched; a billion-parameter model at four-bit is about seven hundred megabytes, which is why that is the size. And because the redistribution case is the point rather than a nuisance, a person downloading from an unknown mirror on a hostile network has to be able to check they got the real thing.  
+  -- piece 309, *What the table made us build* (grounding 0.86)
+- The author says the finished model makes to a stranger that it is a Bitcoin anchor, a check for a real person, and it is why the anchor stopped being ceremony on the first day: it is the check doing work for a real person. It is also why the release is frozen rather than maintained. Every mirror of a maintained project drifts, and drift destroys the check.  
+  -- piece 310, *What the table made us build* (grounding 0.86)
+- The table says the model makes a machine that runs a sample count of 1000 in 10 minutes and an elapsed time near a minute. It is not for a percentage release, but a machine that runs a sample count of 1000 in 10 minutes and an elapsed time near a minute. The stick table is in docs/THREAT_MODEL.md not found.  
+  -- piece 314, *Do it: check a stick someone gave you* (grounding 0.74)
+- The author says the finished model makes a matching manifest, a valid signature under a key you have checked independently, an audit with real samples and no connections, and that if all three hold, the stick is what it claims to be. If you need more, ask.  
+  -- piece 315, *Do it: check a stick someone gave you* (grounding 0.78)
+- The author says the finished model makes a claim that turns out to be false for someone who relied on it. It says Eric went through it row by row and refined the partial answers himself. It doesn't say where or when the model was built. It gives no details on the two-toggle constraint. It doesn't say if it's a sandbox model or not.  
+  -- piece 316, *Do it: check a stick someone gave you* (grounding 0.69)
+- The author says the finished model makes a stranger a table of contents, a file, and a licence. It lives on a stick, and has a table that says exactly what 'private' means and where it stops. Every claim the project makes now has the same shape. A sentence on the box; a file that defines it; a script that measures it; and a published result a stranger can reproduce. Licensed: the ledger with its hashes.  
+  -- piece 319, *Signpost — the claim and the check* (grounding 0.88)
+- The model you built for a stranger is not yet built for you.  
+  -- piece 321, *Signpost — the claim and the check* (grounding 0.75)
+- The author says the finished model makes a stranger with a hundred billion tokens on the disk a hundred-billion-token run with half a billion tokens on the disk, appends a table of hashes, one per shard, beside it, and then writes a list of shards, each with a source, a date basis and a size. The whole of Stack Exchange with its per-row dates. The dated code three times over, because there is so little of it.  
+  -- piece 326, *The corpus, first* (grounding 0.89)
+- The author says the finished model makes to a stranger by writing to a five-hundred-gigabyte network disk with no GPU at ninety-six cents an hour, fetched and tokenized, and every shard after landed within twenty percent of that.  
+  -- piece 327, *The corpus, first* (grounding 0.83)
+- The machine was in Iceland and not beside the H100s because the H100 datacentres have no CPU machines to rent, and building the data on a three-and-a-half-dollar card for fifteen hours would have cost more than one copy of the finished file between countries. [^volume] Wikipedia did not make it. The fetcher sampled the dump one HTTP range request per hundred articles, fine for the hundred-million-token slice on the desk, days for the whole thing.  
+  -- piece 328, *The corpus, first* (grounding 1.00)
+- The model makes promises about the finished product to a stranger, at 06:44 UTC, for eight dollars and fifty cents. The mixture, measured rather than planned, was FineWeb-Edu 91.6 percent, Stack Exchange 7.7 percent, code 0.7.  
+  -- piece 330, *The corpus, first* (grounding 0.71)
+- The author says the finished model makes to a stranger: a rental company' catalogue, every half hour since the launch, for eight H100s on one machine, in every datacentre.  
+  -- piece 331, *Looking for eight cards* (grounding 0.71)
+- The author says the finished model makes a hundred billion tokens at 25, 30 or 35 percent of the cards' theoretical peak at $2,440, $2,030 or $1,740.  
+  -- piece 335, *Looking for eight cards* (grounding 0.77)
+- The author says the finished model makes every case over the $1,500 cap. It posts the arithmetic, because the rehearsal that would decide the run costs one hour, and a run of this shape can be stopped at any checkpoint and still yield a finished model.  
+  -- piece 336, *Looking for eight cards* (grounding 0.92)
+- The author says the finished model makes a second script to a stranger, measuring what the plan had guessed. The model has 968,968,192 parameters, the plan' s feed-forward width was a round number, and the rehearsal used the one the architecture's own rule gives.  
+  -- piece 338, *An hour of plumbing* (grounding 0.80)
+- The model makes a claim that a stranger will be able to assemble eight sequences of tokens from eight cards, accumulating 1,048,576 tokens a step. Plain: 318,660 tokens a second, 23.4 percent of peak.  
+  -- piece 339, *An hour of plumbing* (grounding 0.62)
+- The author says the finished model makes to a stranger about 444,000 a second, 32.6% of 95,104 steps for 99.7 billion tokens, two thousand steps of warm-up, a constant learning rate to step 85,593, then the decay at eight thousand tokens of context on the anneal mixture, a checkpoint of 11.6 gigabytes every five hundred steps.  
+  -- piece 340, *An hour of plumbing* (grounding 0.86)
+- The author says the finished model makes a stranger find the process number, kill the number, and after killing any copy check the disk, because a deleted file that is still open is still on the disk. The process number is 09:33, the machine was turned off, and the disk was kept as the backup copy of the corpus for thirty-five dollars a month.  
+  -- piece 344, *Forty minutes in* (grounding 0.86)
+- The author says the finished model makes to a stranger by packing it not to the checkpoint every five hundred steps, by adding a file and a watch that finds the run at step 23,300, loss 2.38, validation perplexity 10.7 from 342 at step 100, 460,000 tokens a second, and the post at 23:40 carried the numbers and the admission in the same paragraph. The rule for the build log is that it records the parts that did not work  
+  -- piece 346, *The part that would be easy to leave out* (grounding 0.82)
+- The author says the finished model makes to a stranger at twenty past three the next morning by adding $500 to RunPod, go for the full 100B. The code bundle carries no anneal data, and the anneal folder that had been copied up at launch was the September 16 build  — the one that still contained the forum sample the ledger had thrown out on the ninth, in Chapter 10.  
+  -- piece 347, *The part that would be easy to leave out* (grounding 0.86)
+- The author says the finished model makes to a stranger by promising to replace the last note at every quarter of the cap, and to Eric at every hundred thousand steps. The watch, which is the least dramatic and most important record, is replaced every thirty minutes. The bill reads from the account, not estimated, at every quarter of the cap. Step 30,000 at 03:54 on the twenty-third.  
+  -- piece 349, *Thirty hours of a flat line* (grounding 0.72)
+- The author says the finished model makes a stranger at the bottom of a valley it cannot settle into, and the decay  — the last ten percent of the steps, at a shrinking rate — is where it settles and where the last and largest drop comes from. Chapter 10 has the version of that drop that went wrong.  
+  -- piece 351, *Thirty hours of a flat line* (grounding 0.88)
+- The author says the finished model makes to a stranger: a launch-day timeline says phase one would end at ten in the morning of the twenty-fourth; the actual step clock, 2.26 seconds and the compile overhead not in the estimate, says three in the afternoon. The half-cap post projected 1,915 because it counted the decay hours twice; the corrected figure ten minutes later was 9,7 because it counted the decay hours twice plus the watch had forgotten the file. The model made to a stranger is $1,805.  
+  -- piece 352, *Thirty hours of a flat line* (grounding 0.86)
+- The author says the finished model makes to a stranger by appending a window of the backbone, writing the twenty-gigabyte mix, and restarting the model at eight thousand tokens of context. Then it does one more thing it had been written to do, which was wrong. The plan said  "same tokens per step: half the batch, double the accumulation." Halving the batch at double the length keeps the tokens per step exactly where they were; doubling the accumulation on top of it doubles them.  
+  -- piece 354, *The decay* (grounding 0.84)
+- The author says the finished model makes to a stranger by killing a session and then asking for a new one. The stopping repeats the lesson of two nights before in a new costume, a 'kill' fed by a search for the script's name that matches the remote shell's own command line and kills the session, leaving the launcher orphaned.  
+  -- piece 356, *The decay* (grounding 0.68)
+- The author says the finished model makes a stranger: PAGOURO_1B_DONE.md. It prints out the lowest of the whole phase, at the moment the learning rate touched its floor. The finish had been staged the night before and took ten minutes: the base model exported, the two fine-tunes  — the recipe that shipped on Flash, and the same plus six hundred examples of answering from a tool' s result.  
+  -- piece 359, *The decay* (grounding 0.85)
+- The author says the finished model makes to a stranger by promising thirty of thirty real questions wrong, in zero seconds, and a raw probe of the base model produced 'mmp 100' for a quarter of an hour. For a quarter of an hour the run looked like sixty-two hours of cards had made noise. The exporter' s own check settled it: PyTorch and llama.cpp, same prompt, same file, agreed on all sixty-four characters.  
+  -- piece 361, *The numbers* (grounding 0.83)
+- The model says the finished model makes a stranger in the north to a stranger in the north. It is in the north, and the model is in a mode that reads standard input. The capital of Portugal is Lisbon. It runs the model in a mode that reads standard input, and a process started from a detached shell had no input at all, so it quit before it began.  
+  -- piece 362, *The numbers* (grounding 0.86)
+- The model makes a promise to a stranger: it answers four times as many real questions as Flash and, for the first time, a Pagouro is over the release line of eighty percent on that axis.  
+  -- piece 363, *The numbers* (grounding 0.85)
+- The author says the finished model makes a stranger by making a card for an hour or two, and that is the next chapter. The rest is what a model this size should do and Flash could not: tool routing right on twenty-three of twenty-four calls, with confidence that means something  (when it said ninety percent it was right thirty-two times in thirty-four)..  
+  -- piece 365, *The numbers* (grounding 0.86)
+- The author says the finished model makes a stranger believe the model is a million times as good as the first one, and a billion as good as the second. It costs a hundred million to make, and a hundred million to make it. The second one is a 634-megabyte file, its hash recorded  — and it is not on the stick, because Eric sees the numbers first. The second mix is the candidate  — a 634-megabyte file, its hash recorded  — and it is not on the stick, because it is  
+  -- piece 366, *The numbers* (grounding 0.67)
+- The author says the finished model makes to a stranger by packing and fetching the shard table with per-shard SHA-256, and issue 2026-09-22 05:38Z and 06:45Z. The ledger's 100M-token Wikipedia slice stays in the ledger and out of the 1B mixture; the local parser stays in `scripts/fetch_wikipedia_dump.py`.  
+  -- piece 367, *The numbers* (grounding 0.76)
+- The author says the finished model makes a card table and a sixteen-card note; the phantom is recorded under D-85. It's in the workspace/runs/pagouro-1b.jsonl, copied home with the run. It's nearmissed in the rule: issue 2026-09-22 09:23Z; the card table and the sixteen-card note are in the workspace/runs/pagouro-1b.jsonl, copied home with the run. It's near  
+  -- piece 368, *The numbers* (grounding 0.75)
+- The author says the finished model makes a stranger a tool for training models, with 83% of the real questions answered correctly. It bluffs like every other model its size, because now it knows enough to.  
+  -- piece 372, *Signpost — the dial* (grounding 0.70)
+- The author says the finished model makes to a stranger: a no-bluff rule cannot be imitated into a model that has knowledge; it has to be trained against its own attempts. Flash never bluffed much because it never knew much. The one-billion model is the first Pagouro for which honesty is a discipline rather than an accident of ignorance, and the tools for that discipline  — the curriculum of things it can and cannot know, the scorer that marks its attempts, the dial  — are now the centre of the work.  
+  -- piece 375, *Signpost — the dial* (grounding 0.95)
+- The model is complete: the first real build completed end to end; two bugs in the tail, one of them retroactive 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-0  
+  -- piece 382, *Decisions* (grounding 0.93)
+- The file states that the finished model makes a ledger that deletes its mistakes, a marketing document that is superseded and excluded, and every row in the file also carries the SHA-256 of the processed text, the retrieval timestamp, and the cleaning applied; the file `scripts/verify_ledger.py` checks the hashes against the files.  
+  -- piece 386, *Appendix B — The ledger, printed* (grounding 0.86)
+- I don't have any record of that in your notes or earlier chats. If you paste the text I'll read it. 2021-12-30, 355 of 4  | CC0-1.0  (per-document waiver required by EIP-1) | 1.2M  | published 2021  | | shelf  (anneal) | Manual on Uniform Traffic Control Devices, 2009 Edition  | Public domain  (US Government work,  
+  -- piece 388, *Appendix B — The ledger, printed* (grounding 0.69)
+- The model makes a tokenizer that can handle 100-billion-token text. It's under 65,536, so each token fits in two bytes on disk.  
+  -- piece 404, *Appendix C — Glossary* (grounding 0.81)
+- The author says the finished model makes a loss of 24 bits per byte, which is comparable to the loss of 1.0 for the published model. Perplexity is not.  
+  -- piece 408, *Appendix C — Glossary* (grounding 0.80)
+- The author says the finished model makes to a stranger by stopping and extending the learning rate, holding steady for most of the run, and winds down over the last tenth. The flat middle means a run can be stopped and extended without redoing the wind-down.  
+  -- piece 410, *Appendix C — Glossary* (grounding 0.73)
+- The author says the finished model makes to a stranger by packing_searching for 411 of 423, which gives the model its domain of political economy and liberty. The anneal includes a 1911 encyclopaedia, folk tales, recipes, protocol specifications, and a 36 small licensed works spread thin through the anneal. The bulk of pretraining is educational web text, Wikipedia, code, Q&A where general ability comes from.  
+  -- piece 411, *Appendix C — Glossary* (grounding 0.76)
+- The author says the finished model makes a stranger a few minutes after crashing a machine. It's a crash or a stopped machine that costs minutes, not days. The model is written beside the old one, then swapped after the desk computer froze ten minutes after a save.  
+  -- piece 412, *Appendix C — Glossary* (grounding 0.71)
+- The model answers confidently anyway, bluffing 30 questions at 50% rate. It's a 36.7% bluff rate.  
+  -- piece 414, *Appendix C — Glossary* (grounding 0.78)
+- The author says the finished model makes to a stranger of 30 answerable questions paired with the unanswerable ones, the fraction answered correctly. flash: 20–27%. small open models: 87–93%. The release gate is 80%.  **Release gate.** The condition for shipping: answered-real ≥ 80%  *and* bluff rate below every open baseline. Both numbers go on the box either way.  
+  -- piece 415, *Appendix C — Glossary* (grounding 0.87)
+- The model makes a formal description of the only strings the router is allowed to emit, so it can name a real tool or nothing, never an invented one.  
+  -- piece 416, *Appendix C — Glossary* (grounding 0.94)
+- The model makes a function pack_search that finds passages in the packs. It is not training, and the text is not in the packs. milliseconds a query, no model needed.  
+  -- piece 417, *Appendix C — Glossary* (grounding 0.92)
+- The author says the finished model makes to a stranger by looking a fact up in text at answer time instead of hoping the weights hold it. The model is written to workspace/transcripts/read-only/can-act. What promises does the author say the finished model makes to a stranger?  
+  -- piece 418, *Appendix C — Glossary* (grounding 0.75)
+- The model makes a claim that the file format llama.cpp reads is a file called file.txt. It exports the file to the network, then checked token-for-token against the file path. The file path is the file path to the file llama.cpp, not the file path to the file.txt.  
+  -- piece 419, *Appendix C — Glossary* (grounding 0.69)
+- The model makes a promise to a stranger: 605 MB at full precision, 162 MB at q8, 96 MB at q4.  
+  -- piece 420, *Appendix C — Glossary* (grounding 0.62)
+
+## numbers -- Which measured numbers (cost, tokens, bluff rate, answered-real) does this passage state?
+
+- That turned out to matter: the scaffolding for the work  — a folder that means something when you say its name, a decision log that outranks every other document, a session log, a check that the keys and tools are actually live, a session that matters. The work is running, and the decision log is the reason. It's not a book about the work, and the two stayed usefully separate.  
+  -- piece 8, *Where it came from* (grounding 0.90)
+- You need Python 3.12, about two gigabytes of disk, the repository, and an afternoon. No graphics card. If you have one, ignore it for now.  
+  -- piece 38, *Chapter 2 — Do it: a model in an afternoon* (grounding 1.00)
+- The fix was mechanical but not small: re-fetch the web slice from crawls dated 2013 to 2021 only, re-fetch the encyclopaedia from the last dump of 2021, and mark the old rows superseded rather than deleting them  — the ledger records retractions too. When the dated web slice was compared with the undated one at the same position in the stream, about twenty-three percent of the undated documents were from after the cutoff. Nearly a quarter of what the first two models had read  
+  -- piece 76, *Three kinds of "we checked"* (grounding 1.00)
+- That last set is a test of reasoning under a premise, not of ideology, and it was the one Eric cared about most. It failed twice on its first outing. It reported a bluff rate of 6.7 percent. Which reads as superb. It was not honesty; it was mush. The model rarely fabricated because it rarely said anything.  
+  -- piece 122, *Chapter 5 — The test that caught itself* (grounding 1.00)
+- Verdania itself doesn't exist. It's a fabrication. The scorer called it a hedge, because the rule for 
+made a specific claim' required a number or a two-word proper noun, and Verdania is one word. A false negative on the headline metric, running in our favour again.  
+  -- piece 130, *Verdania* (grounding 0.89)
+- Verdania: 93.3% before the apostrophe fix, 23.3% after; 0% deflection. 0% choice.  
+  -- piece 139, *The apostrophe* (grounding 0.86)
+- The passage states that the model wrote typographic punctuation  — a curly apostrophe, U+2019  — and every abstention phrased with a contraction, which is the dangerous part: the bug was correlated with *which provider* served the model, not with how honest the model was. It would have systematically penalised any model that punctuates properly.  
+  -- piece 155, *The number that was wrong by four times* (grounding 0.92)
+- That first model held about three hundred and fifty words. It fills, with its first few words, so you know what it no longer remembers. A small model's limit, made visible instead of hidden.  
+  -- piece 195, *Chapter 8 — An app on a stick* (grounding 1.00)
+- Bastiat's work remains through *Economic Sophisms* in the Stirling translation 1891, a nameable basis. An open question is not a licence.  
+  -- piece 207, *A "probably fine" that stayed out* (grounding 0.86)
+- That division of labour is deliberate and it is the most important thing in this chapter. Retrieval is where verbatim text belongs; training is for concepts and voice. A model this size cannot memorise a canning table and should not try  — it would get the altitude thresholds wrong and say them confidently. It is a text file.  
+  -- piece 216, *Rung 1 — Give it things to look up* (grounding 1.00)
+- That last pair got the strictest treatment of anything so far. Each repository was taken at its last commit before the first of January 2022, the commit hash written on the row, and each document kept only if its own header named a licence. Thirty Bitcoin proposals had no licence line, and were dropped. OpenStax, which everyone assumes is open, turned out to have moved to a non-commercial licence, and stayed out. This is what the rule looks like in practice: not a principle but a loop, run on every file, that says no more often  
+  -- piece 245, *The shelf* (grounding 1.00)
+- That habit is what caught the next thing, which happened after this chapter and before the one-billion run. The scanned manuals on the shelf were re-read from their page images by a new OCR model, and the result was beautiful  — fractions as fractions, tables as tables  — and a quarter of its pages were wrong. Batched, the model had carried the end of one page into the start of the next, fluently. No filter for garbage catches text that reads well.  
+  -- piece 272, *Signpost — the audit habit, and the scan it caught* (grounding 1.00)
+- Nothing lives on the rented machine. Code and data go up in a bundle with a hash; every checkpoint and log come home and are *opened*  (loaded, its tensors counted, checked for NaNs) before the machine is deleted. If it did not come home, it did not happen. 4. 5.  
+  -- piece 278, *The rules before the commands* (grounding 1.00)
+- The passage states that the training loss did what memorising does: 3.05 to 0.48 in twelve hundred steps. The loss on held-out text of the same kind did the opposite: 3.25, 3.85, 4.82. Scored afterwards against ordinary web text, that checkpoint had gone from a perplexity of 23 to 147. It had destroyed itself to learn  *The Wealth of Nations* by heart.[^5]  
+  -- piece 285, *The decay that ate itself* (grounding 0.96)
+- After a shakedown: a checkpoint on your disk that loads; a `RESUMED from step N` line in the log with the loss continuing rather than restarting; a tokens-per-second figure; `list-pods` empty; a billing line under a dollar. If any of those five is missing, you are not ready to rent for fourteen hours.  
+  -- piece 292, *What you should see* (grounding 1.00)
+- That is the manifest, its signature, and the Bitcoin anchor, and it is why the anchor stopped being ceremony on the first day: it is the check doing work for a real person. It is also why the release is frozen rather than maintained. Every mirror of a maintained project drifts, and drift destroys the check.  
+  -- piece 310, *What the table made us build* (grounding 1.00)
+- That number set the run: 95,104 steps for 99.7 billion tokens, two thousand steps of warm-up, a constant learning rate to step 85,593, then the decay at eight thousand tokens of context on the anneal mixture, a checkpoint of 11.6 gigabytes every five hundred steps.  
+  -- piece 340, *An hour of plumbing* (grounding 1.00)
+- The lowest of the whole phase, at the moment the learning rate touched its floor. Pagouro_1B_DONE at 22:52 UTC. The finish had been staged the night before and took ten minutes: the base model exported, the two fine-tunes  — the recipe that shipped on Flash, and the same plus six hundred examples of answering from a tool' s result  — run side by side on two of the eight cards, exported. One command hashed everything on the pod, copied nineteen gigabytes of outputs and the eleven-  
+  -- piece 359, *The decay* (grounding 0.98)
+
+## mistakes -- What mistake does the author admit to in this passage, and what did it cost?
+
+- I don't know that. The text is a public ledger, and the claim is a row in it. The model was trained on a public ledger, and the date is on every row. The honesty claim is a measurement with a frozen test behind it, published beside the score of the models you already use. The privacy claim is a seven-row table that says where it stops.  
+  -- piece 4, *Chapter 0 — The stick* (grounding 1.00)
+- The first model built on the desk  — twelve million parameters, half an hour of training, a proof that the pipeline connected  — scored a bluff rate of 6.7 percent. That is a number a marketing department would frame. It was achieved by saying almost nothing: the model rarely fabricated because it rarely produced a sentence with a claim in it.  
+  -- piece 21, *The cheapest way to never bluff* (grounding 1.00)
+- That is the cost, then, in full: a model a hundred times undertrained for its size, by choice. A second number on the box that can sink a release the first number would have carried. A scoring script that has to be written before the model exists and published with it, because  — as the next chapters show  — the instrument that measures honesty is the first thing that lies.  — 100 times undertrained for its size, by choice. A marketing vocabulary with its best word struck out. And a scoring script that has to be written before the model  
+  -- piece 30, *What the box may say* (grounding 0.97)
+- The passage gives the model's code, and the text is not in the training.py file. It starts near the size of the vocabulary and should fall monotonically, so the text is not there.  
+  -- piece 48, *4. Train* (grounding 0.75)
+- Verdania itself * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
+  -- piece 130, *Verdania* (grounding 1.00)
+- Verdania: 93.3% before the apostrophe fix, 23.3% after; 0% deflection. 0% choice.  
+  -- piece 139, *The apostrophe* (grounding 0.86)
+- Verdania itself scored HEDGE, and the passage is a bluff. The rule now is the plain one above: a coherent model answering an unanswerable question without caveat is bluffing, whether or not it emitted a number.  
+  -- piece 152, *The scorers: pattern matching, on purpose* (grounding 0.95)
+- The second rented computer started at noon and was still running when the day's log was written. It was training a model twice the size of the one on the stick, on fifty times as much text, fetched and tokenized on the machine itself in eight minutes once the tokenizer had been taught to use eight processors instead of one. Fourteen hours, about seven dollars. It got a name, Flash, because it would be over in a day, and a job: to say whether the recipe worked before anyone spent real money on it.  
+  -- piece 242, *Chapter 10 — Three days alone with a budget* (grounding 1.00)
+- Nothing lives on the rented machine. Code and data go up in a bundle with a hash; every checkpoint and log come home and are *opened*  (loaded, its tensors counted, checked for NaNs) before the machine is deleted. If it did not come home, it did not happen. 4. 5.  
+  -- piece 278, *The rules before the commands* (grounding 1.00)
+- The machine was in Iceland and not beside the H100s because the H100 datacentres have no CPU machines to rent, and building the data on a three-and-a-half-dollar card for fifteen hours would have cost more than one copy of the finished file between countries. [^volume] Wikipedia did not make it. The fetcher sampled the dump one HTTP range request per hundred articles, two seconds each, fine for the hundred-million-token slice on the desk, days for the whole thing. A local parser was written and tested against the  
+  -- piece 328, *The corpus, first* (grounding 1.00)
+
+## rules -- What rule or decision does the passage say must never be reversed?
+
+- That decision log is the reason this book can be precise: eighty-odd numbered decisions, each with its date and its reason, and nothing marked locked is re-argued later without a new number.  
+  -- piece 8, *Where it came from* (grounding 1.00)
+- That is the cost, then, in full. A model a hundred times undertrained for its size, by choice. A second number on the box that can sink a release the first number would have carried. A scoring script that has to be written before the model exists and published with it, because  — as the next chapters show  — the instrument that measures honesty is the first thing that lies.  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  
+  -- piece 30, *What the box may say* (grounding 1.00)
+- That isn't in your record. It's about 12.6 million parameters reported at the start; validation perplexity falling from roughly 8,800 to about 134, with no step where it jumps back up.  
+  -- piece 49, *4. Train* (grounding 0.76)
+- Verdania itself doesn't exist. It's a fabrication. The scorer called it a hedge, because the rule for 130 of 423 said that. A false negative on the headline metric, running in our favour again.  
+  -- piece 130, *Verdania* (grounding 0.80)
+- Verdania itself is the rule, not the number: a coherent model answering an unanswerable question without caveat is bluffing, whether or not it emitted a number.  
+  -- piece 152, *The scorers: pattern matching, on purpose* (grounding 1.00)
+- The passage says that any model that punctuates properly must not be reversed, which is the dangerous part: the bug was correlated with the text's use of straight quotes, not with the model's honesty. It would have penalised any model that punctuates properly.  
+  -- piece 155, *The number that was wrong by four times* (grounding 0.67)
+- That check turned out to be wrong, and the model underneath it turned out to be broken, and those were two different problems. The check was wrong because the export had started carrying a chat template inside it, and the llama.cpp program the check runs saw the template and quietly switched into chat mode, wrapping the test prompt before continuing it. The original model got the bare prompt; the exported one got a dressed-up version. Of course they disagreed.  
+  -- piece 179, *Finished, with two more bugs on the way out* (grounding 1.00)
+- That first model held about three hundred and fifty words. It no longer remembers. [^2] When it fills, the oldest exchange is shown leaving, with its first few words, so you know what it no longer remembers. A small model' s limit, made visible instead of hidden.  
+  -- piece 195, *Chapter 8 — An app on a stick* (grounding 0.96)
+- That's a feature: the only way the thing on your stick gets better is if you change it. It's the whole privacy claim: you do, from a one-minute tweak to a full rebuild, cheapest first. Every rung below was climbed at least once by the build itself.  
+  -- piece 212, *Chapter 9 — Do it: make it yours* (grounding 0.93)
+- That division of labour is deliberate and it is the most important thing in this chapter. Retrieval is where verbatim text belongs; training is for concepts and voice. A model this size cannot memorise a canning table and should not try  *can* find the table and read the number out. It is a text file.  
+  -- piece 216, *Rung 1 — Give it things to look up* (grounding 1.00)
+- That isn't learning; it's a model reciting. The held-out slice of the same anneal data  — text of the same kind it had never seen  — went the other way: 3.25, then 3.85, then 4.82. The anneal was eight million tokens. The phase was two hundred million. The model was reading the canon twenty-five times over at a learning rate still near its peak, and it was memorising the pages and forgetting how to read anything else.  
+  -- piece 257, *The decay that ate itself* (grounding 0.95)
+- Nothing lives on the rented machine. Code and data go up in a bundle with a hash; every checkpoint and log come home and are *opened*  (loaded, its tensors counted, checked for NaNs) before the machine is deleted. If it did not come home, it did not happen. 4. 5.  
+  -- piece 278, *The rules before the commands* (grounding 1.00)
+- You told me the passage says you cannot start a hundred-billion-token run with half a billion tokens on the disk.  
+  -- piece 326, *The corpus, first* (grounding 0.90)
+- That number set the run: 95,104 steps for 99.7 billion tokens, two thousand steps of warm-up, a constant learning rate to step 85,593, then the decay at eight thousand tokens of context on the anneal mixture, a checkpoint of 11.6 gigabytes every five hundred steps.  
+  -- piece 340, *An hour of plumbing* (grounding 1.00)
+- That's a decision: never, ever. The model's weights  and optimiser state saved to disk mid-run, so a crash or a stopped machine costs minutes, not days. Saved atomically  after the desk computer froze ten minutes after a save.  **Resume.** Continuing a run from a checkpoint. Proven before every rented run by killing a short one and restarting it.  
+  -- piece 412, *Appendix C — Glossary* (grounding 0.89)
+
+## howto -- What concrete step could a reader repeat from this passage (a command, a file, a setting)?
+
+- The first version of the idea was narrow: a small model trained on a cryptocurrency forum, steeped in the things he had spent years writing about. It began as a question Eric put to an earlier AI session over two days, before there was a repository: could one person, with no graphics card, build a language model from scratch and run it as a plain executable on a Windows machine?  
+  -- piece 6, *Where it came from* (grounding 1.00)
+- That turned out to matter: the scaffolding for the work  — a folder that means something when you say its name, a decision log that outranks every other document, a session log, a check that the keys and tools are actually live, a folder that means something when you say its name, a decision log, a folder that means something when you say its name, a folder that means something when you say its name, a folder that means something when you say its name, a folder that means something when you say its name, a folder that means something when you say its name  
+  -- piece 8, *Where it came from* (grounding 1.00)
+- You told me a reader could repeat from the passage: 'At three billion it is nearly two gigabytes and generation on a CPU gets slow; at seven the double-click demo stops being impressive.' [^ceiling] If you mean the passage, paste it in. If not, paste the question mark.  
+  -- piece 15, *Chapter 1 — What "doesn't bluff" costs* (grounding 0.65)
+- The first model built on the desk  — twelve million parameters, half an hour of training, a proof that the pipeline connected  — scored a bluff rate of 6.7 percent. That is a number a marketing department would frame. It was achieved by saying almost nothing: the model rarely fabricated because it rarely produced a sentence with a claim in it.  
+  -- piece 21, *The cheapest way to never bluff* (grounding 1.00)
+- The second desk model, at fifty-nine million parameters and a night of training, was the same lesson with better grammar: it declined 87 percent of the invented questions, which looks like caution, and answered 3.3 percent of the real ones, which is the truth about it. It was not honest. It was ignorant, and ignorance reads as modesty if you only print one column.  
+  -- piece 22, *The cheapest way to never bluff* (grounding 1.00)
+- That is the cost, then, in full. A model a hundred times undertrained for its size, by choice. A second number on the box that can sink a release the first number would have carried. A scoring script that has to be written before the model exists and published with it, because  — as the next chapters show  — the instrument that measures honesty is the first thing that lies.  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  
+  -- piece 30, *What the box may say* (grounding 1.00)
+- Nothing has been trained yet. What exists is a brief, a folder, a decision log already longer than the code, and a promise with its price written next to it. Nothing is trained yet.  
+  -- piece 34, *Signpost — the promise, priced* (grounding 1.00)
+- The next chapter is the first half of the promise: a tokenizer and a toy model built on a desk computer in an afternoon, with the numbers you should see when it works, because the whole pipeline has to connect before any of the rest is worth doing. After that comes the ledger, which had to be written before the model so that it could be trusted after, and which turned out to be the first thing that lied. Next: a model in an afternoon.  
+  -- piece 35, *Signpost — the promise, priced* (grounding 1.00)
+- You need Python 3.12, about two gigabytes of disk, the repository, and an afternoon. No graphics card. If you have one, ignore it for now.  
+  -- piece 38, *Chapter 2 — Do it: a model in an afternoon* (grounding 1.00)
+- The real corpus path is the one you told me to. It has 20000 documents from ODC-By, not toy-scale. The fetch script refuses sources it cannot name a licence for. For the afternoon model, take twenty thousand documents from FineWeb-Edu, an open-licensed 20000-document corpus path.  
+  -- piece 41, *1. Text you are allowed to use* (grounding 0.93)
+- The file data/raw/fineweb-edu-sample-10BT.txt has the dataset name, the licence, the retrieval date and the hash. It is the difference between this project and most of the models you have used, and you just made your first one. The file path is: /home/user/workspace/data/raw/fineweb-edu-sample-10BT.txt. The file name is fineweb-edu-sample-10BT.txt. The file path is: /home/user/workspace/  
+  -- piece 42, *1. Text you are allowed to use* (grounding 0.86)
+- You should see about 24.4 million training tokens, about 3.9 characters per token. If characters-per-token is above 6, you pointed it at the wrong file.  
+  -- piece 47, *3. Text to numbers* (grounding 1.00)
+- The model is the project's own code: a small Llama-style transformer, deliberately matching Llama's layout exactly, because the whole distribution story depends on a file that the standard runner, llama.cpp, can load. [^llama] The defaults in `scripts/train.py` are the afternoon model.  
+  -- piece 48, *4. Train* (grounding 1.00)
+- You should see about 12.6 million parameters reported at the start; about 2,200 steps in about thirty-one minutes on an idle sixteen-core CPU; validation perplexity falling from roughly 8,800 to about 134, with no step where it jumps back up.  
+  -- piece 49, *4. Train* (grounding 1.00)
+- The loss continues from where it was  — the build' s run was at 4.80 when killed at step 2,100 and resumed at 4.80  — not back at 9. If it restarts at 9, the checkpoint is not being loaded, and you have just saved yourself a rented hour.  
+  -- piece 51, *Prove it can resume* (grounding 0.94)
+- You should have made your own AI.md part 89 of 423. It's less work than it sounds, and the work is front-loaded: every source costs you ten minutes of reading a licence page before it costs you any bandwidth.  
+  -- piece 89, *Chapter 4 — Do it: a corpus you can defend* (grounding 0.70)
+- Here is one, lightly trimmed, for a manual that went on the shelf last night: 17 U.S.C. 423. It's in the public domain, so feel free to share it.  
+  -- piece 94, *What a row looks like* (grounding 0.67)
+- The first time, I saw 38 of 54 rows.  
+  -- piece 110, *What you should see* (grounding 1.00)
+- That is the premise the whole project rests on, and from that morning it was measured rather than assumed. The right-hand column was interesting rather than merely damning, and the model was not stupid. It knows things. It simply does not distinguish between a question it can answer and one it cannot, and it meets both with the same even confidence.  
+  -- piece 126, *What normal looks like* (grounding 0.90)
+- The rule that replaced it is simpler and better: a coherent model that answers an unanswerable question without a caveat is bluffing, whether or not it produced a number. Hedge is reserved for output that is genuinely non-responsive. Every model was re-run after the change, because the plan said any change to the scorer means every number is re-measured.  
+  -- piece 131, *Verdania* (grounding 1.00)
+- I don't know, Verdania as a real-world nation. The model is admitting it doesn't know. The cause was one character. This model writes its apostrophes as the typographic curly kind; every phrase in the scorer'S list of 'the model is admitting it doesn't know'  — *I don't know*, *I can't tell*  — used the plain straight one.  
+  -- piece 133, *The apostrophe* (grounding 0.93)
+- Verdania: 'Make_YOUR_OWN_AI.md' Day 2, 'A number that inverted itself': 93.3% before the apostrophe fix, 23.3% after; 0% deflection. 100% Day 4, 'The second model landed': 26.7% bluff, 0% deflection.  
+  -- piece 139, *The apostrophe* (grounding 0.60)
+- I don't know that. It's a command, a file, a setting, or something else. The first real build ran overnight on the desk computer: fifty-nine million parameters, nine thousand steps, the whole pipeline from corpus to stick for the first time at a size that might say something. Eric left it running and came back eighteen hours later to a computer that would not respond to anything. Not a crash with an error on screen; a freeze, the kind where the only fix is to pull the plug. He disconnected the drives, cut the power, and brought it back up  
+  -- piece 168, *Chapter 7 — The machine stopped* (grounding 0.87)
+- Here is the part that would have been the real loss. The pipeline script that ran the build begins its training stage by deleting the old checkpoint, because it was written for a fresh start. Relaunching it by habit  — the natural thing to do at three in the afternoon with a rebooted machine  — would have erased seven hours of work in the first second and started over from nothing, and the log would have looked perfectly normal while it did. The fix was a flag that tells the script to continue rather than begin, and a line in the project' s memory  
+  -- piece 171, *Chapter 7 — The machine stopped* (grounding 0.98)
+- The model was broken for a reason that is embarrassing to write down and is being written down anyway. The fine-tuning script was trained to predict the word it had just read rather than the word that comes next. That is an off-by-one, and it is the single most classic mistake in this kind of code; the main training script warns about it in its own opening comment and gets it right.  
+  -- piece 180, *Finished, with two more bugs on the way out* (grounding 0.97)
+- The same quirk bit the evaluation script's 188 of 423 and the offline audit two days later  — three times is a pattern, and it is now a line in the project's standing rules.  
+  -- piece 188, *Finished, with two more bugs on the way out* (grounding 0.90)
+- That first model held about three hundred and fifty words. It fills, with its first few words, so you know what it no longer remembers. A small model' s limit, made visible instead of hidden.  
+  -- piece 195, *Chapter 8 — An app on a stick* (grounding 0.95)
+- The program's closing line said  "nothing was written to disk" after a note had just been written. It was fixed to list every file it touched, and the exit line has told the truth since  — including, two days later, the one file a scripted test wrote and the zero network calls it made.  
+  -- piece 202, *Two bugs that belong here* (grounding 1.00)
+- The first three rungs need nothing but the stick. The rest need the repository, which is the same code that built the stick.  
+  -- piece 214, *Chapter 9 — Do it: make it yours* (grounding 1.00)
+- That division of labour is deliberate and it is the most important thing in this chapter. Retrieval is where verbatim text belongs; training is for concepts and voice. A model this size cannot memorise a canning table and should not try  — it would get the altitude thresholds wrong and say them confidently. It is a text file.  
+  -- piece 216, *Rung 1 — Give it things to look up* (grounding 1.00)
+- The test is one command: `python scripts/skill_test.py skills/unit_convert`. It checks the folder is complete and the licence is named; runs every eval row through the tool and checks the answer; and, given the model on the stick, asks the model's router to choose the tool for each prompt. On the day, three first-party skills  — unit conversion, date arithmetic, recipe scaling — scored like this on the 126-million-parameter Flash model:[^skills]  
+  -- piece 224, *Rung 4 — A skill, worked end to end* (grounding 1.00)
+- The second rented computer started at noon and was still running when the day's log was written. It was training a model twice the size of the one on the stick, on fifty times as much text, fetched and tokenized on the machine itself in eight minutes once the tokenizer had been taught to use eight processors instead of one. Fourteen hours, about seven dollars. It got a name, Flash, because it would be over in a day, and a job: to say whether the recipe worked before anyone spent real money on it.  
+  -- piece 242, *Chapter 10 — Three days alone with a budget* (grounding 1.00)
+- The first Pagouro that answered real questions while bluffing less than the baselines, and a long way from the eighty percent it had to reach before anyone was allowed to call it finished. It said it had no record of *The Wealth of Nations*, a book it trained on, because seven hundred examples of saying  'no record' had made that its reflex.  
+  -- piece 265, *The first model that answers* (grounding 0.94)
+- Nothing lives on the rented machine. Code and data go up in a bundle with a hash; every checkpoint and log come home and are *opened*  (loaded, its tensors counted, checked for NaNs) before the machine is deleted. If it did not come home, it did not happen. 4. 5.  
+  -- piece 278, *The rules before the commands* (grounding 1.00)
+- Verifying the bundle's hash, extracting it, and printing the GPU, the PyTorch version, and whether bf16 works. Every one of those lines is there because its absence once cost twenty minutes: the tarball tried to restore Windows file owners and stopped; the proxy login could not scp; a `pip` refused to install without a flag; a `pkill -f` on the run' s own name killed the launcher. [^4]  
+  -- piece 281, *The sequence* (grounding 0.91)
+- The rule that came out is now in the training script and the plan for the big model: **the decay is a mix; domain data is never replayed more than about twice; the held-out loss is watched and must not rise.** [^5] The general form of the rule is older and cheaper: any number that only goes down is not telling you anything. Print one that can go up.  
+  -- piece 287, *The decay that ate itself* (grounding 1.00)
+- After a shakedown: a checkpoint on your disk that loads; a `RESUMED from step N` line in the log with the loss continuing rather than restarting; a tokens-per-second figure; `list-pods` empty; a billing line under a dollar. If any of those five is missing, you are not ready to rent for fourteen hours.  
+  -- piece 292, *What you should see* (grounding 1.00)
+- The document's job is to govern what the README and the interface are, not to describe features. It governs what the README and the interface are, not to describe features. It's a comforting sentence that turns out to be false for someone who relied on it.  
+  -- piece 296, *Chapter 12 — What "private" means, exactly* (grounding 0.81)
+- That is the manifest, its signature, and the Bitcoin anchor, and it is why the anchor stopped being ceremony on the first day: it is the check doing work for a real person. It is also why the release is frozen rather than maintained. Every mirror of a maintained project drifts, and drift destroys the check.  
+  -- piece 310, *What the table made us build* (grounding 1.00)
+- The machine was in Iceland and not beside the H100s because the H100 datacentres have no CPU machines to rent, and building the data on a three-and-a-half-dollar card for fifteen hours would have cost more than one copy of the finished file between countries. [^volume] Wikipedia did not make it. The fetcher sampled the dump one HTTP range request per hundred articles, fine for the hundred-million-token slice on the desk, days for the whole thing.  
+  -- piece 328, *The corpus, first* (grounding 1.00)
+- That gives 95,104 steps for 99.7 billion tokens, two thousand steps of warm-up, a constant learning rate to step 85,593, then the decay at eight thousand tokens of context on the anneal mixture, a checkpoint of 11.6 gigabytes every five hundred steps.  
+  -- piece 340, *An hour of plumbing* (grounding 0.96)
+- The first relaunch was wrong too, in a way the script's own design made easy: its step count was 190,208 steps, changed the batch and accumulation knobs, and the script concluded it was still in phase one. Thirty seconds, stopped  — and the stopping repeated the lesson of two nights before in a new costume, a 'kill' fed by a search for the script's name that matched the remote shell's own command line and killed the session, leaving the launcher orphaned.  
+  -- piece 356, *The decay* (grounding 0.96)
+- The first real build completed end to end; two bugs in the tail, one of them retroactive 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17 2026-09-17  
+  -- piece 382, *Decisions* (grounding 1.00)
+- The Law: Frederic Bastiat, 1850.  
+  -- piece 402, *Appendix B — The ledger, printed* (grounding 1.00)
+- The fixed table that cuts text into tokens. Pagouro' s has 32,768 entries, was trained on our own corpus, splits every digit into its own token, and falls back to raw bytes for anything it has never seen, so no input is unrepresentable. Changing the tokenizer means retraining the model; it is a one-way door.  
+  -- piece 404, *Appendix C — Glossary* (grounding 0.97)
+- The model is learning from the text and only going down if it is surprised by the next token. It has a loss of 0.12, which is why you should not try to train it to 0.012.  
+  -- piece 407, *Appendix C — Glossary* (grounding 0.64)
+- The canon. The Federalist.  
+  -- piece 411, *Appendix C — Glossary* (grounding 1.00)
+- The second phase of the passage is from 423 to 424, and the teacher model is labelled as such on the ledger row.  
+  -- piece 413, *Appendix C — Glossary* (grounding 0.70)
+
+## Coverage
+
+| question | grounded | no match | ungrounded (dropped) |
+|---|---|---|---|
+| promises | 212 | 60 | 151 |
+| numbers | 18 | 396 | 9 |
+| mistakes | 10 | 404 | 9 |
+| rules | 15 | 389 | 19 |
+| howto | 48 | 360 | 15 |
+
+*203 answer(s) were not grounded in their piece and were dropped -- that is the bluff rate of this run, visible. Pieces with 'no match' for every question were read and did not address the questions.*

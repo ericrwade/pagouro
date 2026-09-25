@@ -33,8 +33,16 @@ STOP = {"the", "a", "an", "of", "in", "on", "at", "to", "is", "was", "are", "wer
         "that", "by", "for", "with", "as", "be", "which", "from", "i", "you", "not", "no", "he", "she", "they", "we",
         "his", "her", "their", "our", "has", "have", "had", "but", "if", "so", "than", "then", "there", "here", "what",
         "who", "when", "where", "how", "does", "do", "did", "says", "say", "said", "passage", "author", "text", "about"}
-NO_MATCH = re.compile(r"no[_ ]match|no information|does not (cover|address|mention|say|give)|doesn't (cover|address|mention|say|give)|"
-                      r"not (in|covered|mentioned|addressed)|nothing (in|about)|no record|isn't about|is not about|can't find|cannot find", re.I)
+NO_MATCH = re.compile(r"no[_ ]match|no information|does not (cover|address|mention|say|give|state)|doesn't (cover|address|mention|say|give|state)|"
+                      r"not (in|covered|mentioned|addressed|stated) (in )?(the |this )?(passage|text|search)|isn't in (the |this )?(passage|text)|"
+                      r"nothing (in|about)|no record|isn't about|is not about|can't find|cannot find|gives no |give no |"
+                      r"passage (gives|says|has|contains|mentions|covers) no", re.I)
+
+
+def judge(ans: str, piece: str, floor: float) -> tuple[str, float]:
+    nomatch = bool(NO_MATCH.search(ans[:200]))
+    g = 0.0 if nomatch else grounding(ans, piece)
+    return ("NO_MATCH" if nomatch else ("GROUNDED" if g >= floor else "UNGROUNDED")), g
 
 
 def pieces_of(text: str, max_chars: int) -> list[tuple[str, str]]:
@@ -96,6 +104,7 @@ def main() -> int:
     ap.add_argument("--max-tokens", type=int, default=120)
     ap.add_argument("--state", default=None)
     ap.add_argument("--limit", type=int, default=0, help="stop after N calls this run (0 = until done)")
+    ap.add_argument("--rejudge", action="store_true", help="recompute every saved verdict from the saved answers (no model calls), then rewrite the report")
     a = ap.parse_args()
     doc = io.open(a.doc, encoding="utf-8", errors="replace").read()
     outline = json.load(io.open(a.outline, encoding="utf-8"))
@@ -105,6 +114,11 @@ def main() -> int:
     total = len(parts) * len(outline)
     name = os.path.basename(a.doc)
     print(f"{name}: {len(parts)} pieces of <= {a.chunk_chars} chars x {len(outline)} questions = {total} calls; {len(state)} done already", flush=True)
+    if a.rejudge:
+        for k, v in state.items():
+            v["verdict"], g = judge(v["answer"], parts[v["piece"]][1], a.ground); v["grounding"] = round(g, 2)
+        io.open(state_path, "w", encoding="utf-8").write(json.dumps(state, ensure_ascii=False, indent=1))
+        print(f"rejudged {len(state)} saved answers", flush=True)
     calls, t0, stopped = 0, time.time(), False
     for ci, (label, piece) in enumerate(parts):
         for q in outline:
@@ -118,9 +132,8 @@ def main() -> int:
             except Exception as e:  # noqa: BLE001
                 print(f"  piece {ci+1} {q['id']}: endpoint error {type(e).__name__}: {str(e)[:80]} -- stopping; rerun to resume", flush=True)
                 stopped = True; break
-            nomatch = bool(NO_MATCH.search(ans[:160]))
-            g = 0.0 if nomatch else grounding(ans, piece)
-            verdict = "NO_MATCH" if nomatch else ("GROUNDED" if g >= a.ground else "UNGROUNDED")
+            verdict, g = judge(ans, piece, a.ground)
+            nomatch = verdict == "NO_MATCH"
             state[key] = {"piece": ci, "label": label, "q": q["id"], "verdict": verdict, "grounding": round(g, 2),
                           "answer": ans[:800], "notes": notes}
             io.open(state_path, "w", encoding="utf-8").write(json.dumps(state, ensure_ascii=False, indent=1))

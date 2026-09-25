@@ -175,7 +175,7 @@ def trim_repetition(text: str) -> tuple[str, bool]:
     Fixed harness behaviour, announced to the person (D-50), never silent."""
     # An enumeration runaway ("1972-1973-1974-…", "a, a, a, a, a, a") is a loop inside one sentence: cut
     # at the start of any run of six or more delimiter-separated items of the same shape.
-    m = re.search(r"(?:\b\d{2,4}\b\s*[-,/–]\s*){6,}|\b(\w+)\b(?:[\s,;/-]+\1\b){5,}", text)
+    m = re.search(r"(?:\b\d{2,4}\b\s*[-,/–]\s*){6,}|\b(\w+)\b(?:[\s,;/-]+\1\b){5,}|(?:[*#=~_|]\s*){8,}", text)
     if m:
         head = text[:m.start()]
         cut = max(head.rfind(". "), head.rfind("! "), head.rfind("? "))   # drop the whole sentence the run sits in
