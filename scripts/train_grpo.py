@@ -105,6 +105,7 @@ def main() -> int:
     ap.add_argument("--kl", type=float, default=0.05)
     ap.add_argument("--seed", type=int, default=1337)
     ap.add_argument("--log", default=os.path.join(ROOT, "runs", "grpo_log.jsonl"))
+    ap.add_argument("--save-every", type=int, default=0, help="write --out every N steps (0 = only at the end)")
     a = ap.parse_args()
     from tokenizers import Tokenizer
     tok = Tokenizer.from_file(a.tokenizer)
@@ -164,6 +165,12 @@ def main() -> int:
                "elapsed_s": round(time.time() - t0, 1)}
         logf.write(json.dumps(rec) + "\n"); logf.flush()
         print(f"step {step:3d} | reward {mean_r:+.3f} | {verdicts} | {time.time()-t0:.0f}s", flush=True)
+        if a.save_every and (step + 1) % a.save_every == 0 and step + 1 < a.steps:
+            # periodic save on a rented card (the 1B run, D-87): write beside, then rename over
+            ck["model"] = policy.state_dict()
+            ck["grpo"] = {"steps": step + 1, "lr": a.lr, "kl": a.kl, "group": a.group, "set": os.path.basename(a.set)}
+            torch.save(ck, a.out + ".tmp"); os.replace(a.out + ".tmp", a.out)
+            print(f"  >> saved {a.out} at step {step + 1}", flush=True)
     ck["model"] = policy.state_dict()
     ck["grpo"] = {"steps": a.steps, "lr": a.lr, "kl": a.kl, "group": a.group, "set": os.path.basename(a.set)}
     torch.save(ck, a.out)
