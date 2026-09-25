@@ -2310,6 +2310,17 @@ the app loads): **bluff 17 % / answered-real 82 %**; tool-use 23/24, memory 9/10
 NO_MATCH 6/10, skills 6-10-10. Replaces soup70 (29/85). Repackaged with the offline audit, manifest and
 `facts.json` updated to these numbers and hashes.
 
+### D-94 — The marketing message (Eric, 2026-09-25): a proof that it can be done and be useful; the niche of 100 % documented and self-contained; not competing with frontier or open-weights models
+**Eric's framing, in his words:** "admittedly the most bespoke and single-minded LLM, more a proof that it can
+be done and useful at the same time, intentionally not competing with cloud frontiers or even local open
+weights, but rather creating and filling a niche of 100% documented and self contained." Bare-minimum
+marketing. **Session's two edits, accepted as the working rule:** (1) no superlatives ("most bespoke") as
+claims — every sentence on the box must be checkable (D-50); the four checkable promises carry the
+single-mindedness; (2) "not competing" is said positively — the frontier *cannot* make these promises,
+which is why the niche exists rather than being conceded. Three candidate F12 first paragraphs are in
+`docs/ORIGIN_LEDGER.md` F12 (A for the README, C for the box, session's picks); Eric chooses at release.
+`docs/WHY.md` and `docs/ABOUT.md` already carry the stance and stay as written.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
