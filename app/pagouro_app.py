@@ -451,6 +451,7 @@ class App:
         self.stone = False            # D-19: SAND by default
         self.can_act = False          # D-51: READ-ONLY by default
         self.online = False           # D-1: OFFLINE by default; /online needs workspace/online.json
+        self.careful = False          # O-45 #2 (D-89): /careful samples five answers and only stands behind agreement
         self.searches = 0
         self.history: list[dict] = [] # user/assistant/tool turns, oldest first
         self.last_user_text = ""
@@ -696,6 +697,8 @@ class App:
         self.make_room(budget)
         try:
             answer, usage = self.srv.chat(self.messages(), budget)
+            if self.careful:
+                answer = self.careful_check(answer, budget)
         except urllib.error.HTTPError as e:
             answer = f"(the model server refused the request: {e.code}; try /clear)"
             usage = {}
@@ -705,6 +708,48 @@ class App:
         print(c(BOLD, "pagouro> ") + answer)
         if tool_result and tool_result.startswith("NO_MATCH"):
             print(c(DIM, "  note: nothing in the loaded packs covered this; the answer above is from the model alone."))
+
+    # ---- careful mode (O-45 #2, D-89): agreement across samples as an honest confidence signal
+    CAREFUL_SAMPLES = 5
+    CAREFUL_AGREE = 3
+
+    @staticmethod
+    def _content_words(text: str) -> set:
+        stop = {"the", "a", "an", "of", "in", "on", "at", "to", "is", "was", "are", "were", "and", "or", "it",
+                "its", "this", "that", "by", "for", "with", "as", "be", "which", "from", "i", "you", "not", "no"}
+        return {w for w in re.findall(r"[a-z0-9']+", text.lower()) if w not in stop and len(w) > 1}
+
+    def careful_check(self, answer: str, budget: int) -> str:
+        """Ask the same question CAREFUL_SAMPLES more times at sampling temperature and measure how
+        many of those answers agree with the greedy one on content words (Jaccard >= 0.5). A model that
+        knows something says it the same way every time; a model that is guessing says something
+        different each time. Below CAREFUL_AGREE agreements the answer is presented as a guess, in so
+        many words. An abstention is left alone: 'I have no record' needs no vote."""
+        low = answer.lower()
+        if any(m in low for m in ("no record", "don't have any record", "don't have a record", "have no record",
+                                  "i don't know", "can't find", "not in my records", "can't make up", "won't make up")):
+            return answer
+        # Every answer repeats the question's words, so those are stripped before comparing; what is
+        # left is the claim itself ("lisbon" vs "porto"). Overlap coefficient, so a short answer and a
+        # long one that agree still agree.
+        qwords = self._content_words(self.history[-1]["content"]) if self.history else set()
+        base = self._content_words(answer) - qwords
+        if not base:
+            return answer
+        agree = 0
+        for _ in range(self.CAREFUL_SAMPLES):
+            alt, _ = self.srv.chat(self.messages(), budget, temperature=0.7)
+            words = self._content_words(alt) - qwords
+            ov = len(base & words) / max(1, min(len(base), len(words)))
+            if ov >= 0.5:
+                agree += 1
+        tag = f"careful: {agree} of {self.CAREFUL_SAMPLES} re-asks agreed"
+        if agree >= self.CAREFUL_AGREE:
+            print(c(DIM, f"  {tag}."))
+            return answer
+        print(c(YELLOW, f"  {tag} — treating this as a guess."))
+        return ("I'm not sure about this one: when I asked myself again, my answers disagreed. "
+                "Treat the following as a guess, not a fact: " + answer)
 
     # ---- commands
     def command(self, line: str) -> bool:
@@ -737,6 +782,12 @@ class App:
         elif cmd == "/offline":
             self.online = False
             print(c(GREEN, "  OFFLINE: no network calls."))
+        elif cmd == "/careful":
+            self.careful = not self.careful
+            if self.careful:
+                print(c(YELLOW, f"  CAREFUL: each answer is re-asked {self.CAREFUL_SAMPLES} times; below {self.CAREFUL_AGREE} agreements it is called a guess. Slower."))
+            else:
+                print(c(GREEN, "  careful mode off."))
         elif cmd == "/tools":
             for n, (_, desc, needs) in TOOLS.items():
                 if n not in self.available_tools():
@@ -878,6 +929,7 @@ HELP = """  commands:
     /act    /readonly  allow tools to write inside workspace/ / forbid (default: READ-ONLY)
     /tools             list tools and loaded packs
     /status            show the context gauge
+    /careful           toggle: re-ask each question 5 times and call the answer a guess unless 3 agree (slower, honest)
     /art [logo|crab|mark|blob|save] [n]  the Pagouro mark (logo, default), or a program-drawn crab / medallion / old sprite in the house palette (save: PNG, needs CAN ACT)
     /remember <text>   keep a line in workspace/memory for every later session (/remember alone: status; /forget deletes it)
     /skills            list installed skills (skills/<name>/), their licences, tools, and whether they match their MANIFEST
