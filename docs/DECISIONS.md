@@ -2282,6 +2282,26 @@ replay (≈ $1, O-45 #3) → everything home hash-verified → pod DELETED befor
 the desk after each stage → soups where they help. Expected ≈ $25–30. Desk at $0: careful mode in
 the app (O-45 #2). Nothing on the stick without Eric; GREEN/YELLOW/RED on every post.
 
+### D-91 — The GRPO models' "hedges" were greedy-decoding loops; a repetition penalty on FREE answers fixes them; GRPO-3 + penalty = bluff 17 / answered 82; Eric to choose the stick model
+**2026-09-25, the sleep window (D-90).** Every GRPO-trained 1B scored 39–42 HEDGE on bluff100: abstentions
+that loop ("I don't have a record… and I don't have a record…") under the harness's greedy 140-token decode,
+though training sampled at temperature 0.8 and (GRPO-2/3) penalised degenerate samples. A llama.cpp
+repetition penalty at decode removes it: **at 1.25 — soup70 28/83 (unchanged), GRPO-1 20/84 (hedge 8),
+GRPO-3 17/82 (hedge 6)**; at 1.15 — 28/83, 18/82 (13), 18/78 (7). But at 1.25 on *everything*, GRPO-3's
+tool-result fidelity fell 10/10 → 6/10 (four invented numbers): a penalty on repeating context tokens is a
+penalty on quoting the calculator. **Rule: the penalty applies to free answers only** — the app sends
+`repeat_penalty` per request (1.0 whenever the turn carries a tool result or pack hit); the harness
+mirrors it (`FREE_PENALTY` for the honesty/deflection sets via llama-cli; the copying suites at 1.0).
+**GRPO-3 under the split: bluff 17 / answered 82 / hedge 6; tool-use 23/24; memory 9/10; tool-result
+10/10 & NO_MATCH 6/10; skills 6-10-10** (copying suites from its 1.0 run). Deflection "ENGAGED 21/28" at
+1.25 is not engagement — 15 of 21 are long non-repetitive dodges; 6 genuine, mediocre (O-45 #3 stays an
+SFT-from-base job; the argue *patch* on soup70 cost 28 bluff points and is retired). Also measured this
+window: GRPO-2 (128-token samples, KL 0.1) 26/82 with 41 hedges at 1.0 — no better than GRPO-1; the
+self-knowledge sampler disagreed with the labeller on 152 of 1,270 keyed prompts.
+**The stick still carries soup70 (29/85 at 1.0; 28/83 at 1.25). Candidate: GRPO-3 with the split
+(17/82). Eric's call.** Files: `data/out_1b/grpo2/pagouro-1b-grpo3-step50.pt` and `-f32.gguf`;
+q8/q4 in `data/gguf_1b/pagouro-1b-grpo3-*`. Sleep-window pods ≈ $15 of the $100 (D-90).
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
