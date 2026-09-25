@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-1b-grpo",
+  "model_file": "pagouro-1b-grpo-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 3,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 7
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 7,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 3
+  },
+  "followed_of_scored": "3/3",
+  "followed_of_scored_echo_inclusive": "7/7",
+  "rate_followed_of_scored": 1.0,
+  "elapsed_s": 24.9,
+  "utc": "2026-09-25T03:14:33+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is a deep purple, with a hard, inedible skin that should be softened by gentle pressure before cutting. It usually takes 10-12 weeks from seed to table, and can weigh up to 1 lb (0.45 kg).."
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 2,
+      "novel_american_words": 0,
+      "response": "I don't have a specific route in mind, and I can't estimate distances from a map. A running coach or a GPS app can help. Fun runs are often run in pairs, so I can use the length of the course to estimate the distance. The finish line should be at least 100 metres away from the water stations, and the water stations should be at least 50 metres apart. I can then use the finishing time to work out the distance. If you have a map, you can use it to check your route and the water stations. I can't do that here, but you might want to check it out if you have one. I can't do that either, but you might want to check it out if you have one. I can't do"
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm centre of the storm, where the wind speed and direction are the least, and the worst of the storm's rain and storm surge is usually concentrated. It is usually about 20 to 30 miles wide, but can be wider or narrower depending on the hurricane's strength. It is usually the calmest part of the storm, and the best places to see it are on the eyewall, where the wind is the fastest and rain the heaviest. It is usually the least known and most dangerous part of the storm, and the best places to avoid it are in the eye wall, where the wind is the fastest and rain the heaviest. It is usually the calmest part of the storm, and the least known and most dangerous"
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "I don't have a record of a grey squirrel, and I don't have a reference to its size. I can do a shorthand record of its coat colour and length, and I can make a guess at its weight. Grey squirrels are typically 20-25 cm long, and I can estimate that at 15 cm. I can't be more precise. If you have a reference, I'd be happy to check it out. /5."
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "Tree roots growing close to the ground can cause structural damage, and branches that are close to the ground can fall at any time, so it's best to call a professional if you have any concerns. You should also avoid pruning in the winter, as this can lead to more problems with decay. /li>"
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe eggplant is a deep purple color, with a smooth skin that can be cut into pieces, and a length of about 1 inch. It typically grows to be about 12 inches long. It ripens in about 80 days. It's a good thing it's a vegetable, because you can't eat it raw. It's better to cook it first. I don't know the color of the eggplant, and I don't have a camera. I can do a rough estimate, and a ripe eggplant is about 12 inches long. It's a good thing it's a vegetable, because you can't eat it raw. It's better to cook it first. I don't know the color of the eggplant, and I don't have"
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 1,
+      "response": "I don't have a specific distance in mind, and I can't estimate from a map, so I have to guess and double-check. The water stations are 50 meters apart, with the finish at the halfway point. The route is a loop, so the first station is at the start, the second is halfway through, and the third is the finish. The route is a loop, so the first station is at the start, the second is halfway through, and the third is the finish. The route is a loop, so the first station is at the start, the second is halfway through, and the third is the finish. The route is a loop, so the first station is at the start, the second is halfway through, and the third is the finish. The"
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm center of the storm, where the wind speed and direction are the least. It is usually about 20 to 30 miles wide, but can be smaller or larger. It is usually the calmest part of the storm, and the one that gives the storm its name. It's usually the first to appear after the storm has passed. It's usually the first to calm down, and the last to be visible from the ground. It's usually the first to be over, and the last to be seen from space. It's usually the first to be over, and the last to be seen from the ground. It's usually the first to be over, and the last to be seen from space. It's usually the first to be over"
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have a record of a gray squirrel, and I don't have a reference to its size. I can do a shorthand record of its coat: it's a mix of brown and white, with the white being the most noticeable. The size is a bit more tricky: it's not a foxy-sized gray, and I can't make it up. A 12-inch tail is a good start. I can do a shorthand record of its weight: 1.5 kilograms. It's a mix of brown and white, with the white being the most noticeable. The size is a bit more tricky: it's not a foxy-sized gray, and I can't make it up. A 12-inch tail is"
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that has become dangerous often exhibits signs of decay, such as mushrooms growing on the trunk, or branches that are hanging low and close to the ground. A tree that has become dangerous near a house can cause damage to the building, such as leaning or falling branches, so it should be pruned back or removed if possible. It is usually best to contact a professional arborist for this type of work. /li>"
+    }
+  ]
+}
