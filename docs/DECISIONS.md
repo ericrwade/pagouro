@@ -2330,7 +2330,15 @@ the shape of our **router**: one of six tools or none, now a grammar-constrained
 (23/24 right, 4/16 spurious). A few-million-parameter contrastive router trained on our own tool seeds
 and skill examples would be milliseconds on CPU and better calibrated. **Not now** — routing is not the
 bottleneck; after the reference shelf (O-41) multiplies the action set (which pack, which document), it
-is. Source: x.com/jackyk02/status/2102905335925424285; code github.com/Contrastive-LM/CLM (licence to check).
+is. Source: x.com/jackyk02/status/2102905335925424285; code github.com/Contrastive-LM/CLM.
+**README read (Eric's link):** Apache-2.0; CLM-8B = a 75 MB reference head over **Qwen3-8B embeddings**,
+served behind a **TypeSafe-compatible API** (the Jev typed-decision service D-71 used for answerability
+labels); trained on 60M Nemotron Q&A pairs + 30M synthetic hard negatives + 1M agentic trajectories. Never
+inside Pagouro (8B encoder on a GPU; no shippable provenance). **Real use: a local, free, open build-time
+JUDGE** on a rented card — (1) is this pack hit about the question (the irrelevant-Bastiat problem, for
+labelling multi-turn rows and scoring the harness); (2) does this answer argue or dodge (the deflection
+scorer's blind spot); (3) answerability labels for future curricula instead of paid Jev calls. Labels
+and evals only, never training text (D-30). Try it in the next build session that has a card up.
 
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
