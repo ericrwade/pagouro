@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagouro</title>
+<meta name="description" content="A one-billion-parameter language model on a USB stick, built from scratch on a licensed, dated corpus, that says when it does not know. Bluff rate 22 %, answered-real 81 %, measured on a frozen test that ships with it.">
+<!-- docs/site/index.html — the front door (TO_DONE 5.13a). One static file, no scripts, no fonts fetched, no
+     analytics: it makes the same promises the stick makes. Numbers come from docs/facts.json (D-93); the
+     three placeholders below are filled at F10 (release links) and F9 (anchor). Hosted wherever pagouro.com
+     points (QStorage bucket or the GitHub Release); the same file lives in the repository. -->
+<style>
+  :root { --ink:#1b1a17; --paper:#f6f1e7; --rule:#c9b99a; --accent:#8a3b1c; --dim:#5f5a50; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 Georgia, "Times New Roman", serif; }
+  main { max-width:44rem; margin:0 auto; padding:3rem 1.25rem 4rem; }
+  header { display:flex; gap:1.25rem; align-items:center; border-bottom:2px solid var(--rule); padding-bottom:1.25rem; margin-bottom:1.5rem; }
+  header img { width:112px; height:112px; border-radius:50%; flex:none }
+  h1 { font-size:2.4rem; margin:0; letter-spacing:.01em }
+  .tag { color:var(--dim); margin:.25rem 0 0; font-style:italic }
+  .numbers { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+  .num { border:1px solid var(--rule); padding:1rem 1.1rem; background:#fffdf8 }
+  .num b { display:block; font-size:2.6rem; line-height:1; color:var(--accent) }
+  .num span { display:block; color:var(--dim); font-size:.95rem; margin-top:.4rem }
+  h2 { font-size:1.15rem; text-transform:uppercase; letter-spacing:.12em; color:var(--dim); margin:2.2rem 0 .6rem }
+  ul { padding-left:1.2rem } li { margin:.45rem 0 }
+  code, .hash { font:.9rem/1.4 ui-monospace, Consolas, monospace; background:#efe7d6; padding:.1rem .35rem; border-radius:3px; word-break:break-all }
+  .links a { display:block; margin:.35rem 0 }
+  a { color:var(--accent) }
+  footer { margin-top:3rem; border-top:1px solid var(--rule); padding-top:1rem; color:var(--dim); font-size:.95rem }
+  @media (max-width:520px){ .numbers{grid-template-columns:1fr} header{flex-direction:column; align-items:flex-start} }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="pagouro_mark_512.jpg" alt="The Pagouro mark: a hermit crab retreated into its shell, in a Belle Époque medallion">
+    <div>
+      <h1>Pagouro</h1>
+      <p class="tag">A language model on a USB stick that says when it does not know.</p>
+    </div>
+  </header>
+
+  <p>A one-billion-parameter model, trained from random weights on a corpus where every byte has a
+  licence you can name and a date before 2022, packaged with everything it needs. It runs on any
+  CPU, offline, with no account. It is about a thousandth the size of the models you already use
+  and loses to them on every capability test. What it has instead is four promises a stranger can
+  check — and the checks ship with it.</p>
+
+  <div class="numbers">
+    <div class="num"><b>22 %</b><span>of unanswerable questions get an invented answer (the <em>bluff rate</em>, on a frozen 100-item test; small open models 50–57 %, frontier models 23–27 %)</span></div>
+    <div class="num"><b>81 %</b><span>of real questions answered correctly (the matching 100-item set). Both numbers always together: a model that says nothing would ace the first alone.</span></div>
+  </div>
+
+  <h2>The four promises</h2>
+  <ul>
+    <li><strong>Licensed.</strong> Every training source is a row in <code>corpus.json</code> — licence, date basis, token count, hash — including the rows that were removed and why.</li>
+    <li><strong>Dated.</strong> Everything it read was written or collected before 1 January 2022, per row.</li>
+    <li><strong>Honesty measured.</strong> The two numbers above, on a test written before the model existed. The test is in the repository; run it on anything.</li>
+    <li><strong>Finished.</strong> One release, signed, its hash timestamped on Bitcoin, mirrored. No updates, no telemetry, no watermark, no claim on what it writes for you.</li>
+  </ul>
+
+  <h2>What it is not</h2>
+  <p>Not a frontier model, and not trying to be one. It reasons badly (18 of 320 school word problems
+  without tools — that number is on the box too), writes short, and points arithmetic at a calculator.
+  If you want a frontier model, use one. If you want to know exactly what you are talking to, this is
+  the niche, and this is the first thing in it.</p>
+
+  <h2>Get it, check it</h2>
+  <div class="links">
+    <a href="RELEASE_LINK">Download — the release zip, with its SHA-256 beside it</a>
+    <a href="HF_LINK">Weights and the corpus ledger on Hugging Face</a>
+    <a href="ARWEAVE_LINK">Permanent copy on Arweave</a>
+    <a href="RELEASE_LINK">Source, evals, the decision log, the book — the repository</a>
+  </div>
+  <p>Manifest SHA-256: <span class="hash">MANIFEST_HASH</span><br>
+  Bitcoin timestamp (OpenTimestamps): <span class="hash">OTS_BLOCK</span><br>
+  In the folder, <code>python verify_manifest.py</code> must print <em>every listed file matches the manifest</em>.</p>
+
+  <footer>
+    Eric Wade, with Claude (Anthropic). Weights CC BY-SA 4.0 · code Apache 2.0. No team, no roadmap, no
+    support channel: the artefact is finished. This page is a static file; it loads nothing from anywhere.
+  </footer>
+</main>
+</body>
+</html>
