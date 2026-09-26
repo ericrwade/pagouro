@@ -119,6 +119,10 @@ def main() -> int:
         f.write(MANIFESTO)
     # The checker ships beside the manifest so a stranger can verify without the repo (F8).
     shutil.copy2(os.path.join(ROOT, "scripts", "verify_manifest.py"), os.path.join(rel, "verify_manifest.py"))
+    # 2026-09-26, Eric's fresh-stick test: a fresh Windows PC has no Python. The PowerShell verifier and its
+    # double-click wrapper check the same manifest with what Windows ships.
+    shutil.copy2(os.path.join(ROOT, "scripts", "verify_manifest.ps1"), os.path.join(rel, "verify_manifest.ps1"))
+    shutil.copy2(os.path.join(ROOT, "scripts", "VERIFY.bat"), os.path.join(rel, "VERIFY.bat"))
 
     # The app: freeze app/pagouro_app.py into one executable and ship it with
     # llama-server.exe, the packs and an empty workspace. Standard library only,

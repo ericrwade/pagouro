@@ -195,7 +195,7 @@ def trim_repetition(text: str) -> tuple[str, bool]:
         tri = {}
         for i in range(len(words) - 2):
             k = (words[i].lower(), words[i+1].lower(), words[i+2].lower()); tri[k] = tri.get(k, 0) + 1
-        if tri and max(tri.values()) > 3:
+        if tri and max(tri.values()) > 2:   # 2026-09-26: a phrase said three times is a loop (Eric: "I can look for more info", repeated)
             return keep[0] if keep else text, True
     return text, False
 
