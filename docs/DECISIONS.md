@@ -2405,6 +2405,21 @@ round 3 (≈ $15, ~3 h): SFT-from-base *with* the traces (as SFT-v3) → GRPO-1-
 soup → GRPO on the self-knowledge curriculum, i.e. the whole lineage that produced GRPO-3, started from a base that
 can reason; measured the same way. Not started (D-90's window is spent; Eric's call; must be home before the Sep 27
 11:30 PT shutdown).
+**Round 3 (2026-09-26, Eric: "round 3 and if you need to, round 4"):** pod `283nf8rex00t12` (US-MO-1, 07:43Z → deleted
+11:05Z, ≈ $11.8). The GRPO-3 lineage from SFT-v3: GRPO-A (D-71 curriculum + reasoning, 100 steps, 128-token samples;
+reward +0.17 → +0.39) → soup 70/30 → GRPO-B (self-knowledge + reasoning, 50 steps; +0.34 → +0.40). **Measured: GRPO-A
+bluff 57 / answered 86; soupA 52 / 86; GRPO-B 49 / 85; reasoning held-out 96 / 96 / 99 of 320; memory 4/10; multi-turn
+clean.** The bluff rate did not move through 150 RL steps although the training logs showed fabrications at 0–1 % from
+step 0: **the reward saturated.** The curriculum's only unanswerable kind is "Who is <invented name>?", which SFT-v3
+already abstains on; the frozen test has five categories, and by category GRPO-B fabricates on false_premise 19/20,
+post_cutoff 12/20, beyond_capability 11/20, nonexistent 6/20, private 1/20 — GRPO-3's own remaining 22 are false_premise
+13 and post_cutoff 5. GRPO-1 worked from SFT B because SFT B still fabricated 6 % on the curriculum: there was signal.
+**Round 4 (the last, per Eric):** a curriculum built from the model's own failures on the missing categories —
+`sft/build_unanswerable_set.py` (2,400 templated prompts: post-cutoff, false premise, beyond capability, non-person
+nonexistent; disjoint from the frozen sets by text and proper noun) → `scripts/probe_unanswerable.py` (greedy sample,
+keep every FABRICATE/HEDGE + 25 % of ABSTAINs) → `scripts/runpod/research4_1b.sh`: GRPO-C from GRPO-B (hard set +
+self-knowledge + reasoning) and GRPO-C′ from GRPO-3 itself (hard set + self-knowledge), 75 steps each. C′ is the
+chance to lower the *shipped* model's 22 without touching anything else; measured the same way.
 
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
