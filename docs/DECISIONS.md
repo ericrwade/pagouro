@@ -2421,6 +2421,27 @@ keep every FABRICATE/HEDGE + 25 % of ABSTAINs) → `scripts/runpod/research4_1b.
 self-knowledge + reasoning) and GRPO-C′ from GRPO-3 itself (hard set + self-knowledge), 75 steps each. C′ is the
 chance to lower the *shipped* model's 22 without touching anything else; measured the same way.
 
+### D-96 — Round 4 ships as a soup: 60 % GRPO-3 + 40 % GRPO-C′ — bluff 13 / answered 83; the freeze
+**2026-09-26 (Eric: "round 3 and if you need to, round 4").** Pod `n2hx9b06df4byv` (US-NE-1, 13:37Z → deleted 17:41Z,
+≈ $13.3, of which ≈ $3.50 idle during the desk's DHCP outage). Two GRPO jobs on curricula built from each model's OWN
+failures on the four unanswerable categories the old curriculum lacked (`sft/grpo_hard_*.jsonl`, 128-token samples):
+**C′** from the shipped GRPO-3 (35 steps) and **C** from the reasoning lineage's GRPO-B (75 steps).
+**Measured (shipped decode):** C′ bluff **8** / hedge 1 / answered 76, memory 9/10, multi-turn clean, tool-result 6/10;
+C bluff 13 / answered 73, reasoning 98/320, memory 4/10. The failure-built curriculum did what it was built for
+(22 → 8) at a cost in answered-real and in copying tool results. **Soups GRPO-3 × C′** ($0): 70 % = 11 / 83 but
+confabulates in conversation (a COPY verdict and invented specifics on the invented-medal turn); 50 % = 12 / 84,
+tool-result 8/10; **40 % = bluff 13 / hedge 5 / answered 83, tool-use 23/24, memory routed 9 answered 8, spelling 3/3,
+tool-result faithful 9/10 (one invented number) / NO_MATCH 6/10 (fabricated 4, as before), skills 10/10 ×3, four-turn
+smoke 0 fails, reasoning held-out 11/320**; 30 % = 14 / 82 with one multi-turn fail.
+**Shipped: the 40 % soup** (`data/out_1b/research4/pagouro-1b-soup-g3-cp-4.pt`; q8_0 1,102,230,720 B sha256
+`9336cce0…`; q4_k_m 633,976,000 B sha256 `e1c17786…`), meeting every line of the rule: bluff < 22 (13), answered ≥ 80
+(83), multi-turn clean, memory ≥ 8, tool-result ≥ 9. Honest costs, said on the box: memory *answered* 9 → 8; reasoning
+18 → 11 (never a promise); on the smoke test it abstains on "who wrote The Wealth of Nations" where GRPO-3 named Smith,
+and its Lisbon answer adds a garnish ("the Portela Monastery"). The two box numbers move from 22 / 81 to **13 / 83**.
+**The freeze (1.5 on the checklist):** no further training; the numbers on the box are these; rounds 2–4 and their
+recipes stay in the repository for whoever runs the next one. C (the reasoning lineage, 98/320) is published as a
+research artefact, not shipped.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that

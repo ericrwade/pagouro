@@ -67,7 +67,7 @@ Any other client: OpenAI chat-completions at that base URL, model `pagouro`, any
 ## Defaults the endpoint enforces (do not fight them)
 
 - **Greedy decoding.** `temperature` in a request is ignored. Measured on this model: sampling at 0.3
-  raised the bluff rate from 22 % to 37 % on the frozen test. If you want a confidence signal, send
+  raised the bluff rate by 15 points on the frozen test. If you want a confidence signal, send
   `"pagouro_careful": true` — the harness re-asks five times and labels disagreement as a guess.
 - **Context 8,192 tokens**; answers up to `max_tokens` (default 200, capped at a quarter of the window).
   Keep a user message under ~1,500 words if you want room for an answer.
@@ -85,10 +85,10 @@ Any other client: OpenAI chat-completions at that base URL, model `pagouro`, any
 
 | Ask it to… | Expect |
 |---|---|
-| Copy or quote from a passage you gave it | reliable: tool-result fidelity 10/10 on the frozen test |
+| Copy or quote from a passage you gave it | reliable: tool-result fidelity 9/10 on the frozen test |
 | Arithmetic, dates, unit conversion | exact — routed to tools (23/24 routing) |
-| Answer a general knowledge question | 81 % right on the 100-item real set; **22 % invented on the 100-item unanswerable set** — it says "no record" most of the time it should, not every time |
-| Reason through a word problem without tools | poor: 18 of 320 on a program-checked set. Give it the passage and ask it to *find*, not to *work out* |
+| Answer a general knowledge question | 83 % right on the 100-item real set; **13 % invented on the 100-item unanswerable set** — it says "no record" most of the time it should, not every time |
+| Reason through a word problem without tools | poor: 11 of 320 on a program-checked set. Give it the passage and ask it to *find*, not to *work out* |
 | Write long free text | short answers only; it is a 1B |
 | Keep a secret | everything stays on the machine; see `THREAT_MODEL.md` for exactly what that covers |
 

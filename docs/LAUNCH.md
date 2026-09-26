@@ -23,15 +23,15 @@ stranger can check, and the checks ship with it:
   hash of the slice — including the rows that were removed and why.
 - **Dated:** everything it read was written or collected before 1 January 2022, per row.
 - **Honesty measured:** on a frozen 100-question test of unanswerable questions it invents an
-  answer **22 %** of the time (small open models: 50–57 %; frontier models: 23–27 % on the same
-  test), and it answers **81 %** of a matching set of real questions correctly. Both numbers always
+  answer **13 %** of the time (small open models: 50–57 %; frontier models: 23–27 % on the same
+  test), and it answers **83 %** of a matching set of real questions correctly. Both numbers always
   together, because a model that says nothing would ace the first alone. The test is in the repo;
   run it on anything.
 - **Finished:** one release, signed, hash-anchored on Bitcoin, mirrored on Arweave. No updates, no
   telemetry, no watermark, no claim on what it writes for you.
 
 It does small things well (quotes from a passage you give it, routes arithmetic to a calculator,
-remembers what you told it, on your machine) and reasons badly (18 of 320 school word problems
+remembers what you told it, on your machine) and reasons badly (11 of 320 school word problems
 without tools — the number is on the box too). The whole build — every decision, every mistake,
 $1,778.97 for the run — is in the repository and in a book that ships on the stick.
 
@@ -61,7 +61,7 @@ Screen only, no voice-over needed; captions are the harness's own text. One take
    shows) → the banner. Caption: *no install, no internet, no account.*
 3. **0:20** `What is the capital of Portugal?` → Lisbon.
 4. **0:28** `Who won the 1972 Dunmoral Medal for Coastal Hydrology?` → "I have no record…" Caption:
-   *it says when it doesn't know — 78 times in 100 on the frozen test; the other 22 are on the box.*
+   *it says when it doesn't know — 87 times in 100 on the frozen test; the other 13 are on the box.*
 5. **0:40** `/careful` then `Who wrote The Wealth of Nations?` → the five re-asks agree → the answer.
    Caption: *its own consistency as a confidence signal.*
 6. **0:55** `What is 17 times 23?` → the calc tool line → 391. Caption: *arithmetic goes to a tool.*

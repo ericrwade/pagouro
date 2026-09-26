@@ -1,6 +1,6 @@
 # About Pagouro
 
-*Draft 2, 2026-09-25 (O-43; key facts filled from the measured files, D-93). The source for the public "About" page and the model card. The
+*Draft 3, 2026-09-26 (O-43; key facts from the measured files, D-96). The source for the public "About" page and the model card. The
 structure follows a conventional About-page recipe Eric sent from the road (one-sentence value
 proposition, what it does, what makes it different, who it is for, who made it, how it works,
 a machine-readable key-facts table, FAQ), rewritten for a finished artefact rather than a
@@ -97,7 +97,7 @@ handles: `docs/HANDLES.md`, F12 at release.)*
 
 ## Disclosures
 
-What it cost: $1,778.97 for the 1B training run and about $1,900 all-in with the research rounds
+What it cost: $1,778.97 for the 1B training run and about $1,915 all-in with the research rounds
 that followed it (every figure read from the RunPod account after each pod was deleted, and
 listed by day in `BUILD_LOG.md`); the domain; a USB stick. No grant, no sponsor, no investor.
 There is no token and there will not be one: a coin would give the project a reason to keep
@@ -130,8 +130,8 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Book licence | Story chapters all rights reserved; do-it chapters CC BY-SA 4.0 (D-64) |
 | Tokenizer | 32,768-entry BPE, trained on the licensed corpus |
 | Trained on | 8× NVIDIA H100 SXM, rented (RunPod, Montreal), 2026-09-22 → 09-24; bill $1,778.97 read from the account after the pod was deleted |
-| Honesty score | Bluff rate 22 % on the 100-item unanswerable set; answered-real 81 % on the 100-item real set (D-93; measured at the shipped decode, `evals/results/pagouro-1b-grpo3-g-trim__*`) |
-| File on the stick | `model/pagouro-q8_0.gguf`, 1,102,230,720 bytes, SHA-256 `40f9907593c3e4ff95ee07a1e55ca5fe112d25ff8e82163600dbcd2a2bf4e0a1` (the app runs this one; `pagouro-q4_k_m.gguf`, 633,976,000 bytes, ships beside it) |
+| Honesty score | Bluff rate 13 % on the 100-item unanswerable set; answered-real 83 % on the 100-item real set (D-96; measured at the shipped decode, `evals/results/pagouro-1b-soup-g3-cp-4__*`) |
+| File on the stick | `model/pagouro-q8_0.gguf`, 1,102,230,720 bytes, SHA-256 `9336cce0647dc5a0a7346163fa45d97ec18fd9a73cb3048ebd810643f7585c05` (the app runs this one; `pagouro-q4_k_m.gguf`, 633,976,000 bytes, ships beside it) |
 | Requirements | Any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account |
 | Price | Free. Tip jar. |
 | Maintenance | None. Frozen at release; verify with `docs/CHECK_YOUR_COPY.md` |
@@ -156,7 +156,7 @@ print the number beside how often it answers real questions correctly. It never 
 
 ### Can it reason — word problems, multi-step arithmetic?
 Barely, today. On a program-checked held-out set of school word problems (`evals/reasoning_heldout.jsonl`,
-eight kinds, exact keys, 320 problems) the shipped model solved 18 without tools; it answers in one
+eight kinds, exact keys, 320 problems) the shipped model solved 11 without tools; it answers in one
 line and does not work anything out. Plain arithmetic goes to the calculator tool instead, which is exact. The
 set, the checker and the training recipe for the next round ship in the repository, so the number
 can be re-measured on any later build.

@@ -14,7 +14,7 @@ rows close; it is the one page to open when asking "what is left?".*
 |---|---|
 | 1B model trained from scratch on the licensed, dated corpus (99.7 B tokens, $1,778.97) | D-85; `data/out_1b/`, `runs/pagouro-1b.jsonl` |
 | Post-trained (SFT + three GRPO rounds), decode settled, on the stick | D-87 → D-93; stick manifest 104/104, sha `bd666b83…` |
-| Numbers on the box: **bluff 22 % / answered-real 81 %**, multi-turn clean | `evals/results/pagouro-1b-grpo3-g-trim__*`, `facts.json` |
+| Numbers on the box: **bluff 13 % / answered-real 83 %**, multi-turn clean (D-96) | `evals/results/pagouro-1b-soup-g3-cp-4__*`, `facts.json` |
 | App (harness, tools, packs, memory, `/careful`), docs, threat model, corpus ledger, book ch. 0–13 draft 1 | repo `ericrwade/pagouro` (private) |
 | Handles checked (`pagouro` free everywhere probed), pagouro.com Eric's | `docs/HANDLES.md` |
 
@@ -25,8 +25,8 @@ rows close; it is the one page to open when asking "what is left?".*
 | 1.1 | ~~Sep 25~~ DONE | Research round 2 (pod `e333vfwcjuo4ej`, $8.66, deleted): SFT-v3 + GRPO-5 home and hash-verified | $8.66 | Claude |
 | 1.2 | ~~Sep 25~~ DONE | Round 2 measured (D-95): SFT-v3 43/77, GRPO-5 49/84, reasoning 18 → 93–94 of 320, soups 28/81 and 37/81 — **does not ship** | $0 | Claude |
 | 1.3 | ~~Sep 26~~ DONE | Shipped model = GRPO-3 (22 / 81), unchanged; stick current; facts / card / ABOUT agree (D-95) | $0 | Claude |
-| 1.4 | Sep 26 (must be home by Sep 26 evening) | Optional round 3: the full lineage from an SFT that includes the reasoning traces (SFT-v3 recipe → GRPO on D-71 → soup → self-knowledge GRPO), ≈ 3 h. Stop rule: this is the last round; no shipped improvement = freeze on GRPO-3 | ≈ $15 | **Eric** says go, or says freeze |
-| 1.5 | Sep 26 | Freeze: "no further training; the numbers on the box are these." Write D-96 (the freeze) | $0 | **Eric** (one line) |
+| 1.4 | ~~Sep 26~~ DONE | Rounds 3 and 4 (D-95, D-96): round 3 ≈ $11.8, no ship (reward saturated); round 4 ≈ $13.3 — GRPO-3 on its own failures, blended 60/40 → **bluff 13 / answered 83**, ships | $25.1 | Claude |
+| 1.5 | ~~Sep 26~~ DONE | Freeze written into D-96: no further training; the numbers on the box are 13 / 83 | $0 | Claude (Eric can veto) |
 
 **Hard checkpoint — Sep 27, ~11:30 AM PT (18:30Z; Eric, 2026-09-25): the build PC is shut down and travels to Las Vegas, then
 restarts.** Before it: no pod running (`list-pods` []), stick current, everything committed and pushed, session log +
@@ -36,7 +36,7 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
-| 2.1 | ~~Sep 26~~ DONE | **Release gate (D-50) checked for GRPO-3 at the shipped decode:** answered-real **81 %** (≥ 80 ✓); bluff **22 %** — below every open baseline (50–57 %) ✓ and below the frontier figures in `evals/BASELINES.md` (23.3 %, 26.7 %, measured on the 30-item set) ✓; the original stretch target T-1 (≤ 20 %) is **not** met and is said so; all nine suites present as `evals/results/pagouro-1b-grpo3-g-trim__*` (+ multi-turn 0 fails, held-out reasoning 18/320 recorded); offline audit **PASS** (`evals/results/offline_audit_pagouro-1b-grpo3.json`, shipped as `docs/offline_audit.json`). Re-check only if round 4 changes the model | $0 | Claude |
+| 2.1 | ~~Sep 26~~ DONE (re-checked for D-96) | **Release gate (D-50) for the shipped soup:** answered-real **83 %** (≥ 80 ✓); bluff **13 %** — below every open baseline (50–57 %) ✓, below the frontier figures in `evals/BASELINES.md` ✓, and under the stretch target T-1 (≤ 20 %) ✓; all nine suites present as `evals/results/pagouro-1b-soup-g3-cp-4__*` (+ multi-turn 0 fails, held-out reasoning 11/320 recorded); offline audit **PASS** (`evals/results/offline_audit_pagouro-1b-grpo3.json`, shipped as `docs/offline_audit.json`). Re-check only if round 4 changes the model | $0 | Claude |
 | 2.2 | Sep 26–27 | Fresh-stick test on a machine that is not the build PC: double-click, first answer, `/careful`, a pack question, `verify_manifest.py` → PASS. Time from double-click to first answer recorded (E3) | $0 | **Eric** (any second PC/laptop; 15 min) |
 | 2.3 | Sep 27 | Old-laptop number (E3): tokens/second on the oldest machine available; goes in the README as measured | $0 | **Eric** (if he has one; else Claude records "not measured") |
 | 2.4 | Sep 27 | Independent rerun of the bluff test by someone who is not us (a friend, one hour) — the first "receipt over claim" (E4) | $0 | **Eric** finds the person |
