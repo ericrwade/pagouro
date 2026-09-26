@@ -98,7 +98,7 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   (`sft/grpo_unanswerable.jsonl`, `grpo_hard_*.jsonl`, `research4_1b.sh`: GRPO-C from GRPO-B, GRPO-C′ from GRPO-3).
   Pod `n2hx9b06df4byv` created 13:37Z but provisioning failed (desk internet down 12:50Z→); **pod is running with
   nothing on it** at the restart. O-48 done (`--serve`, `agents/`). `docs/TO_DONE.md` = the checklist.
-**Open / next:** READ `docs/HANDOFF_2026-09-26.md` FIRST. (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
+**Open / next:** READ `docs/HANDOFF_2026-09-26.md` FIRST (the pod ssh key is also at `~/.ssh/pagouro_rpkey`). (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
 before ~15:30Z and the link holds, else delete it; `list-pods` [] before the session ends; (2) measure round 4; C′ ships
 only under the rule (bluff < 22, answered ≥ 80, multi-turn clean, memory ≥ 8) → D-96 + repackage; else freeze on GRPO-3
 (D-96); (3) re-create the hourly inbox loop; push; (4) `docs/TO_DONE.md` section 2 onward; hard stop Sep 27 11:30 AM PT.
