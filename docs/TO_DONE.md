@@ -45,11 +45,11 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
-| 3.1 | Sep 26 | Eric picks the README first paragraph (candidates A / B / C in `docs/ORIGIN_LEDGER.md` F12) and the box line | $0 | **Eric** |
-| 3.2 | ~~Sep 26~~ DONE (except the first paragraph, 3.1) | README final pass: the five claims, the two numbers, SmartScreen note (F11), "finished, as-is, fork it" stance; stick README = repo README first paragraph | $0 | Claude |
+| 3.1 | ~~Sep 26~~ DONE | Eric picked **A** (2026-09-27); it is the README's first paragraph | $0 | Eric |
+| 3.2 | ~~Sep 26~~ DONE | README final pass: the five claims, the two numbers, SmartScreen note (F11), "finished, as-is, fork it" stance; stick README = repo README first paragraph | $0 | Claude |
 | 3.3 | ~~Sep 27~~ DONE (release-day fields only remain: date, anchor, links) | Model card final (`docs/MODEL_CARD.md`), ABOUT final, `facts.json` final — every TBD gone except the release-day fields (date, anchor, links) | $0 | Claude |
-| 3.4 | Sep 27 | Founder byline and links on ABOUT/README (name only, one-line employer disclaimer, no home address — F16) | $0 | **Eric** writes the disclaimer line |
-| 3.5 | ~~Sep 27~~ DRAFTED in `docs/ABOUT.md` § Disclosures — **Eric's holdings sentence is the one bracket left** | Disclosures paragraph (E7): what it cost, what Eric holds, "no token, on purpose, because…" | $0 | Claude drafts, **Eric** approves |
+| 3.4 | ~~Sep 27~~ DONE | Eric's disclaimer, in his words, in README (footer) and ABOUT (Who made it) | $0 | Eric |
+| 3.5 | ~~Sep 27~~ DONE | Disclosures in `docs/ABOUT.md`; holdings in Eric's words (mined bitcoin, uses crypto often, not itemised) | Disclosures paragraph (E7): what it cost, what Eric holds, "no token, on purpose, because…" | $0 | Claude drafts, **Eric** approves |
 
 ## 4. Book — *Make Your Own AI* (ships with the release, not after)
 

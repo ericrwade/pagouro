@@ -92,7 +92,7 @@ is marked as his in `docs/DECISIONS.md`, and paid for the cards. The engineering
 measuring were done by Claude (Anthropic) in sessions Eric directed, mostly while he was
 travelling and reading the reports on his phone. The public origin story is `docs/ORIGIN.md`;
 the build log is the unedited daily record; the book *Make Your Own AI* is the story with the
-numbers. The credit line is Eric's (D-86): **Eric Wade, with Claude (Anthropic)**. *(Founder links and
+numbers. The credit line is Eric's (D-86): **Eric Wade, with Claude (Anthropic)**. In his words: "This is a personal project which has been built as free and open-source software and has no connection to myself after launch, nor to my employer at any time." *(Founder links and
 handles: `docs/HANDLES.md`, F12 at release.)*
 
 ## Disclosures
@@ -102,9 +102,7 @@ that followed it (every figure read from the RunPod account after each pod was d
 listed by day in `BUILD_LOG.md`); the domain; a USB stick. No grant, no sponsor, no investor.
 There is no token and there will not be one: a coin would give the project a reason to keep
 promising things after it is finished, which is the opposite of the promise it makes. Money can be
-given to it (a tip jar and an address, at release) but nothing can be bought from it. *[Eric's line
-on holdings — what he owns in the networks the release touches (Bitcoin, Arweave, Solana,
-Quilibrium), in one sentence, per D-14 — goes here before release.]* The model was built by one
+given to it (a tip jar and an address, at release) but nothing can be bought from it. Eric has mined bitcoin and uses crypto and blockchain as often as he can; he does not itemise his holdings. The model was built by one
 person and one AI model; the AI's company had no say in it and did not pay for it.
 
 ## How Pagouro works — what to expect
