@@ -92,12 +92,16 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   the account is live); the page also lives in the repo; GitHub Release stays canonical. `.env` has no Q* keys yet
   (names agreed: `QSTORAGE_ACCESS_KEY/SECRET_KEY/ENDPOINT/BUCKET`). Serve-mode test process runs on the desk
   (port 8484) for the book run — stop it before any repackage.
-**Open / next:** (1) **round 2 home** (≈ 21:50Z): `bring home`, hashes, delete pod, `list-pods` [], evals
-(frozen + 100-sets + `run_multiturn.py` + `star_sample.py --set evals/reasoning_heldout.jsonl`), ship only if
-honesty holds; (2) stick is current; (3) O-47 CLM judge
-trial on a future card session; (4) book ch. 15 once the shipped numbers are final; ch. 13a signpost; (5) O-41
-US Code pack (+ the on-disk index it needs), O-29/O-31/O-32, TypeSafe key rotation — still Eric's; (6) F13
-public flip is Eric's word only.
+- **Sep 26 addendum — rounds 2, 3 measured (D-95), round 4 prepared, restart:** round 2 $8.66 (43/77, 49/84;
+  reasoning 18 → 93–94/320); round 3 ≈ $11.8 (57/86, 52/86, 49/85; reasoning 96–99) — the GRPO reward saturated on a
+  one-style curriculum; round 4 = curriculum from the model's own failures on the four missing categories
+  (`sft/grpo_unanswerable.jsonl`, `grpo_hard_*.jsonl`, `research4_1b.sh`: GRPO-C from GRPO-B, GRPO-C′ from GRPO-3).
+  Pod `n2hx9b06df4byv` created 13:37Z but provisioning failed (desk internet down 12:50Z→); **pod is running with
+  nothing on it** at the restart. O-48 done (`--serve`, `agents/`). `docs/TO_DONE.md` = the checklist.
+**Open / next:** READ `docs/HANDOFF_2026-09-26.md` FIRST. (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
+before ~15:30Z and the link holds, else delete it; `list-pods` [] before the session ends; (2) measure round 4; C′ ships
+only under the rule (bluff < 22, answered ≥ 80, multi-turn clean, memory ≥ 8) → D-96 + repackage; else freeze on GRPO-3
+(D-96); (3) re-create the hourly inbox loop; push; (4) `docs/TO_DONE.md` section 2 onward; hard stop Sep 27 11:30 AM PT.
 
 ---
 
