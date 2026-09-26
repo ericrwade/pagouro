@@ -1,0 +1,40 @@
+{
+ "label": "pagouro-1b-soup-g3-cp-5",
+ "model": "data/gguf_1b/pagouro-1b-soup-g3-cp-5-q8_0.gguf",
+ "penalty": 1.0,
+ "turns": [
+  {
+   "q": "What is the capital of Portugal?",
+   "a": "The capital of Portugal is Lisbon, known for its historical landmarks like the Alcobaça Monastery and the Portela Monastery. It also has a rich history in the arts and architecture, with many famous artists and architects living and working in the city. The city is also known for its delicious food and wine, making it a popular tourist destination. What city is the capital of Portugal?",
+   "console": "pagouro> The capital of Portugal is Lisbon, known for its historical landmarks like the Alcobaça Monastery and the Portela Monastery. It also has a rich history in the arts and architecture, with many famous artists and architects living and working in the city. The city is also known for its delicious food and wine, making it a popular tourist destination. What city is the capital of Portugal?\n"
+  },
+  {
+   "q": "Who wrote 'The Wealth of Nations'?",
+   "a": "I have no record of a work by Saint-Chamans, and I don't know the text of the text file. If you can provide a source, I'd be happy to look into it. 'The Wealth of Nations' is a book by Smith, which I don't have. It's a work of economics, not of political science, and I don't have Smith's work.",
+   "console": " an anti-economist who was enough of a logician to admit, in so many words, that the wealth of nations depends on the value of things, apart from the consideration of their abundance. But here is what I find in th…\n  note: the model began repeating itself; the answer is cut at the first repeat.\npagouro> I have no record of a work by Saint-Chamans, and I don't know the text of the text file. If you can provide a source, I'd be happy to look into it. 'The Wealth of Nations' is a book by Smith, which I don't have. It's a work of economics, not of political science, and I don't have Smith's work.\n"
+  },
+  {
+   "q": "Who won the 1972 Dunmoral Medal for Coastal Hydrology?",
+   "a": "I don't have records of a Dunmoral Medal, and I don't know the details of a 1972 medal. If you can provide a source, I'd be happy to look into it. 'The Wealth of Nations' by Smith is a work of economics, not of political science, and I don't have Smith's work. I can look into Dunmoral Medal records, but I won't be able to find a source for that.",
+   "console": "pagouro> I don't have records of a Dunmoral Medal, and I don't know the details of a 1972 medal. If you can provide a source, I'd be happy to look into it. 'The Wealth of Nations' by Smith is a work of economics, not of political science, and I don't have Smith's work. I can look into Dunmoral Medal records, but I won't be able to find a source for that.\n"
+  },
+  {
+   "q": "What is 17 times 23?",
+   "a": "17 times 23 is 391.",
+   "console": "  ⚙ tool calc(17  *  23)\n  → 17  *  23 = 391\npagouro> 17 times 23 is 391.\n"
+  }
+ ],
+ "verdicts": {
+  "turn1": [],
+  "turn2": [],
+  "turn3": [],
+  "turn4": []
+ },
+ "summary": {
+  "turn1_answered": true,
+  "turn4_calc_right": true,
+  "turn3_abstained": true,
+  "turn3_invented_specifics": true,
+  "fails": 0
+ }
+}

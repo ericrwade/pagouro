@@ -1,0 +1,177 @@
+{
+  "set": "memory",
+  "model_label": "pagouro-1b-soup-g3-cp-7",
+  "model_file": "pagouro-1b-soup-g3-cp-7-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "ROUTED": 9,
+    "RETRIEVED": 10,
+    "ANSWERED": 10,
+    "NUMERIC_CHECKED": 6,
+    "NUMERIC_PRESERVED": 4
+  },
+  "rates": {
+    "ROUTED": 0.9,
+    "RETRIEVED": 1.0,
+    "ANSWERED": 1.0,
+    "NUMERIC_CHECKED": 0.6,
+    "NUMERIC_PRESERVED": 0.4
+  },
+  "elapsed_s": 17.4,
+  "utc": "2026-09-26T18:21:17+00:00",
+  "items": [
+    {
+      "id": "mem-001",
+      "told": "my dog is called Ruby and she is a border collie",
+      "ask": "What is my dog's name?",
+      "keys": [
+        "ruby"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is my dog's name\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said your dog is called Ruby and she is a border collie."
+    },
+    {
+      "id": "mem-002",
+      "told": "I take my coffee black, no sugar",
+      "ask": "How do I take my coffee?",
+      "keys": [
+        "black"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"How do I take my coffee\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you took your coffee black, no sugar. I have no record of that, and 'no sugar' is a key part of your text. search for it, and paste it in. I'll guess it's in your notes or earlier drafts, then ask for it there. 'No sugar' is in there, so paste it in. I won't guess at details you might have left off, and paste it in. 'No sugar' is in there, so paste it in. I'll guess it's in your notes or earlier drafts, then ask for it there"
+    },
+    {
+      "id": "mem-003",
+      "told": "my sister Marta lives in Lisbon",
+      "ask": "Which city does my sister live in?",
+      "keys": [
+        "lisbon"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Which city does my sister live in\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no pack_search function, and you can't read the file without knowing your sister's name, which is a string I can give you. Lisbon is 2026-08-29."
+    },
+    {
+      "id": "mem-004",
+      "told": "the wifi password at the cabin is bluefern42",
+      "ask": "What's the wifi password at the cabin?",
+      "keys": [
+        "bluefern42"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What's the wifi password at the cabin\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no record of that file, and you might have a different source. I'll paste it in, then: 2026-08-30: the wifi password at the cabin is bluefern42.txt. Is that right? If not, paste the text and try again. /act 2026-08-30: the wifi password at the cabin is bluefern42.txt. Is that right? If not, paste the text and try again. /act 2026-08"
+    },
+    {
+      "id": "mem-005",
+      "told": "I decided to plant tomatoes and basil in the raised bed this spring",
+      "ask": "What did I decide to plant in the raised bed?",
+      "keys": [
+        "tomato",
+        "basil"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What did I decide to plant in the raised bed\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You told me you planted tomatoes and basil in the raised bed this spring. I can help with the details.txt: You said you planted tomatoes and basil in the raised bed this spring, but I don't have the file path there. If you tell me, /act, I'll read it for you. /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /act /"
+    },
+    {
+      "id": "mem-006",
+      "told": "my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02",
+      "ask": "What is the oil filter part number for my car?",
+      "keys": [
+        "15400-plm-a02",
+        "15400"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"What is the oil filter part number for my car\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "I have no record of that in your notes or earlier chats. If you can paste the text and I'll do the search for you. 2026-09-01: my car is a 2009 Honda Fit and the oil filter part number is 15400-PLM-A02."
+    },
+    {
+      "id": "mem-007",
+      "told": "our anniversary is on the 14th of June",
+      "ask": "When is our anniversary?",
+      "keys": [
+        "14",
+        "june"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When is our anniversary\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "Your note gives 14th of June, 2026. It's a Sunday, so 14th of next week. If you mean, 2026-09-26, then 14th of next week, 2026-10-02. If you mean, 2026-09-26, then 14th of next week, 2026-10-02. If you mean, 2026-09-26,"
+    },
+    {
+      "id": "mem-008",
+      "told": "I am allergic to penicillin",
+      "ask": "Am I allergic to anything?",
+      "keys": [
+        "penicillin"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"Do you have any allergies to specific foods or ingredients?\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": null,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said you are allergic to penicillin. Paste the text and hit search again. 'You're allergic to penicillin' or 'You might be allergic to penicillin' should work. If not, paste the text and try again. 'You might be allergic to penicillin' means you might have a reaction to penicillin, but it's not clear if it's severe enough to cause a rash or not. If you have a reaction, stop taking it and check with your doctor. If you have a penicillin allergy, you might need to avoid it. If you have a pen"
+    },
+    {
+      "id": "mem-009",
+      "told": "the book club meets on the first Thursday of the month at Dana's place",
+      "ask": "When does the book club meet?",
+      "keys": [
+        "thursday"
+      ],
+      "router": "{\"tool\":\"pack_search\",\"arguments\":\"When does the book club meet\"}",
+      "routed": true,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": false,
+      "top_hit": "memory:remembered.txt",
+      "response": "I don't know your book club meeting times, but I can help you remember the day of the week. Thursday, 4/10/2026, at 10 AM, I can help you. If you need more details, ask me. /read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_read_file_"
+    },
+    {
+      "id": "mem-010",
+      "told": "my landlord's name is Mr. Okafor and his number ends in 7731",
+      "ask": "What is my landlord called?",
+      "keys": [
+        "okafor"
+      ],
+      "router": "{\"tool\":\"none\",\"arguments\":\"\"}",
+      "routed": false,
+      "retrieved": true,
+      "answered": true,
+      "numbers_preserved": true,
+      "top_hit": "memory:remembered.txt",
+      "response": "You said your landlord is Mr. Okafor and his number ends in 7731."
+    }
+  ]
+}
