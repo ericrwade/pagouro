@@ -180,6 +180,12 @@ def main() -> int:
 
 **A finished artifact, released as-is. No updates or support are promised. Fork it.**
 
+Pagouro is a one-billion-parameter language model on a USB stick, built to prove one thing: that an
+AI can be fully documented and fully self-contained and still be useful. It is not trying to be the
+smartest model you can run. It is trying to be the only one whose promises a stranger can check --
+every training byte licensed and dated, its honesty measured on a test that ships with it (the two
+numbers are in `facts.json` and `ABOUT.md`), finished and frozen the day it was released.
+
 ## Run it
 
 Double-click `PAGOURO.bat`. That is the entire installation process. It starts
@@ -248,6 +254,11 @@ Greek *págouros*, hermit crab: carries a home it can move out of. The *ouro*
 inside it nods to ouroboros, the self-consuming snake: needs nothing from
 outside. Both describe this file, sitting on this stick, needing nothing from
 anywhere to keep working.
+
+---
+
+*This is a personal project which has been built as free and open-source software and has no
+connection to myself after launch, nor to my employer at any time.* -- Eric Wade
 """
     with io.open(os.path.join(rel, "README.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write(readme)
