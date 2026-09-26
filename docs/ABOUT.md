@@ -131,7 +131,7 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Tokenizer | 32,768-entry BPE, trained on the licensed corpus |
 | Trained on | 8× NVIDIA H100 SXM, rented (RunPod, Montreal), 2026-09-22 → 09-24; bill $1,778.97 read from the account after the pod was deleted |
 | Honesty score | Bluff rate 13 % on the 100-item unanswerable set; answered-real 83 % on the 100-item real set (D-96; measured at the shipped decode, `evals/results/pagouro-1b-soup-g3-cp-4__*`) |
-| File on the stick | `model/pagouro-q8_0.gguf`, 1,102,230,720 bytes, SHA-256 `9336cce0647dc5a0a7346163fa45d97ec18fd9a73cb3048ebd810643f7585c05` (the app runs this one; `pagouro-q4_k_m.gguf`, 633,976,000 bytes, ships beside it) |
+| File on the stick | `model/pagouro-q8_0.gguf`, 1,102,230,720 bytes, SHA-256 `9336cce0647dc5a0a7346163fa45d97ec18fd9a73cb3048ebd810643f7585c05` (the app runs this one; `pagouro-q4_k_m.gguf`, 633,976,000 bytes, ships beside it and measures 16 % / 78 % — the smaller file, not the measured model) |
 | Requirements | Any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account |
 | Price | Free. Tip jar. |
 | Maintenance | None. Frozen at release; verify with `docs/CHECK_YOUR_COPY.md` |

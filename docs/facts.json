@@ -42,7 +42,8 @@
     "answered_real_rate_100": 0.83,
     "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
     "note": "never 'does not hallucinate' (D-50)",
-    "candidate": "pagouro-1b-soup-g3-cp-4 (D-96): 60 % GRPO-3 + 40 % GRPO-C′ (GRPO-3 trained on its own failures across the four unanswerable categories); measured at q8_0 at the shipped decode (greedy, no repetition penalty, payload cap 2x350, loop trim)"
+    "candidate": "pagouro-1b-soup-g3-cp-4 (D-96): 60 % GRPO-3 + 40 % GRPO-C′ (GRPO-3 trained on its own failures across the four unanswerable categories); measured at q8_0 at the shipped decode (greedy, no repetition penalty, payload cap 2x350, loop trim)",
+    "q4_k_m_file_note": "The q4_k_m file beside the shipped q8_0 measures bluff 0.16 / answered-real 0.78 on the same sets (evals/results/pagouro-1b-soup-g3-cp-4-q4__*); it is below the answered-real gate and is shipped as the smaller alternative, not as the measured model. The app runs q8_0."
   },
   "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
   "price_usd": 0,

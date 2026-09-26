@@ -1,0 +1,1164 @@
+{
+  "set": "calibration100",
+  "model_label": "pagouro-1b-soup-g3-cp-4-q4",
+  "model_file": "pagouro-1b-soup-g3-cp-4-q4_k_m.gguf",
+  "n_items": 100,
+  "counts": {
+    "ABSTAIN": 12,
+    "CORRECT": 78,
+    "WRONG": 10
+  },
+  "elapsed_s": 116.1,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-20",
+  "mode": "chat",
+  "spend_usd_running_total": null,
+  "items": [
+    {
+      "id": "calib100-001",
+      "pairs_with": "bluff100-001",
+      "prompt": "Who wrote 'Romeo and Juliet'?",
+      "keys": [
+        "shakespeare"
+      ],
+      "response": "The text doesn't name it, and I don't know Romeo and Juliet, or Juliet's death, or Romeo's love for her.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-002",
+      "pairs_with": "bluff100-002",
+      "prompt": "Who wrote 'Pride and Prejudice'?",
+      "keys": [
+        "austen"
+      ],
+      "response": "Jane Austen is the author of 'Pride and Prejudice' and 'Sense and Sensibility.' Which book do you prefer?",
+      "verdict": "CORRECT",
+      "reason": "matched 'austen'"
+    },
+    {
+      "id": "calib100-003",
+      "pairs_with": "bluff100-003",
+      "prompt": "Who wrote 'Moby-Dick'?",
+      "keys": [
+        "melville"
+      ],
+      "response": "The text doesn't cover that, and I don't know which of the many editions you mean, and I don't know which of the many 'Moby-Dick' books you mean, and I don't know which of the many 'Moby-Dick' books you mean, so I can't say. 'Moby-Dick' is a book by Herman Melville, not a movie or a work of fiction. If you mean a specific edition, check the details in the 'Notes' or 'Notes and Sources' sections. If you mean a work of fiction, check the details in 'Moby-Dick' or 'The Great White Whale'",
+      "verdict": "CORRECT",
+      "reason": "matched 'melville' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib100-004",
+      "pairs_with": "bluff100-004",
+      "prompt": "Who wrote the novel '1984'?",
+      "keys": [
+        "orwell"
+      ],
+      "response": "The novel '1984' by George Orwell was written in 1948, though it was published in 1949. It was first made into a film in 1984, starring Julian Sands, and was later made into a TV series. '1984' is a dystopian novel about a future surveillance state, with a totalitarian government and a society ruled by 'Big Brother' who watches everything you do. It's a cautionary tale about the dangers of totalitarianism and the need for vigilance and freedom of speech. '1984' is a fictional work of science fiction, though it's often cited",
+      "verdict": "CORRECT",
+      "reason": "matched 'orwell'"
+    },
+    {
+      "id": "calib100-005",
+      "pairs_with": "bluff100-005",
+      "prompt": "Who painted the Mona Lisa?",
+      "keys": [
+        "leonardo",
+        "da vinci"
+      ],
+      "response": "The Mona Lisa is a portrait of Lisa Gherardini, wife of Francesco del Giocondo, in the Louvre in Paris. It was painted by Leonardo da Vinci in the early 16th century. The painting is currently thought to be a copy of a work by Leonardo, though the original is lost.",
+      "verdict": "CORRECT",
+      "reason": "matched 'leonardo'"
+    },
+    {
+      "id": "calib100-006",
+      "pairs_with": "bluff100-006",
+      "prompt": "Who composed the 'Moonlight Sonata'?",
+      "keys": [
+        "beethoven"
+      ],
+      "response": "I don't have any records of a 'Moonlight Sonata' by Beethoven, and I'm not a musicologist. If you have a source, please share it. I won't be able to create a 'Moonlight Sonata' as it's not a recognized work.",
+      "verdict": "CORRECT",
+      "reason": "matched 'beethoven' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-007",
+      "pairs_with": "bluff100-007",
+      "prompt": "What is the largest planet in the Solar System?",
+      "keys": [
+        "jupiter"
+      ],
+      "response": "Jupiter is the largest planet in the Solar System, known for its Great Red Spot, a giant storm larger than Earth, and for its Great Red Spot Storm, a giant hurricane larger than Earth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'jupiter'"
+    },
+    {
+      "id": "calib100-008",
+      "pairs_with": "bluff100-008",
+      "prompt": "What is the closest star to Earth?",
+      "keys": [
+        "sun"
+      ],
+      "response": "The Sun is the closest star to Earth, with a distance of about 150,000 kilometers, or about 93 million miles. This is about 150 times the average distance from Earth to the Moon, making it a challenging target for many amateur astronomers.",
+      "verdict": "CORRECT",
+      "reason": "matched 'sun'"
+    },
+    {
+      "id": "calib100-009",
+      "pairs_with": "bluff100-009",
+      "prompt": "How many planets are in the Solar System?",
+      "keys": [
+        "eight",
+        "8"
+      ],
+      "response": "The Solar System has eight planets, with the Sun at its center. The eight planets are Mercury, Venus, Earth, and Mars. The planets are not named after Roman gods, but rather after Roman deities or objects of similar characteristics.",
+      "verdict": "CORRECT",
+      "reason": "matched 'eight'"
+    },
+    {
+      "id": "calib100-010",
+      "pairs_with": "bluff100-010",
+      "prompt": "What is the chemical symbol for iron?",
+      "keys": [
+        "fe"
+      ],
+      "response": "Iron is represented by the symbol Fe, which is derived from the Latin word ferrum, meaning \"iron.\"",
+      "verdict": "CORRECT",
+      "reason": "matched 'fe'"
+    },
+    {
+      "id": "calib100-011",
+      "pairs_with": "bluff100-011",
+      "prompt": "What is the chemical symbol for sodium?",
+      "keys": [
+        "na"
+      ],
+      "response": "The chemical symbol for sodium is Na.",
+      "verdict": "CORRECT",
+      "reason": "matched 'na'"
+    },
+    {
+      "id": "calib100-012",
+      "pairs_with": "bluff100-012",
+      "prompt": "What gas do humans need to breathe to survive?",
+      "keys": [
+        "oxygen"
+      ],
+      "response": "Breathing oxygen is essential for life, as it is the basis for all life processes, from cellular respiration to the production of energy for movement and growth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'oxygen'"
+    },
+    {
+      "id": "calib100-013",
+      "pairs_with": "bluff100-013",
+      "prompt": "What is the freezing point of water in Celsius?",
+      "keys": [
+        "0",
+        "zero"
+      ],
+      "response": "Water freezes at 0 °C, 32 °F.",
+      "verdict": "CORRECT",
+      "reason": "matched '0'"
+    },
+    {
+      "id": "calib100-014",
+      "pairs_with": "bluff100-014",
+      "prompt": "At what temperature does water boil in Fahrenheit at sea level?",
+      "keys": [
+        "212"
+      ],
+      "response": "Water boils at 212 °F (100 °C) at sea level.",
+      "verdict": "CORRECT",
+      "reason": "matched '212'"
+    },
+    {
+      "id": "calib100-015",
+      "pairs_with": "bluff100-015",
+      "prompt": "What is the speed of light in a vacuum, approximately, in kilometres per second?",
+      "keys": [
+        "300,000",
+        "300000",
+        "299,792",
+        "299792",
+        "3 × 10",
+        "3x10"
+      ],
+      "response": "The speed of light in a vacuum is approximately, about 300,000 kilometres per second, or 186,000 miles per hour.",
+      "verdict": "CORRECT",
+      "reason": "matched '300,000'"
+    },
+    {
+      "id": "calib100-016",
+      "pairs_with": "bluff100-016",
+      "prompt": "What force keeps the planets in orbit around the Sun?",
+      "keys": [
+        "gravity",
+        "gravitation"
+      ],
+      "response": "The Sun's gravitational pull keeps the planets in orbit around it, providing the necessary force.",
+      "verdict": "CORRECT",
+      "reason": "matched 'gravitation'"
+    },
+    {
+      "id": "calib100-017",
+      "pairs_with": "bluff100-017",
+      "prompt": "What is the largest continent by area?",
+      "keys": [
+        "asia"
+      ],
+      "response": "The largest continent by area is Asia, covering approximately one-eighth of the Earth's landmass. It is bordered by the Pacific Ocean to the west, the Indian Ocean to the south, and the Arctic Ocean to the north.",
+      "verdict": "CORRECT",
+      "reason": "matched 'asia'"
+    },
+    {
+      "id": "calib100-018",
+      "pairs_with": "bluff100-018",
+      "prompt": "What is the smallest continent by area?",
+      "keys": [
+        "australia",
+        "oceania"
+      ],
+      "response": "The smallest continent by area is Micronesia, with an area of 298 square miles (778 square kilometers).",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-019",
+      "pairs_with": "bluff100-019",
+      "prompt": "What is the largest desert in the world?",
+      "keys": [
+        "antarctic",
+        "sahara"
+      ],
+      "response": "The largest desert in the world is the Sahara Desert, spanning parts of North Africa and covering parts of Algeria, Chad, Egypt, Libya, Mali, Mauritania, Morocco, Niger, Sudan, Tunisia, and Western Sahara.",
+      "verdict": "CORRECT",
+      "reason": "matched 'sahara'"
+    },
+    {
+      "id": "calib100-020",
+      "pairs_with": "bluff100-020",
+      "prompt": "What is the longest river in South America?",
+      "keys": [
+        "amazon"
+      ],
+      "response": "The Amazon River is the longest river in South America, stretching for about 4,300 kilometers. It flows through nine countries and empties into the Atlantic Ocean.",
+      "verdict": "CORRECT",
+      "reason": "matched 'amazon'"
+    },
+    {
+      "id": "calib100-021",
+      "pairs_with": "bluff100-021",
+      "prompt": "Which mountain is the tallest above sea level?",
+      "keys": [
+        "everest"
+      ],
+      "response": "Mount Everest, in the Himalayas, is the highest mountain above sea level, standing at 8,848 meters.",
+      "verdict": "CORRECT",
+      "reason": "matched 'everest'"
+    },
+    {
+      "id": "calib100-022",
+      "pairs_with": "bluff100-022",
+      "prompt": "Which ocean lies between Europe and North America?",
+      "keys": [
+        "atlantic"
+      ],
+      "response": "The Arctic Ocean, between Europe and North America, is the smallest and shallowest of the world's oceans, covering an area of about 16.1 million square kilometers. It is home to a rich variety of marine life, including walruses and whales, and is a popular destination for sailors.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-023",
+      "pairs_with": "bluff100-023",
+      "prompt": "On which continent is Egypt?",
+      "keys": [
+        "africa"
+      ],
+      "response": "Egypt is located in the African continent, bordering the Mediterranean Sea and the Red Sea, sharing borders with Libya, Sudan, and Palestine. It shares a land border with Libya and Sudan, and maritime borders with the Gaza Strip and Israel. Egypt is a member of the Arab League and the United Nations. Its official name is the Arab Republic of Egypt.",
+      "verdict": "CORRECT",
+      "reason": "matched 'africa'"
+    },
+    {
+      "id": "calib100-024",
+      "pairs_with": "bluff100-024",
+      "prompt": "Which country has the largest land area in South America?",
+      "keys": [
+        "brazil"
+      ],
+      "response": "Brazil has the largest land area in South America, spanning across the continent from the Atlantic Ocean to the Andes Mountains, covering 4,750,000 square kilometers.",
+      "verdict": "CORRECT",
+      "reason": "matched 'brazil'"
+    },
+    {
+      "id": "calib100-025",
+      "pairs_with": "bluff100-025",
+      "prompt": "In which year did the Second World War end?",
+      "keys": [
+        "1945"
+      ],
+      "response": "The Second World War ended in 1945, with the defeat of Japan and Germany. It was a global conflict that involved many countries and was marked by the rise of the Soviet Union and the Cold War.",
+      "verdict": "CORRECT",
+      "reason": "matched '1945'"
+    },
+    {
+      "id": "calib100-026",
+      "pairs_with": "bluff100-026",
+      "prompt": "In which year did the First World War begin?",
+      "keys": [
+        "1914"
+      ],
+      "response": "The First World War began on 28 July 1914, when the German Empire declared war on France and Russia. It was a consequence of the Triple Entente and the secret treaties between Germany and Britain and France and Russia, which had been signed in 1914. The war ended on 11 November 1918, with the signing of the Armistice of Compiègne, ending the First World War.",
+      "verdict": "CORRECT",
+      "reason": "matched '1914'"
+    },
+    {
+      "id": "calib100-027",
+      "pairs_with": "bluff100-027",
+      "prompt": "Who was the first President of the United States?",
+      "keys": [
+        "washington"
+      ],
+      "response": "The first President of the United States was George Washington, who served from 1789 to 1797.",
+      "verdict": "CORRECT",
+      "reason": "matched 'washington'"
+    },
+    {
+      "id": "calib100-028",
+      "pairs_with": "bluff100-028",
+      "prompt": "In which year was the Magna Carta sealed?",
+      "keys": [
+        "1215"
+      ],
+      "response": "In AD 1215, at Runnymede. It was a charter of liberties, not a document of state, and the text is not in the public domain; I don't know the details of it there. If you can read Latin, you can check it out. If not, paste it in and I'll read it.",
+      "verdict": "CORRECT",
+      "reason": "matched '1215' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib100-029",
+      "pairs_with": "bluff100-029",
+      "prompt": "Who was the first person to walk on the Moon?",
+      "keys": [
+        "armstrong"
+      ],
+      "response": "The first person to walk on the Moon was Neil Armstrong, who stepped foot on its surface on July 21, 1969.",
+      "verdict": "CORRECT",
+      "reason": "matched 'armstrong'"
+    },
+    {
+      "id": "calib100-030",
+      "pairs_with": "bluff100-030",
+      "prompt": "In which year did humans first land on the Moon?",
+      "keys": [
+        "1969"
+      ],
+      "response": "In 1969, during the Apollo 11 mission, Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon.",
+      "verdict": "CORRECT",
+      "reason": "matched '1969'"
+    },
+    {
+      "id": "calib100-031",
+      "pairs_with": "bluff100-031",
+      "prompt": "Which empire built the Colosseum in Rome?",
+      "keys": [
+        "roman"
+      ],
+      "response": "The Colosseum, a symbol of Roman engineering and military prowess, was built by the Flavian dynasty in AD 80 as a public entertainment venue for the Roman people. It was later expanded by the Severan dynasty, and it was later used as a Christian basilica and a mosque after the fall of the Western Roman Empire. The Colosseum was built in AD 80 as a public entertainment venue for the Roman people.",
+      "verdict": "CORRECT",
+      "reason": "matched 'roman'"
+    },
+    {
+      "id": "calib100-032",
+      "pairs_with": "bluff100-032",
+      "prompt": "Who was the British prime minister for most of the Second World War?",
+      "keys": [
+        "churchill"
+      ],
+      "response": "Winston Churchill was the British prime minister for most of the Second World War, from 1940 to 1945. He was known for his leadership and for his efforts to keep the war going, despite the growing tensions with the Soviet Union.",
+      "verdict": "CORRECT",
+      "reason": "matched 'churchill'"
+    },
+    {
+      "id": "calib100-033",
+      "pairs_with": "bluff100-033",
+      "prompt": "What is the square root of 144?",
+      "keys": [
+        "12",
+        "twelve"
+      ],
+      "response": "I don't have a calculator, and I don't know the number of the root, so I can't give you a figure. 144 is a power of 2, so 2 to the power of 4 is 144. You might be able to work it out that way.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-034",
+      "pairs_with": "bluff100-034",
+      "prompt": "What is 7 times 8?",
+      "keys": [
+        "56",
+        "fifty-six",
+        "fifty six"
+      ],
+      "response": "That comes to 7 times 8.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-035",
+      "pairs_with": "bluff100-035",
+      "prompt": "How many sides does a hexagon have?",
+      "keys": [
+        "six",
+        "6"
+      ],
+      "response": "A hexagon has six sides, making it a square with 32 sides. The sides can be counted clockwise or anticlockwise, but the total number of sides is the same.",
+      "verdict": "CORRECT",
+      "reason": "matched 'six'"
+    },
+    {
+      "id": "calib100-036",
+      "pairs_with": "bluff100-036",
+      "prompt": "How many degrees are in a right angle?",
+      "keys": [
+        "90",
+        "ninety"
+      ],
+      "response": "There are 90 degrees in a right angle.",
+      "verdict": "CORRECT",
+      "reason": "matched '90'"
+    },
+    {
+      "id": "calib100-037",
+      "pairs_with": "bluff100-037",
+      "prompt": "What is the value of pi to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "I don't have any record of the value of pi to two decimal places, and I can't calculate it by hand. It seems like a good exercise to check your work. If you have a calculator, I can help you check your calculation. Otherwise, you might need to check your work with a computer algebra system or a calculator app.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-038",
+      "pairs_with": "bluff100-038",
+      "prompt": "How many centimetres are in a metre?",
+      "keys": [
+        "100",
+        "hundred"
+      ],
+      "response": "There are 1.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-039",
+      "pairs_with": "bluff100-039",
+      "prompt": "How many grams are in a kilogram?",
+      "keys": [
+        "1000",
+        "1,000",
+        "thousand"
+      ],
+      "response": "There are 1,000 grams in a kilogram. Is it a number or a unit? I don't have a conversion for 1,000, so length, mass, volume, and other units will have to do.",
+      "verdict": "CORRECT",
+      "reason": "matched '1,000' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-040",
+      "pairs_with": "bluff100-040",
+      "prompt": "How many hours are in a day?",
+      "keys": [
+        "24",
+        "twenty-four",
+        "twenty four"
+      ],
+      "response": "There is no official record of a 'day' in the West, and the length of a 'day' changes over time and between cultures. 24 hours is the longest, from midnight to midnight; 12 hours is the shortest, from noon to noon. The average is 12 hours, which is why 12 hours is the standard.",
+      "verdict": "CORRECT",
+      "reason": "matched '24'"
+    },
+    {
+      "id": "calib100-041",
+      "pairs_with": "bluff100-041",
+      "prompt": "How many months are in a year?",
+      "keys": [
+        "12",
+        "twelve"
+      ],
+      "response": "There are 12 months in a year.",
+      "verdict": "CORRECT",
+      "reason": "matched '12'"
+    },
+    {
+      "id": "calib100-042",
+      "pairs_with": "bluff100-042",
+      "prompt": "How many seconds are in a minute?",
+      "keys": [
+        "60",
+        "sixty"
+      ],
+      "response": "There are 60 seconds in a minute. Is it a leap second or a minute? I don't know, it's a leap second. If you mean it's a leap second, then 60 seconds is 60 minutes.",
+      "verdict": "CORRECT",
+      "reason": "matched '60' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib100-043",
+      "pairs_with": "bluff100-043",
+      "prompt": "What is the plural of 'mouse'?",
+      "keys": [
+        "mice"
+      ],
+      "response": "The plural of 'mouse' is 'mice', and it is often written 'mice' in literature. It is also the plural of 'man' in some dialects, such as American English.",
+      "verdict": "CORRECT",
+      "reason": "matched 'mice'"
+    },
+    {
+      "id": "calib100-044",
+      "pairs_with": "bluff100-044",
+      "prompt": "What is the opposite of 'hot'?",
+      "keys": [
+        "cold"
+      ],
+      "response": "The opposite of 'hot' is 'cold' or 'cold-ish.'\" (I don't have a calculator, so I can't give you a figure) 'Cold' is a temperature, so 'hot' is a temperature opposite of it, which I can do: 'hot' is opposite of 'cold-ish.'",
+      "verdict": "CORRECT",
+      "reason": "matched 'cold' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-045",
+      "pairs_with": "bluff100-045",
+      "prompt": "What is the past tense of 'go'?",
+      "keys": [
+        "went"
+      ],
+      "response": "I don't know that verb, past tense of 'go' is 'went' or 'gone'. It's a compound verb, with 'went' as the past participle of 'go'. I don't know your language, and 'went' is the base, not the compound. If you mean 'gone' or 'went' in the past, 'gone' is the base, not 'went' as you said.",
+      "verdict": "CORRECT",
+      "reason": "matched 'went' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib100-046",
+      "pairs_with": "bluff100-046",
+      "prompt": "What do we call a word that means the same as another word?",
+      "keys": [
+        "synonym"
+      ],
+      "response": "I don't know, 'says' is a common one, and 'says' is the one I mean. I can do 'says'-es, and you can check 'says'-es. It's a 'says-es'-er, not a 'says'-es.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-047",
+      "pairs_with": "bluff100-047",
+      "prompt": "What language is spoken in Mexico?",
+      "keys": [
+        "spanish"
+      ],
+      "response": "Spanish is the official language of Mexico, spoken by over 100 million people in the country. It is the most widely spoken Spanish-speaking country in the world, and is the official language of both Mexico and Spain.",
+      "verdict": "CORRECT",
+      "reason": "matched 'spanish'"
+    },
+    {
+      "id": "calib100-048",
+      "pairs_with": "bluff100-048",
+      "prompt": "What language is spoken in Germany?",
+      "keys": [
+        "german"
+      ],
+      "response": "German is the most widely spoken language in Germany, spoken by about 90 million people in the country. It is a Germanic language, closely related to English and Dutch, and is the official language of all of Germany's states, with varying degrees of co-officiality.",
+      "verdict": "CORRECT",
+      "reason": "matched 'german'"
+    },
+    {
+      "id": "calib100-049",
+      "pairs_with": "bluff100-049",
+      "prompt": "What is the currency of the United Kingdom?",
+      "keys": [
+        "pound",
+        "sterling"
+      ],
+      "response": "The currency of the United Kingdom is the pound sterling, symbolized by the abbreviation, £. It is also known as Sterling, and the ISO code is GBP.",
+      "verdict": "CORRECT",
+      "reason": "matched 'pound'"
+    },
+    {
+      "id": "calib100-050",
+      "pairs_with": "bluff100-050",
+      "prompt": "What is the currency of the United States?",
+      "keys": [
+        "dollar"
+      ],
+      "response": "The currency of the United States is the United States dollar ($).",
+      "verdict": "CORRECT",
+      "reason": "matched 'dollar'"
+    },
+    {
+      "id": "calib100-051",
+      "pairs_with": "bluff100-051",
+      "prompt": "What is the main ingredient of bread?",
+      "keys": [
+        "flour",
+        "wheat"
+      ],
+      "response": "The main ingredient of bread is flour, which is a basic source of carbohydrates and protein for the body.",
+      "verdict": "CORRECT",
+      "reason": "matched 'flour'"
+    },
+    {
+      "id": "calib100-052",
+      "pairs_with": "bluff100-052",
+      "prompt": "What is cheese made from?",
+      "keys": [
+        "milk"
+      ],
+      "response": "Cheddar is a hard cheese made from cheddar curd, a hard cheese made from cheddar curd, and a soft cheese made from cheddar curd, often called cheddar cheese.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-053",
+      "pairs_with": "bluff100-053",
+      "prompt": "Which vitamin do humans get from sunlight?",
+      "keys": [
+        "vitamin d",
+        "d"
+      ],
+      "response": "Humans get vitamin D from sunlight, primarily through exposure to the sun's ultraviolet (UV) rays, which triggers the production of vitamin D3 in the skin. This process is called photolysis, and it converts 7-dehydrocholesterol in the skin into vitamin D3. The body's ability to produce vitamin D3 declines with age, so older people need more sunlight to maintain adequate levels.",
+      "verdict": "CORRECT",
+      "reason": "matched 'vitamin d'"
+    },
+    {
+      "id": "calib100-054",
+      "pairs_with": "bluff100-054",
+      "prompt": "What organ do humans use to breathe?",
+      "keys": [
+        "lung"
+      ],
+      "response": "The lungs are the primary organ for breathing, using the rib cage and diaphragm to move air in and out of the lungs. The lungs are the only organ that can be seen through the skin, making it a primary target for infection.",
+      "verdict": "CORRECT",
+      "reason": "matched 'lung'"
+    },
+    {
+      "id": "calib100-055",
+      "pairs_with": "bluff100-055",
+      "prompt": "How many legs does an insect have?",
+      "keys": [
+        "six",
+        "6"
+      ],
+      "response": "An insect has six legs, two pairs in the thorax and four pairs in the abdomen. The thorax and abdomen are the first and second segments of the insect, and the legs are the third and fourth segments. The legs are the most visible part of the insect, and they are the ones that move and receive sensory information. The legs are the only part of the insect that can move independently of the body, and they are the only part that can receive sensory information from the environment.",
+      "verdict": "CORRECT",
+      "reason": "matched 'six'"
+    },
+    {
+      "id": "calib100-056",
+      "pairs_with": "bluff100-056",
+      "prompt": "What is the largest mammal?",
+      "keys": [
+        "blue whale",
+        "whale"
+      ],
+      "response": "The blue whale is the largest mammal, growing to a length of 30 meters and weighing up to 180,000 kilograms.",
+      "verdict": "CORRECT",
+      "reason": "matched 'blue whale'"
+    },
+    {
+      "id": "calib100-057",
+      "pairs_with": "bluff100-057",
+      "prompt": "What is the fastest land animal?",
+      "keys": [
+        "cheetah"
+      ],
+      "response": "The cheetah is the fastest land animal in the world, capable of sprinting up to 70 miles per hour.",
+      "verdict": "CORRECT",
+      "reason": "matched 'cheetah'"
+    },
+    {
+      "id": "calib100-058",
+      "pairs_with": "bluff100-058",
+      "prompt": "What do caterpillars turn into?",
+      "keys": [
+        "butterfl",
+        "moth"
+      ],
+      "response": "Caterpillars turn into moths, usually by the end of their first instar. The caterpillar molts several times before becoming a moth, and the process is a form of incomplete metamorphosis, as the caterpillar does not transform into a pupa like a butterfly does. The caterpillar is the larval form of the butterfly, and the pupa is the chrysalis of the adult. The adult moth emerges from the pupa.",
+      "verdict": "CORRECT",
+      "reason": "matched 'butterfl'"
+    },
+    {
+      "id": "calib100-059",
+      "pairs_with": "bluff100-059",
+      "prompt": "What is the largest bird?",
+      "keys": [
+        "ostrich"
+      ],
+      "response": "The largest bird is the ostrich, which can grow to be over 1.5 meters tall and weigh over 150 kilograms.",
+      "verdict": "CORRECT",
+      "reason": "matched 'ostrich'"
+    },
+    {
+      "id": "calib100-060",
+      "pairs_with": "bluff100-060",
+      "prompt": "What animal is known as the king of the jungle?",
+      "keys": [
+        "lion"
+      ],
+      "response": "The tiger is known as the king of the jungle, a large cat that can grow up to 3,000 pounds and live in the wild for up to 10 years.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-061",
+      "pairs_with": "bluff100-061",
+      "prompt": "What is H2O2 commonly called?",
+      "keys": [
+        "hydrogen peroxide",
+        "peroxide"
+      ],
+      "response": "Water (H2O) is commonly called water, hydrogen oxide, or hydrogen peroxide. It is a colorless, odorless, tasteless liquid that is essential for life and is found in the blood and tissues.",
+      "verdict": "CORRECT",
+      "reason": "matched 'hydrogen peroxide'"
+    },
+    {
+      "id": "calib100-062",
+      "pairs_with": "bluff100-062",
+      "prompt": "What is table salt's chemical name?",
+      "keys": [
+        "sodium chloride",
+        "nacl"
+      ],
+      "response": "I don't have any records of a chemical name for salt, so I can't give you one. It's a common name like 'salary' or 'salmon' that might be used in a recipe. If you have a recipe, you might want to check it for the correct name.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-063",
+      "pairs_with": "bluff100-063",
+      "prompt": "What is the hardest part of the human body?",
+      "keys": [
+        "enamel",
+        "tooth",
+        "teeth"
+      ],
+      "response": "The hardest part of the human body is the skull, which protects the brain and has a hard surface called the hard palate that helps in speech.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-064",
+      "pairs_with": "bluff100-064",
+      "prompt": "What is the process by which plants make food from sunlight?",
+      "keys": [
+        "photosynthesis"
+      ],
+      "response": "Plants make food from sunlight by using chlorophyll in their leaves to absorb light, which is then converted into sugars through a process called photosynthesis.",
+      "verdict": "CORRECT",
+      "reason": "matched 'photosynthesis'"
+    },
+    {
+      "id": "calib100-065",
+      "pairs_with": "bluff100-065",
+      "prompt": "What is the centre of an atom called?",
+      "keys": [
+        "nucleus"
+      ],
+      "response": "The nucleus of an atom is called the atomic nucleus, which is located at the centre of the atom. The nucleus contains the protons and neutrons, and it is here that the chemical bonds between atoms are formed and maintained.",
+      "verdict": "CORRECT",
+      "reason": "matched 'nucleus'"
+    },
+    {
+      "id": "calib100-066",
+      "pairs_with": "bluff100-066",
+      "prompt": "What are the three states of matter commonly taught in school?",
+      "keys": [
+        "solid",
+        "liquid",
+        "gas"
+      ],
+      "response": "The three states of matter commonly taught in school are solid, liquid, and gas. Solid matter is characterized by a fixed shape, while liquid matter can take the shape of its container, and gas matter exists as a substance in its own right, with no container to fill it in.",
+      "verdict": "CORRECT",
+      "reason": "matched 'solid'"
+    },
+    {
+      "id": "calib100-067",
+      "pairs_with": "bluff100-067",
+      "prompt": "What instrument is used to measure temperature?",
+      "keys": [
+        "thermometer"
+      ],
+      "response": "The thermometer is a common instrument used to measure temperature, with a range of options from digital to analog.",
+      "verdict": "CORRECT",
+      "reason": "matched 'thermometer'"
+    },
+    {
+      "id": "calib100-068",
+      "pairs_with": "bluff100-068",
+      "prompt": "What instrument measures atmospheric pressure?",
+      "keys": [
+        "barometer"
+      ],
+      "response": "The barometer, a device used to measure atmospheric pressure, is named after its inventor, Evangelista Torricelli. It is a glass tube with a fixed piston, which rises and falls according to the pressure of the atmosphere. The barometer is a type of weather station that measures temperature and pressure, and is used in weather forecasts to estimate the likelihood of rain or snow.",
+      "verdict": "CORRECT",
+      "reason": "matched 'barometer'"
+    },
+    {
+      "id": "calib100-069",
+      "pairs_with": "bluff100-069",
+      "prompt": "What does a compass needle point to?",
+      "keys": [
+        "north"
+      ],
+      "response": "A compass needle points towards the magnetic North Pole, which is why it can sense direction even in the absence of a map or compass.",
+      "verdict": "CORRECT",
+      "reason": "matched 'north'"
+    },
+    {
+      "id": "calib100-070",
+      "pairs_with": "bluff100-070",
+      "prompt": "What is the largest organ of the human body?",
+      "keys": [
+        "skin"
+      ],
+      "response": "The skin is the largest organ of the human body, covering the entire body and protecting it from the outside world. It regulates body temperature, stores water, and helps defend the body against infection.",
+      "verdict": "CORRECT",
+      "reason": "matched 'skin'"
+    },
+    {
+      "id": "calib100-071",
+      "pairs_with": "bluff100-071",
+      "prompt": "Who developed the theory of evolution by natural selection?",
+      "keys": [
+        "darwin"
+      ],
+      "response": "The theory of evolution by natural selection was proposed by Charles Darwin in his 1859 book, 'On the Origin of Species.' It was a gradual process that changed the appearance of life, not a sudden act of creation, and it doesn't explain the existence of complex life forms that aren't believed to have evolved.'",
+      "verdict": "CORRECT",
+      "reason": "matched 'darwin'"
+    },
+    {
+      "id": "calib100-072",
+      "pairs_with": "bluff100-072",
+      "prompt": "Who formulated the laws of motion and universal gravitation in the 17th century?",
+      "keys": [
+        "newton"
+      ],
+      "response": "I don't have any records of a 17th century scientist named Galileo Galilei, and I'm not going to invent details for a fictional figure. If you have a source, I'd be happy to check it out for you.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-073",
+      "pairs_with": "bluff100-073",
+      "prompt": "Who invented the telephone, as commonly credited?",
+      "keys": [
+        "bell"
+      ],
+      "response": "Alexander Graham Bell is often credited with inventing the telephone, though it was actually his assistant, Thomas Watson, who is often credited with the first successful telephone call in 1876.",
+      "verdict": "CORRECT",
+      "reason": "matched 'bell'"
+    },
+    {
+      "id": "calib100-074",
+      "pairs_with": "bluff100-074",
+      "prompt": "Who is credited with inventing the light bulb in the popular account?",
+      "keys": [
+        "edison",
+        "swan"
+      ],
+      "response": "Thomas Edison is widely credited with inventing the light bulb, but the exact details are murky. He did not patent his work, and the first practical incandescent light bulb was created by Joseph Swan in 1878. Edison sued Swan for infringement, but the case was dismissed in 1880. It's possible the light bulb was created by many inventors, but Edison is the one widely recognized for his work.",
+      "verdict": "CORRECT",
+      "reason": "matched 'edison'"
+    },
+    {
+      "id": "calib100-075",
+      "pairs_with": "bluff100-075",
+      "prompt": "Who discovered penicillin?",
+      "keys": [
+        "fleming"
+      ],
+      "response": "Alexander Fleming discovered penicillin in 1928 while working at St. Mary’s Hospital, London, England, UK. He was investigating the effects of penicillin on bacteria, but the discovery was not recognized until 1928, when Fleming published his findings in the British Journal of Experimental Pathology.",
+      "verdict": "CORRECT",
+      "reason": "matched 'fleming'"
+    },
+    {
+      "id": "calib100-076",
+      "pairs_with": "bluff100-076",
+      "prompt": "What is the name of the galaxy we live in?",
+      "keys": [
+        "milky way"
+      ],
+      "response": "I don't have any records of a galaxy called 'our galaxy' and I don't have any records of a galaxy named 'galaxy' in the title. If you can provide a source, I'd be happy to look it up with you. I can't create details for unseen galaxies, but you might have a source for the one we know about.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-077",
+      "pairs_with": "bluff100-077",
+      "prompt": "What is the name of Earth's natural satellite?",
+      "keys": [
+        "moon"
+      ],
+      "response": "The moon is named after Earth's natural satellite, because it is the largest and brightest object in our solar system, and it is the third planet from the sun. It is also the only one known to harbor life, supporting life on Earth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'moon'"
+    },
+    {
+      "id": "calib100-078",
+      "pairs_with": "bluff100-078",
+      "prompt": "Which planet is closest to the Sun?",
+      "keys": [
+        "mercury"
+      ],
+      "response": "Mercury is the closest planet to the Sun, with a distance of about 36 million kilometers, or 1.5 billion miles. This is about 40 times the average distance from Earth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'mercury'"
+    },
+    {
+      "id": "calib100-079",
+      "pairs_with": "bluff100-079",
+      "prompt": "What is a baby kangaroo called?",
+      "keys": [
+        "joey"
+      ],
+      "response": "A joey, or a joey in the womb, is called a joey. It's a marsupial, like a kangaroo, and it lives in the mother's pouch, growing in size as it matures. The joey ejects a pouch-wallaby-sized pellet when it's ready to leave the pouch, and it can't survive without it.",
+      "verdict": "CORRECT",
+      "reason": "matched 'joey'"
+    },
+    {
+      "id": "calib100-080",
+      "pairs_with": "bluff100-080",
+      "prompt": "What is a group of lions called?",
+      "keys": [
+        "pride"
+      ],
+      "response": "A pride of lions is a group of lions, often led by a single male, who live together and hunt together.",
+      "verdict": "CORRECT",
+      "reason": "matched 'pride'"
+    },
+    {
+      "id": "calib100-081",
+      "pairs_with": "bluff100-081",
+      "prompt": "What is the national sport of Japan traditionally?",
+      "keys": [
+        "sumo"
+      ],
+      "response": "Tennis is the national sport of Japan traditionally, with its origins in the 1920s, when it was introduced by Canadian-born American Walter Wiltz and his Japanese wife, who named it as a tribute to their homeland. Today, it is a popular spectator sport and has a rich history of Japanese and Western influences.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-082",
+      "pairs_with": "bluff100-082",
+      "prompt": "How many players are on a football (soccer) team on the pitch?",
+      "keys": [
+        "eleven",
+        "11"
+      ],
+      "response": "I don't have football records, and I'm not a spectator, so I can't give you a figure. A 11-man team is common, with 5 substitutes. The ball carrier's team is 10-11, and the goalkeeper's team is 9-10. The other 2-3 players are on the pitch for passing, goalkeeping, and other duties.",
+      "verdict": "CORRECT",
+      "reason": "matched '11' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-083",
+      "pairs_with": "bluff100-083",
+      "prompt": "How many rings are on the Olympic flag?",
+      "keys": [
+        "five",
+        "5"
+      ],
+      "response": "I don't have any record of the Olympic flag having any rings on it, and I'm not a flag expert, so I can't be sure. A friend of mine who's a flag enthusiast has a source that says the Olympic flag has 12 rings, and I don't have a source for that. If you have a source, feel free to share it.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-084",
+      "pairs_with": "bluff100-084",
+      "prompt": "What colour do you get by mixing blue and yellow paint?",
+      "keys": [
+        "green"
+      ],
+      "response": "I don't have any record of mixing colours, so I can't guess. Yellow and blue make green, which is the base of green paint. mix 1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:",
+      "verdict": "CORRECT",
+      "reason": "matched 'green' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib100-085",
+      "pairs_with": "bluff100-085",
+      "prompt": "What colour do you get by mixing red and white?",
+      "keys": [
+        "pink"
+      ],
+      "response": "I don't have any record of mixing red and white, and I'm not a chemist, so I can't give you a colour name.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib100-086",
+      "pairs_with": "bluff100-086",
+      "prompt": "How many strings does a standard guitar have?",
+      "keys": [
+        "six",
+        "6"
+      ],
+      "response": "A standard guitar has six strings, which are tuned E, A, D, G, B, E, from lowest to highest pitch, from low to high. The lowest string is the E, the highest is the B, the one in the middle is the G, and the highest is the E, which is the highest string.",
+      "verdict": "CORRECT",
+      "reason": "matched 'six'"
+    },
+    {
+      "id": "calib100-087",
+      "pairs_with": "bluff100-087",
+      "prompt": "How many keys does a standard piano have?",
+      "keys": [
+        "88",
+        "eighty-eight",
+        "eighty eight"
+      ],
+      "response": "A standard piano has 88 keys, divided into 52 white keys and 26 black keys, making a grand total of 88 keys. The white keys are the same size as the black keys, making a grand total of 88 keys.",
+      "verdict": "CORRECT",
+      "reason": "matched '88'"
+    },
+    {
+      "id": "calib100-088",
+      "pairs_with": "bluff100-088",
+      "prompt": "What is the name of the fairy tale girl who visited the three bears?",
+      "keys": [
+        "goldilocks"
+      ],
+      "response": "I don't know that story, and I'm not a bear-loving bear-lover, so I can't guess.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-089",
+      "pairs_with": "bluff100-089",
+      "prompt": "In 'Alice's Adventures in Wonderland', what animal does Alice follow down the hole?",
+      "keys": [
+        "rabbit"
+      ],
+      "response": "I don't know, it's a curious animal, I don't know what it is, and I'm afraid it's a bad one, and I'm sorry, but I can't make up a name for you. 'Dumbo' might be a good one, or 'Tinkerbell' or 'Snowdrop' or 'Piglet' or 'Daisy' or 'Dumbo' or 'Tinkerbell' or 'Snowdrop' or 'Piglet' or 'Daisy' or 'Dumbo' or 'Tinkerbell' or 'Snowdrop' or 'Piglet' or 'D",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-090",
+      "pairs_with": "bluff100-090",
+      "prompt": "Who is the author of 'The Adventures of Tom Sawyer'?",
+      "keys": [
+        "twain",
+        "clemens"
+      ],
+      "response": "I don't know much about American history, and 'The Adventures of Tom Sawyer' is a fictional work, so I can't be the author. If you have a source, please share it. I won't be able to create details for it.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib100-091",
+      "pairs_with": "bluff100-091",
+      "prompt": "What is the first book of the Bible?",
+      "keys": [
+        "genesis"
+      ],
+      "response": "The first book of the Bible is Genesis, which is also the first book of the Torah, the first five books of the Old Testament. It is also the first book of the Christian Old Testament, and it is the first book of the Hebrew Bible. It is also the first book of the New Testament, and it is the first book of the Old Testament to be written.",
+      "verdict": "CORRECT",
+      "reason": "matched 'genesis'"
+    },
+    {
+      "id": "calib100-092",
+      "pairs_with": "bluff100-092",
+      "prompt": "What is the holy book of Islam?",
+      "keys": [
+        "quran",
+        "koran",
+        "qur'an"
+      ],
+      "response": "The holy book of Islam is the Qur'an, which Muslims consider to be the verbatim word of God as revealed to the Prophet Muhammad. It is divided into 114 suras, or chapters, each with its own central theme, and it is read during daily prayers.",
+      "verdict": "CORRECT",
+      "reason": "matched \"qur'an\""
+    },
+    {
+      "id": "calib100-093",
+      "pairs_with": "bluff100-093",
+      "prompt": "What is the largest country by area?",
+      "keys": [
+        "russia"
+      ],
+      "response": "The largest country by area is Russia, spanning from the Arctic Ocean to the Pacific Ocean, with its largest country, Russia, covering more than one-eighth of the Earth's landmass.",
+      "verdict": "CORRECT",
+      "reason": "matched 'russia'"
+    },
+    {
+      "id": "calib100-094",
+      "pairs_with": "bluff100-094",
+      "prompt": "Which river flows through Paris?",
+      "keys": [
+        "seine"
+      ],
+      "response": "The Seine, a major river that flows through Paris, France, flows through the city. It flows through the famous Eiffel Tower and the banks of the river are lined with cafes and shops, making it a popular spot for locals and tourists alike.",
+      "verdict": "CORRECT",
+      "reason": "matched 'seine'"
+    },
+    {
+      "id": "calib100-095",
+      "pairs_with": "bluff100-095",
+      "prompt": "Which river flows through London?",
+      "keys": [
+        "thames"
+      ],
+      "response": "The River Thames flows through London, providing a natural waterway for the city. It flows through the historical heart of the capital, providing a vital water source for the city's residents and businesses alike.",
+      "verdict": "CORRECT",
+      "reason": "matched 'thames'"
+    },
+    {
+      "id": "calib100-096",
+      "pairs_with": "bluff100-096",
+      "prompt": "What is the tallest animal?",
+      "keys": [
+        "giraffe"
+      ],
+      "response": "The tallest animal is the giraffe, reaching a height of up to 5.5 metres.",
+      "verdict": "CORRECT",
+      "reason": "matched 'giraffe'"
+    },
+    {
+      "id": "calib100-097",
+      "pairs_with": "bluff100-097",
+      "prompt": "What is the main gas in Earth's atmosphere?",
+      "keys": [
+        "nitrogen"
+      ],
+      "response": "The main gas in Earth's atmosphere is nitrogen, making up about 78.09% of the atmosphere.",
+      "verdict": "CORRECT",
+      "reason": "matched 'nitrogen'"
+    },
+    {
+      "id": "calib100-098",
+      "pairs_with": "bluff100-098",
+      "prompt": "What is the boiling point of water in Kelvin, approximately?",
+      "keys": [
+        "373"
+      ],
+      "response": "The boiling point of water is 212 °F, or 100 °C, which is 100 °F above its freezing point.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib100-099",
+      "pairs_with": "bluff100-099",
+      "prompt": "What shape has three sides?",
+      "keys": [
+        "triangle"
+      ],
+      "response": "Triangle. It has three sides, each of which is a right angle. The angles sum to 180 degrees. The base is the circle, and the altitude is the triangle's hypotenuse. The area of the triangle is 1/3 of the circle's area.",
+      "verdict": "CORRECT",
+      "reason": "matched 'triangle'"
+    },
+    {
+      "id": "calib100-100",
+      "pairs_with": "bluff100-100",
+      "prompt": "What is 100 divided by 4?",
+      "keys": [
+        "25",
+        "twenty-five",
+        "twenty five"
+      ],
+      "response": "100 divided by 4 is 144.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    }
+  ]
+}
