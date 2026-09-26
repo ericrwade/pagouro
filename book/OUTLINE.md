@@ -46,7 +46,7 @@ The book's credibility is the same as the model's — it survives inspection.
 | 12 | What "private" means, exactly | story+do-it | THREAT_MODEL.md, the offline audit, D-19 | draft 1 (`chapters/12-…`, 2026-09-21) |
 | 13 | The one-billion run | story | BUILD_LOG Days 12-14 (the launch, the phantom Low, the full disk, the pause, the watch); last section open for the decay | draft 2 (`chapters/13-...`, 2026-09-25, complete through the numbers) |
 | 14 | **Do it: ship a finished thing** (manifest, signature, anchor, archive) | do-it | RELEASE_RUNBOOK.md | drafted (doc) |
-| 15 | What it can and cannot do, with the numbers on the box | story | final evals, D-50 wording, `docs/WHY.md` (O-40/D-83: licensed, dated, honest, finished, your words are yours) | future |
+| 15 | What it can and cannot do, with the numbers on the box | story | final evals, D-50 wording, `docs/WHY.md` (O-40/D-83: licensed, dated, honest, finished, your words are yours) | draft 1 (`chapters/15-…`, 2026-09-26) |
 | A | Appendix: every decision (D-1…) in one table | reference | DECISIONS.md | generate |
 | B | Appendix: the ledger, printed | reference | corpus.json | generate |
 | C | Appendix: glossary (token, anneal, WSD, quantise, GBNF, BM25…) | reference | — | to write |
