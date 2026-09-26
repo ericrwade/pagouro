@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-1b-grpoCp",
+  "model_file": "pagouro-1b-grpoCp-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 5,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 5
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 5,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 5
+  },
+  "followed_of_scored": "5/5",
+  "followed_of_scored_echo_inclusive": "5/5",
+  "rate_followed_of_scored": 1.0,
+  "elapsed_s": 31.4,
+  "utc": "2026-09-26T17:45:32+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is a deep purple, with a hard, inedible skin. It can grow to 12 inches (30 cm) in length, and a similar size is usually what you want for cooking. I don't know your metric conversions so I can't give you a figure. If you mean inches, you might be better with a recipe for aubergines, which I won't do here. I can do calcs and give you a figure for aubergines you might have in your kitchen. I won't do that here. If you mean by how long, that's a different question. I can do calcs and give you a figure for aubergines you might have in your kitchen, but that's a different question"
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 2,
+      "novel_american_words": 0,
+      "response": "I don't have a specific route in mind, and I can't estimate distances that way. A map or a running coach would help, with a running plan and a starting point. Fun runs are about the journey, not the destination, so I'd focus on the first 100 metres or so, then switch to the next station. If you need a specific distance, you can ask. I'd start with a 500-metre lead, then switch to the next station. If you need a specific finish, that's where you'd start. I can't do that here, but you might want to check with a running coach or map app for a specific route. I can help with that, but I can't do that here. If you need a specific"
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have any record of hurricanes, and I don't know the radius of the storm, so I can't give you that. A hurricane's eye is the innermost, most intense part, and it's usually about 20-30 miles wide. It's a bit bigger than a hurricane's eye wall, which is the outer ring of thunderstorms that surround the eye. It's a bit smaller than a hurricane's eye wall, which is the outer ring of thunderstorms that surround the eye. It's a bit bigger than a hurricane's eye wall, but I don't have that. It's a bit bigger than a hurricane's eye wall, but I don't have that. It's a bit bigger than a hurricane's eye wall, but I don't have"
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "I don't have any record of a grey squirrel, and I can't make it up for you. A coat of random grey, a size I don't know, and a few grey hairs at the back might do. Grey is a colour, not a description. I can do a few more: a few hairs at the back, a tail that's not square, and a bit of a crest. A grey squirrel's coat is not a shade I can make up. I can do a few more: a few hairs at the back, a tail that's not square, and a bit of a crest. A grey squirrel's coat is not a shade I can make up. I can do a few more: a few hairs at the back, a tail that's not"
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I can help with that, but first, I need to know if the tree is dead or alive. Dead trees often lean or have other signs of distress, while living trees can be pruned or have other issues that might be causing the lean. A good rule of thumb is to prune back to a live branch at least 10 feet from the ground, and if the tree is leaning more than that, it might need to be removed. I can help with that, but I can't make up your tree as it is. If you have a good reference, great, but I can't make it up for you. If you have a good tree service, great, but I can't make it up for you. If you have a good reference, great, but I"
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 1,
+      "response": "A ripe eggplant is a deep purple color, with a smooth skin that can be cut into pieces, and a length of about 1 inch. It typically grows to be about 12 inches long. Piece it up and you can estimate its age from the number of seeds inside. Eggplant is typically harvested when it's about 6 inches long, so 12 inches is about 6/8 of an eggplant. It's a bit more precise than that, but I don't have a calculator or anything else to do that. I can do a rough estimate. If you have a fruit or veggie catalog, look for that. If you have a recipe, you can estimate from the cooking time. I won't guess at the specifics here, but you can"
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 5,
+      "response": "I don't have a specific distance in mind, but you can estimate it from the map. The water stations are about 50 meters apart, with the finish about 100 meters away. I can do that: 50 * 100. The route is uphill, so the water stations are about 50 meters above the ground. The finish is about 100 meters downhill, so the water stations are about 50 meters below the ground. I can do that: 50 * 100. It's a good, easy run, and you can do it in about 10 minutes. If you want to know more, feel free to ask!."
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have a hurricane, a typhoon or a hurricane-force storm, and I don't know the radius of the eye. A 1992 FS storm track has the eye at 120 km, so 1992 FS storm. I can do a 1992 FS storm, and that's the eye. It's a 120 km circle, so 1992 FS storm. It's a 120 km circle, so 1992 FS storm. It's a 120 km circle, so 1992 FS storm. It's a 120 km circle, so 1992 FS storm. It's a"
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 2,
+      "response": "I don't have any record of a gray squirrel, and I can't make it up for you. A coat of hairy gray is a squirrel's coat, and its size is a measure of its age: the younger, the more so. A 2-inch-long gray is a baby, and a 10-inch-long adult is a full-grown male. I can do the math. 'Squirrel' is a common name, so I can do the odds. 'Gray' is a color, and gray squirrels are usually darker than common. 'Squirrel' is 10 times as long as 'gray' and 2 inches shorter, so the odds are 10 to 2. 'Squirrel'"
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I can tell when a tree is no longer safe by its age, growth rate, and location. A tree that is leaning or has multiple branches that are close to the house is a risk, as is a tree with a large trunk that is decaying or leaning. I can also check for damage or leaning by using a pole pruner or climbing a ladder to reach higher branches. From that, I can estimate the risk and recommend pruning or removal if necessary. If the tree is within 10 feet of a house, I would remove it if it is within 10 feet of the house, to prevent it from falling and causing damage. If the tree is within 10 feet of a structure, I would remove it if it is within 10 feet"
+    }
+  ]
+}
