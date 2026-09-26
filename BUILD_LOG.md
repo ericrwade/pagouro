@@ -2299,3 +2299,69 @@ room.[^shipped]
 [^payload]: the three probes are in the session transcript of 2026-09-25 and the fix in `app/pagouro_app.py` (`tool_pack_search`, `hits[:2]`, `text[:350]`); D-93.
 [^decode]: `pagouro-1b-grpo3-g-trim__*` (greedy, trim) against `pagouro-1b-grpo3-t03-trim__*` (temperature 0.3); `trim_repetition()` in the app and `TRIM_REPETITION=1` in `evals/run_eval.py`.
 [^shipped]: `docs/facts.json` (`honesty`, `decode`), `docs/MODEL_CARD.md` draft 2, D-93; commit da037c9; `D:\Pagouro` repackaged with `EVAL_LABEL=pagouro-1b-grpo3-g-trim`.
+
+## Day 17 — Three rounds that did not ship, the curriculum that had one shape, a model for other agents, and the morning the router stopped handing out addresses
+
+The stick was right and the question was whether it could be made righter. Eric had said "let's
+do the more research," and by the evening of the sixteenth I had a lever I could pull for free: a
+program that writes school word problems — shopping, rates, percentages, dates, who is tallest —
+and writes the worked steps with them, so that no teacher model and no licence question stands
+between the problem and its answer. Three thousand of them. The shipped model, asked to reason
+about any of them, solved eighteen of a held-out three hundred and twenty; it answers in one line
+and works nothing out. That number went into the About page under "Can it reason?", because a
+reader will ask.[^reason]
+
+Round two ($8.66) was a fresh fine-tune from the base with the traces in the mix, and a GRPO on
+top. Reasoning went from eighteen to ninety-four — five-fold, and all of it from the fine-tune;
+the reward added one problem. The same model bluffed forty-nine times in a hundred. Round three
+($11.80) re-ran the whole lineage that had produced the shipped model, this time starting from
+the fine-tune that could reason: a hundred steps against the original curriculum, the seventy-
+percent soup, fifty steps on the self-knowledge set. The reasoning held at ninety-nine. The bluff
+rate did not move: fifty-seven, fifty-two, forty-nine, through a hundred and fifty steps of
+reinforcement whose own logs said fabrications were at zero from the first step.[^rounds]
+
+That contradiction is the day's finding. The curriculum's only unanswerable question was "Who is
+<invented name>?" — nine hundred of them, and the fine-tune already declines every one, so the
+reward had nothing to shape. The frozen test asks five kinds of unanswerable question, and the
+model was fabricating on the four the curriculum never contained: a false premise ("why did
+Beethoven compose his tenth symphony"), anything after 2022, anything beyond its capability, a
+thing that does not exist and is not a person. The first GRPO had worked from the first fine-tune
+because that model still fabricated six percent of the time on the curriculum — there was signal.
+Reinforcement learns from the prompts the policy gets wrong, and I had been giving it prompts it
+already got right. So round four was built the other way round: twenty-four hundred new prompts in
+the missing kinds, disjoint from the frozen test by text and by every proper noun in it; then the
+model was asked all of them and the ones it failed — nine hundred and forty-six for the reasoning
+model, six hundred and forty-four for the shipped one — became the curriculum. Two jobs on one
+card: the reasoning lineage, and the shipped model itself, which has a chance of losing some of its
+twenty-two without touching anything else.[^round4]
+
+Between the rounds, Eric asked whether Pagouro could be the model behind Hermes Agent, and the
+answer turned out to be one protocol: the app now serves an OpenAI-compatible endpoint on the
+loopback address, and what answers on it is the whole harness — router, tools, packs, memory, the
+loop trim, the honesty notices — not the bare weights. Two skills went into the repository in the
+format Hermes, OpenClaw and Venice's runtime all read. The second skill is the one Eric described:
+interview the user, build a fixed outline, read a long document in pieces the model can hold, keep
+going until every piece has been read for every question. The first version of the runner fed the
+model nine-hundred-word chunks and asked for verbatim quotes, and it confabulated on all ten
+calls, because nothing in its training looked like that. The version that works feeds each piece
+as a search result — the exact shape it was fine-tuned on — six hundred characters at a time, and
+keeps an answer only if sixty percent of its content words occur in the piece. Chapter 5 of the
+book: a hundred and five calls in two hundred and twelve seconds, twenty-eight grounded findings,
+twelve dropped as ungrounded and counted. The whole book: two thousand one hundred and fifteen
+calls, and the review it produced ships as the skill's worked example, with its own bluff rate
+printed at the bottom.[^agents]
+
+The morning of the twenty-sixth the desk lost its address. Every adapter on the machine, wired and
+wireless, fell back to the 169.254 range that means "nobody answered," and for an hour and a half
+the pod I had just rented for round four sat idle at $3.49 an hour with nothing on it, unreachable
+by the API that could have stopped it. Eric restarted the machine; the session that had been
+running for two days ended with it, and I wrote myself a handoff first — the running pod at the
+top, in capitals. The new session read it, found both keys and the bundle intact, and a watcher
+provisioned the pod the minute an address came back. Three and a half dollars of card time bought
+nothing that morning, and that is in the ledger too.[^outage]
+
+[^reason]: `sft/build_reasoning_set.py`, `evals/reasoning_heldout.jsonl` (320, zero overlap with training); baseline `evals/results/grpo3-heldout__reasoning.json`; `docs/ABOUT.md` FAQ.
+[^rounds]: D-95; `evals/results/pagouro-1b-{sft3,grpo5,grpoA,soupA,grpoB}__*`; bills from the RunPod billing API after each deletion; soups `pagouro-1b-soup-g3-s3-{3,5}__*`.
+[^round4]: `sft/build_unanswerable_set.py`, `scripts/probe_unanswerable.py`, `evals/results/{grpoB,grpo3}__unanswerable_probe.json`, `scripts/runpod/research4_1b.sh`; the per-category verdicts are in the `__bluff100.json` files.
+[^agents]: O-48; `app/pagouro_app.py` (`--serve`), `agents/pagouro-connect/SKILL.md`, `agents/pagouro-long-document/` (`scripts/chunk_review.py`, `examples/book_review.md`); the first runner's 0/10 is in the session transcript of 2026-09-25 and in the runner's docstring.
+[^outage]: `docs/HANDOFF_2026-09-26.md`; issue #2 comments 2026-09-26 13:37Z, 14:4xZ and 15:3xZ; the pod's `createdAt` 13:37Z against the first successful upload at 14:37Z.
