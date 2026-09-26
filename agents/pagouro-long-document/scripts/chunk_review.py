@@ -129,14 +129,16 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0, help="stop after N calls this run (0 = until done)")
     ap.add_argument("--rejudge", action="store_true", help="recompute every saved verdict from the saved answers (no model calls), then rewrite the report")
     ap.add_argument("--wave", choices=["idea", "outline", "bulk"], default="bulk", help="idea: 1 piece/segment, one question; outline: 3 pieces/segment; bulk: every piece")
-    ap.add_argument("--segment-words", type=int, default=5000, help="segment length in words (0 = no segments)")
-    ap.add_argument("--overlap", type=float, default=0.34, help="share of each segment shared with the next (fish scales)")
+    ap.add_argument("--segment-words", type=int, default=0, help="segment length in words; 0 = auto: the document in ~30 windows, clamped to 1,500-8,000 words")
+    ap.add_argument("--overlap", type=float, default=0.5, help="share of each segment shared with the next (fish scales)")
     a = ap.parse_args()
     doc = io.open(a.doc, encoding="utf-8", errors="replace").read()
     outline = json.load(io.open(a.outline, encoding="utf-8"))
     state_path = a.state or a.out + ".state.json"
     state = json.load(io.open(state_path, encoding="utf-8")) if os.path.exists(state_path) else {}
     name = os.path.basename(a.doc)
+    if a.segment_words <= 0:                     # auto: ~30 windows over the document, whatever its length
+        a.segment_words = max(1500, min(8000, len(doc.split()) // 30 * 2))
     segs = segments_of(doc, a.segment_words, a.overlap)
     parts = []                                   # (label, piece) with the label carrying the segment number
     for si, (w0, seg) in enumerate(segs):

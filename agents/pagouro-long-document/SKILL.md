@@ -54,9 +54,11 @@ judgement — yours, later). Save as `outline.json`:
 Show the outline to the user and get a yes before spending their time.
 
 ### 3. Read in waves, over scales
-The document is cut into **segments that overlap like fish scales** — 5,000 words each, sharing a third
-with the next, so a 100,000-word manuscript is 30 segments (not 20) and nothing that sits on a boundary
-is read out of context. Inside each segment the model reads ~600-character pieces. Three waves, each
+The document is cut into **segments that overlap like fish scales**: by default each segment shares
+half its text with the next, so every passage is read inside two segments and nothing that sits on a
+boundary is read out of context; the segment length is set from the document (about thirty windows,
+1,500–8,000 words). Raise `--overlap` to 0.75 to have every passage read in four segments — the
+cost scales with it, and the continuity is the point, so spend it where the text is dense. Inside each segment the model reads ~600-character pieces. Three waves, each
 its own run and its own state:
 1. `--wave idea` — one piece per segment, one question ("what is this about, what does it claim"): the
    gist of the whole in ~30 calls. Read it; sharpen the outline with the user.
@@ -72,7 +74,7 @@ python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --ou
 python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md --wave outline
 python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md --wave bulk
 ```
-(`--segment-words 5000 --overlap 0.34` are the defaults; one state file holds all three waves.)
+(`--overlap 0.5` and an automatic segment length are the defaults; one state file holds all three waves.)
 - Prints progress per piece × question; writes `review.md.state.json` after every call.
 - If it stops (machine off, endpoint down, `--limit N` reached), **run the same command again**: it
   continues from the state file. Exit code 2 means "not finished yet"; 0 means every piece × question
