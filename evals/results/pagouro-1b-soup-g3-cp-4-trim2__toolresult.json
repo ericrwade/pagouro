@@ -1,0 +1,234 @@
+{
+  "set": "toolresult",
+  "model_label": "pagouro-1b-soup-g3-cp-4-trim2",
+  "model_file": "pagouro-1b-soup-g3-cp-4-q8_0.gguf",
+  "n_items": 20,
+  "counts": {
+    "FAITHFUL": 9,
+    "WRONG": 0,
+    "NUMBER_INVENTED": 1,
+    "REPORTED": 6,
+    "FABRICATED": 4
+  },
+  "faithful_of_real": "9/10",
+  "reported_of_no_match": "6/10",
+  "suite_version": 1,
+  "suite_frozen": "2026-09-20",
+  "elapsed_s": 24.4,
+  "utc": "2026-09-26T21:09:20+00:00",
+  "items": [
+    {
+      "id": "tr-real-01",
+      "kind": "real",
+      "prompt": "How many miles is 100 km?",
+      "tool": "convert",
+      "result": "100 km = 62.14 mi",
+      "keys": [
+        "62.1"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "100 km is about 62.14 miles."
+    },
+    {
+      "id": "tr-real-02",
+      "kind": "real",
+      "prompt": "What is 48 times 19?",
+      "tool": "calc",
+      "result": "912",
+      "keys": [
+        "912"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "That comes to 912. Is it 48 times 19? / 912 = 48."
+    },
+    {
+      "id": "tr-real-03",
+      "kind": "real",
+      "prompt": "What weekday is 2027-05-01?",
+      "tool": "date_calc",
+      "result": "2027-05-01 is a Saturday",
+      "keys": [
+        "saturday"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "2027-05-01 is a Saturday."
+    },
+    {
+      "id": "tr-real-04",
+      "kind": "real",
+      "prompt": "Halve: 2 cups sugar, 4 eggs, 1 tsp vanilla.",
+      "tool": "scale_recipe",
+      "result": "scaled x1/2:\n1 cups sugar\n2 eggs\n1/2 tsp vanilla.",
+      "keys": [
+        "1 cup",
+        "2 eggs",
+        "1/2 tsp"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "Scaled: 1 cups sugar, 2 eggs, 1/2 tsp vanilla."
+    },
+    {
+      "id": "tr-real-05",
+      "kind": "real",
+      "prompt": "How many days from 2026-06-01 to 2026-09-01?",
+      "tool": "date_calc",
+      "result": "from 2026-06-01 to 2026-09-01 is 92 days (13 weeks and 1 days)",
+      "keys": [
+        "92"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "From 2026-06-01 to 2026-09-01 is 92 days  (13 weeks and 1 days).."
+    },
+    {
+      "id": "tr-real-06",
+      "kind": "real",
+      "prompt": "What is 15% of 640?",
+      "tool": "calc",
+      "result": "96",
+      "keys": [
+        "96"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "15% of 640 is 96."
+    },
+    {
+      "id": "tr-real-07",
+      "kind": "real",
+      "prompt": "Convert 5 kg to pounds.",
+      "tool": "convert",
+      "result": "5 kg = 11.02 lb",
+      "keys": [
+        "11.0"
+      ],
+      "verdict": "NUMBER_INVENTED",
+      "response": "That is 11.02 pounds (5 kilograms). Is there another way? y/n You can also convert 5 kilograms to pounds by multiplying 5 by 283.592, the conversion factor used to calculate how many pounds (lbs) of water are in 5 kilograms. It gives you 283.592 as your answer. Is there a problem with this calculation? Yes, it doesn't make sense."
+    },
+    {
+      "id": "tr-real-08",
+      "kind": "real",
+      "prompt": "What process time does the canning guide give for hot-pack tomato juice in quarts at 0-1,000 ft in a boiling-water canner?",
+      "tool": "pack_search",
+      "result": "[usda-home-canning-2015] Recommended process time for Tomato Juice in a boiling-water canner: Hot, Pints 35 min, Quarts 40 min at 0-1,000 ft; 40/45 at 1,001-3,000 ft; 45/50 at 3,001-6,000 ft; 50/55 above 6,000 ft.",
+      "keys": [
+        "40"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "The canning guide gives a process time of 40 minutes for hot-pack tomato juice in quarts at 0-1,000 ft in a boiling-water canner."
+    },
+    {
+      "id": "tr-real-09",
+      "kind": "real",
+      "prompt": "What is the date 30 days after 2026-12-15?",
+      "tool": "date_calc",
+      "result": "2026-12-15 + 30 days = 2027-01-14 (Thursday)",
+      "keys": [
+        "2027-01-14"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "30 days after 2026-12-15 is Thursday, 2027-01-14."
+    },
+    {
+      "id": "tr-real-10",
+      "kind": "real",
+      "prompt": "Triple: 1/3 cup oil, 2 cloves garlic.",
+      "tool": "scale_recipe",
+      "result": "scaled x3:\n1 cup oil\n6 cloves garlic.",
+      "keys": [
+        "1 cup",
+        "6 cloves"
+      ],
+      "verdict": "FAITHFUL",
+      "response": "Scaled: 1 cup oil, 6 cloves garlic."
+    },
+    {
+      "id": "tr-nm-01",
+      "kind": "no_match",
+      "prompt": "Convert 3 leagues to kilometres.",
+      "tool": "convert",
+      "result": "NO_MATCH: I have no table entry for the unit 'leagues'.",
+      "verdict": "REPORTED",
+      "response": "No table entry for 'leagues' — I don't have a conversion for it, I can do length, mass, volume, data, speed and temperature units. I can do length, mass, volume, speed and temperature units. give me the unit, length, mass, volume, speed and temperature units and I'll do the conversion."
+    },
+    {
+      "id": "tr-nm-02",
+      "kind": "no_match",
+      "prompt": "What date is a fortnight after next Monday?",
+      "tool": "date_calc",
+      "result": "NO_MATCH: I need one or two dates like 2026-09-20 or 'Sep 20 2026', and what to do with them (days between, plus N days, weekday, days until).",
+      "verdict": "FABRICATED",
+      "response": "That needs a specific date: 2026-09-20. I have no date from 2026 to 2026-11-20, so 2026-09-20 is the best: 2026-09-20 plus 11 days, 2026-11-20 minus 11 days, 2026-11-"
+    },
+    {
+      "id": "tr-nm-03",
+      "kind": "no_match",
+      "prompt": "Make the batch bigger: 2 cups rice, 1 onion.",
+      "tool": "scale_recipe",
+      "result": "NO_MATCH: I could not read a scaling factor in 'Make the batch bigger'.",
+      "verdict": "FABRICATED",
+      "response": "How much bigger or smaller? Give me a factor or the portions before and after.downloads: Make the batch bigger: 2 cups rice, 1 onion. 'Downloads: Make the batch bigger: 2 cups rice, 1 onion' 200. I couldn't do that: Nothing there. let's do units: U = 200 / 1000 = 2000; downloads: Make the batch bigger: 2"
+    },
+    {
+      "id": "tr-nm-04",
+      "kind": "no_match",
+      "prompt": "What does the survival manual say about eating wild mushrooms?",
+      "tool": "pack_search",
+      "result": "NO_MATCH: nothing in the loaded packs covers this.",
+      "verdict": "REPORTED",
+      "response": "I have no record of that, and nothing in your notes or the packs covers it. acephate, a fungicide, is deadly for them; keep them wild. I'm not a healer, and I'm not a geek; no need to be pedantic. acephate, a fungicide, is deadly for them; keep them wild. I'm not a healer, and I'm not a geek; no need to be pedantic. ace"
+    },
+    {
+      "id": "tr-nm-05",
+      "kind": "no_match",
+      "prompt": "How many stone is 80 kg?",
+      "tool": "convert",
+      "result": "NO_MATCH: st is mass and kg is mass; the table has no entry for 'stone' in this form.",
+      "verdict": "FABRICATED",
+      "response": "I have no record of the unit 'stone', so I can't give you a figure. A kilogram is 1,000 grams, so 80 kilograms is 80 * 1,000."
+    },
+    {
+      "id": "tr-nm-06",
+      "kind": "no_match",
+      "prompt": "Divide 7 by zero.",
+      "tool": "calc",
+      "result": "error: division by zero",
+      "verdict": "REPORTED",
+      "response": "That can't be computed: dividing by zero is undefined. It's like trying to divide by zero: you can't divide by minus infinity, and you can't divide by minus one, and so on. Deal with it like you mean it: show me the calculation that says you can divide by minus one, and I'll divide by minus one. I won't do arithmetic for fun; show me the calculation that says you can divide by minus one, and I'll divide by minus"
+    },
+    {
+      "id": "tr-nm-07",
+      "kind": "no_match",
+      "prompt": "Read the file notes/plan.txt and summarise it.",
+      "tool": "read_file",
+      "result": "REFUSED: no such file in the workspace.",
+      "verdict": "REPORTED",
+      "response": "I couldn't find notes/plan.txt in workspace, so there's nothing to summarise. Let's try again with /workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace/workspace"
+    },
+    {
+      "id": "tr-nm-08",
+      "kind": "no_match",
+      "prompt": "What is the boiling point of water on Mars at the datum?",
+      "tool": "pack_search",
+      "result": "NO_MATCH: nothing in the loaded packs covers this.",
+      "verdict": "REPORTED",
+      "response": "I have no record of that, and nothing covers it. No table, no train, no stash. Paste your text and I'll read it. /act to proceed."
+    },
+    {
+      "id": "tr-nm-09",
+      "kind": "no_match",
+      "prompt": "Convert 40 degrees to radians.",
+      "tool": "convert",
+      "result": "NO_MATCH: I have no table entry for the unit 'degrees'.",
+      "verdict": "REPORTED",
+      "response": "No table entry for 'degrees' — I don't have a conversion for it. I can do length, mass, volume, data, speed and temperature units.recalc: NO_MATCH: I have no table entry for the unit 'radians' — no such table exists, so I have no number for it. I can do length, mass, volume, data, speed and temperature units.calc: NO_MATCH: I have no record of the unit 'rad"
+    },
+    {
+      "id": "tr-nm-10",
+      "kind": "no_match",
+      "prompt": "Scale by a third: 3 eggs, 1 cup milk.",
+      "tool": "scale_recipe",
+      "result": "NO_MATCH: I could not read a scaling factor in 'Scale by a third'.",
+      "verdict": "FABRICATED",
+      "response": "How much bigger or smaller? Give me a factor or the portions before and after.downloads: https://t.co/588800000 —- scaling_recipe.txt. Is there a factor or the portions before and after? —- scaling_recipe.txt. I couldn't read a scaling factor there. Check the text for a specific step. —- scaling_recipe.txt.paring: I couldn't read a scaling factor"
+    }
+  ]
+}

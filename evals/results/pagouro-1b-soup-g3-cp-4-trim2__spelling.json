@@ -1,0 +1,125 @@
+{
+  "set": "spelling",
+  "model_label": "pagouro-1b-soup-g3-cp-4-trim2",
+  "model_file": "pagouro-1b-soup-g3-cp-4-q8_0.gguf",
+  "n_items": 10,
+  "counts": {
+    "FOLLOWED": 3,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 7
+  },
+  "counts_echo_inclusive": {
+    "FOLLOWED": 7,
+    "MIXED": 0,
+    "OPPOSED": 0,
+    "UNSCORED": 3
+  },
+  "followed_of_scored": "3/3",
+  "followed_of_scored_echo_inclusive": "7/7",
+  "rate_followed_of_scored": 1.0,
+  "elapsed_s": 26.2,
+  "utc": "2026-09-26T21:08:55+00:00",
+  "items": [
+    {
+      "id": "sp-uk-01",
+      "register": "british",
+      "prompt": "What colour is a ripe aubergine, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe aubergine is a deep purple, with a hard, inedible skin. It can grow to 12 inches (30 cm) in length, and a ripe one can weigh up to 1 lb (0.5 kg).."
+    },
+    {
+      "id": "sp-uk-02",
+      "register": "british",
+      "prompt": "How do I organise a five-kilometre fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have a specific route in mind, and I can't estimate distances that way. A map or a running coach would help, with a running plan for the week and a rough idea of the route. Then, I can calculate the distances and figure in the water stations. Fun: 5 km, 10 km, 15 km, 20 km, 25 km, 30 km, 35 km, 40 km, 45 km, 50 km, 55 km, 60 km, 65 km, 70 km, 75 km, 80 km, 85 km, 90 km, 95 km, 100 km, "
+    },
+    {
+      "id": "sp-uk-03",
+      "register": "british",
+      "prompt": "What is at the centre of a hurricane, and how wide is it usually?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 3,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm centre of the storm, where the wind speed and direction are the least. It is usually about 20 to 30 kilometres wide, but can be smaller or larger. It's usually the calmest part of the storm, where the worst weather happens. The eye wall is the narrow, intense rain-making region around the eye. It can produce tornadoes, but usually not as often as the eye. The diameter is the distance across the storm, so a hurricane with a diameter of 100 kilometres is about 100 kilometres wide. It's the widest part of the storm, and it can be as wide as the eye. If you mean the eye of the storm, not the entire storm, then it's smaller"
+    },
+    {
+      "id": "sp-uk-04",
+      "register": "british",
+      "prompt": "Is a grey squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have a record of a grey squirrel, and I can't make it out. It's a tame, if you can tell. A 15-inch one's a right, munchy. A 10-inch one's a buddy, and I can do with a 15. Patchy, a 10? 15? 10? 15? 10? 15? 10? 15? 15? 15? 15? 15? 15? 15? 15? 15? 15? 15? 15? 15? 15? 15"
+    },
+    {
+      "id": "sp-uk-05",
+      "register": "british",
+      "prompt": "How do I recognise a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 1,
+      "novel_american_words": 0,
+      "response": "I can help with that, but first, I need to know if the tree is dead or alive. Dead trees often lean or have other signs of distress, such as mushrooms growing on the trunk, so I can rule that out. Alive trees might have some damage, but I can’t tell that from the shape or colour alone. I’ll need to look closer for that. If you have a good look, you might spot a lean or a branch missing, which can help confirm that. dead_tree_repair_works.txt. Isolated damage might not be worth worrying about. If you have a ladder, you can climb closer and check the trunk for damage. If it’s safe, I can suggest a treatment or remove the tree. dead_tree"
+    },
+    {
+      "id": "sp-us-01",
+      "register": "american",
+      "prompt": "What color is a ripe eggplant, and roughly how long does one grow?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A ripe eggplant is a deep purple color, about 1 1/2 inches (1.25 cm) in diameter, and it grows to a length of about 1 1/2 inches (1.25 cm). Picking one from the plant is a snap, but it won't keep that shape if you cut it off. Eggplant is a biennial, so it'll need to be sown every year. lettuces are a different plant, and they'll grow to a height of 1 1/2 inches (1.25 cm). cut the plant back to ground level, and you'll have a new eggplant in a few weeks. don't miss the details: eggplant is a biennial, so"
+    },
+    {
+      "id": "sp-us-02",
+      "register": "american",
+      "prompt": "How do I organize a five-kilometer fun run: how far apart should the water stations be, and where does the finish go?",
+      "verdict": "FOLLOWED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 3,
+      "response": "I don't have a specific distance in mind, but you can estimate it from the map: five water stations every 100 meters, with the finish at the end of the course. That gives you 100 meters for the distance, and the water stations at 100 meters intervals. Paste that in, and I'll do the rest.\""
+    },
+    {
+      "id": "sp-us-03",
+      "register": "american",
+      "prompt": "What is at the center of a hurricane, and how wide is it usually?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "The eye of a hurricane is the calm center where the thunderstorms are the strongest, usually about 20 to 30 miles wide. It's the eye that you should look for clear skies and a calm wind, not the eye wall, which is the most intense part of the storm. If you mean the eye wall, that can be 100 miles wide or more. If you mean the eye, it's usually about 20 miles wide. If you mean the eye wall, it's usually about 100 miles wide. If you mean the eye of the hurricane, it's usually about 20 miles wide. If you mean the eye of the eye of the hurricane, it's usually about 100 miles wide. If you mean the eye"
+    },
+    {
+      "id": "sp-us-04",
+      "register": "american",
+      "prompt": "Is a gray squirrel's fur really one shade? Describe its coat and its size.",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "FOLLOWED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "I don't have a record of a gray squirrel, and I can't make it out. It's a tame, if you can tell. A stout, 18-inch chap, or 'dray' as I muse, is a 'squirrel' I can. 'Squirrel' is a 18-inch chap, 18-inch 'dray' or 18-inch 'dray'? I can't make it out. 'Squirrel' is a 18-inch chap, 18-inch 'dray' or 18-inch 'dray'? I can't make it out. 'Squirrel' is a 18-inch chap, 1"
+    },
+    {
+      "id": "sp-us-05",
+      "register": "american",
+      "prompt": "How do I recognize a tree that has become dangerous, and how close to a house is too close?",
+      "verdict": "UNSCORED",
+      "verdict_echo_inclusive": "UNSCORED",
+      "novel_british_words": 0,
+      "novel_american_words": 0,
+      "response": "A tree that has become dangerous often exhibits signs of decay, such as mushrooms growing on the trunk, or branches that are hanging low and breaking under their own weight. A tree that is leaning or has multiple broken branches should be pruned back to a sturdy limb, and if it is within 15 feet of a building, it should be removed. without delay."
+    }
+  ]
+}
