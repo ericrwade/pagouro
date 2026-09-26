@@ -53,10 +53,26 @@ judgement — yours, later). Save as `outline.json`:
 ```
 Show the outline to the user and get a yes before spending their time.
 
-### 3. Run it, and keep running until done
+### 3. Read in waves, over scales
+The document is cut into **segments that overlap like fish scales** — 5,000 words each, sharing a third
+with the next, so a 100,000-word manuscript is 30 segments (not 20) and nothing that sits on a boundary
+is read out of context. Inside each segment the model reads ~600-character pieces. Three waves, each
+its own run and its own state:
+1. `--wave idea` — one piece per segment, one question ("what is this about, what does it claim"): the
+   gist of the whole in ~30 calls. Read it; sharpen the outline with the user.
+2. `--wave outline` — three pieces per segment (start, middle, end) against the outline: a map of where
+   each question is answered, in ~90 × questions calls.
+3. `--wave bulk` — every piece against the outline, until done.
+Each wave's findings are grouped by segment, so a fact seen in two overlapping segments shows up twice
+with two neighbours — that is the continuity, not a duplicate.
+
+### 4. Run it, and keep running until done
 ```
-python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md
+python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md --wave idea
+python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md --wave outline
+python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --out review.md --wave bulk
 ```
+(`--segment-words 5000 --overlap 0.34` are the defaults; one state file holds all three waves.)
 - Prints progress per piece × question; writes `review.md.state.json` after every call.
 - If it stops (machine off, endpoint down, `--limit N` reached), **run the same command again**: it
   continues from the state file. Exit code 2 means "not finished yet"; 0 means every piece × question
@@ -65,14 +81,14 @@ python scripts/chunk_review.py --doc THE_DOCUMENT.md --outline outline.json --ou
   continuing the passage instead of answering (measured, D-93). `--ground 0.6` is the grounding floor.
 - Documents in PDF/Word: convert to text first (Pagouro's own `documents.py` extractor, or `pandoc`).
 
-### 4. Read `review.md` and write the deliverable the user asked for
+### 5. Read `review.md` and write the deliverable the user asked for
 `review.md` has, per question, the grounded findings with piece numbers and the nearest heading, then a
 coverage table and the count of answers that were *not* grounded in their piece (its bluff rate on this
 run — show the user that number). A finding is a pointer in the model's words, not a quotation: open
 the piece it names and read the text before you use it. Now do the part only you can: group, compare,
 find the contradictions, write the memo. Cite pieces so the user can check any line against the text.
 
-### 5. Tell the user what was and was not read
+### 6. Tell the user what was and was not read
 Pieces with "no match" for every question are counted in the coverage table; if a whole section came
 back empty, say so — it either does not address their questions or needs a different question.
 

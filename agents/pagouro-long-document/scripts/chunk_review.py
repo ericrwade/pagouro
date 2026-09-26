@@ -12,7 +12,15 @@ An answer below the floor (default 0.6) is marked UNGROUNDED and kept out of the
 the run's own bluff rate is visible. "No match" phrasings count as no match, not as invention.
 
     python chunk_review.py --doc BOOK.md --outline outline.json --out review.md
+        [--wave idea|outline|bulk] [--segment-words 5000] [--overlap 0.5]
         [--endpoint http://127.0.0.1:8484/v1] [--chunk-chars 600] [--ground 0.6] [--state review.state.json] [--limit N]
+
+Waves and scales (Eric, 2026-09-26): the document is read in WAVES -- `idea` (one piece per segment, one
+question: what is this about), `outline` (three pieces per segment against the outline), `bulk` (every piece).
+Segments are sliding windows that OVERLAP LIKE FISH SCALES: --segment-words 5000 --overlap 0.34 turns a
+100,000-word manuscript into 30 segments of 5,000 words (not 20), each sharing a third of its text with the next, so a
+fact that sits on a boundary is read in the context of both neighbours. Pieces (~600 chars, what the 1B
+holds) are cut inside each segment; a piece in an overlap zone is asked once per segment it belongs to.
 
 outline.json: [{"id": "q1", "question": "What does the author say the model must never claim?"}, ...]
 state file: every (piece, question) result, written after each call, so a stopped run continues where it was.
@@ -71,6 +79,21 @@ def pieces_of(text: str, max_chars: int) -> list[tuple[str, str]]:
     return out
 
 
+def segments_of(text: str, seg_words: int, overlap: float) -> list[tuple[int, str]]:
+    """Sliding windows of seg_words words, stepping by seg_words * (1 - overlap): the fish scales."""
+    words = text.split()
+    if seg_words <= 0 or len(words) <= seg_words:
+        return [(0, text)]
+    step = max(1, int(seg_words * (1.0 - overlap)))
+    out, start = [], 0
+    while start < len(words):
+        out.append((start, " ".join(words[start:start + seg_words])))
+        if start + seg_words >= len(words):
+            break
+        start += step
+    return out
+
+
 def ask(endpoint: str, question: str, passage: str, max_tokens: int) -> tuple[str, list[str]]:
     body = {"model": "pagouro", "messages": [{"role": "user", "content": question}], "max_tokens": max_tokens,
             "pagouro_passage": passage}
@@ -105,24 +128,41 @@ def main() -> int:
     ap.add_argument("--state", default=None)
     ap.add_argument("--limit", type=int, default=0, help="stop after N calls this run (0 = until done)")
     ap.add_argument("--rejudge", action="store_true", help="recompute every saved verdict from the saved answers (no model calls), then rewrite the report")
+    ap.add_argument("--wave", choices=["idea", "outline", "bulk"], default="bulk", help="idea: 1 piece/segment, one question; outline: 3 pieces/segment; bulk: every piece")
+    ap.add_argument("--segment-words", type=int, default=5000, help="segment length in words (0 = no segments)")
+    ap.add_argument("--overlap", type=float, default=0.34, help="share of each segment shared with the next (fish scales)")
     a = ap.parse_args()
     doc = io.open(a.doc, encoding="utf-8", errors="replace").read()
     outline = json.load(io.open(a.outline, encoding="utf-8"))
     state_path = a.state or a.out + ".state.json"
     state = json.load(io.open(state_path, encoding="utf-8")) if os.path.exists(state_path) else {}
-    parts = pieces_of(doc, a.chunk_chars)
-    total = len(parts) * len(outline)
     name = os.path.basename(a.doc)
-    print(f"{name}: {len(parts)} pieces of <= {a.chunk_chars} chars x {len(outline)} questions = {total} calls; {len(state)} done already", flush=True)
+    segs = segments_of(doc, a.segment_words, a.overlap)
+    parts = []                                   # (label, piece) with the label carrying the segment number
+    for si, (w0, seg) in enumerate(segs):
+        ps = pieces_of(seg, a.chunk_chars)
+        if a.wave == "idea":
+            ps = ps[:1]
+        elif a.wave == "outline" and len(ps) > 3:
+            ps = [ps[0], ps[len(ps) // 2], ps[-1]]
+        for label, piece in ps:
+            parts.append((f"seg {si+1} · {label}", piece))
+    if a.wave == "idea":
+        outline = [{"id": "idea", "question": "In one or two sentences, what is this passage about, and what does it claim?"}]
+    total = len(parts) * len(outline)
+    print(f"{name}: {len(segs)} segments of <= {a.segment_words} words (overlap {a.overlap:.0%}), wave '{a.wave}': "
+          f"{len(parts)} pieces of <= {a.chunk_chars} chars x {len(outline)} questions = {total} calls; {len(state)} done already", flush=True)
     if a.rejudge:
         for k, v in state.items():
+            if not k.startswith(a.wave + ":") or v["piece"] >= len(parts):
+                continue
             v["verdict"], g = judge(v["answer"], parts[v["piece"]][1], a.ground); v["grounding"] = round(g, 2)
         io.open(state_path, "w", encoding="utf-8").write(json.dumps(state, ensure_ascii=False, indent=1))
         print(f"rejudged {len(state)} saved answers", flush=True)
     calls, t0, stopped = 0, time.time(), False
     for ci, (label, piece) in enumerate(parts):
         for q in outline:
-            key = f"{ci}:{q['id']}"
+            key = f"{a.wave}:{ci}:{q['id']}"
             if key in state:
                 continue
             if a.limit and calls >= a.limit:
@@ -134,7 +174,7 @@ def main() -> int:
                 stopped = True; break
             verdict, g = judge(ans, piece, a.ground)
             nomatch = verdict == "NO_MATCH"
-            state[key] = {"piece": ci, "label": label, "q": q["id"], "verdict": verdict, "grounding": round(g, 2),
+            state[key] = {"wave": a.wave, "piece": ci, "label": label, "q": q["id"], "verdict": verdict, "grounding": round(g, 2),
                           "answer": ans[:800], "notes": notes}
             io.open(state_path, "w", encoding="utf-8").write(json.dumps(state, ensure_ascii=False, indent=1))
             calls += 1
@@ -142,8 +182,10 @@ def main() -> int:
         if stopped:
             break
     # the report, from the state
-    lines = [f"# Review of {name}", "",
-             f"*{len(parts)} pieces of <= {a.chunk_chars} characters; {len(state)} of {total} piece x question calls done. "
+    state = {k: v for k, v in state.items() if k.startswith(a.wave + ":")}
+    lines = [f"# Review of {name} — wave '{a.wave}'", "",
+             f"*{len(segs)} segments of <= {a.segment_words} words overlapping {a.overlap:.0%}; {len(parts)} pieces of <= {a.chunk_chars} characters; "
+             f"{len(state)} of {total} piece x question calls done. "
              f"Findings are Pagouro 1B's answers from each piece, kept only when at least {int(a.ground*100)} % of their content "
              f"words occur in that piece; a person or a larger model reads them and checks the piece.*", ""]
     for q in outline:
@@ -165,7 +207,7 @@ def main() -> int:
                   f"Pieces with 'no match' for every question were read and did not address the questions.*"]
     io.open(a.out, "w", encoding="utf-8").write("\n".join(lines) + "\n")
     left = total - len(state)
-    print(f"written {a.out}; {len(state)}/{total} done, {left} left; {calls} calls in {time.time()-t0:.0f}s"
+    print(f"written {a.out} (wave {a.wave}); {len(state)}/{total} done, {left} left; {calls} calls in {time.time()-t0:.0f}s"
           + ("" if not left else " -- run again to continue"), flush=True)
     return 0 if not left else 2
 
