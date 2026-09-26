@@ -8,30 +8,16 @@
 > Greek *págouros*, hermit crab: carries a home it can move out of. The *ouro* nods to ouroboros —
 > self-sufficient.
 
-**Status (2026-09-24): private, in progress; nothing is released. The 1B model is training** (D-85: 8×H100, 99.7B licensed and dated tokens, started 2026-09-22 08:48Z; the watch is on issue #2). The full pipeline runs end to
-end (corpus → tokenizer → pretrain → anneal → SFT → GGUF → eval → package → USB). The stick now
-carries **Pagouro Flash**: 126M parameters, 2B tokens on a rented A40 (14 h, the whole window
-$7.54), fine-tuned on 6,700 conversations, inside the real application (`app/`): three switches, a
-context gauge, five sandboxed tools, reference packs, and a long-term memory that returns what you
-told it labelled as your own words. On the 100-item honesty sets (D-73) it invents an answer to **38%** of unanswerable questions
-and answers **19%** of real ones correctly (small open models: 50–57% and 87–93%; frontier:
-23–27% and 97%); tool routing 31/40; memory routed 6/10, answered 9/10 (`evals/results/`,
-`pagouro-flash3__*`). It is far from the release gate (answered-real ≥ 80%) and says so. The
-corpus ledger holds 76 rows, including a 36-work "shelf" of licensed flavours for the anneal
-(D-58; measured to help on unseen text at no general-text cost, D-61), and every backbone row
-now carries a date basis: the code slice is 95 named repositories at their last commit before
-2022-01-01 with the licence file classified per repository (D-62b), which supersedes The Stack.
-The shipped Flash model was trained before that replacement, on the Stack rows, and its rows
-say so. The Flash model stays on the stick until the 1B run's exports are measured on the same sets.
+**Status (2026-09-26): private, measured, not yet released.** The 1B model is trained (D-85: 8×H100, 99,724,809,408 licensed and dated tokens, 61.6 h, $1,778.97 read from the account), post-trained on the project's own seeds and three rounds of GRPO against its own honesty scorer (D-87 → D-93), and on the stick inside the real application (`app/`). On the 100-item honesty sets (D-73), at the decode it ships with, it invents an answer to **22 %** of unanswerable questions and answers **81 %** of real ones correctly (small open models: 50–57 % and 87–93 %; frontier models: 23–27 % and 97 %; `evals/results/pagouro-1b-grpo3-g-trim__*`, `docs/facts.json`). Tool routing 23/24; memory routed 9/10; tool-result fidelity 10/10; a four-turn conversation through the app with no repeated answer. It clears the release gate (answered-real ≥ 80 %, bluff below every open baseline) and misses the original stretch target (≤ 20 %), and says so. On a program-checked set of school word problems it solves 18 of 320 without tools: it is a 1B, and it points to its calculator. Two later research rounds that improved reasoning five-fold cost honesty and did not ship (D-95); their recipe is in the repository. What remains is release (`docs/TO_DONE.md`): sign, anchor, publish, flip public.
 `docs/ORIGIN_LEDGER.md` tracks every original commitment against what exists. Read
 `docs/ORIGIN.md` for where this came from.
 
 ---
 
-## What Pagouro will be
+## What Pagouro is
 
-A ~1B parameter model, pretrained from random weights on a fully licensed and fully documented
-corpus, packaged as a portable application that runs offline on any machine. It will lose to the
+A 968,968,192-parameter model, pretrained from random weights on a fully licensed and fully documented
+corpus, packaged as a portable application that runs offline on any machine. It loses to the
 models you already use on every capability test — Chapter 1 of the book says so in numbers. What
 it offers instead is a set of promises a stranger can check (`docs/WHY.md`, D-83):
 
@@ -65,37 +51,37 @@ who has never heard of a hash.
 | `docs/MILESTONES.md` | The nine milestones and their acceptance criteria |
 | `ENVIRONMENT.md` | Hardware findings and measured baselines |
 
-## Milestone 1 results
-
-Trained on a 20,000-document slice of FineWeb-Edu (ODC-By), on CPU, on a GMKtec EVO-X2.
+## The 1B, measured
 
 | | |
 |---|---|
-| Model | 12.6M parameters, dim 384, 6 layers, 6 heads, 2 KV heads |
-| Corpus | 24.5M tokens, 8,192-token vocabulary |
-| Training | 2,200 steps, 9.0M tokens, ~35 min on CPU at ~4,400 tok/s |
-| Train loss | 9.084 → 4.879 |
-| Validation perplexity | ~8,800 → **133.7** |
-| GGUF export | 63.2 MB f32, **17.0 MB Q8_0** |
-| Generation speed | **2,868 tok/s** on CPU, Q8, single-threaded prompt |
+| Model | 968,968,192 parameters; 20 layers, dim 2048, 16 heads / 4 KV heads, FFN 5,632; context 8,192 |
+| Corpus | 99,724,809,408 tokens: FineWeb-Edu (ODC-By, dumps ≤ 2021-49) 91.6 %, Stack Exchange (CC BY-SA) 7.7 %, dated code 0.7 % (×3); anneal on a licensed 31-work shelf |
+| Training | 95,104 steps on 8× H100 SXM, 2026-09-22 → 09-24, 460k tokens/s; warmup-stable-decay; anneal held-out perplexity 10.78 → 9.2 |
+| Post-training | SFT on the project's own seeds; GRPO ×3 against `evals/run_eval.py`'s scorer; decode settled by measurement (greedy, no repetition penalty, loop trim — D-93) |
+| Honesty (100-sets) | bluff **22 %** / hedge 6 % / abstain 72 % on the unanswerable set; **81 %** correct / 12 wrong / 7 abstain on the real set |
+| Files | `pagouro-q8_0.gguf` 1,102,230,720 B (the one the app runs), `pagouro-q4_k_m.gguf` 633,976,000 B; hashes in `MANIFEST.md` |
+| Bill | $1,778.97 for the run; ≈ $1,900 all-in with the research rounds |
 
-What it actually proves:
-
-1. **The architecture converts.** Our own transformer exports to GGUF and llama.cpp loads it. This
-   was the one-way door: an architecture llama.cpp cannot load is a model nobody can run.
-2. **The export is faithful.** PyTorch and llama.cpp greedily decode the same prompt to *identical*
-   text, 94 of 94 characters. "It converted" is not evidence; this is.
-3. **Resume works.** Proven by killing a run at step 2100 and restarting it. Loss continued at 4.80
-   rather than jumping back to 9.0, and the optimizer state came back with it.
-4. **The chat template round-trips**, embedded in the GGUF rather than only in a side file.
-5. **The ledger works.** `fetch_data.py` refuses any source without a licence on record.
-
-The model itself is incoherent, which is correct at this size with no fine-tuning. It produces
-grammatical English and repeats itself.
+The 12.6M-parameter shakedown that proved the pipeline (architecture converts, export faithful to
+the character, resume works, ledger refuses unlicensed sources) is in `BUILD_LOG.md` Day 1 and
+`docs/MILESTONES.md`.
 
 ## Running it
 
-Requires Python 3.12 and about 1 GB of disk. No GPU needed.
+**From the stick or the release zip:** open the folder and double-click `PAGOURO.bat` (or run
+`pagouro.exe`). Nothing to install; no internet needed; the first start from a USB stick reads a
+1 GB file and can take a minute — it says so while loading. `/help` lists the commands; `/careful`
+re-asks each question five times and calls disagreement a guess. `pagouro.exe --serve` exposes the
+same harness as a local OpenAI-compatible endpoint for agent frameworks (`agents/README.md`).
+
+*Windows SmartScreen:* the executable is not code-signed (signing costs money and would change the
+bytes the manifest anchors). Windows may show "Windows protected your PC" — click **More info →
+Run anyway**. The manifest, its signature and the Bitcoin timestamp are what vouch for the file;
+`docs/CHECK_YOUR_COPY.md` walks through checking them.
+
+**Building it yourself** (Python 3.12, ~1 GB of disk for the small model; no GPU needed for the
+pipeline, a rented card for the 1B — `docs/MAKE_IT_YOURS.md` and the book's do-it chapters):
 
 ```bash
 python -m venv .venv
@@ -110,13 +96,10 @@ bash tools/fetch_llamacpp.sh              # pinned llama.cpp build, not committe
 .venv/Scripts/python.exe scripts/train.py --max-steps 2000
 .venv/Scripts/python.exe scripts/export_gguf.py
 .venv/Scripts/python.exe scripts/verify_gguf.py          # must print PASS
-
-./tools/llamacpp/llama-quantize.exe data/gguf/pagouro-m1-f32.gguf data/gguf/pagouro-m1-q8_0.gguf Q8_0
-./tools/llamacpp/llama-cli.exe -m data/gguf/pagouro-m1-q8_0.gguf -p "What is a hermit crab?" -st -n 40
 ```
 
-`scripts/train.py --resume` continues from the latest checkpoint. Progress is written to
-`runs/train_log.jsonl` as it happens.
+`scripts/train.py --resume` continues from the latest checkpoint. The 1B run itself is
+`scripts/runpod/train_1b.sh` (`docs/JOB_1B.md`); the evaluation chain is `scripts/eval_gguf.sh`.
 
 **Benchmark on an idle machine.** Mining on this box made training measure 30x slow and looked
 exactly like a broken toolchain. See `ENVIRONMENT.md`, Finding 6.
