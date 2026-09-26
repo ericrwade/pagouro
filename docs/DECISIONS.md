@@ -2437,7 +2437,7 @@ smoke 0 fails, reasoning held-out 11/320**; 30 % = 14 / 82 with one multi-turn f
 `9336cce0…`; q4_k_m 633,976,000 B sha256 `e1c17786…`), meeting every line of the rule: bluff < 22 (13), answered ≥ 80
 (83), multi-turn clean, memory ≥ 8, tool-result ≥ 9. Honest costs, said on the box: memory *answered* 9 → 8; reasoning
 18 → 11 (never a promise); on the smoke test it abstains on "who wrote The Wealth of Nations" where GRPO-3 named Smith,
-and its Lisbon answer adds a garnish ("the Portela Monastery"). The two box numbers move from 22 / 81 to **13 / 83**.
+and its Lisbon answer adds a garnish ("the Portela Monastery"). The two box numbers move from 22 / 81 to **13 / 83** — and, after Eric’s fresh-stick test found a repeated tail the loop trim missed (a phrase said three times), the trim was tightened and the sets re-run: **13 / 82** (hedge 3, abstain 84; one real answer now cut to an abstention). 13 / 82 is what the box says.
 **The freeze (1.5 on the checklist):** no further training; the numbers on the box are these; rounds 2–4 and their
 recipes stay in the repository for whoever runs the next one. C (the reasoning lineage, 98/320) is published as a
 research artefact, not shipped.

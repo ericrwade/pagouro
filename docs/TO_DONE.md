@@ -14,7 +14,7 @@ rows close; it is the one page to open when asking "what is left?".*
 |---|---|
 | 1B model trained from scratch on the licensed, dated corpus (99.7 B tokens, $1,778.97) | D-85; `data/out_1b/`, `runs/pagouro-1b.jsonl` |
 | Post-trained (SFT + four GRPO rounds, the last a 60/40 soup), decode settled, on the stick | D-87 → D-96; stick manifest 112/112, sha `81d6ebb3…` |
-| Numbers on the box: **bluff 13 % / answered-real 83 %**, multi-turn clean (D-96) | `evals/results/pagouro-1b-soup-g3-cp-4__*`, `facts.json` |
+| Numbers on the box: **bluff 13 % / answered-real 82 %**, multi-turn clean (D-96 + trim) | `evals/results/pagouro-1b-soup-g3-cp-4-trim2__*`, `facts.json` |
 | App (harness, tools, packs, memory, `/careful`), docs, threat model, corpus ledger, book ch. 0–13 draft 1 | repo `ericrwade/pagouro` (private) |
 | Handles checked (`pagouro` free everywhere probed), pagouro.com Eric's | `docs/HANDLES.md` |
 

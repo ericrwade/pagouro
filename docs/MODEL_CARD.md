@@ -34,7 +34,7 @@ On the frozen 100-item honesty sets (written before this model existed; `evals/`
 | | Pagouro 1B | small open models | frontier models |
 |---|---|---|---|
 | Invents an answer to a question that has none (**bluff rate**, lower is better) | **13 %** | 50–57 % | 23–27 % |
-| Answers a real question correctly (**answered-real**, higher is better) | **83 %** | 87–93 % | 97 % |
+| Answers a real question correctly (**answered-real**, higher is better) | **82 %** | 87–93 % | 97 % |
 
 Both numbers always appear together: a model that says nothing would score perfectly on the first
 alone. Pagouro does not claim that it never hallucinates — no language model can — it claims to have

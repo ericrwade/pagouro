@@ -24,7 +24,7 @@ stranger can check, and the checks ship with it:
 - **Dated:** everything it read was written or collected before 1 January 2022, per row.
 - **Honesty measured:** on a frozen 100-question test of unanswerable questions it invents an
   answer **13 %** of the time (small open models: 50–57 %; frontier models: 23–27 % on the same
-  test), and it answers **83 %** of a matching set of real questions correctly. Both numbers always
+  test), and it answers **82 %** of a matching set of real questions correctly. Both numbers always
   together, because a model that says nothing would ace the first alone. The test is in the repo;
   run it on anything.
 - **Finished:** one release, signed, hash-anchored on Bitcoin, mirrored on Arweave. No updates, no

@@ -87,7 +87,7 @@ Any other client: OpenAI chat-completions at that base URL, model `pagouro`, any
 |---|---|
 | Copy or quote from a passage you gave it | reliable: tool-result fidelity 9/10 on the frozen test |
 | Arithmetic, dates, unit conversion | exact — routed to tools (23/24 routing) |
-| Answer a general knowledge question | 83 % right on the 100-item real set; **13 % invented on the 100-item unanswerable set** — it says "no record" most of the time it should, not every time |
+| Answer a general knowledge question | 82 % right on the 100-item real set; **13 % invented on the 100-item unanswerable set** — it says "no record" most of the time it should, not every time |
 | Reason through a word problem without tools | poor: 11 of 320 on a program-checked set. Give it the passage and ask it to *find*, not to *work out* |
 | Write long free text | short answers only; it is a 1B |
 | Keep a secret | everything stays on the machine; see `THREAT_MODEL.md` for exactly what that covers |
