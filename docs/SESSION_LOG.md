@@ -105,7 +105,15 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   Pushed: handoff, README pass (3.2), model card + ABOUT Disclosures (3.3/3.5), release gate (2.1), ch. 13
   closed (4.1), book rebuilt (4.4 A/B), `docs/LAUNCH.md` (6.2/6.3), BUILD_LOG Day 17; hourly inbox cron
   re-created (`c5151db1`, :17).
-**Open / next:** READ `docs/HANDOFF_2026-09-26.md` FIRST (the pod ssh key is also at `~/.ssh/pagouro_rpkey`). (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
+- **D-96 (19:00–21:30Z):** round 4 home ($13.30, pod deleted): C′ 8/76, C 13/73; soups GRPO-3 × C′ 70 % (11/83,
+  confabulates), 50 % (12/84, tool-result 8), **40 % = 13/83, tool-result 9/10, memory 9/8, multi-turn clean —
+  SHIPS; the freeze.** Docs all say 13/83; stick repackaged twice (D-96 model; then the digit-run trim): audit PASS,
+  **112/112, MANIFEST sha `81d6ebb3…`**, smoke 0 fails. Waves (idea/outline, 50 % overlap) built into the
+  long-document skill and measured on the book (idea 3/29 grounded; outline 50/435). BUILD_LOG Day 17 + later.
+**Open / next:** (1) `docs/TO_DONE.md` section 2 onward — the next items are Eric's (2.2 fresh-stick test on another
+machine, 3.1 the README first paragraph, 3.4 disclaimer line, 3.5 holdings sentence); (2) Claude: ch. 15 draft (4.3)
+from D-88…D-96 and BUILD_LOG Days 16–17, then ch. 14 after the release steps; (3) hard stop Sep 27 11:30 AM PT —
+no pods (none), everything pushed. (Superseded: READ `docs/HANDOFF_2026-09-26.md` FIRST (the pod ssh key is also at `~/.ssh/pagouro_rpkey`). (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
 before ~15:30Z and the link holds, else delete it; `list-pods` [] before the session ends; (2) measure round 4; C′ ships
 only under the rule (bluff < 22, answered ≥ 80, multi-turn clean, memory ≥ 8) → D-96 + repackage; else freeze on GRPO-3
 (D-96); (3) re-create the hourly inbox loop; push; (4) `docs/TO_DONE.md` section 2 onward; hard stop Sep 27 11:30 AM PT.
