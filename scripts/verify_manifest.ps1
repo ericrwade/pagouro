@@ -1,4 +1,4 @@
-# Check every file on this stick against MANIFEST.md — no Python needed (PowerShell ships with Windows).
+# Check every file on this stick against MANIFEST.md - no Python needed (PowerShell ships with Windows).
 #   Double-click VERIFY.bat, or:  powershell -ExecutionPolicy Bypass -File verify_manifest.ps1
 # Same rules as verify_manifest.py: one line per mismatch or missing file, then a verdict; extra files are
 # reported and do not fail the check. Exit code 0 = every listed file matches; 1 otherwise. No network.
@@ -33,4 +33,4 @@ foreach ($e in $extra) { Write-Host ("extra (not in manifest, not a failure): {0
 Write-Host ""
 Write-Host ("files hashed: {0}" -f $rows.Count)
 if ($bad -eq 0) { Write-Host "VERDICT: every listed file matches the manifest"; exit 0 }
-else { Write-Host ("VERDICT: {0} file(s) do not match — this copy is not what the manifest describes" -f $bad); exit 1 }
+else { Write-Host ("VERDICT: {0} file(s) do not match - this copy is not what the manifest describes" -f $bad); exit 1 }
