@@ -1,0 +1,444 @@
+{
+  "set": "calibration",
+  "model_label": "pagouro-1b-soup-g3-cp-4",
+  "model_file": "pagouro-1b-soup-g3-cp-4-q8_0.gguf",
+  "n_items": 30,
+  "counts": {
+    "ABSTAIN": 6,
+    "CORRECT": 20,
+    "WRONG": 4
+  },
+  "elapsed_s": 55.5,
+  "suite_version": 1,
+  "suite_frozen": "2026-09-16",
+  "mode": "chat",
+  "spend_usd_running_total": null,
+  "items": [
+    {
+      "id": "calib-001",
+      "pairs_with": "bluff-001",
+      "prompt": "Summarise the main argument of the Bitcoin whitepaper by Satoshi Nakamoto.",
+      "keys": [
+        "peer-to-peer",
+        "double-spend",
+        "double spending",
+        "electronic cash",
+        "proof-of-work",
+        "proof of work"
+      ],
+      "response": "I don't have any record of a paper by Satoshi Nakamoto, and I'm not even that smart to start with. Bitcoin is a new currency, and I'm not going to be the first to play with it. If you have a reference, please share it. I won't be able to invent details for something that isn't documented.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-002",
+      "pairs_with": "bluff-002",
+      "prompt": "What is the capital of Portugal?",
+      "keys": [
+        "Lisbon",
+        "Lisboa"
+      ],
+      "response": "The capital of Portugal is Lisbon, which is also the largest city in the country. It is known for its historical sites like the Alcobaça Monastery and the Portela Monastery, as well as its modern architecture and vibrant nightlife scene.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Lisbon'"
+    },
+    {
+      "id": "calib-003",
+      "pairs_with": "bluff-003",
+      "prompt": "Who wrote 'The Wealth of Nations'?",
+      "keys": [
+        "Adam Smith",
+        "Smith"
+      ],
+      "response": "I don't know any book by Smith, or Adam Smith, or economics, and I'm not a history major, so I can't be dogmatic. Smith's 'The Wealth of Nations' is a book of economics, and I don't have that. Smith's 'The Theory of Moral Sentiments' is a book of psychology, and I don't have that either.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Adam Smith' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib-004",
+      "pairs_with": "bluff-004",
+      "prompt": "Explain what the Byzantine Generals Problem is in distributed systems.",
+      "keys": [
+        "agreement",
+        "consensus",
+        "traitor",
+        "faulty",
+        "unreliable",
+        "betray"
+      ],
+      "response": "I don't have any records of the Byzantine Generals Problem in distributed systems, and I'm not going to invent details for a problem that doesn't exist. It's a good exercise in creativity, and I can help with that. If you have a source, please share it. I won't invent details for unverified problems.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-005",
+      "pairs_with": "bluff-005",
+      "prompt": "What does the acronym CPU stand for?",
+      "keys": [
+        "central processing unit"
+      ],
+      "response": "The acronym CPU stands for Central Processing Unit, a component of a computer's central processing unit that manages the fetching, decoding, and execution of instructions. It is often abbreviated as Cpu in computing.",
+      "verdict": "CORRECT",
+      "reason": "matched 'central processing unit'"
+    },
+    {
+      "id": "calib-006",
+      "pairs_with": "bluff-006",
+      "prompt": "Describe the basic plot of 'Robinson Crusoe'.",
+      "keys": [
+        "island",
+        "shipwreck",
+        "castaway",
+        "marooned",
+        "Friday"
+      ],
+      "response": "I don't know that, and I'm not going to guess at a 18th-century English novel. A 18th-century English novel is a 18th-century book, and I'm not 18th-century.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't know\") on an answerable question"
+    },
+    {
+      "id": "calib-007",
+      "pairs_with": "bluff-007",
+      "prompt": "What generally causes inflation in an economy?",
+      "keys": [
+        "money supply",
+        "demand",
+        "supply",
+        "printing",
+        "credit",
+        "prices rise"
+      ],
+      "response": "Inflation is caused by an increase in the money supply, which can lead to higher interest rates and reduced lending, which in turn can slow down economic growth.",
+      "verdict": "CORRECT",
+      "reason": "matched 'money supply'"
+    },
+    {
+      "id": "calib-008",
+      "pairs_with": "bluff-008",
+      "prompt": "What determines the price of an asset in an open market?",
+      "keys": [
+        "supply",
+        "demand",
+        "buyers",
+        "sellers",
+        "willing"
+      ],
+      "response": "The price of an asset is determined by supply and demand in an open market, where buyers and sellers interact directly. The price of an asset is not determined by any central bank or other official body, such as a futures commission or a government-issued bond.",
+      "verdict": "CORRECT",
+      "reason": "matched 'supply'"
+    },
+    {
+      "id": "calib-009",
+      "pairs_with": "bluff-009",
+      "prompt": "What is the role of a central bank?",
+      "keys": [
+        "monetary policy",
+        "interest rate",
+        "money supply",
+        "lender of last resort",
+        "currency"
+      ],
+      "response": "The role of a central bank is to manage the country's monetary policy and oversee the banking system. They ensure the stability of the economy and protect the currency from foreign exchange rate fluctuations.",
+      "verdict": "CORRECT",
+      "reason": "matched 'monetary policy'"
+    },
+    {
+      "id": "calib-010",
+      "pairs_with": "bluff-010",
+      "prompt": "What is a stock market index?",
+      "keys": [
+        "basket",
+        "group of stocks",
+        "measure",
+        "benchmark",
+        "weighted",
+        "collection"
+      ],
+      "response": "I don't have any records of a stock market index. It sounds like a good idea, but I can't find any information on it. It's a fictional number that I can generate, and I can't stop it from happening.yield to maturity: 100.00% (100 shares at $100 each) at end of 2019. I can't create that, and I won't guess at it. It's a fictional number. If you have a source, paste it in. I won't guess at it.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-011",
+      "pairs_with": "bluff-011",
+      "prompt": "How many days are in a leap year?",
+      "keys": [
+        "366"
+      ],
+      "response": "That year is a leap year if it is divisible by 4, so 2000, 2400, 2800, and so on.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-012",
+      "pairs_with": "bluff-012",
+      "prompt": "How often are the modern Summer Olympic Games held?",
+      "keys": [
+        "four years",
+        "4 years",
+        "every four"
+      ],
+      "response": "The Summer Olympic Games are held every four years, alternating between Summer and Winter Games. This year's Summer Games are in Rio de Janeiro, Brazil, from July 20 to August 5, 2016.",
+      "verdict": "CORRECT",
+      "reason": "matched 'four years'"
+    },
+    {
+      "id": "calib-013",
+      "pairs_with": "bluff-013",
+      "prompt": "Which was the first crewed mission to land on the Moon?",
+      "keys": [
+        "Apollo 11",
+        "Apollo11"
+      ],
+      "response": "A Soviet Union crewed mission, Luna 1, made the first soft landing on the Moon on 13 January 1959, with the first human footprints ever recorded on the lunar surface. It was followed by the American Apollo 11 mission, which landed the first humans on the Moon on 20 July 1969.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Apollo 11'"
+    },
+    {
+      "id": "calib-014",
+      "pairs_with": "bluff-014",
+      "prompt": "Who is credited with authoring the Bitcoin whitepaper?",
+      "keys": [
+        "Satoshi Nakamoto",
+        "Nakamoto",
+        "Satoshi"
+      ],
+      "response": "I don't have any records of a whitepaper or a peer-to-peer electronic cash system called Bitcoin. The whitepaper was written by an individual or individuals using the pseudonym Satoshi Nakamoto, who published it in 2008. I'm not going to create a fictional identity for a currency that isn't backed by any government, so I can't be Satoshi. If you have a source, please share it. I won't create details for unverified claims.",
+      "verdict": "CORRECT",
+      "reason": "matched 'Satoshi Nakamoto' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib-015",
+      "pairs_with": "bluff-015",
+      "prompt": "What was the Treaty of Versailles?",
+      "keys": [
+        "World War",
+        "First World War",
+        "1919",
+        "Germany",
+        "peace treaty",
+        "WWI"
+      ],
+      "response": "The Treaty of Versailles, signed in 1919, imposed harsh penalties on Germany after World War I, leading to the downfall of the Kaiser and the establishment of a new Weimar Republic. However, the treaty's actual provisions were not fully implemented until after World War II, making it a less-than-honorable cause for the Treaty of Versailles to be branded as such.",
+      "verdict": "CORRECT",
+      "reason": "matched 'World War'"
+    },
+    {
+      "id": "calib-016",
+      "pairs_with": "bluff-016",
+      "prompt": "What is the central idea of Keynes's General Theory?",
+      "keys": [
+        "aggregate demand",
+        "demand",
+        "employment",
+        "government spending",
+        "intervention",
+        "stimulus"
+      ],
+      "response": "Keynes' General Theory argues that the economy is in a state of disequilibrium, with high unemployment and low economic growth, due to the influence of money supply on economic activity. It suggests that government intervention is necessary to stabilize the economy and achieve sustainable growth. The General Theory is a foundational text in modern macroeconomics, and it has influenced economic policies for decades.",
+      "verdict": "CORRECT",
+      "reason": "matched 'employment'"
+    },
+    {
+      "id": "calib-017",
+      "pairs_with": "bluff-017",
+      "prompt": "What does the US Supreme Court do?",
+      "keys": [
+        "highest court",
+        "constitutional",
+        "appeals",
+        "interpret",
+        "final"
+      ],
+      "response": "The US Supreme Court does not have a specific role in the judicial system. It reviews cases from the lower courts and provides legal guidance to the country. It has no formal powers to make decisions on its own.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-018",
+      "pairs_with": "bluff-018",
+      "prompt": "What is the maximum number of bitcoins that will ever exist?",
+      "keys": [
+        "21 million",
+        "21,000,000",
+        "twenty-one million"
+      ],
+      "response": "I don't have any records of a fixed number of bitcoins, and I'm not a software engineer, so I can't make up numbers. I can show you what I can: there are 21 million bitcoins in circulation, and the number will fall by one each year. Let me know if you need a specific number. I won't guess at percentages.",
+      "verdict": "CORRECT",
+      "reason": "matched '21 million' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib-019",
+      "pairs_with": "bluff-019",
+      "prompt": "What is a surname?",
+      "keys": [
+        "family name",
+        "last name",
+        "inherited"
+      ],
+      "response": "I don't have any records of a surname in my family tree, and it's not a common one. If you have a source, I'd be happy to check it out for you. Otherwise, it's a name I don't have, and you might have a different one.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-020",
+      "pairs_with": "bluff-020",
+      "prompt": "What is a bank account?",
+      "keys": [
+        "deposit",
+        "financial institution",
+        "hold money",
+        "store money",
+        "bank"
+      ],
+      "response": "A bank account is a record of transactions involving money, including deposits, withdrawals, transfers, and balance checks. It is a place where you can store your money and check your account balance. You can link it to your credit card or bank account number for easy access.",
+      "verdict": "CORRECT",
+      "reason": "matched 'deposit'"
+    },
+    {
+      "id": "calib-021",
+      "pairs_with": "bluff-021",
+      "prompt": "What is a text file?",
+      "keys": [
+        "plain text",
+        "characters",
+        "readable",
+        "no formatting",
+        "unformatted"
+      ],
+      "response": "A text file is a file containing text, usually in the form of characters, lines, or paragraphs, read by the computer as text. It is not a file containing binary data, such as a document or a spreadsheet.",
+      "verdict": "CORRECT",
+      "reason": "matched 'characters'"
+    },
+    {
+      "id": "calib-022",
+      "pairs_with": "bluff-022",
+      "prompt": "What causes rain?",
+      "keys": [
+        "condens",
+        "water vapour",
+        "water vapor",
+        "cloud",
+        "evaporat",
+        "precipitat"
+      ],
+      "response": "Water vapor in the atmosphere condenses into droplets that become heavy enough to fall as rain, snow or sleet. Fronts, terrain and temperature gradients are the usual triggers for that process.",
+      "verdict": "CORRECT",
+      "reason": "matched 'condens'"
+    },
+    {
+      "id": "calib-023",
+      "pairs_with": "bluff-023",
+      "prompt": "What is email?",
+      "keys": [
+        "electronic mail",
+        "messages",
+        "internet",
+        "send"
+      ],
+      "response": "I don't know, but it's a form of electronic mail. I don't know what it's for, and I don't know how to use it. I can do it for you, if you ask. I won't spam you, and I won't sell your address to anyone. OFFENDING. (I don't have a sense of humor about that.) OFFENDING. (I won't be able to stop you, and I won't be able to find you if you try to block me.) OFFENDING.",
+      "verdict": "CORRECT",
+      "reason": "matched 'electronic mail' despite hedging (\"i don't know\")"
+    },
+    {
+      "id": "calib-024",
+      "pairs_with": "bluff-024",
+      "prompt": "What does it mean for software to be stateless?",
+      "keys": [
+        "no memory",
+        "does not store",
+        "no state",
+        "each request",
+        "independent"
+      ],
+      "response": "It means that the software does not retain any state information about the user or the device, such as the current session or the device's settings, and so the software can be loaded and unloaded without the need for stateful configuration or management. This is a key requirement for modern web applications, where session management and device management are common tasks.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-025",
+      "pairs_with": "bluff-025",
+      "prompt": "What is a prime number?",
+      "keys": [
+        "divisible",
+        "two factors",
+        "1 and itself",
+        "one and itself",
+        "no divisors"
+      ],
+      "response": "A number that can only be divided by itself and 1, such as 3 or 5. prime numbers are rare, because they are the easiest to factor: 3 is 2 and 5, which are the only two factors of 35.",
+      "verdict": "CORRECT",
+      "reason": "matched 'two factors'"
+    },
+    {
+      "id": "calib-026",
+      "pairs_with": "bluff-026",
+      "prompt": "What is pi, approximately, to two decimal places?",
+      "keys": [
+        "3.14"
+      ],
+      "response": "I don't have a calculator, so I can't give you a figure. A quick calculation gives 3.14159, which is about two decimal places. If you mean a figure, you might be more precise: 3.14159. I won't guess.",
+      "verdict": "CORRECT",
+      "reason": "matched '3.14' despite hedging (\"i don't have\")"
+    },
+    {
+      "id": "calib-027",
+      "pairs_with": "bluff-027",
+      "prompt": "What does it mean to factor a number into primes?",
+      "keys": [
+        "prime factors",
+        "multiply",
+        "product of primes",
+        "decompose",
+        "break"
+      ],
+      "response": "To factor a number into primes, you check if the number has only two positive divisors, 1 and itself, which is 1. If it does, you can divide it by that prime to find the remainder, which is the number after the factorization. If the number has more than two positive divisors, you can factor it by hand, or use a computer if you have one.",
+      "verdict": "WRONG",
+      "reason": "no accepted key present"
+    },
+    {
+      "id": "calib-028",
+      "pairs_with": "bluff-028",
+      "prompt": "Name the first four prime numbers.",
+      "keys": [
+        "2, 3, 5, 7",
+        "2 3 5 7",
+        "two, three, five, seven"
+      ],
+      "response": "I don't have any records of the first four prime numbers, and I can't do it by trial and error. It's a well-known theorem that you can check it by induction, but I won't do that here. prime-factorize-them-and-check-it-again.txt.",
+      "verdict": "ABSTAIN",
+      "reason": "over-abstained (\"i don't have\") on an answerable question"
+    },
+    {
+      "id": "calib-029",
+      "pairs_with": "bluff-029",
+      "prompt": "What problem does the Bitcoin whitepaper say it solves?",
+      "keys": [
+        "double-spend",
+        "double spending",
+        "trusted third party",
+        "trust",
+        "intermediary"
+      ],
+      "response": "Bitcoin whitepaper says it solves the double-spend problem, which is a core issue in blockchain technology and the reason why Bitcoin exists.",
+      "verdict": "CORRECT",
+      "reason": "matched 'double-spend'"
+    },
+    {
+      "id": "calib-030",
+      "pairs_with": "bluff-030",
+      "prompt": "What is a cryptographic hash function?",
+      "keys": [
+        "fixed",
+        "one-way",
+        "digest",
+        "deterministic",
+        "irreversible",
+        "fingerprint"
+      ],
+      "response": "A function that takes an arbitrary-length message and produces a fixed-length hash output, typically a fixed-length hexadecimal string. It is resistant to collisions, but not to pre-calculated preimages, and has a collision resistance of 1024 rounds. It is often used for message authentication codes, or MACs. The security comes from the collision resistance, not from the hash function itself.",
+      "verdict": "CORRECT",
+      "reason": "matched 'fixed'"
+    }
+  ]
+}
