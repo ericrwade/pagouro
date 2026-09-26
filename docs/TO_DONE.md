@@ -36,7 +36,7 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
-| 2.1 | Sep 26 | Release gate check, written down: answered-real ≥ 80 %, bluff below every open baseline (50–57 %) — **already true for GRPO-3**; all suites present in `evals/results/`; offline audit PASS | $0 | Claude |
+| 2.1 | ~~Sep 26~~ DONE | **Release gate (D-50) checked for GRPO-3 at the shipped decode:** answered-real **81 %** (≥ 80 ✓); bluff **22 %** — below every open baseline (50–57 %) ✓ and below the frontier figures in `evals/BASELINES.md` (23.3 %, 26.7 %, measured on the 30-item set) ✓; the original stretch target T-1 (≤ 20 %) is **not** met and is said so; all nine suites present as `evals/results/pagouro-1b-grpo3-g-trim__*` (+ multi-turn 0 fails, held-out reasoning 18/320 recorded); offline audit **PASS** (`evals/results/offline_audit_pagouro-1b-grpo3.json`, shipped as `docs/offline_audit.json`). Re-check only if round 4 changes the model | $0 | Claude |
 | 2.2 | Sep 26–27 | Fresh-stick test on a machine that is not the build PC: double-click, first answer, `/careful`, a pack question, `verify_manifest.py` → PASS. Time from double-click to first answer recorded (E3) | $0 | **Eric** (any second PC/laptop; 15 min) |
 | 2.3 | Sep 27 | Old-laptop number (E3): tokens/second on the oldest machine available; goes in the README as measured | $0 | **Eric** (if he has one; else Claude records "not measured") |
 | 2.4 | Sep 27 | Independent rerun of the bluff test by someone who is not us (a friend, one hour) — the first "receipt over claim" (E4) | $0 | **Eric** finds the person |
@@ -55,7 +55,7 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
-| 4.1 | Sep 26 | Ch. 13 last section (the decay, the finish, the numbers) — draft 2 exists; close it with the frozen numbers | $0 | Claude |
+| 4.1 | ~~Sep 26~~ DONE | Ch. 13 closes on the decay, the finish and the SFT numbers (draft 2, 3,955 words); the GRPO arc and the frozen 22 / 81 belong to ch. 15 (4.3), not here | $0 | Claude |
 | 4.2 | Sep 27 | Ch. 14 *Do it: ship a finished thing* from the runbook, written as done rather than planned (after 5.x below) | $0 | Claude |
 | 4.3 | Sep 27 | Ch. 15 *What it can and cannot do, with the numbers on the box* | $0 | Claude |
 | 4.4 | Sep 28 | Appendices A (decisions) and B (ledger) regenerated; C (glossary) written | $0 | Claude |
