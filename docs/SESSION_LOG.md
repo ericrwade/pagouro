@@ -98,6 +98,13 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   (`sft/grpo_unanswerable.jsonl`, `grpo_hard_*.jsonl`, `research4_1b.sh`: GRPO-C from GRPO-B, GRPO-C′ from GRPO-3).
   Pod `n2hx9b06df4byv` created 13:37Z but provisioning failed (desk internet down 12:50Z→); **pod is running with
   nothing on it** at the restart. O-48 done (`--serve`, `agents/`). `docs/TO_DONE.md` = the checklist.
+- **Post-restart session (14:29Z →):** desk had no DHCP lease (all adapters 169.254.x) until ~14:35Z; the
+  watcher provisioned pod `n2hx9b06df4byv` at 14:37Z (uploads 50 min), chain launched 15:26Z; GRPO-C 75 steps
+  (≈ 60 s/step) then GRPO-C′ trimmed to 45 steps by a same-length in-place edit of the running script → home
+  ≈ 17:50Z inside the $15 cap. RunPod MCP failed to connect at session start (no DNS) — needs Eric's `/mcp`.
+  Pushed: handoff, README pass (3.2), model card + ABOUT Disclosures (3.3/3.5), release gate (2.1), ch. 13
+  closed (4.1), book rebuilt (4.4 A/B), `docs/LAUNCH.md` (6.2/6.3), BUILD_LOG Day 17; hourly inbox cron
+  re-created (`c5151db1`, :17).
 **Open / next:** READ `docs/HANDOFF_2026-09-26.md` FIRST (the pod ssh key is also at `~/.ssh/pagouro_rpkey`). (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
 before ~15:30Z and the link holds, else delete it; `list-pods` [] before the session ends; (2) measure round 4; C′ ships
 only under the rule (bluff < 22, answered ≥ 80, multi-turn clean, memory ≥ 8) → D-96 + repackage; else freeze on GRPO-3
