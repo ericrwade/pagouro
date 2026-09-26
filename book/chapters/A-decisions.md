@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 88 decisions, 32 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 95 decisions, 35 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -94,6 +94,13 @@
 | D-86 | 2026-09-24 | Credit line: "Eric Wade, with Claude (Anthropic)" |
 | D-87 | 2026-09-25 | SFT B is the 1B candidate; the next lever is the GRPO known/unknowable curriculum on a rented card |
 | D-88 | 2026-09-25 | GRPO-1 on the 1B, and the soup: the candidate is 50 % SFT B + 50 % GRPO-1 (bluff 37 / answered 83), Eric to confirm |
+| D-89 |  | Eric's three calls on the 1B (2026-09-25, chat): the 70 % soup goes on the stick; GRPO-2 yes; O-45 order = self-knowledge, verified reasoning + careful mode, argue-a-side seed |
+| D-90 |  | Eric, 2026-09-25 08:03Z, going to sleep: "You have my permission to spend $100 on runpod to keep this moving forward" (≈ 5 h) |
+| D-91 | 2026-09-25 | The GRPO models' "hedges" were greedy-decoding loops; a repetition penalty on FREE answers fixes them; GRPO-3 + penalty = bluff 17 / answered 82; Eric to choose the stick model |
+| D-92 |  | Eric, 2026-09-25 (chat): "Do GRPO-3" — GRPO-3 with the decode split ships on the stick |
+| D-93 | 2026-09-25 | The multi-turn bug, its cause, and the shipped decode: greedy, no penalty, payload cap, loop trim → GRPO-3 = bluff 22 / answered 81, clean in conversation |
+| D-94 |  | The marketing message (Eric, 2026-09-25): a proof that it can be done and be useful; the niche of 100 % documented and self-contained; not competing with frontier or open-weights models |
+| D-95 | 2026-09-25 | Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; soups do not rescue it; GRPO-3 stays |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -131,3 +138,6 @@
 | O-43 | The About page: a key-facts table and a FAQ (Eric: "is there anything in that list we hadn't thought of?") | open |
 | O-44 | Handles and domains (Eric: "everything should have some presence. Needs to be findable") | open |
 | O-45 | Boosting reasoning, honesty and "over-delivering" in the 1B (Eric: "if you can think of a way to boost that, I want to hear about it") | open |
+| O-46 | "Someone could 70B this" / a token raise for a 30B–100B: what it would cost and what the Pagouro of it would be (Eric, 2026-09-25) | open |
+| O-47 | Contrastive Language Models (Kwok et al., 2026, "CLM") as a router, later (Eric: "CLM instead of LLM. Any help to us?") | open |
+| O-48 | Pagouro as a local model for agent frameworks (Eric: "will I be able to access Pagouro in Hermes Agent … can we package some starter skills") | open |
