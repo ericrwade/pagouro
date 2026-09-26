@@ -64,9 +64,9 @@ text: a crawl date is when a page was fetched, not when it was written.
 | Architecture | decoder-only transformer, 20 layers, dim 2048, 16 heads / 4 KV heads, FFN 5,632, RoPE |
 | Context | 8,192 tokens (trained at 4,096, extended to 8,192 for the decay phase, D-81) |
 | Tokenizer | 32,768-entry BPE trained on the licensed corpus |
-| Training | 8× H100 SXM (rented, RunPod), 2026-09-22 → 09-24; warmup-stable-decay schedule; bill TBD from the account |
+| Training | 8× H100 SXM (rented, RunPod, Montreal), 2026-09-22 → 09-24, 95,104 steps at 460k tokens/s; warmup-stable-decay schedule; bill $1,778.97 read from the account after the pod was deleted |
 | Post-training | supervised fine-tune on the project's own seeds (abstention, tools, memory, style; `sft/`), then GRPO against the project's own honesty scorer (three rounds, `scripts/train_grpo.py`); no distillation from any other model |
-| Files | `pagouro-1b-q4_k_m.gguf` (TBD bytes, SHA-256 TBD) — the stick file; `pagouro-1b-q8_0.gguf`; `pagouro-1b-f32.gguf`; the base (pre-SFT) model as its own artefact |
+| Files | `pagouro-q8_0.gguf` 1,102,230,720 bytes, SHA-256 `40f9907593c3e4ff95ee07a1e55ca5fe112d25ff8e82163600dbcd2a2bf4e0a1` — the file the app runs (the numbers above are measured on it); `pagouro-q4_k_m.gguf` 633,976,000 bytes, SHA-256 `7ea8fc4d5c23740097613d9cf8d74dd54a4957b34828ef2eb3936f7c6e2d3b52` ships beside it; the f32 export and the base (pre-SFT) model are published as their own artefacts at release |
 | Decode | llama.cpp on CPU, 8,192-token context, greedy (temperature 0), no repetition penalty; a search result is shown to the model as at most 2 hits of 350 characters; a looping tail is cut at the first repeated sentence and the cut is announced. The two numbers above are measured at exactly these settings (D-93). Sampling at 0.3 measured 37 % / 76 % on the same model |
 
 ## Licence

@@ -95,6 +95,18 @@ the build log is the unedited daily record; the book *Make Your Own AI* is the s
 numbers. The credit line is Eric's (D-86): **Eric Wade, with Claude (Anthropic)**. *(Founder links and
 handles: `docs/HANDLES.md`, F12 at release.)*
 
+## Disclosures
+
+What it cost: $1,778.97 for the 1B training run and about $1,900 all-in with the research rounds
+that followed it (every figure read from the RunPod account after each pod was deleted, and
+listed by day in `BUILD_LOG.md`); the domain; a USB stick. No grant, no sponsor, no investor.
+There is no token and there will not be one: a coin would give the project a reason to keep
+promising things after it is finished, which is the opposite of the promise it makes. Money can be
+given to it (a tip jar and an address, at release) but nothing can be bought from it. *[Eric's line
+on holdings — what he owns in the networks the release touches (Bitcoin, Arweave, Solana,
+Quilibrium), in one sentence, per D-14 — goes here before release.]* The model was built by one
+person and one AI model; the AI's company had no say in it and did not pay for it.
+
 ## How Pagouro works — what to expect
 
 There is no team, no support channel, no response time and no roadmap. That is the point, not
