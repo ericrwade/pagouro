@@ -89,8 +89,8 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
 | 6.1 | Oct 2 | Register `pagouro` where it is free: X, Instagram, TikTok, Reddit (Eric checked), Bluesky, Mastodon, YouTube; HF is 5.7; same avatar (the mark, `brand/pagouro_mark.png`) and the one-sentence bio everywhere; link = the GitHub Release | $0 | **Eric** (accounts are his; ~1 h) |
-| 6.2 | Oct 2 | Launch post, one text reused: the two numbers, the four promises, the link. Places: Show HN, r/LocalLLaMA, X, Bluesky/Mastodon, Hugging Face post | $0 | Claude drafts; **Eric** posts |
-| 6.3 | Oct 2 | A 60–90 s screen recording: double-click → first answer → an abstention → `/careful` → `verify_manifest.py` PASS. Goes on YouTube/TikTok/X | $0 | **Eric** records; Claude scripts it |
+| 6.2 | ~~Oct 2~~ DRAFTED (`docs/LAUNCH.md`; links at F10) | Launch post, one text reused: the two numbers, the four promises, the link. Places: Show HN, r/LocalLLaMA, X, Bluesky/Mastodon, Hugging Face post | $0 | Claude drafts; **Eric** posts |
+| 6.3 | Oct 2 (shot list DRAFTED in `docs/LAUNCH.md`) | A 60–90 s screen recording: double-click → first answer → an abstention → `/careful` → `verify_manifest.py` PASS. Goes on YouTube/TikTok/X | $0 | **Eric** records; Claude scripts it |
 | 6.4 | Oct 3 | `docs/HANDLES.md` updated with what was registered; success metrics baseline written (stars, downloads, forks, independent reruns — E6) | $0 | Claude |
 | 6.5 | ongoing | Read issues; answer nothing that promises a change (ABOUT: "no team, no roadmap"); reruns of the bluff test by others get linked from a `docs/RECEIPTS.md` | $0 | **Eric** reads; Claude drafts replies if asked |
 
