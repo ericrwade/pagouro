@@ -2365,3 +2365,16 @@ nothing that morning, and that is in the ledger too.[^outage]
 [^round4]: `sft/build_unanswerable_set.py`, `scripts/probe_unanswerable.py`, `evals/results/{grpoB,grpo3}__unanswerable_probe.json`, `scripts/runpod/research4_1b.sh`; the per-category verdicts are in the `__bluff100.json` files.
 [^agents]: O-48; `app/pagouro_app.py` (`--serve`), `agents/pagouro-connect/SKILL.md`, `agents/pagouro-long-document/` (`scripts/chunk_review.py`, `examples/book_review.md`); the first runner's 0/10 is in the session transcript of 2026-09-25 and in the runner's docstring.
 [^outage]: `docs/HANDOFF_2026-09-26.md`; issue #2 comments 2026-09-26 13:37Z, 14:4xZ and 15:3xZ; the pod's `createdAt` 13:37Z against the first successful upload at 14:37Z.
+
+**Day 17, later — round four.** The curriculum built from the shipped model's own failures took it
+from twenty-two bluffs in a hundred to eight, and cost it five points of answered-real and some of
+its care in copying tool results; the reasoning lineage trained the same way landed at thirteen
+and seventy-three. Neither shipped as it was. What ships is a weight average, sixty percent the old
+model and forty percent the new: **bluff thirteen, answered eighty-three**, tool routing and memory
+where they were, the four-turn conversation clean, tool-result fidelity nine of ten. The stretch
+target the second day of the project called ambitious — under twenty — is met, and the model
+reasons slightly worse than before (eleven of three hundred and twenty), which the box says. No
+further training; the freeze is D-96. Round four cost $13.30, three and a half dollars of it the
+outage.[^r4]
+
+[^r4]: D-96; `evals/results/pagouro-1b-{grpoCp,grpoC,soup-g3-cp-4,soup-g3-cp-5,soup-g3-cp-7,soup-g3-cp-3}__*`; RunPod billing API buckets 13:00–17:00Z on 2026-09-26.
