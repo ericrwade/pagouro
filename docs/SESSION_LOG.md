@@ -110,7 +110,13 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   SHIPS; the freeze.** Docs all say 13/83; stick repackaged twice (D-96 model; then the digit-run trim): audit PASS,
   **112/112, MANIFEST sha `81d6ebb3…`**, smoke 0 fails. Waves (idea/outline, 50 % overlap) built into the
   long-document skill and measured on the book (idea 3/29 grounded; outline 50/435). BUILD_LOG Day 17 + later.
-**Open / next:** (1) `docs/TO_DONE.md` section 2 onward — the next items are Eric's (2.2 fresh-stick test on another
+- **Sep 27 close-out:** F12 done (Eric chose A; his disclaimer + holdings sentence in README/ABOUT/stick README);
+  fresh-stick test on an N100 laptop (1 min start, 10–20 s first answer) → `VERIFY.bat` + `verify_manifest.ps1`
+  (no Python needed), trim tightened (box re-measured **13 / 82**), stick 114/114 sha `cec4a1a9…`; release zip
+  built (`release/dist/`, sha `c0219adb…`), EPUB built; OTS client crashes on Windows Python (run from Linux at
+  release); glossary updated; hourly inbox loop cancelled to save Eric's usage (Fable week at 88 %).
+**Open / next:** READ `docs/HANDOFF_2026-09-27.md` FIRST — nothing running, nothing owed; then `docs/TO_DONE.md`
+sections 2–7 (release-day steps, Eric's accounts and signatures). (Superseded: (1) `docs/TO_DONE.md` section 2 onward — the next items are Eric's (2.2 fresh-stick test on another
 machine, 3.1 the README first paragraph, 3.4 disclaimer line, 3.5 holdings sentence); (2) Claude: ch. 15 draft (4.3)
 from D-88…D-96 and BUILD_LOG Days 16–17, then ch. 14 after the release steps; (3) hard stop Sep 27 11:30 AM PT —
 no pods (none), everything pushed. (Superseded: READ `docs/HANDOFF_2026-09-26.md` FIRST (the pod ssh key is also at `~/.ssh/pagouro_rpkey`). (1) pod `n2hx9b06df4byv`: provision + launch round 4 if
