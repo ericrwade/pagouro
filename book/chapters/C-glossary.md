@@ -189,3 +189,23 @@ rate · ledger · licence · llama.cpp · LoRA · loss · manifest · MFU · OFF
 parameter · perplexity · pre-2022 claim · pretraining · quantisation · READ-ONLY · release
 gate · resume · retrieval · router · SAND/STONE · SFT · shelf · synthetic data · teacher
 model · token · tokenizer · tokens/s · tool · validation set · vocabulary · WSD.
+
+**GRPO.** Group Relative Policy Optimisation: the reinforcement method used after the fine-tune.
+For each question the model writes eight answers; a scorer grades them; the model is nudged
+toward the answers that scored above the group's average. Pagouro's scorer is the frozen honesty
+suite's own (chapter 15).
+
+**Soup.** A weight average of two models — the plain mean of every parameter. Cheap, done on the
+desk, and how two of the shipped model's ancestors were combined (60 % one, 40 % the other).
+
+**Curriculum (RL).** The set of prompts a reinforcement round is trained on. Round four's was built
+from the model's own failures, because reinforcement learns nothing from prompts it already gets
+right.
+
+**Trim.** The harness rule that cuts an answer at the first repeated sentence, a run of the same
+phrase, or a run of numbers, and says so on screen. A decode-time guard, measured into the box
+numbers.
+
+**Waves and scales.** How the long-document skill reads a manuscript: overlapping segments (each
+passage inside two of them) read in three passes — idea, outline, bulk — with the 1B pointing at
+where things are and a larger reader doing the judgement.
