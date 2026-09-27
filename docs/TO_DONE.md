@@ -59,7 +59,7 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 | 4.2 | Sep 27 | Ch. 14 *Do it: ship a finished thing* from the runbook, written as done rather than planned (after 5.x below) | $0 | Claude |
 | 4.3 | ~~Sep 27~~ DRAFTED (draft 1, D-88 → D-96) | Ch. 15 *What it can and cannot do, with the numbers on the box* | $0 | Claude |
 | 4.4 | Sep 28 | Appendices A (decisions) and B (ledger) regenerated; C (glossary) written | $0 | Claude |
-| 4.5 | Sep 28 | Build the book (`book/build.py`) → one `.md` + PDF/EPUB; licence split per D-64 (story chapters all rights reserved, do-it chapters CC BY-SA) | $0 | Claude |
+| 4.5 | ~~Sep 28~~ EPUB BUILT (`book/dist/MAKE_YOUR_OWN_AI.epub`, pandoc, 2026-09-27; PDF at release) | Build the book (`book/build.py`) → one `.md` + PDF/EPUB; licence split per D-64 (story chapters all rights reserved, do-it chapters CC BY-SA) | $0 | Claude |
 | 4.6 | Sep 29 | Eric reads it once, start to finish, and marks anything he would not put his name to | $0 | **Eric** (an evening) |
 | 4.7 | Sep 30 | Corrections; the book goes on the stick and in the repo; optional later: print-on-demand / Kindle (a separate, post-release decision) | $0 (POD later ≈ $0 to list) | Claude / **Eric** |
 
@@ -69,8 +69,8 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 |---|---|---|---|---|
 | 5.1 | Sep 30 | **F8 build:** `package_release.py` on the frozen model → `release/Pagouro/`, `MANIFEST.md`, `verify_manifest.py` + `VERIFY.bat`/`.ps1`; PASS on a fresh stick formatted FAT32 or exFAT (both readable on Windows, macOS, Linux; Eric's Mac could not mount the FAT32 stick on 2026-09-26 — port/adapter suspected, retest at 2.2) | $0 | Claude |
 | 5.2 | Sep 30 | **F8 sign — key ceremony:** `minisign -G` offline, passphrase in the password manager, secret key never in repo/stick/chat; sign `MANIFEST.md`; paste the public key into README + MANIFESTO | $0 | **Eric** (10 min, once) |
-| 5.3 | Sep 30 | Zip `Pagouro-1.0-win64.zip`; record its SHA-256 | $0 | Claude |
-| 5.4 | Sep 30 | **F9 anchor:** `ots stamp MANIFEST.md`; wait for a Bitcoin confirmation; `ots upgrade`/`verify`; ship the `.ots` | $0 | Claude (Eric's machine or session) |
+| 5.3 | ~~Sep 30~~ BUILT 2026-09-27 (pre-signature; rebuilt after 5.2 adds `.minisig`) | Zip `release/dist/Pagouro-1.0-win64.zip` from the 114-file package, SHA-256 `c0219adb9facc304…` beside it | $0 | Claude |
+| 5.4 | Sep 30 | **F9 anchor:** `ots stamp MANIFEST.md` — **not from this Windows Python** (the client's bitcoin lib needs libssl and crashes here, tested 2026-09-27): run it from WSL or a $0 CPU pod for two minutes; wait for a Bitcoin confirmation; `ots upgrade`/`verify`; ship the `.ots` | $0 | Claude (Eric's machine or session) |
 | 5.5 | Oct 1 | F9 optional Ordinal inscription of the manifest text: measure the fee first; skip if silly (D-14 is satisfied by OTS) | ≈ $5–30 if done | **Eric** decides + funds the dedicated wallet |
 | 5.6 | Oct 1 | **F16/F17 wallet:** a dedicated project wallet (Solana/USDC address for the box) — created on Eric's hardware, address only into the repo | $0 | **Eric** |
 | 5.7 | Oct 1 | **F10 Hugging Face:** create `pagouro` org/user, repo `pagouro/pagouro-1.0`: GGUFs, `corpus.json`, eval JSONs, manifest, `.minisig`, `.ots`, model card | $0 | **Eric** creates the account (5 min); Claude uploads (`HF_TOKEN` in `.env`) |
