@@ -123,6 +123,9 @@ def main() -> int:
     # double-click wrapper check the same manifest with what Windows ships.
     shutil.copy2(os.path.join(ROOT, "scripts", "verify_manifest.ps1"), os.path.join(rel, "verify_manifest.ps1"))
     shutil.copy2(os.path.join(ROOT, "scripts", "VERIFY.bat"), os.path.join(rel, "VERIFY.bat"))
+    # F8 (2026-09-27): the release signing public key ships beside the manifest; the signature file
+    # MANIFEST.md.minisig is added by Eric after packaging (signing the final manifest) and is not hashed.
+    shutil.copy2(os.path.join(ROOT, "pagouro.pub"), os.path.join(rel, "pagouro.pub"))
 
     # The app: freeze app/pagouro_app.py into one executable and ship it with
     # llama-server.exe, the packs and an empty workspace. Standard library only,
@@ -247,6 +250,18 @@ training data was itself share-alike -- see `docs/DECISIONS.md` D-31 in the
 full project repository for why). The training recipe and every source's
 licence are documented, so this can genuinely be rebuilt or forked, not just
 looked at.
+
+## Is this copy genuine?
+
+Double-click `VERIFY.bat` (or run `python verify_manifest.py`): every file is checked against
+`MANIFEST.md`. The manifest itself is signed -- `MANIFEST.md.minisig` -- with this key, which you
+should compare against the one published with the release and in the repository:
+
+    RWQTLswbiQ7z66gWe4Cw1gConupSGnny2Qnu/X7KXJ5OdQnyE8NiYSDW
+
+To check the signature with minisign: `minisign -Vm MANIFEST.md -P <that key>`. The manifest's
+hash is also timestamped on Bitcoin (OpenTimestamps, `MANIFEST.md.ots`); `CHECK_YOUR_COPY.md`
+walks through all of it.
 
 ## What "PAGOURO" means
 
