@@ -79,7 +79,7 @@ installing anything, double-click `VERIFY.bat` (Windows PowerShell); with Python
 re-asks each question five times and calls disagreement a guess. `pagouro.exe --serve` exposes the
 same harness as a local OpenAI-compatible endpoint for agent frameworks (`agents/README.md`).
 
-**Release signing key (minisign):** `RWQTLswbiQ7z66gWe4Cw1gConupSGnny2Qnu/X7KXJ5OdQnyE8NiYSDW` — `pagouro.pub` in this repository and on the stick; `MANIFEST.md.minisig` is verified with `minisign -Vm MANIFEST.md -P RWQTLswbiQ7z66gWe4Cw1gConupSGnny2Qnu/X7KXJ5OdQnyE8NiYSDW`.
+**Release signing key (minisign):** `RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG` — `pagouro.pub` in this repository and on the stick; `MANIFEST.md.minisig` is verified with `minisign -Vm MANIFEST.md -P RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG`.
 
 *Windows SmartScreen:* the executable is not code-signed (signing costs money and would change the
 bytes the manifest anchors). Windows may show "Windows protected your PC" — click **More info →

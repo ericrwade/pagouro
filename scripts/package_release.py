@@ -257,7 +257,7 @@ Double-click `VERIFY.bat` (or run `python verify_manifest.py`): every file is ch
 `MANIFEST.md`. The manifest itself is signed -- `MANIFEST.md.minisig` -- with this key, which you
 should compare against the one published with the release and in the repository:
 
-    RWQTLswbiQ7z66gWe4Cw1gConupSGnny2Qnu/X7KXJ5OdQnyE8NiYSDW
+    RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG
 
 To check the signature with minisign: `minisign -Vm MANIFEST.md -P <that key>`. The manifest's
 hash is also timestamped on Bitcoin (OpenTimestamps, `MANIFEST.md.ots`); `CHECK_YOUR_COPY.md`
