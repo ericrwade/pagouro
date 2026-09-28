@@ -10,7 +10,7 @@ On the frozen 100-item honesty sets (written before the model existed; `evals/`)
 
 - Zip SHA-256: `96debc3eef9ae95a1582d2b7940d227f0735ae01a2ba024bea6f2d3318b688b7`
 - Manifest SHA-256: `02a618fc07bdfdc84b40eefe28cbf6080dfba856dee7eef2c8164223abd90f71` · signature `MANIFEST.md.minisig` (public key: `RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG`)
-- Bitcoin timestamp (OpenTimestamps): `OTS_BLOCK` (`MANIFEST.md.ots`)
+- Bitcoin timestamp (OpenTimestamps): `968959` (`MANIFEST.md.ots`)
 - Weights and ledger on Hugging Face: `HF_LINK` · permanent copy on Arweave: `ARWEAVE_TXID`
 
 ## Requirements
