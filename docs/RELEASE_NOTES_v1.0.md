@@ -9,7 +9,7 @@ On the frozen 100-item honesty sets (written before the model existed; `evals/`)
 `Pagouro-1.0-win64.zip` — the folder that goes on a stick: `pagouro.exe` (the harness), `llama-server.exe`, the model (`pagouro-q8_0.gguf`, 1,102,230,720 bytes, SHA-256 `9336cce0…`; `pagouro-q4_k_m.gguf` beside it), the reference packs, skills, `agents/` (use it from Hermes / OpenClaw / IronClaw), the corpus ledger, the eval results, `MANIFEST.md` with every file's hash, `VERIFY.bat` (no Python needed), `ABOUT.md`, `facts.json`, `THREAT_MODEL.md`.
 
 - Zip SHA-256: `ZIP_SHA256`
-- Manifest SHA-256: `0aa9fe24b467f38d26a56e4b972db9f6dc5f8cd23e486077ae466aeb34e4d585` · signature `MANIFEST.md.minisig` (public key: `RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG`)
+- Manifest SHA-256: `02a618fc07bdfdc84b40eefe28cbf6080dfba856dee7eef2c8164223abd90f71` · signature `MANIFEST.md.minisig` (public key: `RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG`)
 - Bitcoin timestamp (OpenTimestamps): `OTS_BLOCK` (`MANIFEST.md.ots`)
 - Weights and ledger on Hugging Face: `HF_LINK` · permanent copy on Arweave: `ARWEAVE_TXID`
 
