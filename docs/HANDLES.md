@@ -13,15 +13,15 @@ probe that says FREE below. Availability changes by the hour; re-run before regi
 | YouTube `@handle` | FREE | FREE | FREE | FREE |
 | PyPI | FREE | FREE | FREE | FREE |
 | npm | FREE | FREE | FREE | FREE |
-| X / Twitter | **FREE** (Eric, by hand, 2026-09-24) | | | |
+| X / Twitter | **REGISTERED @pagouro** (Eric, 2026-09-27, ericrwade@pagouro.com) | | | |
 | Instagram | **FREE** (Eric, by hand, 2026-09-24) | | | |
 | TikTok | **FREE** (Eric, by hand, 2026-09-24) | | | |
-| Reddit | **FREE** (Eric, by hand, 2026-09-24) | | | |
+| Reddit | **REGISTERED u/pagouro + r/pagouro** (Eric, 2026-09-27) | | | |
 | LinkedIn, Threads | login-walled to probes — check by hand (URLs below) | | | |
 
 | Domain | |
 |---|---|
-| pagouro.com | **ERIC'S** — bought before the build, WHOIS privacy + DNSSEC on (ORIGIN_LEDGER F14). The first draft of this table said "taken by someone else" from the RDAP hit alone; Eric corrected it. |
+| pagouro.com | **ERIC'S** — live 2026-09-27 on GitHub Pages (`ericrwade/pagouro-site`), DNS at Wix (A → GitHub, www CNAME), mail `ericrwade@pagouro.com` (Google via Wix); WHOIS privacy + DNSSEC on (ORIGIN_LEDGER F14). The first draft of this table said "taken by someone else" from the RDAP hit alone; Eric corrected it. |
 | pagouro.org | FREE |
 | pagouro.ai | FREE |
 | pagouro.net | FREE |
