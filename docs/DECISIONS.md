@@ -2442,6 +2442,12 @@ and its Lisbon answer adds a garnish ("the Portela Monastery"). The two box numb
 recipes stay in the repository for whoever runs the next one. C (the reasoning lineage, 98/320) is published as a
 research artefact, not shipped.
 
+### D-97 — Autonomous RunPod budget while Eric sleeps: $20 (2026-09-28)
+**Eric, 2026-09-28 ~06:30Z, from the hotel:** "You can spend up to $20 on runpod autonomously." Scope as understood:
+release-day plumbing only — the model is frozen (D-96), so no training. Expected use: the OpenTimestamps CPU pod
+(`cpu3c`, $0.06/h, minutes) and a second one to upgrade the proof after the Bitcoin confirmation. Every pod is
+deleted before the session idles; spend is read from the billing API and posted on #2.
+
 ### O-41 — The "hybrid": a 1B model plus a verbatim shelf (Eric: "1B of normal and 300 MB of verbatim … the US Code as it is written")
 **2026-09-23.** It exists and Pagouro already is it (D-9): the weights are the lossy half, the
 packs are the exact half, searched at question time and quoted with their source. Research that
