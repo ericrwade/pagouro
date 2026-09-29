@@ -77,7 +77,7 @@ the character, resume works, ledger refuses unlicensed sources) is in `BUILD_LOG
 `pagouro.exe`). Nothing to install; no internet needed; the first start from a USB stick reads a
 1 GB file and can take a minute — it says so while loading. Measured on an Intel N100 laptop (800 MHz,
 16 GB): about a minute to start, 10–20 seconds to the first answer. To check your copy without
-installing anything, double-click `VERIFY.bat` (Windows PowerShell); with Python, `python verify_manifest.py`. `/help` lists the commands; `/careful`
+installing anything, double-click `VERIFY.bat` (Windows PowerShell); with Python, `python verify_manifest.py` (known rough edges: `docs/ERRATA_v1.0.md`). `/help` lists the commands; `/careful`
 re-asks each question five times and calls disagreement a guess. `pagouro.exe --serve` exposes the
 same harness as a local OpenAI-compatible endpoint for agent frameworks (`agents/README.md`).
 

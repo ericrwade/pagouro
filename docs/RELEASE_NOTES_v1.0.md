@@ -36,5 +36,12 @@ Weights CC BY-SA 4.0 · code Apache 2.0 · corpus rows as listed in `corpus.json
 ## If it is useful
 This was built by one person and cost about $1,900 in rented compute. It is finished and free. If it is useful to you: fork it, or send a small sponsorship toward what it cost — https://github.com/sponsors/ericrwade.
 
+## Errata (found after release, 2026-09-29)
+
+Three rough edges found by the first clean-machine check, none of which changes a shipped byte:
+`docs/ERRATA_v1.0.md`. Short form: check the signature with `minisign -Vm MANIFEST.md -p pagouro.pub`
+(the stick's `verify_manifest.py` looks for `minisign.pub`); on macOS/Linux extract the zip with
+Info-ZIP `unzip` or `7z x`.
+
 ## Finished
 One release, frozen. No updates, no support, no telemetry, no roadmap. Fork it — the recipe is complete: `docs/`, `BUILD_LOG.md`, the book (`book/`).

@@ -71,7 +71,8 @@ def main() -> int:
     if os.path.exists(sig):
         exe = shutil.which("minisign")
         if exe:
-            pub = os.path.join(root, "minisign.pub")
+            pub = next((os.path.join(root, n) for n in ("pagouro.pub", "minisign.pub")
+                        if os.path.exists(os.path.join(root, n))), os.path.join(root, "minisign.pub"))
             cmd = [exe, "-V", "-m", manifest, "-x", sig] + (["-p", pub] if os.path.exists(pub) else [])
             r = subprocess.run(cmd, capture_output=True, text=True)
             print(("SIGNATURE OK: " if r.returncode == 0 else "SIGNATURE FAILED: ") + (r.stdout + r.stderr).strip())

@@ -61,7 +61,13 @@ jobs:
           unzip -q Pagouro-1.0-win64.zip -d unpacked || [ $? -le 1 ]
           ls unpacked/model unpacked/skills | head
           cmp unpacked/MANIFEST.md MANIFEST_v1.0.md && echo "manifest in zip == signed manifest"
-          cd unpacked && python3 verify_manifest.py
+          cd unpacked && (python3 verify_manifest.py | tee ../verify.txt || true)
+          # every file hash must check; the one expected failure is erratum E1 (the shipped
+          # verifier looks for minisign.pub, the stick ships pagouro.pub) — docs/ERRATA_v1.0.md
+          grep -q "115 of 115 listed files present, 1 mismatched, 0 missing, 0 extra" ../verify.txt
+          grep -q "SIGNATURE FAILED: minisign.pub: No such file" ../verify.txt
+          ! grep -q "^MISMATCH\|^MISSING\|^EXTRA" ../verify.txt
+          minisign -Vm MANIFEST.md -p pagouro.pub
           echo "PASS manifest"
 
       - name: 4. Timestamp on Bitcoin (proof vs. the chain, no node needed)

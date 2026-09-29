@@ -57,7 +57,7 @@ Check it with the small free tool `minisign` (a few hundred kilobytes, from
 https://jedisct1.github.io/minisign/):
 
 ```
-minisign -Vm MANIFEST.md -p minisign.pub
+minisign -Vm MANIFEST.md -p pagouro.pub
 ```
 
 You should see **`Signature and comment signature verified`**.
