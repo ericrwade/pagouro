@@ -11,7 +11,21 @@ On the frozen 100-item honesty sets (written before the model existed; `evals/`)
 - Zip SHA-256: `96debc3eef9ae95a1582d2b7940d227f0735ae01a2ba024bea6f2d3318b688b7`
 - Manifest SHA-256: `02a618fc07bdfdc84b40eefe28cbf6080dfba856dee7eef2c8164223abd90f71` · signature `MANIFEST.md.minisig` (public key: `RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG`)
 - Bitcoin timestamp (OpenTimestamps): `968959` (`MANIFEST.md.ots`)
-- Weights and ledger on Hugging Face: `HF_LINK` · permanent copy on Arweave: `ARWEAVE_TXID`
+- Weights and ledger on Hugging Face: `HF_LINK` · permanent copy on Arweave: `6XjlZGVYmp1mDjfcwHRPpr8qe8xOpLHCAMDoB5WXGBk`
+
+## On Arweave (permanent; uploaded 2026-09-29 via Turbo, 22.3 credits ≈ $109 for the lot)
+
+| file | link |
+|---|---|
+| `MANIFEST_v1.0.md` | `https://arweave.net/RVpjbcNsXcsIJgStjWvLp5pSFuUu_gqew9ONiB4NNdk` |
+| `MANIFEST_v1.0.md.minisig` | `https://arweave.net/Z-UZLzRPcuqYaHsYflabNPNchIU9gTdjRA1x6-UjNvY` |
+| `MANIFEST_v1.0.md.ots` | `https://arweave.net/xzEhG3Fw_L4jkkXt0fuaLAeEKGx_Ky5opiK9MCwfBr0` |
+| `Pagouro-1.0-win64.zip` | `https://arweave.net/6XjlZGVYmp1mDjfcwHRPpr8qe8xOpLHCAMDoB5WXGBk` |
+| `Pagouro-1.0-win64.zip.sha256` | `https://arweave.net/Uv_1bzvvdnTB7psvJckA8YpqH4cQ4aNPNmqsUGQosuM` |
+| `facts.json` | `https://arweave.net/TKHvGhAZej_dprU6VxqYSvFy8TxN-N_h-jb-Q25_JEI` |
+| `pagouro.pub` | `https://arweave.net/T07Aeq2tQYOmmFaVQNzIa_aBI48CwcoIbMPfbxKretU` |
+
+Each file's bytes were fetched back from a gateway and hashed against the originals.
 
 ## Requirements
 Any 64-bit Windows machine, CPU only, no internet, no account. First start from a USB stick can take a minute; on an Intel N100 laptop the first answer took 10–20 s. Windows SmartScreen: *More info → Run anyway* (the exe is not code-signed; the manifest, signature and timestamp are what vouch for it — `docs/CHECK_YOUR_COPY.md`).
