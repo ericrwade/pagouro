@@ -3,23 +3,22 @@
 *Drafted 2026-09-26 (TO_DONE 6.2, 6.3) under D-94: bare-minimum marketing; a proof that it can be
 done and be useful; the niche of 100 % documented and self-contained; no superlatives, no
 competitive claims — every sentence checkable (D-50). Numbers are the shipped ones (`facts.json`);
-if round 4 changes them, change them here. The links are filled at F10. Eric posts; nothing here
-goes out before F13.*
+if round 4 changes them, change them here. Links filled 2026-09-29 after the flip (F13 done). Eric posts.*
 
 ## The text (reused everywhere; trim to the platform, never embellish)
 
 **Title:** Pagouro — a 1B language model on a USB stick, built from scratch on a licensed, dated
-corpus, that says when it doesn't know
+corpus, that admits when it doesn't know
 
 **Body:**
 
 I built a one-billion-parameter language model from random weights on a corpus where every byte
-has a licence you can name and a date before 2022, and put it on a USB stick with everything it
+has a license you can name and a date before 2022, and put it on a USB stick with everything it
 needs. It runs on CPU, offline, with no account. It is about a thousandth the size of the models
 you use and loses to them on every capability test. What it has instead is four promises a
 stranger can check, and the checks ship with it:
 
-- **Licensed:** every training source is a row in `corpus.json` — licence, date basis, token count,
+- **Licensed:** every training source is a row in `corpus.json` — license, date basis, token count,
   hash of the slice — including the rows that were removed and why.
 - **Dated:** everything it read was written or collected before 1 January 2022, per row.
 - **Honesty measured:** on a frozen 100-question test of unanswerable questions it invents an
@@ -39,8 +38,11 @@ It's a proof that a model can be fully documented and fully self-contained and s
 If you want a frontier model, use one. If you want to know exactly what you're talking to, this
 is the niche, and this is the first thing in it.
 
-Download (zip + SHA-256): `<GitHub Release link>` · Weights: `<Hugging Face link>` · Permanent copy:
-`<Arweave txid>` · Verify your copy: `docs/CHECK_YOUR_COPY.md`. Eric Wade, with Claude (Anthropic).
+Download (zip + SHA-256): https://github.com/ericrwade/pagouro/releases/tag/v1.0 · Weights:
+https://huggingface.co/Pagouro/pagouro-1.0 · Permanent copy:
+https://arweave.net/6XjlZGVYmp1mDjfcwHRPpr8qe8xOpLHCAMDoB5WXGBk · Site: https://pagouro.com · Verify
+your copy: `docs/CHECK_YOUR_COPY.md` (manifest signed with key `RWQe8tvI…`, timestamped on Bitcoin
+block 968959). Eric Wade, with Claude (Anthropic).
 
 ## Per platform
 
@@ -48,7 +50,7 @@ Download (zip + SHA-256): `<GitHub Release link>` · Weights: `<Hugging Face lin
 |---|---|
 | Show HN | Title as above (≤ 80 chars: "Show HN: Pagouro – a 1B model on a USB stick, licensed, dated, honesty-measured"); body verbatim; answer questions with numbers and file paths, never adjectives |
 | r/LocalLLaMA | Same body; add the GGUF sizes (q8_0 1.10 GB, q4_k_m 634 MB) and "runs on any CPU, `-ngl 0`" up front; expect "why not fine-tune Llama" — the answer is the ledger (D-9) |
-| X / Bluesky / Mastodon | Three lines: the one-sentence description, the two numbers, the link. The 90-second recording attached |
+| X / Bluesky / Mastodon | Three lines: the one-sentence description, the two numbers, the link (https://pagouro.com). The 90-second recording attached |
 | Hugging Face (model page) | The model card *is* the post (`docs/MODEL_CARD.md`) |
 | Email to friends | The body, plus "run `python verify_manifest.py` in the folder and tell me what it prints" — the first independent receipts (E4) |
 
@@ -68,7 +70,7 @@ Screen only, no voice-over needed; captions are the harness's own text. One take
 7. **1:05** `/exit` → "Nothing was written to disk. No network calls were made."
 8. **1:10** A terminal in the same folder: `python verify_manifest.py` → `VERDICT: every listed file
    matches the manifest`. Caption: *the manifest hash is timestamped on Bitcoin — check yours.*
-9. **1:25** End card: the mark, the two numbers, the link. *Eric Wade, with Claude (Anthropic).*
+9. **1:25** End card: the mark, the two numbers, pagouro.com. *Eric Wade, with Claude (Anthropic).*
 
 What not to show: any prompt the model gets wrong "on camera" is fine to leave in — cutting it would
 be the one thing the project must not do. If a take shows a bluff, keep it and caption it.
