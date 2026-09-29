@@ -541,6 +541,14 @@ arms, pre-registered difference threshold.
 **Open / next:** Eric decides O-11 (may change the mixture, so it precedes M3), D-28 (The Stack
 terms), O-7, O-9, O-8. Then finish the ablation write-up and start M3.
 
+## 2026-09-29 — RELEASED (F13 executed on Eric's "flip it")
+
+- HF `Pagouro/pagouro-1.0` public → GitHub Release v1.0 published (tag at `main`, six assets) → repo PUBLIC → archived, then UN-ARCHIVED (archiving disables Issues; ABOUT promises issues are read; receipts land there) → pagouro.com links live → SWH save requested (200) → #2 comment 5883824469.
+- Verified: repo, release, HF, https://pagouro.com all HTTP 200; zip asset 200 with Content-Length 1,758,565,056.
+- Ledger F3/F5/F10/F13 DONE; TO_DONE 5.7/5.9/5.12 DONE; README/ABOUT wording "frozen at tag v1.0" (stick copy keeps the signed wording, untouched).
+
+**Open / next:** Eric — say "archive" to set the flag (Issues then close) or leave as is; launch post (6.2, `docs/LAUNCH.md`); recording (6.3); 7.1 rotate keys, 7.2 local archive. Claude — arweave.net zip re-check (cron 79f74517, 09:37 local); HANDLES.md links; nothing else owed. Alexis may start (`docs/ALEXIS_BIBLE.md`).
+
 ## 2026-09-16 (evening) — MILESTONE 1 COMPLETE
 **Model:** Opus 5 (1M context)
 **Goal:** Execute milestone 1: end-to-end pipeline at toy scale in a fresh git repo.

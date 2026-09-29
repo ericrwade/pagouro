@@ -137,7 +137,7 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Release | 2026-09-29, v1.0 — https://github.com/ericrwade/pagouro/releases/tag/v1.0; manifest signed and timestamped on Bitcoin block 968959; Arweave copy https://arweave.net/6XjlZGVYmp1mDjfcwHRPpr8qe8xOpLHCAMDoB5WXGBk |
 | Relatives | OLMo (AI2), Common Pile / Comma (EleutherAI) — larger, open; Pagouro borrows from both where their sources meet its rules |
 | Made by | Eric Wade, with Claude (Anthropic) |
-| Repository | https://github.com/ericrwade/pagouro (public, archived) |
+| Repository | https://github.com/ericrwade/pagouro (public; frozen at tag `v1.0`; issues open for receipts) |
 
 *The same table ships as `facts.json` on the stick and in the model card, so that a program —
 or another model — describing Pagouro has one source to read.*

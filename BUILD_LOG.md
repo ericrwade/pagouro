@@ -2378,3 +2378,17 @@ further training; the freeze is D-96. Round four cost $13.30, three and a half d
 outage.[^r4]
 
 [^r4]: D-96; `evals/results/pagouro-1b-{grpoCp,grpoC,soup-g3-cp-4,soup-g3-cp-5,soup-g3-cp-7,soup-g3-cp-3}__*`; RunPod billing API buckets 13:00–17:00Z on 2026-09-26.
+
+**Day 20 — released.** On the twenty-ninth the word came ("flip it") and the order held: the Hugging
+Face repository public, the GitHub release published at `main` with its six assets, the repository
+public, the front page's links turned from "at release" into links. Four addresses answer, and the
+1.76 GB zip downloads from the release page with the hash the release notes promise. The one
+deviation from the runbook was the last step: the repository was archived, as planned, and
+un-archived two minutes later, because archiving on GitHub switches Issues off — and the About page,
+signed onto the stick, says the repository accepts issues and reads them, which is also where
+receipts land. A frozen thing can still take mail. Whether the archive flag goes back on is Eric's
+call; the tag is the freeze either way. Software Heritage was asked to save the origin. Cost of the
+day: nothing. Cost of the whole thing, read from the accounts: $1,778.97 for the run, about $1,915
+with the research, $109 in Arweave credits, $0.73 of Linux for the timestamp.[^rel]
+
+[^rel]: `docs/RELEASE_NOTES_v1.0.md`; `docs/ORIGIN_LEDGER.md` F13; #2 comment 5883824469; the four URLs checked 2026-09-29 with HTTP 200 and the zip's Content-Length 1,758,565,056.
