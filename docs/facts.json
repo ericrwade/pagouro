@@ -2,6 +2,7 @@
   "_about": "Pagouro key facts (O-43). Hand-maintained source; scripts/package_release.py copies it to the stick as facts.json and adds the 'release' block it can measure (model files, bytes, sha256, packaging date). A value of null means: not yet measured -- filled at release from the file named in '_sources'. Every number here must trace to a file in the repository (D-50).",
   "name": "Pagouro",
   "type": "Offline language model and application on a USB stick",
+  "modality": "text only: no image, audio or video input or output; no camera, microphone, file browser or web access",
   "parameters": 968968192,
   "architecture": {
     "kind": "decoder-only transformer",

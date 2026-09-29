@@ -16,6 +16,7 @@ date: the day Eric says the release is public. Until then: nothing.*
 | Bluff rate | **13 %** — invents an answer to 13 of 100 unanswerable questions on the frozen test |
 | Answered-real | **82 %** — answers 82 of 100 real questions correctly on the matching set |
 | Comparison (same test) | small open models 50–57 % bluff / 87–93 % answered; frontier models 23–27 % / 97 % |
+| Modality | text only — no images in or out, no audio, no web; asked for a picture it may claim it can (a bluff, counted) |
 | Reasoning | poor: 11 of 320 school word problems without tools (it points arithmetic at a calculator) |
 | Runs on | any 64-bit Windows CPU, offline, no account, no install; ~1 min to start from a stick, 10–20 s to a first answer on an Intel N100 laptop |
 | Cost of the run | $1,778.97 (8× H100, 61.6 h, RunPod); about $1,915 all-in with the research rounds |
@@ -68,6 +69,8 @@ if you want to know exactly what you're talking to, this is the niche.* Receipts
 18. The manifest lists every file on the stick with its SHA-256. `VERIFY.bat` checks them all with what Windows already has. The manifest's own hash is on Bitcoin. That is the whole trust chain, and you can walk it.
 19. Pagouro's context is 8,192 tokens and it knows nothing after 2021. Ask it about last week and it should tell you it can't know. On the frozen test it gets that right 87 times in 100.
 20. One person, one AI, four weeks, $1,915. The book on the stick is the unedited record, mistakes included. #Pagouro
+
+21. Pagouro is text only. No images in or out, no audio, no web. Ask it for a picture and it may say it can — that is the bluff the box counts, not a feature.
 
 ## 5. What Alexis does when someone asks a question
 

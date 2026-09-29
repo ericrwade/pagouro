@@ -40,6 +40,11 @@ it offers instead is a set of promises a stranger can check (`docs/WHY.md`, D-83
   word is on the stick; read it), no way to add one later without breaking the manifest, and the
   project claims no rights in its outputs.
 
+**Text only.** It reads and writes text. It cannot make, read or describe images, audio or video, and it
+has no camera, microphone, file browser or web access. If you ask it for a picture it may say it can;
+that is a bluff of the kind the box counts, not a feature. (The Pagouro artwork was made by people
+and other tools, not by Pagouro.)
+
 "1B" means the number of weights in the file, never more; there is no "1B+". `docs/CHECK_YOUR_COPY.md`
 is the walkthrough for confirming that a stick is a real, unmodified Pagouro, written for someone
 who has never heard of a hash.

@@ -148,6 +148,11 @@ or another model — describing Pagouro has one source to read.*
 No. It is about a thousandth the size and trained on a hundredth of the data, and it loses on
 every capability test. It is for the promises above, not for capability.
 
+### Can it make images, or read them?
+No. It is a text model: text in, text out. No images, audio, video, camera, microphone, file
+browser or web. Asked for a picture it may claim it can — that is the bluff the box measures, not a
+feature. The project's artwork was made by people and other tools.
+
 ### Does it hallucinate?
 Yes; every language model does. What Pagouro does is measure how often, on a frozen test, and
 print the number beside how often it answers real questions correctly. It never claims not to.
