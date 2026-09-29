@@ -56,7 +56,10 @@ jobs:
       - name: 3. Every file on the stick matches the signed manifest
         working-directory: stick
         run: |
-          unzip -q Pagouro-1.0-win64.zip -d unpacked
+          # the zip was written by Windows PowerShell 5.1 Compress-Archive, which stores backslash
+          # separators; Info-ZIP converts them and exits 1 (warning). Other extractors may not.
+          unzip -q Pagouro-1.0-win64.zip -d unpacked || [ $? -le 1 ]
+          ls unpacked/model unpacked/skills | head
           cmp unpacked/MANIFEST.md MANIFEST_v1.0.md && echo "manifest in zip == signed manifest"
           cd unpacked && python3 verify_manifest.py
           echo "PASS manifest"
