@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 96 decisions, 35 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 97 decisions, 35 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -102,6 +102,7 @@
 | D-94 |  | The marketing message (Eric, 2026-09-25): a proof that it can be done and be useful; the niche of 100 % documented and self-contained; not competing with frontier or open-weights models |
 | D-95 | 2026-09-25 | Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; soups do not rescue it; GRPO-3 stays |
 | D-96 | 2026-09-26 | Round 4 ships as a soup: 60 % GRPO-3 + 40 % GRPO-C′ — bluff 13 / answered 83; the freeze |
+| D-97 |  | Autonomous RunPod budget while Eric sleeps: $20 (2026-09-28) |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 

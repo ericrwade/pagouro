@@ -56,7 +56,7 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 | # | Date | Task | Cost | Who |
 |---|---|---|---|---|
 | 4.1 | ~~Sep 26~~ DONE | Ch. 13 closes on the decay, the finish and the SFT numbers (draft 2, 3,955 words); the GRPO arc and the frozen 22 / 81 belong to ch. 15 (4.3), not here | $0 | Claude |
-| 4.2 | Sep 27 | Ch. 14 *Do it: ship a finished thing* from the runbook, written as done rather than planned (after 5.x below) | $0 | Claude |
+| 4.2 | ~~Sep 27~~ DRAFTED 2026-09-29 (from what was done, receipts table) | Ch. 14 *Do it: ship a finished thing* from the runbook, written as done rather than planned (after 5.x below) | $0 | Claude |
 | 4.3 | ~~Sep 27~~ DRAFTED (draft 1, D-88 → D-96) | Ch. 15 *What it can and cannot do, with the numbers on the box* | $0 | Claude |
 | 4.4 | Sep 28 | Appendices A (decisions) and B (ledger) regenerated; C (glossary) written | $0 | Claude |
 | 4.5 | ~~Sep 28~~ EPUB BUILT (`book/dist/MAKE_YOUR_OWN_AI.epub`, pandoc, 2026-09-27; PDF at release) | Build the book (`book/build.py`) → one `.md` + PDF/EPUB; licence split per D-64 (story chapters all rights reserved, do-it chapters CC BY-SA) | $0 | Claude |
