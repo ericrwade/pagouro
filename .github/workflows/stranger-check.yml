@@ -90,8 +90,8 @@ jobs:
 
       - name: 5. Hugging Face weights match the manifest (LFS sha256 from the API)
         run: |
-          hf=$(curl -sS "https://huggingface.co/api/models/Pagouro/pagouro-1.0/tree/main" | jq -r '.[] | select(.path=="pagouro-q8_0.gguf") | .lfs.oid')
-          echo "HF  pagouro-q8_0.gguf $hf"
+          hf=$(curl -sS "https://huggingface.co/api/models/Pagouro/pagouro-1.0/tree/main" | jq -r '.[] | select(.path=="pagouro-1b-q8_0.gguf") | .lfs.oid')
+          echo "HF  pagouro-1b-q8_0.gguf $hf"
           echo "man pagouro-q8_0.gguf $Q8_SHA"
           [ "$hf" = "$Q8_SHA" ]
           echo "PASS hugging face"
