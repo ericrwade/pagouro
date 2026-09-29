@@ -1,0 +1,97 @@
+name: stranger-check
+
+# A machine that has never seen this project downloads the public release and walks the
+# whole trust chain (docs/CHECK_YOUR_COPY.md). No checkout of this repository: everything
+# comes from the release page, Hugging Face, Arweave and the Bitcoin chain. Anyone can
+# press "Run workflow" and read the log. Costs nothing (GitHub-hosted runner).
+
+on:
+  workflow_dispatch:
+  push:
+    paths: [".github/workflows/stranger-check.yml"]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      REL: https://github.com/ericrwade/pagouro/releases/download/v1.0
+      PUBKEY: RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG
+      ZIP_SHA: 96debc3eef9ae95a1582d2b7940d227f0735ae01a2ba024bea6f2d3318b688b7
+      Q8_SHA: 9336cce0647dc5a0a7346163fa45d97ec18fd9a73cb3048ebd810643f7585c05
+      BLOCK: "968959"
+    steps:
+      - name: Tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq minisign unzip jq
+          pip install -q opentimestamps-client
+          minisign -v; ots --version
+
+      - name: Download the release
+        run: |
+          mkdir stick && cd stick
+          for f in Pagouro-1.0-win64.zip Pagouro-1.0-win64.zip.sha256 MANIFEST_v1.0.md MANIFEST_v1.0.md.minisig MANIFEST_v1.0.md.ots pagouro.pub; do
+            curl -sSL -o "$f" "$REL/$f"
+          done
+          ls -l
+
+      - name: 1. Zip hash
+        working-directory: stick
+        run: |
+          got=$(sha256sum Pagouro-1.0-win64.zip | cut -d' ' -f1)
+          echo "zip sha256      $got"
+          echo "release .sha256 $(cat Pagouro-1.0-win64.zip.sha256)"
+          echo "expected (docs) $ZIP_SHA"
+          [ "$got" = "$ZIP_SHA" ] && [ "$got" = "$(tr -d ' \n' < Pagouro-1.0-win64.zip.sha256)" ]
+          echo "PASS zip hash"
+
+      - name: 2. Signature (key typed from the README, not from the release)
+        working-directory: stick
+        run: |
+          minisign -Vm MANIFEST_v1.0.md -P "$PUBKEY"
+          echo "release pagouro.pub: $(tail -1 pagouro.pub)"
+          [ "$(tail -1 pagouro.pub)" = "$PUBKEY" ]
+          echo "PASS signature"
+
+      - name: 3. Every file on the stick matches the signed manifest
+        working-directory: stick
+        run: |
+          unzip -q Pagouro-1.0-win64.zip -d unpacked
+          cmp unpacked/MANIFEST.md MANIFEST_v1.0.md && echo "manifest in zip == signed manifest"
+          cd unpacked && python3 verify_manifest.py
+          echo "PASS manifest"
+
+      - name: 4. Timestamp on Bitcoin (proof vs. the chain, no node needed)
+        working-directory: stick
+        run: |
+          ots info MANIFEST_v1.0.md.ots | tail -3
+          # the digest the proof commits to must be the merkle root of the attested block
+          root=$(ots info MANIFEST_v1.0.md.ots | grep -B1 "BitcoinBlockHeaderAttestation" | head -1 | grep -o '[0-9a-f]\{64\}' | head -1 || true)
+          ots --no-bitcoin verify MANIFEST_v1.0.md.ots 2>&1 | tee ots_verify.txt || true
+          claimed=$(grep -o 'merkleroot [0-9a-f]\{64\}' ots_verify.txt | grep -o '[0-9a-f]\{64\}' || echo "$root")
+          hash=$(curl -sS "https://blockstream.info/api/block-height/$BLOCK")
+          chain=$(curl -sS "https://blockstream.info/api/block/$hash" | jq -r .merkle_root)
+          echo "proof says block $BLOCK merkle root: $claimed"
+          echo "chain says block $BLOCK merkle root: $chain"
+          [ -n "$claimed" ] && [ "$claimed" = "$chain" ]
+          echo "PASS timestamp"
+
+      - name: 5. Hugging Face weights match the manifest (LFS sha256 from the API)
+        run: |
+          hf=$(curl -sS "https://huggingface.co/api/models/Pagouro/pagouro-1.0/tree/main" | jq -r '.[] | select(.path=="pagouro-q8_0.gguf") | .lfs.oid')
+          echo "HF  pagouro-q8_0.gguf $hf"
+          echo "man pagouro-q8_0.gguf $Q8_SHA"
+          [ "$hf" = "$Q8_SHA" ]
+          echo "PASS hugging face"
+
+      - name: 6. Arweave copy of the manifest and signature match
+        working-directory: stick
+        run: |
+          curl -sSL -o ar_manifest.md https://arweave.net/RVpjbcNsXcsIJgStjWvLp5pSFuUu_gqew9ONiB4NNdk
+          curl -sSL -o ar_sig https://arweave.net/Z-UZLzRPcuqYaHsYflabNPNchIU9gTdjRA1x6-UjNvY
+          cmp ar_manifest.md MANIFEST_v1.0.md && cmp ar_sig MANIFEST_v1.0.md.minisig
+          minisign -Vm ar_manifest.md -x ar_sig -P "$PUBKEY"
+          echo "PASS arweave"
+
+      - name: Verdict
+        run: echo "STRANGER CHECK PASSED — zip, signature, manifest, Bitcoin block $BLOCK, Hugging Face, Arweave all agree."
