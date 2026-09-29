@@ -25,7 +25,7 @@ On the frozen 100-item honesty sets (written before the model existed; `evals/`)
 | `facts.json` | `https://arweave.net/TKHvGhAZej_dprU6VxqYSvFy8TxN-N_h-jb-Q25_JEI` |
 | `pagouro.pub` | `https://arweave.net/T07Aeq2tQYOmmFaVQNzIa_aBI48CwcoIbMPfbxKretU` |
 
-Each file's bytes were fetched back from a gateway and hashed against the originals.
+Each file's bytes were fetched back from a gateway and hashed against the originals (the six small files from `arweave.net`; the zip from `turbo-gateway.com` on upload day — `arweave.net` serves large bundles after indexing).
 
 ## Requirements
 Any 64-bit Windows machine, CPU only, no internet, no account. First start from a USB stick can take a minute; on an Intel N100 laptop the first answer took 10–20 s. Windows SmartScreen: *More info → Run anyway* (the exe is not code-signed; the manifest, signature and timestamp are what vouch for it — `docs/CHECK_YOUR_COPY.md`).
