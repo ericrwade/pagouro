@@ -49,8 +49,8 @@ jobs:
         working-directory: stick
         run: |
           minisign -Vm MANIFEST_v1.0.md -P "$PUBKEY"
-          echo "release pagouro.pub: $(tail -1 pagouro.pub)"
-          [ "$(tail -1 pagouro.pub)" = "$PUBKEY" ]
+          relkey=$(grep -o "RW[A-Za-z0-9+/=]{54}" pagouro.pub); echo "release pagouro.pub: $relkey"
+          [ "$relkey" = "$PUBKEY" ]
           echo "PASS signature"
 
       - name: 3. Every file on the stick matches the signed manifest
