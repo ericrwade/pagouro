@@ -49,7 +49,7 @@ jobs:
         working-directory: stick
         run: |
           minisign -Vm MANIFEST_v1.0.md -P "$PUBKEY"
-          relkey=$(grep -o "RW[A-Za-z0-9+/=]{54}" pagouro.pub); echo "release pagouro.pub: $relkey"
+          relkey=$(grep -oE "RW[A-Za-z0-9+/=]{54}" pagouro.pub); echo "release pagouro.pub: $relkey"
           [ "$relkey" = "$PUBKEY" ]
           echo "PASS signature"
 
