@@ -102,4 +102,4 @@ frozen; it borrows gratefully from both where their sources meet its rules.
 
 ## Citation
 
-TBD at release (Zenodo/DOI or the GitHub Release tag `v1.0`).
+Cite the GitHub Release tag `v1.0` (https://github.com/ericrwade/pagouro/releases/tag/v1.0) and the manifest hash `02a618fc…`.

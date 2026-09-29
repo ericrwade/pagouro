@@ -134,10 +134,10 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Price | Free. Tip jar. |
 | Maintenance | None. Frozen at release; verify with `docs/CHECK_YOUR_COPY.md` |
 | Telemetry | None. See `docs/THREAT_MODEL.md` for what "private" does and does not cover |
-| Release | TBD: date, manifest hash, Bitcoin anchor, mirrors (`docs/RELEASE_RUNBOOK.md`) |
+| Release | 2026-09-29, v1.0 — https://github.com/ericrwade/pagouro/releases/tag/v1.0; manifest signed and timestamped on Bitcoin block 968959; Arweave copy https://arweave.net/6XjlZGVYmp1mDjfcwHRPpr8qe8xOpLHCAMDoB5WXGBk |
 | Relatives | OLMo (AI2), Common Pile / Comma (EleutherAI) — larger, open; Pagouro borrows from both where their sources meet its rules |
 | Made by | Eric Wade, with Claude (Anthropic) |
-| Repository | TBD at release (private until F13) |
+| Repository | https://github.com/ericrwade/pagouro (public, archived) |
 
 *The same table ships as `facts.json` on the stick and in the model card, so that a program —
 or another model — describing Pagouro has one source to read.*
