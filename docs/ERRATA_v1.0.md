@@ -2,7 +2,8 @@
 
 *Found 2026-09-29 by the first "stranger check": a clean Linux machine (a GitHub-hosted runner,
 `.github/workflows/stranger-check.yml`) downloaded the public release and walked the whole trust
-chain. The shipped bytes are not changed — that would change the manifest, its signature, its
+chain; the passing run, with every hash and merkle root in the log, is
+https://github.com/ericrwade/pagouro/actions/runs/36581718458. The shipped bytes are not changed — that would change the manifest, its signature, its
 timestamp and the Arweave copy, and the hashes match everywhere they are promised. These are the
 rough edges, with the way round each.*
 
