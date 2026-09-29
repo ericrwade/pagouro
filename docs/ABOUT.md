@@ -102,7 +102,7 @@ that followed it (every figure read from the RunPod account after each pod was d
 listed by day in `BUILD_LOG.md`); the domain; a USB stick. No grant, no sponsor, no investor.
 There is no token and there will not be one: a coin would give the project a reason to keep
 promising things after it is finished, which is the opposite of the promise it makes. Money can be
-given to it (a tip jar and an address, at release) but nothing can be bought from it. Eric has mined bitcoin and uses crypto and blockchain as often as he can; he does not itemise his holdings. The model was built by one
+given to it — a GitHub Sponsors link toward what the compute cost — but nothing can be bought from it. Eric has mined bitcoin and uses crypto and blockchain as often as he can; he does not itemise his holdings. The model was built by one
 person and one AI model; the AI's company had no say in it and did not pay for it.
 
 ## How Pagouro works — what to expect

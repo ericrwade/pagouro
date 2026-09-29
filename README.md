@@ -125,6 +125,8 @@ corpus.json             the provenance ledger
 
 `data/`, `checkpoints/`, `runs/` and `tools/llamacpp/` are generated and not committed.
 
+This was built by one person and cost about $1,900 in rented compute. It is finished and free. If it is useful to you: fork it, or send a small sponsorship toward what it cost — https://github.com/sponsors/ericrwade.
+
 ## Licence
 
 Weights **CC BY-SA 4.0**, code **Apache 2.0** (D-31, 2026-09-16: share-alike sources are in the

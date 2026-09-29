@@ -111,7 +111,7 @@ manifest, so nothing can be anchored until the weights are frozen.
 | F14 | pagouro.com → redirect to the GitHub release; DNSSEC on; WHOIS privacy on (189–193) | DONE (2026-09-27, as a front page rather than a bare redirect) | https://pagouro.com serves `docs/site/index.html` from the public repo `ericrwade/pagouro-site` via GitHub Pages (HTTPS enforced); links to the Release/HF/Arweave fill at F10 |
 | F15 | Licenses: Apache 2.0 / MIT for code; weights at least as open; publish the data recipe so someone could rebuild it (114, 163) | DONE | D-31 (code Apache 2.0, weights CC BY-SA 4.0); `corpus.json` is the recipe |
 | F16 | Real name on it; compartmentalize: dedicated project wallet, WHOIS privacy, no home address, one-line employer disclaimer (122) | PARTIAL | Name: yes. Wallet, disclaimer: not yet |
-| F17 | Payment: Solana/USDC address embedded; GitHub Sponsors or Ko-fi for cards; price in dollars (64, 68, 138) | NOT STARTED | Needs a dedicated wallet first (F16) |
+| F17 | Payment: Solana/USDC address embedded; GitHub Sponsors or Ko-fi for cards; price in dollars (64, 68, 138) | DONE (2026-09-29, Sponsors only) | github.com/sponsors/ericrwade, worded as offsetting the ≈ $1,900 the build cost; no address embedded (can be added later) |
 
 ## G. Considered and rejected in the origin — do not re-pitch
 

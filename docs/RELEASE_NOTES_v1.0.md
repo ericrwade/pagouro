@@ -33,5 +33,8 @@ Any 64-bit Windows machine, CPU only, no internet, no account. First start from 
 ## Licences
 Weights CC BY-SA 4.0 · code Apache 2.0 · corpus rows as listed in `corpus.json`. No watermark; no claim on outputs.
 
+## If it is useful
+This was built by one person and cost about $1,900 in rented compute. It is finished and free. If it is useful to you: fork it, or send a small sponsorship toward what it cost — https://github.com/sponsors/ericrwade.
+
 ## Finished
 One release, frozen. No updates, no support, no telemetry, no roadmap. Fork it — the recipe is complete: `docs/`, `BUILD_LOG.md`, the book (`book/`).
