@@ -115,7 +115,18 @@ Newest entry at the top. Append one per session, at the end, before finishing.
   (no Python needed), trim tightened (box re-measured **13 / 82**), stick 114/114 sha `cec4a1a9…`; release zip
   built (`release/dist/`, sha `c0219adb…`), EPUB built; OTS client crashes on Windows Python (run from Linux at
   release); glossary updated; hourly inbox loop cancelled to save Eric's usage (Fable week at 88 %).
-**Open / next:** READ `docs/HANDOFF_2026-09-27.md` FIRST — nothing running, nothing owed; then `docs/TO_DONE.md`
+- **Hotel session 2026-09-27/29 (release plumbing, D-97 $20 autonomous RunPod):** pagouro.com live on GitHub Pages
+  (public repo `ericrwade/pagouro-site`, Wix DNS, HTTPS after a domain re-save); minisign key made by Eric (first pair
+  discarded — passphrase typo; pub `RWQe8tvI…`), manifest 115 files sha `02a618fc…` signed + verified; OTS stamped and
+  upgraded on a $0.06/h CPU pod → **Bitcoin block 968959** (pod $0.73, idled through a classifier outage); release
+  zip sha `96debc3e…`; HF `Pagouro/pagouro-1.0` complete (private, LFS hashes verified); draft GitHub Release v1.0
+  with six assets; Arweave via Turbo credits (Eric ≈ $109): zip tx `6XjlZGVY…` + manifest set, six small files
+  byte-verified from arweave.net, zip check via turbo-gateway; history scan clean (5.11); handles @pagouro, r/pagouro,
+  mail ericrwade@pagouro.com; brand: 320×132 logo + X header; `docs/ALEXIS_BIBLE.md`; ch. 14 drafted; EPUB rebuilt.
+**Open / next:** (1) zip byte-check result → post on #2; (2) **Eric: tip jar (5.10), then "flip" → publish HF + release,
+repo public + archive (5.12), site links from "at release" to live, Alexis starts**; (3) after the flip: launch post
+(6.2), recording (6.3), HANDLES update, final BUILD_LOG entry, ledger F-rows DONE. (Superseded: READ
+`docs/HANDOFF_2026-09-27.md` FIRST — nothing running, nothing owed; then `docs/TO_DONE.md`
 sections 2–7 (release-day steps, Eric's accounts and signatures). (Superseded: (1) `docs/TO_DONE.md` section 2 onward — the next items are Eric's (2.2 fresh-stick test on another
 machine, 3.1 the README first paragraph, 3.4 disclaimer line, 3.5 holdings sentence); (2) Claude: ch. 15 draft (4.3)
 from D-88…D-96 and BUILD_LOG Days 16–17, then ch. 14 after the release steps; (3) hard stop Sep 27 11:30 AM PT —
