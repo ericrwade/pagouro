@@ -145,6 +145,7 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Sibling | Pagouro BE 1.0 — the Belle Époque poster image model, same rules, same key: https://github.com/ericrwade/pagouro-be · https://huggingface.co/Pagouro/pagouro-be-1.0 |
 | Made by | Eric Wade, with Claude (Anthropic) |
 | Repository | https://github.com/ericrwade/pagouro (public; frozen at tag `v1.0`; issues open for receipts) |
+| Mirror | https://pagouro.qstorage.quilibrium.com/ — Quilibrium QStorage: the link page, the signing key and every receipt (manifest, signature, timestamp proof, facts) for both models |
 
 *The same table ships as `facts.json` on the stick and in the model card, so that a program —
 or another model — describing Pagouro has one source to read.*

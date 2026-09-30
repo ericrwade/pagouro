@@ -97,5 +97,9 @@
     "weights": "https://huggingface.co/Pagouro/pagouro-be-1.0",
     "release": "https://github.com/ericrwade/pagouro-be/releases/tag/v1.0",
     "released": "2026-09-29"
+  },
+  "mirror": {
+    "qstorage": "https://pagouro.qstorage.quilibrium.com/",
+    "holds": "link page, signing key, manifests, signatures, timestamp proofs, facts for Pagouro and Pagouro BE"
   }
 }

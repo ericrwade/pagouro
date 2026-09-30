@@ -119,3 +119,4 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 | Left to spend to be done | round 2 ≈ $10 (+ optional round 3 ≈ $10–15) · Arweave ≈ $8–15 · optional inscription ≈ $5–30 · everything else $0 |
 | Eric's hands-on time | ≈ 6–8 hours total across 2.2, 3.1, 4.6, 5.2, 5.6–5.13, 6.1–6.3, 7.1–7.2 |
 | Earliest realistic "100 % done" | **Oct 3, 2026**, if the round-2 result is in by Sep 26 and Eric's items land on the dates above |
+| 8.1 | DONE 2026-09-29 | Quilibrium QStorage mirror (D-40): bucket `pagouro`, link page + signing key + every receipt for both models, dragged in by Eric; https://pagouro.qstorage.quilibrium.com/ verified (BE manifest from the mirror hashes to `fcbc785d…`) | $0 | Eric + Claude |
