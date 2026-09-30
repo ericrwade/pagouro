@@ -547,7 +547,9 @@ terms), O-7, O-9, O-8. Then finish the ablation write-up and start M3.
 - Pagouro BE (D-98/99/100): corpus 3,043 licensed posters, three A100 rounds ($7.72), round 3 ships (subject 85 % person / 82 % judge, agreement 85 %; unasked lettering 85 %; words 0/6). Stick `PAGOURO_BE/release/Pagouro-BE-1.0/` (67 files) signed by Eric, OTS pending, HF `Pagouro/pagouro-be-1.0` private + complete, draft release v1.0 complete (kit + model parts; 2 GiB cap). f16 ships (q8_0 draws blanks).
 - QStorage: credentials OK, PutObject AccessDenied — Eric's console (key scope / funding).
 
-**Open / next:** Eric — the word "flip" (order in `PAGOURO_BE/docs/FLIP.md`); QStorage write permission; N100 timing for BE; Arweave for BE if funded. Claude — OTS upgrade (cron 21:43), Arweave attempt 3 for Pagouro (cron 21:57), then post-flip docs.
+- FLIPPED 21:09 PT (Eric: "let's flip it"): HF public, release v1.0 published, repo public; cross-links in Pagouro README/ABOUT/facts/Alexis bible (posts 22–23)/site/HF card/release notes. Clean stick timing 95 s (miner suspended, then resumed).
+
+**Open / next:** Eric — QStorage write permission or drag `PAGOURO_BE/site/qstorage_upload/` into the bucket; N100 timing for BE; Arweave for BE if funded. Claude — OTS upgrade (cron), Arweave attempt 3 for Pagouro (cron), then the block height into facts/README/release/HF.
 
 ## 2026-09-29 — RELEASED (F13 executed on Eric's "flip it")
 

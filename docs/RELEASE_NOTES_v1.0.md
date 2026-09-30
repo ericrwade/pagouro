@@ -36,6 +36,10 @@ Weights CC BY-SA 4.0 · code Apache 2.0 · corpus rows as listed in `corpus.json
 ## If it is useful
 This was built by one person and cost about $1,900 in rented compute. It is finished and free. If it is useful to you: fork it, or send a small sponsorship toward what it cost — https://github.com/sponsors/ericrwade.
 
+## Sibling
+
+Pagouro BE 1.0, released the same day: the Belle Époque poster image model on the same rules and the same signing key — https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 · https://huggingface.co/Pagouro/pagouro-be-1.0
+
 ## Errata (found after release, 2026-09-29)
 
 Three rough edges found by the first clean-machine check, none of which changes a shipped byte:

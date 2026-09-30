@@ -2427,3 +2427,7 @@ Private until the word.[^be3]
 [^be1]: `docs/ERRATA_v1.0.md`; the stranger check run 36581718458; D-98.
 [^be2]: `PAGOURO_BE/docs/CORPUS.md`, `evals/results/round{1,2,3}/`, `human_sample/human_scores.json`; D-99, D-100; RunPod billing API 2026-09-29 $7.72.
 [^be3]: `evals/results/round3/cpu_cat_q8_blank.png` beside `cpu_cat_f16.png`; manifest sha `fcbc785d…`; HF `Pagouro/pagouro-be-1.0` (private); draft release v1.0 on `ericrwade/pagouro-be`.
+
+**Day 21, late — public.** The word came at nine in the evening, after Eric had drawn two posters from the stick himself and one of them was a man in a striped suit instead of a woman with a parasol, which is what fifteen in a hundred looks like. Hugging Face, the release page, the repository, in that order; the front page and every Pagouro document gained one paragraph that says there are two of them now. Ninety-five seconds a picture from the stick with the machine quiet. The timestamp's Bitcoin block was still pending at the flip and is filled in when it lands.[^be4]
+
+[^be4]: #2 comment 5903866160; `PAGOURO_BE/docs/FLIP.md`; `evals/results/round3/stick_parasol_seed1000.png`.
