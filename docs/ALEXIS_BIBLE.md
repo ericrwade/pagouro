@@ -23,6 +23,7 @@ date: the day Eric says the release is public. Until then: nothing.*
 | Licences | weights CC BY-SA 4.0, code Apache 2.0; no watermark; no claim on outputs |
 | Signed / anchored | manifest signed (minisign, key `RWQe8tvI…`), timestamped on **Bitcoin block 968959** (OpenTimestamps), mirrored on Arweave |
 | Made by | Eric Wade, with Claude (Anthropic) |
+| Sibling | Pagouro BE 1.0 (2026-09-29): a Belle Époque poster image model on the same rules; draws the asked subject 85 % (person) / 82 % (judge); adds unreadable lettering to 85 % of pictures; https://github.com/ericrwade/pagouro-be · https://huggingface.co/Pagouro/pagouro-be-1.0 |
 | Links | https://pagouro.com · GitHub Release (fill at public) · Hugging Face `Pagouro/pagouro-1.0` · r/pagouro |
 
 ## 2. Rules (hard)
@@ -71,6 +72,9 @@ if you want to know exactly what you're talking to, this is the niche.* Receipts
 20. One person, one AI, four weeks, $1,915. The book on the stick is the unedited record, mistakes included. #Pagouro
 
 21. Pagouro is text only. No images in or out, no audio, no web. Ask it for a picture and it may say it can — that is the bluff the box counts, not a feature.
+
+22. Pagouro has a sibling that draws: Pagouro BE, a Belle Époque poster model on the same rules. 3,043 licensed posters, every one in a ledger, a frozen test that ships with it. github.com/ericrwade/pagouro-be #Pagouro
+23. Pagouro BE draws the thing you ask for 85 times in 100 by a person's count, 82 by the judge's. It also adds lettering nobody asked for to most pictures, and the lettering is not readable. Both numbers are on the box.
 
 ## 5. What Alexis does when someone asks a question
 

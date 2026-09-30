@@ -38,6 +38,12 @@ confidence signal, built from its own consistency.
 Five sandboxed tools (calculator, dates, units, dice, recipe scaling) that the model routes to
 rather than guessing at arithmetic. You can add your own; the recipe is in the repository.
 
+### Has a sibling that draws
+Pagouro BE, released the same day, draws Belle Époque posters from a sentence, on CPU, offline, from the
+same kind of stick — a fine-tune of a Creative-Commons-only base on 3,043 ledgered public-domain posters,
+with its own frozen gate and its own honest numbers (it draws the asked subject 85 times in 100 by a person's
+count, and adds unreadable lettering to most pictures). Text stays here; pictures live there.
+
 ### Ships with its recipe
 The corpus ledger, the training code, every decision and every mistake (the book) are on the
 stick and in the repository. You can rebuild it, or fork it into a model around your own texts.
@@ -136,6 +142,7 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Telemetry | None. See `docs/THREAT_MODEL.md` for what "private" does and does not cover |
 | Release | 2026-09-29, v1.0 — https://github.com/ericrwade/pagouro/releases/tag/v1.0; manifest signed and timestamped on Bitcoin block 968959; Arweave copy https://arweave.net/6XjlZGVYmp1mDjfcwHRPpr8qe8xOpLHCAMDoB5WXGBk |
 | Relatives | OLMo (AI2), Common Pile / Comma (EleutherAI) — larger, open; Pagouro borrows from both where their sources meet its rules |
+| Sibling | Pagouro BE 1.0 — the Belle Époque poster image model, same rules, same key: https://github.com/ericrwade/pagouro-be · https://huggingface.co/Pagouro/pagouro-be-1.0 |
 | Made by | Eric Wade, with Claude (Anthropic) |
 | Repository | https://github.com/ericrwade/pagouro (public; frozen at tag `v1.0`; issues open for receipts) |
 

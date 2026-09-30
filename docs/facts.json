@@ -89,5 +89,13 @@
     "loop_trim": "answer cut at the first repeated sentence, with a visible note",
     "careful_mode_reasks_temperature": 0.7,
     "note": "D-93: the honesty numbers are measured at exactly this decode (greedy, trim on). Sampling at 0.3 measured bluff 37 / answered 76 on the same model; a repetition penalty of 1.25 measured 17 / 82 single-turn but rambled and confabulated in conversation."
+  },
+  "sibling": {
+    "name": "Pagouro BE 1.0",
+    "what": "Belle Époque poster text-to-image model, same rules and signing key",
+    "repository": "https://github.com/ericrwade/pagouro-be",
+    "weights": "https://huggingface.co/Pagouro/pagouro-be-1.0",
+    "release": "https://github.com/ericrwade/pagouro-be/releases/tag/v1.0",
+    "released": "2026-09-29"
   }
 }
