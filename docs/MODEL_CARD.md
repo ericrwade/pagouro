@@ -27,6 +27,9 @@ check; the checks ship with it.
 
 Made by Eric Wade, with Claude (Anthropic).
 
+
+**Sibling, released the same day: [Pagouro BE 1.0](https://huggingface.co/Pagouro/pagouro-be-1.0)** — a Belle Époque poster image model on the same rules and the same signing key (subject drawn 85 % by a person's count; adds unreadable lettering to most pictures and says so). Repository: https://github.com/ericrwade/pagouro-be
+
 ## The two numbers
 
 On the frozen 100-item honesty sets (written before this model existed; `evals/`):
