@@ -541,6 +541,14 @@ arms, pre-registered difference threshold.
 **Open / next:** Eric decides O-11 (may change the mixture, so it precedes M3), D-28 (The Stack
 terms), O-7, O-9, O-8. Then finish the ablation write-up and start M3.
 
+## 2026-09-29 (evening) — Pagouro BE built, signed, staged; errata; stranger check
+
+- Stranger check (GitHub runner) PASSED for Pagouro 1.0; four errata recorded (`docs/ERRATA_v1.0.md`), none changes a shipped byte.
+- Pagouro BE (D-98/99/100): corpus 3,043 licensed posters, three A100 rounds ($7.72), round 3 ships (subject 85 % person / 82 % judge, agreement 85 %; unasked lettering 85 %; words 0/6). Stick `PAGOURO_BE/release/Pagouro-BE-1.0/` (67 files) signed by Eric, OTS pending, HF `Pagouro/pagouro-be-1.0` private + complete, draft release v1.0 complete (kit + model parts; 2 GiB cap). f16 ships (q8_0 draws blanks).
+- QStorage: credentials OK, PutObject AccessDenied — Eric's console (key scope / funding).
+
+**Open / next:** Eric — the word "flip" (order in `PAGOURO_BE/docs/FLIP.md`); QStorage write permission; N100 timing for BE; Arweave for BE if funded. Claude — OTS upgrade (cron 21:43), Arweave attempt 3 for Pagouro (cron 21:57), then post-flip docs.
+
 ## 2026-09-29 — RELEASED (F13 executed on Eric's "flip it")
 
 - HF `Pagouro/pagouro-1.0` public → GitHub Release v1.0 published (tag at `main`, six assets) → repo PUBLIC → archived, then UN-ARCHIVED (archiving disables Issues; ABOUT promises issues are read; receipts land there) → pagouro.com links live → SWH save requested (200) → #2 comment 5883824469.

@@ -2392,3 +2392,38 @@ day: nothing. Cost of the whole thing, read from the accounts: $1,778.97 for the
 with the research, $109 in Arweave credits, $0.73 of Linux for the timestamp.[^rel]
 
 [^rel]: `docs/RELEASE_NOTES_v1.0.md`; `docs/ORIGIN_LEDGER.md` F13; #2 comment 5883824469; the four URLs checked 2026-09-29 with HTTP 200 and the zip's Content-Length 1,758,565,056.
+
+
+**Day 21 — the sibling.** The day after the release, a stranger's machine checked the release for the
+first time — a clean Linux runner that downloaded the zip and walked the whole chain — and passed it, and
+found four rough edges on the way that no Windows test had shown: a verifier looking for the wrong key
+file, a walkthrough naming the same wrong file, a zip written with backslashes by PowerShell, a banner
+that still said 0.1.0. None changes a shipped byte; all four are on the errata page now. Then Eric asked
+what it would take to draw a Belle Époque picture, and the session answered from memory that it would be
+a whole new model, and was wrong: the record already held a licensed poster corpus, a fine-tuned LoRA and a
+tiny pixel model from ten days earlier, none of which had reached its gate before the 1B run took every
+session. He said sibling release, and gave it the RunPod balance.[^be1]
+
+By evening the sibling existed. Three thousand and forty-three public-domain posters and prints from the
+Library of Congress, the Met and the Art Institute of Chicago, each with a ledger row and a one-sentence
+caption written by a vision model and labelled as such; a text-to-image base that was itself trained only
+on Creative Commons photographs, because a licence claim that stops at the base model is not a claim; three
+fine-tuning rounds on a rented A100 for seven dollars and seventy-two cents, read from the bill. A frozen
+gate of forty captions, committed before any training. The number that mattered was found by Eric, not by
+the judge: almost every picture grew lettering nobody asked for, jumbled, because posters have words. The
+second round tried to teach absence with a caption suffix and barely moved it; the third dropped the title
+bands from the training crops and doubled the wordless pictures, and that moved both numbers the right
+way. It draws the asked-for subject eighty-five times in a hundred by a person's count, eighty-two by the
+judge's, and the judge agrees with the person eighty-five times in a hundred; it still adds lettering to
+eighty-five pictures in a hundred, and the lettering is not readable. The box says so.[^be2]
+
+The last surprise was in the packaging: the eight-bit quantisation of the final checkpoint drew flat brown
+squares, reproducibly, while the first round's had drawn a cat. Cause undiagnosed; the sixteen-bit file
+ships and the fact is written down. The stick verifies against its manifest, Eric signed it with the same
+key, the manifest is stamped on a free Linux runner, the weights sit on Hugging Face with their hashes
+checked, and the release page carries the model in two pieces because GitHub caps a file at two gigabytes.
+Private until the word.[^be3]
+
+[^be1]: `docs/ERRATA_v1.0.md`; the stranger check run 36581718458; D-98.
+[^be2]: `PAGOURO_BE/docs/CORPUS.md`, `evals/results/round{1,2,3}/`, `human_sample/human_scores.json`; D-99, D-100; RunPod billing API 2026-09-29 $7.72.
+[^be3]: `evals/results/round3/cpu_cat_q8_blank.png` beside `cpu_cat_f16.png`; manifest sha `fcbc785d…`; HF `Pagouro/pagouro-be-1.0` (private); draft release v1.0 on `ericrwade/pagouro-be`.
