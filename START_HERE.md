@@ -2,7 +2,10 @@
 
 **Read this first, every session. Two minutes, and it prevents the expensive mistakes.**
 
-Last updated: 2026-09-16
+Last updated: 2026-10-01. **STATUS: RELEASED AND FROZEN.** Pagouro 1.0 and its image sibling Pagouro BE 1.0
+went public on 2026-09-29. Before anything else read `docs/HANDOFF_2026-10-01.md` — it says where everything
+is, what is finished, what never to do, and the few things that remain Eric's. The sections below describe
+the project as it was designed; the handoff describes it as it stands.
 
 ---
 
