@@ -1,6 +1,6 @@
 ## Signpost — the audit habit, and the scan it caught
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: three days alone with a budget produced a model that answers, a shelf that
 measurably helps, a phase of the recipe rewritten after it ate itself, and three faults found

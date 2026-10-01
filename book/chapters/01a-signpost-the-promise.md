@@ -1,6 +1,6 @@
 ## Signpost — the promise, priced
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: nothing has been trained yet. What exists is a brief, a folder, a decision log
 already longer than the code, and a promise with its price written next to it — a model a thousandth

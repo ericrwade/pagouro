@@ -101,5 +101,7 @@
   "mirror": {
     "qstorage": "https://pagouro.qstorage.quilibrium.com/",
     "holds": "link page, signing key, manifests, signatures, timestamp proofs, facts for Pagouro and Pagouro BE"
-  }
+  },
+  "book_story_chapters": "CC BY-SA 4.0 since 2026-10-01 (D-101); shipped copies carry the older all-rights-reserved notice, covered by book/LICENSE-NOTICE.md",
+  "book_license": "CC BY-SA 4.0 (whole book, D-101, 2026-10-01)"
 }

@@ -1,6 +1,6 @@
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 97 decisions, 35 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 101 decisions, 36 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -103,6 +103,10 @@
 | D-95 | 2026-09-25 | Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; soups do not rescue it; GRPO-3 stays |
 | D-96 | 2026-09-26 | Round 4 ships as a soup: 60 % GRPO-3 + 40 % GRPO-C′ — bluff 13 / answered 83; the freeze |
 | D-97 |  | Autonomous RunPod budget while Eric sleeps: $20 (2026-09-28) |
+| D-98 | 2026-09-29 | Pagouro BE: the Belle Époque image model is a sibling release, funded by the RunPod balance |
+| D-99 | 2026-09-29 | Pagouro BE round 1 read: the fine-tune draws the subject, the lettering is glyph salad, the judge is lenient; round 2 plan |
+| D-100 | 2026-09-29 | Pagouro BE: round 3 is the shipping candidate; f16 ships because q8_0 draws blanks; the box numbers |
+| D-101 | 2026-10-01 | The whole book is CC BY-SA 4.0; the story strand's reservation (D-64) is lifted |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -143,3 +147,4 @@
 | O-46 | "Someone could 70B this" / a token raise for a 30B–100B: what it would cost and what the Pagouro of it would be (Eric, 2026-09-25) | open |
 | O-47 | Contrastive Language Models (Kwok et al., 2026, "CLM") as a router, later (Eric: "CLM instead of LLM. Any help to us?") | open |
 | O-48 | Pagouro as a local model for agent frameworks (Eric: "will I be able to access Pagouro in Hermes Agent … can we package some starter skills") | open |
+| O-49 | First outside review (Grok, expert mode, 2026-10-01) and what changed because of it | open |

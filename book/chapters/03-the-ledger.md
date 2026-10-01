@@ -1,6 +1,6 @@
 # Chapter 3 — The ledger, or why the big labs can't publish this file
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), edited from `BUILD_LOG.md` Day 1 ("the project finds its
 actual subject") and Day 2, and from decisions D-8, D-9, D-10, D-32, D-34, D-60, D-62 and O-22 in

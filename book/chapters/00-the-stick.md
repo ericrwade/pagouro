@@ -1,6 +1,6 @@
 # Chapter 0 — The stick
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), from `docs/ORIGIN.md` — the public account of the design
 conversation, which is the ceiling on what this chapter may say about it (D-52) — and

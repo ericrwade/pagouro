@@ -2750,3 +2750,13 @@ Further training rounds: none unless Eric asks; the remaining lever is a letteri
 
 ### O-49 — First outside review (Grok, expert mode, 2026-10-01) and what changed because of it
 **Eric pasted the review.** Verdict: "a copyleft open release with a documented ledger, not a marketing open-weights tag"; the from-scratch claim, the ledger, the integrity chain and BE's honesty about its base all held. Four soft spots, each answered the same day: (1) the mirror page said "everything is free and open source" while D-64 reserves the story chapters — the sentence now lists the licences by part; (2) the llama.cpp MIT notice does not travel with the stick's binaries — erratum E5, the text is in `licenses/` and the release notes; (3) BE's model card did not name the caption model — it now names Gemini 2.5 Flash-Lite via OpenRouter and records that Google's API terms restrict outputs used to develop competing models, with our reading and the open-weights re-caption path for a future version; (4) the corpus is a ledger plus fetch scripts, not bundled bytes, and FineWeb-Edu's ODC-By is a dataset licence, not a grant from every page author — already stated in the README and the brief, left as is. No shipped byte changed.
+
+
+### D-101 — The whole book is CC BY-SA 4.0; the story strand's reservation (D-64) is lifted
+**2026-10-01, Eric: "relicense the book - forget about Amazon."** D-64 had reserved the story chapters to keep a paid
+self-publishing option; Eric does not expect money from it and the reservation was the one asterisk the first outside
+review found on "everything is free and open source" (O-49). From this date every chapter, signpost and appendix is
+CC BY-SA 4.0, the same licence as the weights. `book/LICENSE-NOTICE.md` is the dated public grant; it also covers the
+copies shipped on the 1.0 stick, which still carry the per-chapter D-64 notices (shipped bytes are never changed). The
+chapter sources and the built book in the repository carry the new notice. A licence can be widened and not narrowed,
+so this is permanent. The front page, ABOUT, facts.json and the mirror say one licence for the book.

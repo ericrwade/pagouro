@@ -7,7 +7,7 @@
 
 # Chapter 0 — The stick
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), from `docs/ORIGIN.md` — the public account of the design
 conversation, which is the ceiling on what this chapter may say about it (D-52) — and
@@ -92,7 +92,7 @@ wrong, and the ledger — the subject of Chapter 3 — is the place to start loo
 
 # Chapter 1 — What "doesn't bluff" costs
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), edited from `BUILD_LOG.md` Day 1 (the size argument, the
 thirty-fold lie) and decisions D-6, D-11 and D-50 in `docs/DECISIONS.md`. Every number is from
@@ -221,7 +221,7 @@ instrument that measures honesty is the first thing that lies.
 
 ## Signpost — the promise, priced
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: nothing has been trained yet. What exists is a brief, a folder, a decision log
 already longer than the code, and a promise with its price written next to it — a model a thousandth
@@ -457,7 +457,7 @@ introduces a new kind of thing. They are these six, larger.
 
 # Chapter 3 — The ledger, or why the big labs can't publish this file
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), edited from `BUILD_LOG.md` Day 1 ("the project finds its
 actual subject") and Day 2, and from decisions D-8, D-9, D-10, D-32, D-34, D-60, D-62 and O-22 in
@@ -835,7 +835,7 @@ The fetcher fix and the re-hash are in the same commit as this chapter draft.
 
 ## Signpost — where the corpus came from, and where it went next
 
-*Licence: all rights reserved (story strand, D-64). Signposts are the short connective passages
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then). Signposts are the short connective passages
 Eric asked for: "this is where we tested whether adding X, Y and Z would change the output, so we
 tested it."*
 
@@ -861,7 +861,7 @@ score said.
 
 # Chapter 5 — The test that caught itself
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), edited from `BUILD_LOG.md` Day 1 night, Day 2 and Day 4
 (the frozen suite, the baselines, Verdania, the apostrophe). Every number is from the file the
@@ -1199,7 +1199,7 @@ answered-real unchanged, after retraining on 1,982 conversations instead of 306.
 
 ## Signpost — the tests, and the tests of the tests
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: there is now a frozen set of questions — real ones with known answers, invented
 ones with none — and a rule that the model's number is whatever those questions say, measured
@@ -1221,7 +1221,7 @@ Next: the machine stops.
 
 # Chapter 7 — The machine stopped
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 6 and Day 6 evening. The
 log entries stand as written on their days; where later work corrected a number, the correction
@@ -1377,7 +1377,7 @@ the project's standing rules.
 
 ## Signpost — what a checkpoint is for
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: the first real model trained for seven hours and the machine froze. The run
 survived on a checkpoint written ten minutes earlier, and the chapter you have just read is
@@ -1399,7 +1399,7 @@ Next: the app on the stick.
 
 # Chapter 8 — An app on a stick
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 7 with the morning after
 (Day 7's app transcript, D-53) and later corrections as footnotes.*
@@ -1516,7 +1516,7 @@ d. 1891), a nameable basis. An open question is not a licence.
 
 ## Signpost — the harness is the product
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: the stick now has an app of its own around the model — three switches, a
 context gauge, a router that chooses tools under a grammar, packs it can search. This is the
@@ -1721,7 +1721,7 @@ nothing. That is not a licence term. It is the only thing that makes a box worth
 
 # Chapter 10 — Three days alone with a budget
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-20), edited from `BUILD_LOG.md` Days 8 and 9 (the first
 rented machines, the shelf, the three integrity findings, the Flash night). Every number is
@@ -1948,7 +1948,7 @@ in the book.[^bill]
 
 ## Signpost — the audit habit, and the scan it caught
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: three days alone with a budget produced a model that answers, a shelf that
 measurably helps, a phase of the recipe rewritten after it ate itself, and three faults found
@@ -2267,7 +2267,7 @@ stick is what it claims to be, and what it claims is exactly the table — no mo
 
 ## Signpost — the claim and the check
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: the thing works, lives on a stick, and has a table that says exactly what
 "private" means and where it stops. Every claim the project makes now has the same shape. A
@@ -2291,7 +2291,7 @@ Next: the one-billion run, when it happens, with the receipts.
 
 # Chapter 13 — The one-billion run
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 2 (2026-09-25; draft 1 was written at step 58,000), edited from
 `BUILD_LOG.md` Days 12–15. Every number here is from the file the footnote names.*
@@ -2596,7 +2596,7 @@ first.[^mix]
 
 ## Signpost — the dial
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: a one-billion-parameter model exists, trained for $1,779 on a hundred billion
 licensed, dated tokens, verified from the pod to the desk hash by hash, and measured on the
@@ -2777,7 +2777,7 @@ Every row is a thing a stranger can fetch and check. That is what finished means
 
 # Chapter 15 — What it can and cannot do, with the numbers on the box
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-26), from D-88 to D-96, `BUILD_LOG.md` Days 16–17 and the result
 files the footnotes name. The two numbers on the box are the ones this chapter ends on; every other
@@ -2965,7 +2965,7 @@ have been trusting.
 
 # Appendix A — Every decision, in one table
 
-*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 97 decisions, 35 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
+*Generated from `docs/DECISIONS.md` by `book/build_appendix_a.py`; 101 decisions, 36 open items with their own heading or table row (items raised inline — O-14, O-19, O-20, O-22, O-25 — live in the decisions that raised them). The file itself carries the reasoning; this is the map.*
 
 ## Decisions
 
@@ -3068,6 +3068,10 @@ have been trusting.
 | D-95 | 2026-09-25 | Research round 2: the reasoning seed works (18 → 94 of 320) and does not ship; soups do not rescue it; GRPO-3 stays |
 | D-96 | 2026-09-26 | Round 4 ships as a soup: 60 % GRPO-3 + 40 % GRPO-C′ — bluff 13 / answered 83; the freeze |
 | D-97 |  | Autonomous RunPod budget while Eric sleeps: $20 (2026-09-28) |
+| D-98 | 2026-09-29 | Pagouro BE: the Belle Époque image model is a sibling release, funded by the RunPod balance |
+| D-99 | 2026-09-29 | Pagouro BE round 1 read: the fine-tune draws the subject, the lettering is glyph salad, the judge is lenient; round 2 plan |
+| D-100 | 2026-09-29 | Pagouro BE: round 3 is the shipping candidate; f16 ships because q8_0 draws blanks; the box numbers |
+| D-101 | 2026-10-01 | The whole book is CC BY-SA 4.0; the story strand's reservation (D-64) is lifted |
 
 ## Open items (Eric's calls, or waiting on a measurement)
 
@@ -3108,6 +3112,7 @@ have been trusting.
 | O-46 | "Someone could 70B this" / a token raise for a 30B–100B: what it would cost and what the Pagouro of it would be (Eric, 2026-09-25) | open |
 | O-47 | Contrastive Language Models (Kwok et al., 2026, "CLM") as a router, later (Eric: "CLM instead of LLM. Any help to us?") | open |
 | O-48 | Pagouro as a local model for agent frameworks (Eric: "will I be able to access Pagouro in Hermes Agent … can we package some starter skills") | open |
+| O-49 | First outside review (Grok, expert mode, 2026-10-01) and what changed because of it | open |
 
 
 ---

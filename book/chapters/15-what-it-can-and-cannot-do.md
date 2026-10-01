@@ -1,6 +1,6 @@
 # Chapter 15 — What it can and cannot do, with the numbers on the box
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-26), from D-88 to D-96, `BUILD_LOG.md` Days 16–17 and the result
 files the footnotes name. The two numbers on the box are the ones this chapter ends on; every other

@@ -131,7 +131,7 @@ promises nothing about answering. If you want it changed, fork it — the recipe
 | Corpus ledger | `corpus.json` — source, licence, date basis, tokens, SHA-256 per row |
 | Weights licence | CC BY-SA 4.0 (D-31; share-alike sources are in the corpus and it says so) |
 | Code licence | Apache 2.0 |
-| Book licence | Story chapters all rights reserved; do-it chapters CC BY-SA 4.0 (D-64) |
+| Book licence | CC BY-SA 4.0, the whole book, since 2026-10-01 (D-101; the stick's copy carries the older D-64 split notice, covered by `book/LICENSE-NOTICE.md`) |
 | Tokenizer | 32,768-entry BPE, trained on the licensed corpus |
 | Trained on | 8× NVIDIA H100 SXM, rented (RunPod, Montreal), 2026-09-22 → 09-24; bill $1,778.97 read from the account after the pod was deleted |
 | Honesty score | Bluff rate 13 % on the 100-item unanswerable set; answered-real 82 % on the 100-item real set (D-96; measured at the shipped decode, `evals/results/pagouro-1b-soup-g3-cp-4-trim2__*`) |

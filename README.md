@@ -139,8 +139,7 @@ This was built by one person and cost about $1,900 in rented compute. It is fini
 ## Licence
 
 Weights **CC BY-SA 4.0**, code **Apache 2.0** (D-31, 2026-09-16: share-alike sources are in the
-corpus and the weights say so). The book: story chapters all rights reserved, do-it chapters
-CC BY-SA 4.0 (D-64).
+corpus and the weights say so). The book: CC BY-SA 4.0 in full since 2026-10-01 (D-101; `book/LICENSE-NOTICE.md` is the grant, which also covers the copies on the stick that still carry the older split notice).0 (D-64).
 
 ---
 

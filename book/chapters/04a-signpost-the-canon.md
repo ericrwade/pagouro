@@ -1,6 +1,6 @@
 ## Signpost — where the corpus came from, and where it went next
 
-*Licence: all rights reserved (story strand, D-64). Signposts are the short connective passages
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then). Signposts are the short connective passages
 Eric asked for: "this is where we tested whether adding X, Y and Z would change the output, so we
 tested it."*
 

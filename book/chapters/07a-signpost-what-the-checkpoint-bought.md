@@ -1,6 +1,6 @@
 ## Signpost — what a checkpoint is for
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: the first real model trained for seven hours and the machine froze. The run
 survived on a checkpoint written ten minutes earlier, and the chapter you have just read is

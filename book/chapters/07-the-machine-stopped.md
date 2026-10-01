@@ -1,6 +1,6 @@
 # Chapter 7 — The machine stopped
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-19), edited from `BUILD_LOG.md` Day 6 and Day 6 evening. The
 log entries stand as written on their days; where later work corrected a number, the correction

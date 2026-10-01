@@ -1,6 +1,6 @@
 # Chapter 13 — The one-billion run
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 2 (2026-09-25; draft 1 was written at step 58,000), edited from
 `BUILD_LOG.md` Days 12–15. Every number here is from the file the footnote names.*

@@ -1,6 +1,6 @@
 ## Signpost — the harness is the product
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 Where we are: the stick now has an app of its own around the model — three switches, a
 context gauge, a router that chooses tools under a grammar, packs it can search. This is the

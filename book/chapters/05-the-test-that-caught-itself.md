@@ -1,6 +1,6 @@
 # Chapter 5 — The test that caught itself
 
-*Licence: all rights reserved (story strand, D-64).*
+*Licence: CC BY-SA 4.0 (D-101, 2026-10-01; the story strand was all rights reserved under D-64 until then).*
 
 *STORY chapter, draft 1 (2026-09-21), edited from `BUILD_LOG.md` Day 1 night, Day 2 and Day 4
 (the frozen suite, the baselines, Verdania, the apostrophe). Every number is from the file the
