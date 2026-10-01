@@ -120,3 +120,4 @@ memory written for a cold restart. No card session starts after Sep 26 evening P
 | Eric's hands-on time | ≈ 6–8 hours total across 2.2, 3.1, 4.6, 5.2, 5.6–5.13, 6.1–6.3, 7.1–7.2 |
 | Earliest realistic "100 % done" | **Oct 3, 2026**, if the round-2 result is in by Sep 26 and Eric's items land on the dates above |
 | 8.1 | DONE 2026-09-29 | Quilibrium QStorage mirror (D-40): bucket `pagouro`, link page + signing key + every receipt for both models, dragged in by Eric; https://pagouro.qstorage.quilibrium.com/ verified (BE manifest from the mirror hashes to `fcbc785d…`) | $0 | Eric + Claude |
+| 8.2 | DONE 2026-10-01 | Both stick zips on the QStorage mirror (`pagouro/Pagouro-1.0-win64.zip`, `be/Pagouro-BE-1.0-win64.zip`), each streamed back and hash-verified (`96debc3e…`, `f6a059dd…`); links on the mirror page | $0 (QStorage storage billed to Eric's account) | Claude |
