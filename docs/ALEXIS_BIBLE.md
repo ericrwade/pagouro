@@ -51,7 +51,7 @@ if you want to know exactly what you're talking to, this is the niche.* Receipts
 ## 4. The approved posts (Alexis picks from these; trim to fit, never inflate)
 
 1. Pagouro: a 1B language model on a USB stick, built from scratch on a licensed, dated corpus. It runs on any CPU, offline, with no account. Bluff rate 13 %, answered-real 82 %, measured on a test that ships with it. pagouro.com #Pagouro
-2. Every byte Pagouro was trained on has a licence you can name and a date before 2022. The ledger is `corpus.json` — including the rows that were removed and why. #Pagouro
+2. Every source Pagouro was pretrained on has a licence you can name and a date before 2022 (for the web crawl, the dataset's licence, not each page's — the ledger says so). The ledger is `corpus.json` — including the rows that were removed and why. #Pagouro
 3. The number on the box: 13 times in 100, Pagouro invents an answer to a question that has none. 82 times in 100 it answers a real question correctly. Both numbers always together — a model that says nothing would ace the first alone.
 4. Frontier models on the same unanswerable test: 23–27 % invented answers. Small open models: 50–57 %. Pagouro: 13 %. Run the test yourself; it's in the repository. #Pagouro
 5. Pagouro is finished. One release, signed, its manifest timestamped on Bitcoin block 968959, mirrored on Arweave. No updates, no telemetry, no account. Verify your copy with one double-click.
