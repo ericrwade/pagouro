@@ -13,6 +13,7 @@ rough edges, with the way round each.*
 | E2 | `CHECK_YOUR_COPY.md` on the stick gives the command as `minisign -Vm MANIFEST.md -p minisign.pub`. | Read `pagouro.pub` for `minisign.pub`. |
 | E3 | The release zip was written by Windows PowerShell 5.1 `Compress-Archive`, which stores paths with backslashes. Windows extracts it correctly. On Linux, Info-ZIP `unzip` converts the separators and prints a warning (exit code 1). macOS Archive Utility and Python's `zipfile` may extract files with literal backslashes in their names. | On macOS/Linux extract with `unzip` (Info-ZIP) or `7z x`. The zip's SHA-256 (`96debc3e…`) is unaffected and is the one to check. |
 | E4 | The app's banner reads `PAGOURO  0.1.0 (MVP framework)`; the release is 1.0. The string is `APP_VERSION` in `app/pagouro_app.py`, never bumped. The version of a copy is the manifest hash (`02a618fc…`), not the banner. | Ignore the banner; check the manifest. |
+| E5 | The stick ships `llama-server.exe` and `llama-cli.exe` (llama.cpp, MIT) with `licenses/` holding only the Apache 2.0 and CC BY-SA 4.0 texts; the MIT notice for llama.cpp does not travel with the binaries. Found by an outside review on 2026-10-01. | The notice is `licenses/LICENSE-llama.cpp-MIT.txt` in the repository and in the release notes; if you redistribute the stick, add it to its `licenses/` folder. |
 
 The verifier in the repository (`scripts/verify_manifest.py`) accepts either key filename from this
 commit on; the stick's copy stays as signed.

@@ -49,7 +49,8 @@ Pagouro BE 1.0, released the same day: the Belle Époque poster image model on t
 Three rough edges found by the first clean-machine check, none of which changes a shipped byte:
 `docs/ERRATA_v1.0.md`. Short form: check the signature with `minisign -Vm MANIFEST.md -p pagouro.pub`
 (the stick's `verify_manifest.py` looks for `minisign.pub`); on macOS/Linux extract the zip with
-Info-ZIP `unzip` or `7z x`.
+Info-ZIP `unzip` or `7z x`. E5: the llama.cpp binaries' MIT notice is not on the stick; it is
+`licenses/LICENSE-llama.cpp-MIT.txt` in the repository — add it if you redistribute.
 
 ## Finished
 One release, frozen. No updates, no support, no telemetry, no roadmap. Fork it — the recipe is complete: `docs/`, `BUILD_LOG.md`, the book (`book/`).
