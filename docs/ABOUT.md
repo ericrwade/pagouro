@@ -25,6 +25,12 @@ survive inspection. Nothing that shipped was altered; the record was corrected a
 - The llama.cpp MIT notice did not travel with the stick's binaries (erratum E5); it is in the repository.
 - The book's story chapters were all rights reserved; the whole book is now CC BY-SA 4.0 (D-101).
 
+**Follow-up (2026-10-02).** Both auditors re-ran their checks after the changes and upgraded their assessments.
+What they found has been fixed to the extent it can be. What remains is recorded as a limit rather than a
+fix: the pretraining volume's per-shard metadata was deleted with the rented pod; the web crawl's licence
+covers the dataset, not each page; and Pagouro BE's captions came from a commercial API. A future version is
+the honest path for those, never an edit of 1.0.
+
 The full record is D-101, O-49 and D-102 in `docs/DECISIONS.md`, and `docs/ERRATA_v1.0.md`.
 
 ## Pagouro in one sentence

@@ -541,6 +541,13 @@ arms, pre-registered difference threshold.
 **Open / next:** Eric decides O-11 (may change the mixture, so it precedes M3), D-28 (The Stack
 terms), O-7, O-9, O-8. Then finish the ablation write-up and start M3.
 
+## 2026-10-01 / 10-02 — audits answered, book relicensed, checkpoints published, Hermes wired
+
+- O-49 (Grok) and D-102 (ChatGPT): every finding checked against the files and answered; post-publication notes on every public page; both re-checks upgraded. D-101: whole book CC BY-SA 4.0. Full-precision checkpoints + tokenizer + volume files on HF (`docs/CHECKPOINTS.md`). BE: errata E1–E3, training-set ledger published, inherited components disclosed, showcase. N100: 52 min per picture. Mirror holds both zips, verified. Hermes Agent runs on Pagouro from the stick (`scripts/hermes-pagouro.bat`, desktop shortcut); "Pagouro BE" desktop launcher.
+- Mistakes on the way, caught the same day: told Eric the QStorage key lacked write scope (it was boto3's checksum trailer); uploaded the Flash tokenizer first (replaced with `tokenizer_real`).
+
+**Open / next:** nothing on the session's side. Eric — TO_DONE 7.1 rotate keys, 7.2 local archive; Arweave for BE if funded.
+
 ## 2026-09-29 (evening) — Pagouro BE built, signed, staged; errata; stranger check
 
 - Stranger check (GitHub runner) PASSED for Pagouro 1.0; four errata recorded (`docs/ERRATA_v1.0.md`), none changes a shipped byte.
