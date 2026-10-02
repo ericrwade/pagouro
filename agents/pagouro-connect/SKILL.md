@@ -43,7 +43,11 @@ OPENAI_BASE_URL=http://127.0.0.1:8484/v1
 OPENAI_API_KEY=none
 HERMES_MODEL=pagouro
 ```
-(`hermes model` → custom OpenAI-compatible endpoint → the values above.)
+Verified 2026-10-02 on Hermes Agent v0.21.5: the environment form plus `--provider openai -m pagouro` on the
+command line works without changing Hermes's default model, e.g.
+`hermes chat --provider openai -m pagouro` (the `custom` provider name does not; `openai` is the one that
+honours `OPENAI_BASE_URL`). A launcher that starts the stick's server and opens such a chat is
+`scripts/hermes-pagouro.bat` in the repository.
 
 **OpenClaw** — in the config's `models` section:
 ```json5
