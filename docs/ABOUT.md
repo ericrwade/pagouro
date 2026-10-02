@@ -80,8 +80,8 @@ that licence (ODC-By) covers the dataset, not each page, and the ledger says so.
 smaller relative that also records, per row, what was *removed* and why.
 
 ### Dated before 2022
-Everything it read was written or collected before 1 January 2022, with the date basis on every
-row. Few releases state a training cut-off at all; none we know of states it per row, and a
+Everything it was pretrained on was written or collected before 1 January 2022, with the date basis on every
+row; the post-training rows (the project's own seeds and two teacher-generated sets) are from 2026 and say so. Few releases state a training cut-off at all; none we know of states it per row, and a
 crawl-scale corpus cannot.
 
 ### Honesty measured first

@@ -20,7 +20,7 @@ D-83 (no watermark, no claim on outputs) and THREAT_MODEL.md. -->
 
 # Pagouro 1B
 
-**An offline language model on a USB stick, built from scratch on a licensed, dated corpus, that
+**An offline language model on a USB stick, pretrained from random weights on a licensed, dated corpus (post-training used the project's own seeds and two other open models' outputs, disclosed below), that
 tells you when it does not know.** It is about a thousandth the size of the models you already use
 and it loses to them on every capability test. What it offers is a set of promises a stranger can
 check; the checks ship with it.
@@ -64,10 +64,12 @@ measured how often, and to ship the test so you can run it on this model and on 
 
 ## The dated claim, exactly
 
-Every source in the training corpus was collected or published before **1 January 2022**, before
+Every source in the **pretraining** corpus was collected or published before **1 January 2022**, before
 generative AI became widely available. Dump dates and publication dates are recorded per source in
 the ledger (`corpus.json`). This is *not* a claim that the corpus is free of machine-generated
-text: a crawl date is when a page was fetched, not when it was written.
+text: a crawl date is when a page was fetched, not when it was written. The post-training material is
+different and dated 2026 by construction: the project's own seed conversations and the two teacher-generated
+sets named under Post-training below.
 
 ## What it was trained on
 
@@ -76,7 +78,7 @@ text: a crawl date is when a page was fetched, not when it was written.
 | Tokens | 99,724,809,408 (pretraining), then a short decay on a mix with a licensed "shelf" of 31 works |
 | Mixture | FineWeb-Edu (ODC-By, dumps ≤ CC-MAIN-2021-49) 91.6 % · Stack Exchange (CC BY-SA) 7.7 % · code from named repositories at their last commit before 2022-01-01, permissive licences only, ×3 0.7 % |
 | Ledger | `corpus.json`: source, licence, date basis, token count, SHA-256 of the processed slice, per row; rows that were removed stay in it, marked, with the reason |
-| Not in it | Wikipedia (dropped during the build, D-84); anything under a licence that could not be named; forum text without a date; anything first published in 2022 or later |
+| Not in it | Wikipedia (dropped during the build, D-84); anything under a licence that could not be named; forum text without a date; anything first published in 2022 or later (in pretraining; the post-training rows are from 2026 and say so) |
 
 ## Model
 
